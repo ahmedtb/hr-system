@@ -9,6 +9,6 @@ class Unit extends Model
 {
     use HasFactory;
     public function parent() {
-        return $this->hasOne(Unit::class,'parent_id');
+        return $this->belongsTo(Unit::class,'parent_id');
     }
 }

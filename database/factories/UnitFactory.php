@@ -22,7 +22,7 @@ class UnitFactory extends Factory
     public function definition()
     {
         return [
-            'parent_id' => Unit::factory()->create()->id
+            
         ];
     }
 }
