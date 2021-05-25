@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Employee;
 use App\Models\Unit;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,7 +23,9 @@ class UnitFactory extends Factory
     public function definition()
     {
         return [
-            
+            'name' => $this->faker->name(),
+            // 'head' => Employee::factory()->create()->id,
+            'purpose' => $this->faker->sentence(),
         ];
     }
 }

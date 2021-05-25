@@ -35,4 +35,16 @@ class UnitesTest extends TestCase
         $this->assertEquals($employee->job->id, $job->id);
         $this->assertEquals($job->unit->id, $unit->id);
     }
+
+    public function test_unit_has_a_name_a_head_employee_and_a_general_purpose_description()
+    {
+        $employee = Employee::factory()->create();
+        $unit = Unit::factory()->create(['head' => $employee->id]);
+
+        $this->assertNotEmpty($unit->name);
+        $this->assertNotEmpty($unit->head);
+        $this->assertNotEmpty($unit->purpose);
+
+    }
+
 }

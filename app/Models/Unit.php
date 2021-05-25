@@ -11,4 +11,9 @@ class Unit extends Model
     public function parent() {
         return $this->belongsTo(Unit::class,'parent_id');
     }
+
+    public function head()
+    {
+        $this->hasOne(Employee::class);
+    }
 }

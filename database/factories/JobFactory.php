@@ -24,6 +24,9 @@ class JobFactory extends Factory
     {
         return [
             'unit_id' => Unit::factory()->create()->id,
+            'name' => $this->faker->name(),
+            'purpose' => $this->faker->sentence(),
+            'description' => $this->faker->randomHtml(),
         ];
     }
 }

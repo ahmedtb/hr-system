@@ -16,6 +16,10 @@ class CreateUnitsTable extends Migration
         Schema::create('units', function (Blueprint $table) {
             $table->id();
             $table->foreignId('parent_id')->nullable()->onDelete('cascade');
+            $table->string('name');
+            $table->unsignedBigInteger('head');
+            $table->foreign('head')->references('id')->on('employees');
+            $table->string('purpose');
             $table->timestamps();
         });
     }
