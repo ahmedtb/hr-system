@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\TrainingCourse;
+use App\Models\TrainingProgram;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TrainingCourseFactory extends Factory
@@ -22,7 +23,7 @@ class TrainingCourseFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'training_program_id' => TrainingProgram::factory()->create()->id
         ];
     }
 }

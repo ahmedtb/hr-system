@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTrainingProgramsTable extends Migration
+class CreateCoachesTrainingProgramsPivotTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateTrainingProgramsTable extends Migration
      */
     public function up()
     {
-        Schema::create('training_programs', function (Blueprint $table) {
+        Schema::create('coach_training_program', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('coach_id');
+            $table->foreignId('training_program_id');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateTrainingProgramsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('training_programs');
+        Schema::dropIfExists('coach_training_program');
     }
 }

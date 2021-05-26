@@ -22,7 +22,8 @@ class CoachFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'CV' => $this->faker->randomHtml(),
+            'speciality' => $this->faker->sentence()
         ];
     }
 }

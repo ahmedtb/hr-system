@@ -18,4 +18,9 @@ class Employee extends Model
     {
         return $this->hasMany(Document::class);
     }
+
+    public function coach()
+    {
+        return $this->morphOne(Coach::class, 'profile');
+    }
 }

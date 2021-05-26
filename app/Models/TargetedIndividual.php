@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class TargetedIndividual extends Model
 {
     use HasFactory;
+
+    public function trainingCourses()
+    {
+        return $this->belongsToMany(TrainingCourse::class);
+    }
+
+    public function coach()
+    {
+        return $this->morphOne(Coach::class, 'profile');
+    }
 }

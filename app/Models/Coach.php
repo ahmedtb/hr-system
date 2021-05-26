@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Coach extends Model
 {
     use HasFactory;
+
+    public function trainingPrograms(){
+        return $this->belongsToMany(TrainingProgram::class);
+    }
+
+    public function trainingCourses(){
+        return $this->belongsToMany(TrainingCourse::class);
+    }
+
+    public function profile()
+    {
+        return $this->morphTo();
+    }
 }

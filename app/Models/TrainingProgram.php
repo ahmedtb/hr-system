@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class TrainingProgram extends Model
 {
     use HasFactory;
+
+    public function coaches()
+    {
+        return $this->belongsToMany(Coach::class);
+    }
+
+    public function trainingCourses(){
+        return $this->hasMany(TrainingCourse::class);
+    }
 }

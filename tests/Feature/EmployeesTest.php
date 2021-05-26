@@ -47,6 +47,8 @@ class EmployeesTest extends TestCase
 
     public function test_employee_should_have_a_CV()
     {
-        
+        $response = $this->get('/');
+
+        $response->assertStatus(200);
     }
 }
