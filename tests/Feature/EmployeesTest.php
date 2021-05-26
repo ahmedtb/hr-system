@@ -30,8 +30,7 @@ class EmployeesTest extends TestCase
 
     public function test_Employee_could_have_multip_documents_attached_to_it()
     {
-        $employee = Employee::factory()->create();
-        Document::factory(5)->create(['employee_id' => $employee->id]);
+        $employee = Employee::factory()->has(Document::factory()->count(5))->create();
 
         $this->assertEquals($employee->documents()->count(),5);
     }

@@ -17,7 +17,7 @@ class CreateDocumentsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('image');
-            $table->foreignId('employee_id');
+            $table->morphs('could_have_documents');
             $table->timestamps();
         });
     }

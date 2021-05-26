@@ -15,6 +15,11 @@ class CreateTrainingProgramsTable extends Migration
     {
         Schema::create('training_programs', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('goals');
+            $table->string('category'); //here it made simple categories as strings...could be developed to seperate table
+            $table->time('period');
+            $table->text('details');
             $table->timestamps();
         });
     }

@@ -23,6 +23,7 @@ class TrainingCourse extends Model
         return $this->belongsToMany(Trainee::class);
     }
 
+    // this relation could be omitted
     public function targetedIndividual()
     {
         return $this->belongsToMany(TargetedIndividual::class);

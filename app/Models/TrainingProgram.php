@@ -17,4 +17,9 @@ class TrainingProgram extends Model
     public function trainingCourses(){
         return $this->hasMany(TrainingCourse::class);
     }
+
+    public function documents()
+    {
+        return $this->morphMany(Document::class, 'could_have_documents');
+    }
 }

@@ -13,4 +13,14 @@ class Trainee extends Model
     {
         return $this->belongsToMany(TrainingCourse::class);
     }
+
+    public function documents()
+    {
+        return $this->morphMany(Document::class, 'could_have_documents');
+    }
+
+    public function profile()
+    {
+        return $this->morphTo();
+    }
 }

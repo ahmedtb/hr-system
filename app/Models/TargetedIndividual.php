@@ -18,4 +18,9 @@ class TargetedIndividual extends Model
     {
         return $this->morphOne(Coach::class, 'profile');
     }
+
+    public function trainee()
+    {
+        return $this->morphOne(Trainee::class, 'profile');
+    }
 }

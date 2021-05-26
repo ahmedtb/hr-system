@@ -25,7 +25,7 @@ class DocumentFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'image' => $this->faker->image(),
-            'employee_id' => Employee::factory()->create()->id
+            // 'employee_id' => Employee::factory()->create()->id
         ];
     }
 }

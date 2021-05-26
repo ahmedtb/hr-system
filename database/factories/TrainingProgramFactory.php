@@ -22,7 +22,11 @@ class TrainingProgramFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->title(),
+            'goals' => $this->faker->text(),
+            'category' => $this->faker->word(),
+            'period' => $this->faker->time(),
+            'details' => $this->faker->text()
         ];
     }
 }

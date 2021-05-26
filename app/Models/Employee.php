@@ -16,11 +16,16 @@ class Employee extends Model
 
     public function documents()
     {
-        return $this->hasMany(Document::class);
+        return $this->morphMany(Document::class, 'could_have_documents');
     }
 
     public function coach()
     {
         return $this->morphOne(Coach::class, 'profile');
+    }
+
+    public function trainee()
+    {
+        return $this->morphOne(Trainee::class, 'profile');
     }
 }

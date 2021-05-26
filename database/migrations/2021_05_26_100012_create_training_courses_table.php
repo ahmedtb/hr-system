@@ -15,7 +15,26 @@ class CreateTrainingCoursesTable extends Migration
     {
         Schema::create('training_courses', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
             $table->foreignId('training_program_id');
+            $table->string('status');
+            $table->date('start_date');
+            $table->date('finish_date');
+            $table->json('week_schedule'); 
+            // week_schedule format should be
+            // $schedule = [
+            //     'saturday' => [
+            //         'begin' => '00:00:00',
+            //         'Lecture period' => '111' //minutes
+            //     ],
+            //     ........
+            //     'friday' => [
+            //         'begin' => '00:00:00',
+            //         'Lecture period' => '111' //minutes
+            //     ]
+            //     ........
+            // ]
+
             $table->timestamps();
         });
     }
