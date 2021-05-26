@@ -15,7 +15,14 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('address');
+            $table->date('employment_date');
+            $table->double('basic_salary');
+            $table->string('phone_number');
             $table->foreignId('job_id')->onDelete('cascade');
+            $table->string('email');
+            $table->string('medal_rating')->nullable();
             $table->timestamps();
         });
     }

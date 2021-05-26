@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Job;
+use App\Models\Unit;
 use App\Models\Employee;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,8 +23,16 @@ class EmployeeFactory extends Factory
      */
     public function definition()
     {
+        $medals = array('gold', 'silver', 'diamond','bronze','platinum');
         return [
+            'name' => $this->faker->name(),
+            'address' => $this->faker->address,
+            'employment_date' => $this->faker->date(),
+            'basic_salary' => random_int ( 100 , 10000 ),
+            'phone_number' => $this->faker->phoneNumber(),
             'job_id' => Job::factory()->create()->id,
+            'email' => $this->faker->email(),
+            'medal_rating' => $medals[array_rand($medals)]
         ];
     }
 }

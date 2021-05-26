@@ -14,6 +14,6 @@ class Unit extends Model
 
     public function head()
     {
-        $this->hasOne(Employee::class);
+        return $this->belongsTo(Head::class);
     }
 }

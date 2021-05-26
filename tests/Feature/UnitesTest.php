@@ -2,18 +2,16 @@
 
 namespace Tests\Feature;
 
-use App\Models\Job;
 use Tests\TestCase;
+use App\Models\Job;
 use App\Models\Unit;
 use App\Models\Employee;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class UnitesTest extends TestCase
 {
-    use DatabaseMigrations;
-    
+    use RefreshDatabase;
+
     public function test_managment_unites_could_have_parent_unit()
     {
         // random units
@@ -38,8 +36,7 @@ class UnitesTest extends TestCase
 
     public function test_unit_has_a_name_a_head_employee_and_a_general_purpose_description()
     {
-        $employee = Employee::factory()->create();
-        $unit = Unit::factory()->create(['head' => $employee->id]);
+        $unit = Unit::factory()->create();
 
         $this->assertNotEmpty($unit->name);
         $this->assertNotEmpty($unit->head);

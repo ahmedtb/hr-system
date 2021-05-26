@@ -2,21 +2,51 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use App\Models\Document;
 use Tests\TestCase;
+use App\Models\Head;
+use App\Models\Employee;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class EmployeesTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic feature test example.
      *
      * @return void
      */
-    public function test_example()
+    public function test_employee_has_a_name_address_a_date_of_employment_a_basic_salary_phone_number_a_job_and_email()
     {
-        $response = $this->get('/');
+        $employee = Employee::factory()->create();
+        $this->assertNotEmpty($employee->name);
+        $this->assertNotEmpty($employee->address);
+        $this->assertNotEmpty($employee->employment_date);
+        $this->assertNotEmpty($employee->basic_salary);
+        $this->assertNotEmpty($employee->job);
+        $this->assertNotEmpty($employee->email);
+    }
 
-        $response->assertStatus(200);
+    public function test_Employee_could_have_multip_documents_attached_to_it()
+    {
+        $employee = Employee::factory()->create();
+        Document::factory(5)->create(['employee_id' => $employee->id]);
+
+        $this->assertEquals($employee->documents()->count(),5);
+    }
+
+    public function test_employee_could_have_a_medal_as_a_rating_from_management()
+    {
+        $medals = array('gold', 'silver', 'diamond','bronze','platinum');
+
+        $employee = Employee::factory()->create();
+
+        $this->assertTrue(in_array($employee->medal_rating,$medals));
+    }
+
+    public function test_employee_should_have_a_CV()
+    {
+        
     }
 }

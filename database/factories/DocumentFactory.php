@@ -2,20 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\Job;
-use App\Models\Head;
-use App\Models\Unit;
+use App\Models\Document;
 use App\Models\Employee;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class UnitFactory extends Factory
+class DocumentFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Unit::class;
+    protected $model = Document::class;
 
     /**
      * Define the model's default state.
@@ -24,14 +22,10 @@ class UnitFactory extends Factory
      */
     public function definition()
     {
-        // $id = 11;
-        // $job = Job::factory()->create(['unit_id' => $id]);
-
         return [
-            // 'id' => $id,
             'name' => $this->faker->name(),
-            'head_id' => Head::factory()->create()->id,
-            'purpose' => $this->faker->sentence(),
+            'image' => $this->faker->image(),
+            'employee_id' => Employee::factory()->create()->id
         ];
     }
 }

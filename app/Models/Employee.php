@@ -13,4 +13,9 @@ class Employee extends Model
     {
         return $this->belongsTo(Job::class);
     }
+
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
+    }
 }
