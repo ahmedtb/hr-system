@@ -20,6 +20,6 @@ class TrainingProgram extends Model
 
     public function documents()
     {
-        return $this->morphMany(Document::class, 'could_have_documents');
+        return $this->morphMany(Document::class, 'documentable');
     }
 }

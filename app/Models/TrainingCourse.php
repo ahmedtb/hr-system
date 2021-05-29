@@ -2,12 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Casts\Json;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class TrainingCourse extends Model
 {
     use HasFactory;
+
+    protected $casts = [
+        'week_schedule' => Json::class,
+    ];
+
 
     public function coaches()
     {

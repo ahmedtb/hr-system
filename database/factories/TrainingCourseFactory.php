@@ -15,6 +15,20 @@ class TrainingCourseFactory extends Factory
      */
     protected $model = TrainingCourse::class;
 
+    public function createRandomWeekSchedule(){
+        $weekDays = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+        
+        $schedule = [];
+        foreach($weekDays as $key => $day){
+            $schedule[$weekDays[$key]] = [
+                'begin' => $this->faker->time(),
+                'period' => rand(0, 120) //minutes
+            ];
+        }
+        return $schedule;
+
+    }
+
     /**
      * Define the model's default state.
      *
@@ -22,13 +36,15 @@ class TrainingCourseFactory extends Factory
      */
     public function definition()
     {
+        $random = rand(0, 4);
+        $states = ['planned', 'resumed', 'done', 'canceled', 'archived'];
         return [
-            'title'=> $this->faker->title(),
+            'title' => $this->faker->title(),
             'training_program_id' => TrainingProgram::factory()->create()->id,
-            'status'=>'pending',
+            'status' => $states[$random],
             'start_date' => $this->faker->date(),
             'end_date' => $this->faker->date(),
-            'week_schedule'=> json_encode([])
+            'week_schedule' => $this->createRandomWeekSchedule()
         ];
     }
 }

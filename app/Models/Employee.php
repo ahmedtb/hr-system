@@ -16,7 +16,7 @@ class Employee extends Model
 
     public function documents()
     {
-        return $this->morphMany(Document::class, 'could_have_documents');
+        return $this->morphMany(Document::class, 'documentable');
     }
 
     public function coach()
@@ -27,5 +27,10 @@ class Employee extends Model
     public function trainee()
     {
         return $this->morphOne(Trainee::class, 'profile');
+    }
+
+    public function CourseAttendances()
+    {
+        return $this->morphMany(CourseAttendance::class, 'profile');
     }
 }

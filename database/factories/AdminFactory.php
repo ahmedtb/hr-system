@@ -2,18 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Document;
-use App\Models\Employee;
+use App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class DocumentFactory extends Factory
+class AdminFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Document::class;
+    protected $model = Admin::class;
 
     /**
      * Define the model's default state.
@@ -23,9 +22,7 @@ class DocumentFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
-            'image' => $this->faker->imageUrl(),
-            // 'employee_id' => Employee::factory()->create()->id
+            //
         ];
     }
 }
