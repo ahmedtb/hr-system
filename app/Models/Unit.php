@@ -29,4 +29,8 @@ class Unit extends Model
     {
         return $this->belongsTo(Head::class);
     }
+
+    public function employees() {
+        return $this->hasManyThrough(Employee::class,Job::class);
+    }
 }

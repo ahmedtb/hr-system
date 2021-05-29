@@ -16,6 +16,7 @@ use App\Http\Controllers\API\ManagmentController;
 */
 
 Route::get('/unitsTree', [ManagmentController::class,'UnitsTree']);
+Route::post('/createJob', [ManagmentController::class,'CreateJob']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

@@ -2,6 +2,8 @@
 
 namespace Tests\Feature\API;
 
+use App\Models\Employee;
+use App\Models\Job;
 use Tests\TestCase;
 use App\Models\Unit;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -31,6 +33,28 @@ class RecruitmentTest extends TestCase
         $this->assertEquals(5,sizeof($json[0]['children']));
         $this->assertEquals(5,sizeof($json[0]['children'][0]['children']));
         $this->assertEquals(5,sizeof($json[0]['children'][0]['children'][4]['children']));
-
     }
+
+    public function test_jobs_can_be_created()
+    {
+        $job = Job::factory()->make();
+        $response = $this->postJson('api/createJob',[
+            'unit_id' => $job->unit_id,
+            'name' => $job->name,
+            'purpose' => $job->purpose,
+            'description' => $job->description
+        ])->assertOk();
+    }
+
+    public function test_unit_can_be_created()
+    {
+        // $unit = Unit::factory()->make();
+        // $response = $this->postJson('api/createUnit',[
+        //     'unit_id' => $unit->unit_id,
+        //     'name' => $unit->name,
+        //     'purpose' => $unit->purpose,
+        //     'description' => $unit->description
+        // ])->assertOk();
+    }
+
 }

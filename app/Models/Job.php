@@ -9,6 +9,7 @@ class Job extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['unit_id','name','purpose','description'];
     public function unit()
     {
         return $this->belongsTo(Unit::class);
