@@ -19,7 +19,7 @@ class CreateTrainingCoursesTable extends Migration
             $table->foreignId('training_program_id');
             $table->string('status');
             $table->date('start_date');
-            $table->date('finish_date');
+            $table->date('end_date');
             $table->json('week_schedule'); 
             // week_schedule format should be
             // $schedule = [

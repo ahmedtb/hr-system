@@ -23,7 +23,12 @@ class TrainingCourseFactory extends Factory
     public function definition()
     {
         return [
-            'training_program_id' => TrainingProgram::factory()->create()->id
+            'title'=> $this->faker->title(),
+            'training_program_id' => TrainingProgram::factory()->create()->id,
+            'status'=>'pending',
+            'start_date' => $this->faker->date(),
+            'end_date' => $this->faker->date(),
+            'week_schedule'=> json_encode([])
         ];
     }
 }

@@ -14,17 +14,12 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class CoachesTest extends TestCase
 {
     use RefreshDatabase;
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
+
     public function test_coaches_has_a_speciality_a_CV()
     {
         $coach = Coach::factory()->create();
         $this->assertNotEmpty($coach->speciality);
-        $this->assertNotEmpty($coach->CV);
-        
+        $this->assertNotEmpty($coach->CV);       
     }
 
     public function test_coache_can_have_a_employee_profile_or_a_targeted_individual_profile()
@@ -47,17 +42,13 @@ class CoachesTest extends TestCase
         $trainingProgram2 = TrainingProgram::factory()->create();
         $coach->trainingPrograms()->save($trainingProgram1);
         $coach->trainingPrograms()->save($trainingProgram2);
-        // dd($coach->trainingPrograms()->get());
         $this->assertEquals($coach->trainingPrograms()->get()->count(),2);
-
 
         $trainingCourse1 = TrainingCourse::factory()->create();
         $trainingCourse2 = TrainingCourse::factory()->create();
         $coach->trainingCourses()->save($trainingCourse1);
         $coach->trainingCourses()->save($trainingCourse2);
-        $this->assertEquals($coach->trainingCourses()->get()->count(),2);
-
-        
+        $this->assertEquals($coach->trainingCourses()->get()->count(),2);        
     }
 
 
