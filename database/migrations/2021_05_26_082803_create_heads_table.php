@@ -15,6 +15,7 @@ class CreateHeadsTable extends Migration
     {
         Schema::create('heads', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('employee_id')->nullable();
             $table->timestamps();
         });
     }

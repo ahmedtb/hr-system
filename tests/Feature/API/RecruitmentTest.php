@@ -48,13 +48,14 @@ class RecruitmentTest extends TestCase
 
     public function test_unit_can_be_created()
     {
-        // $unit = Unit::factory()->make();
-        // $response = $this->postJson('api/createUnit',[
-        //     'unit_id' => $unit->unit_id,
-        //     'name' => $unit->name,
-        //     'purpose' => $unit->purpose,
-        //     'description' => $unit->description
-        // ])->assertOk();
+        $this->withoutExceptionHandling();
+        $unit = Unit::factory()->withParent()->make();
+        $response = $this->postJson('api/createUnit',[
+            'parent_id' => $unit->parent_id,
+            'name' => $unit->name,
+            'head_id' => $unit->head_id,
+            'purpose' => $unit->purpose
+        ])->assertOk();
     }
 
 }

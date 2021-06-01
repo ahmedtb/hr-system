@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Employee;
 use App\Models\Head;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,7 +23,7 @@ class HeadFactory extends Factory
     public function definition()
     {
         return [
-            //
+            // 'employee_id' => Employee::factory()->create()->id, // nullable
         ];
     }
 }

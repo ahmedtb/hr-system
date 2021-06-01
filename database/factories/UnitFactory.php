@@ -34,4 +34,13 @@ class UnitFactory extends Factory
             'purpose' => $this->faker->sentence(),
         ];
     }
+
+    public function withParent() 
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'parent_id' => Unit::factory()->create()->id,
+            ];
+        });
+    }
 }

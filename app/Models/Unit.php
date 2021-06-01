@@ -9,6 +9,7 @@ class Unit extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
     protected $appends = ['children'];
     
     public function parent()

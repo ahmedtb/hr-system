@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Head extends Model
 {
     use HasFactory;
+
+    
 }
