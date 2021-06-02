@@ -103,5 +103,6 @@ class EmployeesEndpointsTests extends TestCase
         $this->assertEquals($employee->refresh()->medal_rating, $randomRate);
     }
 
+    
 
 }

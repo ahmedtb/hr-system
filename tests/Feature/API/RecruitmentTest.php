@@ -59,9 +59,9 @@ class RecruitmentTest extends TestCase
         ])->assertOk();
     }
 
-    public function test_job_application_can_be_submited()
+    public function test_job_application_form_could_be_generated_as_a_link_with_token()
     {
-
+        
     }
 
 }

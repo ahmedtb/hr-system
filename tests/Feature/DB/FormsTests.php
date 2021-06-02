@@ -2,12 +2,13 @@
 
 namespace Tests\Feature\DB;
 
-use App\Models\FormStructure;
 use Tests\TestCase;
+use App\Models\Form;
 use Illuminate\Support\Str;
+use App\Models\FormStructure;
+use App\FieldsTypes\FieldType;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\FieldsTypes\FieldType;
 
 class FormsTests extends TestCase
 {
@@ -25,12 +26,25 @@ class FormsTests extends TestCase
     {
         $this->withoutExceptionHandling();
         $structure = FormStructure::factory()->create();
+
+        $fields = [];
         foreach ($structure->fields as $field) {
-            $fieldInstance = new $field(Str::random(5),Str::random(5));
+            $fieldInstance = new $field(Str::random(5), Str::random(5));
             $this->assertTrue($fieldInstance instanceof FieldType);
             $randomString = Str::random(20);
             $fieldInstance->setValue($randomString);
             $this->assertTrue($fieldInstance->getValue() == $randomString);
+            array_push($fields, $fieldInstance);
+        }
+        // dd($fields);
+        $form = Form::create([
+            'form_structure_id' => $structure->id,
+            'filled_fields' => $fields
+        ]);
+
+        $this->assertEquals(count ($form->filled_fields) ,count($fields));
+        foreach($form->filled_fields as $i => $filled_field){
+            $this->assertEquals($filled_field['class'], get_class($fields[$i]));
         }
     }
 }

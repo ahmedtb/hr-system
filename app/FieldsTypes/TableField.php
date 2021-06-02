@@ -5,7 +5,8 @@ namespace App\FieldsTypes;
 use Exception;
 use JsonSerializable;
 
-class TableField implements FieldType, JsonSerializable{
+class TableField implements FieldType, JsonSerializable
+{
     public string $label;
     public string $subLabel;
     private string $value;
@@ -31,6 +32,7 @@ class TableField implements FieldType, JsonSerializable{
     
     public function jsonSerialize () {
         return array(
+            'class' => static::class,
             'label'=>$this->label,
             'subLabel'=>$this->subLabel,
             'value' => $this->value

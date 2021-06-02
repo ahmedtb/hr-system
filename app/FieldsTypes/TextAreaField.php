@@ -30,6 +30,7 @@ class TextAreaField implements FieldType, JsonSerializable{
     
     public function jsonSerialize () {
         return array(
+            'class' => static::class,
             'label'=>$this->label,
             'subLabel'=>$this->subLabel,
             'value' => $this->value

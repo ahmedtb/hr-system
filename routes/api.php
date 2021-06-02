@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ManagmentController;
 use App\Http\Controllers\API\EmployeesController;
+use App\Http\Controllers\API\FormsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,4 @@ Route::put('editEmployee', [EmployeesController::class,'editEmployee']);
 Route::put('attackDocumentToEmployee', [EmployeesController::class,'attackDocument']);
 Route::put('rateEmployee', [EmployeesController::class,'rateEmployee']);
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('EmployementFormOffer/{access_token}', [FormsController::class,'getEmployementForm']);

@@ -24,22 +24,22 @@ class FormFactory extends Factory
      */
     public function definition()
     {
-        $form_structure = FormStructure::factory()->create();
-        $unfilled_fields = $form_structure->fields;
-        $filled_fields = [];
+        // $form_structure = FormStructure::factory()->create();
+        // $unfilled_fields = $form_structure->fields;
+        // $filled_fields = [];
 
-        foreach ($unfilled_fields as $unfilled_field) {
-            $fieldType = FieldType::where('id', $unfilled_field->id);
-            $structure = $fieldType->structure;
+        // foreach ($unfilled_fields as $unfilled_field) {
+        //     $fieldType = FieldType::where('id', $unfilled_field->id);
+        //     $structure = $fieldType->structure;
 
-            foreach($structure as $key => $value){
-                $structure[$key] = Str::random(11);
-            }
-            array_push($filled_fields, $structure);
-        }
+        //     foreach($structure as $key => $value){
+        //         $structure[$key] = Str::random(11);
+        //     }
+        //     array_push($filled_fields, $structure);
+        // }
         return [
-            'form_structure_id' => FormStructure::factory()->create()->id,
-            'filled_fields' => $filled_fields
+            // 'form_structure_id' => FormStructure::factory()->create()->id,
+            // 'filled_fields' => $filled_fields
         ];
     }
 }
