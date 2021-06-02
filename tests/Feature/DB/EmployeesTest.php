@@ -37,7 +37,7 @@ class EmployeesTest extends TestCase
 
     public function test_employee_could_have_a_medal_as_a_rating_from_management()
     {
-        $medals = array('gold', 'silver', 'diamond','bronze','platinum');
+        $medals = array(1,2,3,4,5);
 
         $employee = Employee::factory()->create();
 

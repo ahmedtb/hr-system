@@ -23,7 +23,7 @@ class EmployeeFactory extends Factory
      */
     public function definition()
     {
-        $medals = array('gold', 'silver', 'diamond','bronze','platinum');
+        $medals = array(1,2,3,4,5);
         return [
             'name' => $this->faker->name(),
             'address' => $this->faker->address,

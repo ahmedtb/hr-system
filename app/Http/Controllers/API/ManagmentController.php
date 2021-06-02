@@ -38,7 +38,6 @@ class ManagmentController extends Controller
             'purpose' => 'required|min:20|max:1000'
         ]);
 
-        // dd($data);
         Unit::create($data);
 
         return response(['success'=>'unit created']);

@@ -43,8 +43,7 @@ class RecruitmentTest extends TestCase
             'name' => $job->name,
             'purpose' => $job->purpose,
             'description' => $job->description
-        ]);
-        // ->assertOk();
+        ])->assertOk();
         // dd($response->json());
     }
 
@@ -58,6 +57,11 @@ class RecruitmentTest extends TestCase
             'head_id' => $unit->head_id,
             'purpose' => $unit->purpose
         ])->assertOk();
+    }
+
+    public function test_job_application_can_be_submited()
+    {
+
     }
 
 }

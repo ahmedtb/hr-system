@@ -22,6 +22,9 @@ Route::post('/createUnit', [ManagmentController::class,'CreateUnit']);
 
 Route::post('createEmployee', [EmployeesController::class,'create']);
 Route::post('createEmployeeWithJob', [EmployeesController::class,'createWithJob']);
+Route::put('editEmployee', [EmployeesController::class,'editEmployee']);
+Route::put('attackDocumentToEmployee', [EmployeesController::class,'attackDocument']);
+Route::put('rateEmployee', [EmployeesController::class,'rateEmployee']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
