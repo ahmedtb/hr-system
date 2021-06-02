@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ManagmentController;
+use App\Http\Controllers\API\EmployeesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,8 @@ Route::get('/unitsTree', [ManagmentController::class,'UnitsTree']);
 Route::post('/createJob', [ManagmentController::class,'CreateJob']);
 Route::post('/createUnit', [ManagmentController::class,'CreateUnit']);
 
+Route::post('createEmployee', [EmployeesController::class,'create']);
+Route::post('createEmployeeWithJob', [EmployeesController::class,'createWithJob']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

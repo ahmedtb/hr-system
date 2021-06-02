@@ -43,7 +43,9 @@ class RecruitmentTest extends TestCase
             'name' => $job->name,
             'purpose' => $job->purpose,
             'description' => $job->description
-        ])->assertOk();
+        ]);
+        // ->assertOk();
+        // dd($response->json());
     }
 
     public function test_unit_can_be_created()
