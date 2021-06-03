@@ -16,7 +16,7 @@ class TableField implements FieldType, JsonSerializable
         $this->label = $label;
         $this->subLabel = $subLabel;
         if ($value)
-            $this->value = $value;
+            $this->setValue($value);
     }
 
     public function setValue($value)
@@ -29,12 +29,13 @@ class TableField implements FieldType, JsonSerializable
     {
         return $this->value;
     }
-    
-    public function jsonSerialize () {
+
+    public function jsonSerialize()
+    {
         return array(
             'class' => static::class,
-            'label'=>$this->label,
-            'subLabel'=>$this->subLabel,
+            'label' => $this->label,
+            'subLabel' => $this->subLabel,
             'value' => $this->value
         );
     }

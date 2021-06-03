@@ -3,6 +3,7 @@
 namespace Tests\Feature\API;
 
 use App\Models\Employee;
+use App\Models\FormStructure;
 use App\Models\Job;
 use Tests\TestCase;
 use App\Models\Unit;
@@ -59,9 +60,6 @@ class RecruitmentTest extends TestCase
         ])->assertOk();
     }
 
-    public function test_job_application_form_could_be_generated_as_a_link_with_token()
-    {
-        
-    }
+
 
 }

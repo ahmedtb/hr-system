@@ -27,4 +27,6 @@ Route::put('editEmployee', [EmployeesController::class,'editEmployee']);
 Route::put('attackDocumentToEmployee', [EmployeesController::class,'attackDocument']);
 Route::put('rateEmployee', [EmployeesController::class,'rateEmployee']);
 
-Route::get('EmployementFormOffer/{access_token}', [FormsController::class,'getEmployementForm']);
+Route::post('generateForm', [FormsController::class,'generateForm']);
+Route::get('employementFormOffer/{access_token}', [FormsController::class,'getEmployementForm']);
+Route::post('submitForm', [FormsController::class,'submitForm']);

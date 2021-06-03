@@ -16,7 +16,7 @@ class StringField implements FieldType, JsonSerializable
         $this->label = $label;
         $this->subLabel = $subLabel;
         if ($value)
-            $this->value = $value;
+            $this->setValue($value);
     }
 
     public function setValue($value)
