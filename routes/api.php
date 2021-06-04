@@ -30,3 +30,4 @@ Route::put('rateEmployee', [EmployeesController::class,'rateEmployee']);
 Route::post('generateForm', [FormsController::class,'generateForm']);
 Route::get('employementFormOffer/{access_token}', [FormsController::class,'getEmployementForm']);
 Route::post('submitForm', [FormsController::class,'submitForm']);
+Route::post('employementApproval',[FormsController::class,'employementApproval']);

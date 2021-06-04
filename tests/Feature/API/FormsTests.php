@@ -5,7 +5,17 @@ namespace Tests\Feature\API;
 use Tests\TestCase;
 use App\Models\Form;
 use Illuminate\Support\Str;
+use App\FieldsTypes\JobField;
 use App\Models\FormStructure;
+use App\FieldsTypes\DateField;
+use App\FieldsTypes\EmailField;
+use App\FieldsTypes\DoubleField;
+use App\FieldsTypes\RatingField;
+use App\FieldsTypes\StringField;
+use Illuminate\Support\Facades\Date;
+use App\FieldsTypes\PhoneNumberField;
+use App\Models\Employee;
+use Faker\Provider\bg_BG\PhoneNumber;
 use App\Models\Utilities\FormAccessToken;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Testing\Fluent\AssertableJson;
@@ -59,12 +69,37 @@ class FormsTests extends TestCase
         $response = $this->postJson('api/submitForm', [
             'access_token' => $access_token,
             'fields' => $fieldsObjects,
-        ])->assertOk()->assertJson(['success'=>'form successfully disposed']);
+        ])->assertOk()->assertJson(['success' => 'form successfully disposed']);
 
         // make sure form is disposed in the managment... and the access toke is deleted so no more submitions allowed
         $this->assertNotNull(Form::first());
-        $this->assertEquals(count(Form::first()->filled_fields),count($fieldsObjects));
+        $this->assertEquals(count(Form::first()->filled_fields), count($fieldsObjects));
         $this->assertNull(FormAccessToken::first());
+    }
+
+    public function test_submitted_employement_form_can_be_used_to_create_targeted_trainee_or_employee()
+    {
+        // 'name' => 'required|string',
+        // 'address' => 'required|string',
+        // 'employment_date' => 'required|date',
+        // 'basic_salary' => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/',
+        // 'phone_number' => 'required|string',
+        // 'job_id' => 'required|exists:jobs,id',
+        // 'email' => 'required|email',
+        // 'medal_rating' => 'required|string'
+        $fields = array(
+            StringField::class, StringField::class, DateField::class, DoubleField::class,
+            PhoneNumberField::class, JobField::class, EmailField::class, RatingField::class
+        );
+        $formStructure = FormStructure::factory()->create([
+            'fields' => $fields
+        ]);
+
+        $form = Form::factory()->forStructure($formStructure->id)->create();
+
+        $this->assertEmpty(Employee::first());
+        $response = $this->postJson('api/employementApproval', ['form_id' => $form->id])->assertOk();
+        $this->assertNotNull(Employee::first());
 
     }
 }

@@ -21,7 +21,7 @@ class ManagmentController extends Controller
             'unit_id' => 'required|exists:units,id',
             'name' => 'required|string',
             'purpose' => 'required|string',
-            'description' => 'required|min:20|max:1000'
+            'description' => 'required|min:20|max:5000'
         ]);
 
         // dd($data);
