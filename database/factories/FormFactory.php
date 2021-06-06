@@ -56,7 +56,7 @@ class FormFactory extends Factory
             return $instance->setValue($this->faker->sentence());
         } elseif ($fieldArray['class'] == TableField::class) {
             $instance = $fieldArray['class']::fromArray($fieldArray);
-            $numberOFCol = count($fieldArray['columnsTitles']);
+            $numberOFCol = count($instance->columnsTitles);
             $tableData = [];
             for($i =0; $i<$numberOFCol;$i++){
                 array_push($tableData,array('test data', 'test data'));
