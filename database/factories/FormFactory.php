@@ -56,13 +56,15 @@ class FormFactory extends Factory
             return $instance->setValue($this->faker->sentence());
         } elseif ($fieldArray['class'] == TableField::class) {
             $instance = $fieldArray['class']::fromArray($fieldArray);
-            $numberOFCol = count($instance->columnsTitles);
-            $tableData = [];
-            for($i =0; $i<$numberOFCol;$i++){
-                array_push($tableData,array('test data', 'test data'));
-            }
+            // $numberOFCol = count($instance->columnsTitles);
+            // $tableData = [];
+            // for ($i = 0; $i < $numberOFCol; $i++) {
+            //     array_push($tableData, array('test data', 'test data'));
+            // }
+            $instance->generateMockedValue();
+
             // dd($tableData);
-            return $instance->setValue($tableData);
+            return $instance;
         } elseif ($fieldArray['class'] == TextAreaField::class) {
             $instance = $fieldArray['class']::fromArray($fieldArray);
             return $instance->setValue($this->faker->sentence());
@@ -75,7 +77,7 @@ class FormFactory extends Factory
             $instance = $fieldArray['class']::fromArray($fieldArray);
             return $instance->setValue($status[array_rand($status)]);
         } elseif ($fieldArray['class'] == OptionsField::class) {
-            $options = ['arabic', 'english','french'];
+            $options = ['arabic', 'english', 'french'];
             $instance = $fieldArray['class']::fromArray($fieldArray);
             return $instance->setValue($options[array_rand($options)]);
         }

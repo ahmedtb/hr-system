@@ -36,7 +36,8 @@ class InterviewAssessmentTests extends TestCase
                     'جيد',
                     'متوسط',
                     'ضعيف'
-                )
+                ),
+                16
             ),
             new StringField('اسم مجري المقابلة'),
             new StringField('التوقيع'),
@@ -53,6 +54,31 @@ class InterviewAssessmentTests extends TestCase
         $unfilled_fields = $this->formStructure->fields;
         $form = Form::factory()->forStructure($this->formStructure->id)->create();
         dd($form->filled_fields);
-        
+
+        $tableInstance = TableField::fromArray($form->filled_fields[0]);
+        $staticColumn = array(
+            'المظهر',
+            'تعريفه لنفسه',
+            'الشخصية',
+            'اللغة الانجليزية',
+            'الثقافة',
+            'اللغة العربية',
+            'المبادرة',
+            'مهارات المشاركة',
+            'الاستيعاب',
+            'اتخاد القرار',
+            'ملائمة المؤهل العلمي لمتطلبات الوظيفة',
+            'مهارات المشاركة',
+            'ملائمة المهارات المكتسبة لمتطلبات الوظيفة',
+            'مدى استطاعته لحل المشاكل',
+            'مدى تعامله مع الضغط والتوتر الوظيفي',
+            'الشجاعة الأدبية والثقة بالنفس',
+        );
+        // $form->update([
+        //     'filled_fields' => $tableInstance
+        // ]);
+        // $tableInstance->setColumn(0, $staticColumn);
+        dd($form->filled_fields);
+
     }
 }

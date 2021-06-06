@@ -5,27 +5,28 @@ namespace App\FieldsTypes;
 use Exception;
 use JsonSerializable;
 
+
 class TableField implements FieldType, JsonSerializable
 {
     public string $label;
     public array $columnsTitles;
-    public ?array $static_cols = null;
+    private ?int $numberOfRows = null;
     private ?array $value = null;
 
     public static function fromArray(array $arrayForm)
     {
-        $instance = new self($arrayForm['label'], $arrayForm['columnsTitles'], $arrayForm['value']);
+        $instance = new self($arrayForm['label'], $arrayForm['columnsTitles'],  $arrayForm['numberOfRows'], $arrayForm['value']);
         return $instance;
     }
 
-    public function __construct(string $label, array $columnsTitles, ?array $static_cols = null,  ?array $value = null)
+    public function __construct(string $label, array $columnsTitles, ?int $numberOfRows = null, ?array $value = null)
     {
         $this->label = $label;
         $this->columnsTitles = $columnsTitles;
-        foreach ($static_cols as $colTitle => $colValues) {
-            if (!in_array($colTitle, $columnsTitles))
-                throw new Exception('table static col title does not exists');
-        }
+        if ($numberOfRows != null && $numberOfRows <= 0)
+            throw new Exception('number of rows should be greater than zero');
+
+        $this->numberOfRows = $numberOfRows;
         if ($value)
             $this->setValue($value);
     }
@@ -37,6 +38,21 @@ class TableField implements FieldType, JsonSerializable
         $this->value = $value;
         return $this;
     }
+
+    public function setColumn($index, $elements)
+    {
+        $numberOFCol = count($this->columnsTitles);
+        if ($index < 0 || $index >= $numberOFCol)
+            throw new Exception('invalid index valid. number of columns is: ' . $numberOFCol);
+
+        $numberOfElements = count($elements);
+
+        if ($this->numberOfRows != null && $numberOfElements != $this->numberOfRows)
+            throw new Exception('invalid number of column elements submitted. number of elements should be: ' . $this->numberOfRows);
+        
+        $this->value[$index] = $elements;
+    }
+
     public function getValue()
     {
         return $this->value;
@@ -48,19 +64,22 @@ class TableField implements FieldType, JsonSerializable
             'class' => static::class,
             'label' => $this->label,
             'columnsTitles' => $this->columnsTitles,
-            'static_cols' => $this->static_cols,
+            'numberOfRows' => $this->numberOfRows,
             'value' => $this->getValue()
         );
     }
 
     public function generateMockedValue()
     {
-        $numberOFCol = count($this->columnsTitles);
+        $randomNumberOfRows = random_int(1, 5);
+        if ($this->numberOfRows != null)
+            $randomNumberOfRows = $this->numberOfRows;
         $mockedColumn = [];
-        for ($i = 0; $i < $numberOFCol; $i++) {
+        for ($i = 0; $i < $randomNumberOfRows; $i++) {
             array_push($mockedColumn, 'test data');
         }
 
+        $numberOFCol = count($this->columnsTitles);
         $tableData = [];
         for ($i = 0; $i < $numberOFCol; $i++) {
             array_push($tableData, $mockedColumn);
