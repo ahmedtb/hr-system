@@ -7,27 +7,30 @@ use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Validator;
 use JsonSerializable;
 
-class RatingField implements FieldType, JsonSerializable
+class OptionsField implements FieldType, JsonSerializable
 {
     public string $label;
+    public array $options;
+    private ?string $value = null;
 
-    private int $value;
+    public static function fromArray(array $arrayForm)
+    {
+        $instance = new self($arrayForm['label'], $arrayForm['options'], $arrayForm['value']);
+        return $instance;
+    }
 
-    public function __construct(string $label, ?int $value = null)
+    public function __construct(string $label, array $options, ?string $value = null)
     {
         $this->label = $label;
-
+        $this->options = $options;
         if ($value)
             $this->setValue($value);
     }
 
     public function setValue($value)
     {
-
-        if (gettype($value) != 'integer' )
-            throw new Exception('rating number should be integer');
-        if ( $value < 0 || $value > 5 )
-            throw new Exception('rating number should not exceed 5 or be less than 0');
+        if (!in_array($value, $this->options))
+            throw new Exception('please choose from the options');
 
         $this->value = $value;
         return $this;
@@ -43,6 +46,7 @@ class RatingField implements FieldType, JsonSerializable
         return array(
             'class' => static::class,
             'label' => $this->label,
+            'options' => $this->options,
             'value' => $this->value
         );
     }

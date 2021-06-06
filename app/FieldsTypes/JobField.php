@@ -27,6 +27,8 @@ class JobField implements FieldType, JsonSerializable
         if ($validator->fails())
             throw new Exception('this job id does not exits');
         $this->value = $value;
+        return $this;
+
     }
     public function getValue()
     {

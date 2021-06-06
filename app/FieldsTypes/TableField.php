@@ -8,22 +8,30 @@ use JsonSerializable;
 class TableField implements FieldType, JsonSerializable
 {
     public string $label;
-    public string $subLabel;
-    private string $value;
+    public array $columnsTitles;
+    private ?array $value = null;
 
-    public function __construct(string $label, string $subLabel, ?string $value = null)
+    public static function fromArray(array $arrayForm)
+    {
+        $instance = new self($arrayForm['label'], $arrayForm['columnsTitles'],$arrayForm['value']);
+        return $instance;
+    }
+
+    public function __construct(string $label, array $columnsTitles, ?array $value = null)
     {
         $this->label = $label;
-        $this->subLabel = $subLabel;
+        $this->columnsTitles = $columnsTitles;
         if ($value)
             $this->setValue($value);
     }
 
     public function setValue($value)
     {
-        if (!(gettype($value) == 'string'))
-            throw new Exception('not valid value type..expected string');
+        if (!(gettype($value) == 'array') || count($value) != count($this->columnsTitles))
+            throw new Exception('table value should be 2-d array that match table sizes');
         $this->value = $value;
+        return $this;
+
     }
     public function getValue()
     {
@@ -35,7 +43,7 @@ class TableField implements FieldType, JsonSerializable
         return array(
             'class' => static::class,
             'label' => $this->label,
-            'subLabel' => $this->subLabel,
+            'columnsTitles' => $this->columnsTitles,
             'value' => $this->value
         );
     }

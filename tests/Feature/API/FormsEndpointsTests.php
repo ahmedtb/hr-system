@@ -4,24 +4,29 @@ namespace Tests\Feature\API;
 
 use Tests\TestCase;
 use App\Models\Form;
+use App\Models\Employee;
 use Illuminate\Support\Str;
 use App\FieldsTypes\JobField;
 use App\Models\FormStructure;
 use App\FieldsTypes\DateField;
 use App\FieldsTypes\EmailField;
 use App\FieldsTypes\DoubleField;
+use App\FieldsTypes\GenderField;
+use App\FieldsTypes\OptionsField;
 use App\FieldsTypes\RatingField;
 use App\FieldsTypes\StringField;
 use Illuminate\Support\Facades\Date;
 use App\FieldsTypes\PhoneNumberField;
-use App\Models\Employee;
-use Faker\Provider\bg_BG\PhoneNumber;
+use App\FieldsTypes\SocialStatusField;
+use App\FieldsTypes\TableField;
+use App\FieldsTypes\TextAreaField;
 use App\Models\Utilities\FormAccessToken;
+use Faker\Provider\bg_BG\PhoneNumber;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Testing\Fluent\AssertableJson;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class FormsTests extends TestCase
+class FormsEndpointsTests extends TestCase
 {
     use RefreshDatabase;
     public function test_job_application_forms_could_be_generated_as_a_links_with_tokens()
@@ -60,7 +65,7 @@ class FormsTests extends TestCase
         // set dumy data in the form fields...specifically in the values
         $fieldsObjects = [];
         foreach ($formStructure['fields'] as $field) {
-            $fieldInstance = new $field(Str::random(5), Str::random(5), Str::random(5));
+            $fieldInstance = $field['class']::fromArray($field);
             array_push($fieldsObjects, $fieldInstance);
         }
         $this->assertNull(Form::first());
@@ -77,29 +82,5 @@ class FormsTests extends TestCase
         $this->assertNull(FormAccessToken::first());
     }
 
-    public function test_submitted_employement_form_can_be_used_to_create_targeted_trainee_or_employee()
-    {
-        // 'name' => 'required|string',
-        // 'address' => 'required|string',
-        // 'employment_date' => 'required|date',
-        // 'basic_salary' => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/',
-        // 'phone_number' => 'required|string',
-        // 'job_id' => 'required|exists:jobs,id',
-        // 'email' => 'required|email',
-        // 'medal_rating' => 'required|string'
-        $fields = array(
-            StringField::class, StringField::class, DateField::class, DoubleField::class,
-            PhoneNumberField::class, JobField::class, EmailField::class, RatingField::class
-        );
-        $formStructure = FormStructure::factory()->create([
-            'fields' => $fields
-        ]);
-
-        $form = Form::factory()->forStructure($formStructure->id)->create();
-
-        $this->assertEmpty(Employee::first());
-        $response = $this->postJson('api/employementApproval', ['form_id' => $form->id])->assertOk();
-        $this->assertNotNull(Employee::first());
-
-    }
+    
 }

@@ -21,12 +21,13 @@ class DoubleField implements FieldType, JsonSerializable
 
     public function setValue($value)
     {
-        $validator = Validator::make(['value'=>$value],[
+        $validator = Validator::make(['value' => $value], [
             'value' => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/'
         ]);
         if ($validator->fails())
             throw new Exception('not valid value type..expected double');
         $this->value = $value;
+        return $this;
     }
     public function getValue()
     {

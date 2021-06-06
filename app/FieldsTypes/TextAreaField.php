@@ -8,13 +8,18 @@ use JsonSerializable;
 class TextAreaField implements FieldType, JsonSerializable
 {
     public string $label;
-    public string $subLabel;
-    private string $value;
 
-    public function __construct(string $label, string $subLabel, ?string $value = null)
+    private ?string $value = null;
+
+    public static function fromArray(array $arrayForm)
+    {
+        $instance = new self($arrayForm['label'],$arrayForm['value']);
+        return $instance;
+    }
+    
+    public function __construct(string $label, ?string $value = null)
     {
         $this->label = $label;
-        $this->subLabel = $subLabel;
         if ($value)
             $this->setValue($value);
     }
@@ -23,6 +28,8 @@ class TextAreaField implements FieldType, JsonSerializable
         if (!(gettype($value) == 'string'))
             throw new Exception('not valid value type..expected string');
         $this->value = $value;
+        return $this;
+
     }
     public function getValue()
     {
@@ -34,7 +41,6 @@ class TextAreaField implements FieldType, JsonSerializable
         return array(
             'class' => static::class,
             'label' => $this->label,
-            'subLabel' => $this->subLabel,
             'value' => $this->value
         );
     }

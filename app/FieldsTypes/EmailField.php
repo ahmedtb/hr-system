@@ -27,6 +27,8 @@ class EmailField implements FieldType, JsonSerializable
         if ($validator->fails())
             throw new Exception('not valid value type..incorrect email format');
         $this->value = $value;
+        return $this;
+
     }
     public function getValue()
     {

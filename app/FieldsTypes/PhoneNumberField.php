@@ -10,8 +10,14 @@ use JsonSerializable;
 class PhoneNumberField implements FieldType, JsonSerializable
 {
     public string $label;
-    private string $value;
+    private ?string $value = null;
 
+    public static function fromArray(array $arrayForm)
+    {
+        $instance = new self($arrayForm['label'],$arrayForm['value']);
+        return $instance;
+    }
+    
     public function __construct(string $label, ?string $value = null)
     {
         $this->label = $label;
@@ -27,6 +33,8 @@ class PhoneNumberField implements FieldType, JsonSerializable
         if ($validator->fails())
             throw new Exception('not valid value type..expected string');
         $this->value = $value;
+        return $this;
+
     }
     public function getValue()
     {
