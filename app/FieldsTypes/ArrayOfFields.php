@@ -2,17 +2,18 @@
 
 namespace App\FieldsTypes;
 
+use Countable;
 use Exception;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Validator;
 use JsonSerializable;
 
-class ArrayOfFields implements JsonSerializable
+class ArrayOfFields implements JsonSerializable, Countable
 {
-    private ?array $fields = null;
+    private ?array $fields = [];
     public static function fromArray(array $arrayForm)
     {
-        $instance = new self( $arrayForm['fields']);
+        $instance = new self($arrayForm['fields']);
         return $instance;
     }
 
@@ -24,8 +25,10 @@ class ArrayOfFields implements JsonSerializable
 
     public function setFields($fields)
     {
-
-        $this->fields = $fields;
+        foreach ($fields as $field) {
+            $this->setField($field);
+        }
+        // $this->fields = $fields;
         return $this;
     }
     public function getFields()
@@ -33,16 +36,42 @@ class ArrayOfFields implements JsonSerializable
         return $this->fields;
     }
 
-    public function setField($index, $field)
+    public function setField($field, $index = null)
     {
-        
+        if ($index == null || count($this->fields)  == 0) {
+            if (gettype($field) == 'array') {
+                $instance = $field['class']::fromArray($field);
+                array_push($this->fields, $instance);
+            } else
+                array_push($this->fields, $field);
+            return $this;
+        }
+
+        if ($index >= count($this->fields)) {
+            throw new Exception('index is too large...fields size is = ' . count($this->fields));
+        } else {
+            $this->fields[$index] = $field;
+            return $this;
+        }
+    }
+
+    public function getField($index)
+    {
+        return $this->fields[$index];
     }
 
     public function jsonSerialize()
     {
         return array(
             'class' => static::class,
-            'fields' => $this->getFields(),
+            'fields' => array_map(function ($field) {
+                return $field->jsonSerialize();
+            }, $this->getFields()),
         );
+    }
+
+    public function count()
+    {
+        return count($this->fields);
     }
 }

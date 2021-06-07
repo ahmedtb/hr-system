@@ -3,16 +3,18 @@
 namespace App\FieldsTypes;
 
 use Exception;
+use Faker\Generator;
 use JsonSerializable;
+use Illuminate\Container\Container;
 
-class StringField implements FieldType, JsonSerializable
+class StringField extends FieldType
 {
     public string $label;
     public ?string $value = null;
 
     public static function fromArray(array $arrayForm)
     {
-        $instance = new self($arrayForm['label'],$arrayForm['value']);
+        $instance = new self($arrayForm['label'], $arrayForm['value']);
         return $instance;
     }
 
@@ -29,7 +31,6 @@ class StringField implements FieldType, JsonSerializable
             throw new Exception('not valid value type..expected string');
         $this->value = $value;
         return $this;
-
     }
     public function getValue()
     {
@@ -43,5 +44,11 @@ class StringField implements FieldType, JsonSerializable
             'label' => $this->label,
             'value' => $this->value
         );
+    }
+
+    public function generateMockedValue()
+    {
+        $faker = Container::getInstance()->make(Generator::class);
+        $this->setValue($faker->sentence());
     }
 }

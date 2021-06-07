@@ -10,6 +10,7 @@ use App\FieldsTypes\TableField;
 use App\FieldsTypes\GenderField;
 use App\FieldsTypes\StringField;
 use App\FieldsTypes\OptionsField;
+use App\FieldsTypes\ArrayOfFields;
 use App\FieldsTypes\TextAreaField;
 use App\FieldsTypes\PhoneNumberField;
 use App\FieldsTypes\SocialStatusField;
@@ -27,7 +28,7 @@ class InterviewAssessmentTests extends TestCase
         parent::setup();
 
         // $this->withoutExceptionHandling();
-        $unfilled_fields = array(
+        $unfilled_fields = new ArrayOfFields(array(
             new TableField(
                 'نموذج تقييم مقابلة شخصية',
                 array(
@@ -42,10 +43,10 @@ class InterviewAssessmentTests extends TestCase
             new StringField('اسم مجري المقابلة'),
             new StringField('التوقيع'),
             new DateField('تاريخ المقابلة ')
-        );
+        ));
         $this->formStructure = FormStructure::factory()->create([
             'type' => 'interview assessment',
-            'fields' => $unfilled_fields
+            'array_of_fields' => $unfilled_fields
         ]);
     }
 

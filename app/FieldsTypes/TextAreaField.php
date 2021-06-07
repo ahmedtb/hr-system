@@ -3,9 +3,11 @@
 namespace App\FieldsTypes;
 
 use Exception;
-use JsonSerializable;
+use Faker\Generator;
+use Illuminate\Container\Container;
 
-class TextAreaField implements FieldType, JsonSerializable
+
+class TextAreaField extends FieldType
 {
     public string $label;
 
@@ -43,5 +45,10 @@ class TextAreaField implements FieldType, JsonSerializable
             'label' => $this->label,
             'value' => $this->value
         );
+    }
+
+    public function generateMockedValue() {
+        $faker = Container::getInstance()->make(Generator::class);
+        $this->setValue($faker->sentence());
     }
 }

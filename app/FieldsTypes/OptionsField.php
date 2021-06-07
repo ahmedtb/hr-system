@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Validator;
 use JsonSerializable;
 
-class OptionsField implements FieldType, JsonSerializable
+class OptionsField extends FieldType
 {
     public string $label;
     public array $options;
@@ -49,5 +49,11 @@ class OptionsField implements FieldType, JsonSerializable
             'options' => $this->options,
             'value' => $this->value
         );
+    }
+
+    public function generateMockedValue()
+    {
+        // $faker = new \Faker\Generator();
+        $this->setValue($this->options[array_rand($this->options)]);
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Validator;
 use JsonSerializable;
 
-class SocialStatusField implements FieldType, JsonSerializable
+class SocialStatusField extends FieldType
 {
     public string $label;
     private ?string $value = null;
@@ -46,5 +46,11 @@ class SocialStatusField implements FieldType, JsonSerializable
             'label' => $this->label,
             'value' => $this->value
         );
+    }
+
+    public function generateMockedValue()
+    {
+        $status = ['single', 'married'];
+        $this->setValue($status[array_rand($status)]);
     }
 }

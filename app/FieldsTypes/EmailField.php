@@ -3,11 +3,13 @@
 namespace App\FieldsTypes;
 
 use Exception;
+use Faker\Generator;
+use JsonSerializable;
+use Illuminate\Container\Container;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Validator;
-use JsonSerializable;
 
-class EmailField implements FieldType, JsonSerializable
+class EmailField extends FieldType
 {
     public string $label;
     private string $value;
@@ -42,5 +44,12 @@ class EmailField implements FieldType, JsonSerializable
             'label' => $this->label,
             'value' => $this->value
         );
+    }
+
+    public function generateMockedValue()
+    {
+        $faker = Container::getInstance()->make(Generator::class);
+
+        $this->setValue($faker->email());
     }
 }

@@ -3,11 +3,12 @@
 namespace App\FieldsTypes;
 
 use Exception;
+use App\Models\Job;
+use JsonSerializable;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Validator;
-use JsonSerializable;
 
-class JobField implements FieldType, JsonSerializable
+class JobField extends FieldType
 {
     public string $label;
     private int $value;
@@ -42,5 +43,11 @@ class JobField implements FieldType, JsonSerializable
             'label' => $this->label,
             'value' => $this->value
         );
+    }
+
+    public function generateMockedValue()
+    {
+        // $faker = new \Faker\Generator();
+        $this->setValue(Job::factory()->create()->id);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\DB;
 
+use App\FieldsTypes\ArrayOfFields;
 use Tests\TestCase;
 use App\Models\Form;
 use Illuminate\Support\Str;
@@ -25,10 +26,11 @@ class FormsTests extends TestCase
     public function test_forms_structures_can_have_different_kinds_of_fields()
     {
         $structure = FormStructure::factory()->create();
-        $this->assertIsArray($structure->fields);
+        // dd($structure->fields);
+        $this->assertTrue($structure->array_of_fields instanceof ArrayOfFields);
 
-        foreach ($structure->fields as $field)
-            $this->assertTrue($field['class']::fromArray($field) instanceof FieldType);
+        foreach ($structure->array_of_fields->getFields() as $field)
+            $this->assertTrue($field instanceof FieldType);
     }
 
     public function test_we_can_easily_create_forms_from_form_structure()
@@ -36,23 +38,23 @@ class FormsTests extends TestCase
         $this->withoutExceptionHandling();
         $structure = FormStructure::factory()->create();
 
-        $fields = [];
-        foreach ($structure->fields as $field) {
-            $fieldInstance = $field['class']::fromArray($field);
+        $filled_fields = [];
+        foreach ($structure->array_of_fields->getFields() as $fieldInstance) {
+            // $fieldInstance = $field::fromArray($field);
             $this->assertTrue($fieldInstance instanceof FieldType);
             $randomString = Str::random(20);
             $fieldInstance->setValue($randomString);
             $this->assertTrue($fieldInstance->getValue() == $randomString);
-            array_push($fields, $fieldInstance);
+            array_push($filled_fields, $fieldInstance);
         }
-
+        // dd($filled_fields);
         $form = Form::create([
             'form_structure_id' => $structure->id,
-            'filled_fields' => $fields
+            'filled_fields' => new ArrayOfFields($filled_fields)
         ]);
 
-        foreach ($form->filled_fields as $i => $filled_field) {
-            $this->assertEquals($filled_field['class'], get_class($fields[$i]));
+        foreach ($form->filled_fields->getFields() as $i => $filled_field) {
+            $this->assertEquals(get_class($filled_field), get_class($filled_fields[$i]));
         }
     }
 
@@ -94,14 +96,15 @@ class FormsTests extends TestCase
             new DateField('تاريخ اليوم ')
         );
         $formStructure = FormStructure::factory()->create([
-            'fields' => $unfilled_fields
+            'array_of_fields' => new ArrayOfFields($unfilled_fields)
         ]);
 
         $form = Form::factory()->forStructure($formStructure->id)->create();
+        // dd($form->filled_fields->getFields());
         $this->assertEquals(count($form->filled_fields), count($unfilled_fields));
         foreach ($unfilled_fields as $index => $unfilled_field) {
-            $this->assertEquals($form->filled_fields[$index]['label'], $unfilled_field->label);
-            $this->assertNotNull($form->filled_fields[$index]['value']);
+            $this->assertEquals($form->filled_fields->getField($index)->label, $unfilled_field->label);
+            $this->assertNotNull($form->filled_fields->getField($index)->getValue());
         }
     }
 }

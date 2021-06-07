@@ -2,10 +2,13 @@
 
 namespace App\FieldsTypes;
 
+use JsonSerializable;
 
-interface FieldType {
 
-    public function setValue($value);
-    public function getValue();
+abstract class FieldType implements JsonSerializable {
 
+    abstract public function setValue($value);
+    abstract public function getValue();
+    abstract public function generateMockedValue();
+    
 }

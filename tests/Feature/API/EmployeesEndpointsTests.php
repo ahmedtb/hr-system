@@ -57,6 +57,8 @@ class EmployeesEndpointsTests extends TestCase
             'email' => $employee->email,
             'medal_rating' => $employee->medal_rating
         ])->assertOk()->assertJson(['success' => 'job and employee created']);
+        // dd($response->json());
+
         $this->assertNotEmpty(Employee::first());
     }
 
@@ -103,6 +105,5 @@ class EmployeesEndpointsTests extends TestCase
         $this->assertEquals($employee->refresh()->medal_rating, $randomRate);
     }
 
-    public function test_
 
 }

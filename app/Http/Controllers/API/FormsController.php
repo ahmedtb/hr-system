@@ -7,8 +7,10 @@ use App\Models\Employee;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\FormStructure;
+use App\FieldsTypes\ArrayOfFields;
 use App\Http\Controllers\Controller;
 use App\Models\Utilities\FormAccessToken;
+use App\Rules\ArrayOfFieldsRule;
 use Dotenv\Exception\ValidationException;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 
@@ -41,21 +43,17 @@ class FormsController extends Controller
     public function submitForm(Request $request)
     {
         $request->validate([
-            'access_token' => 'required|exists:form_access_tokens,access_token'
+            'access_token' => 'required|exists:form_access_tokens,access_token',
+            'fields' => [new ArrayOfFieldsRule()]
         ]);
         $formAccessToken = FormAccessToken::where('access_token', $request->access_token)->first();
+        $ArrayInstance = ArrayOfFields::fromArray($request->fields);
 
-        $fieldObjects = [];
-        foreach ($request->fields as $field) {
-            $fieldObject = $field['class']::fromArray($field);
-
-            // $fieldObject = new $fieldData['class']($fieldData['label'], $fieldData['subLabel'], $fieldData['value']);
-            array_push($fieldObjects, $fieldObject);
-        }
+        // dd($ArrayInstance);
 
         $form = Form::create([
             'form_structure_id' => $formAccessToken->form_structure_id,
-            'filled_fields' => $fieldObjects
+            'filled_fields' => $ArrayInstance
         ]);
 
         $formAccessToken->delete();

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Validator;
 use JsonSerializable;
 
-class RatingField implements FieldType, JsonSerializable
+class RatingField extends FieldType
 {
     public string $label;
 
@@ -45,5 +45,10 @@ class RatingField implements FieldType, JsonSerializable
             'label' => $this->label,
             'value' => $this->value
         );
+    }
+
+    public function generateMockedValue()
+    {
+        $this->setValue(random_int(0, 5));
     }
 }

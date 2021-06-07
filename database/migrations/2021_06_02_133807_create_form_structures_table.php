@@ -16,7 +16,7 @@ class CreateFormStructuresTable extends Migration
         Schema::create('form_structures', function (Blueprint $table) {
             $table->id();
             $table->string('type');
-            $table->json('fields');
+            $table->json('array_of_fields');
             $table->timestamps();
         });
     }

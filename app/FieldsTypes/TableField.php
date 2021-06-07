@@ -6,7 +6,7 @@ use Exception;
 use JsonSerializable;
 
 
-class TableField implements FieldType, JsonSerializable
+class TableField extends FieldType
 {
     public string $label;
     public array $columnsTitles;

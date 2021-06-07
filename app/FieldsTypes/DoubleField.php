@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Validator;
 use JsonSerializable;
 
-class DoubleField implements FieldType, JsonSerializable
+class DoubleField extends FieldType
 {
     public string $label;
     private string $value;
@@ -41,5 +41,11 @@ class DoubleField implements FieldType, JsonSerializable
             'label' => $this->label,
             'value' => $this->value
         );
+    }
+
+    public function generateMockedValue()
+    {
+        // $faker = new \Faker\Generator();
+        $this->setValue(random_int(100, 10000));
     }
 }

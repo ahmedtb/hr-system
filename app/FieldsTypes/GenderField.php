@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Validator;
 use JsonSerializable;
 
-class GenderField implements FieldType, JsonSerializable
+class GenderField extends FieldType
 {
     public string $label;
     private ?string $value = null;
@@ -46,5 +46,11 @@ class GenderField implements FieldType, JsonSerializable
             'label' => $this->label,
             'value' => $this->value
         );
+    }
+
+    public function generateMockedValue()
+    {
+        $genders = ['male', 'female'];
+        $this->setValue($genders[array_rand($genders)]);
     }
 }

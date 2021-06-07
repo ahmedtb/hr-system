@@ -21,7 +21,7 @@ class EmployeesController extends Controller
             'phone_number' => 'required|string',
             'job_id' => 'required|exists:jobs,id',
             'email' => 'required|email',
-            'medal_rating' => 'required|string'
+            'medal_rating' => 'required|integer'
         ]);
 
         Employee::create($validateddata);
@@ -45,7 +45,7 @@ class EmployeesController extends Controller
             'phone_number' => 'required|string',
             // 'job_id' => 'required|exists:jobs,id',
             'email' => 'required|email',
-            'medal_rating' => 'required|string'
+            'medal_rating' => 'required|integer'
         ]);
 
         $job = Job::create($jobFields);
@@ -68,7 +68,7 @@ class EmployeesController extends Controller
             'phone_number' => 'sometimes|string',
             'job_id' => 'sometimes|exists:jobs,id',
             'email' => 'sometimes|email',
-            'medal_rating' => 'sometimes|string'
+            'medal_rating' => 'sometimes|integer'
         ]);
 
         $employee = Employee::where('id', $request->employee_id)->first();

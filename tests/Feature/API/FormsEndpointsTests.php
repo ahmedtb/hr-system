@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\API;
 
+use App\FieldsTypes\ArrayOfFields;
 use Tests\TestCase;
 use App\Models\Form;
 use App\Models\FormStructure;
@@ -28,7 +29,7 @@ class FormsEndpointsTests extends TestCase
             function (AssertableJson $json) use ($formStructure) {
                 $json->where('id', $formStructure->id)
                     ->where('type', $formStructure->type)
-                    ->where('fields', $formStructure->fields)
+                    ->where('array_of_fields', $formStructure->array_of_fields->jsonSerialize())
                     ->etc();
             }
         );
@@ -45,24 +46,20 @@ class FormsEndpointsTests extends TestCase
         $access_token = explode('/', $response->content())[2];
         // use the url to get the form....user accessable link
         $formStructure = $this->getJson($response->content())->json();
-
-        // set dumy data in the form fields...specifically in the values
-        $fieldsObjects = [];
-        foreach ($formStructure['fields'] as $field) {
-            $fieldInstance = $field['class']::fromArray($field);
-            array_push($fieldsObjects, $fieldInstance);
-        }
+        
+        $array_of_fieldsInstance = ArrayOfFields::fromArray($formStructure['array_of_fields']);
         $this->assertNull(Form::first());
 
         // submit the form with the fields being objects
         $response = $this->postJson('api/submitForm', [
             'access_token' => $access_token,
-            'fields' => $fieldsObjects,
+            'fields' => $array_of_fieldsInstance,
         ])->assertOk()->assertJson(['success' => 'form successfully disposed']);
 
         // make sure form is disposed in the managment... and the access toke is deleted so no more submitions allowed
         $this->assertNotNull(Form::first());
-        $this->assertEquals(count(Form::first()->filled_fields), count($fieldsObjects));
+        $filled_fieldsIsnstance = ArrayOfFields::fromArray(Form::first()->filled_fields);
+        $this->assertEquals(count($filled_fieldsIsnstance), count($array_of_fieldsInstance));
         $this->assertNull(FormAccessToken::first());
     }
 

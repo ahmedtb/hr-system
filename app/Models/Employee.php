@@ -11,6 +11,10 @@ class Employee extends Model
 
     protected $guarded = [];
 
+    protected $casts =[
+        'medal_rating' => 'integer'
+    ];
+
     public function job()
     {
         return $this->belongsTo(Job::class);

@@ -15,6 +15,7 @@ use App\FieldsTypes\GenderField;
 use App\FieldsTypes\RatingField;
 use App\FieldsTypes\StringField;
 use App\FieldsTypes\OptionsField;
+use App\FieldsTypes\ArrayOfFields;
 use App\FieldsTypes\TextAreaField;
 use App\FieldsTypes\PhoneNumberField;
 use App\FieldsTypes\SocialStatusField;
@@ -83,7 +84,7 @@ class FormStructureFactory extends Factory
 
         return [
             'type' => $this->faker->name(),
-            'fields' => $fields
+            'array_of_fields' => new ArrayOfFields($fields)
         ];
     }
 }

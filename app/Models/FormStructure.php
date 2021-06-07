@@ -11,6 +11,6 @@ class FormStructure extends Model
     use HasFactory;
 
     protected $casts = [
-        'fields' => Json::class
+        'array_of_fields' => Json::class
     ];
 }
