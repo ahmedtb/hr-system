@@ -6,15 +6,9 @@ use Tests\TestCase;
 use App\Models\Form;
 use App\Models\FormStructure;
 use App\FieldsTypes\DateField;
-use App\FieldsTypes\TableField;
-use App\FieldsTypes\GenderField;
 use App\FieldsTypes\StringField;
-use App\FieldsTypes\OptionsField;
+use App\FieldsTypes\TableField2;
 use App\FieldsTypes\ArrayOfFields;
-use App\FieldsTypes\TextAreaField;
-use App\FieldsTypes\PhoneNumberField;
-use App\FieldsTypes\SocialStatusField;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class InterviewAssessmentTests extends TestCase
@@ -29,7 +23,7 @@ class InterviewAssessmentTests extends TestCase
 
         // $this->withoutExceptionHandling();
         $unfilled_fields = new ArrayOfFields(array(
-            new TableField(
+            new TableField2(
                 'نموذج تقييم مقابلة شخصية',
                 array(
                     'تقييم',
@@ -50,36 +44,68 @@ class InterviewAssessmentTests extends TestCase
         ]);
     }
 
-    public function test_interview_assessment_form_could_be_created_and_marked_as_archive()
+    public function test_interview_assessment_form_could_be_created_and_archive_it()
     {
-        $unfilled_fields = $this->formStructure->fields;
-        $form = Form::factory()->forStructure($this->formStructure->id)->create();
-        dd($form->filled_fields);
+        $response = $this->postJson('api/generateForm', [
+            'form_structure_id' => $this->formStructure->id,
+        ]);
+        $access_token = explode('/', $response->content())[2];
 
-        $tableInstance = TableField::fromArray($form->filled_fields[0]);
-        $staticColumn = array(
-            'المظهر',
-            'تعريفه لنفسه',
-            'الشخصية',
-            'اللغة الانجليزية',
-            'الثقافة',
-            'اللغة العربية',
-            'المبادرة',
-            'مهارات المشاركة',
-            'الاستيعاب',
-            'اتخاد القرار',
-            'ملائمة المؤهل العلمي لمتطلبات الوظيفة',
-            'مهارات المشاركة',
-            'ملائمة المهارات المكتسبة لمتطلبات الوظيفة',
-            'مدى استطاعته لحل المشاكل',
-            'مدى تعامله مع الضغط والتوتر الوظيفي',
-            'الشجاعة الأدبية والثقة بالنفس',
+        $form = Form::factory()->forStructure( $this->formStructure->id)->make();
+        $form->filled_fields->getFields()[0]->setColumn(
+            array(
+                'المظهر',
+                'تعريفه لنفسه',
+                'الشخصية',
+                'اللغة الانجليزية',
+                'الثقافة',
+                'اللغة العربية',
+                'المبادرة',
+                'مهارات المشاركة',
+                'الاستيعاب',
+                'اتخاد القرار',
+                'ملائمة المؤهل العلمي لمتطلبات الوظيفة',
+                'مهارات المشاركة',
+                'ملائمة المهارات المكتسبة لمتطلبات الوظيفة',
+                'مدى استطاعته لحل المشاكل',
+                'مدى تعامله مع الضغط والتوتر الوظيفي',
+                'الشجاعة الأدبية والثقة بالنفس',
+            ),
+            0
         );
-        // $form->update([
-        //     'filled_fields' => $tableInstance
-        // ]);
-        // $tableInstance->setColumn(0, $staticColumn);
-        dd($form->filled_fields);
+        $this->postJson('api/submitForm', [
+            'access_token' => $access_token,
+            'fields' => $form->filled_fields,
+        ])->assertOk()->assertJson(['success' => 'form successfully disposed']);
 
+        $this->assertEquals(count(Form::where('form_structure_id', $this->formStructure->id)->get()), 1);
+    }
+
+    public function test_interviewAssessment_could_be_retrived()
+    {
+        $form = Form::factory(10)->forStructure($this->formStructure->id)->create();
+        $this->getJson('api/getInterviewsAssessments')->assertOk()->assertJsonCount(10);
+    }
+
+    public function test_can_report_about_a_list_of_assessements_with_high_scores_in_some_traits()
+    {
+        $this->withoutExceptionHandling();
+        // not good assessed forms
+        Form::factory(5)->forStructure($this->formStructure->id)->create();
+
+        // two good assessed forms
+        $form = Form::factory()->forStructure($this->formStructure->id)->create();
+        $form->filled_fields->getFields()[0]->setElement('good',1,15);
+        $form->save();
+
+        $form = Form::factory()->forStructure($this->formStructure->id)->create();
+        $form->filled_fields->getFields()[0]->setElement('good',1,15);
+        $form->save();
+
+        $response = $this->getJson('api/getGoodAssessments')->assertOk()->assertJsonCount(2);
+        $fieldsArrayInstance = (ArrayOfFields::fromArray($response->json()[0]['filled_fields']));
+
+        $this->assertEquals($fieldsArrayInstance->getFields()[0]->getRow(15), ['','good','','','']);
+        
     }
 }

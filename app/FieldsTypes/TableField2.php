@@ -148,7 +148,7 @@ class TableField2 extends FieldType
     {
         $testRowData = [];
         for ($i = 0; $i < count($this->columnsTitles); $i++)
-            array_push($testRowData, 'test');
+            array_push($testRowData, '');
 
         for ($i = 0; $i < $this->numberOfRows; $i++)
             $this->setRow($testRowData,$i);

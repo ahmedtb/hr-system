@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ManagmentController;
 use App\Http\Controllers\API\EmployeesController;
 use App\Http\Controllers\API\FormsController;
+use App\Http\Controllers\API\InterviewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,11 @@ Route::put('attackDocumentToEmployee', [EmployeesController::class,'attackDocume
 Route::put('rateEmployee', [EmployeesController::class,'rateEmployee']);
 
 Route::post('generateForm', [FormsController::class,'generateForm']);
-Route::get('employementFormOffer/{access_token}', [FormsController::class,'getEmployementForm']);
+Route::get('getForm/{access_token}', [FormsController::class,'getForm']);
+
 Route::post('submitForm', [FormsController::class,'submitForm']);
+
+Route::get('getInterviewsAssessments', [InterviewsController::class,'getInterviewsAssessments']);
+Route::get('getGoodAssessments', [InterviewsController::class,'getGoodAssessments']);
+
 Route::post('employementApproval',[FormsController::class,'employementApproval']);

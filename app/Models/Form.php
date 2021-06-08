@@ -15,4 +15,9 @@ class Form extends Model
     protected $casts = [
         'filled_fields' => Json::class
     ];
+
+    // public function scopeGood($query)
+    // {
+    //     return $query->whereHas('filled_fields->fields');
+    // }
 }

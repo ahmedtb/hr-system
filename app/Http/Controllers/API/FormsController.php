@@ -16,16 +16,16 @@ use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class FormsController extends Controller
 {
-    public function getEmployementForm(Request $request, $access_token)
-    {
-        $formAccessToken = FormAccessToken::where('access_token', $access_token)->first();
-        if ($formAccessToken) {
-            $form_structure = FormStructure::where('id', $formAccessToken->form_structure_id)->first();
-            return ($form_structure);
-        } else {
-            throw new ValidationException('access token is not valid');
-        }
-    }
+    // public function getEmployementForm(Request $request, $access_token)
+    // {
+    //     $formAccessToken = FormAccessToken::where('access_token', $access_token)->first();
+    //     if ($formAccessToken) {
+    //         $form_structure = FormStructure::where('id', $formAccessToken->form_structure_id)->first();
+    //         return ($form_structure);
+    //     } else {
+    //         throw new ValidationException('access token is not valid');
+    //     }
+    // }
 
     public function generateForm(Request $request)
     {
@@ -37,7 +37,18 @@ class FormsController extends Controller
             'access_token' => Str::random(10)
         ]);
         // dd($formAccessToken);
-        return 'api/employementFormOffer/' . $formAccessToken->access_token;
+        return 'api/getForm/' . $formAccessToken->access_token;
+    }
+
+    public function getForm(Request $request, $access_token)
+    {
+        $formAccessToken = FormAccessToken::where('access_token', $access_token)->first();
+        if ($formAccessToken) {
+            $form_structure = FormStructure::where('id', $formAccessToken->form_structure_id)->first();
+            return ($form_structure);
+        } else {
+            throw new ValidationException('access token is not valid');
+        }
     }
 
     public function submitForm(Request $request)
