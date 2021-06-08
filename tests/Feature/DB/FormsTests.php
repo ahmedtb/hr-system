@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\DB;
 
-use App\FieldsTypes\ArrayOfFields;
 use Tests\TestCase;
 use App\Models\Form;
 use Illuminate\Support\Str;
@@ -12,7 +11,9 @@ use App\FieldsTypes\FieldType;
 use App\FieldsTypes\TableField;
 use App\FieldsTypes\GenderField;
 use App\FieldsTypes\StringField;
+use App\FieldsTypes\TableField2;
 use App\FieldsTypes\OptionsField;
+use App\FieldsTypes\ArrayOfFields;
 use App\FieldsTypes\TextAreaField;
 use App\FieldsTypes\PhoneNumberField;
 use App\FieldsTypes\SocialStatusField;
@@ -82,7 +83,7 @@ class FormsTests extends TestCase
             new TextAreaField('أهم الدورات التي اخذتها'),
             new PhoneNumberField('رقم الهاتف'),
             new PhoneNumberField('رقم اخر'),
-            new TableField(
+            new TableField2(
                 'الوظائف والخبرات السابقة والحالية:',
                 array(
                     'الوصف الوظيفي	المرتب	الجهة التي عملت بها	فترة الخدمة والخبرة	سبب الانفكاك',
@@ -90,12 +91,14 @@ class FormsTests extends TestCase
                     'الجهة التي عملت بها',
                     'فترة الخدمة والخبرة (من - الى)',
                     'سبب الانفكاك'
-                )
+                ),
+                5
             ),
             new StringField('اسم مجري المقابلة '),
             new DateField('تاريخ اليوم ')
         );
         $formStructure = FormStructure::factory()->create([
+            'type' => 'نموذج طلب توظيف',
             'array_of_fields' => new ArrayOfFields($unfilled_fields)
         ]);
 
