@@ -37,10 +37,10 @@ class FormsController extends Controller
             'access_token' => Str::random(10)
         ]);
         // dd($formAccessToken);
-        return 'api/getForm/' . $formAccessToken->access_token;
+        return 'api/getFormStructure/' . $formAccessToken->access_token;
     }
 
-    public function getForm(Request $request, $access_token)
+    public function getFormStructure(Request $request, $access_token)
     {
         $formAccessToken = FormAccessToken::where('access_token', $access_token)->first();
         if ($formAccessToken) {
@@ -71,5 +71,10 @@ class FormsController extends Controller
 
         return response(['success' => 'form successfully disposed']);
     }
+
+    public function getForms(int $form_structure_id){
+        return Form::where('form_structure_id',$form_structure_id)->get();
+    }
+
 
 }

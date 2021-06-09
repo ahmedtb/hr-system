@@ -29,9 +29,10 @@ Route::put('attackDocumentToEmployee', [EmployeesController::class,'attackDocume
 Route::put('rateEmployee', [EmployeesController::class,'rateEmployee']);
 
 Route::post('generateForm', [FormsController::class,'generateForm']);
-Route::get('getForm/{access_token}', [FormsController::class,'getForm']);
-
+Route::get('getFormStructure/{access_token}', [FormsController::class,'getFormStructure']);
 Route::post('submitForm', [FormsController::class,'submitForm']);
+Route::get('getForms/{form_structure_id}', [FormsController::class,'getForms']);
+
 
 Route::get('getInterviewsAssessments', [InterviewsController::class,'getInterviewsAssessments']);
 Route::get('getGoodAssessments', [InterviewsController::class,'getGoodAssessments']);

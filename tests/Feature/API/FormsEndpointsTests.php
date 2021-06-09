@@ -46,7 +46,7 @@ class FormsEndpointsTests extends TestCase
         $access_token = explode('/', $response->content())[2];
         // use the url to get the form....user accessable link
         $formStructure = $this->getJson($response->content())->json();
-        
+
         $array_of_fieldsInstance = ArrayOfFields::fromArray($formStructure['array_of_fields']);
         $this->assertNull(Form::first());
 
@@ -63,5 +63,21 @@ class FormsEndpointsTests extends TestCase
         $this->assertNull(FormAccessToken::first());
     }
 
-    
+    public function test_all_forms_for_specific_strucutre_id_could_be_fetched()
+    {
+        $formStructure = FormStructure::factory()->create();
+        $forms = Form::factory(10)->forStructure($formStructure->id)->create();
+        $this->getJson('api/getForms/' . $formStructure->id)->assertOk()->assertJsonCount(10);
+    }
+
+    public function test_form_structure_could_be_created()
+    {
+        
+    }
+
+    public function test_form_structure_could_be_edited()
+    {
+        $formStructure = FormStructure::factory()->create();
+        
+    }
 }
