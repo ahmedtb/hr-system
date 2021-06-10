@@ -2,10 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\ManagmentController;
-use App\Http\Controllers\API\EmployeesController;
 use App\Http\Controllers\API\FormsController;
+use App\Http\Controllers\API\EmployeesController;
+use App\Http\Controllers\API\ManagmentController;
 use App\Http\Controllers\API\InterviewsController;
+use App\Http\Controllers\API\CoursesAndProgramsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,7 @@ Route::post('createEmployeeWithJob', [EmployeesController::class,'createWithJob'
 Route::put('editEmployee', [EmployeesController::class,'editEmployee']);
 Route::put('attackDocumentToEmployee', [EmployeesController::class,'attackDocument']);
 Route::put('rateEmployee', [EmployeesController::class,'rateEmployee']);
+Route::post('createCourseForEmployees', [EmployeesController::class,'createCourseForEmployees']);
 
 Route::post('generateForm', [FormsController::class,'generateForm']);
 Route::get('getFormStructure/{access_token}', [FormsController::class,'getFormStructure']);
@@ -38,3 +40,6 @@ Route::get('getInterviewsAssessments', [InterviewsController::class,'getIntervie
 Route::get('getGoodAssessments', [InterviewsController::class,'getGoodAssessments']);
 
 Route::post('employementApproval',[FormsController::class,'employementApproval']);
+
+Route::get('getCourseEmployees/{training_course_id}', [CoursesAndProgramsController::class,'getCourseEmployees']);
+Route::get('getCourseState/{training_course_id}', [CoursesAndProgramsController::class,'getCourseState']);

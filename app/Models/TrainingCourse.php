@@ -10,6 +10,8 @@ class TrainingCourse extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     protected $casts = [
         'week_schedule' => Json::class,
     ];
@@ -30,8 +32,13 @@ class TrainingCourse extends Model
     }
 
     // this relation could be omitted
-    public function targetedIndividual()
+    public function targetedIndividuals()
     {
         return $this->belongsToMany(TargetedIndividual::class);
+    }
+
+    public function employees()
+    {
+        return $this->belongsToMany(Employee::class);
     }
 }

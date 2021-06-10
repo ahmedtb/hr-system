@@ -4,8 +4,11 @@ namespace Tests\Feature\API;
 
 use App\Models\Job;
 use Tests\TestCase;
+use App\Models\Trainee;
 use App\Models\Document;
 use App\Models\Employee;
+use App\Models\TrainingCourse;
+use App\Models\TrainingProgram;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -81,7 +84,7 @@ class EmployeesEndpointsTests extends TestCase
         ])->assertOk()->assertJson(['success' => 'employee edited']);
     }
 
-    public function test_employee_documents_can_be_attacked_to_his_profile()
+    public function test_employee_documents_can_be_atteched_to_his_profile()
     {
         $document = Document::factory()->make();
         $employee = Employee::factory()->create();
@@ -105,5 +108,26 @@ class EmployeesEndpointsTests extends TestCase
         $this->assertEquals($employee->refresh()->medal_rating, $randomRate);
     }
 
+    public function test_employee_or_a_group_of_employees_can_be_put_under_trail_period()
+    {
+        $trailProgram = TrainingProgram::factory()->create([
+            'title' => 'trail period program 1'
+        ]);
+        $employees = Employee::factory(10)->create();
+       
+        $courseData = TrainingCourse::factory()->make();
+        $response = $this->postJson('api/createCourseForEmployees',[
+            'employees' => $employees->pluck('id'),
+
+            'title' => $courseData->title,
+            'training_program_id' => $trailProgram->id,
+            'status' => $courseData->status,
+            'start_date' => $courseData->start_date,
+            'end_date' => $courseData->end_date,
+            'week_schedule' => $courseData->week_schedule
+        ])->assertOk();
+        $this->assertNotNull(TrainingCourse::first());
+        $this->assertEquals(TrainingCourse::first()->employees()->count(),10);
+    }
 
 }

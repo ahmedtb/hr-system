@@ -13,11 +13,15 @@ use App\FieldsTypes\TableField2;
 use App\FieldsTypes\OptionsField;
 use App\FieldsTypes\ArrayOfFields;
 use App\FieldsTypes\CustomRatingField;
+use App\FieldsTypes\ModelRefField;
+use App\Models\Employee;
+use App\Models\Unit;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class TrialPeriodAssessmentTests extends TestCase
-{use RefreshDatabase;
+{
+    use RefreshDatabase;
 
     protected function setUp(): void
     {
@@ -26,21 +30,23 @@ class TrialPeriodAssessmentTests extends TestCase
         // $this->withoutExceptionHandling();
         $unfilled_fields = new ArrayOfFields(array(
             new DateField('التاريخ'),
-            new StringField('اسم الموظف'),
-            new StringField('الادارة'),
-            new StringField('القسم او الوحدة'),
+            // new StringField('اسم الموظف'),
+            // new StringField('الادارة'),
+            // new StringField('القسم او الوحدة'),
+            new ModelRefField('اسم الموظف', Employee::class),
+            new ModelRefField('القسم او الوحدة', Unit::class),
             new DateField('بداية الفترة التجريبية'),
             new DateField('نهاية الفترة التجريبية'),
 
-            new CustomRatingField('الحماس في العمل',15),
-            new CustomRatingField('القدرة على التعلم والتطور',15),
-            new CustomRatingField('تقبل واستيعاب التوجيه',10),
-            new CustomRatingField('التعامل مع التقنية',10),
-            new CustomRatingField('المحافظة على الوقت أثناء الدوام',15),
-            new CustomRatingField('العلاقة مع الزملاء',10),
-            new CustomRatingField('حسن التصرف',10),
-            new CustomRatingField('حسن المظهر',5),
-            new CustomRatingField('الإيمان بسياسة القناة والولاء لها',10),
+            new CustomRatingField('الحماس في العمل', 15),
+            new CustomRatingField('القدرة على التعلم والتطور', 15),
+            new CustomRatingField('تقبل واستيعاب التوجيه', 10),
+            new CustomRatingField('التعامل مع التقنية', 10),
+            new CustomRatingField('المحافظة على الوقت أثناء الدوام', 15),
+            new CustomRatingField('العلاقة مع الزملاء', 10),
+            new CustomRatingField('حسن التصرف', 10),
+            new CustomRatingField('حسن المظهر', 5),
+            new CustomRatingField('الإيمان بسياسة القناة والولاء لها', 10),
             new NumberField('الدرجة النهائية'),
 
             new StringField('اسم معد التقرير'),
@@ -61,7 +67,7 @@ class TrialPeriodAssessmentTests extends TestCase
 
             new StringField('قرار اجتماع الإدارة العليا'),
 
-            
+
         ));
         $this->formStructure = FormStructure::factory()->create([
             'type' => 'استمارة تقييم موظف في الفترة التجريبية',
@@ -69,7 +75,7 @@ class TrialPeriodAssessmentTests extends TestCase
         ]);
     }
 
-    
+
     /**
      * A basic feature test example.
      *
@@ -82,7 +88,7 @@ class TrialPeriodAssessmentTests extends TestCase
         ]);
         $access_token = explode('/', $response->content())[2];
 
-        $form = Form::factory()->forStructure( $this->formStructure->id)->make();
+        $form = Form::factory()->forStructure($this->formStructure->id)->make();
         $this->postJson('api/submitForm', [
             'access_token' => $access_token,
             'fields' => $form->filled_fields,
@@ -91,7 +97,11 @@ class TrialPeriodAssessmentTests extends TestCase
         $this->assertEquals(count(Form::where('form_structure_id', $this->formStructure->id)->get()), 1);
     }
 
-    public function test_employee_and_his_unit_should_be_referenced_in_the_form(){
-
+    public function test_employee_and_his_unit_should_be_referenced_in_the_form()
+    {
+        $form = Form::factory()->forStructure($this->formStructure->id)->create();
+        $this->assertTrue($form->filled_fields->getFields()[1]->getRef() instanceof Employee);
+        $this->assertTrue($form->filled_fields->getFields()[2]->getRef() instanceof Unit);
     }
+
 }

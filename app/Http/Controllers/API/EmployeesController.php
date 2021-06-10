@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\API;
 
 use App\Models\Job;
+use App\Models\Trainee;
 use App\Models\Document;
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use App\Models\TrainingCourse;
 use App\Http\Controllers\Controller;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 
@@ -113,7 +115,27 @@ class EmployeesController extends Controller
         $employee = Employee::where('id',$request->id)->first();
         $employee->update(['medal_rating' => $request->rating]);
         return response(['success'=>'employee rated']);
+    }
 
+    public function createCourseForEmployees(Request $request)
+    {
+        $request->validate([
+            'employees' => 'required|array',
+            'employees.*' => 'required|exists:employees,id'
+        ]);
+
+        $validatedCourseData = $request->validate([
+            'title' => 'required|string',
+            'training_program_id' => 'required|exists:training_programs,id',
+            'status' => 'required|string',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+            'week_schedule' => 'required|array'
+        ]);
+
+        $course = TrainingCourse::create($validatedCourseData);
+
+        $course->employees()->attach($request->employees);
 
     }
 }
