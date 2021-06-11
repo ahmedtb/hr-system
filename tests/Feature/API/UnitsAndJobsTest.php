@@ -11,7 +11,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Testing\Fluent\AssertableJson;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class RecruitmentTest extends TestCase
+class UnitsAndJobsTest extends TestCase
 {
     use RefreshDatabase;
     /**
