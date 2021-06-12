@@ -17,6 +17,7 @@ class CreateFormStructuresTable extends Migration
             $table->id();
             $table->string('type');
             $table->json('array_of_fields');
+            $table->nullableMorphs('formable');
             $table->timestamps();
         });
     }

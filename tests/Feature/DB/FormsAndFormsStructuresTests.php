@@ -17,10 +17,11 @@ use App\FieldsTypes\ArrayOfFields;
 use App\FieldsTypes\TextAreaField;
 use App\FieldsTypes\PhoneNumberField;
 use App\FieldsTypes\SocialStatusField;
+use App\Models\TrainingCourse;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class FormsTests extends TestCase
+class FormsAndFormsStructuresTests extends TestCase
 {
     use RefreshDatabase;
 
@@ -32,6 +33,16 @@ class FormsTests extends TestCase
 
         foreach ($structure->array_of_fields->getFields() as $field)
             $this->assertTrue($field instanceof FieldType);
+    }
+
+    public function test_form_structure_could_belong_to_any_entity_that_has_forms()
+    {
+        $this->withoutExceptionHandling();
+        $course = TrainingCourse::factory()->create();
+
+        $structures = FormStructure::factory(2)->create();
+        $course->formStructures()->saveMany($structures);
+        $this->assertEquals($course->formStructures()->count(),2);
     }
 
     public function test_we_can_easily_create_forms_from_form_structure()
@@ -110,4 +121,5 @@ class FormsTests extends TestCase
             $this->assertNotNull($form->filled_fields->getField($index)->getValue());
         }
     }
+    
 }

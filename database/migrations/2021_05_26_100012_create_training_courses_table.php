@@ -17,7 +17,7 @@ class CreateTrainingCoursesTable extends Migration
             $table->id();
             $table->string('title');
             $table->foreignId('training_program_id');
-            $table->string('status');
+            $table->enum('status',['planned', 'resumed', 'done', 'canceled', 'archived']);
             $table->date('start_date');
             $table->date('end_date');
             $table->json('week_schedule'); 

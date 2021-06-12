@@ -2,10 +2,11 @@
 
 namespace Tests\Feature;
 
-use App\Models\TrainingCourse;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Models\TrainingCourse;
+use App\Models\CourseAttendance;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class TrainingCoursesTest extends TestCase
 {
@@ -40,5 +41,15 @@ class TrainingCoursesTest extends TestCase
             $this->assertArrayHasKey('period',$value);
             $this->assertTrue(gettype ($value['period']) == 'integer');
         }
+    }
+
+    public function test_course_could_have_many_attendace_records()
+    {
+        $course = TrainingCourse::factory()->create();
+        CourseAttendance::factory(10)->create([
+            'training_course_id' => $course->id
+        ]);
+
+        $this->assertEquals(count($course->attendances),10);
     }
 }

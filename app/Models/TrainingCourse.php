@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Casts\Json;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class TrainingCourse extends Model
@@ -22,7 +23,8 @@ class TrainingCourse extends Model
         return $this->belongsToMany(Coach::class);
     }
 
-    public function trainingProgram(){
+    public function trainingProgram()
+    {
         return $this->belongsTo(TrainingProgram::class);
     }
 
@@ -40,5 +42,24 @@ class TrainingCourse extends Model
     public function employees()
     {
         return $this->belongsToMany(Employee::class);
+    }
+
+    public function attendances()
+    {
+        return $this->hasMany(CourseAttendance::class);
+    }
+
+    public function formStructures()
+    {
+        return $this->morphMany(FormStructure::class, 'formable');
+    }
+
+    public function forms()
+    {
+        return $this->hasManyThrough(Form::class, FormStructure::class, 'formable_id')
+            ->where(
+                'formable_type',
+                array_search(static::class, Relation::morphMap()) ?: static::class
+            );
     }
 }

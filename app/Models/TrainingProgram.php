@@ -9,6 +9,8 @@ class TrainingProgram extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+    
     public function coaches()
     {
         return $this->belongsToMany(Coach::class);

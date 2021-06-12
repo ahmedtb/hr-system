@@ -13,4 +13,8 @@ class FormStructure extends Model
     protected $casts = [
         'array_of_fields' => Json::class
     ];
+
+    public function formable(){
+        return $this->morphTo();
+    }
 }
