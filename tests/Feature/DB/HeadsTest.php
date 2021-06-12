@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\DBTests;
+namespace Tests\Feature\DB;
 
 use App\Models\Employee;
 use App\Models\Head;
