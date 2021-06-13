@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+        'guard' => 'admin',
+        // 'passwords' => 'users',
     ],
 
     /*
@@ -36,9 +36,25 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        // 'web' => [
+        //     'driver' => 'session',
+        //     'provider' => 'users',
+        // ],
+        'admin' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'admins',
+        ],
+        'employee' => [
+            'driver' => 'session',
+            'provider' => 'employees',
+        ],
+        'coach' => [
+            'driver' => 'session',
+            'provider' => 'coaches',
+        ],
+        'targeted' => [
+            'driver' => 'session',
+            'provider' => 'targeted_individuals',
         ],
 
         'api' => [
@@ -66,10 +82,30 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        // 'users' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\User::class,
+        // ],
+
+        'admins' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Admin::class,
         ],
+
+        'employees' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Employee::class,
+        ],
+
+        'coaches' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Coach::class,
+        ],
+
+        'targeted_individuals' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\TargetedIndividual::class,
+        ]
 
         // 'users' => [
         //     'driver' => 'database',
