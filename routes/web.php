@@ -20,4 +20,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\UnitsController::class, 'UnitsTree'])->name('home');
+Route::get('/units', [App\Http\Controllers\UnitsController::class, 'index'])->name('home');
+Route::get('/unit/{id}', [App\Http\Controllers\UnitsController::class, 'show'])->name('showUnit');
+Route::get('/head/{id}', [App\Http\Controllers\HeadsController::class, 'show'])->name('showHead');
+Route::get('/job/{id}', [App\Http\Controllers\JobsController::class, 'show'])->name('showJob');

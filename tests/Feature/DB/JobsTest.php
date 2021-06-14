@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\DB;
 
+use App\Models\Employee;
 use App\Models\Job;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -21,7 +22,13 @@ class JobsTest extends TestCase
         $this->assertNotEmpty($job->name);
         $this->assertNotNull($job->purpose);
         $this->assertNotEmpty($job->description);
+    }
 
-
+    public function test_jobs_could_have_many_employees_belongs_to_it()
+    {
+        $job = Job::factory()->create();
+        $employees = Employee::factory(5)->create(['job_id'=>$job->id]);
+        $this->assertNotEmpty($job->employees);
+        $this->assertEquals($job->employees()->count(),5);
     }
 }

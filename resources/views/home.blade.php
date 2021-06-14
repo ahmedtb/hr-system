@@ -99,7 +99,6 @@
 
                 <div class="card-body">
                     <ul class="tree">
-                        <code>الوحدات الادارية</code>
                         @include('partials.UnitsList',['units' => $top])
                     </ul>
                 </div>
