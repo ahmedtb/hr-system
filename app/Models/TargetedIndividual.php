@@ -23,4 +23,9 @@ class TargetedIndividual extends Model
     {
         return $this->morphOne(Trainee::class, 'profile');
     }
+
+    public function documents()
+    {
+        return $this->morphMany(Document::class, 'documentable');
+    }
 }

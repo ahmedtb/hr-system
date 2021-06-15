@@ -28,6 +28,8 @@ Route::get('/job/create', [App\Http\Controllers\JobsController::class, 'create']
 Route::post('/job/create', [App\Http\Controllers\JobsController::class, 'create'])->name('createJob');
 Route::get('/job/{id}', [App\Http\Controllers\JobsController::class, 'show'])->name('showJob');
 
-
 Route::get('/employee/create', [App\Http\Controllers\EmployeesController::class, 'createForm'])->name('createEmployeeForm');
 Route::post('/employee/create', [App\Http\Controllers\EmployeesController::class, 'create'])->name('createEmployee');
+
+Route::get('/targeted/create', [App\Http\Controllers\TargetedIndividualsController::class, 'createForm'])->name('createTargetedForm');
+Route::post('/targeted/create', [App\Http\Controllers\TargetedIndividualsController::class, 'create'])->name('createTargeted');

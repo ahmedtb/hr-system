@@ -24,21 +24,7 @@
 
 
     <div class="col-md-2">
-
-
-        <div class="panel">
-            <div class="panel-heading">
-                طلبات متاحة
-            </div>
-
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <form action="/employee/create" method="get">
-                        <input type="submit" value="تسجيل موظف" />
-                    </form>
-                </li>
-            </ul>
-        </div>
+        @include('partials.ActionsPanel')
     </div>
 
     <div class='col-md-10'>

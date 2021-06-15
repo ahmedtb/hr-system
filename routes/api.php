@@ -10,6 +10,7 @@ use App\Http\Controllers\API\InterviewsController;
 use App\Http\Controllers\API\CoursesAndProgramsController;
 use App\Http\Controllers\API\CoursesController;
 use App\Http\Controllers\API\ProgramsController;
+use App\Http\Controllers\API\TargetedIndividualsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,9 @@ Route::put('editEmployee', [EmployeesController::class,'editEmployee']);
 Route::put('attackDocumentToEmployee', [EmployeesController::class,'attackDocument']);
 Route::put('rateEmployee', [EmployeesController::class,'rateEmployee']);
 Route::post('createCourseForEmployees', [EmployeesController::class,'createCourseForEmployees']);
+
+Route::post('targeted/create', [TargetedIndividualsController::class,'create']);
+
 
 Route::post('generateForm', [FormsController::class,'generateForm']);
 Route::get('getFormStructure/{access_token}', [FormsController::class,'getFormStructure']);
