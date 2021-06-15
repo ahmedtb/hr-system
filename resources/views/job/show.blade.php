@@ -1,5 +1,3 @@
-{{-- {{dd($job)}} --}}
-
 @extends('layouts.app')
 
 @section('content')

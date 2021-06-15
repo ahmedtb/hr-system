@@ -39,6 +39,30 @@ class EmployeesEndpointsTests extends TestCase
         $this->assertNotEmpty(Employee::first());
     }
 
+    public function test_employee_can_be_created_after_creating_job_with_documents_attacked_to_it()
+    {
+        $this->withoutExceptionHandling();
+        $documents = Document::factory(5)->make();
+
+        $job = Job::factory()->create();
+        $employee = Employee::factory()->make();
+        $response = $this->postJson('api/createEmployee', [
+            'name' => $employee->name,
+            'address' => $employee->address,
+            'employment_date' => $employee->employment_date,
+            'basic_salary' => $employee->basic_salary,
+            'phone_number' => $employee->phone_number,
+            'job_id' => $job->id,
+            'email' => $employee->email,
+            'medal_rating' => $employee->medal_rating,
+            'documents' => $documents
+        ]);
+        $response->assertOk()->assertJson(['success' => 'employee created with documents']);
+        // dd($response->json());
+        $this->assertNotEmpty(Employee::first());
+        $this->assertEquals(Document::all()->count(),5);
+    }
+
     public function test_employee_can_be_created_togather_with_new_job_kind()
     {
         $job = Job::factory()->make();

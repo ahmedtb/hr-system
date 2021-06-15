@@ -6,9 +6,12 @@ use App\Models\Job;
 use App\Models\Trainee;
 use App\Models\Document;
 use App\Models\Employee;
+use App\Rules\Base64Rule;
 use Illuminate\Http\Request;
 use App\Models\TrainingCourse;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class EmployeesController extends Controller
@@ -23,12 +26,34 @@ class EmployeesController extends Controller
             'phone_number' => 'required|string',
             'job_id' => 'required|exists:jobs,id',
             'email' => 'required|email',
-            'medal_rating' => 'required|integer'
+            'medal_rating' => 'required|integer',
+            'documents' => 'sometimes|array',
         ]);
+        unset($validateddata['documents']);
 
-        Employee::create($validateddata);
+        DB::transaction(function ()  use ($request, $validateddata) {
+            $employee = Employee::create($validateddata);
 
-        return response(['success' => 'employee created']);
+            if ($request->documents) {
+                Validator::make(['documents' => $request->documents], [
+                    'documents.*.name' => 'required|string',
+                    'documents.*.image' => ['required', new Base64Rule(1024)]
+                ])->validate();
+                foreach ($request->documents as $document) {
+                    Document::create([
+                        'name' => $document['name'],
+                        'image' => $document['image'],
+                        'documentable_id' => $employee->id,
+                        'documentable_type' => Employee::class
+                    ]);
+                }
+            }
+        });
+        if ($request->documents) {
+            return response(['success' => 'employee created with documents']);
+        } else {
+            return response(['success' => 'employee created']);
+        }
     }
 
     public function CreateWithJob(Request $request)
@@ -92,8 +117,8 @@ class EmployeesController extends Controller
             'image' => 'required|string',
         ]);
 
-        $employee = Employee::where('id',$request->employee_id)->first();
-        
+        $employee = Employee::where('id', $request->employee_id)->first();
+
         Document::create(
             array_merge($validateddata, [
                 'documentable_id' => $employee->id,
@@ -101,8 +126,7 @@ class EmployeesController extends Controller
             ])
         );
 
-        return response(['success'=>'document attached to employee']);
-
+        return response(['success' => 'document attached to employee']);
     }
 
     public function rateEmployee(Request $request)
@@ -112,9 +136,9 @@ class EmployeesController extends Controller
             'rating' => 'required|integer|between:0,5'
         ]);
 
-        $employee = Employee::where('id',$request->id)->first();
+        $employee = Employee::where('id', $request->id)->first();
         $employee->update(['medal_rating' => $request->rating]);
-        return response(['success'=>'employee rated']);
+        return response(['success' => 'employee rated']);
     }
 
     public function createCourseForEmployees(Request $request)
@@ -136,6 +160,5 @@ class EmployeesController extends Controller
         $course = TrainingCourse::create($validatedCourseData);
 
         $course->employees()->attach($request->employees);
-
     }
 }

@@ -93,6 +93,18 @@
 
 <div class="container">
     <div class="row justify-content-center">
+        @if(Session::has('success'))
+            <div class="alert alert-success" id="alert">
+                <strong>Success:</strong> {{Session::get('success')}}
+            </div>
+
+        @elseif(session('error'))
+            <div class="alert alert-danger" id="alert">  
+                <strong>Error:</strong>{{Session::get('error')}}
+            </div>
+        @endif
+    </div>
+    <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">الوحدات الادارية</div>

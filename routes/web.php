@@ -23,4 +23,11 @@ Auth::routes();
 Route::get('/units', [App\Http\Controllers\UnitsController::class, 'index'])->name('home');
 Route::get('/unit/{id}', [App\Http\Controllers\UnitsController::class, 'show'])->name('showUnit');
 Route::get('/head/{id}', [App\Http\Controllers\HeadsController::class, 'show'])->name('showHead');
+
+Route::get('/job/create', [App\Http\Controllers\JobsController::class, 'create'])->name('createJobForm');
+Route::post('/job/create', [App\Http\Controllers\JobsController::class, 'create'])->name('createJob');
 Route::get('/job/{id}', [App\Http\Controllers\JobsController::class, 'show'])->name('showJob');
+
+
+Route::get('/employee/create', [App\Http\Controllers\EmployeesController::class, 'createForm'])->name('createEmployeeForm');
+Route::post('/employee/create', [App\Http\Controllers\EmployeesController::class, 'create'])->name('createEmployee');

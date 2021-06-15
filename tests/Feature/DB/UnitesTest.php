@@ -52,4 +52,11 @@ class UnitesTest extends TestCase
         $this->assertEquals(count($unit->employees()->get()),10);
     }
 
+    public function test_unit_can_get_all_jobs_belongs_to_it()
+    {
+        $unit = Unit::factory()->create();
+        $job = Job::factory(5)->create(['unit_id'=>$unit->id]);
+        $this->assertEquals(count($unit->jobs),5);
+    }
+
 }

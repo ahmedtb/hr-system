@@ -4,6 +4,25 @@
 
 <div class="container">
     <div class="row justify-content-center">
+
+        <div class="col-md-2">
+
+
+            <div class="panel">
+                <div class="panel-heading">
+                    طلبات متاحة
+                </div>
+    
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <form action="{{route('createJobForm',[ 'unit_id'=>$unit->id ] )}}" method="get">
+                            <input type="submit" value="تسجيل وظيفة" />
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">الوحدة الادارية {{ $unit->name }}</div>
@@ -28,6 +47,13 @@
                     <div class="card-body">
                         <div class="card-header">الموظفيين</div>
                         @include('partials.EmployeesList',['employees'=>$unit->employees])
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-header">الموظفيين</div>
+                        @include('partials.JobsList',['jobs'=>$unit->jobs])
                     </div>
                 </div>
 

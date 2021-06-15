@@ -24,7 +24,7 @@ class DocumentFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'image' => $this->faker->imageUrl(),
+            'image' => getBase64DefaultImage(),
             // 'employee_id' => Employee::factory()->create()->id
         ];
     }
