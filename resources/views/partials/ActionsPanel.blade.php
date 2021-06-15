@@ -14,5 +14,11 @@
                 <input type="submit" value="تسجيل مستهدف" />
             </form>
         </li>
+
+        <li class="list-group-item">
+            <form action="{{ route('showFormsStructure') }}" method="get">
+                <input type="submit" value="اصدار عرض نموذج" />
+            </form>
+        </li>
     </ul>
 </div>

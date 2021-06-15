@@ -11,7 +11,12 @@ class RatingField extends FieldType
 {
     public string $label;
 
-    private int $value;
+    private ?int $value = null;
+
+    public static function fromArray(array $array)
+    {
+        return new self($array['label'],$array['value']);
+    }
 
     public function __construct(string $label, ?int $value = null)
     {

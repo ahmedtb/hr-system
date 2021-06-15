@@ -12,7 +12,12 @@ use Illuminate\Support\Facades\Validator;
 class EmailField extends FieldType
 {
     public string $label;
-    private string $value;
+    private ?string $value = null;
+
+    public static function fromArray(array $array)
+    {
+        return new self($array['label'], $array['value']);
+    }
 
     public function __construct(string $label, ?string $value = null)
     {

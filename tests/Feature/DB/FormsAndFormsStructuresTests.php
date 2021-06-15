@@ -28,7 +28,6 @@ class FormsAndFormsStructuresTests extends TestCase
     public function test_forms_structures_can_have_different_kinds_of_fields()
     {
         $structure = FormStructure::factory()->create();
-        // dd($structure->fields);
         $this->assertTrue($structure->array_of_fields instanceof ArrayOfFields);
 
         foreach ($structure->array_of_fields->getFields() as $field)

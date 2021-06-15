@@ -11,8 +11,12 @@ use Illuminate\Support\Facades\Validator;
 class JobField extends FieldType
 {
     public string $label;
-    private int $value;
+    private ?int $value = null;
 
+    public static function fromArray(array $array)
+    {
+        return new self($array['label'], $array['value']);
+    }
     public function __construct(string $label, ?int $value = null)
     {
         $this->label = $label;
@@ -22,14 +26,13 @@ class JobField extends FieldType
 
     public function setValue($value)
     {
-        $validator = Validator::make(['value'=>$value],[
+        $validator = Validator::make(['value' => $value], [
             'value' => 'required|exists:jobs,id'
         ]);
         if ($validator->fails())
             throw new Exception('this job id does not exits');
         $this->value = $value;
         return $this;
-
     }
     public function getValue()
     {

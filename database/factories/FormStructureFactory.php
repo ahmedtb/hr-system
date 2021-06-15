@@ -54,8 +54,8 @@ class FormStructureFactory extends Factory
             $status = ['single', 'married'];
             return new $fieldTypeClass($this->faker->name());
         } elseif ($fieldTypeClass == OptionsField::class) {
-            $options = ['option1', 'option2','option3'];
-            return new $fieldTypeClass($this->faker->name(),$options );
+            $options = ['option1', 'option2', 'option3'];
+            return new $fieldTypeClass($this->faker->name(), $options);
         }
 
         throw new Exception($fieldTypeClass . ' this type of field class does not exists');
@@ -75,11 +75,28 @@ class FormStructureFactory extends Factory
      */
     public function definition()
     {
+        $fields_types = array(
+            GenderField::class,
+            DateField::class,
+            DoubleField::class,
+            EmailField::class,
+            JobField::class,
+            PhoneNumberField::class,
+            RatingField::class,
+            StringField::class,
+            TableField::class,
+            TableField::class,
+            TextAreaField::class,
+            GenderField::class,
+            SocialStatusField::class,
+            OptionsField::class
+        );
+
         $numberOfFields = random_int(1, 5);
         $fields = [];
         for ($i = 1; $i <= $numberOfFields; $i++) {
-            $fieldInstance = $this->FieldTypeFaker(StringField::class);
-            array_push($fields, $fieldInstance );
+            $fieldInstance = $this->FieldTypeFaker($fields_types[random_int(0,sizeof($fields_types)-1 )]);
+            array_push($fields, $fieldInstance);
         }
 
         return [
