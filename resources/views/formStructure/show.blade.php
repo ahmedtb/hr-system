@@ -3,6 +3,25 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
+            @if($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        @if(Session::has('tokenURL'))
+            <div class="alert alert-success" id="alert">
+                <strong>Success:</strong> {{Session::get('tokenURL')}}
+            </div>
+
+        @elseif(session('error'))
+            <div class="alert alert-danger" id="alert">  
+                <strong>Error:</strong>{{Session::get('error')}}
+            </div>
+        @endif
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">نموذج {{$structure->id}}</div>
@@ -12,6 +31,9 @@
                                 {{$field->render()}}
                             @endforeach
                         
+                            <form action="{{ route('generateForm',['form_structure_id' => $structure->id]) }}" method="get">
+                                <input type="submit" value="انشاء نسخة نموذج" />
+                            </form>
                         </div>
 
                     </div>

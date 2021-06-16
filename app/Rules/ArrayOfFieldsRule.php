@@ -2,6 +2,7 @@
 
 namespace App\Rules;
 
+use Exception;
 use App\FieldsTypes\ArrayOfFields;
 use Illuminate\Contracts\Validation\Rule;
 
@@ -28,7 +29,11 @@ class ArrayOfFieldsRule implements Rule
     {
         if($value['class']!= ArrayOfFields::class)
             return false;
-        $instance = ArrayOfFields::fromArray($value);
+        try{
+            $instance = ArrayOfFields::fromArray($value);
+        }catch(Exception $e){
+            return false;
+        }
         return true;
     }
 

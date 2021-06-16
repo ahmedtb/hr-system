@@ -36,7 +36,6 @@ class FormsController extends Controller
             'form_structure_id' => $request->form_structure_id,
             'access_token' => Str::random(10)
         ]);
-        // dd($formAccessToken);
         return 'api/getFormStructure/' . $formAccessToken->access_token;
     }
 

@@ -36,3 +36,8 @@ Route::post('/targeted/create', [App\Http\Controllers\TargetedIndividualsControl
 
 Route::get('/structure/index',  [App\Http\Controllers\FormsController::class, 'index'])->name('showFormsStructure');
 Route::get('/structure/show/{id}',  [App\Http\Controllers\FormsController::class, 'show'])->name('showStructure');
+Route::get('/form/{form_structure_id}/generate',  [App\Http\Controllers\FormsController::class, 'generateForm'])->name('generateForm');
+
+Route::get('/form/token/{access_token}',  [App\Http\Controllers\FormsController::class, 'getForm'])->name('getForm');
+Route::post('/form/token/{access_token}',  [App\Http\Controllers\FormsController::class, 'submitForm'])->name('submitForm');
+

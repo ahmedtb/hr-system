@@ -56,7 +56,7 @@ class EmployeesController extends Controller
         if ($request->documents) {
             return redirect()->route('home')->with('success', 'employee created with documents');
         } else {
-            return response(['success' => 'employee created']);
+            return redirect()->route('home')->with('success', 'employee created');
         }
     }
 
