@@ -51,7 +51,11 @@ class RatingField extends FieldType
             'value' => $this->value
         );
     }
-
+    public function render()
+    {
+        return View('fields.ratingField',['field'=>$this]);
+        
+    }
     public function generateMockedValue()
     {
         $this->setValue(random_int(0, 5));

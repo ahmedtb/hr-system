@@ -45,7 +45,10 @@ class StringField extends FieldType
             'value' => $this->value
         );
     }
-
+    public function render()
+    {
+        return View('fields.stringField',['field'=>$this]);
+    }
     public function generateMockedValue()
     {
         $faker = Container::getInstance()->make(Generator::class);

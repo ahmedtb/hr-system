@@ -50,7 +50,10 @@ class OptionsField extends FieldType
             'value' => $this->value
         );
     }
-
+    public function render()
+    {
+        return View('fields.optionsField',['field'=>$this])   ;
+    }
     public function generateMockedValue()
     {
         // $faker = new \Faker\Generator();

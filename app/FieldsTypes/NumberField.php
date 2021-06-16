@@ -50,7 +50,10 @@ class NumberField extends FieldType
             'value' => $this->value
         );
     }
-
+    public function render()
+    {
+        return View('fields.numberField',['fields'=>$this]);
+    }
     public function generateMockedValue()
     {
         $this->setValue(random_int(0, 100));

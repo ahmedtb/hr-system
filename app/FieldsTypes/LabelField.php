@@ -42,7 +42,10 @@ class LabelField extends FieldType
             'value' => $this->value
         );
     }
-
+    public function render()
+    {
+        return View('fields.labelField',['field'=>$this]);
+    }
     public function generateMockedValue()
     {
     }

@@ -51,6 +51,10 @@ class DateField extends FieldType
             'value' => $this->value
         );
     }
+    public function render()
+    {
+        return View('fields.dateField',['field'=>$this]);
+    }
     public function generateMockedValue()
     {
         $faker = Container::getInstance()->make(Generator::class);

@@ -14,6 +14,7 @@ use App\FieldsTypes\DoubleField;
 use App\FieldsTypes\GenderField;
 use App\FieldsTypes\RatingField;
 use App\FieldsTypes\StringField;
+use App\FieldsTypes\TableField2;
 use App\FieldsTypes\OptionsField;
 use App\FieldsTypes\ArrayOfFields;
 use App\FieldsTypes\TextAreaField;
@@ -45,6 +46,12 @@ class FormStructureFactory extends Factory
                 $this->faker->name(),
                 array('col1', 'col2')
             );
+        }elseif ($fieldTypeClass == TableField2::class) {
+                return new TableField2(
+                    $this->faker->name(),
+                    array('col1', 'col2'),
+                    4
+                );
         } elseif ($fieldTypeClass == TextAreaField::class) {
             return new $fieldTypeClass($this->faker->name());
         } elseif ($fieldTypeClass == GenderField::class) {
@@ -85,7 +92,7 @@ class FormStructureFactory extends Factory
             RatingField::class,
             StringField::class,
             TableField::class,
-            TableField::class,
+            TableField2::class,
             TextAreaField::class,
             GenderField::class,
             SocialStatusField::class,

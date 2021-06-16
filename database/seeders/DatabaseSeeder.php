@@ -10,6 +10,7 @@ use App\Models\Document;
 use App\Models\Employee;
 use Illuminate\Database\Seeder;
 use App\Models\CourseAttendance;
+use App\Models\FormStructure;
 use App\Models\TargetedIndividual;
 use App\Models\TrainingCourse;
 use App\Models\TrainingProgram;
@@ -25,10 +26,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         CourseAttendance::factory(20)->withProfile()->create();
-        // Trainee::factory(5)->has(Document::factory()->count(5))->create();
+
+        FormStructure::factory(5)->create();
         Trainee::factory(5)->create();
         Coach::factory(5)->create();
         Admin::factory(1)->create();
+
         Document::factory(5)->create(
             [
                 'documentable_type' => Employee::class,

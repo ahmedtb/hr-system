@@ -39,6 +39,24 @@ class JobField extends FieldType
         return $this->value;
     }
 
+    public function setRef(Job $modelInstance)
+    {
+        $refresh = $modelInstance->refresh();
+        if ($refresh)
+            $this->value = $refresh->id;
+        else
+            throw new Exception('the job model : ' . $modelInstance . ' does not exists');
+    }
+
+
+    public function getRef()
+    {
+        if ($this->value)
+            return Job::where('id', $this->value)->first();
+        else
+            return null;
+    }
+
     public function jsonSerialize()
     {
         return array(
@@ -46,6 +64,12 @@ class JobField extends FieldType
             'label' => $this->label,
             'value' => $this->value
         );
+    }
+
+    public function render()
+    {
+        return View('fields.jobField',['field'=>$this]);
+        
     }
 
     public function generateMockedValue()

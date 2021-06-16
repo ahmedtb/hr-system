@@ -3,6 +3,7 @@
 namespace App\FieldsTypes;
 
 use Exception;
+use Facade\FlareClient\View;
 use Faker\Generator;
 use JsonSerializable;
 use Illuminate\Container\Container;
@@ -50,7 +51,10 @@ class EmailField extends FieldType
             'value' => $this->value
         );
     }
-
+    public function render()
+    {
+        return View('fields.emailField',['field'=>$this]);
+    }
     public function generateMockedValue()
     {
         $faker = Container::getInstance()->make(Generator::class);

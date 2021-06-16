@@ -10,7 +10,7 @@ use JsonSerializable;
 class CustomRatingField extends FieldType
 {
     public string $label;
-    private int $max;
+    public int $max;
     private ?int $value = null;
 
     public static function fromArray(array $array)
@@ -55,7 +55,10 @@ class CustomRatingField extends FieldType
             'value' => $this->value
         );
     }
-
+    public function render()
+    {
+        return View('fields.customRatingField',['field'=>$this]);
+    }
     public function generateMockedValue()
     {
         $this->setValue(random_int(0, $this->max));

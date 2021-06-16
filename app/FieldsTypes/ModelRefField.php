@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class ModelRefField extends FieldType
 {
     public string $label;
-    private string $modelClass;
+    public string $modelClass;
     private ?string $value = null;
 
     public static function fromArray(array $arrayForm)
@@ -82,7 +82,10 @@ class ModelRefField extends FieldType
             'value' => $this->value
         );
     }
-
+    public function render()
+    {
+        return View('fields.modelRefField',['field'=>$this]);
+    }
     public function generateMockedValue()
     {
         $instance = $this->modelClass::factory()->create();

@@ -11,7 +11,7 @@ class TableField2 extends FieldType
     public array $columnsTitles;
     private Collection $rows; // collection of arrays
 
-    private int $numberOfRows;
+    public int $numberOfRows;
 
     public static function fromArray(array $arrayForm)
     {
@@ -143,7 +143,10 @@ class TableField2 extends FieldType
             'value' => $this->rows->all()
         );
     }
-
+    public function render()
+    {
+        return View('fields.tableField2',['field'=>$this]);
+    }
     public function generateMockedValue()
     {
         $testRowData = [];

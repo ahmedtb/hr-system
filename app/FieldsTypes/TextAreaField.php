@@ -47,6 +47,11 @@ class TextAreaField extends FieldType
         );
     }
 
+    public function render()
+    {
+        return View('fields.textAreaField',['field'=>$this]);
+    }
+
     public function generateMockedValue() {
         $faker = Container::getInstance()->make(Generator::class);
         $this->setValue($faker->sentence());

@@ -23,15 +23,17 @@
                                     @foreach ($structures as $structure)
                             
                                         <tr>
-                                            <td>{{ $structure->id }}</td>
+                                            <td><a href="{{ route('showStructure',$structure->id) }}">
+                                                {{ $structure->id }}
+                                            </a></td>
                                             <td>{{ $structure->type }}</td>
-                                            <td>{{ json_encode($structure->array_of_fields) }}</td>
-                                            <td>{{ $structure->formable_type }}</td>
                                             <td>
-                                                <a href="{{ route('showStructure',$structure->id) }}">
-                                                    {{ $structure->id }}
-                                                </a>
+                                                @foreach ($structure->array_of_fields->getFields() as $field)
+                                                    {{get_class($field) }}
+                                                @endforeach    
                                             </td>
+                                            <td>{{ $structure->formable_type }}</td>
+
                             
                                         </tr>
                             

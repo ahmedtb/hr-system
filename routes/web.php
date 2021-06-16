@@ -35,4 +35,4 @@ Route::get('/targeted/create', [App\Http\Controllers\TargetedIndividualsControll
 Route::post('/targeted/create', [App\Http\Controllers\TargetedIndividualsController::class, 'create'])->name('createTargeted');
 
 Route::get('/structure/index',  [App\Http\Controllers\FormsController::class, 'index'])->name('showFormsStructure');
-Route::get('/structure/show',  [App\Http\Controllers\FormsController::class, 'show'])->name('showStructure');
+Route::get('/structure/show/{id}',  [App\Http\Controllers\FormsController::class, 'show'])->name('showStructure');

@@ -68,7 +68,10 @@ class TableField extends FieldType
             'value' => $this->getValue()
         );
     }
-
+    public function render()
+    {
+        return View('fields.tableField',['field'=>$this]);
+    }
     public function generateMockedValue()
     {
         $randomNumberOfRows = random_int(1, 5);

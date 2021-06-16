@@ -48,7 +48,10 @@ class PhoneNumberField extends FieldType
             'value' => $this->value
         );
     }
-
+    public function render()
+    {
+        return View('fields.phoneNumberField',['field'=>$this]);
+    }
     public function generateMockedValue()
     {
         $faker = Container::getInstance()->make(Generator::class);

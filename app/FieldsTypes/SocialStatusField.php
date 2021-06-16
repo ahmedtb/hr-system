@@ -47,7 +47,11 @@ class SocialStatusField extends FieldType
             'value' => $this->value
         );
     }
-
+    public function render()
+    {
+        return View('fields.socialStatusField',['field'=>$this]);
+    }
+    
     public function generateMockedValue()
     {
         $status = ['single', 'married'];

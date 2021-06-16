@@ -47,7 +47,10 @@ class GenderField extends FieldType
             'value' => $this->value
         );
     }
-
+    public function render()
+    {
+        return View('fields.genderField',['field'=>$this]);
+    }
     public function generateMockedValue()
     {
         $genders = ['male', 'female'];

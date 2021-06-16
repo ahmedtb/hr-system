@@ -47,7 +47,10 @@ class DoubleField extends FieldType
             'value' => $this->value
         );
     }
-
+    public function render()
+    {
+        return View('fields.doubleField',['field'=>$this]);
+    }
     public function generateMockedValue()
     {
         // $faker = new \Faker\Generator();
