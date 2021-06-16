@@ -9,7 +9,6 @@ use App\FieldsTypes\JobField;
 use App\Models\FormStructure;
 use App\FieldsTypes\DateField;
 use App\FieldsTypes\EmailField;
-use App\FieldsTypes\TableField;
 use App\FieldsTypes\DoubleField;
 use App\FieldsTypes\GenderField;
 use App\FieldsTypes\RatingField;
@@ -41,16 +40,16 @@ class FormStructureFactory extends Factory
             return new $fieldTypeClass($this->faker->name());
         } elseif ($fieldTypeClass == StringField::class) {
             return new $fieldTypeClass($this->faker->name());
-        } elseif ($fieldTypeClass == TableField::class) {
-            return new TableField(
-                $this->faker->name(),
-                array('col1', 'col2')
-            );
+        // } elseif ($fieldTypeClass == TableField::class) {
+        //     return new TableField(
+        //         $this->faker->name(),
+        //         array('col1', 'col2')
+        //     );
         }elseif ($fieldTypeClass == TableField2::class) {
                 return new TableField2(
                     $this->faker->name(),
                     array('col1', 'col2'),
-                    4
+                    random_int(1,5)
                 );
         } elseif ($fieldTypeClass == TextAreaField::class) {
             return new $fieldTypeClass($this->faker->name());
@@ -91,7 +90,7 @@ class FormStructureFactory extends Factory
             PhoneNumberField::class,
             RatingField::class,
             StringField::class,
-            TableField::class,
+            // TableField::class,
             TableField2::class,
             TextAreaField::class,
             GenderField::class,

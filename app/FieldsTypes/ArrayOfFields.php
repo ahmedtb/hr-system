@@ -74,4 +74,10 @@ class ArrayOfFields implements JsonSerializable, Countable
     {
         return count($this->fields);
     }
+
+    public function generateMockedValues(){
+        foreach($this->fields as $field){
+            $field->generateMockedValue();
+        }
+    }
 }

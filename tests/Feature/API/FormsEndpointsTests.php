@@ -49,7 +49,7 @@ class FormsEndpointsTests extends TestCase
 
         $array_of_fieldsInstance = ArrayOfFields::fromArray($formStructure['array_of_fields']);
         $this->assertNull(Form::first());
-
+        $array_of_fieldsInstance->generateMockedValues();
         // submit the form with the fields being objects
         $response = $this->postJson('api/submitForm', [
             'access_token' => $access_token,
