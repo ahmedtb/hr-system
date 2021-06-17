@@ -3,6 +3,17 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        <div class="col-md-6">
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+        </div>
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">نموذج {{ $structure->id }}</div>
@@ -17,16 +28,12 @@
                         ))
                     }}
                     <ul class="list-group">
-                        @foreach($structure->array_of_fields->getFields() as $field)
+                        @foreach($structure->array_of_fields->getFields() as $index => $field)
                             <li class="list-group-item">
-                                {{ $field->render() }}
-                               
-
+                                {{ $field->formInput($index) }}
                             </li>
                         @endforeach
-                        {!! Form::label('fields[1][label]', 'اسم الموظف') !!}
-                        {!! Form::hidden('fields[1][label]', 'اسم الموظف') !!}
-                        {!! Form::text('fields[1][value]', '') !!}
+                        
                         {!! Form::submit('ارسال النموذج') !!}
                     </ul>
                     {{ Form::close() }}

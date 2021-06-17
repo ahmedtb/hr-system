@@ -17,7 +17,13 @@
 
         <li class="list-group-item">
             <form action="{{ route('showFormsStructure') }}" method="get">
-                <input type="submit" value="اصدار عرض نموذج" />
+                <input type="submit" value="عرض النماذج المتاحة" />
+            </form>
+        </li>
+
+        <li class="list-group-item">
+            <form action="{{ route('showForms') }}" method="get">
+                <input type="submit" value="عرض النماذج المعبئة" />
             </form>
         </li>
     </ul>

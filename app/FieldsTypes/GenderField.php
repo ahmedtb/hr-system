@@ -49,7 +49,13 @@ class GenderField extends FieldType
     }
     public function render()
     {
-        return View('fields.genderField',['field'=>$this]);
+        return View('fields.genderField',['field'=>$this, 'input' => false, 'index' => null]);
+    }
+
+    public function formInput($index)
+    {
+        return View('fields.genderField',['field'=>$this, 'input' => true, 'index' => $index]);
+
     }
     public function generateMockedValue()
     {

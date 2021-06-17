@@ -34,10 +34,13 @@ Route::post('/employee/create', [App\Http\Controllers\EmployeesController::class
 Route::get('/targeted/create', [App\Http\Controllers\TargetedIndividualsController::class, 'createForm'])->name('createTargetedForm');
 Route::post('/targeted/create', [App\Http\Controllers\TargetedIndividualsController::class, 'create'])->name('createTargeted');
 
-Route::get('/structure/index',  [App\Http\Controllers\FormsController::class, 'index'])->name('showFormsStructure');
-Route::get('/structure/show/{id}',  [App\Http\Controllers\FormsController::class, 'show'])->name('showStructure');
-Route::get('/form/{form_structure_id}/generate',  [App\Http\Controllers\FormsController::class, 'generateForm'])->name('generateForm');
+Route::get('/structure/index',  [App\Http\Controllers\FormStructuresController::class, 'index'])->name('showFormsStructure');
+Route::get('/structure/show/{id}',  [App\Http\Controllers\FormStructuresController::class, 'show'])->name('showStructure');
 
+Route::get('/form/{form_structure_id}/generate',  [App\Http\Controllers\FormsController::class, 'generateForm'])->name('generateForm');
 Route::get('/form/token/{access_token}',  [App\Http\Controllers\FormsController::class, 'getForm'])->name('getForm');
 Route::post('/form/token/{access_token}',  [App\Http\Controllers\FormsController::class, 'submitForm'])->name('submitForm');
+Route::get('/form/index',  [App\Http\Controllers\FormsController::class, 'index'])->name('showForms');
+Route::get('/form/show/{id}',  [App\Http\Controllers\FormsController::class, 'show'])->name('showForm');
+
 

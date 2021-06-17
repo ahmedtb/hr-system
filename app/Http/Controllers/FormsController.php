@@ -4,23 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Form;
 use Illuminate\Support\Str;
-use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 use App\Models\FormStructure;
-use App\Rules\ArrayOfFieldsRule;
-use App\FieldsTypes\ArrayOfFields;
 use App\Models\Utilities\FormAccessToken;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
 class FormsController extends Controller
 {
-    //
 
     public function index(Request $request)
     {
-        $structures = FormStructure::all();
-        return View('form.index', ['structures' => $structures]);
+        $forms = Form::all();
+        return View('form.index', ['forms' => $forms]);
     }
 
     public function show(int $id)
@@ -28,12 +24,11 @@ class FormsController extends Controller
         Validator::make([
             'id' => $id
         ], [
-            'id' => 'required|exists:form_structures,id'
+            'id' => 'required|exists:forms,id'
         ])->validate();
-        $structure = FormStructure::where('id', $id)->first();
-        return View('formStructure.show', ['structure' => $structure]);
+        $form = Form::where('id', $id)->first();
+        return View('form.show', ['form' => $form]);
     }
-
 
     public function generateForm(Request $request, $form_structure_id)
     {
@@ -64,23 +59,28 @@ class FormsController extends Controller
         }
     }
 
-    public function submitForm(Request $request)
+    public function submitForm(Request $request, string $access_token)
     {
-        dd($request->fields);
-        $request->validate([
+        // dd($request->fields);
+        Validator::make([
+            'access_token' => $access_token
+        ], [
             'access_token' => 'required|exists:form_access_tokens,access_token',
-            'fields' => [new ArrayOfFieldsRule()]
-        ]);
+        ])->validate();
+
         $formAccessToken = FormAccessToken::where('access_token', $request->access_token)->first();
-        $ArrayInstance = ArrayOfFields::fromArray($request->fields);
+        foreach ($formAccessToken->structure->array_of_fields->getFields() as $index => $field) {
+            $field->setValue($request->fields[$index]);
+        }
 
         $form = Form::create([
             'form_structure_id' => $formAccessToken->form_structure_id,
-            'filled_fields' => $ArrayInstance
+            'filled_fields' => $formAccessToken->structure->array_of_fields
         ]);
 
         $formAccessToken->delete();
 
-        return response(['success' => 'form successfully disposed']);
+        $forms = Form::all();
+        return View('form.index', ['forms' => $forms])->with('success', 'form successfully disposed');
     }
 }

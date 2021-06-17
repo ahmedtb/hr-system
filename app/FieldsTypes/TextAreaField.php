@@ -49,9 +49,15 @@ class TextAreaField extends FieldType
 
     public function render()
     {
-        return View('fields.textAreaField',['field'=>$this]);
+        return View('fields.textAreaField',['field'=>$this, 'input' => false, 'index' => null]);
     }
 
+    public function formInput($index)
+    {
+        return View('fields.textAreaField',['field'=>$this, 'input' => true, 'index' => $index]);
+
+    }
+    
     public function generateMockedValue() {
         $faker = Container::getInstance()->make(Generator::class);
         $this->setValue($faker->sentence());

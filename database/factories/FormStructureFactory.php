@@ -82,20 +82,19 @@ class FormStructureFactory extends Factory
     public function definition()
     {
         $fields_types = array(
-            GenderField::class,
-            DateField::class,
-            DoubleField::class,
-            EmailField::class,
-            JobField::class,
-            PhoneNumberField::class,
-            RatingField::class,
-            StringField::class,
-            // TableField::class,
+            // GenderField::class,
+            // DateField::class,
+            // DoubleField::class,
+            // EmailField::class,
+            // JobField::class,
+            // PhoneNumberField::class,
+            // RatingField::class,
+            // StringField::class,
             TableField2::class,
-            TextAreaField::class,
-            GenderField::class,
-            SocialStatusField::class,
-            OptionsField::class
+            // TextAreaField::class,
+            // GenderField::class,
+            // SocialStatusField::class,
+            // OptionsField::class
         );
 
         $numberOfFields = random_int(1, 5);

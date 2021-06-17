@@ -47,7 +47,13 @@ class StringField extends FieldType
     }
     public function render()
     {
-        return View('fields.stringField',['field'=>$this]);
+        return View('fields.stringField',['field'=>$this, 'input' => false, 'index' => null]);
+    }
+
+    public function formInput($index)
+    {
+        return View('fields.stringField',['field'=>$this, 'input' => true, 'index' => $index]);
+
     }
     public function generateMockedValue()
     {

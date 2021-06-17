@@ -88,7 +88,7 @@ class TableField2 extends FieldType
             throw new Exception('incorrect corrdinates...size = ' . count($this->columnsTitles) . 'X' . $this->numberOfRows);
         }
         if (count($value) != count($this->columnsTitles))
-            throw new Exception('incorrect row size...size = ' . count($this->columnsTitles) . 'X' . $this->numberOfRows);
+            throw new Exception(count($value) . ' is incorrect row size...size = ' . count($this->columnsTitles) . 'X' . $this->numberOfRows);
 
         $this->rows = $this->rows->replace([$index => $value]);
     }
@@ -145,8 +145,15 @@ class TableField2 extends FieldType
     }
     public function render()
     {
-        return View('fields.tableField2',['field'=>$this]);
+        return View('fields.tableField2',['field'=>$this, 'input' => false, 'index' => null]);
     }
+
+    public function formInput($index)
+    {
+        return View('fields.tableField2',['field'=>$this, 'input' => true, 'index' => $index]);
+
+    }
+
     public function generateMockedValue()
     {
         $testRowData = [];
