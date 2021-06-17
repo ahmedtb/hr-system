@@ -82,10 +82,7 @@ class ModelRefField extends FieldType
             'value' => $this->value
         );
     }
-    public function render()
-    {
-        return View('fields.modelRefField',['field'=>$this]);
-    }
+
     public function generateMockedValue()
     {
         $instance = $this->modelClass::factory()->create();

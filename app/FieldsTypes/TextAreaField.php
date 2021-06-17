@@ -52,10 +52,9 @@ class TextAreaField extends FieldType
         return View('fields.textAreaField',['field'=>$this, 'input' => false, 'index' => null]);
     }
 
-    public function formInput($index)
+    public function formInput(int $index)
     {
         return View('fields.textAreaField',['field'=>$this, 'input' => true, 'index' => $index]);
-
     }
     
     public function generateMockedValue() {

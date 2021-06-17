@@ -47,10 +47,15 @@ class SocialStatusField extends FieldType
             'value' => $this->value
         );
     }
-    public function render()
-    {
-        return View('fields.socialStatusField',['field'=>$this]);
-    }
+    // public function render()
+    // {
+    //     return View('fields.socialStatusField',['field'=>$this]);
+    // }
+
+    // public function formInput(int $index)
+    // {
+    //     return View('fields.socialStatusField',['field'=>$this, 'input' => true, 'index' => $index]);
+    // }
     
     public function generateMockedValue()
     {

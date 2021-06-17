@@ -50,10 +50,16 @@ class OptionsField extends FieldType
             'value' => $this->value
         );
     }
-    public function render()
-    {
-        return View('fields.optionsField',['field'=>$this])   ;
-    }
+    // public function render()
+    // {
+    //     return View('fields.optionsField',['field'=>$this]);
+    // }
+
+    // public function formInput(int $index)
+    // {
+    //     return View('fields.optionsField',['field'=>$this, 'input' => true, 'index' => $index]);
+    // }
+
     public function generateMockedValue()
     {
         // $faker = new \Faker\Generator();

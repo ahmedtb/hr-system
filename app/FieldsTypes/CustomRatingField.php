@@ -55,10 +55,7 @@ class CustomRatingField extends FieldType
             'value' => $this->value
         );
     }
-    public function render()
-    {
-        return View('fields.customRatingField',['field'=>$this]);
-    }
+
     public function generateMockedValue()
     {
         $this->setValue(random_int(0, $this->max));

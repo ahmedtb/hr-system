@@ -51,16 +51,7 @@ class EmailField extends FieldType
             'value' => $this->value
         );
     }
-    public function render()
-    {
-        return View('fields.emailField',['field'=>$this, 'input' => false, 'index' => null]);
-    }
 
-    public function formInput($index)
-    {
-        return View('fields.emailField',['field'=>$this, 'input' => true, 'index' => $index]);
-
-    }
     public function generateMockedValue()
     {
         $faker = Container::getInstance()->make(Generator::class);

@@ -148,10 +148,9 @@ class TableField2 extends FieldType
         return View('fields.tableField2',['field'=>$this, 'input' => false, 'index' => null]);
     }
 
-    public function formInput($index)
+    public function formInput(int $index)
     {
         return View('fields.tableField2',['field'=>$this, 'input' => true, 'index' => $index]);
-
     }
 
     public function generateMockedValue()

@@ -4,7 +4,6 @@ namespace App\FieldsTypes;
 
 use Exception;
 use Faker\Generator;
-use JsonSerializable;
 use Illuminate\Container\Container;
 
 class StringField extends FieldType
@@ -50,11 +49,11 @@ class StringField extends FieldType
         return View('fields.stringField',['field'=>$this, 'input' => false, 'index' => null]);
     }
 
-    public function formInput($index)
+    public function formInput(int $index)
     {
         return View('fields.stringField',['field'=>$this, 'input' => true, 'index' => $index]);
-
     }
+    
     public function generateMockedValue()
     {
         $faker = Container::getInstance()->make(Generator::class);

@@ -66,11 +66,7 @@ class JobField extends FieldType
         );
     }
 
-    public function render()
-    {
-        return View('fields.jobField',['field'=>$this]);
-        
-    }
+
 
     public function generateMockedValue()
     {

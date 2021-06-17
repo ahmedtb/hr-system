@@ -29,7 +29,8 @@ class RatingField extends FieldType
     public function setValue($value)
     {
 
-        if (gettype($value) != 'integer' )
+        if (gettype($value) != 'integer' && !is_numeric($value) )
+
             throw new Exception('rating number should be integer');
         if ( $value < 0 || $value > 5 )
             throw new Exception('rating number should not exceed 5 or be less than 0');
@@ -51,11 +52,16 @@ class RatingField extends FieldType
             'value' => $this->value
         );
     }
-    public function render()
-    {
-        return View('fields.ratingField',['field'=>$this]);
-        
-    }
+    // public function render()
+    // {
+    //     return View('fields.ratingField',['field'=>$this]);
+    // }
+
+    // public function formInput(int $index)
+    // {
+    //     return View('fields.ratingField',['field'=>$this, 'input' => true, 'index' => $index]);
+    // }
+
     public function generateMockedValue()
     {
         $this->setValue(random_int(0, 5));
