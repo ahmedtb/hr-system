@@ -26,11 +26,15 @@ class JobField extends FieldType
 
     public function setValue($value)
     {
+        if (gettype($value) != 'integer' && !is_numeric($value) )
+            throw new Exception('invalid job id value');
+
         $validator = Validator::make(['value' => $value], [
             'value' => 'required|exists:jobs,id'
         ]);
-        if ($validator->fails())
+        if ($validator->fails()){
             throw new Exception('this job id does not exits');
+        }
         $this->value = $value;
         return $this;
     }
@@ -66,7 +70,14 @@ class JobField extends FieldType
         );
     }
 
-
+    public function optionsList(){
+        $jobs = Job::all();
+        $list = [];
+        foreach($jobs as $job){
+            $list[$job->id] = $job->name;
+        }
+        return $list;
+    }
 
     public function generateMockedValue()
     {

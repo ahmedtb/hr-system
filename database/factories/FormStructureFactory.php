@@ -16,9 +16,11 @@ use App\FieldsTypes\StringField;
 use App\FieldsTypes\TableField2;
 use App\FieldsTypes\OptionsField;
 use App\FieldsTypes\ArrayOfFields;
+use App\FieldsTypes\ModelRefField;
 use App\FieldsTypes\TextAreaField;
 use App\FieldsTypes\PhoneNumberField;
 use App\FieldsTypes\SocialStatusField;
+use App\Models\Employee;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class FormStructureFactory extends Factory
@@ -34,17 +36,14 @@ class FormStructureFactory extends Factory
             return new $fieldTypeClass($this->faker->name());
         } elseif ($fieldTypeClass == JobField::class) {
             return new $fieldTypeClass($this->faker->name());
+        } elseif ($fieldTypeClass == ModelRefField::class) {
+            return new ModelRefField($this->faker->name(), Employee::class );
         } elseif ($fieldTypeClass == PhoneNumberField::class) {
-            return new $fieldTypeClass($this->faker->name());
+            return new PhoneNumberField($this->faker->name());
         } elseif ($fieldTypeClass == RatingField::class) {
             return new $fieldTypeClass($this->faker->name());
         } elseif ($fieldTypeClass == StringField::class) {
             return new $fieldTypeClass($this->faker->name());
-        // } elseif ($fieldTypeClass == TableField::class) {
-        //     return new TableField(
-        //         $this->faker->name(),
-        //         array('col1', 'col2')
-        //     );
         }elseif ($fieldTypeClass == TableField2::class) {
                 return new TableField2(
                     $this->faker->name(),
@@ -86,7 +85,8 @@ class FormStructureFactory extends Factory
             DateField::class,
             DoubleField::class,
             EmailField::class,
-            // JobField::class,
+            JobField::class,
+            ModelRefField::class,
             PhoneNumberField::class,
             RatingField::class,
             StringField::class,

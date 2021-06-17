@@ -37,7 +37,7 @@ class ModelRefField extends FieldType
 
     public function setValue($value)
     {
-        if (!(gettype($value) == 'integer'))
+        if (gettype($value) != 'integer' && !is_numeric($value))
             throw new Exception('not valid value type..expected id');
 
         $count = $this->modelClass::where('id', $value)->count();
@@ -72,6 +72,14 @@ class ModelRefField extends FieldType
             return null;
     }
 
+    public function optionsList(){
+        $models = $this->modelClass::all();
+        $list = [];
+        foreach($models as $model){
+            $list[$model->id] = $model->name;
+        }
+        return $list;
+    }
 
     public function jsonSerialize()
     {
