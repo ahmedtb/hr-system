@@ -1,34 +1,49 @@
 @extends('layouts.app')
 
 @section('content')
-@if(Route::has('login'))
-    <div class="row">
-        <div class='col-md-10'>
-            @auth
-                <a href="{{ route('home') }}" class="text-sm text-gray-700 underline">Home</a>
-            @else
-                <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
-
-                @if(Route::has('register'))
-                    <a href="{{ route('register') }}"
-                        class="ml-4 text-sm text-gray-700 underline">Register</a>
-                @endif
-            @endauth
-        </div>
-
-    </div>
-@endif
 
 <div class='row'>
 
 
 
-    <div class="col-md-2">
+    <div class="col-md-3">
         @include('partials.ActionsPanel')
     </div>
 
-    <div class='col-md-10'>
+    <div class='col-md-9'>
+        <div class="card-header">
+            احصائية عامة
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-6">
+                    <div class="list-group">
+                        <div class="list-group-item">
+                            عدد الموظفين في المنظومة
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="list-group">
+                        <div class="list-group-item">
+                            عدد المستهدفين في المنظومة
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="col">
+                    <div class="list-group">
+                        <div class="list-group-item">
+                            <span>اخر نموذج تم تعبئته</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
 

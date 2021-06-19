@@ -13,7 +13,6 @@ import GenderField from './GenderField'
 import EmailField from './EmailField'
 import DoubleField from './DoubleField'
 import DateField from './DateField'
-
 import OptionsField from './OptionsField';
 
 const fieldsTypes = [
@@ -77,11 +76,9 @@ function FieldsCreator() {
 
     return (
 
-
         <form method="POST" action="/structure/create" acceptCharset="UTF-8">
             <input type="hidden" name="_token" value={csrf_token} />
             name of the form structure <input type="string" name="type" />
-
 
             <ul className="list-group">
                 {
@@ -91,7 +88,6 @@ function FieldsCreator() {
                         </li>
                     ))
                 }
-
             </ul>
 
             <ul className="list-group">

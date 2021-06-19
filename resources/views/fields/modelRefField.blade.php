@@ -11,10 +11,17 @@
   </select>
 
 @else 
-    {{$field->modelClass}} reference field {{$field->label}}
+    <div class="row p-3">    
+        <div class="col-6">
+            حقل اشارة بعنوان: {{ ($field->label) }}
+        </div>
+        <div class="col-6">
+            نوع الكيان المشار اليه: {{ ($field->modelClass) }}
+        </div>
+    </div>
     @if($field->getValue())
-        <div class='p-1 border border-1 rounded'>{{$field->modelClass}} id {{$field->getValue() }}</div>
+        <div class='p-1 border border-1 rounded'>رقم الكيان في قاعدة البيانات {{$field->getValue() }}</div>
     @else
-        <div class='p-1 border border-1 rounded'></div>
+        <input class='border border-1 rounded' size="50" disabled/>
     @endif
 @endif

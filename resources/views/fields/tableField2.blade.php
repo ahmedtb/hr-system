@@ -1,6 +1,13 @@
 @if ($input)
-    tabel field 2 render {{ ($field->label) }}
-    <table class="table">
+    <div class="row p-3">    
+        <div class="col-6">
+            حقل جدول بعنوان: {{ ($field->label) }}
+        </div>
+        <div class="col-6">
+            عدد الصفوف في الجدول: {{ ($field->numberOfRows) }}
+        </div>
+    </div>
+    <table class="table table-striped table-condensed table-bordered">
         <thead>
             <tr>
                 @foreach($field->columnsTitles as $title)
@@ -21,8 +28,16 @@
         </tbody>
     </table>
 @else    
-    tabel field 2 render {{ ($field->label) }}
-    <table class="table">
+    <div class="row p-3">    
+        <div class="col-6">
+            حقل جدول بعنوان: {{ ($field->label) }}
+        </div>
+        <div class="col-6">
+            عدد الصفوف في الجدول: {{ ($field->numberOfRows) }}
+        </div>
+    </div>
+   
+    <table class="table table-striped table-condensed table-bordered">
         <thead>
             <tr>
                 @foreach($field->columnsTitles as $title)

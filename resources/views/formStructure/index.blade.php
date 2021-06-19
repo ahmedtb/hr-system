@@ -16,18 +16,18 @@
                 @endif
             </div>
 
-            <div class="col-md-8">
+            <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">النماذج الخاصة المتوفرة</div>
 
                         <div class="card-body">
                             
-                            <table class="table table-striped table-condensed" style="margin-bottom: 0px">
+                            <table class="table table-bordered table-condensed" style="margin-bottom: 0px">
                                 <thead>
                                     <tr>
-                                        <th class="col-md-8">رقم قيد النموذج</th>
+                                        <th >رقم قيد النموذج</th>
                                         <th>اسم النموذج</th>
-                                        <th>تركيبته </th>
+                                        <th>تركيبة النموذج </th>
                                         <th>مخصص للاستعمال مع</th>
                             
                                     </tr>
@@ -42,7 +42,7 @@
                                             <td>{{ $structure->type }}</td>
                                             <td>
                                                 @foreach ($structure->array_of_fields->getFields() as $field)
-                                                    {{get_class($field) }}
+                                                    {{$field->render()}}    
                                                 @endforeach    
                                             </td>
                                             <td>{{ $structure->formable_type }}</td>

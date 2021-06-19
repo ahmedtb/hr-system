@@ -22,13 +22,18 @@
                 <strong>Error:</strong>{{Session::get('error')}}
             </div>
         @endif
-            <div class="col-md-8">
+            <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">نموذج {{$structure->id}}</div>
 
                         <div class="card-body">
                             @foreach ($structure->array_of_fields->getFields() as $field)
+                            <div class='list-group mb-5'>
+                                <div class="list-group-item">
                                 {{$field->render()}}
+
+                            </div>
+                        </div>
                             @endforeach
                         
                             <form action="{{ route('generateForm',['form_structure_id' => $structure->id]) }}" method="get">

@@ -17,20 +17,23 @@
 
 
 @else
-    <div class='row'>
-        {{ $field->label }}
+<div class="row p-3">    
+    <div class="col-6">
+        حقل اختياري بعنوان: {{ ($field->label) }}
     </div>
 
 
-    @foreach($field->options as $option)
-        <div class="form-check">
-            <input class="form-check-input" type="radio" disabled 
-            {{ ($field->getValue() == $option) ? 'checked' : null }}
-            >
-            <label class="form-check-label">
-                {{ $option }}
-            </label>
-        </div>
-    @endforeach
-
+    <div class="col-6">
+        @foreach($field->options as $option)
+            <div class="form-check">
+                <input class="form-check-input" type="radio" disabled 
+                {{ ($field->getValue() == $option) ? 'checked' : null }}
+                >
+                <label class="form-check-label">
+                    {{ $option }}
+                </label>
+            </div>
+        @endforeach
+    </div>
+</div>
 @endif

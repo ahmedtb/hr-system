@@ -16,7 +16,7 @@
                 @endif
             </div>
 
-            <div class="col-md-8">
+            <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">النماذج المعبئة</div>
 
@@ -25,7 +25,7 @@
                             <table class="table table-striped table-condensed" style="margin-bottom: 0px">
                                 <thead>
                                     <tr>
-                                        <th class="col-md-8">ID</th>
+                                        <th >ID</th>
                                         <th>اسم النموذج</th>
                                         <th>تركيبته </th>
                                         <th>مخصص للاستعمال مع</th>

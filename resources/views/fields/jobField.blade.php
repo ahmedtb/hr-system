@@ -10,10 +10,16 @@
   </select>
 
 @else 
-    job reference field {{$field->label}}
-    @if($field->getValue())
-        <div class='p-1 border border-1 rounded'>job name {{$field->getRef()->name}}</div>
-    @else
-        <div class='p-1 border border-1 rounded'></div>
-    @endif
+<div class="row p-3">    
+    <div class="col-6">
+        حقل تحديد نوع الوظيفة بعنوان: {{$field->label}}
+    </div>
+    <div class="col-6">
+        @if($field->getValue())
+            <div class='p-1 border border-1 rounded'>اسم الوظيفة المحدد افتراضيا {{$field->getRef()->name}}</div>
+        @else
+            <input class='border border-1 rounded' size="25" value="" disabled/>
+        @endif
+    </div>
+</div>
 @endif
