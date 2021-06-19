@@ -4,12 +4,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\CoachController;
 use App\Http\Controllers\API\FormsController;
+use App\Http\Controllers\API\CoursesController;
+use App\Http\Controllers\API\ProgramsController;
 use App\Http\Controllers\API\EmployeesController;
 use App\Http\Controllers\API\ManagmentController;
 use App\Http\Controllers\API\InterviewsController;
+use App\Http\Controllers\API\FormStructuresController;
 use App\Http\Controllers\API\CoursesAndProgramsController;
-use App\Http\Controllers\API\CoursesController;
-use App\Http\Controllers\API\ProgramsController;
 use App\Http\Controllers\API\TargetedIndividualsController;
 
 /*
@@ -42,6 +43,7 @@ Route::get('getFormStructure/{access_token}', [FormsController::class,'getFormSt
 Route::post('submitForm', [FormsController::class,'submitForm']);
 Route::get('getForms/{form_structure_id}', [FormsController::class,'getForms']);
 
+Route::post('structure/create',[FormStructuresController::class,'create']);
 
 Route::get('getInterviewsAssessments', [InterviewsController::class,'getInterviewsAssessments']);
 Route::get('getGoodAssessments', [InterviewsController::class,'getGoodAssessments']);

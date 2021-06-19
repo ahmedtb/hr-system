@@ -44,4 +44,5 @@ class JobsController extends Controller
             'job' => $job
         ]);
     }
+
 }

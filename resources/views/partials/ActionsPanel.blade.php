@@ -26,5 +26,11 @@
                 <input type="submit" value="عرض النماذج المعبئة" />
             </form>
         </li>
+        
+        <li class="list-group-item">
+            <form action="{{ route('createFormStructureForm') }}" method="get">
+                <input type="submit" value="انشاء نوع نموذج" />
+            </form>
+        </li>
     </ul>
 </div>

@@ -72,6 +72,21 @@ class FormsEndpointsTests extends TestCase
 
     public function test_form_structure_could_be_created()
     {
+
+        $response = $this->postJson('api/structure/create',[
+            'type' => 'aaaaa',
+            'array_of_fields' => []
+        ]);
+        $response->assertJsonValidationErrors('array_of_fields');
+
+        $formStructure = FormStructure::factory()->make();
+
+        $response = $this->postJson('api/structure/create',[
+            'type' => $formStructure->type,
+            'array_of_fields' => $formStructure->array_of_fields
+        ]);
+
+        $response->assertOk()->assertJson(['success' => 'form structure created']);
         
     }
 

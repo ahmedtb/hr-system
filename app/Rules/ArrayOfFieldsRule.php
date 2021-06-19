@@ -27,11 +27,11 @@ class ArrayOfFieldsRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        if($value['class']!= ArrayOfFields::class)
-            return false;
-        try{
+        try {
+            if ($value['class'] != ArrayOfFields::class)
+                return false;
             $instance = ArrayOfFields::fromArray($value);
-        }catch(Exception $e){
+        } catch (Exception $e) {
             return false;
         }
         return true;

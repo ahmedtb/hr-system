@@ -14,6 +14,8 @@ class FormStructure extends Model
         'array_of_fields' => CastsArrayOfFields::class
     ];
 
+    protected $guarded = [];
+
     public function formable(){
         return $this->morphTo();
     }

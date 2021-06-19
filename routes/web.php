@@ -34,6 +34,9 @@ Route::post('/employee/create', [App\Http\Controllers\EmployeesController::class
 Route::get('/targeted/create', [App\Http\Controllers\TargetedIndividualsController::class, 'createForm'])->name('createTargetedForm');
 Route::post('/targeted/create', [App\Http\Controllers\TargetedIndividualsController::class, 'create'])->name('createTargeted');
 
+Route::get('/structure/create',  [App\Http\Controllers\FormStructuresController::class, 'createForm'])->name('createFormStructureForm');
+Route::post('/structure/create',  [App\Http\Controllers\FormStructuresController::class, 'create'])->name('createFormStructure');
+
 Route::get('/structure/index',  [App\Http\Controllers\FormStructuresController::class, 'index'])->name('showFormsStructure');
 Route::get('/structure/show/{id}',  [App\Http\Controllers\FormStructuresController::class, 'show'])->name('showStructure');
 

@@ -1,3 +1,3 @@
 <div class="row">
-    {{$field->label}}
+    {{$field->getValue()}}
 </div>
