@@ -105,11 +105,11 @@
         @endif
     </div>
     <div class="row justify-content-center">
-        <div class="col-md-2">
+        <div class="col-md-3">
             @include('partials.ActionsPanel')
         </div>
 
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="card">
                 <div class="card-header">الوحدات الادارية</div>
 
