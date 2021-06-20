@@ -23,6 +23,10 @@
             <li class="list-group-item">
                 <a class="btn btn-primary" href="{{ route('createFormStructureForm') }}" role="button">انشاء نوع نماذج جديد</a>
             </li>
+
+            <li class="list-group-item">
+                <a class="btn btn-primary" href="{{ route('createCoachForm') }}" role="button">تسجيل مدرب</a>
+            </li>
         </ul>
     </div>
 </div>

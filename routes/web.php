@@ -44,4 +44,6 @@ Route::post('/form/token/{access_token}',  [App\Http\Controllers\FormsController
 Route::get('/form/index',  [App\Http\Controllers\FormsController::class, 'index'])->name('showForms');
 Route::get('/form/show/{id}',  [App\Http\Controllers\FormsController::class, 'show'])->name('showForm');
 
+Route::get('/coaches/create',[App\Http\Controllers\CoachesController::class, 'createForm'])->name('createCoachForm');
+Route::post('/coaches/create',[App\Http\Controllers\CoachesController::class, 'create'])->name('createCoach');
 

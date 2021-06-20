@@ -33,6 +33,13 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-6">
+                            <div class="list-group">
+                                <div class="list-group-item">
+                                    عدد المدربين في المنظومة {{ $coachesCount }}
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="row">

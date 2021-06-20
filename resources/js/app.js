@@ -13,4 +13,6 @@ require('./bootstrap');
  */
 
 require('./components/FieldsCreator');
+require('./components/coach/CreateCoach');
+
 
