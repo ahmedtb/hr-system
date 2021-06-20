@@ -42,19 +42,28 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col">
-                            <div class="list-group">
-                                <div class="list-group-item">
-                                    <span>اخر نموذج تم تعبئته</span>
-                                    @include('partials.FormsTable',['forms'=>$forms])
-
-                                </div>
-
-                            </div>
+                    <div class="card mt-1">
+                        <div class="card-header">
+                            <span>اخر نماذج تم تعبئتها</span>
+                        </div>
+                        <div class="card-body">
+                            @include('partials.FormsTable',['forms'=>$forms])
 
                         </div>
                     </div>
+
+
+
+                    <div class="card bg-success mt-1">
+
+                        <div class="card-header" >
+                                <h5 class=''>الدورات الجارية: {{ $resumedCourses->count() }}</h5>
+                            </div>
+                            <div class=" card-body">
+                            @include('partials.resumedCoursesTable',['resumedCourses'=>$resumedCourses])
+                        </div>
+                    </div>
+
 
                 </div>
             </div>

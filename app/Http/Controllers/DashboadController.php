@@ -8,6 +8,7 @@ use App\Models\Coach;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Models\TargetedIndividual;
+use App\Models\TrainingCourse;
 
 class DashboadController extends Controller
 {
@@ -15,9 +16,10 @@ class DashboadController extends Controller
         $employeesCount = Employee::all()->count();
         $targetedCount = TargetedIndividual::all()->count();
         $coachesCount = Coach::all()->count();
+        $resumedCourses = TrainingCourse::resumed()->get();
         
         $units = Unit::whereNull('parent_id')->get();
         $forms = Form::orderBy('id', 'desc')->take(5)->get();
-        return view('dashboard',compact('employeesCount','targetedCount', 'coachesCount', 'units', 'forms'));
+        return view('dashboard',compact('employeesCount','targetedCount', 'coachesCount', 'units', 'forms', 'resumedCourses'));
     }
 }

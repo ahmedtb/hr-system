@@ -16,16 +16,6 @@ use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class FormsController extends Controller
 {
-    // public function getEmployementForm(Request $request, $access_token)
-    // {
-    //     $formAccessToken = FormAccessToken::where('access_token', $access_token)->first();
-    //     if ($formAccessToken) {
-    //         $form_structure = FormStructure::where('id', $formAccessToken->form_structure_id)->first();
-    //         return ($form_structure);
-    //     } else {
-    //         throw new ValidationException('access token is not valid');
-    //     }
-    // }
 
     public function generateForm(Request $request)
     {

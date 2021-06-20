@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use App\Casts\Json;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -61,5 +62,11 @@ class TrainingCourse extends Model
                 'formable_type',
                 array_search(static::class, Relation::morphMap()) ?: static::class
             );
+    }
+
+    public function scopeResumed($query)
+    {
+        return $query->whereDate('start_date', '<', Carbon::now())
+            ->whereDate('end_date', '>', Carbon::now());
     }
 }
