@@ -34,6 +34,15 @@ class FormsAndFormsStructuresTests extends TestCase
             $this->assertTrue($field instanceof FieldType);
     }
 
+    public function test_form_structure_model_can_return_all_forms_belongs_to_it()
+    {
+        $structure = FormStructure::factory()->create();
+        $rand = random_int(1, 10);
+        $forms = Form::factory($rand)->forStructure($structure->id)->create();
+
+        $this->assertEquals($structure->forms()->count(), count($forms));
+    }
+
     public function test_form_structure_could_belong_to_any_entity_that_has_forms()
     {
         $this->withoutExceptionHandling();
@@ -41,7 +50,7 @@ class FormsAndFormsStructuresTests extends TestCase
 
         $structures = FormStructure::factory(2)->create();
         $course->formStructures()->saveMany($structures);
-        $this->assertEquals($course->formStructures()->count(),2);
+        $this->assertEquals($course->formStructures()->count(), 2);
     }
 
     public function test_we_can_easily_create_forms_from_form_structure()
@@ -120,5 +129,34 @@ class FormsAndFormsStructuresTests extends TestCase
             $this->assertNotNull($form->filled_fields->getField($index)->getValue());
         }
     }
-    
+
+    public function test_could_search_through_forms_by_where_json_contains_function()
+    {
+        $fields = new ArrayOfFields(array(
+            new StringField('label'),
+            new GenderField('label'),
+            new TableField2(
+                'label',
+                array(
+                    'col1',
+                    'col1',
+                    'col3',
+                    'col5',
+                    'col1'
+                ),
+                5
+            )
+        ));
+        $fields->generateMockedValues();
+        $structure = FormStructure::factory()->create([
+            'array_of_fields' => $fields
+        ]);
+        Form::factory(2)->create([
+            'form_structure_id' => $structure->id,
+            'filled_fields' => $fields
+        ]);
+        $result = Form::whereJsonContains('filled_fields->fields',$fields->getField(2))->get();
+
+        $this->assertEquals(count($result),2);
+    }
 }

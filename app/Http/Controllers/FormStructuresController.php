@@ -49,4 +49,5 @@ class FormStructuresController extends Controller
         $structure = FormStructure::where('id', $id)->first();
         return View('formStructure.show', ['structure' => $structure]);
     }
+    
 }

@@ -43,7 +43,11 @@ Route::get('/form/token/{access_token}',  [App\Http\Controllers\FormsController:
 Route::post('/form/token/{access_token}',  [App\Http\Controllers\FormsController::class, 'submitForm'])->name('submitForm');
 Route::get('/form/index',  [App\Http\Controllers\FormsController::class, 'index'])->name('showForms');
 Route::get('/form/show/{id}',  [App\Http\Controllers\FormsController::class, 'show'])->name('showForm');
+Route::get('/form/search/{structure_id}', [App\Http\Controllers\FormsController::class, 'searchForm'])->name('formSearchForm');
+Route::post('/form/search/{structure_id}', [App\Http\Controllers\FormsController::class, 'search'])->name('formSearch');
 
 Route::get('/coaches/create',[App\Http\Controllers\CoachesController::class, 'createForm'])->name('createCoachForm');
 Route::post('/coaches/create',[App\Http\Controllers\CoachesController::class, 'create'])->name('createCoach');
 
+Route::get('/program/create',[App\Http\Controllers\ProgramsController::class,'createForm'])->name('createProgramForm');
+Route::post('/program/create',[App\Http\Controllers\ProgramsController::class,'create'])->name('createProgram');

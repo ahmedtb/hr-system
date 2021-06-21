@@ -9,7 +9,7 @@ function StringField(props) {
     return (
         <>
             <input onChange={null} name={fieldindex + "[class]"} type="hidden" value="App\FieldsTypes\StringField" />
-            tabel field 2 render <input name={fieldindex + "[label]"} />
+            string Field <input name={fieldindex + "[label]"} />
             <input onChange={null} name={fieldindex + "[value]"} type="hidden" value='' />
             
         </>

@@ -42,7 +42,7 @@ class ArrayOfFields implements JsonSerializable, Countable
             if (gettype($field) == 'array') {
                 $instance = $field['class']::fromArray($field);
                 array_push($this->fields, $instance);
-            } else
+            } elseif($field instanceof FieldType)
                 array_push($this->fields, $field);
             return $this;
         }

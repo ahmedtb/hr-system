@@ -11,12 +11,16 @@ class TableField2Tests extends TestCase
     {
 
         $table = new TableField2('testing label', ['col1', 'col2', 'col3'], 3);
+        $table->generateMockedValue();
         // dd($table);
+        // dd($table->jsonSerialize());
+
         $asArray = $table->jsonSerialize();
         $tableFromArray = $asArray['class']::fromArray($asArray);
-        // dd($tableFromArray);
+        // dd($asArray);
+        // dd($tableFromArray->jsonSerialize());
         $this->assertEquals($tableFromArray, $table);
-        $this->assertEquals($tableFromArray->jsonSerialize(), $asArray);
+        $this->assertEquals($table->jsonSerialize(), $asArray);
     }
 
     public function test_table_field_could_set_entire_column_at_once()

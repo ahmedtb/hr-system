@@ -83,4 +83,15 @@ class FormsController extends Controller
         $forms = Form::all();
         return View('form.index', ['forms' => $forms])->with('success', 'form successfully disposed');
     }
+
+    public function searchForm(Request $request, int $structure_id)
+    {
+        $structure = FormStructure::where('id', $structure_id)->first();
+        return view('form.search', compact('structure'));
+    }
+
+    public function search(Request $request, int $structure_id)
+    {
+        return $structure_id;
+    }
 }

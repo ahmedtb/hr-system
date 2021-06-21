@@ -3,6 +3,7 @@
 namespace App\FieldsTypes;
 
 use Exception;
+use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
 
 class TableField2 extends FieldType
@@ -157,7 +158,7 @@ class TableField2 extends FieldType
     {
         $testRowData = [];
         for ($i = 0; $i < count($this->columnsTitles); $i++)
-            array_push($testRowData, '');
+            array_push($testRowData, Str::random(5));
 
         for ($i = 0; $i < $this->numberOfRows; $i++)
             $this->setRow($testRowData,$i);

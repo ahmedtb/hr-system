@@ -74,6 +74,10 @@ function FieldsCreator() {
         }
     }
 
+    function removeField(index) {
+        setNewFields(newFields.filter((newField, i) => i != index));
+    }
+
     return (
 
         <form method="POST" action="/structure/create" acceptCharset="UTF-8">
@@ -84,7 +88,14 @@ function FieldsCreator() {
                 {
                     newFields.map((NewField, index) => (
                         <li key={index} className="list-group-item">
-                            {NewField}
+                            <div className="row">
+                                <div className="col">{NewField}</div>
+                                <div className="col">
+                                    <button type="button" onClick={() => removeField(index)}>X</button>
+                                </div>
+                            </div>
+
+
                         </li>
                     ))
                 }

@@ -2,9 +2,18 @@
 
 @section('content')
 
-    <div class='row'>
+    <div class='row justify-content-center'>
 
+        @if (Session::has('success'))
+            <div class="alert alert-success" id="alert">
+                <strong>Success:</strong> {{ Session::get('success') }}
+            </div>
 
+        @elseif(session('error'))
+            <div class="alert alert-danger" id="alert">
+                <strong>Error:</strong>{{ Session::get('error') }}
+            </div>
+        @endif
 
         <div class="col-md-3">
             @include('partials.ActionsPanel')
@@ -40,11 +49,18 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-6">
+                            <div class="list-group">
+                                <div class="list-group-item">
+                                    عدد الحقائب التدريبية في المنظومة {{ $programsCount }}
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="card mt-1">
                         <div class="card-header">
-                            <span>اخر نماذج تم تعبئتها</span>
+                            <h5>اخر نماذج تم تعبئتها</h5>
                         </div>
                         <div class="card-body">
                             @include('partials.FormsTable',['forms'=>$forms])
@@ -54,12 +70,12 @@
 
 
 
-                    <div class="card bg-success mt-1">
+                    <div class="card mt-1">
 
-                        <div class="card-header" >
-                                <h5 class=''>الدورات الجارية: {{ $resumedCourses->count() }}</h5>
-                            </div>
-                            <div class=" card-body">
+                        <div class="card-header">
+                            <h5 class=''>الدورات الجارية: {{ $resumedCourses->count() }}</h5>
+                        </div>
+                        <div class=" card-body">
                             @include('partials.resumedCoursesTable',['resumedCourses'=>$resumedCourses])
                         </div>
                     </div>

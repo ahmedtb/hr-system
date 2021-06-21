@@ -20,4 +20,8 @@ class FormStructure extends Model
         return $this->morphTo();
     }
 
+    public function forms(){
+        return $this->hasMany(Form::class);
+    }
+
 }

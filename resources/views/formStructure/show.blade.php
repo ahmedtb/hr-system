@@ -24,7 +24,10 @@
         @endif
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header">نموذج {{$structure->id}}</div>
+                    <div class="card-header">
+                        نموذج {{$structure->id}}
+                        <a type="button" href="{{route('formSearchForm',$structure->id)}}">search</a>
+                    </div>
 
                         <div class="card-body">
                             @foreach ($structure->array_of_fields->getFields() as $field)

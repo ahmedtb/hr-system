@@ -18,6 +18,16 @@ use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
+
+    public function addBuildInBasicFormStructures()
+    {
+        FormStructure::create([
+            'id' => 1,
+            'type' =>  'نموذج طلب توظيف',
+            'array_of_fields' => ''
+        ]);
+        
+    }
     /**
      * Seed the application's database.
      *

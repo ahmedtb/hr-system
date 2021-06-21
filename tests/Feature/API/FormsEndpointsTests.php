@@ -2,10 +2,13 @@
 
 namespace Tests\Feature\API;
 
-use App\FieldsTypes\ArrayOfFields;
 use Tests\TestCase;
 use App\Models\Form;
 use App\Models\FormStructure;
+use App\FieldsTypes\GenderField;
+use App\FieldsTypes\StringField;
+use App\FieldsTypes\ArrayOfFields;
+use App\FieldsTypes\TableField2;
 use App\Models\Utilities\FormAccessToken;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Testing\Fluent\AssertableJson;
@@ -73,7 +76,7 @@ class FormsEndpointsTests extends TestCase
     public function test_form_structure_could_be_created()
     {
 
-        $response = $this->postJson('api/structure/create',[
+        $response = $this->postJson('api/structure/create', [
             'type' => 'aaaaa',
             'array_of_fields' => []
         ]);
@@ -81,18 +84,73 @@ class FormsEndpointsTests extends TestCase
 
         $formStructure = FormStructure::factory()->make();
 
-        $response = $this->postJson('api/structure/create',[
+        $response = $this->postJson('api/structure/create', [
             'type' => $formStructure->type,
             'array_of_fields' => $formStructure->array_of_fields
         ]);
 
         $response->assertOk()->assertJson(['success' => 'form structure created']);
-        
     }
 
     public function test_form_structure_could_be_edited()
     {
         $formStructure = FormStructure::factory()->create();
-        
+    }
+
+    public function test_form_can_be_searched_through_its_fields()
+    {
+        $searchFields = new ArrayOfFields(array(
+            new StringField('label'),
+            new GenderField('label'),
+            new TableField2(
+                'label',
+                array(
+                    'col1',
+                    'col1',
+                    'col3',
+                    'col5',
+                    'col1'
+                ),
+                5
+            )
+        ));
+        $searchFields->generateMockedValues();
+        $structure = FormStructure::factory()->create([
+            'array_of_fields' => $searchFields
+        ]);
+        Form::factory()->create([
+            'form_structure_id' => $structure->id,
+            'filled_fields' => $searchFields
+        ]);
+        Form::factory(10)->create([
+            'form_structure_id' => $structure->id,
+        ]);
+
+        $response = $this->postJson('api/form/search/' . $structure->id, [
+            'fields' => $searchFields
+        ]);
+        $response->assertJsonCount(1);
+        $response = $this->postJson('api/form/search/' . $structure->id, [
+            'fields' => (new ArrayOfFields())->setField($searchFields->getField(0))
+        ]);
+        $response->assertJsonCount(1);
+        $response = $this->postJson('api/form/search/' . $structure->id, [
+            'fields' => (new ArrayOfFields())->setField($searchFields->getField(1))
+        ]);
+        $response->assertJsonCount(1);
+        $response = $this->postJson('api/form/search/' . $structure->id, [
+            'fields' => (new ArrayOfFields())->setField($searchFields->getField(2))
+        ]);
+        $response->assertJsonCount(1);
+
+        $this->postJson('api/form/search/111', [
+            'fields' => (new ArrayOfFields())->setField($searchFields->getField(0))
+        ])->assertStatus(422);
+
+        $response = $this->postJson('api/form/search/' . $structure->id, [
+            'fields' => (new ArrayOfFields())->setField(new GenderField('label'))
+        ]);
+        $response->assertJsonCount(0);
+
     }
 }

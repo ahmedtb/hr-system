@@ -42,6 +42,7 @@ Route::post('generateForm', [FormsController::class,'generateForm']);
 Route::get('getFormStructure/{access_token}', [FormsController::class,'getFormStructure']);
 Route::post('submitForm', [FormsController::class,'submitForm']);
 Route::get('getForms/{form_structure_id}', [FormsController::class,'getForms']);
+Route::post('form/search/{form_structure_id}', [FormsController::class,'search']);
 
 Route::post('structure/create',[FormStructuresController::class,'create']);
 

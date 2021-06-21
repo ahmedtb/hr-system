@@ -112,17 +112,11 @@ class FormFactory extends Factory
     {
         return $this->state(function (array $attributes) use ($form_structure_id) {
             $structure = FormStructure::where('id', $form_structure_id)->first();
-            $ArrayOfFieldsInstance = $structure->array_of_fields['class']::fromArray($structure->array_of_fields);
-            // dd($ArrayOfFieldsInstance->getFields());
-            $fields = [];
-            foreach ($ArrayOfFieldsInstance->getFields() as $fieldInstance) {
-                // $fieldInstance = $fieldArray['class']::fromArray($fieldArray);
-                $fieldInstance->generateMockedValue();
-                array_push($fields, $fieldInstance);
-            }
+            $ArrayOfFieldsInstance = $structure->array_of_fields;
+            $ArrayOfFieldsInstance->generateMockedValues();
             return [
                 'form_structure_id' => $structure->id,
-                'filled_fields' => new ArrayOfFields($fields)
+                'filled_fields' => $ArrayOfFieldsInstance
             ];
         });
     }

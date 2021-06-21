@@ -27,6 +27,10 @@
             <li class="list-group-item">
                 <a class="btn btn-primary" href="{{ route('createCoachForm') }}" role="button">تسجيل مدرب</a>
             </li>
+
+            <li class="list-group-item">
+                <a class="btn btn-primary" href="{{ route('createProgramForm') }}" role="button">انشاء حقيبة تدريبية</a>
+            </li>
         </ul>
     </div>
 </div>

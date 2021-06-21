@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Utilities\FormAccessToken;
 use App\Rules\ArrayOfFieldsRule;
 use Dotenv\Exception\ValidationException;
+use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class FormsController extends Controller
@@ -63,6 +64,23 @@ class FormsController extends Controller
 
     public function getForms(int $form_structure_id){
         return Form::where('form_structure_id',$form_structure_id)->get();
+    }
+
+    public function search(Request $request, int $form_structure_id)
+    {
+        Validator::make([
+            'form_structure_id' => $form_structure_id,
+            'fields' => $request->fields
+        ],[
+            'form_structure_id' => 'required|exists:form_structures,id',
+            'fields' => [new ArrayOfFieldsRule()]
+        ])->validated();
+        $arrayOfFields = ArrayOfFields::fromArray($request->fields);
+        // dd($arrayOfFields->getFields());
+
+        $result = Form::whereJsonContains('filled_fields->fields',$arrayOfFields->getFields())->get();
+        return ($result);
+
     }
 
 
