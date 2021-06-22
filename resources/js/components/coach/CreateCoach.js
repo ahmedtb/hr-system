@@ -6,7 +6,7 @@ function CreateCoach(props) {
 
     const employees = (JSON.parse(props.employees))
     const targetedIndividuals = (JSON.parse(props.targetedIndividuals))
-
+    const formRoute = props.formRoute
     const [profileChoice, setProfileChoice] = useState('')
 
     function profileChoiceChange(e) {
@@ -15,7 +15,7 @@ function CreateCoach(props) {
 
     return (
 
-        <form method="POST" action={props.formRoute} acceptCharset="UTF-8">
+        <form method="POST" action={formRoute} acceptCharset="UTF-8">
             <input type="hidden" name="_token" value={csrf_token} />
 
             <ul class="list-group">

@@ -6,6 +6,8 @@ use App\Models\Form;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\FormStructure;
+use App\Rules\ArrayOfFieldsRule;
+use App\FieldsTypes\ArrayOfFields;
 use App\Models\Utilities\FormAccessToken;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
@@ -90,8 +92,32 @@ class FormsController extends Controller
         return view('form.search', compact('structure'));
     }
 
-    public function search(Request $request, int $structure_id)
+    public function search(Request $request, int $form_structure_id)
     {
-        return $structure_id;
+        Validator::make([
+            'form_structure_id' => $form_structure_id,
+        ], [
+            'form_structure_id' => 'required|exists:form_structures,id',
+        ])->validated();
+
+        // dd($request->fields);
+        $structure = FormStructure::where('id', $form_structure_id)->first();
+        foreach ($request->fields as $index => $field) {
+
+            $structure->array_of_fields->getField($index)->setValue($field);
+            // dd ($structure->array_of_fields->getField($index));
+            // $field->setValue($request->fields[$index]);
+        }
+        foreach ($structure->array_of_fields->getFields() as $index => $field) {
+            if ($field->getValue() == null)
+                $structure->array_of_fields->removeField($index);
+        }
+        dd($structure->array_of_fields->getFields());
+
+        // $arrayOfFields = ArrayOfFields::fromArray($request->fields);
+        // dd($arrayOfFields);
+
+        $result = Form::whereJsonContains('filled_fields->fields', $structure->array_of_fields->getFields())->get();
+        return ($result);
     }
 }

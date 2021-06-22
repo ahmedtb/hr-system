@@ -33,7 +33,7 @@ class DateField extends FieldType
         $validator = Validator::make(['value' => $value], [
             'value' => 'required|date_format:Y-m-d'
         ]);
-        if ($validator->fails())
+        if ($validator->fails() && $value != null)
             throw new Exception('not valid value type..incorrect date format');
         $this->value = $value;
         return $this;

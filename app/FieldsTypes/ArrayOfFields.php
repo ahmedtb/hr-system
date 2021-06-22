@@ -31,6 +31,12 @@ class ArrayOfFields implements JsonSerializable, Countable
         // $this->fields = $fields;
         return $this;
     }
+
+    public function removeField($index)
+    {
+        unset($this->fields[$index]);
+    }
+
     public function getFields()
     {
         return $this->fields;

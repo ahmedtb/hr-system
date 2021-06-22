@@ -11,6 +11,7 @@ use App\Http\Controllers\API\ManagmentController;
 use App\Http\Controllers\API\InterviewsController;
 use App\Http\Controllers\API\FormStructuresController;
 use App\Http\Controllers\API\CoursesAndProgramsController;
+use App\Http\Controllers\API\DashboardController;
 use App\Http\Controllers\API\TargetedIndividualsController;
 
 /*
@@ -23,12 +24,15 @@ use App\Http\Controllers\API\TargetedIndividualsController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::get('/dashboard',[DashboardController::class,'show']);
 
 Route::get('/unitsTree', [ManagmentController::class,'UnitsTree']);
 Route::post('/createJob', [ManagmentController::class,'CreateJob']);
 Route::post('/createUnit', [ManagmentController::class,'CreateUnit']);
 
 Route::post('createEmployee', [EmployeesController::class,'create']);
+// Route::get('/createEmployeeForm', [EmployeesController::class, 'createForm']);
+
 Route::post('createEmployeeWithJob', [EmployeesController::class,'createWithJob']);
 Route::put('editEmployee', [EmployeesController::class,'editEmployee']);
 Route::put('attackDocumentToEmployee', [EmployeesController::class,'attackDocument']);

@@ -26,7 +26,7 @@ class StringField extends FieldType
 
     public function setValue($value)
     {
-        if (!(gettype($value) == 'string'))
+        if (!(gettype($value) == 'string') && $value != null)
             throw new Exception('not valid value type..expected string');
         $this->value = $value;
         return $this;
