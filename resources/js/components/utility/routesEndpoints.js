@@ -1,13 +1,13 @@
 const routes = {
     dashboard: 'reac/',
-    createEmployeeForm: '',
-    createTargetedForm: '',
-    showFormsStructure: '',
-    showForms: '',
-    createFormStructureForm: '',
-    createCoachForm: '',
-    createProgramForm: '',
-    createEmployeeForm: 'react/createEmployeeForm',
+    createEmployeeForm: '/react/createEmployeeForm',
+    createTargetedForm: '/react/createTargetedForm',
+    showFormsStructure: '/react/structureIndex',
+    showForms: '/react/formIndex',
+    createFormStructureForm: '/react/structureCreate',
+    createCoachForm: '/react/coachCreate',
+    createProgramForm: '/react/programCreate',
+
 }
 
 export default routes;

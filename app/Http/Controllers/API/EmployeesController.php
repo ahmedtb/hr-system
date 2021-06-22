@@ -58,11 +58,8 @@ class EmployeesController extends Controller
 
     public function createForm()
     {
-        $jobs = Job::all();
-        // $job_selection_array = [];
-        // foreach ($jobs as $job) {
-        //     $job_selection_array[$job->id] = $job->name . ' - ' . $job->unit->name;
-        // }
+        $jobs = Job::with('unit')->get();
+
         return [
             'jobs' => $jobs
         ];

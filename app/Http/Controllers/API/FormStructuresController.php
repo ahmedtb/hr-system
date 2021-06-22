@@ -18,6 +18,14 @@ class FormStructuresController extends Controller
 
         FormStructure::create($validatedData);
 
-        return response(['success'=>'form structure created']);
+        return response(['success' => 'form structure created']);
+    }
+    public function createForm()
+    {
+        return FormStructure::all();
+    }
+    public function index()
+    {
+        return FormStructure::all();
     }
 }

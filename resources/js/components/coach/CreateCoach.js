@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
-
+import axios from 'axios';
+import ApiEndpoints from '../utility/ApiEndpoints'
 
 function CreateCoach(props) {
 
-    const employees = (JSON.parse(props.employees))
-    const targetedIndividuals = (JSON.parse(props.targetedIndividuals))
-    const formRoute = props.formRoute
+    const [employees, setEmployees] = React.useState([])
+    const [targetedIndividuals, setTargetedIndividuals] = React.useState([])
+
+    React.useEffect(() => {
+        axios.get(ApiEndpoints.createCoachForm).then((response) => {
+            setEmployees(response.data.employees)
+            setTargetedIndividuals(response.data.targetedIndividuals)
+        }).catch(() => {
+
+        })
+    }, [])
     const [profileChoice, setProfileChoice] = useState('')
 
     function profileChoiceChange(e) {
@@ -15,25 +23,25 @@ function CreateCoach(props) {
 
     return (
 
-        <form method="POST" action={formRoute} acceptCharset="UTF-8">
+        <form method="POST" action={ApiEndpoints.createCoach} acceptCharset="UTF-8">
             <input type="hidden" name="_token" value={csrf_token} />
 
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <label for="name">اسم المدرب</label>
+            <ul className="list-group">
+                <li className="list-group-item">
+                    <label htmlFor="name">اسم المدرب</label>
                     <input name="name" type="text" id="name" />
                 </li>
-                <li class="list-group-item">
-                    <label for="CV">السيرة الذاتية</label>
+                <li className="list-group-item">
+                    <label htmlFor="CV">السيرة الذاتية</label>
                     <textarea name="CV" cols="50" rows="10" id="CV"></textarea>
                 </li>
-                <li class="list-group-item">
-                    <label for="speciality">التخصص</label>
+                <li className="list-group-item">
+                    <label htmlFor="speciality">التخصص</label>
                     <input name="speciality" type="text" id="speciality" />
                 </li>
 
 
-                <li class="list-group-item">
+                <li className="list-group-item">
                     <select
                         value={''}
                         onChange={profileChoiceChange}
@@ -49,8 +57,8 @@ function CreateCoach(props) {
                     if (profileChoice == 'employee') {
                         return (
                             <>
-                                <li class="list-group-item">
-                                    <label for="employee">اختر الموظف</label>
+                                <li className="list-group-item">
+                                    <label htmlFor="employee">اختر الموظف</label>
                                     <select name="employee_id">
                                         <option value=''>select employee name</option>
                                         {
@@ -65,8 +73,8 @@ function CreateCoach(props) {
                     } else if (profileChoice == 'targeted') {
                         return (
                             <>
-                                <li class="list-group-item">
-                                    <label for="targeted">اختر المستهدف</label>
+                                <li className="list-group-item">
+                                    <label htmlFor="targeted">اختر المستهدف</label>
                                     <select name="targeted_id">
                                         <option value=''>select targeted name</option>
                                         {
@@ -85,7 +93,7 @@ function CreateCoach(props) {
 
 
 
-                <li class="list-group-item">
+                <li className="list-group-item">
                     <input type="submit" value="تسجيل" />
                 </li>
 
@@ -97,12 +105,3 @@ function CreateCoach(props) {
 }
 
 export default CreateCoach;
-
-if (document.getElementById('CreateCoach')) {
-    var employees = document.getElementById('CreateCoach').getAttribute('employees');
-    var targetedIndividuals = document.getElementById('CreateCoach').getAttribute('targetedIndividuals');
-    var formRoute = document.getElementById('CreateCoach').getAttribute('formRoute');
-    ReactDOM.render(<CreateCoach
-        employees={employees} targetedIndividuals={targetedIndividuals} formRoute={formRoute}
-    />, document.getElementById('CreateCoach'));
-}

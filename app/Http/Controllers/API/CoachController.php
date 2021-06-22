@@ -38,6 +38,16 @@ class CoachController extends Controller
         return response(['success' => 'coach created']);
     }
 
+    public function createForm()
+    {
+        $employees = Employee::all();
+        $targetedIndividuals = TargetedIndividual::all();
+        return [
+            'employees' => $employees,
+            'targetedIndividuals' => $targetedIndividuals
+        ];
+    }
+
     public function getPrograms(int $coach_id)
     {
         Validator::make(['coach_id' => $coach_id],[

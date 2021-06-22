@@ -31,7 +31,7 @@ Route::post('/createJob', [ManagmentController::class,'CreateJob']);
 Route::post('/createUnit', [ManagmentController::class,'CreateUnit']);
 
 Route::post('createEmployee', [EmployeesController::class,'create']);
-// Route::get('/createEmployeeForm', [EmployeesController::class, 'createForm']);
+Route::get('/createEmployeeForm', [EmployeesController::class, 'createForm']);
 
 Route::post('createEmployeeWithJob', [EmployeesController::class,'createWithJob']);
 Route::put('editEmployee', [EmployeesController::class,'editEmployee']);
@@ -41,13 +41,15 @@ Route::post('createCourseForEmployees', [EmployeesController::class,'createCours
 
 Route::post('targeted/create', [TargetedIndividualsController::class,'create']);
 
-
+Route::get('form/index', [FormsController::class,'index']);
 Route::post('generateForm', [FormsController::class,'generateForm']);
 Route::get('getFormStructure/{access_token}', [FormsController::class,'getFormStructure']);
 Route::post('submitForm', [FormsController::class,'submitForm']);
 Route::get('getForms/{form_structure_id}', [FormsController::class,'getForms']);
 Route::post('form/search/{form_structure_id}', [FormsController::class,'search']);
 
+Route::get('structure/index',[FormStructuresController::class,'index']);
+Route::get('structure/get',[FormStructuresController::class,'createForm']);
 Route::post('structure/create',[FormStructuresController::class,'create']);
 
 Route::get('getInterviewsAssessments', [InterviewsController::class,'getInterviewsAssessments']);
@@ -59,6 +61,8 @@ Route::get('getCourseEmployees/{training_course_id}', [CoursesAndProgramsControl
 Route::get('getCourseState/{training_course_id}', [CoursesAndProgramsController::class,'getCourseState']);
 
 Route::post('coach',[CoachController::class,'create']);
+Route::get('coach',[CoachController::class,'createForm']);
+
 Route::get('coach/{coach_id}/programs',[CoachController::class,'getPrograms']);
 
 Route::post('program',[ProgramsController::class,'create']);

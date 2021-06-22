@@ -18,6 +18,10 @@ use Symfony\Component\HttpKernel\Event\RequestEvent;
 class FormsController extends Controller
 {
 
+    public function index(){
+        return Form::all();
+    }
+
     public function generateForm(Request $request)
     {
         $request->validate([
