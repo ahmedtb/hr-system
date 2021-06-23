@@ -3824,6 +3824,39 @@ function CreateEmployee() {
 
 /***/ }),
 
+/***/ "./resources/js/components/fields/DateField.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/fields/DateField.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ DateField)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+function DateField(props) {
+  var type = props.type;
+  var field = props.value;
+  var index = props.index;
+  var onChange = props.onChange;
+  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "row",
+    children: [field['label'], /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+      type: "date",
+      value: field['value'],
+      disabled: true
+    })]
+  });
+}
+
+/***/ }),
+
 /***/ "./resources/js/components/fields/Fields.js":
 /*!**************************************************!*\
   !*** ./resources/js/components/fields/Fields.js ***!
@@ -3838,7 +3871,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _StringField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StringField */ "./resources/js/components/fields/StringField.js");
 /* harmony import */ var _OptionsField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./OptionsField */ "./resources/js/components/fields/OptionsField.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _DateField__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DateField */ "./resources/js/components/fields/DateField.js");
+/* harmony import */ var _TextAreaField__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TextAreaField */ "./resources/js/components/fields/TextAreaField.js");
+/* harmony import */ var _TableField__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./TableField */ "./resources/js/components/fields/TableField.js");
+/* harmony import */ var _GenderField__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./GenderField */ "./resources/js/components/fields/GenderField.js");
+/* harmony import */ var _SocialStatusField__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./SocialStatusField */ "./resources/js/components/fields/SocialStatusField.js");
+/* harmony import */ var _PhoneNumberField__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./PhoneNumberField */ "./resources/js/components/fields/PhoneNumberField.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -3850,6 +3889,12 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symb
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+
+
+
+
 
 
 
@@ -3868,11 +3913,11 @@ function Fields(props) {
   }
 
   var type = props.type;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
     children: fields === null || fields === void 0 ? void 0 : fields.map(function (field, index) {
       switch (field["class"]) {
         case 'App\\FieldsTypes\\StringField':
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_StringField__WEBPACK_IMPORTED_MODULE_1__.default, {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_StringField__WEBPACK_IMPORTED_MODULE_1__.default, {
             type: type,
             value: field,
             index: index,
@@ -3882,7 +3927,67 @@ function Fields(props) {
           }, index);
 
         case 'App\\FieldsTypes\\OptionsField':
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_OptionsField__WEBPACK_IMPORTED_MODULE_2__.default, {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_OptionsField__WEBPACK_IMPORTED_MODULE_2__.default, {
+            type: type,
+            value: field,
+            index: index,
+            onChange: function onChange(value) {
+              return changeField(index, value);
+            }
+          }, index);
+
+        case 'App\\FieldsTypes\\DateField':
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_DateField__WEBPACK_IMPORTED_MODULE_3__.default, {
+            type: type,
+            value: field,
+            index: index,
+            onChange: function onChange(value) {
+              return changeField(index, value);
+            }
+          }, index);
+
+        case 'App\\FieldsTypes\\TextAreaField':
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_TextAreaField__WEBPACK_IMPORTED_MODULE_4__.default, {
+            type: type,
+            value: field,
+            index: index,
+            onChange: function onChange(value) {
+              return changeField(index, value);
+            }
+          }, index);
+
+        case 'App\\FieldsTypes\\TableField2':
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_TableField__WEBPACK_IMPORTED_MODULE_5__.default, {
+            type: type,
+            value: field,
+            index: index,
+            onChange: function onChange(value) {
+              return changeField(index, value);
+            }
+          }, index);
+
+        case 'App\\FieldsTypes\\GenderField':
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_GenderField__WEBPACK_IMPORTED_MODULE_6__.default, {
+            type: type,
+            value: field,
+            index: index,
+            onChange: function onChange(value) {
+              return changeField(index, value);
+            }
+          }, index);
+
+        case 'App\\FieldsTypes\\SocialStatusField':
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_SocialStatusField__WEBPACK_IMPORTED_MODULE_7__.default, {
+            type: type,
+            value: field,
+            index: index,
+            onChange: function onChange(value) {
+              return changeField(index, value);
+            }
+          }, index);
+
+        case 'App\\FieldsTypes\\PhoneNumberField':
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_PhoneNumberField__WEBPACK_IMPORTED_MODULE_8__.default, {
             type: type,
             value: field,
             index: index,
@@ -3892,9 +3997,62 @@ function Fields(props) {
           }, index);
 
         default:
-          return null;
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+            children: field["class"]
+          }, index);
       }
     })
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/fields/GenderField.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/fields/GenderField.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ GenderField)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+function GenderField(props) {
+  var type = props.type;
+  var field = props.value;
+  var index = props.index;
+  var onChange = props.onChange;
+  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: ["number field ", field['label'], /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "form-check",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        className: "form-check-input",
+        type: "radio",
+        checked: field['value'] == 'male',
+        disabled: true
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+        className: "form-check-label",
+        children: "male"
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "form-check",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        className: "form-check-input",
+        type: "radio",
+        checked: field['value'] == 'female',
+        disabled: true
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+        className: "form-check-label",
+        children: "female"
+      })]
+    })]
   });
 }
 
@@ -3949,6 +4107,100 @@ function OptionsField(props) {
 
 /***/ }),
 
+/***/ "./resources/js/components/fields/PhoneNumberField.js":
+/*!************************************************************!*\
+  !*** ./resources/js/components/fields/PhoneNumberField.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ PhoneNumberField)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+function PhoneNumberField(props) {
+  var type = props.type;
+  var field = props.value;
+  var index = props.index;
+  var onChange = props.onChange;
+  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      "class": "row p-3",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        "class": "col-6",
+        children: ["\u062D\u0642\u0644 \u0631\u0642\u0645 \u0647\u0627\u062A\u0641 \u0628\u0639\u0646\u0648\u0627\u0646: ", field['label']]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        "class": "col-6",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+          "class": "border border-1 rounded",
+          size: "25",
+          value: field['value'],
+          disabled: true
+        })
+      })]
+    })
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/fields/SocialStatusField.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/fields/SocialStatusField.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ SocialStatusField)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+function SocialStatusField(props) {
+  var type = props.type;
+  var field = props.value;
+  var index = props.index;
+  var onChange = props.onChange;
+  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: ["social status: ", field['label'], /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "form-check",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        className: "form-check-input",
+        type: "radio",
+        disabled: true,
+        checked: field['value'] == 'married'
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+        className: "form-check-label",
+        children: "married"
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "form-check",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        className: "form-check-input",
+        type: "radio",
+        checked: field['value'] == 'single',
+        disabled: true
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+        className: "form-check-label",
+        children: "single"
+      })]
+    })]
+  });
+}
+
+/***/ }),
+
 /***/ "./resources/js/components/fields/StringField.js":
 /*!*******************************************************!*\
   !*** ./resources/js/components/fields/StringField.js ***!
@@ -3983,6 +4235,103 @@ function StringField(props) {
         value: field['value'],
         disabled: true
       })
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/fields/TableField.js":
+/*!******************************************************!*\
+  !*** ./resources/js/components/fields/TableField.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ TableField)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+function TableField(props) {
+  var type = props.type;
+  var field = props.value;
+  var index = props.index;
+  var onChange = props.onChange;
+  var Rows = [];
+
+  for (var i = 0; i < field.numberOfRows; i++) {
+    Rows[i] = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("tr", {
+      children: field['value'][i].map(function (element, k) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+          scope: "row",
+          children: element
+        }, k);
+      })
+    }, i);
+  }
+
+  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "row p-3",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "col-6",
+        children: ["\u062D\u0642\u0644 \u062C\u062F\u0648\u0644 \u0628\u0639\u0646\u0648\u0627\u0646: ", field['label']]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "col-6",
+        children: ["\u0639\u062F\u062F \u0627\u0644\u0635\u0641\u0648\u0641 \u0641\u064A \u0627\u0644\u062C\u062F\u0648\u0644: ", field['numberOfRows']]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
+      className: "table table-striped table-condensed table-bordered",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("tr", {
+          children: field['columnsTitles'].map(function (title, k) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+              scope: "col",
+              children: title
+            }, k);
+          })
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("tbody", {
+        children: Rows
+      })]
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/fields/TextAreaField.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/fields/TextAreaField.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ TextAreaField)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+function TextAreaField(props) {
+  var type = props.type;
+  var field = props.value;
+  var index = props.index;
+  var onChange = props.onChange;
+  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: [field['label'], /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "p-5 border border-1 rounded",
+      children: field['value']
     })]
   });
 }
