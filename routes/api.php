@@ -42,6 +42,7 @@ Route::post('createCourseForEmployees', [EmployeesController::class,'createCours
 Route::post('targeted/create', [TargetedIndividualsController::class,'create']);
 
 Route::get('form/index', [FormsController::class,'index']);
+Route::get('form/{id}', [FormsController::class,'show']);
 Route::post('generateForm', [FormsController::class,'generateForm']);
 Route::get('getFormStructure/{access_token}', [FormsController::class,'getFormStructure']);
 Route::post('submitForm', [FormsController::class,'submitForm']);
@@ -49,6 +50,8 @@ Route::get('getForms/{form_structure_id}', [FormsController::class,'getForms']);
 Route::post('form/search/{form_structure_id}', [FormsController::class,'search']);
 
 Route::get('structure/index',[FormStructuresController::class,'index']);
+Route::get('structure/{id}',[FormStructuresController::class,'show']);
+
 Route::get('structure/get',[FormStructuresController::class,'createForm']);
 Route::post('structure/create',[FormStructuresController::class,'create']);
 

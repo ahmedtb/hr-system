@@ -19,7 +19,11 @@ class FormsController extends Controller
 {
 
     public function index(){
-        return Form::all();
+        return Form::with('structure')->get();
+    }
+
+    public function show($id){
+        return Form::where('id',$id)->first();
     }
 
     public function generateForm(Request $request)

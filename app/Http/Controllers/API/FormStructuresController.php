@@ -28,4 +28,9 @@ class FormStructuresController extends Controller
     {
         return FormStructure::all();
     }
+
+    public function show($id)
+    {
+        return FormStructure::where('id',$id)->first();
+    }
 }

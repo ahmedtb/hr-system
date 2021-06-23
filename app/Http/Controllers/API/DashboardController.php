@@ -24,7 +24,7 @@ class DashboardController extends Controller
         $resumedCourses = TrainingCourse::resumed()->get();
 
         $units = Unit::whereNull('parent_id')->get();
-        $forms = Form::orderBy('id', 'desc')->take(5)->get();
+        $forms = Form::orderBy('id', 'desc')->with('structure')->take(5)->get();
         return array(
             'employeesCount' => $employeesCount,
             'targetedCount' => $targetedCount,

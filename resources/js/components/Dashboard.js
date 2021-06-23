@@ -1,6 +1,9 @@
 import React from 'react'
 import axios from 'axios'
+import ApiEndpoints from './utility/ApiEndpoints'
 import ActionsPanel from './partials/ActionsPanel'
+import FormsTable from './partials/FormsTable'
+import UnitsList from './partials/UnitsList'
 export default function Dashboard() {
 
     const [employeesCount, setemployeesCount] = React.useState(null)
@@ -12,7 +15,7 @@ export default function Dashboard() {
     const [resumedCourses, setresumedCourses] = React.useState([])
 
     React.useEffect(() => {
-        axios.get('api/dashboard').then((response) => {
+        axios.get(ApiEndpoints.dashboard).then((response) => {
             setemployeesCount(response.data.employeesCount)
             settargetedCount(response.data.targetedCount)
             setcoachesCount(response.data.coachesCount)
@@ -72,7 +75,7 @@ export default function Dashboard() {
                                 <h5>اخر نماذج تم تعبئتها</h5>
                             </div>
                             <div className="card-body">
-                                {/* @include('partials.FormsTable',['forms'=>forms]) */}
+                                <FormsTable forms={forms} />
 
                             </div>
                         </div>
@@ -85,7 +88,6 @@ export default function Dashboard() {
                                 <h5 className=''>الدورات الجارية: {resumedCourses.length}</h5>
                             </div>
                             <div className=" card-body">
-                                {/* @include('partials.resumedCoursesTable',['resumedCourses'=>resumedCourses]) */}
                             </div>
                         </div>
 
@@ -97,7 +99,7 @@ export default function Dashboard() {
                         التركيبة الادارية
                     </div>
                     <div className="card-body">
-                        {/* @include('partials.UnitsList2',['units' => units]) */}
+                        <UnitsList units={units} />
                     </div>
                 </div>
 

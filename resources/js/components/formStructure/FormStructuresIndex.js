@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 import ApiEndpoints from '../utility/ApiEndpoints'
+import routes from '../utility/routesEndpoints';
 
 export default function FormStructuresIndex(props) {
     const [structures, setStructures] = React.useState([])
@@ -16,7 +17,7 @@ export default function FormStructuresIndex(props) {
             <div className="card">
                 <div className="card-header">النماذج الخاصة المتوفرة</div>
                 <div className="card-body">
-                <table className="table table-bordered table-condensed" style={{marginBottom: 0}}>
+                    <table className="table table-bordered table-condensed" style={{ marginBottom: 0 }}>
                         <thead>
                             <tr>
                                 <th >رقم قيد النموذج</th>
@@ -28,9 +29,11 @@ export default function FormStructuresIndex(props) {
                         <tbody>
                             {structures.map((structure, index) => (
                                 <tr key={index}>
-                                    <td><a href="{{ route('showStructure',$structure->id) }}">
-                                        {structure.id}
-                                    </a></td>
+                                    <td>
+                                        <a href={routes.showFormStructure + structure.id}>
+                                            {structure.id}
+                                        </a>
+                                    </td>
                                     <td>{structure.type}</td>
                                     <td>
                                         {

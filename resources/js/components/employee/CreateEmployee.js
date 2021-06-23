@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import ApiEndpoints from '../utility/ApiEndpoints'
+import logError from '../utility/logError'
 
 export default function CreateEmployee() {
     const [jobs, setJobs] = React.useState([])
@@ -21,7 +22,16 @@ export default function CreateEmployee() {
     const [documents, setdocuments] = React.useState([])
 
     async function submit() {
-
+        try{
+            const res = await axios.post(ApiEndpoints.createEmployee,{
+                name: name, address: address, employment_date: employment_date,
+                basic_salary:basic_salary, phone_number:phone_number, job_id:job_id,
+                email:email
+            })
+            console.log(res.data)
+        }catch(error){
+            logError(error)
+        }
     }
 
     return (
@@ -72,7 +82,7 @@ export default function CreateEmployee() {
                     </li>
                     <li className="list-group-item">
                         <label htmlFor="documents[]">مستندات الموظف</label>
-                        <input name="documents[]" type="file" accept="image/*" multiple id="documents[]" />
+                        <input onChange={(e) => setdocuments(e.target.files)} name="documents[]" type="file" accept="image/*" multiple id="documents[]" />
                     </li>
                     <li className="list-group-item">
                         <input onClick={submit} type="button" value="تسجيل" />
