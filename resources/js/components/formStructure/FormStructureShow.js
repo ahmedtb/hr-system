@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import ApiEndpoints from '../utility/ApiEndpoints'
 import routes from '../utility/routesEndpoints'
-
+import Fields from '../fields/Fields'
 import { useParams, Link } from 'react-router-dom';
 
 export default function FormStructureShow(props) {
@@ -27,14 +27,17 @@ export default function FormStructureShow(props) {
                 </div>
 
                 <div className="card-body">
-                    {
+                    <Fields fields={structure?.array_of_fields.fields} type='render' />
+
+                    {/* {
                         structure?.array_of_fields.fields.map((field, index) => (
                             <div key={index} className='list-group mb-5'>
                                 <div className="list-group-item">
+
                                 </div>
                             </div>
                         ))
-                    }
+                    } */}
 
                     <form action="{{ route('generateForm', ['form_structure_id' => $structure->id]) }}" method="get">
                         <input type="submit" value="انشاء نسخة نموذج" />

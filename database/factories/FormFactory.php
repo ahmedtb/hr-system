@@ -94,17 +94,12 @@ class FormFactory extends Factory
     public function definition()
     {
         $form_structure = FormStructure::factory()->create();
-        $unfilled_fields = $form_structure->array_of_fields->getFields();
-        $filled_fields = [];
+        $form_structure->array_of_fields->generateMockedValues();
 
-        foreach ($unfilled_fields as $fieldInstance) {
-            $fieldInstance->generateMockedValue();
-            array_push($filled_fields, $fieldInstance);
-        }
 
         return [
             'form_structure_id' => $form_structure->id,
-            'filled_fields' => $filled_fields
+            'filled_fields' => $form_structure->array_of_fields
         ];
     }
 
@@ -112,11 +107,11 @@ class FormFactory extends Factory
     {
         return $this->state(function (array $attributes) use ($form_structure_id) {
             $structure = FormStructure::where('id', $form_structure_id)->first();
-            $ArrayOfFieldsInstance = $structure->array_of_fields;
-            $ArrayOfFieldsInstance->generateMockedValues();
+            $structure->array_of_fields->generateMockedValues();
+
             return [
                 'form_structure_id' => $structure->id,
-                'filled_fields' => $ArrayOfFieldsInstance
+                'filled_fields' => $structure->array_of_fields
             ];
         });
     }

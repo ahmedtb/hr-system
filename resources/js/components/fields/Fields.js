@@ -7,6 +7,13 @@ import TableField from './TableField'
 import GenderField from './GenderField'
 import SocialStatusField from './SocialStatusField'
 import PhoneNumberField from './PhoneNumberField'
+import EmailField from './EmailField'
+import DoubleField from './DoubleField'
+import JobField from './JobField'
+import RatingField from './RatingField'
+import NumberField from './NumberField'
+import LabelField from './LabelField'
+import CustomRatingField from './CustomRatingField'
 
 export default function Fields(props) {
     const fields = props.fields
@@ -90,6 +97,64 @@ export default function Fields(props) {
                                 index={index}
                                 onChange={(value) => changeField(index, value)}
                             />
+                        case 'App\\FieldsTypes\\EmailField':
+                            return <EmailField
+                                key={index}
+                                type={type}
+                                value={field}
+                                index={index}
+                                onChange={(value) => changeField(index, value)}
+                            />
+                        case 'App\\FieldsTypes\\DoubleField':
+                            return <DoubleField
+                                key={index}
+                                type={type}
+                                value={field}
+                                index={index}
+                                onChange={(value) => changeField(index, value)}
+                            />
+                        case 'App\\FieldsTypes\\JobField':
+                            return <JobField
+                                key={index}
+                                type={type}
+                                value={field}
+                                index={index}
+                                onChange={(value) => changeField(index, value)}
+                            />
+
+                        case 'App\\FieldsTypes\\RatingField':
+                            return <RatingField
+                                key={index}
+                                type={type}
+                                value={field}
+                                index={index}
+                                onChange={(value) => changeField(index, value)}
+                            />
+                        case 'App\\FieldsTypes\\NumberField':
+                            return <NumberField
+                                key={index}
+                                type={type}
+                                value={field}
+                                index={index}
+                                onChange={(value) => changeField(index, value)}
+                            />
+                        case 'App\\FieldsTypes\\LabelField':
+                            return <LabelField
+                                key={index}
+                                type={type}
+                                value={field}
+                                index={index}
+                                onChange={(value) => changeField(index, value)}
+                            />
+                        case 'App\\FieldsTypes\\CustomRatingField':
+                            return <CustomRatingField
+                                key={index}
+                                type={type}
+                                value={field}
+                                index={index}
+                                onChange={(value) => changeField(index, value)}
+                            />
+
 
                         default: return <div key={index}>{field.class}</div>
                     }
