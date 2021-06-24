@@ -1,37 +1,35 @@
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
+import { useParams } from 'react-router';
+import axios from 'axios';
+import ApiEndpoints from '../utility/ApiEndpoints';
+import logError from '../utility/logError';
 
-
-function FormSearch(props) {
-
-    const inputs = (JSON.parse(props.inputs))
-    const formRoute = props.formRoute
-    console.log(inputs)
+export default function FormSearch(props) {
+    const {form_structure_id} = useParams()
+    const [structure, setStructure] = React.useState(null)
+    async function getStructure(){
+        try{
+            const res = await axios.get(ApiEndpoints.showFormStructure.replace(':id',form_structure_id))
+            setStructure(res.data)
+        }catch(err){
+            logError(err)
+        }
+    }
     return (
 
-        <form method="POST" action={formRoute} acceptCharset="UTF-8">
-            <input type="hidden" name="_token" value={csrf_token} />
+        <>            
+        
 
             <ul class="list-group">
-                
+
 
                 <li class="list-group-item">
-                    <input type="submit" value="بحث" />
+                    <input type="button" onClick={} value="بحث" />
                 </li>
 
             </ul>
 
-        </form>
+        </>
 
     );
-}
-
-export default FormSearch;
-
-if (document.getElementById('FormSearch')) {
-    var inputs = document.getElementById('FormSearch').getAttribute('inputs');
-    var formRoute = document.getElementById('FormSearch').getAttribute('formRoute');
-    ReactDOM.render(<FormSearch
-        inputs={inputs} formRoute={formRoute}
-    />, document.getElementById('FormSearch'));
 }

@@ -9,6 +9,9 @@ import FormStructuresIndex from './formStructure/FormStructuresIndex'
 import FormStructureShow from './formStructure/FormStructureShow'
 import FormsIndex from './form/FormsIndex'
 import FormView from './form/FormView'
+import FormCreate from './form/FormCreate'
+import FormSearch from './form/FormSearch'
+
 import FormStructureCreate from './formStructure/FormStructuresCreate'
 import CreateCoach from './coach/CreateCoach'
 import CreateProgram from './program/CreateProgram'
@@ -24,6 +27,8 @@ class App extends Component {
                         <Route exact path={routes.showFormStructure+':id'} component={FormStructureShow} />
                         <Route exact path={routes.showForms} component={FormsIndex} />
                         <Route exact path={routes.showForm} component={FormView} />
+                        <Route exact path={routes.generatedForm} component={FormCreate} />
+                        <Route exact path={routes.searchForms} component={FormSearch} />
 
                         <Route exact path={routes.createFormStructureForm} component={FormStructureCreate} />
                         <Route exact path={routes.createCoachForm} component={CreateCoach} />

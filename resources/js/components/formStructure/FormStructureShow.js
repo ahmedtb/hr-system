@@ -2,6 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import ApiEndpoints from '../utility/ApiEndpoints'
 import routes from '../utility/routesEndpoints'
+import logError from '../utility/logError'
+
 import Fields from '../fields/Fields'
 import { useParams, Link } from 'react-router-dom';
 
@@ -16,32 +18,43 @@ export default function FormStructureShow(props) {
 
         })
     }, [])
+
+    const [link, setlink] = React.useState(null)
+    async function generateForm() {
+        try {
+            const res = await axios.post(ApiEndpoints.generateForm, {
+                'form_structure_id': structure.id
+            })
+            setlink(routes.generatedForm.replace(':access_token',res.data))
+            console.log(res.data)
+        } catch (err) {
+            logError(err)
+        }
+    }
+
     return (
         <div className="col-md-10">
 
+            <div className='card'>
+                <div className="card-body">
+                    
+                    <Link to={link ?? ''}>{link ?? ''}</Link>
+
+                </div>
+            </div>
 
             <div className="card">
                 <div className="card-header">
                     نموذج {structure?.id}
-                    <Link to={routes.searchForms}>search</Link>
+                    <Link to={routes.searchForms.replace(':form_structure_id',structure?.id)}>search</Link>
                 </div>
 
                 <div className="card-body">
                     <Fields fields={structure?.array_of_fields.fields} type='render' />
 
-                    {/* {
-                        structure?.array_of_fields.fields.map((field, index) => (
-                            <div key={index} className='list-group mb-5'>
-                                <div className="list-group-item">
-
-                                </div>
-                            </div>
-                        ))
-                    } */}
-
-                    <form action="{{ route('generateForm', ['form_structure_id' => $structure->id]) }}" method="get">
-                        <input type="submit" value="انشاء نسخة نموذج" />
-                    </form>
+                    <button onClick={generateForm}>
+                        انشاء نسخة نموذج
+                    </button>
                 </div>
 
             </div>

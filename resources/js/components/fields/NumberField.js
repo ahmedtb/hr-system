@@ -17,4 +17,10 @@ export default function NumberField(props) {
                 </div>
             </div>
         );
+        else if (type == 'input')
+        return (
+            <div className='row'>
+                {field['class']}
+            </div>
+        )
 }

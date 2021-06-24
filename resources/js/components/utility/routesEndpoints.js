@@ -6,11 +6,12 @@ const routes = {
     showFormStructure: '/react/structure/',
     showForms: '/react/formIndex',
     showForm: '/react/form/:id',
+    generatedForm: '/react/form/token/:access_token',
+    searchForms: '/react/form/search/:form_structure_id',
 
     createFormStructureForm: '/react/structureCreate',
     createCoachForm: '/react/coachCreate',
     createProgramForm: '/react/programCreate',
-    searchForms: '/react/form/search/',
 }
 
 export default routes;

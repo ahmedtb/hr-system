@@ -23,4 +23,10 @@ export default function GenderField(props) {
                 </div>
             </div>
         );
+        else if (type == 'input')
+        return (
+            <div className='row'>
+                {field['class']}
+            </div>
+        )
 }

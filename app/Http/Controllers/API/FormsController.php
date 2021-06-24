@@ -35,10 +35,10 @@ class FormsController extends Controller
             'form_structure_id' => $request->form_structure_id,
             'access_token' => Str::random(10)
         ]);
-        return 'api/getFormStructure/' . $formAccessToken->access_token;
+        return $formAccessToken->access_token;
     }
 
-    public function getFormStructure(Request $request, $access_token)
+    public function getGeneratedForm(Request $request, $access_token)
     {
         $formAccessToken = FormAccessToken::where('access_token', $access_token)->first();
         if ($formAccessToken) {

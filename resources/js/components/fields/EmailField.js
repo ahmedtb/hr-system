@@ -13,4 +13,10 @@ export default function EmailField(props) {
                 <div class='p-2 border border-1 rounded'>{field['value']}</div>
             </>
         );
+        else if (type == 'input')
+        return (
+            <div className='row'>
+                {field['class']}
+            </div>
+        )
 }

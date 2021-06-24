@@ -44,7 +44,7 @@ Route::post('targeted/create', [TargetedIndividualsController::class,'create']);
 Route::get('form/index', [FormsController::class,'index']);
 Route::get('form/{id}', [FormsController::class,'show']);
 Route::post('generateForm', [FormsController::class,'generateForm']);
-Route::get('getFormStructure/{access_token}', [FormsController::class,'getFormStructure']);
+Route::get('getGeneratedForm/{access_token}', [FormsController::class,'getGeneratedForm']);
 Route::post('submitForm', [FormsController::class,'submitForm']);
 Route::get('getForms/{form_structure_id}', [FormsController::class,'getForms']);
 Route::post('form/search/{form_structure_id}', [FormsController::class,'search']);

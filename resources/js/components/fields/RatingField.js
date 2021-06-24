@@ -41,4 +41,10 @@ export default function RatingField(props) {
             </div>
         </div>
         );
+        else if (type == 'input')
+        return (
+            <div className='row'>
+                {field['class']}
+            </div>
+        )
 }

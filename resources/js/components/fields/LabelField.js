@@ -17,4 +17,10 @@ export default function LabelField(props) {
 
             </div>
         );
+        else if (type == 'input')
+        return (
+            <div className='row'>
+                {field['class']}
+            </div>
+        )
 }

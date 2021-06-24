@@ -21,4 +21,10 @@ export default function CustomRatingField(props) {
                 </div>
             </>
         );
+        else if (type == 'input')
+        return (
+            <div className='row'>
+                {field['class']}
+            </div>
+        )
 }
