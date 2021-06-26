@@ -46,9 +46,9 @@ class FormsEndpointsTests extends TestCase
             'form_structure_id' => FormStructure::factory()->create()->id,
         ]);
 
-        $access_token = explode('/', $response->content())[2];
+        $access_token = $response->content();
         // use the url to get the form....user accessable link
-        $formStructure = $this->getJson($response->content())->json();
+        $formStructure = $this->getJson('/api/getGeneratedForm/' . $access_token)->json();
 
         $array_of_fieldsInstance = ArrayOfFields::fromArray($formStructure['array_of_fields']);
         $this->assertNull(Form::first());
@@ -61,7 +61,7 @@ class FormsEndpointsTests extends TestCase
 
         // make sure form is disposed in the managment... and the access toke is deleted so no more submitions allowed
         $this->assertNotNull(Form::first());
-        $filled_fieldsIsnstance = ArrayOfFields::fromArray(Form::first()->filled_fields);
+        $filled_fieldsIsnstance = (Form::first()->filled_fields);
         $this->assertEquals(count($filled_fieldsIsnstance), count($array_of_fieldsInstance));
         $this->assertNull(FormAccessToken::first());
     }

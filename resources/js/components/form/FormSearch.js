@@ -51,7 +51,7 @@ export default function FormSearch(props) {
             })
             console.log(res.data)
         }else{
-            console.log('please select fields for the search request')
+            console.log('please select fields for the search')
         }
     }
     return (

@@ -23,7 +23,7 @@ class InterviewsController extends Controller
 
         $goodAssessment = [];
         foreach ($forms as $form) {
-            $fieldsArrayInstance = ArrayOfFields::fromArray($form->filled_fields);
+            $fieldsArrayInstance = ($form->filled_fields);
             if($fieldsArrayInstance->getFields()[0]->getRow(15) == ['','good','','','']){
                 array_push($goodAssessment,$form);
             }

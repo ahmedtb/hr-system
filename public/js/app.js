@@ -5865,7 +5865,7 @@ function FormSearch(props) {
               break;
 
             case 11:
-              console.log('please select fields for the search request');
+              console.log('please select fields for the search');
 
             case 12:
             case "end":

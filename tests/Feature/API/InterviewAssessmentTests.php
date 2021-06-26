@@ -8,7 +8,9 @@ use App\Models\FormStructure;
 use App\FieldsTypes\DateField;
 use App\FieldsTypes\StringField;
 use App\FieldsTypes\TableField2;
+use App\FieldsTypes\OptionsField;
 use App\FieldsTypes\ArrayOfFields;
+use App\Models\FormTables\InterviewAssessmentForm;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class InterviewAssessmentTests extends TestCase
@@ -21,25 +23,29 @@ class InterviewAssessmentTests extends TestCase
     {
         parent::setup();
 
-        // $this->withoutExceptionHandling();
         $unfilled_fields = new ArrayOfFields(array(
-            new TableField2(
-                'نموذج تقييم مقابلة شخصية',
-                array(
-                    'تقييم',
-                    'ممتاز',
-                    'جيد',
-                    'متوسط',
-                    'ضعيف'
-                ),
-                16
-            ),
+            new OptionsField('المظهر',['ممتاز','جيد','متوسط','ضعيف']),
+            new OptionsField('تعريفه لنفسه',['ممتاز','جيد','متوسط','ضعيف']),
+            new OptionsField('الشخصية',['ممتاز','جيد','متوسط','ضعيف']),
+            new OptionsField('اللغة الانجليزية',['ممتاز','جيد','متوسط','ضعيف']),
+            new OptionsField('الثقافة',['ممتاز','جيد','متوسط','ضعيف']),
+            new OptionsField('اللغة العربية',['ممتاز','جيد','متوسط','ضعيف']),
+            new OptionsField('المبادرة',['ممتاز','جيد','متوسط','ضعيف']),
+            new OptionsField('مهارات المشاركة',['ممتاز','جيد','متوسط','ضعيف']),
+            new OptionsField('مهارة المشاركة',['ممتاز','جيد','متوسط','ضعيف']),
+            new OptionsField('الاستيعاب',['ممتاز','جيد','متوسط','ضعيف']),
+            new OptionsField('اتخاذ القرار',['ممتاز','جيد','متوسط','ضعيف']),
+            new OptionsField('ملائمة المؤهل العلمي لمتطلبات الوظيفة',['ممتاز','جيد','متوسط','ضعيف']),
+            new OptionsField('ملائمة الخبرات العلمي لمتطلبات الوظيفة',['ممتاز','جيد','متوسط','ضعيف']),
+            new OptionsField('ملائمة المهارات المكتسبة لمتطلبات الوظيفة',['ممتاز','جيد','متوسط','ضعيف']),
+            new OptionsField('مدى استطاعته لحل المشاكل',['ممتاز','جيد','متوسط','ضعيف']),
+            new OptionsField('مدى تعامله مع الضغظ والتوتر الوظيفي',['ممتاز','جيد','متوسط','ضعيف']),
+            new OptionsField('الشجاعة الادبية الوثقة بالنفس',['ممتاز','جيد','متوسط','ضعيف']),
             new StringField('اسم مجري المقابلة'),
-            new StringField('التوقيع'),
             new DateField('تاريخ المقابلة ')
         ));
         $this->formStructure = FormStructure::factory()->create([
-            'type' => 'interview assessment',
+            'type' => 'نموذج تقييم مقابلة شخصية',
             'array_of_fields' => $unfilled_fields
         ]);
     }
@@ -49,30 +55,10 @@ class InterviewAssessmentTests extends TestCase
         $response = $this->postJson('api/generateForm', [
             'form_structure_id' => $this->formStructure->id,
         ]);
-        $access_token = explode('/', $response->content())[2];
+        $access_token = $response->content();
 
         $form = Form::factory()->forStructure( $this->formStructure->id)->make();
-        $form->filled_fields->getFields()[0]->setColumn(
-            array(
-                'المظهر',
-                'تعريفه لنفسه',
-                'الشخصية',
-                'اللغة الانجليزية',
-                'الثقافة',
-                'اللغة العربية',
-                'المبادرة',
-                'مهارات المشاركة',
-                'الاستيعاب',
-                'اتخاد القرار',
-                'ملائمة المؤهل العلمي لمتطلبات الوظيفة',
-                'مهارات المشاركة',
-                'ملائمة المهارات المكتسبة لمتطلبات الوظيفة',
-                'مدى استطاعته لحل المشاكل',
-                'مدى تعامله مع الضغط والتوتر الوظيفي',
-                'الشجاعة الأدبية والثقة بالنفس',
-            ),
-            0
-        );
+
         $this->postJson('api/submitForm', [
             'access_token' => $access_token,
             'fields' => $form->filled_fields,
@@ -95,11 +81,11 @@ class InterviewAssessmentTests extends TestCase
 
         // two good assessed forms
         $form = Form::factory()->forStructure($this->formStructure->id)->create();
-        $form->filled_fields->getFields()[0]->setElement('good',1,15);
+        $form->filled_fields->getFields()[0]->setValue('ممتاز');
         $form->save();
 
         $form = Form::factory()->forStructure($this->formStructure->id)->create();
-        $form->filled_fields->getFields()[0]->setElement('good',1,15);
+        $form->filled_fields->getFields()[0]->setValue('ممتاز');
         $form->save();
 
         $response = $this->getJson('api/getGoodAssessments')->assertOk()->assertJsonCount(2);

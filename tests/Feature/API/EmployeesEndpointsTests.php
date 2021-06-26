@@ -37,12 +37,6 @@ class EmployeesEndpointsTests extends TestCase
         ])->assertOk()->assertJson(['success' => 'employee created']);
         // dd($response->json());
         $this->assertNotEmpty(Employee::first());
-
-
-        $response = $this->postJson('api/createEmployee', [
-            
-        ]);
-        dd($response->json());
     }
 
     public function test_employee_can_be_created_after_creating_job_with_documents_attacked_to_it()
