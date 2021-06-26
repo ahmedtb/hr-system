@@ -3,6 +3,8 @@ import React from 'react';
 export default function TextAreaField(props) {
     const type = props.type
     const field = props.value
+    const [fieldValue, setFieldValue] = React.useState(field['value'])
+
     const index = props.index
     const onChange = props.onChange
 
@@ -11,18 +13,19 @@ export default function TextAreaField(props) {
         return (
             <>
                 {field['label']}
-                <div className='p-5 border border-1 rounded'>{field['value']}</div>
+                <div className='p-5 border border-1 rounded'>{fieldValue}</div>
             </>
         );
     else if (type == 'input'){
         function changeValue(e){
+            setFieldValue(e.target.value)
             field['value'] = e.target.value
             onChange(field)
         }
         return (
             <>
                 tabel area input: {field['label']}
-                <textarea onChange={changeValue} value={field['value']??''} rows="5"></textarea>
+                <textarea onChange={changeValue} value={fieldValue??''} rows="5"></textarea>
             </>
         )
     }

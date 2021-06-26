@@ -3,8 +3,10 @@ export default {
     createEmployeeForm: '',
     createTargetedForm: '',
     showFormsStructure: '/api/structure/index',
-    showFormStructure: '/api/structure/',
-    
+    showFormStructure: '/api/structure/:id',
+
+    formSearch: '/api/form/search/:form_structure_id',
+
     showForms: '/api/form/index',
     showForm: '/api/form/:id',
     generateForm: '/api/generateForm',

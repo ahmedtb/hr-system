@@ -4011,6 +4011,205 @@ function EmailField(props) {
 
 /***/ }),
 
+/***/ "./resources/js/components/fields/Field.js":
+/*!*************************************************!*\
+  !*** ./resources/js/components/fields/Field.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Fields)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _StringField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StringField */ "./resources/js/components/fields/StringField.js");
+/* harmony import */ var _OptionsField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./OptionsField */ "./resources/js/components/fields/OptionsField.js");
+/* harmony import */ var _DateField__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DateField */ "./resources/js/components/fields/DateField.js");
+/* harmony import */ var _TextAreaField__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TextAreaField */ "./resources/js/components/fields/TextAreaField.js");
+/* harmony import */ var _TableField__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./TableField */ "./resources/js/components/fields/TableField.js");
+/* harmony import */ var _GenderField__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./GenderField */ "./resources/js/components/fields/GenderField.js");
+/* harmony import */ var _SocialStatusField__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./SocialStatusField */ "./resources/js/components/fields/SocialStatusField.js");
+/* harmony import */ var _PhoneNumberField__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./PhoneNumberField */ "./resources/js/components/fields/PhoneNumberField.js");
+/* harmony import */ var _EmailField__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./EmailField */ "./resources/js/components/fields/EmailField.js");
+/* harmony import */ var _DoubleField__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./DoubleField */ "./resources/js/components/fields/DoubleField.js");
+/* harmony import */ var _JobField__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./JobField */ "./resources/js/components/fields/JobField.js");
+/* harmony import */ var _RatingField__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./RatingField */ "./resources/js/components/fields/RatingField.js");
+/* harmony import */ var _NumberField__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./NumberField */ "./resources/js/components/fields/NumberField.js");
+/* harmony import */ var _LabelField__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./LabelField */ "./resources/js/components/fields/LabelField.js");
+/* harmony import */ var _CustomRatingField__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./CustomRatingField */ "./resources/js/components/fields/CustomRatingField.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function Fields(props) {
+  var field = props.field;
+  var setField = props.setField;
+  var type = props.type;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.Fragment, {
+    children: function () {
+      switch (field["class"]) {
+        case 'App\\FieldsTypes\\StringField':
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_StringField__WEBPACK_IMPORTED_MODULE_1__.default, {
+            type: type,
+            value: field,
+            onChange: function onChange(value) {
+              return setField(value);
+            }
+          });
+
+        case 'App\\FieldsTypes\\OptionsField':
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_OptionsField__WEBPACK_IMPORTED_MODULE_2__.default, {
+            type: type,
+            value: field,
+            onChange: function onChange(value) {
+              return setField(value);
+            }
+          });
+
+        case 'App\\FieldsTypes\\DateField':
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_DateField__WEBPACK_IMPORTED_MODULE_3__.default, {
+            type: type,
+            value: field,
+            onChange: function onChange(value) {
+              return setField(value);
+            }
+          });
+
+        case 'App\\FieldsTypes\\TextAreaField':
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_TextAreaField__WEBPACK_IMPORTED_MODULE_4__.default, {
+            type: type,
+            value: field,
+            onChange: function onChange(value) {
+              return setField(value);
+            }
+          });
+
+        case 'App\\FieldsTypes\\TableField2':
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_TableField__WEBPACK_IMPORTED_MODULE_5__.default, {
+            type: type,
+            value: field,
+            onChange: function onChange(value) {
+              return setField(value);
+            }
+          });
+
+        case 'App\\FieldsTypes\\GenderField':
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_GenderField__WEBPACK_IMPORTED_MODULE_6__.default, {
+            type: type,
+            value: field,
+            onChange: function onChange(value) {
+              return setField(value);
+            }
+          });
+
+        case 'App\\FieldsTypes\\SocialStatusField':
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_SocialStatusField__WEBPACK_IMPORTED_MODULE_7__.default, {
+            type: type,
+            value: field,
+            onChange: function onChange(value) {
+              return setField(value);
+            }
+          });
+
+        case 'App\\FieldsTypes\\PhoneNumberField':
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_PhoneNumberField__WEBPACK_IMPORTED_MODULE_8__.default, {
+            type: type,
+            value: field,
+            onChange: function onChange(value) {
+              return setField(value);
+            }
+          });
+
+        case 'App\\FieldsTypes\\EmailField':
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_EmailField__WEBPACK_IMPORTED_MODULE_9__.default, {
+            type: type,
+            value: field,
+            onChange: function onChange(value) {
+              return setField(value);
+            }
+          });
+
+        case 'App\\FieldsTypes\\DoubleField':
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_DoubleField__WEBPACK_IMPORTED_MODULE_10__.default, {
+            type: type,
+            value: field,
+            onChange: function onChange(value) {
+              return setField(value);
+            }
+          });
+
+        case 'App\\FieldsTypes\\JobField':
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_JobField__WEBPACK_IMPORTED_MODULE_11__.default, {
+            type: type,
+            value: field,
+            onChange: function onChange(value) {
+              return setField(value);
+            }
+          });
+
+        case 'App\\FieldsTypes\\RatingField':
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_RatingField__WEBPACK_IMPORTED_MODULE_12__.default, {
+            type: type,
+            value: field,
+            onChange: function onChange(value) {
+              return setField(value);
+            }
+          });
+
+        case 'App\\FieldsTypes\\NumberField':
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_NumberField__WEBPACK_IMPORTED_MODULE_13__.default, {
+            type: type,
+            value: field,
+            onChange: function onChange(value) {
+              return setField(value);
+            }
+          });
+
+        case 'App\\FieldsTypes\\LabelField':
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_LabelField__WEBPACK_IMPORTED_MODULE_14__.default, {
+            type: type,
+            value: field,
+            onChange: function onChange(value) {
+              return setField(value);
+            }
+          });
+
+        case 'App\\FieldsTypes\\CustomRatingField':
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_CustomRatingField__WEBPACK_IMPORTED_MODULE_15__.default, {
+            type: type,
+            value: field,
+            onChange: function onChange(value) {
+              return setField(value);
+            }
+          });
+
+        default:
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)("div", {
+            children: field["class"]
+          });
+      }
+    }()
+  });
+}
+
+/***/ }),
+
 /***/ "./resources/js/components/fields/Fields.js":
 /*!**************************************************!*\
   !*** ./resources/js/components/fields/Fields.js ***!
@@ -4792,14 +4991,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
 function StringField(props) {
-  var _field$value;
-
   var type = props.type;
   var field = props.value;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(field['value']),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      fieldValue = _React$useState2[0],
+      setFieldValue = _React$useState2[1];
+
   var index = props.index;
   var onChange = props.onChange;
   if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
@@ -4812,14 +5027,13 @@ function StringField(props) {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
         className: "border border-1 rounded",
         size: "25",
-        value: (_field$value = field['value']) !== null && _field$value !== void 0 ? _field$value : '',
+        value: fieldValue !== null && fieldValue !== void 0 ? fieldValue : '',
         disabled: true
       })
     })]
   });else if (type == 'input') {
-    var _field$value2;
-
     var changeValue = function changeValue(e) {
+      setFieldValue(e.target.value);
       field['value'] = e.target.value;
       onChange(field);
     };
@@ -4835,7 +5049,7 @@ function StringField(props) {
           className: "border border-1 rounded",
           size: "25",
           onChange: changeValue,
-          value: (_field$value2 = field['value']) !== null && _field$value2 !== void 0 ? _field$value2 : ''
+          value: fieldValue !== null && fieldValue !== void 0 ? fieldValue : ''
         })
       })]
     });
@@ -4987,6 +5201,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -4994,17 +5220,22 @@ __webpack_require__.r(__webpack_exports__);
 function TextAreaField(props) {
   var type = props.type;
   var field = props.value;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(field['value']),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      fieldValue = _React$useState2[0],
+      setFieldValue = _React$useState2[1];
+
   var index = props.index;
   var onChange = props.onChange;
   if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: [field['label'], /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
       className: "p-5 border border-1 rounded",
-      children: field['value']
+      children: fieldValue
     })]
   });else if (type == 'input') {
-    var _field$value;
-
     var changeValue = function changeValue(e) {
+      setFieldValue(e.target.value);
       field['value'] = e.target.value;
       onChange(field);
     };
@@ -5012,7 +5243,7 @@ function TextAreaField(props) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
       children: ["tabel area input: ", field['label'], /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("textarea", {
         onChange: changeValue,
-        value: (_field$value = field['value']) !== null && _field$value !== void 0 ? _field$value : '',
+        value: fieldValue !== null && fieldValue !== void 0 ? fieldValue : '',
         rows: "5"
       })]
     });
@@ -5081,7 +5312,7 @@ function FormStructureShow(props) {
       setStructure = _React$useState2[1];
 
   react__WEBPACK_IMPORTED_MODULE_1__.useEffect(function () {
-    axios__WEBPACK_IMPORTED_MODULE_2___default().get(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.showFormStructure + id).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default().get(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.showFormStructure.replace(':id', id)).then(function (response) {
       setStructure(response.data);
     })["catch"](function () {});
   }, []);
@@ -5473,9 +5704,210 @@ function FormCreate(props) {
 /*!****************************************************!*\
   !*** ./resources/js/components/form/FormSearch.js ***!
   \****************************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\Users\\dev\\Desktop\\Resources-System\\resources\\js\\components\\form\\FormSearch.js: JSX attributes must only be assigned a non-empty expression. (18:49)\n\n\u001b[0m \u001b[90m 16 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 17 |\u001b[39m                 \u001b[33m<\u001b[39m\u001b[33mli\u001b[39m \u001b[36mclass\u001b[39m\u001b[33m=\u001b[39m\u001b[32m\"list-group-item\"\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 18 |\u001b[39m                     \u001b[33m<\u001b[39m\u001b[33minput\u001b[39m type\u001b[33m=\u001b[39m\u001b[32m\"button\"\u001b[39m onClick\u001b[33m=\u001b[39m{} value\u001b[33m=\u001b[39m\u001b[32m\"بحث\"\u001b[39m \u001b[33m/\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                                                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 19 |\u001b[39m                 \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mli\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 20 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 21 |\u001b[39m             \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mul\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n    at Object._raise (C:\\Users\\dev\\Desktop\\Resources-System\\node_modules\\@babel\\parser\\lib\\index.js:816:17)\n    at Object.raiseWithData (C:\\Users\\dev\\Desktop\\Resources-System\\node_modules\\@babel\\parser\\lib\\index.js:809:17)\n    at Object.raise (C:\\Users\\dev\\Desktop\\Resources-System\\node_modules\\@babel\\parser\\lib\\index.js:770:17)\n    at Object.jsxParseAttributeValue (C:\\Users\\dev\\Desktop\\Resources-System\\node_modules\\@babel\\parser\\lib\\index.js:5065:16)\n    at Object.jsxParseAttribute (C:\\Users\\dev\\Desktop\\Resources-System\\node_modules\\@babel\\parser\\lib\\index.js:5114:46)\n    at Object.jsxParseOpeningElementAfterName (C:\\Users\\dev\\Desktop\\Resources-System\\node_modules\\@babel\\parser\\lib\\index.js:5134:28)\n    at Object.jsxParseOpeningElementAt (C:\\Users\\dev\\Desktop\\Resources-System\\node_modules\\@babel\\parser\\lib\\index.js:5127:17)\n    at Object.jsxParseElementAt (C:\\Users\\dev\\Desktop\\Resources-System\\node_modules\\@babel\\parser\\lib\\index.js:5159:33)\n    at Object.jsxParseElementAt (C:\\Users\\dev\\Desktop\\Resources-System\\node_modules\\@babel\\parser\\lib\\index.js:5175:32)\n    at Object.jsxParseElementAt (C:\\Users\\dev\\Desktop\\Resources-System\\node_modules\\@babel\\parser\\lib\\index.js:5175:32)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ FormSearch)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utility/ApiEndpoints */ "./resources/js/components/utility/ApiEndpoints.js");
+/* harmony import */ var _utility_logError__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utility/logError */ "./resources/js/components/utility/logError.js");
+/* harmony import */ var _fields_Field__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../fields/Field */ "./resources/js/components/fields/Field.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+
+function FormSearch(props) {
+  var _useParams = (0,react_router__WEBPACK_IMPORTED_MODULE_7__.useParams)(),
+      form_structure_id = _useParams.form_structure_id;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_1__.useState(null),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      structure = _React$useState2[0],
+      setStructure = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_1__.useState(null),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      fields = _React$useState4[0],
+      setFields = _React$useState4[1];
+
+  function getStructure() {
+    return _getStructure.apply(this, arguments);
+  }
+
+  function _getStructure() {
+    _getStructure = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.showFormStructure.replace(':id', form_structure_id));
+
+            case 3:
+              res = _context.sent;
+              setStructure(res.data);
+              setFields(res.data.array_of_fields.fields);
+              _context.next = 11;
+              break;
+
+            case 8:
+              _context.prev = 8;
+              _context.t0 = _context["catch"](0);
+              (0,_utility_logError__WEBPACK_IMPORTED_MODULE_4__.default)(_context.t0);
+
+            case 11:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[0, 8]]);
+    }));
+    return _getStructure.apply(this, arguments);
+  }
+
+  function _setField(index, value) {
+    var newArr = _toConsumableArray(fields);
+
+    newArr[index] = value;
+    setFields(newArr);
+  }
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_1__.useState([]),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      selects = _React$useState6[0],
+      setSelects = _React$useState6[1];
+
+  function fieldSelection(index) {
+    var newArr = _toConsumableArray(selects);
+
+    newArr[index] = selects[index] ? !selects[index] : true;
+    setSelects(newArr);
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_1__.useEffect(function () {
+    getStructure();
+  }, []);
+
+  function submit() {
+    return _submit.apply(this, arguments);
+  }
+
+  function _submit() {
+    _submit = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      var submitFields, res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              submitFields = [];
+              selects.map(function (select, index) {
+                if (select == true) submitFields.push(fields[index]);
+              });
+              console.log(submitFields);
+
+              if (!(submitFields.length > 0)) {
+                _context2.next = 11;
+                break;
+              }
+
+              structure.array_of_fields.fields = submitFields;
+              _context2.next = 7;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.formSearch.replace(':form_structure_id', form_structure_id), {
+                fields: structure.array_of_fields
+              });
+
+            case 7:
+              res = _context2.sent;
+              console.log(res.data);
+              _context2.next = 12;
+              break;
+
+            case 11:
+              console.log('please select fields for the search request');
+
+            case 12:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+    return _submit.apply(this, arguments);
+  }
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("ul", {
+      className: "list-group",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
+        className: "list-group-item",
+        children: fields === null || fields === void 0 ? void 0 : fields.map(function (field, index) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+              type: "checkbox",
+              onChange: function onChange() {
+                return fieldSelection(index);
+              }
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_fields_Field__WEBPACK_IMPORTED_MODULE_5__.default, {
+              type: 'input',
+              field: field,
+              setField: function setField(value) {
+                return _setField(index, value);
+              }
+            })]
+          }, index);
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
+        className: "list-group-item",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+          onClick: submit,
+          children: "submit search"
+        })
+      })]
+    })
+  });
+}
 
 /***/ }),
 
@@ -6115,7 +6547,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   createEmployeeForm: '',
   createTargetedForm: '',
   showFormsStructure: '/api/structure/index',
-  showFormStructure: '/api/structure/',
+  showFormStructure: '/api/structure/:id',
+  formSearch: '/api/form/search/:form_structure_id',
   showForms: '/api/form/index',
   showForm: '/api/form/:id',
   generateForm: '/api/generateForm',

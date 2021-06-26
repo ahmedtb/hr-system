@@ -3,6 +3,7 @@ import React from 'react';
 export default function StringField(props) {
     const type = props.type
     const field = props.value
+    const [fieldValue, setFieldValue] = React.useState(field['value'])
     const index = props.index
     const onChange = props.onChange
 
@@ -13,13 +14,14 @@ export default function StringField(props) {
                     حقل نص عادي بعنوان: {field['label']}
                 </div>
                 <div className="col-6">
-                    <input className='border border-1 rounded' size="25" value={field['value'] ?? ''} disabled />
+                    <input className='border border-1 rounded' size="25" value={fieldValue ?? ''} disabled />
                 </div>
             </div>
 
         );
     else if (type == 'input'){
         function changeValue(e){
+            setFieldValue(e.target.value)
             field['value'] = e.target.value
             onChange(field)
         }
@@ -29,7 +31,7 @@ export default function StringField(props) {
                     {field['label']}
                 </div>
                 <div className="col-6">
-                    <input className='border border-1 rounded' size="25" onChange={changeValue} value={field['value'] ?? ''} />
+                    <input className='border border-1 rounded' size="25" onChange={changeValue} value={fieldValue ?? ''} />
                 </div>
             </div>
         )

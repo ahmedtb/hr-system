@@ -12,7 +12,7 @@ export default function FormStructureShow(props) {
     const { id } = useParams();
     const [structure, setStructure] = React.useState(null)
     React.useEffect(() => {
-        axios.get(ApiEndpoints.showFormStructure + id).then((response) => {
+        axios.get(ApiEndpoints.showFormStructure.replace(':id',id)).then((response) => {
             setStructure(response.data)
         }).catch(() => {
 
