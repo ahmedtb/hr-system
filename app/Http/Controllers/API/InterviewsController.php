@@ -10,6 +10,8 @@ use App\Http\Controllers\Controller;
 
 class InterviewsController extends Controller
 {
+
+    
     public function getInterviewsAssessments(Request $request)
     {
         $structure = FormStructure::where('type', 'interview assessment')->first();

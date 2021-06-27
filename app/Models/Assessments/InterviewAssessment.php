@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Models\FormTables;
+namespace App\Models\Assessments;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TrainingPeriodAssessmentForm extends Model
+class InterviewAssessment extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\API\assessments\TrialPeriodAssessmentsController;
+use App\Http\Controllers\API\AssessmentsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\CoachController;
@@ -13,6 +15,7 @@ use App\Http\Controllers\API\FormStructuresController;
 use App\Http\Controllers\API\CoursesAndProgramsController;
 use App\Http\Controllers\API\DashboardController;
 use App\Http\Controllers\API\TargetedIndividualsController;
+use App\Models\Assessments\TrialPeriodAssessment;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,8 +58,6 @@ Route::get('structure/{id}',[FormStructuresController::class,'show']);
 Route::get('structure/get',[FormStructuresController::class,'createForm']);
 Route::post('structure/create',[FormStructuresController::class,'create']);
 
-Route::get('getInterviewsAssessments', [InterviewsController::class,'getInterviewsAssessments']);
-Route::get('getGoodAssessments', [InterviewsController::class,'getGoodAssessments']);
 
 Route::post('employementApproval',[FormsController::class,'employementApproval']);
 
@@ -75,3 +76,11 @@ Route::get('course/{id}/schedual',[CoursesController::class,'getSchedual']);
 Route::get('course/{id}/attendance',[CoursesController::class,'getAttendance']);
 Route::get('course/{id}/forms',[CoursesController::class,'getForms']);
 
+// Route::get('getInterviewsAssessments', [InterviewsController::class,'getInterviewsAssessments']);
+// Route::get('getGoodAssessments', [InterviewsController::class,'getGoodAssessments']);
+
+Route::post('interview/create', [AssessmentsController::class,'createInterview']);
+Route::get('interview/index', [AssessmentsController::class,'indexInterviews']);
+
+Route::post('trialPeriod/create', [TrialPeriodAssessmentsController::class,'create']);
+Route::get('trialPeriod/index', [TrialPeriodAssessmentsController::class,'index']);
