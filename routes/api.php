@@ -1,21 +1,24 @@
 <?php
 
-use App\Http\Controllers\API\assessments\TrialPeriodAssessmentsController;
-use App\Http\Controllers\API\AssessmentsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\CoachController;
 use App\Http\Controllers\API\FormsController;
 use App\Http\Controllers\API\CoursesController;
 use App\Http\Controllers\API\ProgramsController;
+use App\Http\Controllers\API\DashboardController;
 use App\Http\Controllers\API\EmployeesController;
 use App\Http\Controllers\API\ManagmentController;
+use App\Models\Assessments\TrialPeriodAssessment;
 use App\Http\Controllers\API\InterviewsController;
+use App\Http\Controllers\API\AssessmentsController;
 use App\Http\Controllers\API\FormStructuresController;
 use App\Http\Controllers\API\CoursesAndProgramsController;
-use App\Http\Controllers\API\DashboardController;
 use App\Http\Controllers\API\TargetedIndividualsController;
-use App\Models\Assessments\TrialPeriodAssessment;
+use App\Http\Controllers\API\assessments\CoachCourseAssessmentsController;
+use App\Http\Controllers\API\assessments\TrialPeriodAssessmentsController;
+use App\Http\Controllers\API\assessments\TraineeCourseAssessmentsController;
+use App\Http\Controllers\API\assessments\TrainingPeriodAssessmentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,3 +87,12 @@ Route::get('interview/index', [AssessmentsController::class,'indexInterviews']);
 
 Route::post('trialPeriod/create', [TrialPeriodAssessmentsController::class,'create']);
 Route::get('trialPeriod/index', [TrialPeriodAssessmentsController::class,'index']);
+
+Route::post('trainingPeriod/create', [TrainingPeriodAssessmentsController::class,'create']);
+Route::get('trainingPeriod/index', [TrainingPeriodAssessmentsController::class,'index']);
+
+Route::post('traineeCourseAssessment/create', [TraineeCourseAssessmentsController::class,'create']);
+Route::get('traineeCourseAssessment/index', [TraineeCourseAssessmentsController::class,'index']);
+
+Route::post('coachCourseAssessment/create', [CoachCourseAssessmentsController::class,'create']);
+Route::get('coachCourseAssessment/index', [CoachCourseAssessmentsController::class,'index']);
