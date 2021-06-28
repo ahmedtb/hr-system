@@ -7,7 +7,7 @@ function DoubleField(props) {
 
     function setConfig() {
         setField({
-            class: "App\FieldsTypes\DoubleField",
+            class: "App\\FieldsTypes\\DoubleField",
             label: label,
             value: value
         })

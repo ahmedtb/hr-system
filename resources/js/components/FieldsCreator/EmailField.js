@@ -9,7 +9,7 @@ function EmailField(props) {
 
     function setConfig() {
         setField({
-            class: "App\FieldsTypes\EmailField",
+            class: "App\\FieldsTypes\\EmailField",
             label: label,
             value: value
         })

@@ -8,7 +8,7 @@ function DateField(props) {
 
     function setConfig() {
         setField({
-            class: "App\FieldsTypes\DateField",
+            class: "App\\FieldsTypes\\DateField",
             label: label,
             value: value
         })

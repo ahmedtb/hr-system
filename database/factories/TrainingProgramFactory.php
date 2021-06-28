@@ -25,7 +25,7 @@ class TrainingProgramFactory extends Factory
             'title' => $this->faker->title(),
             'goals' => $this->faker->text(),
             'category' => $this->faker->word(),
-            'period' => $this->faker->time(),
+            'period' => $this->faker->numberBetween(0,1000),
             'details' => $this->faker->text()
         ];
     }

@@ -9,7 +9,7 @@ function SocialStatusField(props) {
 
     function setConfig() {
         setField({
-            class: "App\FieldsTypes\SocialStatusField",
+            class: "App\\FieldsTypes\\SocialStatusField",
             label: label,
             value: value
         })

@@ -8,7 +8,7 @@ function JobField(props) {
 
     function setConfig() {
         setField({
-            class: "App\FieldsTypes\JobField",
+            class: "App\\FieldsTypes\\JobField",
             label: label,
             value: value
         })

@@ -2,6 +2,8 @@ export default {
     dashboard: '/api/dashboard',
     createEmployeeForm: '',
     createTargetedForm: '',
+    createTargeted: '/api/targeted/create',
+
     showFormsStructure: '/api/structure/index',
     showFormStructure: '/api/structure/:id',
 
@@ -13,11 +15,11 @@ export default {
     getGeneratedForm: '/api/getGeneratedForm/:access_token',
     submitForm: '/api/submitForm/',
 
-    createFormStructureForm: '/api/structure/create',
+    createFormStructure: '/api/structure/create',
     createCoach: '/api/coach',
     createCoachForm: '/api/coach',
     createProgramForm: '',
-    createProgram: '',
+    createProgram: '/api/program',
 
     createEmployeeForm: '/api/createEmployeeForm',
     createEmployee: '/api/createEmployee'

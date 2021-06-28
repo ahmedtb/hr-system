@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\FormStructure;
 use App\Rules\ArrayOfFieldsRule;
-use Illuminate\Http\Request;
+use App\FieldsTypes\ArrayOfFields;
+use App\Http\Controllers\Controller;
 
 class FormStructuresController extends Controller
 {
@@ -15,7 +16,6 @@ class FormStructuresController extends Controller
             'type' => 'required|string',
             'array_of_fields' => [new ArrayOfFieldsRule()]
         ]);
-
         FormStructure::create($validatedData);
 
         return response(['success' => 'form structure created']);

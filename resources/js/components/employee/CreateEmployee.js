@@ -22,14 +22,23 @@ export default function CreateEmployee() {
     const [documents, setdocuments] = React.useState([])
 
     async function submit() {
-        try{
-            const res = await axios.post(ApiEndpoints.createEmployee,{
-                name: name, address: address, employment_date: employment_date,
-                basic_salary:basic_salary, phone_number:phone_number, job_id:job_id,
-                email:email
-            })
+
+        try {
+            const data = new FormData()
+            if (name) data.append('name', name)
+            if (address) data.append('address', address)
+            if (employment_date) data.append('employment_date', employment_date)
+            if (basic_salary) data.append('basic_salary', basic_salary)
+            if (phone_number) data.append('phone_number', phone_number)
+            if (job_id) data.append('job_id', job_id)
+            if (email) data.append('email', email)
+            documents.forEach(image => {
+                data.append('documents[]',image)
+            });
+
+            const res = await axios.post(ApiEndpoints.createEmployee, data)
             console.log(res.data)
-        }catch(error){
+        } catch (error) {
             logError(error)
         }
     }
@@ -39,9 +48,6 @@ export default function CreateEmployee() {
             <div className="card-header">اضافة موظف</div>
 
             <div className="card-body">
-                {/* <form method="POST" action={ApiEndpoints.createEmployee} acceptCharset="UTF-8"> */}
-                <input type="hidden" name="_token" value={csrf_token} />
-
                 <ul className="list-group">
                     <li className="list-group-item">
                         <label htmlFor="name">اسم الموظف</label>
@@ -82,15 +88,21 @@ export default function CreateEmployee() {
                     </li>
                     <li className="list-group-item">
                         <label htmlFor="documents[]">مستندات الموظف</label>
-                        <input onChange={(e) => setdocuments(e.target.files)} name="documents[]" type="file" accept="image/*" multiple id="documents[]" />
+                        <input onChange={(e) => {
+                            let array = []
+                            for( var i = 0; i < e.target.files.length; i++ ){
+                                let file = e.target.files[i];
+                                array.push(file);
+                            }
+                            console.log(array)
+                            setdocuments(array)
+                        }} name="documents[]" type="file" accept="image/*" multiple id="documents[]" />
                     </li>
                     <li className="list-group-item">
                         <input onClick={submit} type="button" value="تسجيل" />
                     </li>
 
                 </ul>
-
-                {/* </form> */}
             </div>
         </div>
     )

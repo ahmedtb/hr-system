@@ -18,7 +18,7 @@ function OptionsField(props) {
     
     function setConfig() {
         setField({
-            class: "App\FieldsTypes\OptionsField",
+            class: "App\\FieldsTypes\\OptionsField",
             label: label,
             options: options,
             value: value

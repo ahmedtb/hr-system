@@ -15,7 +15,7 @@ function TableField2(props) {
     
     function setConfig() {
         setField({
-            class: "App\FieldsTypes\TableField2",
+            class: "App\\FieldsTypes\\TableField2",
             numberOfRows: numberOfRows,
             columnsTitles: columnsTitles,
             label: label,

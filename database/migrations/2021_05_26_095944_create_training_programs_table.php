@@ -18,7 +18,7 @@ class CreateTrainingProgramsTable extends Migration
             $table->string('title');
             $table->text('goals');
             $table->string('category'); //here it made simple categories as strings...could be developed to seperate table
-            $table->time('period');
+            $table->smallInteger('period');
             $table->text('details');
             $table->timestamps();
         });

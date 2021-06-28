@@ -9,7 +9,7 @@ function RatingField(props) {
 
     function setConfig() {
         setField({
-            class: "App\FieldsTypes\RatingField",
+            class: "App\\FieldsTypes\\RatingField",
             label: label,
             value: value
         })

@@ -9,7 +9,7 @@ function NumberField(props) {
 
     function setConfig() {
         setField({
-            class: "App\FieldsTypes\NumberField",
+            class: "App\\FieldsTypes\\NumberField",
             label: label,
             value: value
         })

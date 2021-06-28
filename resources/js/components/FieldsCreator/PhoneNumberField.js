@@ -9,7 +9,7 @@ function PhoneNumberField(props) {
 
     function setConfig() {
         setField({
-            class: "App\FieldsTypes\PhoneNumberField",
+            class: "App\\FieldsTypes\\PhoneNumberField",
             label: label,
             value: value
         })

@@ -9,7 +9,7 @@ function TextAreaField(props) {
 
     function setConfig() {
         setField({
-            class: "App\FieldsTypes\TextAreaField",
+            class: "App\\FieldsTypes\\TextAreaField",
             label: label,
             value: value
         })

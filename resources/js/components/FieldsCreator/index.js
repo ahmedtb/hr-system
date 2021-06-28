@@ -1,5 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ApiEndpoints from '../utility/ApiEndpoints'
+import logError from '../utility/logError'
+
+import axios from 'axios';
 import StringField from './StringField';
 import TableField2 from './TableField2';
 import TextAreaField from './TextAreaField';
@@ -87,14 +90,30 @@ function FieldsCreator() {
     }
 
     React.useEffect(() => {
-        // console.log(fieldsConfigs)
     }, [fieldsConfigs])
+
+    const [type, setType] = React.useState('')
+
+    async function submit() {
+        try {
+            const res = await axios.post(ApiEndpoints.createFormStructure, {
+                type: type,
+                array_of_fields: {
+                    class: 'App\\FieldsTypes\\ArrayOfFields',
+                    fields: fieldsConfigs
+                }
+            })
+            console.log(res.data)
+
+        } catch (err) {
+            logError(err)
+        }
+    }
 
     return (
 
-        <form method="POST" action="/structure/create" acceptCharset="UTF-8">
-            <input type="hidden" name="_token" value={csrf_token} />
-            name of the form structure <input type="string" name="type" />
+        <>
+            name of the form structure <input type="string" onChange={(e) => setType(e.target.value) } />
 
             <ul className="list-group">
                 {
@@ -128,15 +147,13 @@ function FieldsCreator() {
             </ul>
 
             <ul className="list-group">
-                <input type='submit' />
+                <button onClick={() => submit()}>
+                    submit
+                </button>
             </ul>
-        </form>
+        </>
 
     );
 }
 
 export default FieldsCreator;
-
-if (document.getElementById('FieldsCreator')) {
-    ReactDOM.render(<FieldsCreator />, document.getElementById('FieldsCreator'));
-}

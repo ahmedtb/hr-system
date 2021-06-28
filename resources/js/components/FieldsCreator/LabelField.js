@@ -9,7 +9,7 @@ function LabelField(props) {
 
     function setConfig() {
         setField({
-            class: "App\FieldsTypes\LabelField",
+            class: "App\\FieldsTypes\\LabelField",
             label: label,
             value: value
         })

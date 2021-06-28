@@ -26,23 +26,28 @@ class EmployeesController extends Controller
             'phone_number' => 'required|string',
             'job_id' => 'required|exists:jobs,id',
             'email' => 'required|email',
-            'medal_rating' => 'required|integer',
-            'documents' => 'sometimes|array',
+            'medal_rating' => 'sometimes|integer',
+            'documents.*' => 'sometimes|image|mimes:jpg,jpeg,png,bmp,tiff |max:1024',
         ]);
-        unset($validateddata['documents']);
 
         DB::transaction(function ()  use ($request, $validateddata) {
-            $employee = Employee::create($validateddata);
+            $employee = Employee::create([
+                'name' => $request->name,
+                'address' => $request->address,
+                'employment_date' => $request->employment_date,
+                'basic_salary' => $request->basic_salary,
+                'phone_number' => $request->phone_number,
+                'job_id' => $request->job_id,
+                'email' => $request->email,
+                'medal_rating' => $request->medal_rating,
+            ]);
 
             if ($request->documents) {
-                Validator::make(['documents' => $request->documents], [
-                    'documents.*.name' => 'required|string',
-                    'documents.*.image' => ['required', new Base64Rule(1024)]
-                ])->validate();
-                foreach ($request->documents as $document) {
+                foreach ($request->file('documents') as $document) {
+                    $image = base64_encode(file_get_contents($document->path()));
                     Document::create([
-                        'name' => $document['name'],
-                        'image' => $document['image'],
+                        'name' => $document->getClientOriginalName(),
+                        'image' => $image,
                         'documentable_id' => $employee->id,
                         'documentable_type' => Employee::class
                     ]);
@@ -81,7 +86,7 @@ class EmployeesController extends Controller
             'phone_number' => 'required|string',
             // 'job_id' => 'required|exists:jobs,id',
             'email' => 'required|email',
-            'medal_rating' => 'required|integer'
+            'medal_rating' => 'sometimes|integer'
         ]);
 
         $job = Job::create($jobFields);

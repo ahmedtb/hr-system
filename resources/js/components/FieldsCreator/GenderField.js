@@ -9,7 +9,7 @@ function GenderField(props) {
 
     function setConfig() {
         setField({
-            class: "App\FieldsTypes\GenderField",
+            class: "App\\FieldsTypes\\GenderField",
             label: label,
             value: value
         })
