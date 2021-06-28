@@ -3,13 +3,25 @@ import ReactDOM from 'react-dom';
 
 
 function PhoneNumberField(props) {
-    const index = props.index
-    const fieldindex = 'fields[' + index + ']'
+    const setField = props.setField
+    let label = null
+    let value = ''
+
+    function setConfig() {
+        setField({
+            class: "App\FieldsTypes\PhoneNumberField",
+            label: label,
+            value: value
+        })
+    }
+
+    React.useEffect(() => {
+        setConfig()
+    }, [])
     return (
         <>
-            <input onChange={null} name={fieldindex + "[class]"} type="hidden" value="App\FieldsTypes\PhoneNumberField" />     
-            phone number field label <input name={fieldindex + "[label]"} />
-            <input onChange={null} name={fieldindex + "[value]"} type="hidden" value='' />
+            phone number field label <input onChange={(e) => { label = e.target.value; setConfig(); }} />
+            <input onChange={(e) => { value = e.target.value; setConfig(); }} type="hidden" value='' />
         </>
     );
 }

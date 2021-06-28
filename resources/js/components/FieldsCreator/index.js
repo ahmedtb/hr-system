@@ -22,6 +22,14 @@ const fieldsTypes = [
 ]
 function FieldsCreator() {
 
+    const [fieldsConfigs, setFieldsConfigs] = React.useState([])
+
+    function setFieldConfig(index, config) {
+        let arr = [...fieldsConfigs]
+        arr[index] = config
+        setFieldsConfigs(arr)
+    }
+
     function typeChoice(e) {
         addField(e.target.value)
     }
@@ -30,46 +38,46 @@ function FieldsCreator() {
     function addField(type) {
         switch (type) {
             case 'textArea':
-                setNewFields(old => ([...old, <TextAreaField index={newFields.length} />]))
+                setNewFields(old => ([...old, <TextAreaField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
             case 'table':
-                setNewFields(old => ([...old, <TableField2 index={newFields.length} />]))
+                setNewFields(old => ([...old, <TableField2 setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
             case 'string':
-                setNewFields(old => ([...old, <StringField index={newFields.length} />]))
+                setNewFields(old => ([...old, <StringField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
             case 'socialStatus':
-                setNewFields(old => ([...old, <SocialStatusField index={newFields.length} />]))
+                setNewFields(old => ([...old, <SocialStatusField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
             case 'rating':
-                setNewFields(old => ([...old, <RatingField index={newFields.length} />]))
+                setNewFields(old => ([...old, <RatingField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
             case 'options':
-                setNewFields(old => ([...old, <OptionsField index={newFields.length} />]))
+                setNewFields(old => ([...old, <OptionsField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
             case 'phoneNumber':
-                setNewFields(old => ([...old, <PhoneNumberField index={newFields.length} />]))
+                setNewFields(old => ([...old, <PhoneNumberField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
             case 'number':
-                setNewFields(old => ([...old, <NumberField index={newFields.length} />]))
+                setNewFields(old => ([...old, <NumberField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
             case 'label':
-                setNewFields(old => ([...old, <LabelField index={newFields.length} />]))
+                setNewFields(old => ([...old, <LabelField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
             case 'job':
-                setNewFields(old => ([...old, <JobField index={newFields.length} />]))
+                setNewFields(old => ([...old, <JobField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
             case 'gender':
-                setNewFields(old => ([...old, <GenderField index={newFields.length} />]))
+                setNewFields(old => ([...old, <GenderField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
             case 'email':
-                setNewFields(old => ([...old, <EmailField index={newFields.length} />]))
+                setNewFields(old => ([...old, <EmailField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
             case 'double':
-                setNewFields(old => ([...old, <DoubleField index={newFields.length} />]))
+                setNewFields(old => ([...old, <DoubleField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
             case 'date':
-                setNewFields(old => ([...old, <DateField index={newFields.length} />]))
+                setNewFields(old => ([...old, <DateField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
         }
     }
@@ -77,6 +85,10 @@ function FieldsCreator() {
     function removeField(index) {
         setNewFields(newFields.filter((newField, i) => i != index));
     }
+
+    React.useEffect(() => {
+        // console.log(fieldsConfigs)
+    }, [fieldsConfigs])
 
     return (
 

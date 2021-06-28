@@ -2,33 +2,43 @@ import React from 'react';
 
 
 function OptionsField(props) {
-    const index = props.index
-    const fieldindex = 'fields[' + index + ']'
-
-    const [title, setTitle] = React.useState('')
+    const setField = props.setField
+    let label = null
+    let value = ''
+    let title = ''
+    // const [title, setTitle] = React.useState('')
     const [options, setOptions] = React.useState([])
     function addOption() {
-        setOptions(old => [...old, title])
+        setOptions(pre => [...pre, title])
     }
+
+    React.useEffect(() => {
+        setConfig()
+    }, [options])
+    
+    function setConfig() {
+        setField({
+            class: "App\FieldsTypes\OptionsField",
+            label: label,
+            options: options,
+            value: value
+        })
+    }
+
+
     return (
         <>
-            <input onChange={null} name={fieldindex + "[class]"} type="hidden" value="App\FieldsTypes\OptionsField" />
-            <input onChange={null} name={fieldindex + "[value]"} type="hidden" value='' />
+            <input onChange={(e) => { value = e.target.value; setConfig(); }} type="hidden" value='' />
 
-            options field label <input name={fieldindex + "[label]"} />
-            <input onChange={null} name={fieldindex + "[options]"} type="hidden" value={options} />
+            options field label <input onChange={(e) => { label = e.target.value; setConfig(); }} />
 
             {
                 options.map((option, index) => (
-                    <>
-                        <input onChange={null} name={fieldindex + "[options][" + index + "]"} type="hidden" value={option} />
-
-                        <div key={index}>{option}</div>
-                    </>
+                    <div key={index}>{option}</div>
                 ))
             }
 
-            <input onChange={(e) => setTitle(e.target.value)} />
+            <input onChange={(e) => title = (e.target.value)} />
             <button type="button" onClick={addOption}>add option</button>
         </>
     );

@@ -3,15 +3,24 @@ import ReactDOM from 'react-dom';
 
 
 function StringField(props) {
-    const index = props.index
-    const fieldindex = 'fields[' + index + ']'
-    // const [value, setValue] = React.useState('')
+    const setField = props.setField
+    let label = null
+    let value = ''
+
+    function setConfig() {
+        setField({
+            class: "App\\FieldsTypes\\StringField",
+            label: label,
+            value: value
+        })
+    }
+    React.useEffect(() => {
+        setConfig()
+    }, [])
     return (
         <>
-            <input onChange={null} name={fieldindex + "[class]"} type="hidden" value="App\FieldsTypes\StringField" />
-            string Field <input name={fieldindex + "[label]"} />
-            <input onChange={null} name={fieldindex + "[value]"} type="hidden" value='' />
-            
+            string Field <input onChange={(e) => { label = e.target.value; setConfig(); }} />
+            <input onChange={(e) => { value = e.target.value; setConfig(); }} type="hidden" value='' />            
         </>
     );
 }

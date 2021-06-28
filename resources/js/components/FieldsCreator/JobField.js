@@ -2,13 +2,25 @@ import React from 'react';
 
 
 function JobField(props) {
-    const index = props.index
-    const fieldindex = 'fields[' + index + ']'
+    const setField = props.setField
+    let label = null
+    let value = null
+
+    function setConfig() {
+        setField({
+            class: "App\FieldsTypes\JobField",
+            label: label,
+            value: value
+        })
+    }
+
+    React.useEffect(() => {
+        setConfig()
+    }, [])
     return (
         <>
-            <input onChange={null} name={fieldindex + "[class]"} type="hidden" value="App\FieldsTypes\JobField" />
-            Job field render <input name={fieldindex + "[label]"} />
-            <input onChange={null} name={fieldindex + "[value]"} type="hidden" value='' />
+            Job field render <input onChange={(e) => { label = e.target.value; setConfig(); }} />
+            <input onChange={(e) => { value = e.target.value; setConfig(); }} type="hidden" value='' />
             
         </>
     );

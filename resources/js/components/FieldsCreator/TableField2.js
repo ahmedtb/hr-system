@@ -1,32 +1,39 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-
 
 function TableField2(props) {
     const index = props.index
-    const fieldindex = 'fields[' + index + ']'
-    const fieldClass = props.fieldClass
-    const [rows, setRows] = React.useState(2)
-    const [cols, setCols] = React.useState(2)
+    const setField = props.setField
 
-    function addRow() {
-        // setRows(rows+1)
+    let numberOfRows = 2
+    let label = ''
+    let columnsTitles = ['','']
+    let value = [['',''],['','']]
+
+    React.useEffect(() => {
+        setConfig()
+    }, [])
+    
+    function setConfig() {
+        setField({
+            class: "App\FieldsTypes\TableField2",
+            numberOfRows: numberOfRows,
+            columnsTitles: columnsTitles,
+            label: label,
+            value: value
+        })
     }
 
-    function addColumn() {
-        // setCols(cols+1)
-    }
+    function addColumn(){}
+    function addRow(){}
 
     return (
         <>
-            <input name={fieldindex + "[class]"} type="hidden" value="App\FieldsTypes\TableField2" />                <input type='hidden' value='App\FieldsTypes\StringField' />
-            <input name={fieldindex + "[numberOfRows]"} type="hidden" value="2" />
-            tabel field 2 render <input name={fieldindex + "[label]"} />
+            tabel field 2 render <input onChange={(e) => { label= e.target.value; setConfig(); }} />
             <table className="table">
                 <thead>
                     <tr>
-                        <th scope="col"><input name={fieldindex + "[columnsTitles][0]"} /></th>
-                        <th scope="col"><input name={fieldindex + "[columnsTitles][1]"} /></th>
+                        <th scope="col"><input onChange={(e) => { columnsTitles[0]= e.target.value; setConfig(); }} /></th>
+                        <th scope="col"><input onChange={(e) => { columnsTitles[1]= e.target.value; setConfig(); }} /></th>
                         <th scope="col"><button onClick={addColumn}>
                             add new column
                         </button></th>
@@ -37,10 +44,10 @@ function TableField2(props) {
                     <tr>
 
                         <th scope="row">
-                            <input name={fieldindex + "[value][0][0]"} />
+                            <input onChange={(e) => { value[0][0]= e.target.value; setConfig(); }} />
                         </th>
                         <th scope="row">
-                            <input name={fieldindex + "[value][0][1]"} />
+                            <input onChange={(e) => { value[0][1]= e.target.value; setConfig(); }} />
                         </th>
 
                     </tr>
@@ -48,10 +55,10 @@ function TableField2(props) {
                     <tr>
 
                         <th scope="row">
-                            <input name={fieldindex + "[value][1][0]"} />
+                            <input onChange={(e) => { value[1][0]= e.target.value; setConfig(); }} />
                         </th>
                         <th scope="row">
-                            <input name={fieldindex + "[value][1][1]"} />
+                            <input onChange={(e) => { value[1][1]= e.target.value; setConfig(); }} />
                         </th>
 
                     </tr>

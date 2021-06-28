@@ -3,15 +3,25 @@ import ReactDOM from 'react-dom';
 
 
 function EmailField(props) {
-    const index = props.index
-    const fieldindex = 'fields[' + index + ']'
-    // const [value, setValue] = React.useState('')
+    const setField = props.setField
+    let label = null
+    let value = null
+
+    function setConfig() {
+        setField({
+            class: "App\FieldsTypes\EmailField",
+            label: label,
+            value: value
+        })
+    }
+
+    React.useEffect(() => {
+        setConfig()
+    }, [])
     return (
         <>
-            <input onChange={null} name={fieldindex + "[class]"} type="hidden" value="App\FieldsTypes\EmailField" />
-            email field render <input name={fieldindex + "[label]"} />
-            <input onChange={null} name={fieldindex + "[value]"} type="hidden" value='' />
-            
+            email field render <input onChange={(e) => { label = e.target.value; setConfig(); }} />
+            <input onChange={(e) => { value = e.target.value; setConfig(); }} type="hidden" value='' />
         </>
     );
 }

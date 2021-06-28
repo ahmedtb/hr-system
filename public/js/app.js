@@ -2370,19 +2370,32 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function DateField(props) {
-  var index = props.index;
-  var fieldindex = 'fields[' + index + ']';
+  var setField = props.setField;
+  var label = null;
+  var value = null;
+
+  function setConfig() {
+    setField({
+      "class": "App\FieldsTypes\DateField",
+      label: label,
+      value: value
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      onChange: null,
-      name: fieldindex + "[class]",
-      type: "hidden",
-      value: "App\\FieldsTypes\\DateField"
-    }), "date field ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      name: fieldindex + "[label]"
+    children: ["date field ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+      onChange: function onChange(e) {
+        label = e.target.value;
+        setConfig();
+      }
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      onChange: null,
-      name: fieldindex + "[value]",
+      onChange: function onChange(e) {
+        value = e.target.value;
+        setConfig();
+      },
       type: "hidden",
       value: ""
     })]
@@ -2412,20 +2425,32 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function DoubleField(props) {
-  var index = props.index;
-  var fieldindex = 'fields[' + index + ']'; // const [value, setValue] = React.useState('')
+  var setField = props.setField;
+  var label = null;
+  var value = null;
 
+  function setConfig() {
+    setField({
+      "class": "App\FieldsTypes\DoubleField",
+      label: label,
+      value: value
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      onChange: null,
-      name: fieldindex + "[class]",
-      type: "hidden",
-      value: "App\\FieldsTypes\\DoubleField"
-    }), "double field render ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      name: fieldindex + "[label]"
+    children: ["double field render ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+      onChange: function onChange(e) {
+        label = e.target.value;
+        setConfig();
+      }
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      onChange: null,
-      name: fieldindex + "[value]",
+      onChange: function onChange(e) {
+        value = e.target.value;
+        setConfig();
+      },
       type: "hidden",
       value: ""
     })]
@@ -2457,20 +2482,32 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function EmailField(props) {
-  var index = props.index;
-  var fieldindex = 'fields[' + index + ']'; // const [value, setValue] = React.useState('')
+  var setField = props.setField;
+  var label = null;
+  var value = null;
 
+  function setConfig() {
+    setField({
+      "class": "App\FieldsTypes\EmailField",
+      label: label,
+      value: value
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: null,
-      name: fieldindex + "[class]",
-      type: "hidden",
-      value: "App\\FieldsTypes\\EmailField"
-    }), "email field render ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      name: fieldindex + "[label]"
+    children: ["email field render ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+      onChange: function onChange(e) {
+        label = e.target.value;
+        setConfig();
+      }
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: null,
-      name: fieldindex + "[value]",
+      onChange: function onChange(e) {
+        value = e.target.value;
+        setConfig();
+      },
       type: "hidden",
       value: ""
     })]
@@ -2502,20 +2539,32 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function GenderField(props) {
-  var index = props.index;
-  var fieldindex = 'fields[' + index + ']'; // const [value, setValue] = React.useState('')
+  var setField = props.setField;
+  var label = null;
+  var value = null;
 
+  function setConfig() {
+    setField({
+      "class": "App\FieldsTypes\GenderField",
+      label: label,
+      value: value
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: null,
-      name: fieldindex + "[class]",
-      type: "hidden",
-      value: "App\\FieldsTypes\\GenderField"
-    }), "gender field label ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      name: fieldindex + "[label]"
+    children: ["gender field label ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+      onChange: function onChange(e) {
+        label = e.target.value;
+        setConfig();
+      }
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: null,
-      name: fieldindex + "[value]",
+      onChange: function onChange(e) {
+        value = e.target.value;
+        setConfig();
+      },
       type: "hidden",
       value: ""
     })]
@@ -2545,19 +2594,32 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function JobField(props) {
-  var index = props.index;
-  var fieldindex = 'fields[' + index + ']';
+  var setField = props.setField;
+  var label = null;
+  var value = null;
+
+  function setConfig() {
+    setField({
+      "class": "App\FieldsTypes\JobField",
+      label: label,
+      value: value
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      onChange: null,
-      name: fieldindex + "[class]",
-      type: "hidden",
-      value: "App\\FieldsTypes\\JobField"
-    }), "Job field render ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      name: fieldindex + "[label]"
+    children: ["Job field render ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+      onChange: function onChange(e) {
+        label = e.target.value;
+        setConfig();
+      }
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      onChange: null,
-      name: fieldindex + "[value]",
+      onChange: function onChange(e) {
+        value = e.target.value;
+        setConfig();
+      },
       type: "hidden",
       value: ""
     })]
@@ -2589,17 +2651,27 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function LabelField(props) {
-  var index = props.index;
-  var fieldindex = 'fields[' + index + ']'; // const [value, setValue] = React.useState('')
+  var setField = props.setField;
+  var label = null;
+  var value = '';
 
+  function setConfig() {
+    setField({
+      "class": "App\FieldsTypes\LabelField",
+      label: label,
+      value: value
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: null,
-      name: fieldindex + "[class]",
-      type: "hidden",
-      value: "App\\FieldsTypes\\LabelField"
-    }), "Label field ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      name: fieldindex + "[value]"
+    children: ["Label field ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+      onChange: function onChange(e) {
+        label = e.target.value;
+        setConfig();
+      }
     })]
   });
 }
@@ -2629,19 +2701,32 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function NumberField(props) {
-  var index = props.index;
-  var fieldindex = 'fields[' + index + ']';
+  var setField = props.setField;
+  var label = null;
+  var value = '';
+
+  function setConfig() {
+    setField({
+      "class": "App\FieldsTypes\NumberField",
+      label: label,
+      value: value
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: null,
-      name: fieldindex + "[class]",
-      type: "hidden",
-      value: "App\\FieldsTypes\\NumberField"
-    }), "number field ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      name: fieldindex + "[label]"
+    children: ["number field ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+      onChange: function onChange(e) {
+        label = e.target.value;
+        setConfig();
+      }
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: null,
-      name: fieldindex + "[value]",
+      onChange: function onChange(e) {
+        value = e.target.value;
+        setConfig();
+      },
       type: "hidden",
       value: ""
     })]
@@ -2691,57 +2776,55 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function OptionsField(props) {
-  var index = props.index;
-  var fieldindex = 'fields[' + index + ']';
+  var setField = props.setField;
+  var label = null;
+  var value = '';
+  var title = ''; // const [title, setTitle] = React.useState('')
 
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState([]),
       _React$useState2 = _slicedToArray(_React$useState, 2),
-      title = _React$useState2[0],
-      setTitle = _React$useState2[1];
-
-  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0__.useState([]),
-      _React$useState4 = _slicedToArray(_React$useState3, 2),
-      options = _React$useState4[0],
-      setOptions = _React$useState4[1];
+      options = _React$useState2[0],
+      setOptions = _React$useState2[1];
 
   function addOption() {
-    setOptions(function (old) {
-      return [].concat(_toConsumableArray(old), [title]);
+    setOptions(function (pre) {
+      return [].concat(_toConsumableArray(pre), [title]);
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, [options]);
+
+  function setConfig() {
+    setField({
+      "class": "App\FieldsTypes\OptionsField",
+      label: label,
+      options: options,
+      value: value
     });
   }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      onChange: null,
-      name: fieldindex + "[class]",
-      type: "hidden",
-      value: "App\\FieldsTypes\\OptionsField"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      onChange: null,
-      name: fieldindex + "[value]",
+      onChange: function onChange(e) {
+        value = e.target.value;
+        setConfig();
+      },
       type: "hidden",
       value: ""
     }), "options field label ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      name: fieldindex + "[label]"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      onChange: null,
-      name: fieldindex + "[options]",
-      type: "hidden",
-      value: options
+      onChange: function onChange(e) {
+        label = e.target.value;
+        setConfig();
+      }
     }), options.map(function (option, index) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-          onChange: null,
-          name: fieldindex + "[options][" + index + "]",
-          type: "hidden",
-          value: option
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-          children: option
-        }, index)]
-      });
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        children: option
+      }, index);
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
       onChange: function onChange(e) {
-        return setTitle(e.target.value);
+        return title = e.target.value;
       }
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
       type: "button",
@@ -2776,19 +2859,32 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function PhoneNumberField(props) {
-  var index = props.index;
-  var fieldindex = 'fields[' + index + ']';
+  var setField = props.setField;
+  var label = null;
+  var value = '';
+
+  function setConfig() {
+    setField({
+      "class": "App\FieldsTypes\PhoneNumberField",
+      label: label,
+      value: value
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: null,
-      name: fieldindex + "[class]",
-      type: "hidden",
-      value: "App\\FieldsTypes\\PhoneNumberField"
-    }), "phone number field label ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      name: fieldindex + "[label]"
+    children: ["phone number field label ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+      onChange: function onChange(e) {
+        label = e.target.value;
+        setConfig();
+      }
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: null,
-      name: fieldindex + "[value]",
+      onChange: function onChange(e) {
+        value = e.target.value;
+        setConfig();
+      },
       type: "hidden",
       value: ""
     })]
@@ -2820,19 +2916,32 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function RatingField(props) {
-  var index = props.index;
-  var fieldindex = 'fields[' + index + ']';
+  var setField = props.setField;
+  var label = null;
+  var value = '';
+
+  function setConfig() {
+    setField({
+      "class": "App\FieldsTypes\RatingField",
+      label: label,
+      value: value
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: null,
-      name: fieldindex + "[class]",
-      type: "hidden",
-      value: "App\\FieldsTypes\\RatingField"
-    }), "rating field label ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      name: fieldindex + "[label]"
+    children: ["rating field label ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+      onChange: function onChange(e) {
+        label = e.target.value;
+        setConfig();
+      }
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: null,
-      name: fieldindex + "[value]",
+      onChange: function onChange(e) {
+        value = e.target.value;
+        setConfig();
+      },
       type: "hidden",
       value: ""
     })]
@@ -2864,19 +2973,32 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function SocialStatusField(props) {
-  var index = props.index;
-  var fieldindex = 'fields[' + index + ']';
+  var setField = props.setField;
+  var label = null;
+  var value = '';
+
+  function setConfig() {
+    setField({
+      "class": "App\FieldsTypes\SocialStatusField",
+      label: label,
+      value: value
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: null,
-      name: fieldindex + "[class]",
-      type: "hidden",
-      value: "App\\FieldsTypes\\SocialStatusField"
-    }), "social status field label ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      name: fieldindex + "[label]"
+    children: ["social status field label ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+      onChange: function onChange(e) {
+        label = e.target.value;
+        setConfig();
+      }
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: null,
-      name: fieldindex + "[value]",
+      onChange: function onChange(e) {
+        value = e.target.value;
+        setConfig();
+      },
       type: "hidden",
       value: ""
     })]
@@ -2908,20 +3030,32 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function StringField(props) {
-  var index = props.index;
-  var fieldindex = 'fields[' + index + ']'; // const [value, setValue] = React.useState('')
+  var setField = props.setField;
+  var label = null;
+  var value = '';
 
+  function setConfig() {
+    setField({
+      "class": "App\\FieldsTypes\\StringField",
+      label: label,
+      value: value
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: null,
-      name: fieldindex + "[class]",
-      type: "hidden",
-      value: "App\\FieldsTypes\\StringField"
-    }), "string Field ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      name: fieldindex + "[label]"
+    children: ["string Field ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+      onChange: function onChange(e) {
+        label = e.target.value;
+        setConfig();
+      }
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: null,
-      name: fieldindex + "[value]",
+      onChange: function onChange(e) {
+        value = e.target.value;
+        setConfig();
+      },
       type: "hidden",
       value: ""
     })]
@@ -2944,21 +3078,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
@@ -2966,89 +3086,103 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function TableField2(props) {
   var index = props.index;
-  var fieldindex = 'fields[' + index + ']';
-  var fieldClass = props.fieldClass;
+  var setField = props.setField;
+  var numberOfRows = 2;
+  var label = '';
+  var columnsTitles = ['', ''];
+  var value = [['', ''], ['', '']];
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, []);
 
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(2),
-      _React$useState2 = _slicedToArray(_React$useState, 2),
-      rows = _React$useState2[0],
-      setRows = _React$useState2[1];
-
-  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0__.useState(2),
-      _React$useState4 = _slicedToArray(_React$useState3, 2),
-      cols = _React$useState4[0],
-      setCols = _React$useState4[1];
-
-  function addRow() {// setRows(rows+1)
+  function setConfig() {
+    setField({
+      "class": "App\FieldsTypes\TableField2",
+      numberOfRows: numberOfRows,
+      columnsTitles: columnsTitles,
+      label: label,
+      value: value
+    });
   }
 
-  function addColumn() {// setCols(cols+1)
-  }
+  function addColumn() {}
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      name: fieldindex + "[class]",
-      type: "hidden",
-      value: "App\\FieldsTypes\\TableField2"
-    }), "                ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      type: "hidden",
-      value: "App\\FieldsTypes\\StringField"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      name: fieldindex + "[numberOfRows]",
-      type: "hidden",
-      value: "2"
-    }), "tabel field 2 render ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      name: fieldindex + "[label]"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("table", {
+  function addRow() {}
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: ["tabel field 2 render ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+      onChange: function onChange(e) {
+        label = e.target.value;
+        setConfig();
+      }
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
       className: "table",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("thead", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
             scope: "col",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-              name: fieldindex + "[columnsTitles][0]"
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              onChange: function onChange(e) {
+                columnsTitles[0] = e.target.value;
+                setConfig();
+              }
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
             scope: "col",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-              name: fieldindex + "[columnsTitles][1]"
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              onChange: function onChange(e) {
+                columnsTitles[1] = e.target.value;
+                setConfig();
+              }
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
             scope: "col",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
               onClick: addColumn,
               children: "add new column"
             })
           })]
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tbody", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tbody", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
             scope: "row",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-              name: fieldindex + "[value][0][0]"
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              onChange: function onChange(e) {
+                value[0][0] = e.target.value;
+                setConfig();
+              }
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
             scope: "row",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-              name: fieldindex + "[value][0][1]"
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              onChange: function onChange(e) {
+                value[0][1] = e.target.value;
+                setConfig();
+              }
             })
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
             scope: "row",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-              name: fieldindex + "[value][1][0]"
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              onChange: function onChange(e) {
+                value[1][0] = e.target.value;
+                setConfig();
+              }
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
             scope: "row",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-              name: fieldindex + "[value][1][1]"
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              onChange: function onChange(e) {
+                value[1][1] = e.target.value;
+                setConfig();
+              }
             })
           })]
         })]
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
       onClick: addRow,
       children: "add new row"
     })]
@@ -3080,22 +3214,32 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function TextAreaField(props) {
-  var index = props.index;
-  var fieldindex = 'fields[' + index + ']';
+  var setField = props.setField;
+  var label = null;
+  var value = '';
+
+  function setConfig() {
+    setField({
+      "class": "App\FieldsTypes\TextAreaField",
+      label: label,
+      value: value
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: null,
-      name: fieldindex + "[class]",
-      type: "hidden",
-      value: "App\\FieldsTypes\\TextAreaField"
-    }), "                ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      type: "hidden",
-      value: "App\\FieldsTypes\\TextAreaField"
-    }), "text area field label ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      name: fieldindex + "[label]"
+    children: ["text area field label ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+      onChange: function onChange(e) {
+        label = e.target.value;
+        setConfig();
+      }
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: null,
-      name: fieldindex + "[value]",
+      onChange: function onChange(e) {
+        value = e.target.value;
+        setConfig();
+      },
       type: "hidden",
       value: ""
     })]
@@ -3175,21 +3319,35 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var fieldsTypes = ['textArea', 'table', 'string', 'socialStatus', 'rating', 'options', 'phoneNumber', 'number', 'label', 'job', 'gender', 'email', 'double', 'date'];
 
 function FieldsCreator() {
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState([]),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      fieldsConfigs = _React$useState2[0],
+      setFieldsConfigs = _React$useState2[1];
+
+  function setFieldConfig(index, config) {
+    var arr = _toConsumableArray(fieldsConfigs);
+
+    arr[index] = config;
+    setFieldsConfigs(arr);
+  }
+
   function typeChoice(e) {
     addField(e.target.value);
   }
 
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState([]),
-      _React$useState2 = _slicedToArray(_React$useState, 2),
-      newFields = _React$useState2[0],
-      setNewFields = _React$useState2[1];
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0__.useState([]),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      newFields = _React$useState4[0],
+      setNewFields = _React$useState4[1];
 
   function addField(type) {
     switch (type) {
       case 'textArea':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_TextAreaField__WEBPACK_IMPORTED_MODULE_4__.default, {
-            index: newFields.length
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
           })]);
         });
         break;
@@ -3197,7 +3355,9 @@ function FieldsCreator() {
       case 'table':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_TableField2__WEBPACK_IMPORTED_MODULE_3__.default, {
-            index: newFields.length
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
           })]);
         });
         break;
@@ -3205,7 +3365,9 @@ function FieldsCreator() {
       case 'string':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_StringField__WEBPACK_IMPORTED_MODULE_2__.default, {
-            index: newFields.length
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
           })]);
         });
         break;
@@ -3213,7 +3375,9 @@ function FieldsCreator() {
       case 'socialStatus':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_SocialStatusField__WEBPACK_IMPORTED_MODULE_5__.default, {
-            index: newFields.length
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
           })]);
         });
         break;
@@ -3221,7 +3385,9 @@ function FieldsCreator() {
       case 'rating':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_RatingField__WEBPACK_IMPORTED_MODULE_6__.default, {
-            index: newFields.length
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
           })]);
         });
         break;
@@ -3229,7 +3395,9 @@ function FieldsCreator() {
       case 'options':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_OptionsField__WEBPACK_IMPORTED_MODULE_15__.default, {
-            index: newFields.length
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
           })]);
         });
         break;
@@ -3237,7 +3405,9 @@ function FieldsCreator() {
       case 'phoneNumber':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_PhoneNumberField__WEBPACK_IMPORTED_MODULE_7__.default, {
-            index: newFields.length
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
           })]);
         });
         break;
@@ -3245,7 +3415,9 @@ function FieldsCreator() {
       case 'number':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_NumberField__WEBPACK_IMPORTED_MODULE_8__.default, {
-            index: newFields.length
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
           })]);
         });
         break;
@@ -3253,7 +3425,9 @@ function FieldsCreator() {
       case 'label':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_LabelField__WEBPACK_IMPORTED_MODULE_9__.default, {
-            index: newFields.length
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
           })]);
         });
         break;
@@ -3261,7 +3435,9 @@ function FieldsCreator() {
       case 'job':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_JobField__WEBPACK_IMPORTED_MODULE_10__.default, {
-            index: newFields.length
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
           })]);
         });
         break;
@@ -3269,7 +3445,9 @@ function FieldsCreator() {
       case 'gender':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_GenderField__WEBPACK_IMPORTED_MODULE_11__.default, {
-            index: newFields.length
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
           })]);
         });
         break;
@@ -3277,7 +3455,9 @@ function FieldsCreator() {
       case 'email':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_EmailField__WEBPACK_IMPORTED_MODULE_12__.default, {
-            index: newFields.length
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
           })]);
         });
         break;
@@ -3285,7 +3465,9 @@ function FieldsCreator() {
       case 'double':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_DoubleField__WEBPACK_IMPORTED_MODULE_13__.default, {
-            index: newFields.length
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
           })]);
         });
         break;
@@ -3293,7 +3475,9 @@ function FieldsCreator() {
       case 'date':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_DateField__WEBPACK_IMPORTED_MODULE_14__.default, {
-            index: newFields.length
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
           })]);
         });
         break;
@@ -3306,6 +3490,8 @@ function FieldsCreator() {
     }));
   }
 
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {// console.log(fieldsConfigs)
+  }, [fieldsConfigs]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)("form", {
     method: "POST",
     action: "/structure/create",
@@ -5405,7 +5591,7 @@ function FormStructureShow(props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ FormCreate)
+/* harmony export */   "default": () => (/* binding */ FormStructuresCreate)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -5417,16 +5603,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function FormCreate(props) {
+function FormStructuresCreate(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-    "class": "col-md-10",
+    className: "col-md-10",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-      "class": "card",
+      className: "card",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        "class": "card-header",
+        className: "card-header",
         children: "\u0627\u0646\u0634\u0627\u0621 \u0646\u0648\u0639 \u0646\u0645\u0627\u0630\u062C \u062C\u062F\u064A\u062F"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        "class": "card-body",
+        className: "card-body",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_FieldsCreator__WEBPACK_IMPORTED_MODULE_2__.default, {})
       })]
     })
