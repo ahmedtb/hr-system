@@ -8,23 +8,27 @@ export default function SocialStatusField(props) {
 
     if (type == 'render')
         return (
-            <>
-                social status: {field['label']}
-                <div className="form-check">
-                    <input className="form-check-input" type="radio" disabled
-                        checked={field['value'] == 'married'} />
-                    <label className="form-check-label">
-                        married
-                    </label>
+            <div className="col m-1">
+                <strong>
+                    {field['label']}
+                </strong>
+                <div className="col m-1">
+                    <div className="form-check">
+                        <input className="form-check-input" type="radio" disabled
+                            checked={field['value'] == 'married'} />
+                        <label className="form-check-label">
+                            married
+                        </label>
+                    </div>
+                    <div className="form-check">
+                        <input className="form-check-input" type="radio"
+                            checked={field['value'] == 'single'} disabled />
+                        <label className="form-check-label">
+                            single
+                        </label>
+                    </div>
                 </div>
-                <div className="form-check">
-                    <input className="form-check-input" type="radio"
-                        checked={field['value'] == 'single'} disabled />
-                    <label className="form-check-label">
-                        single
-                    </label>
-                </div>
-            </>
+            </div>
         );
     else if (type == 'input') {
         function changeValue(value) {

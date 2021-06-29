@@ -8,22 +8,22 @@ export default function GenderField(props) {
 
     if (type == 'render')
         return (
-            <div class="row p-3">
-                <div class="col-6">
-                    حقل تحديد نوع الوظيفة بعنوان: {field['label']}
-                </div>
-                <div class="col-6">
+            <div className="col m-1">
+                <div className="row d-flex flex-nowrap">
+                    <strong>
+                        {field['label']}
+                    </strong>
                     {
-
                         (field['value']) ?
-                            <div class='p-1 border border-1 rounded'>اسم الوظيفة المحدد افتراضيا {field['value']}</div>
+                            <div class='p-1 border border-1 rounded  ml-2'>اسم الوظيفة المحدد افتراضيا {field['value']}</div>
                             :
-                            <input class='border border-1 rounded' size="25" value="" disabled />
+                            <input class='border border-1 rounded  ml-2' size="25" value="حقل تحديد وظيفة" disabled />
                     }
                 </div>
             </div>
+
         );
-        else if (type == 'input')
+    else if (type == 'input')
         return (
             <div className='row'>
                 {field['class']}

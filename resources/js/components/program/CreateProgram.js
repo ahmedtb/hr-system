@@ -15,11 +15,11 @@ export default function CreateProgram() {
     async function submit() {
         try {
             const data = new FormData()
-            if(title) data.append('title', title)
-            if(goals) data.append('goals', goals)
-            if(period) data.append('period', period)
-            if(category) data.append('category', category)
-            if(details) data.append('details', details)
+            if (title) data.append('title', title)
+            if (goals) data.append('goals', goals)
+            if (period) data.append('period', period)
+            if (category) data.append('category', category)
+            if (details) data.append('details', details)
 
             documents.forEach(image => {
                 data.append('documents[]', image)
@@ -41,23 +41,23 @@ export default function CreateProgram() {
                 <ul className="list-group">
                     <li className="list-group-item">
                         <label htmlFor="title">عنوان البرنامج</label>
-                        <input  onChange={(e) => setTitle(e.target.value)} name="title" type="text" id="title" />
+                        <input onChange={(e) => setTitle(e.target.value)} name="title" type="text" id="title" />
                     </li>
                     <li className="list-group-item">
                         <label htmlFor="goals">اهداف البرنامج</label>
-                        <input  onChange={(e) => setGoals(e.target.value)} name="goals" type="text" id="goals" />
+                        <input onChange={(e) => setGoals(e.target.value)} name="goals" type="text" id="goals" />
                     </li>
                     <li className="list-group-item">
                         <label htmlFor="period">مدة البرنامج بالدقائق</label>
-                        <input  onChange={(e) => setPeriod(e.target.value)} name="period" type="number" id="period" />
+                        <input onChange={(e) => setPeriod(e.target.value)} name="period" type="number" id="period" />
                     </li>
                     <li className="list-group-item">
                         <label htmlFor="category">تصنيف</label>
-                        <input  onChange={(e) => setcategory(e.target.value)} name="category" type="text" id="category" />
+                        <input onChange={(e) => setcategory(e.target.value)} name="category" type="text" id="category" />
                     </li>
                     <li className="list-group-item">
                         <label htmlFor="details">تفاصيل</label>
-                        <input  onChange={(e) => setdetails(e.target.value)} name="details" type="text" id="details" />
+                        <input onChange={(e) => setdetails(e.target.value)} name="details" type="text" id="details" />
                     </li>
 
                     <li className="list-group-item">

@@ -8,6 +8,7 @@ import TableField2 from './TableField2';
 import TextAreaField from './TextAreaField';
 import SocialStatusField from './SocialStatusField'
 import RatingField from './RatingField'
+import CustomRatingField from './CustomRatingField';
 import PhoneNumberField from './PhoneNumberField'
 import NumberField from './NumberField'
 import LabelField from './LabelField'
@@ -19,7 +20,7 @@ import DateField from './DateField'
 import OptionsField from './OptionsField';
 
 const fieldsTypes = [
-    'textArea', 'table', 'string', 'socialStatus', 'rating', 'options',
+    'textArea', 'table', 'string', 'socialStatus', 'rating', 'customRating', 'options',
     'phoneNumber', 'number', 'label', 'job', 'gender',
     'email', 'double', 'date',
 ]
@@ -54,6 +55,9 @@ function FieldsCreator() {
                 break;
             case 'rating':
                 setNewFields(old => ([...old, <RatingField setField={(config) => setFieldConfig(newFields.length, config)} />]))
+                break;
+            case 'customRating':
+                setNewFields(old => ([...old, <CustomRatingField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
             case 'options':
                 setNewFields(old => ([...old, <OptionsField setField={(config) => setFieldConfig(newFields.length, config)} />]))
@@ -113,7 +117,7 @@ function FieldsCreator() {
     return (
 
         <>
-            name of the form structure <input type="string" onChange={(e) => setType(e.target.value) } />
+            name of the form structure <input type="string" onChange={(e) => setType(e.target.value)} />
 
             <ul className="list-group">
                 {

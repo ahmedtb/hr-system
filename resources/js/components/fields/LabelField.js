@@ -10,11 +10,12 @@ export default function LabelField(props) {
     if (type == 'render')
         return (
 
-            <div class="row p-3">
-                <div class="col-6">
-                    نص ارشادي: {field['value']}
+            <div className="col-12 m-1">
+                <div className="row justify-content-center">
+                    <h5>
+                        {field['value']}
+                    </h5>
                 </div>
-
             </div>
         );
         else if (type == 'input')

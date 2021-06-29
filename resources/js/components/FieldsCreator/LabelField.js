@@ -4,13 +4,11 @@ import ReactDOM from 'react-dom';
 
 function LabelField(props) {
     const setField = props.setField
-    let label = null
     let value = ''
 
     function setConfig() {
         setField({
             class: "App\\FieldsTypes\\LabelField",
-            label: label,
             value: value
         })
     }
@@ -21,7 +19,7 @@ function LabelField(props) {
 
     return (
         <>
-            Label field <input onChange={(e) => { label = e.target.value; setConfig(); }} />
+            Label field <input onChange={(e) => { value = e.target.value; setConfig(); }} />
         </>
     );
 }

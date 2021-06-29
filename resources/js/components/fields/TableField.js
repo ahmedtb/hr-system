@@ -20,23 +20,15 @@ export default function TableField(props) {
         }
 
         return (
-            <>
-                <div className="row p-3">
-                    <div className="col-6">
-                        حقل جدول بعنوان: {field['label']}
-                    </div>
-                    <div className="col-6">
-                        عدد الصفوف في الجدول: {field['numberOfRows']}
-                    </div>
-                </div>
+            <div className="col-12">
+                <strong className="mr-3">{field['label']}</strong>
+                <strong className="mr-3">عدد الصفوف في الجدول: {field['numberOfRows']}</strong>
 
                 <table className="table table-striped table-condensed table-bordered">
                     <thead>
                         <tr>
                             {field['columnsTitles'].map((title, k) => (
-
                                 <th key={k} scope="col">{title}</th>
-
                             ))}
                         </tr>
                     </thead>
@@ -44,11 +36,11 @@ export default function TableField(props) {
                         {Rows}
                     </tbody>
                 </table>
-            </>
+            </div>
         );
     }
     else if (type == 'input') {
-        const changeElement = (row,col,value)=>{
+        const changeElement = (row, col, value) => {
             field['value'][row][col] = value
             onChange(field)
         }
@@ -59,7 +51,7 @@ export default function TableField(props) {
                     {
                         field['value'][i].map((element, k) => (
                             <th key={k} scope="row">
-                                <input onChange={(e)=>changeElement(i,k,e.target.value)} value={element ?? ''} />
+                                <input onChange={(e) => changeElement(i, k, e.target.value)} value={element ?? ''} />
                             </th>
                         ))
                     }

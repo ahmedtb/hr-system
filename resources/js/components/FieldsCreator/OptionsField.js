@@ -3,18 +3,19 @@ import React from 'react';
 
 function OptionsField(props) {
     const setField = props.setField
-    let label = null
-    let value = ''
-    let title = ''
-    // const [title, setTitle] = React.useState('')
+    
+    const [label, setlabel] = React.useState('')
+    const [value, setvalue] = React.useState('')
     const [options, setOptions] = React.useState([])
+
+    const [title, settitle] = React.useState('')
     function addOption() {
         setOptions(pre => [...pre, title])
     }
 
     React.useEffect(() => {
         setConfig()
-    }, [options])
+    }, [options, value, label])
     
     function setConfig() {
         setField({
@@ -28,9 +29,9 @@ function OptionsField(props) {
 
     return (
         <>
-            <input onChange={(e) => { value = e.target.value; setConfig(); }} type="hidden" value='' />
+            <input onChange={(e) => { setvalue(e.target.value); }} type="hidden" value='' />
 
-            options field label <input onChange={(e) => { label = e.target.value; setConfig(); }} />
+            options field label <input onChange={(e) => { setlabel(e.target.value); }} />
 
             {
                 options.map((option, index) => (
@@ -38,7 +39,7 @@ function OptionsField(props) {
                 ))
             }
 
-            <input onChange={(e) => title = (e.target.value)} />
+            <input onChange={(e) => settitle(e.target.value)} />
             <button type="button" onClick={addOption}>add option</button>
         </>
     );

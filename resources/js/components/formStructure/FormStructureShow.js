@@ -12,7 +12,7 @@ export default function FormStructureShow(props) {
     const { id } = useParams();
     const [structure, setStructure] = React.useState(null)
     React.useEffect(() => {
-        axios.get(ApiEndpoints.showFormStructure.replace(':id',id)).then((response) => {
+        axios.get(ApiEndpoints.showFormStructure.replace(':id', id)).then((response) => {
             setStructure(response.data)
         }).catch(() => {
 
@@ -25,7 +25,7 @@ export default function FormStructureShow(props) {
             const res = await axios.post(ApiEndpoints.generateForm, {
                 'form_structure_id': structure.id
             })
-            setlink(routes.generatedForm.replace(':access_token',res.data))
+            setlink(routes.generatedForm.replace(':access_token', res.data))
             console.log(res.data)
         } catch (err) {
             logError(err)
@@ -37,7 +37,7 @@ export default function FormStructureShow(props) {
 
             <div className='card'>
                 <div className="card-body">
-                    
+
                     <Link to={link ?? ''}>{link ?? ''}</Link>
 
                 </div>
@@ -46,12 +46,16 @@ export default function FormStructureShow(props) {
             <div className="card">
                 <div className="card-header">
                     نموذج {structure?.id}
-                    <Link to={routes.searchForms.replace(':form_structure_id',structure?.id)}>search</Link>
+                    <Link to={routes.searchForms.replace(':form_structure_id', structure?.id)}>search</Link>
                 </div>
 
                 <div className="card-body">
-                    <Fields fields={structure?.array_of_fields.fields} type='render' />
-
+                    <div className="row justify-content-center">
+                        <h1 className='align-self-center'>{structure?.type}</h1>
+                    </div>
+                    <div className="row">
+                        <Fields fields={structure?.array_of_fields.fields} type='render' />
+                    </div>
                     <button onClick={generateForm}>
                         انشاء نسخة نموذج
                     </button>

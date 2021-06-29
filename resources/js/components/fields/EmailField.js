@@ -8,12 +8,14 @@ export default function EmailField(props) {
 
     if (type == 'render')
         return (
-            <>
-                email field {field['label']}
-                <div class='p-2 border border-1 rounded'>{field['value']}</div>
-            </>
+            <div className="col m-1">
+                <div className="row flex-nowrap">
+                    <strong className=''>{field['label']}</strong>
+                    <input className='border border-1 rounded ml-2' value={field['value'] ?? 'حقل عنوان بريدي'} disabled />
+                </div>
+            </div>
         );
-        else if (type == 'input')
+    else if (type == 'input')
         return (
             <div className='row'>
                 {field['class']}

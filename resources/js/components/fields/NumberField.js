@@ -8,16 +8,16 @@ export default function NumberField(props) {
 
     if (type == 'render')
         return (
-            <div class="row p-3">
-                <div class="col-6">
-                    حقل عددي بعنوان: {field['label']}
-                </div>
-                <div class="col-6">
-                    <input class='border border-1 rounded' size="25" value={field['value']} disabled />
+            <div className="col m-1">
+                <div className="row flex-nowrap d-flex">
+                    <strong>
+                        {field['label']}
+                    </strong>
+                    <input class='border border-1 rounded ml-2' value={field['value']} disabled />
                 </div>
             </div>
         );
-        else if (type == 'input')
+    else if (type == 'input')
         return (
             <div className='row'>
                 {field['class']}

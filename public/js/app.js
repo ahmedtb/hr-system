@@ -2351,6 +2351,92 @@ function Dashboard() {
 
 /***/ }),
 
+/***/ "./resources/js/components/FieldsCreator/CustomRatingField.js":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/FieldsCreator/CustomRatingField.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+function CustomRatingField(props) {
+  var setField = props.setField;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      label = _React$useState2[0],
+      setlabel = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      max = _React$useState4[0],
+      setmax = _React$useState4[1];
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      value = _React$useState6[0],
+      setvalue = _React$useState6[1];
+
+  function setConfig() {
+    setField({
+      "class": "App\\FieldsTypes\\CustomRatingField",
+      label: label,
+      max: max,
+      value: value
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, [label, max, value]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+    children: ["custom rating field label ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+      onChange: function onChange(e) {
+        setlabel(e.target.value);
+      }
+    }), "custom rating field max rating ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+      type: "number",
+      onChange: function onChange(e) {
+        setmax(e.target.value);
+      }
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+      onChange: function onChange(e) {
+        setvalue(e.target.value);
+      },
+      type: "hidden",
+      value: ""
+    })]
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CustomRatingField);
+
+/***/ }),
+
 /***/ "./resources/js/components/FieldsCreator/DateField.js":
 /*!************************************************************!*\
   !*** ./resources/js/components/FieldsCreator/DateField.js ***!
@@ -2652,13 +2738,11 @@ __webpack_require__.r(__webpack_exports__);
 
 function LabelField(props) {
   var setField = props.setField;
-  var label = null;
   var value = '';
 
   function setConfig() {
     setField({
       "class": "App\\FieldsTypes\\LabelField",
-      label: label,
       value: value
     });
   }
@@ -2669,7 +2753,7 @@ function LabelField(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
     children: ["Label field ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
       onChange: function onChange(e) {
-        label = e.target.value;
+        value = e.target.value;
         setConfig();
       }
     })]
@@ -2777,14 +2861,26 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function OptionsField(props) {
   var setField = props.setField;
-  var label = null;
-  var value = '';
-  var title = ''; // const [title, setTitle] = React.useState('')
 
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState([]),
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
       _React$useState2 = _slicedToArray(_React$useState, 2),
-      options = _React$useState2[0],
-      setOptions = _React$useState2[1];
+      label = _React$useState2[0],
+      setlabel = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      value = _React$useState4[0],
+      setvalue = _React$useState4[1];
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0__.useState([]),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      options = _React$useState6[0],
+      setOptions = _React$useState6[1];
+
+  var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
+      _React$useState8 = _slicedToArray(_React$useState7, 2),
+      title = _React$useState8[0],
+      settitle = _React$useState8[1];
 
   function addOption() {
     setOptions(function (pre) {
@@ -2794,7 +2890,7 @@ function OptionsField(props) {
 
   react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
     setConfig();
-  }, [options]);
+  }, [options, value, label]);
 
   function setConfig() {
     setField({
@@ -2808,15 +2904,13 @@ function OptionsField(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
       onChange: function onChange(e) {
-        value = e.target.value;
-        setConfig();
+        setvalue(e.target.value);
       },
       type: "hidden",
       value: ""
     }), "options field label ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
       onChange: function onChange(e) {
-        label = e.target.value;
-        setConfig();
+        setlabel(e.target.value);
       }
     }), options.map(function (option, index) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -2824,7 +2918,7 @@ function OptionsField(props) {
       }, index);
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
       onChange: function onChange(e) {
-        return title = e.target.value;
+        return settitle(e.target.value);
       }
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
       type: "button",
@@ -2907,9 +3001,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
@@ -2931,13 +3023,13 @@ function RatingField(props) {
   react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
     setConfig();
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: ["rating field label ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: ["rating field label ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
       onChange: function onChange(e) {
         label = e.target.value;
         setConfig();
       }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
       onChange: function onChange(e) {
         value = e.target.value;
         setConfig();
@@ -3079,6 +3171,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -3087,13 +3199,30 @@ __webpack_require__.r(__webpack_exports__);
 function TableField2(props) {
   var index = props.index;
   var setField = props.setField;
-  var numberOfRows = 2;
-  var label = '';
-  var columnsTitles = ['', ''];
-  var value = [['', ''], ['', '']];
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(2),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      numberOfRows = _React$useState2[0],
+      setnumberOfRows = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      label = _React$useState4[0],
+      setlabel = _React$useState4[1];
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0__.useState(['', '']),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      columnsTitles = _React$useState6[0],
+      setcolumnsTitles = _React$useState6[1];
+
+  var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_0__.useState([['', ''], ['', '']]),
+      _React$useState8 = _slicedToArray(_React$useState7, 2),
+      value = _React$useState8[0],
+      setvalue = _React$useState8[1];
+
   react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
     setConfig();
-  }, []);
+  }, [numberOfRows, label, columnsTitles, value]);
 
   function setConfig() {
     setField({
@@ -3112,8 +3241,7 @@ function TableField2(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: ["tabel field 2 render ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
       onChange: function onChange(e) {
-        label = e.target.value;
-        setConfig();
+        setlabel(e.target.value);
       }
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
       className: "table",
@@ -3123,16 +3251,20 @@ function TableField2(props) {
             scope: "col",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
               onChange: function onChange(e) {
-                columnsTitles[0] = e.target.value;
-                setConfig();
+                var newArray = _toConsumableArray(columnsTitles);
+
+                newArray[0] = e.target.value;
+                setcolumnsTitles(newArray);
               }
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
             scope: "col",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
               onChange: function onChange(e) {
-                columnsTitles[1] = e.target.value;
-                setConfig();
+                var newArray = _toConsumableArray(columnsTitles);
+
+                newArray[1] = e.target.value;
+                setcolumnsTitles(newArray);
               }
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
@@ -3149,16 +3281,20 @@ function TableField2(props) {
             scope: "row",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
               onChange: function onChange(e) {
-                value[0][0] = e.target.value;
-                setConfig();
+                var newArray = _toConsumableArray(value);
+
+                newArray[0][0] = e.target.value;
+                setvalue(newArray);
               }
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
             scope: "row",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
               onChange: function onChange(e) {
-                value[0][1] = e.target.value;
-                setConfig();
+                var newArray = _toConsumableArray(value);
+
+                newArray[0][1] = e.target.value;
+                setvalue(newArray);
               }
             })
           })]
@@ -3167,16 +3303,20 @@ function TableField2(props) {
             scope: "row",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
               onChange: function onChange(e) {
-                value[1][0] = e.target.value;
-                setConfig();
+                var newArray = _toConsumableArray(value);
+
+                newArray[1][0] = e.target.value;
+                setvalue(newArray);
               }
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
             scope: "row",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
               onChange: function onChange(e) {
-                value[1][1] = e.target.value;
-                setConfig();
+                var newArray = _toConsumableArray(value);
+
+                newArray[1][1] = e.target.value;
+                setvalue(newArray);
               }
             })
           })]
@@ -3273,16 +3413,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _TextAreaField__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./TextAreaField */ "./resources/js/components/FieldsCreator/TextAreaField.js");
 /* harmony import */ var _SocialStatusField__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./SocialStatusField */ "./resources/js/components/FieldsCreator/SocialStatusField.js");
 /* harmony import */ var _RatingField__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./RatingField */ "./resources/js/components/FieldsCreator/RatingField.js");
-/* harmony import */ var _PhoneNumberField__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./PhoneNumberField */ "./resources/js/components/FieldsCreator/PhoneNumberField.js");
-/* harmony import */ var _NumberField__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./NumberField */ "./resources/js/components/FieldsCreator/NumberField.js");
-/* harmony import */ var _LabelField__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./LabelField */ "./resources/js/components/FieldsCreator/LabelField.js");
-/* harmony import */ var _JobField__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./JobField */ "./resources/js/components/FieldsCreator/JobField.js");
-/* harmony import */ var _GenderField__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./GenderField */ "./resources/js/components/FieldsCreator/GenderField.js");
-/* harmony import */ var _EmailField__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./EmailField */ "./resources/js/components/FieldsCreator/EmailField.js");
-/* harmony import */ var _DoubleField__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./DoubleField */ "./resources/js/components/FieldsCreator/DoubleField.js");
-/* harmony import */ var _DateField__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./DateField */ "./resources/js/components/FieldsCreator/DateField.js");
-/* harmony import */ var _OptionsField__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./OptionsField */ "./resources/js/components/FieldsCreator/OptionsField.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _CustomRatingField__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./CustomRatingField */ "./resources/js/components/FieldsCreator/CustomRatingField.js");
+/* harmony import */ var _PhoneNumberField__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./PhoneNumberField */ "./resources/js/components/FieldsCreator/PhoneNumberField.js");
+/* harmony import */ var _NumberField__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./NumberField */ "./resources/js/components/FieldsCreator/NumberField.js");
+/* harmony import */ var _LabelField__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./LabelField */ "./resources/js/components/FieldsCreator/LabelField.js");
+/* harmony import */ var _JobField__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./JobField */ "./resources/js/components/FieldsCreator/JobField.js");
+/* harmony import */ var _GenderField__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./GenderField */ "./resources/js/components/FieldsCreator/GenderField.js");
+/* harmony import */ var _EmailField__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./EmailField */ "./resources/js/components/FieldsCreator/EmailField.js");
+/* harmony import */ var _DoubleField__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./DoubleField */ "./resources/js/components/FieldsCreator/DoubleField.js");
+/* harmony import */ var _DateField__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./DateField */ "./resources/js/components/FieldsCreator/DateField.js");
+/* harmony import */ var _OptionsField__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./OptionsField */ "./resources/js/components/FieldsCreator/OptionsField.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -3330,7 +3471,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var fieldsTypes = ['textArea', 'table', 'string', 'socialStatus', 'rating', 'options', 'phoneNumber', 'number', 'label', 'job', 'gender', 'email', 'double', 'date'];
+
+var fieldsTypes = ['textArea', 'table', 'string', 'socialStatus', 'rating', 'customRating', 'options', 'phoneNumber', 'number', 'label', 'job', 'gender', 'email', 'double', 'date'];
 
 function FieldsCreator() {
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_1__.useState([]),
@@ -3358,7 +3500,7 @@ function FieldsCreator() {
     switch (type) {
       case 'textArea':
         setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_TextAreaField__WEBPACK_IMPORTED_MODULE_7__.default, {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_TextAreaField__WEBPACK_IMPORTED_MODULE_7__.default, {
             setField: function setField(config) {
               return setFieldConfig(newFields.length, config);
             }
@@ -3368,7 +3510,7 @@ function FieldsCreator() {
 
       case 'table':
         setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_TableField2__WEBPACK_IMPORTED_MODULE_6__.default, {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_TableField2__WEBPACK_IMPORTED_MODULE_6__.default, {
             setField: function setField(config) {
               return setFieldConfig(newFields.length, config);
             }
@@ -3378,7 +3520,7 @@ function FieldsCreator() {
 
       case 'string':
         setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_StringField__WEBPACK_IMPORTED_MODULE_5__.default, {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_StringField__WEBPACK_IMPORTED_MODULE_5__.default, {
             setField: function setField(config) {
               return setFieldConfig(newFields.length, config);
             }
@@ -3388,7 +3530,7 @@ function FieldsCreator() {
 
       case 'socialStatus':
         setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_SocialStatusField__WEBPACK_IMPORTED_MODULE_8__.default, {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_SocialStatusField__WEBPACK_IMPORTED_MODULE_8__.default, {
             setField: function setField(config) {
               return setFieldConfig(newFields.length, config);
             }
@@ -3398,7 +3540,17 @@ function FieldsCreator() {
 
       case 'rating':
         setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_RatingField__WEBPACK_IMPORTED_MODULE_9__.default, {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_RatingField__WEBPACK_IMPORTED_MODULE_9__.default, {
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
+          })]);
+        });
+        break;
+
+      case 'customRating':
+        setNewFields(function (old) {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_CustomRatingField__WEBPACK_IMPORTED_MODULE_10__.default, {
             setField: function setField(config) {
               return setFieldConfig(newFields.length, config);
             }
@@ -3408,7 +3560,7 @@ function FieldsCreator() {
 
       case 'options':
         setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_OptionsField__WEBPACK_IMPORTED_MODULE_18__.default, {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_OptionsField__WEBPACK_IMPORTED_MODULE_19__.default, {
             setField: function setField(config) {
               return setFieldConfig(newFields.length, config);
             }
@@ -3418,7 +3570,7 @@ function FieldsCreator() {
 
       case 'phoneNumber':
         setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_PhoneNumberField__WEBPACK_IMPORTED_MODULE_10__.default, {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_PhoneNumberField__WEBPACK_IMPORTED_MODULE_11__.default, {
             setField: function setField(config) {
               return setFieldConfig(newFields.length, config);
             }
@@ -3428,7 +3580,7 @@ function FieldsCreator() {
 
       case 'number':
         setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_NumberField__WEBPACK_IMPORTED_MODULE_11__.default, {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_NumberField__WEBPACK_IMPORTED_MODULE_12__.default, {
             setField: function setField(config) {
               return setFieldConfig(newFields.length, config);
             }
@@ -3438,7 +3590,7 @@ function FieldsCreator() {
 
       case 'label':
         setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_LabelField__WEBPACK_IMPORTED_MODULE_12__.default, {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_LabelField__WEBPACK_IMPORTED_MODULE_13__.default, {
             setField: function setField(config) {
               return setFieldConfig(newFields.length, config);
             }
@@ -3448,7 +3600,7 @@ function FieldsCreator() {
 
       case 'job':
         setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_JobField__WEBPACK_IMPORTED_MODULE_13__.default, {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_JobField__WEBPACK_IMPORTED_MODULE_14__.default, {
             setField: function setField(config) {
               return setFieldConfig(newFields.length, config);
             }
@@ -3458,7 +3610,7 @@ function FieldsCreator() {
 
       case 'gender':
         setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_GenderField__WEBPACK_IMPORTED_MODULE_14__.default, {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_GenderField__WEBPACK_IMPORTED_MODULE_15__.default, {
             setField: function setField(config) {
               return setFieldConfig(newFields.length, config);
             }
@@ -3468,7 +3620,7 @@ function FieldsCreator() {
 
       case 'email':
         setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_EmailField__WEBPACK_IMPORTED_MODULE_15__.default, {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_EmailField__WEBPACK_IMPORTED_MODULE_16__.default, {
             setField: function setField(config) {
               return setFieldConfig(newFields.length, config);
             }
@@ -3478,7 +3630,7 @@ function FieldsCreator() {
 
       case 'double':
         setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_DoubleField__WEBPACK_IMPORTED_MODULE_16__.default, {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_DoubleField__WEBPACK_IMPORTED_MODULE_17__.default, {
             setField: function setField(config) {
               return setFieldConfig(newFields.length, config);
             }
@@ -3488,7 +3640,7 @@ function FieldsCreator() {
 
       case 'date':
         setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)(_DateField__WEBPACK_IMPORTED_MODULE_17__.default, {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_DateField__WEBPACK_IMPORTED_MODULE_18__.default, {
             setField: function setField(config) {
               return setFieldConfig(newFields.length, config);
             }
@@ -3553,25 +3705,25 @@ function FieldsCreator() {
     return _submit.apply(this, arguments);
   }
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.Fragment, {
-    children: ["name of the form structure ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)("input", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.Fragment, {
+    children: ["name of the form structure ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("input", {
       type: "string",
       onChange: function onChange(e) {
         return setType(e.target.value);
       }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)("ul", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("ul", {
       className: "list-group",
       children: newFields.map(function (NewField, index) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)("li", {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("li", {
           className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsxs)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)("div", {
             className: "row",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("div", {
               className: "col",
               children: NewField
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("div", {
               className: "col",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)("button", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("button", {
                 type: "button",
                 onClick: function onClick() {
                   return removeField(index);
@@ -3582,24 +3734,24 @@ function FieldsCreator() {
           })
         }, index);
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)("ul", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("ul", {
       className: "list-group",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsxs)("select", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)("select", {
         value: '',
         onChange: typeChoice,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)("option", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("option", {
           value: "",
           children: "please choose type"
         }), fieldsTypes.map(function (type, index) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)("option", {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("option", {
             value: type,
             children: type
           }, index);
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)("ul", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("ul", {
       className: "list-group",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_19__.jsx)("button", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("button", {
         onClick: function onClick() {
           return submit();
         },
@@ -4139,6 +4291,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 
 
@@ -4148,26 +4301,107 @@ function CustomRatingField(props) {
   var field = props.value;
   var index = props.index;
   var onChange = props.onChange;
-  var stars = [];
 
-  for (var i = 0; i < field['max']; i++) {
-    stars[i] = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-      "class": "fa fa-star"
+  if (type == 'render') {
+    var stars = [];
+
+    for (var i = 0; i < field['max']; i++) {
+      if (i < field['value']) stars[i] = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: "16",
+        height: "16",
+        fill: "currentColor",
+        className: "bi bi-star-fill",
+        viewBox: "0 0 16 16",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+          d: "M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
+        })
+      }, i);else stars[i] = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: "16",
+        height: "16",
+        fill: "currentColor",
+        className: "bi bi-star",
+        viewBox: "0 0 16 16",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+          d: "M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"
+        })
+      }, i);
+    }
+
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "col m-1",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "row flex-nowrap",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+          children: field['label']
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "ml-2",
+          children: stars
+        })]
+      })
     });
-  }
+  } else if (type == 'input') {
+    var _ret = function () {
+      var setrate = function setrate(rate) {
+        field['value'] = rate;
+        onChange(field);
+      };
 
-  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: ["custom rating ", field['label'], /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      "class": "row",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("link", {
-        rel: "stylesheet",
-        href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-      }), stars]
-    })]
-  });else if (type == 'input') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    className: "row",
-    children: field['class']
-  });
+      var stars = [];
+
+      var _loop = function _loop(_i) {
+        if (_i < field['value']) stars[_i] = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+          onClick: function onClick() {
+            return setrate(_i + 1);
+          },
+          xmlns: "http://www.w3.org/2000/svg",
+          width: "16",
+          height: "16",
+          fill: "currentColor",
+          className: "bi bi-star-fill",
+          viewBox: "0 0 16 16",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+            d: "M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
+          })
+        }, _i);else stars[_i] = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+          onClick: function onClick() {
+            return setrate(_i + 1);
+          },
+          xmlns: "http://www.w3.org/2000/svg",
+          width: "16",
+          height: "16",
+          fill: "currentColor",
+          className: "bi bi-star",
+          viewBox: "0 0 16 16",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+            d: "M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"
+          })
+        }, _i);
+      };
+
+      for (var _i = 0; _i < field['max']; _i++) {
+        _loop(_i);
+      }
+
+      return {
+        v: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "col m-1",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "row flex-nowrap",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+              children: field['label']
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+              className: "ml-2",
+              children: stars
+            })]
+          })
+        })
+      };
+    }();
+
+    if (_typeof(_ret) === "object") return _ret.v;
+  }
 }
 
 /***/ }),
@@ -4195,13 +4429,18 @@ function DateField(props) {
   var field = props.value;
   var index = props.index;
   var onChange = props.onChange;
-  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    className: "row",
-    children: [field['label'], /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      type: "date",
-      value: (_field$value = field['value']) !== null && _field$value !== void 0 ? _field$value : '',
-      disabled: true
-    })]
+  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    className: "col m-1",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "row flex-nowrap",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+        children: field['label']
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        type: "date",
+        value: (_field$value = field['value']) !== null && _field$value !== void 0 ? _field$value : 'حقل تاريخ',
+        disabled: true
+      })]
+    })
   });else if (type == 'input') {
     var _field$value2;
 
@@ -4240,24 +4479,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function DoubleField(props) {
+  var _field$value;
+
   var type = props.type;
   var field = props.value;
   var index = props.index;
   var onChange = props.onChange;
-  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    "class": "row p-3",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      "class": "col-6",
-      children: ["\u062D\u0642\u0644 \u0631\u0642\u0645 \u0645\u0631\u0643\u0628 \u0628\u0639\u0646\u0648\u0627\u0646: ", field['label']]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      "class": "col-6",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-        "class": "border border-1 rounded",
-        size: "25",
-        value: field['value'],
+  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    className: "col m-1",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "row flex-nowrap",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+        children: field['label']
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        "class": "border border-1 rounded lm-2",
+        value: (_field$value = field['value']) !== null && _field$value !== void 0 ? _field$value : 'حقل عدد مركب',
         disabled: true
-      })
-    })]
+      })]
+    })
   });else if (type == 'input') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     className: "row",
     children: field['class']
@@ -4282,17 +4521,26 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 function EmailField(props) {
+  var _field$value;
+
   var type = props.type;
   var field = props.value;
   var index = props.index;
   var onChange = props.onChange;
-  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: ["email field ", field['label'], /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      "class": "p-2 border border-1 rounded",
-      children: field['value']
-    })]
+  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    className: "col m-1",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "row flex-nowrap",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+        className: "",
+        children: field['label']
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        className: "border border-1 rounded ml-2",
+        value: (_field$value = field['value']) !== null && _field$value !== void 0 ? _field$value : 'حقل عنوان بريدي',
+        disabled: true
+      })]
+    })
   });else if (type == 'input') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     className: "row",
     children: field['class']
@@ -4750,52 +4998,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 function GenderField(props) {
   var type = props.type;
   var field = props.value;
   var index = props.index;
   var onChange = props.onChange;
-  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: ["number field ", field['label'], /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "form-check",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-        className: "form-check-input",
-        type: "radio",
-        checked: field['value'] == 'male',
-        disabled: true
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-        className: "form-check-label",
-        children: "male"
-      })]
+  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "col m-1",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+      children: field['label']
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "form-check",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-        className: "form-check-input",
-        type: "radio",
-        checked: field['value'] == 'female',
-        disabled: true
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-        className: "form-check-label",
-        children: "female"
-      })]
-    })]
-  });else if (type == 'input') {
-    var changeValue = function changeValue(value) {
-      field['value'] = value;
-      onChange(field);
-    };
-
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-      children: ["number field ", field['label'], /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "col m-1",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
         className: "form-check",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
           className: "form-check-input",
           type: "radio",
-          onChange: function onChange() {
-            return changeValue('male');
-          },
-          checked: field['value'] == 'male'
+          checked: field['value'] == 'male',
+          disabled: true
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
           className: "form-check-label",
           children: "male"
@@ -4805,15 +5025,57 @@ function GenderField(props) {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
           className: "form-check-input",
           type: "radio",
-          onChange: function onChange() {
-            return changeValue('female');
-          },
-          checked: field['value'] == 'female'
+          checked: field['value'] == 'female',
+          disabled: true
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
           className: "form-check-label",
           children: "female"
         })]
       })]
+    })]
+  });else if (type == 'input') {
+    var changeValue = function changeValue(value) {
+      field['value'] = value;
+      onChange(field);
+    };
+
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "col m-1",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "row flex-nowrap",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+          children: field['label']
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "col ml-3",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "form-check",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              className: "form-check-input",
+              type: "radio",
+              onChange: function onChange() {
+                return changeValue('male');
+              },
+              checked: field['value'] == 'male'
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              className: "form-check-label",
+              children: "male"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "form-check",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              className: "form-check-input",
+              type: "radio",
+              onChange: function onChange() {
+                return changeValue('female');
+              },
+              checked: field['value'] == 'female'
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              className: "form-check-label",
+              children: "female"
+            })]
+          })]
+        })]
+      })
     });
   }
 }
@@ -4841,23 +5103,22 @@ function GenderField(props) {
   var field = props.value;
   var index = props.index;
   var onChange = props.onChange;
-  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    "class": "row p-3",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      "class": "col-6",
-      children: ["\u062D\u0642\u0644 \u062A\u062D\u062F\u064A\u062F \u0646\u0648\u0639 \u0627\u0644\u0648\u0638\u064A\u0641\u0629 \u0628\u0639\u0646\u0648\u0627\u0646: ", field['label']]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      "class": "col-6",
-      children: field['value'] ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        "class": "p-1 border border-1 rounded",
+  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    className: "col m-1",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "row d-flex flex-nowrap",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+        children: field['label']
+      }), field['value'] ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        "class": "p-1 border border-1 rounded  ml-2",
         children: ["\u0627\u0633\u0645 \u0627\u0644\u0648\u0638\u064A\u0641\u0629 \u0627\u0644\u0645\u062D\u062F\u062F \u0627\u0641\u062A\u0631\u0627\u0636\u064A\u0627 ", field['value']]
       }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-        "class": "border border-1 rounded",
+        "class": "border border-1 rounded  ml-2",
         size: "25",
-        value: "",
+        value: "\u062D\u0642\u0644 \u062A\u062D\u062F\u064A\u062F \u0648\u0638\u064A\u0641\u0629",
         disabled: true
-      })
-    })]
+      })]
+    })
   });else if (type == 'input') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     className: "row",
     children: field['class']
@@ -4881,7 +5142,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
-
 function LabelField(props) {
   var type = props.type;
   var field = props.value;
@@ -4889,10 +5149,12 @@ function LabelField(props) {
   var onChange = props.onChange; // console.log(field['options'])
 
   if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    "class": "row p-3",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      "class": "col-6",
-      children: ["\u0646\u0635 \u0627\u0631\u0634\u0627\u062F\u064A: ", field['value']]
+    className: "col-12 m-1",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "row justify-content-center",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h5", {
+        children: field['value']
+      })
     })
   });else if (type == 'input') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     className: "row",
@@ -4923,20 +5185,18 @@ function NumberField(props) {
   var field = props.value;
   var index = props.index;
   var onChange = props.onChange;
-  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    "class": "row p-3",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      "class": "col-6",
-      children: ["\u062D\u0642\u0644 \u0639\u062F\u062F\u064A \u0628\u0639\u0646\u0648\u0627\u0646: ", field['label']]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      "class": "col-6",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-        "class": "border border-1 rounded",
-        size: "25",
+  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    className: "col m-1",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "row flex-nowrap d-flex",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+        children: field['label']
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        "class": "border border-1 rounded ml-2",
         value: field['value'],
         disabled: true
-      })
-    })]
+      })]
+    })
   });else if (type == 'input') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
     className: "row",
     children: field['class']
@@ -4967,28 +5227,28 @@ function OptionsField(props) {
   var index = props.index;
   var onChange = props.onChange; // console.log(field['options'])
 
-  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    className: "row p-3",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "col-6",
-      children: ["\u062D\u0642\u0644 \u0627\u062E\u062A\u064A\u0627\u0631\u064A \u0628\u0639\u0646\u0648\u0627\u0646: ", field['label']]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "col-6",
-      children: field['options'].map(function (option, k) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "form-check",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-            className: "form-check-input",
-            type: "radio",
-            disabled: true,
-            checked: field['value'] == option
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-            className: "form-check-label",
-            children: option
-          })]
-        }, k);
-      })
-    })]
+  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    className: "col m-2",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "row flex-nowrap",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+        children: field['label']
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "ml-2",
+        children: field['options'].map(function (option, k) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              type: "radio",
+              disabled: true,
+              checked: field['value'] == option
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              className: "ml-2",
+              children: option
+            })]
+          }, k);
+        })
+      })]
+    })
   });else if (type == 'input') {
     var changeValue = function changeValue(value) {
       field['value'] = value;
@@ -5041,7 +5301,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 function PhoneNumberField(props) {
   var _field$value;
 
@@ -5049,20 +5308,16 @@ function PhoneNumberField(props) {
   var field = props.value;
   var index = props.index;
   var onChange = props.onChange;
-  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    className: "col m-1",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "row p-3",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "col-6",
-        children: ["\u062D\u0642\u0644 \u0631\u0642\u0645 \u0647\u0627\u062A\u0641 \u0628\u0639\u0646\u0648\u0627\u0646: ", field['label']]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "col-6",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-          className: "border border-1 rounded",
-          size: "25",
-          value: (_field$value = field['value']) !== null && _field$value !== void 0 ? _field$value : '',
-          disabled: true
-        })
+      className: "row flex-nowrap",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+        children: field['label']
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        className: "border border-1 rounded ml-2",
+        value: (_field$value = field['value']) !== null && _field$value !== void 0 ? _field$value : '',
+        disabled: true
       })]
     })
   });else if (type == 'input') {
@@ -5107,6 +5362,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 
 
 
@@ -5115,14 +5372,22 @@ function RatingField(props) {
   var field = props.value;
   var index = props.index;
   var onChange = props.onChange;
-  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    className: "row p-3",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "col-6",
-      children: ["\u062D\u0642\u0644 \u062A\u0642\u064A\u064A\u0645 \u0628\u0639\u0646\u0648\u0627\u0646: ", field['label']]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "col-4",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+
+  if (type == 'render') {
+    var stars = [];
+
+    for (var i = 0; i < 5; i++) {
+      if (i < field['value']) stars[i] = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: "16",
+        height: "16",
+        fill: "currentColor",
+        className: "bi bi-star-fill",
+        viewBox: "0 0 16 16",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+          d: "M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
+        })
+      }, i);else stars[i] = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
         xmlns: "http://www.w3.org/2000/svg",
         width: "16",
         height: "16",
@@ -5132,52 +5397,82 @@ function RatingField(props) {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
           d: "M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
-        xmlns: "http://www.w3.org/2000/svg",
-        width: "16",
-        height: "16",
-        fill: "currentColor",
-        className: "bi bi-star",
-        viewBox: "0 0 16 16",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-          d: "M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"
+      }, i);
+    }
+
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "col m-1",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "row flex-nowrap",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+          children: field['label']
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "ml-2",
+          children: stars
+        })]
+      })
+    });
+  } else if (type == 'input') {
+    var _ret = function () {
+      var setrate = function setrate(rate) {
+        field['value'] = rate;
+        onChange(field);
+      };
+
+      var stars = [];
+
+      var _loop = function _loop(_i) {
+        if (_i < field['value']) stars[_i] = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+          onClick: function onClick() {
+            return setrate(_i + 1);
+          },
+          xmlns: "http://www.w3.org/2000/svg",
+          width: "16",
+          height: "16",
+          fill: "currentColor",
+          className: "bi bi-star-fill",
+          viewBox: "0 0 16 16",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+            d: "M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
+          })
+        }, _i);else stars[_i] = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+          onClick: function onClick() {
+            return setrate(_i + 1);
+          },
+          xmlns: "http://www.w3.org/2000/svg",
+          width: "16",
+          height: "16",
+          fill: "currentColor",
+          className: "bi bi-star",
+          viewBox: "0 0 16 16",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+            d: "M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"
+          })
+        }, _i);
+      };
+
+      for (var _i = 0; _i < 5; _i++) {
+        _loop(_i);
+      }
+
+      return {
+        v: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "col m-1",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "row flex-nowrap",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+              children: field['label']
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+              className: "ml-2",
+              children: stars
+            })]
+          })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
-        xmlns: "http://www.w3.org/2000/svg",
-        width: "16",
-        height: "16",
-        fill: "currentColor",
-        className: "bi bi-star",
-        viewBox: "0 0 16 16",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-          d: "M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
-        xmlns: "http://www.w3.org/2000/svg",
-        width: "16",
-        height: "16",
-        fill: "currentColor",
-        className: "bi bi-star",
-        viewBox: "0 0 16 16",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-          d: "M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
-        xmlns: "http://www.w3.org/2000/svg",
-        width: "16",
-        height: "16",
-        fill: "currentColor",
-        className: "bi bi-star",
-        viewBox: "0 0 16 16",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-          d: "M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"
-        })
-      })]
-    })]
-  });else if (type == 'input') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    className: "row",
-    children: field['class']
-  });
+      };
+    }();
+
+    if (_typeof(_ret) === "object") return _ret.v;
+  }
 }
 
 /***/ }),
@@ -5204,28 +5499,34 @@ function SocialStatusField(props) {
   var field = props.value;
   var index = props.index;
   var onChange = props.onChange;
-  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: ["social status: ", field['label'], /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "form-check",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-        className: "form-check-input",
-        type: "radio",
-        disabled: true,
-        checked: field['value'] == 'married'
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-        className: "form-check-label",
-        children: "married"
-      })]
+  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "col m-1",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+      children: field['label']
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "form-check",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-        className: "form-check-input",
-        type: "radio",
-        checked: field['value'] == 'single',
-        disabled: true
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-        className: "form-check-label",
-        children: "single"
+      className: "col m-1",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "form-check",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+          className: "form-check-input",
+          type: "radio",
+          disabled: true,
+          checked: field['value'] == 'married'
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+          className: "form-check-label",
+          children: "married"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "form-check",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+          className: "form-check-input",
+          type: "radio",
+          checked: field['value'] == 'single',
+          disabled: true
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+          className: "form-check-label",
+          children: "single"
+        })]
       })]
     })]
   });else if (type == 'input') {
@@ -5307,20 +5608,19 @@ function StringField(props) {
 
   var index = props.index;
   var onChange = props.onChange;
-  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    className: "row p-3",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "col-6",
-      children: ["\u062D\u0642\u0644 \u0646\u0635 \u0639\u0627\u062F\u064A \u0628\u0639\u0646\u0648\u0627\u0646: ", field['label']]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "col-6",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-        className: "border border-1 rounded",
+  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    className: "col m-1",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "row ",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+        children: field['label']
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        className: "border border-1 rounded ml-2",
         size: "25",
-        value: fieldValue !== null && fieldValue !== void 0 ? fieldValue : '',
+        value: fieldValue !== null && fieldValue !== void 0 ? fieldValue : 'حقل نصي',
         disabled: true
-      })
-    })]
+      })]
+    })
   });else if (type == 'input') {
     var changeValue = function changeValue(e) {
       setFieldValue(e.target.value);
@@ -5387,16 +5687,14 @@ function TableField(props) {
       }, i);
     }
 
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "row p-3",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "col-6",
-          children: ["\u062D\u0642\u0644 \u062C\u062F\u0648\u0644 \u0628\u0639\u0646\u0648\u0627\u0646: ", field['label']]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "col-6",
-          children: ["\u0639\u062F\u062F \u0627\u0644\u0635\u0641\u0648\u0641 \u0641\u064A \u0627\u0644\u062C\u062F\u0648\u0644: ", field['numberOfRows']]
-        })]
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "col-12",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+        className: "mr-3",
+        children: field['label']
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("strong", {
+        className: "mr-3",
+        children: ["\u0639\u062F\u062F \u0627\u0644\u0635\u0641\u0648\u0641 \u0641\u064A \u0627\u0644\u062C\u062F\u0648\u0644: ", field['numberOfRows']]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
         className: "table table-striped table-condensed table-bordered",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
@@ -5518,10 +5816,15 @@ function TextAreaField(props) {
 
   var index = props.index;
   var onChange = props.onChange;
-  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: [field['label'], /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "p-5 border border-1 rounded",
-      children: fieldValue
+  if (type == 'render') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "col-12 m-1",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+      children: field['label']
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("textarea", {
+      className: "col-12 border border-1 rounded",
+      rows: "4",
+      value: fieldValue !== null && fieldValue !== void 0 ? fieldValue : 'منطقة النص',
+      disabled: true
     })]
   });else if (type == 'input') {
     var changeValue = function changeValue(e) {
@@ -5672,9 +5975,18 @@ function FormStructureShow(props) {
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
         className: "card-body",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_fields_Fields__WEBPACK_IMPORTED_MODULE_6__.default, {
-          fields: structure === null || structure === void 0 ? void 0 : structure.array_of_fields.fields,
-          type: "render"
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+          className: "row justify-content-center",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h1", {
+            className: "align-self-center",
+            children: structure === null || structure === void 0 ? void 0 : structure.type
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+          className: "row",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_fields_Fields__WEBPACK_IMPORTED_MODULE_6__.default, {
+            fields: structure === null || structure === void 0 ? void 0 : structure.array_of_fields.fields,
+            type: "render"
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
           onClick: generateForm,
           children: "\u0627\u0646\u0634\u0627\u0621 \u0646\u0633\u062E\u0629 \u0646\u0645\u0648\u0630\u062C"
@@ -6262,9 +6574,12 @@ function FormView() {
         children: ["\u0646\u0645\u0648\u0630\u062C ", form === null || form === void 0 ? void 0 : form.id]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         className: "card-body",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_fields_Fields__WEBPACK_IMPORTED_MODULE_3__.default, {
-          fields: form === null || form === void 0 ? void 0 : form.filled_fields.fields,
-          type: "render"
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "row",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_fields_Fields__WEBPACK_IMPORTED_MODULE_3__.default, {
+            fields: form === null || form === void 0 ? void 0 : form.filled_fields.fields,
+            type: "render"
+          })
         })
       })]
     })

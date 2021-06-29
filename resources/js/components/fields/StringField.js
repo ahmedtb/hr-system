@@ -9,18 +9,16 @@ export default function StringField(props) {
 
     if (type == 'render')
         return (
-            <div className="row p-3">
-                <div className="col-6">
-                    حقل نص عادي بعنوان: {field['label']}
-                </div>
-                <div className="col-6">
-                    <input className='border border-1 rounded' size="25" value={fieldValue ?? ''} disabled />
+            <div className="col m-1">
+                <div className="row ">
+                    <strong>{field['label']}</strong>
+                    <input className='border border-1 rounded ml-2' size="25" value={fieldValue ?? 'حقل نصي'} disabled />
                 </div>
             </div>
 
         );
-    else if (type == 'input'){
-        function changeValue(e){
+    else if (type == 'input') {
+        function changeValue(e) {
             setFieldValue(e.target.value)
             field['value'] = e.target.value
             onChange(field)

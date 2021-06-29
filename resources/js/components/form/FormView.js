@@ -18,16 +18,9 @@ export default function FormView() {
                 <div className="card-header">نموذج {form?.id}</div>
 
                 <div className="card-body">
-                    <Fields fields={form?.filled_fields.fields} type='render'/>
-                    {/* <div className="list-group">
-                        {
-                            form?.filled_fields.fields.map((field, index) => (
-                                <div key={index} className="list-group-item">
-                                </div>
-                            ))
-                        }
-                    </div> */}
-
+                    <div className="row">
+                        <Fields fields={form?.filled_fields.fields} type='render' />
+                    </div>
                 </div>
 
             </div>
