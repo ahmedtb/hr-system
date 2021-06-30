@@ -12,6 +12,7 @@ class FormStructuresController extends Controller
 {
     public function create(Request $request)
     {
+        // return ArrayOfFields::fromArray($request->array_of_fields);
         $validatedData = $request->validate([
             'type' => 'required|string',
             'array_of_fields' => [new ArrayOfFieldsRule()]

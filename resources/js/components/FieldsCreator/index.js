@@ -29,9 +29,10 @@ function FieldsCreator() {
     const [fieldsConfigs, setFieldsConfigs] = React.useState([])
 
     function setFieldConfig(index, config) {
-        let arr = [...fieldsConfigs]
-        arr[index] = config
-        setFieldsConfigs(arr)
+        setFieldsConfigs(data => ({
+            ...data,
+            [index]: config
+        }))
     }
 
     function typeChoice(e) {
@@ -94,6 +95,7 @@ function FieldsCreator() {
     }
 
     React.useEffect(() => {
+        console.log(fieldsConfigs)
     }, [fieldsConfigs])
 
     const [type, setType] = React.useState('')
