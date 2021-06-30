@@ -22,5 +22,15 @@ export default {
     createProgram: '/api/program',
 
     createEmployeeForm: '/api/createEmployeeForm',
-    createEmployee: '/api/createEmployee'
+    createEmployee: '/api/createEmployee',
+    
+    getEmployees: '/api/getEmployees',
+    getUnits: '/api/getUnits',
+    getTrainingCourses: '/api/getTrainingCourses',
+
+    createInterview: '/api/interview/create',
+    createTrialPeriodAssessment: '/api/trialPeriod/create',
+    createTrainingPeriodAssessment: '/api/trainingPeriod/create',
+    createTraineeCourseAssessments: '/api/traineeCourseAssessment/create'
+
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API\assessments;
+namespace App\Http\Controllers\API\Assessments;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

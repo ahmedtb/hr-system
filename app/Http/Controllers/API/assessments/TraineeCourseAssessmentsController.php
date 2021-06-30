@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API\assessments;
+namespace App\Http\Controllers\API\Assessments;
 
 use App\Http\Controllers\Controller;
 use App\Models\Assessments\TraineeCourseAssessment;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\API\assessments;
+namespace Tests\Feature\API\Assessments;
 
 use App\Models\Assessments\TrialPeriodAssessment;
 use Illuminate\Foundation\Testing\RefreshDatabase;

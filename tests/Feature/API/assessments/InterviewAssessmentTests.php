@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\API;
+namespace Tests\Feature\API\Assessments;
 
 use Tests\TestCase;
 use App\Models\Form;
@@ -23,6 +23,7 @@ class InterviewAssessmentTests extends TestCase
     {
         $assessment = InterviewAssessment::factory()->make();
         $response = $this->postJson('/api/interview/create',[
+            'name' => $assessment->name,
             'look' => $assessment->look,
             'self_introduction' => $assessment->self_introduction,
             'personality' => $assessment->personality,

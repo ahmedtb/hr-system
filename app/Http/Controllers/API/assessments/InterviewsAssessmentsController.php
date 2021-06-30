@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\API\Assessments;
 
 use App\Http\Controllers\Controller;
 use App\Models\Assessments\InterviewAssessment;
 use Illuminate\Http\Request;
 
-class AssessmentsController extends Controller
+class InterviewsAssessmentsController extends Controller
 {
     public function createInterview(Request $request)
     {
         $data = $request->validate([
+            'name' => 'required|string',
             'look' => 'required|in:excellent,good,medium,weak',
             'self_introduction' => 'required|in:excellent,good,medium,weak',
             'personality' => 'required|in:excellent,good,medium,weak',

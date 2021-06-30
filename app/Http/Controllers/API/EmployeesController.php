@@ -175,4 +175,9 @@ class EmployeesController extends Controller
 
         $course->employees()->attach($request->employees);
     }
+
+    public function getEmployees()
+    {
+        return Employee::all();
+    }
 }

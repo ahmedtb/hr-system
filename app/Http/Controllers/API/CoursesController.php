@@ -59,4 +59,9 @@ class CoursesController extends Controller
 
         return $course->forms;
     }
+
+    public function getTrainingCourses()
+    {
+        return TrainingCourse::all();
+    }
 }

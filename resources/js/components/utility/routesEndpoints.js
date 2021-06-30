@@ -12,6 +12,11 @@ const routes = {
     createFormStructureForm: '/react/structureCreate',
     createCoachForm: '/react/coachCreate',
     createProgramForm: '/react/programCreate',
+
+    conductInterviewAssessment: '/react/assessment/interview',
+    conductTrialPeriodAssessment: '/react/assessment/trialPeriod',
+    conductTrainingPeriodAssessment: '/react/assessment/trainingPeriod',
+    TraineeCourseAssessment: '/react/assessment/traineeCourseAssessment'
 }
 
 export default routes;

@@ -15,6 +15,11 @@ import FormSearch from './form/FormSearch'
 import FormStructureCreate from './formStructure/FormStructuresCreate'
 import CreateCoach from './coach/CreateCoach'
 import CreateProgram from './program/CreateProgram'
+import ConductInterviewAssessment from './interview/ConductAssessment'
+import ConductTrialPeriodAssessment from './trialPeriod/ConductAssessment'
+import ConductTrainingPeriodAssessment from './TrainingPeriod/ConductAssessment'
+import TraineeCourseAssessment from './course/TraineeCourseAssessment'
+
 class App extends Component {
     render() {
         return (
@@ -33,6 +38,11 @@ class App extends Component {
                         <Route exact path={routes.createFormStructureForm} component={FormStructureCreate} />
                         <Route exact path={routes.createCoachForm} component={CreateCoach} />
                         <Route exact path={routes.createProgramForm} component={CreateProgram} />
+                        <Route exact path={routes.conductInterviewAssessment} component={ConductInterviewAssessment} />
+                        <Route exact path={routes.conductTrialPeriodAssessment} component={ConductTrialPeriodAssessment} />
+                        <Route exact path={routes.conductTrainingPeriodAssessment} component={ConductTrainingPeriodAssessment} />
+                        <Route exact path={routes.TraineeCourseAssessment} component={TraineeCourseAssessment} />
+
                         <Route exact path={routes.dashboard} component={Dashboard} />
                         <Route exact path='/' component={Dashboard} />
 

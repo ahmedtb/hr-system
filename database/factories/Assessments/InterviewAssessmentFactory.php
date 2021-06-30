@@ -15,25 +15,6 @@ class InterviewAssessmentFactory extends Factory
      */
     protected $model = InterviewAssessment::class;
 
-
-            // $table->enum('المظهر',['excellent','good','medium','weak']);
-            // $table->enum('تعريفه لنفسه',['excellent','good','medium','weak']);
-            // $table->enum('الشخصية',['excellent','good','medium','weak']);
-            // $table->enum('اللغة الانجليزية',['excellent','good','medium','weak']);
-            // $table->enum('الثقافة',['excellent','good','medium','weak']);
-            // $table->enum('اللغة العربية',['excellent','good','medium','weak']);
-            // $table->enum('المبادرة',['excellent','good','medium','weak']);
-            // $table->enum('مهارات المشاركة',['excellent','good','medium','weak']);
-            // $table->enum('الاستيعاب',['excellent','good','medium','weak']);
-            // $table->enum('اتخاد القرار',['excellent','good','medium','weak']);
-            // $table->enum('ملائمة المؤهل العلمي لمتطلبات الوظيفة',['excellent','good','medium','weak']);
-            // $table->enum('ملائمة الخبرات العلمية لمتطلبات الوظيفة',['excellent','good','medium','weak']);
-            // $table->enum('ملائمة المهارات المكتسبة لمتطلبات الوظيفة',['excellent','good','medium','weak']);
-            // $table->enum('مدى استطاعته لحل المشاكل',['excellent','good','medium','weak']);
-            // $table->enum('مدى تعامله مع الضغط والتوتر الوظيفي',['excellent','good','medium','weak']);
-            // $table->enum('الشجاعة الأدبية والثقة بالنفس',['excellent','good','medium','weak']);
-            // $table->string('اسم مجري المقابلة');
-            // $table->date('تاريخ المقابلة');
     /**
      * Define the model's default state.
      *
@@ -43,6 +24,7 @@ class InterviewAssessmentFactory extends Factory
     {
         $assessments = ['excellent','good','medium','weak'];
         return [
+            'name' => $this->faker->name(),
             'look' => $assessments[rand(0,3)],
             'self_introduction' => $assessments[rand(0,3)],
             'personality' => $assessments[rand(0,3)],

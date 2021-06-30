@@ -5,20 +5,23 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\CoachController;
 use App\Http\Controllers\API\FormsController;
 use App\Http\Controllers\API\CoursesController;
+
 use App\Http\Controllers\API\ProgramsController;
 use App\Http\Controllers\API\DashboardController;
+
+
 use App\Http\Controllers\API\EmployeesController;
 use App\Http\Controllers\API\ManagmentController;
-use App\Models\Assessments\TrialPeriodAssessment;
 use App\Http\Controllers\API\InterviewsController;
-use App\Http\Controllers\API\AssessmentsController;
 use App\Http\Controllers\API\FormStructuresController;
 use App\Http\Controllers\API\CoursesAndProgramsController;
 use App\Http\Controllers\API\TargetedIndividualsController;
-use App\Http\Controllers\API\assessments\CoachCourseAssessmentsController;
-use App\Http\Controllers\API\assessments\TrialPeriodAssessmentsController;
-use App\Http\Controllers\API\assessments\TraineeCourseAssessmentsController;
-use App\Http\Controllers\API\assessments\TrainingPeriodAssessmentsController;
+use App\Http\Controllers\API\Assessments\InterviewsAssessmentsController;
+use App\Http\Controllers\API\Assessments\CoachCourseAssessmentsController;
+use App\Http\Controllers\API\Assessments\TrialPeriodAssessmentsController;
+use App\Http\Controllers\API\Assessments\TraineeCourseAssessmentsController;
+use App\Http\Controllers\API\Assessments\TrainingPeriodAssessmentsController;
+use App\Http\Controllers\API\UnitsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +39,9 @@ Route::get('/unitsTree', [ManagmentController::class,'UnitsTree']);
 Route::post('/createJob', [ManagmentController::class,'CreateJob']);
 Route::post('/createUnit', [ManagmentController::class,'CreateUnit']);
 
+Route::get('/getUnits', [UnitsController::class,'getUnits']);
+
+
 Route::post('createEmployee', [EmployeesController::class,'create']);
 Route::get('/createEmployeeForm', [EmployeesController::class, 'createForm']);
 
@@ -44,6 +50,7 @@ Route::put('editEmployee', [EmployeesController::class,'editEmployee']);
 Route::put('attackDocumentToEmployee', [EmployeesController::class,'attackDocument']);
 Route::put('rateEmployee', [EmployeesController::class,'rateEmployee']);
 Route::post('createCourseForEmployees', [EmployeesController::class,'createCourseForEmployees']);
+Route::get('getEmployees', [EmployeesController::class,'getEmployees']);
 
 Route::post('targeted/create', [TargetedIndividualsController::class,'create']);
 
@@ -78,12 +85,13 @@ Route::post('course',[CoursesController::class,'create']);
 Route::get('course/{id}/schedual',[CoursesController::class,'getSchedual']);
 Route::get('course/{id}/attendance',[CoursesController::class,'getAttendance']);
 Route::get('course/{id}/forms',[CoursesController::class,'getForms']);
+Route::get('getTrainingCourses',[CoursesController::class,'getTrainingCourses']);
 
 // Route::get('getInterviewsAssessments', [InterviewsController::class,'getInterviewsAssessments']);
 // Route::get('getGoodAssessments', [InterviewsController::class,'getGoodAssessments']);
 
-Route::post('interview/create', [AssessmentsController::class,'createInterview']);
-Route::get('interview/index', [AssessmentsController::class,'indexInterviews']);
+Route::post('interview/create', [InterviewsAssessmentsController::class,'createInterview']);
+Route::get('interview/index', [InterviewsAssessmentsController::class,'indexInterviews']);
 
 Route::post('trialPeriod/create', [TrialPeriodAssessmentsController::class,'create']);
 Route::get('trialPeriod/index', [TrialPeriodAssessmentsController::class,'index']);
