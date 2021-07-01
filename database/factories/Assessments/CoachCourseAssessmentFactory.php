@@ -41,6 +41,7 @@ class CoachCourseAssessmentFactory extends Factory
             'reception_supervision' => $this->ratingWithComment(),
             'hospitality_and_course_breaks' => $this->ratingWithComment(),
             'training_department_cooperation' => $this->ratingWithComment(),
+            'note' => $this->faker->sentence(),
         ];
     }
 }

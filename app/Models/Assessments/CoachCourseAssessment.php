@@ -4,6 +4,7 @@ namespace App\Models\Assessments;
 
 use App\Casts\Json;
 use Illuminate\Database\Eloquent\Model;
+use App\Filters\CoachCourseAssessmentFilters;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class CoachCourseAssessment extends Model
@@ -24,6 +25,10 @@ class CoachCourseAssessment extends Model
         'hospitality' => Json::class,
         'hospitality_and_course_breaks' => Json::class,
         'training_department_cooperation' => Json::class,
-
     ];
+
+    public function scopeFilter($query, CoachCourseAssessmentFilters $filters)
+    {
+        return $filters->apply($query);
+    }
 }

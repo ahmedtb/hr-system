@@ -49,12 +49,22 @@ class TrialPeriodAssessmentTest extends TestCase
     public function test_trial_period_assessment_could_be_retrived()
     {
         $interviews = TrialPeriodAssessment::factory(10)->create();
-        $response = $this->getJson('api/trialPeriod/index');
+        $response = $this->getJson('api/trialPeriodAssessment/index');
         $response->assertOk()->assertJsonCount(10);
     }
 
     public function test_system_can_retrive_trial_period_assessments_by_filtering()
     {
+        TrialPeriodAssessment::factory(2)->create([
+            'excitement' => 5,
+        ]);
+        TrialPeriodAssessment::factory(5)->create([
+            'excitement' => 1,
+        ]);
+        $response = $this->getJson('api/trialPeriodAssessment/index?excitement=5');
+        $response->assertOk()->assertJsonCount(2);
 
+        $response = $this->getJson('api/trialPeriodAssessment/index?excitement=2');
+        $response->assertOk()->assertJsonCount(0);
     }
 }

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\API\Assessments;
 
-use App\Http\Controllers\Controller;
-use App\Models\Assessments\TrialPeriodAssessment;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Filters\TrialPeriodAssessmentFilters;
+use App\Models\Assessments\TrialPeriodAssessment;
 
 class TrialPeriodAssessmentsController extends Controller
 {
@@ -43,8 +44,19 @@ class TrialPeriodAssessmentsController extends Controller
         return ['success' => 'trial period assessment archived'];
     }
 
-    public function index()
+    public function index(TrialPeriodAssessmentFilters $filters)
     {
-        return TrialPeriodAssessment::all();
+        return $this->getAssessments($filters);
+    }
+
+    /**
+     * Fetch all relevant threads.
+     *
+     * @param TrialPeriodAssessmentFilters $filters
+     * @return mixed
+     */
+    protected function getAssessments(TrialPeriodAssessmentFilters $filters)
+    {
+        return TrialPeriodAssessment::latest()->filter($filters)->get();
     }
 }

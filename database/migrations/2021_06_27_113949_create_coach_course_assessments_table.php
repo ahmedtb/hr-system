@@ -25,6 +25,7 @@ class CreateCoachCourseAssessmentsTable extends Migration
             $table->string('reception_supervision');
             $table->string('hospitality_and_course_breaks');
             $table->string('training_department_cooperation');
+            $table->string('note');
             $table->timestamps();
         });
     }

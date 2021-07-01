@@ -41,6 +41,16 @@ class TraineeCourseAssessmentTest extends TestCase
 
     public function test_system_can_retrive_trainee_course_assessments_by_filtering()
     {
-
+        TraineeCourseAssessment::factory(2)->create([
+            'coach_understanding' => ['rating'=>5,'comment'=>'aaa'],
+        ]);
+        TraineeCourseAssessment::factory(5)->create([
+            'coach_understanding' => ['rating'=>1,'comment'=>'aaa'],
+        ]);
+        $response = $this->getJson('api/traineeCourseAssessment/index?coach_understanding=5');
+        $response->assertOk()->assertJsonCount(2);
+        
+        $response = $this->getJson('api/traineeCourseAssessment/index?coach_understanding=2');
+        $response->assertOk()->assertJsonCount(0);
     }
 }

@@ -24,6 +24,8 @@ class CoachCourseAssessmentTest extends TestCase
             'reception_supervision' => $assessment->reception_supervision,
             'hospitality_and_course_breaks' => $assessment->hospitality_and_course_breaks,
             'training_department_cooperation' => $assessment->training_department_cooperation,
+            'note' => $assessment->note,
+
         ]);
         // dd($response->json());
         $response->assertOk();
@@ -40,6 +42,13 @@ class CoachCourseAssessmentTest extends TestCase
 
     public function test_system_can_retrive_coach_course_assessments_by_filtering()
     {
-
+        CoachCourseAssessment::factory(2)->create([
+            'trainees_discipline' => ['rating'=>5,'comment'=>'aaa'],
+        ]);
+        CoachCourseAssessment::factory(5)->create([
+            'trainees_discipline' => ['rating'=>1,'comment'=>'aaa'],
+        ]);
+        $response = $this->getJson('api/coachCourseAssessment/index?trainees_discipline=5');
+        $response->assertOk()->assertJsonCount(2);
     }
 }

@@ -46,8 +46,7 @@ class InterviewsAssessmentsController extends Controller
         /**
      * Fetch all relevant threads.
      *
-     * @param Channel       $channel
-     * @param ThreadFilters $filters
+     * @param InterviewAssessmentFilters $filters
      * @return mixed
      */
     protected function getAssessments(InterviewAssessmentFilters $filters)

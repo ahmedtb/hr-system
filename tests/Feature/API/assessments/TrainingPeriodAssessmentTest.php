@@ -13,7 +13,7 @@ class TrainingPeriodAssessmentTest extends TestCase
     public function test_training_period_assessment_form_could_be_created_and_archive_it()
     {
         $assessment = TrainingPeriodAssessment::factory()->make();
-        $response = $this->postJson('/api/trainingPeriod/create',[
+        $response = $this->postJson('/api/trainingPeriod/create', [
             'date' => $assessment->date,
             'employee_id' => $assessment->employee_id,
             'unit_id' => $assessment->unit_id,
@@ -46,13 +46,24 @@ class TrainingPeriodAssessmentTest extends TestCase
 
     public function test_training_period_assessment_could_be_retrived()
     {
-        $interviews = TrainingPeriodAssessment::factory(10)->create();
-        $response = $this->getJson('api/trainingPeriod/index');
+        TrainingPeriodAssessment::factory(10)->create();
+        $response = $this->getJson('api/trainingPeriodAssessment/index');
+        // dd($response->json());
         $response->assertOk()->assertJsonCount(10);
     }
 
     public function test_system_can_retrive_training_period_assessments_by_filtering()
     {
+        TrainingPeriodAssessment::factory(2)->create([
+            'excitement' => 5,
+        ]);
+        TrainingPeriodAssessment::factory(5)->create([
+            'excitement' => 1,
+        ]);
+        $response = $this->getJson('api/trainingPeriodAssessment/index?excitement=5');
+        $response->assertOk()->assertJsonCount(2);
 
+        $response = $this->getJson('api/trainingPeriodAssessment/index?excitement=2');
+        $response->assertOk()->assertJsonCount(0);
     }
 }

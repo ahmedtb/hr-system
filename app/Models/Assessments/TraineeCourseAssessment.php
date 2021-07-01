@@ -3,8 +3,9 @@
 namespace App\Models\Assessments;
 
 use App\Casts\Json;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Filters\TraineeCourseAssessmentFilters;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class TraineeCourseAssessment extends Model
 {
@@ -24,4 +25,9 @@ class TraineeCourseAssessment extends Model
         'hospitality_and_course_breaks' => Json::class,
         'training_unit_response' => Json::class,
     ];
+
+    public function scopeFilter($query, TraineeCourseAssessmentFilters $filters)
+    {
+        return $filters->apply($query);
+    }
 }

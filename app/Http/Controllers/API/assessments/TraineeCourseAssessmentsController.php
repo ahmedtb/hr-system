@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\API\Assessments;
 
-use App\Http\Controllers\Controller;
-use App\Models\Assessments\TraineeCourseAssessment;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Filters\TraineeCourseAssessmentFilters;
+use App\Models\Assessments\TraineeCourseAssessment;
 
 class TraineeCourseAssessmentsController extends Controller
 {
@@ -40,7 +41,7 @@ class TraineeCourseAssessmentsController extends Controller
             'training_hall_preparation' => 'required|array',
             'training_hall_preparation.rating' => 'required|min:0|max:5',
             'training_hall_preparation.comment' => 'required|string',
-            
+
             'reception' => 'required|array',
             'training_hall_preparation.rating' => 'required|min:0|max:5',
             'training_hall_preparation.comment' => 'required|string',
@@ -59,8 +60,21 @@ class TraineeCourseAssessmentsController extends Controller
         return ['success' => 'trainee course assessment archived'];
     }
 
-    public function index()
+    public function index(TraineeCourseAssessmentFilters $filters)
     {
-        return TraineeCourseAssessment::all();
+        return $this->getAssessments($filters);
+    }
+
+    /**
+     * Fetch all relevant threads.
+     *
+     * @param TraineeCourseAssessmentFilters $filters
+     * @return mixed
+     */
+    protected function getAssessments(TraineeCourseAssessmentFilters $filters)
+    {
+        $interviews = TraineeCourseAssessment::latest()->filter($filters)->get();
+
+        return $interviews;
     }
 }

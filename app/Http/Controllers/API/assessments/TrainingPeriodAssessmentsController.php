@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\Assessments;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Filters\TrainingPeriodAssessmentFilters;
 use App\Models\Assessments\TrainingPeriodAssessment;
 
 class TrainingPeriodAssessmentsController extends Controller
@@ -43,8 +44,19 @@ class TrainingPeriodAssessmentsController extends Controller
         return ['success' => 'training period assessment archived'];
     }
 
-    public function index()
+    public function index(TrainingPeriodAssessmentFilters $filters)
     {
-        return TrainingPeriodAssessment::all();
+        return $this->getAssessments($filters);
+    }
+
+    /**
+     * Fetch all relevant threads.
+     *
+     * @param TrainingPeriodAssessmentFilters $filters
+     * @return mixed
+     */
+    protected function getAssessments(TrainingPeriodAssessmentFilters $filters)
+    {
+        return TrainingPeriodAssessment::latest()->filter($filters)->get();
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\Assessments;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Filters\CoachCourseAssessmentFilters;
 use App\Models\Assessments\CoachCourseAssessment;
 
 class CoachCourseAssessmentsController extends Controller
@@ -48,6 +49,9 @@ class CoachCourseAssessmentsController extends Controller
             'training_department_cooperation' => 'required|array',
             'training_department_cooperation.rating' => 'required|min:0|max:5',
             'training_department_cooperation.comment' => 'required|string',
+
+            'note' => 'required|string',
+
         ]);
 
         CoachCourseAssessment::create($data);
@@ -55,8 +59,21 @@ class CoachCourseAssessmentsController extends Controller
         return ['success' => 'coach course assessment archived'];
     }
 
-    public function index()
+    public function index(CoachCourseAssessmentFilters $filters)
     {
-        return CoachCourseAssessment::all();
+        return $this->getAssessments($filters);
+    }
+
+    /**
+     * Fetch all relevant threads.
+     *
+     * @param CoachCourseAssessmentFilters $filters
+     * @return mixed
+     */
+    protected function getAssessments(CoachCourseAssessmentFilters $filters)
+    {
+        $interviews = CoachCourseAssessment::latest()->filter($filters)->get();
+
+        return $interviews;
     }
 }

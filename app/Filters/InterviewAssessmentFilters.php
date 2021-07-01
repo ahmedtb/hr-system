@@ -2,9 +2,6 @@
 
 namespace App\Filters;
 
-use App\Models\Assessments\InterviewAssessment;
-use App\User;
-
 class InterviewAssessmentFilters extends Filters
 {
     /**

@@ -71,9 +71,6 @@ Route::post('structure/create',[FormStructuresController::class,'create']);
 
 Route::post('employementApproval',[FormsController::class,'employementApproval']);
 
-Route::get('getCourseEmployees/{training_course_id}', [CoursesAndProgramsController::class,'getCourseEmployees']);
-Route::get('getCourseState/{training_course_id}', [CoursesAndProgramsController::class,'getCourseState']);
-
 Route::post('coach',[CoachController::class,'create']);
 Route::get('coach',[CoachController::class,'createForm']);
 
@@ -85,20 +82,19 @@ Route::post('course',[CoursesController::class,'create']);
 Route::get('course/{id}/schedual',[CoursesController::class,'getSchedual']);
 Route::get('course/{id}/attendance',[CoursesController::class,'getAttendance']);
 Route::get('course/{id}/forms',[CoursesController::class,'getForms']);
-Route::get('getTrainingCourses',[CoursesController::class,'getTrainingCourses']);
-Route::get('getTrainingCourses',[CoursesController::class,'getTrainingCourses']);
+Route::get('course/{id}/employees',[CoursesController::class,'getEmployees']);
 
-// Route::get('getInterviewsAssessments', [InterviewsController::class,'getInterviewsAssessments']);
-// Route::get('getGoodAssessments', [InterviewsController::class,'getGoodAssessments']);
+Route::get('getTrainingCourses',[CoursesController::class,'getTrainingCourses']);
+Route::get('getTrainingCourses',[CoursesController::class,'getTrainingCourses']);
 
 Route::post('interview/create', [InterviewsAssessmentsController::class,'createInterview']);
 Route::get('interview/index', [InterviewsAssessmentsController::class,'indexInterviews']);
 
-Route::post('trialPeriod/create', [TrialPeriodAssessmentsController::class,'create']);
-Route::get('trialPeriod/index', [TrialPeriodAssessmentsController::class,'index']);
+Route::post('trialPeriodAssessment/create', [TrialPeriodAssessmentsController::class,'create']);
+Route::get('trialPeriodAssessment/index', [TrialPeriodAssessmentsController::class,'index']);
 
-Route::post('trainingPeriod/create', [TrainingPeriodAssessmentsController::class,'create']);
-Route::get('trainingPeriod/index', [TrainingPeriodAssessmentsController::class,'index']);
+Route::post('trainingPeriodAssessment/create', [TrainingPeriodAssessmentsController::class,'create']);
+Route::get('trainingPeriodAssessment/index', [TrainingPeriodAssessmentsController::class,'index']);
 
 Route::post('traineeCourseAssessment/create', [TraineeCourseAssessmentsController::class,'create']);
 Route::get('traineeCourseAssessment/index', [TraineeCourseAssessmentsController::class,'index']);

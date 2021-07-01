@@ -64,4 +64,14 @@ class CoursesController extends Controller
     {
         return TrainingCourse::all();
     }
+
+    public function getEmployees($id)
+    {
+        $validation = Validator::make(['id' => $id], [
+            'id' => 'required|exists:training_courses,id'
+        ])->validate();
+
+        $course = TrainingCourse::where('id', $id)->first();
+        return $course->employees()->get();
+    }
 }
