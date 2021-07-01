@@ -31,6 +31,7 @@ export default {
     createInterview: '/api/interview/create',
     createTrialPeriodAssessment: '/api/trialPeriod/create',
     createTrainingPeriodAssessment: '/api/trainingPeriod/create',
-    createTraineeCourseAssessments: '/api/traineeCourseAssessment/create'
+    createTraineeCourseAssessments: '/api/traineeCourseAssessment/create',
+    createCoachCourseAssessments: '/api/coachCourseAssessment/create'
 
 }

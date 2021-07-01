@@ -39,7 +39,6 @@ class CoachCourseAssessmentFactory extends Factory
             'syllabus_understanding' => $this->ratingWithComment(),
             'hall_preparation' => $this->ratingWithComment(),
             'reception_supervision' => $this->ratingWithComment(),
-            'hospitality' => $this->ratingWithComment(),
             'hospitality_and_course_breaks' => $this->ratingWithComment(),
             'training_department_cooperation' => $this->ratingWithComment(),
         ];

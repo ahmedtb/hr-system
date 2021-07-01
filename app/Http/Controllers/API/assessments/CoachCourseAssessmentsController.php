@@ -40,10 +40,6 @@ class CoachCourseAssessmentsController extends Controller
             'reception_supervision' => 'required|array',
             'reception_supervision.rating' => 'required|min:0|max:5',
             'reception_supervision.comment' => 'required|string',
-            
-            'hospitality' => 'required|array',
-            'hospitality.rating' => 'required|min:0|max:5',
-            'hospitality.comment' => 'required|string',
 
             'hospitality_and_course_breaks' => 'required|array',
             'hospitality_and_course_breaks.rating' => 'required|min:0|max:5',

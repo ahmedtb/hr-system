@@ -9,7 +9,6 @@ use App\Models\Document;
 use App\Models\Employee;
 use App\Models\TrainingCourse;
 use App\Models\TrainingProgram;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class EmployeesEndpointsTests extends TestCase

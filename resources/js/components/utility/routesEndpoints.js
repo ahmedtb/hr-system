@@ -16,7 +16,9 @@ const routes = {
     conductInterviewAssessment: '/react/assessment/interview',
     conductTrialPeriodAssessment: '/react/assessment/trialPeriod',
     conductTrainingPeriodAssessment: '/react/assessment/trainingPeriod',
-    TraineeCourseAssessment: '/react/assessment/traineeCourseAssessment'
+    TraineeCourseAssessment: '/react/assessment/traineeCourseAssessment',
+    CoachCourseAssessment: '/react/assessment/coachCourseAssessment',
+
 }
 
 export default routes;

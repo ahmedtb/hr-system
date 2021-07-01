@@ -3,15 +3,7 @@
 namespace Tests\Feature\API\Assessments;
 
 use Tests\TestCase;
-use App\Models\Form;
-use App\Models\FormStructure;
-use App\FieldsTypes\DateField;
-use App\FieldsTypes\StringField;
-use App\FieldsTypes\TableField2;
-use App\FieldsTypes\OptionsField;
-use App\FieldsTypes\ArrayOfFields;
 use App\Models\Assessments\InterviewAssessment;
-use App\Models\FormTables\InterviewAssessmentForm;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class InterviewAssessmentTests extends TestCase
@@ -50,13 +42,25 @@ class InterviewAssessmentTests extends TestCase
 
     public function test_interview_Assessments_could_be_retrived()
     {
-        $interviews = InterviewAssessment::factory(10)->create();
+        InterviewAssessment::factory(10)->create();
         $response = $this->getJson('api/interview/index');
         $response->assertOk()->assertJsonCount(10);
     }
 
     public function test_system_can_retrive_interviews_by_filtering()
     {
+        InterviewAssessment::factory(2)->create([
+            'moral_courage_self_confidence' => 'excellent',
+            'self_introduction' => 'excellent'
+        ]);
+        InterviewAssessment::factory(5)->create([
+            'moral_courage_self_confidence' => 'good',
+            'self_introduction' => 'good'
 
+        ]);
+        $response = $this->getJson('api/interview/index?confidence=excellent&self_introduction=excellent');
+
+        $response->assertOk()->assertJsonCount(2);
     }
+
 }

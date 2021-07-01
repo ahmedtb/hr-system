@@ -9,7 +9,6 @@ use App\Models\FormStructure;
 use App\Models\TrainingCourse;
 use App\Rules\WeekScheduleRule;
 use App\Models\CourseAttendance;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CoursesTests extends TestCase
@@ -90,7 +89,9 @@ class CoursesTests extends TestCase
 
         $course->employees()->attach($employees);
 
-        $this->getJson('api/getCourseParticipants/' . $course->id)->assertOk()->assertJsonCount(10);
+        $response = $this->getJson('api/getCourseParticipants/' . $course->id);
+        dd($response->content());
+        //$response->assertOk()->assertJsonCount(10);
     }
 
     public function test_system_can_search_through_all_the_people_registered_in_the_courses_and_retrive_stats_about_them()

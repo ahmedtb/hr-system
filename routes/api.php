@@ -86,6 +86,7 @@ Route::get('course/{id}/schedual',[CoursesController::class,'getSchedual']);
 Route::get('course/{id}/attendance',[CoursesController::class,'getAttendance']);
 Route::get('course/{id}/forms',[CoursesController::class,'getForms']);
 Route::get('getTrainingCourses',[CoursesController::class,'getTrainingCourses']);
+Route::get('getTrainingCourses',[CoursesController::class,'getTrainingCourses']);
 
 // Route::get('getInterviewsAssessments', [InterviewsController::class,'getInterviewsAssessments']);
 // Route::get('getGoodAssessments', [InterviewsController::class,'getGoodAssessments']);

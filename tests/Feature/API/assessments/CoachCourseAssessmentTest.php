@@ -22,7 +22,6 @@ class CoachCourseAssessmentTest extends TestCase
             'syllabus_understanding' => $assessment->syllabus_understanding,
             'hall_preparation' => $assessment->hall_preparation,
             'reception_supervision' => $assessment->reception_supervision,
-            'hospitality' => $assessment->hospitality,
             'hospitality_and_course_breaks' => $assessment->hospitality_and_course_breaks,
             'training_department_cooperation' => $assessment->training_department_cooperation,
         ]);

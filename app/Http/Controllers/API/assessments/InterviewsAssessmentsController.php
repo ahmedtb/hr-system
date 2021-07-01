@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\API\Assessments;
 
-use App\Http\Controllers\Controller;
-use App\Models\Assessments\InterviewAssessment;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Filters\InterviewAssessmentFilters;
+use App\Models\Assessments\InterviewAssessment;
 
 class InterviewsAssessmentsController extends Controller
 {
@@ -37,7 +38,22 @@ class InterviewsAssessmentsController extends Controller
         return ['success' => 'interview assessment archived'];
     }
 
-    public function indexInterviews(){
-        return InterviewAssessment::all();
+    public function indexInterviews(InterviewAssessmentFilters $filters){
+        $interviews = $this->getAssessments($filters);
+        return  $interviews;
+    }
+
+        /**
+     * Fetch all relevant threads.
+     *
+     * @param Channel       $channel
+     * @param ThreadFilters $filters
+     * @return mixed
+     */
+    protected function getAssessments(InterviewAssessmentFilters $filters)
+    {
+        $interviews = InterviewAssessment::latest()->filter($filters)->get();
+
+        return $interviews;
     }
 }

@@ -1,47 +1,45 @@
 import axios from 'axios'
 import React from 'react'
-import ApiEndpoints from '../utility/ApiEndpoints'
-import logError from '../utility/logError'
+import ApiEndpoints from '../../utility/ApiEndpoints'
+import logError from '../../utility/logError'
 
 export default function ConductAssessment(props) {
 
     const [training_course_id, settraining_course_id] = React.useState(null)
-    const [coach_understanding, setcoach_understanding] = React.useState(null)
-    const [coach_communication, setcoach_communication] = React.useState(null)
-    const [presentation, setpresentation] = React.useState(null)
-    const [coach_cooperation, setcoach_cooperation] = React.useState(null)
-    const [program_quality, setprogram_quality] = React.useState(null)
-    const [technical_preparation, settechnical_preparation] = React.useState(null)
-    const [training_hall_preparation, settraining_hall_preparation] = React.useState(null)
-    const [reception, setreception] = React.useState(null)
+    const [trainees_discipline, settrainees_discipline] = React.useState(null)
+    const [trainees_interaction, settrainees_interaction] = React.useState(null)
+    const [congruence_with_content, setcongruence_with_content] = React.useState(null)
+    const [trainees_cooperation, settrainees_cooperation] = React.useState(null)
+    const [syllabus_understanding, setsyllabus_understanding] = React.useState(null)
+    const [hall_preparation, sethall_preparation] = React.useState(null)
+    const [reception_supervision, setreception_supervision] = React.useState(null)
     const [hospitality_and_course_breaks, sethospitality_and_course_breaks] = React.useState(null)
-    const [training_unit_response, settraining_unit_response] = React.useState(null)
+    const [training_department_cooperation, settraining_department_cooperation] = React.useState(null)
 
     const [trainingcourses, settrainingcourses] = React.useState([])
     React.useEffect(() => {
         axios.get(ApiEndpoints.getTrainingCourses)
             .then((res) => { settrainingcourses(res.data) })
             .catch(err => logError(err))
-    }, [coach_communication])
+    }, [trainees_interaction])
 
     async function submit() {
 
         try {
             const data = {
                 training_course_id:training_course_id,
-                coach_understanding:coach_understanding,
-                coach_communication:coach_communication,
-                presentation:presentation,
-                coach_cooperation:coach_cooperation,
-                program_quality:program_quality,
-                technical_preparation:technical_preparation,
-                training_hall_preparation:training_hall_preparation,
-                reception:reception,
+                trainees_discipline:trainees_discipline,
+                trainees_interaction:trainees_interaction,
+                congruence_with_content:congruence_with_content,
+                trainees_cooperation:trainees_cooperation,
+                syllabus_understanding:syllabus_understanding,
+                hall_preparation:hall_preparation,
+                reception_supervision:reception_supervision,
                 hospitality_and_course_breaks:hospitality_and_course_breaks,
-                training_unit_response:training_unit_response,
+                training_department_cooperation:training_department_cooperation,
             }
 
-            const res = await axios.post(ApiEndpoints.createTraineeCourseAssessments, data)
+            const res = await axios.post(ApiEndpoints.createCoachCourseAssessments, data)
             console.log(res.data)
         } catch (error) {
             logError(error)
@@ -50,7 +48,7 @@ export default function ConductAssessment(props) {
 
     return (
         <div className="card">
-            <div className="card-header">اجراء تقييم مقابلة</div>
+            <div className="card-header">تقييم دورة تدريبية من قبل مدرب</div>
 
             <div className="card-body">
                 <ul className="list-group">
@@ -69,8 +67,8 @@ export default function ConductAssessment(props) {
                     </li>
 
                     <li className="list-group-item">
-                        <label >إلمام المدرب بمواضيع البرنامج التدريبي</label>
-                        <select onChange={(e) => setcoach_understanding({...coach_understanding, rating: e.target.value})} >
+                        <label >انضباط المتدربين في الحضور والانصراف</label>
+                        <select onChange={(e) => settrainees_discipline({...trainees_discipline, rating: e.target.value})} >
                             <option >من 5</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -78,12 +76,12 @@ export default function ConductAssessment(props) {
                             <option value={4}>4</option>
                             <option value={5}>5</option>
                         </select>
-                        <input type="text" onChange={(e) => setcoach_understanding({...coach_understanding, comment: e.target.value})} />
+                        <input type="text" onChange={(e) => settrainees_discipline({...trainees_discipline, comment: e.target.value})} />
                     </li>
 
                     <li className="list-group-item">
-                        <label >قدرة المدرب على توصيل المعلومات</label>
-                        <select onChange={(e) => setcoach_communication({...coach_communication, rating: e.target.value})} >
+                        <label >تفاعل المتدربين أثناء المحاضرة</label>
+                        <select onChange={(e) => settrainees_interaction({...trainees_interaction, rating: e.target.value})} >
                             <option >من 5</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -91,12 +89,12 @@ export default function ConductAssessment(props) {
                             <option value={4}>4</option>
                             <option value={5}>5</option>
                         </select>
-                        <input type="text" onChange={(e) => setcoach_communication({...coach_communication, comment: e.target.value})} />
+                        <input type="text" onChange={(e) => settrainees_interaction({...trainees_interaction, comment: e.target.value})} />
                     </li>
 
                     <li className="list-group-item">
-                        <label >طريقة تنظيم العرض (من حيث الوضوح والكفاية )</label>
-                        <select onChange={(e) => setpresentation({...presentation, rating: e.target.value})} >
+                        <label >انسجام المتدربين مع مادة الدورة</label>
+                        <select onChange={(e) => setcongruence_with_content({...congruence_with_content, rating: e.target.value})} >
                             <option >من 5</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -104,12 +102,12 @@ export default function ConductAssessment(props) {
                             <option value={4}>4</option>
                             <option value={5}>5</option>
                         </select>
-                        <input type="text" onChange={(e) => setpresentation({...presentation, comment: e.target.value})} />
+                        <input type="text" onChange={(e) => setcongruence_with_content({...congruence_with_content, comment: e.target.value})} />
                     </li>
 
                     <li className="list-group-item">
-                        <label >مدى تعاون وتفاعل المدرب مع المتدربين</label>
-                        <select onChange={(e) => setcoach_cooperation({...coach_cooperation, rating: e.target.value})} >
+                        <label >مدى تعاون المتدربين</label>
+                        <select onChange={(e) => settrainees_cooperation({...trainees_cooperation, rating: e.target.value})} >
                             <option >من 5</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -117,12 +115,12 @@ export default function ConductAssessment(props) {
                             <option value={4}>4</option>
                             <option value={5}>5</option>
                         </select>
-                        <input type="text" onChange={(e) => setcoach_cooperation({...coach_cooperation, comment: e.target.value})} />
+                        <input type="text" onChange={(e) => settrainees_cooperation({...trainees_cooperation, comment: e.target.value})} />
                     </li>
 
                     <li className="list-group-item">
-                        <label >جودة برنامج التدريب</label>
-                        <select onChange={(e) => setprogram_quality({...program_quality, rating: e.target.value})} >
+                        <label >استيعاب منهج الدورة</label>
+                        <select onChange={(e) => setsyllabus_understanding({...syllabus_understanding, rating: e.target.value})} >
                             <option >من 5</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -130,12 +128,12 @@ export default function ConductAssessment(props) {
                             <option value={4}>4</option>
                             <option value={5}>5</option>
                         </select>
-                        <input type="text" onChange={(e) => setprogram_quality({...program_quality, comment: e.target.value})} />
+                        <input type="text" onChange={(e) => setsyllabus_understanding({...syllabus_understanding, comment: e.target.value})} />
                     </li>
 
                     <li className="list-group-item">
-                        <label >التجهيزات الفنية للدورة</label>
-                        <select onChange={(e) => settechnical_preparation({...technical_preparation, rating: e.target.value})} >
+                        <label >تجهيزات القاعة (الإضاءة؛ التهوية؛ وسائل الإيضاح .. إلخ)</label>
+                        <select onChange={(e) => sethall_preparation({...hall_preparation, rating: e.target.value})} >
                             <option >من 5</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -143,12 +141,12 @@ export default function ConductAssessment(props) {
                             <option value={4}>4</option>
                             <option value={5}>5</option>
                         </select>
-                        <input type="text" onChange={(e) => settechnical_preparation({...technical_preparation, comment: e.target.value})} />
+                        <input type="text" onChange={(e) => sethall_preparation({...hall_preparation, comment: e.target.value})} />
                     </li>
 
                     <li className="list-group-item">
-                        <label >القاعة التدريبية  وتجهيزاتها (الإضاءة؛ التهوية؛ وسائل الإيضاح ... إلخ )</label>
-                        <select onChange={(e) => settraining_hall_preparation({...training_hall_preparation, rating: e.target.value})} >
+                        <label >الاستقبال والإشراف</label>
+                        <select onChange={(e) => setreception_supervision({...reception_supervision, rating: e.target.value})} >
                             <option >من 5</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -156,20 +154,7 @@ export default function ConductAssessment(props) {
                             <option value={4}>4</option>
                             <option value={5}>5</option>
                         </select>
-                        <input type="text" onChange={(e) => settraining_hall_preparation({...training_hall_preparation, comment: e.target.value})} />
-                    </li>
-
-                    <li className="list-group-item">
-                        <label >الاستقبال و الإجراءات التنظيمية</label>
-                        <select onChange={(e) =>  setreception({...reception, rating: e.target.value})} >
-                            <option >من 5</option>
-                            <option value={1}>1</option>
-                            <option value={2}>2</option>
-                            <option value={3}>3</option>
-                            <option value={4}>4</option>
-                            <option value={5}>5</option>
-                        </select>
-                        <input type="text" onChange={(e) => setreception({...reception, comment: e.target.value})} />
+                        <input type="text" onChange={(e) => setreception_supervision({...reception_supervision, comment: e.target.value})} />
                     </li>
 
                     <li className="list-group-item">
@@ -186,8 +171,8 @@ export default function ConductAssessment(props) {
                     </li>
 
                     <li className="list-group-item">
-                        <label >تعاون وتجاوب وحدة التدريب</label>
-                        <select onChange={(e) => settraining_unit_response({...training_unit_response, rating: e.target.value})} >
+                        <label >تعاون وتجاوب إدارة التدريب</label>
+                        <select onChange={(e) => settraining_department_cooperation({...training_department_cooperation, rating: e.target.value})} >
                             <option >من 5</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -195,9 +180,8 @@ export default function ConductAssessment(props) {
                             <option value={4}>4</option>
                             <option value={5}>5</option>
                         </select>
-                        <input type="text" onChange={(e) => settraining_unit_response({...training_unit_response, comment: e.target.value})} />
+                        <input type="text" onChange={(e) => settraining_department_cooperation({...training_department_cooperation, comment: e.target.value})} />
                     </li>
-
 
                     <li className="list-group-item">
                         <input onClick={submit} type="button" value="تسجيل" />

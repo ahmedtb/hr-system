@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React from 'react'
-import ApiEndpoints from '../utility/ApiEndpoints'
-import logError from '../utility/logError'
+import ApiEndpoints from '../../utility/ApiEndpoints'
+import logError from '../../utility/logError'
 
 export default function ConductAssessment(props) {
 

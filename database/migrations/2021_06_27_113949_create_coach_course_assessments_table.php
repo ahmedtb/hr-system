@@ -23,7 +23,6 @@ class CreateCoachCourseAssessmentsTable extends Migration
             $table->string('syllabus_understanding');
             $table->string('hall_preparation');
             $table->string('reception_supervision');
-            $table->string('hospitality');
             $table->string('hospitality_and_course_breaks');
             $table->string('training_department_cooperation');
             $table->timestamps();
