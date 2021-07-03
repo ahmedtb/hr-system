@@ -11,6 +11,10 @@ use App\Http\Controllers\Controller;
 
 class ProgramsController extends Controller
 {
+    public function show($id)
+    {
+        return TrainingProgram::where('id', $id)->first();
+    }
     public function create(Request $request)
     {
         // return $request->all();

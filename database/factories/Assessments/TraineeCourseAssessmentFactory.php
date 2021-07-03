@@ -9,17 +9,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class TraineeCourseAssessmentFactory extends Factory
 {
 
-    // $table->foreignId('training_course_id');
-    // $table->string('coach_understanding');
-    // $table->string('coach_communication');
-    // $table->string('presentation');
-    // $table->string('coach_cooperation');
-    // $table->string('program_quality');
-    // $table->string('technical_preparation');
-    // $table->string('training_hall_preparation');
-    // $table->string('reception');
-    // $table->string('hospitality_and_course_breaks');
-    // $table->string('training_unit_response');
     /**
      * The name of the factory's corresponding model.
      *

@@ -25,7 +25,7 @@ export default {
     createEmployeeForm: '/api/createEmployeeForm',
     createEmployee: '/api/createEmployee',
     getEmployee: '/api/employee/:id',
-    
+
     getEmployees: '/api/getEmployees',
     getUnits: '/api/getUnits',
     getTrainingCourses: '/api/getTrainingCourses',
@@ -33,9 +33,18 @@ export default {
 
 
     createInterview: '/api/interview/create',
-    createTrialPeriodAssessment: '/api/trialPeriod/create',
-    createTrainingPeriodAssessment: '/api/trainingPeriod/create',
+    createTrialPeriodAssessment: '/api/trialPeriodAssessment/create',
+    createTrainingPeriodAssessment: '/api/trainingPeriodAssessment/create',
     createTraineeCourseAssessments: '/api/traineeCourseAssessment/create',
-    createCoachCourseAssessments: '/api/coachCourseAssessment/create'
+    createCoachCourseAssessments: '/api/coachCourseAssessment/create',
+
+    getTrialPeriods: '/api/trialPeriodAssessment/index',
+    getTrainingPeriods: '/api/trainingPeriodAssessment/index',
+    getTraineeCourses: '/api/traineeCourseAssessment/index',
+    getCoachCourses: '/api/coachCourseAssessment/index',
+    getInterviewAssessments: '/api/interview/index',
+
+    getCourse: '/api/course/:id',
+    getProgram: '/api/program/:id',
 
 }

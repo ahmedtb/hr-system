@@ -3,22 +3,18 @@
 namespace App\Http\Controllers\API;
 
 use App\Models\Job;
-use App\Models\Trainee;
 use App\Models\Document;
 use App\Models\Employee;
-use App\Rules\Base64Rule;
 use Illuminate\Http\Request;
 use App\Models\TrainingCourse;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
-use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class EmployeesController extends Controller
 {
     public function show($id)
     {
-        return Employee::where('id',$id)->first();
+        return Employee::where('id',$id)->with(['job','TrialPeriodAssessments','TrainingPeriodAssessments'])->first();
     }
     public function create(Request $request)
     {

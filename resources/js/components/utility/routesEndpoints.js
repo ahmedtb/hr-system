@@ -18,11 +18,14 @@ const routes = {
     conductTrainingPeriodAssessment: '/react/assessment/trainingPeriod',
     TraineeCourseAssessment: '/react/assessment/traineeCourseAssessment',
     CoachCourseAssessment: '/react/assessment/coachCourseAssessment',
+    AssessmentsIndex: '/react/assessment/index',
 
     CoachesList: '/react/coach/index',
 
     showTargeted: '/react/targeted/:id',
     showEmployee: '/react/employee/:id',
+    showCourse: '/react/course/:id',
+    showProgram: '/react/program/:id',
 
 }
 

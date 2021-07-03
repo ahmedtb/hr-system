@@ -2,11 +2,14 @@
 
 namespace Tests\Feature\DB;
 
-use App\Models\Document;
 use Tests\TestCase;
 use App\Models\Head;
+use App\Models\Document;
 use App\Models\Employee;
 use Illuminate\Foundation\Testing\WithFaker;
+use App\Models\Assessments\InterviewAssessment;
+use App\Models\Assessments\TrainingPeriodAssessment;
+use App\Models\Assessments\TrialPeriodAssessment;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class EmployeesTest extends TestCase
@@ -44,10 +47,15 @@ class EmployeesTest extends TestCase
         $this->assertTrue(in_array($employee->medal_rating,$medals));
     }
 
-    public function test_employee_should_have_a_CV()
+    public function test_system_can_get_employee_assessments()
     {
-        $response = $this->get('/');
+        $employee = Employee::factory()->create();
+        $trial_assessments = TrialPeriodAssessment::factory(3)->create(['employee_id' => $employee->id]);
+        $training_assessments = TrainingPeriodAssessment::factory(2)->create(['employee_id' => $employee->id]);
 
-        $response->assertStatus(200);
+        $this->assertEquals($employee->TrialPeriodAssessments()->count(),$trial_assessments->count());
+        $this->assertEquals($employee->TrainingPeriodAssessments()->count(),$training_assessments->count());
+
     }
+
 }

@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\Validator;
 
 class CoursesController extends Controller
 {
+
+    public function show($id)
+    {
+        return TrainingCourse::where('id', $id)->with('trainingProgram')->first();
+    }
+
     public function create(Request $request)
     {
         $validated = $request->validate([
@@ -24,38 +30,38 @@ class CoursesController extends Controller
 
         TrainingCourse::create($validated);
 
-        return response(['success'=>'training coures created']);
+        return response(['success' => 'training coures created']);
     }
 
     public function getSchedual(int $id)
     {
-        Validator::make(['id' => $id],[
+        Validator::make(['id' => $id], [
             'id' => 'required|exists:training_courses,id'
         ])->validate();
 
-        $course = TrainingCourse::where('id',$id)->first();
+        $course = TrainingCourse::where('id', $id)->first();
 
         return $course->week_schedule;
     }
 
     public function getAttendance(int $id)
     {
-        Validator::make(['id' => $id],[
+        Validator::make(['id' => $id], [
             'id' => 'required|exists:training_courses,id'
         ])->validate();
 
-        $course = TrainingCourse::where('id',$id)->first();
+        $course = TrainingCourse::where('id', $id)->first();
 
         return $course->attendances;
     }
 
     public function getForms(int $id)
     {
-        Validator::make(['id' => $id],[
+        Validator::make(['id' => $id], [
             'id' => 'required|exists:training_courses,id'
         ])->validate();
 
-        $course = TrainingCourse::where('id',$id)->first();
+        $course = TrainingCourse::where('id', $id)->first();
 
         return $course->forms;
     }

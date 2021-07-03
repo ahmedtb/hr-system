@@ -73,7 +73,7 @@ class TraineeCourseAssessmentsController extends Controller
      */
     protected function getAssessments(TraineeCourseAssessmentFilters $filters)
     {
-        $interviews = TraineeCourseAssessment::latest()->filter($filters)->get();
+        $interviews = TraineeCourseAssessment::latest()->with('TrainingCourse')->filter($filters)->get();
 
         return $interviews;
     }

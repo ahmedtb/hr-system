@@ -38,12 +38,12 @@ class InterviewsAssessmentsController extends Controller
         return ['success' => 'interview assessment archived'];
     }
 
-    public function indexInterviews(InterviewAssessmentFilters $filters){
-        $interviews = $this->getAssessments($filters);
-        return  $interviews;
+    public function indexInterviews(InterviewAssessmentFilters $filters)
+    {
+        return $this->getAssessments($filters);
     }
 
-        /**
+    /**
      * Fetch all relevant threads.
      *
      * @param InterviewAssessmentFilters $filters
@@ -51,7 +51,7 @@ class InterviewsAssessmentsController extends Controller
      */
     protected function getAssessments(InterviewAssessmentFilters $filters)
     {
-        $interviews = InterviewAssessment::latest()->filter($filters)->get();
+        $interviews = InterviewAssessment::latest()->with('interviewer')->filter($filters)->get();
 
         return $interviews;
     }

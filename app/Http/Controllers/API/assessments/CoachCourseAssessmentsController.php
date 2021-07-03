@@ -72,7 +72,7 @@ class CoachCourseAssessmentsController extends Controller
      */
     protected function getAssessments(CoachCourseAssessmentFilters $filters)
     {
-        $interviews = CoachCourseAssessment::latest()->filter($filters)->get();
+        $interviews = CoachCourseAssessment::latest()->with('TrainingCourse')->filter($filters)->get();
 
         return $interviews;
     }

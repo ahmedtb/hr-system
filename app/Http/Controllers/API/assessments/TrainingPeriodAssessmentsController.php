@@ -57,6 +57,6 @@ class TrainingPeriodAssessmentsController extends Controller
      */
     protected function getAssessments(TrainingPeriodAssessmentFilters $filters)
     {
-        return TrainingPeriodAssessment::latest()->filter($filters)->get();
+        return TrainingPeriodAssessment::latest()->with('employee')->filter($filters)->get();
     }
 }

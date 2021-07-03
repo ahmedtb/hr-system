@@ -4,6 +4,7 @@ namespace App\Models\Assessments;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Filters\InterviewAssessmentFilters;
+use App\Models\Employee;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class InterviewAssessment extends Model
@@ -23,5 +24,10 @@ class InterviewAssessment extends Model
     public function scopeFilter($query, InterviewAssessmentFilters $filters)
     {
         return $filters->apply($query);
+    }
+
+    public function interviewer()
+    {
+        return $this->belongsTo(Employee::class);
     }
 }

@@ -8,13 +8,18 @@ use App\Models\Coach;
 use App\Models\Trainee;
 use App\Models\Document;
 use App\Models\Employee;
-use Illuminate\Database\Seeder;
-use App\Models\CourseAttendance;
 use App\Models\FormStructure;
-use App\Models\TargetedIndividual;
 use App\Models\TrainingCourse;
 use App\Models\TrainingProgram;
+use Illuminate\Database\Seeder;
+use App\Models\CourseAttendance;
+use App\Models\TargetedIndividual;
 use Illuminate\Support\Facades\DB;
+use App\Models\Assessments\InterviewAssessment;
+use App\Models\Assessments\CoachCourseAssessment;
+use App\Models\Assessments\TrialPeriodAssessment;
+use App\Models\Assessments\TraineeCourseAssessment;
+use App\Models\Assessments\TrainingPeriodAssessment;
 
 class DatabaseSeeder extends Seeder
 {
@@ -62,6 +67,22 @@ class DatabaseSeeder extends Seeder
                 'documentable_id' => TrainingProgram::select('id')->orderByRaw("RAND()")->first()->id,
             ]
         );
+
+        TrialPeriodAssessment::factory(5)->create(
+            [
+                'employee_id' => Employee::select('id')->orderByRaw("RAND()")->first()->id,
+            ]
+        );
+
+        TrainingPeriodAssessment::factory(5)->create(
+            [
+                'employee_id' => Employee::select('id')->orderByRaw("RAND()")->first()->id,
+            ]
+        );
+
+        TraineeCourseAssessment::factory(5)->create();
+        InterviewAssessment::factory(5)->create();
+        CoachCourseAssessment::factory(5)->create();
 
         DB::table('coach_training_course')->insert(
             [

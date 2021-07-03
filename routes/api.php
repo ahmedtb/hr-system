@@ -79,8 +79,10 @@ Route::get('/coach/index',[CoachController::class,'index']);
 Route::get('coach/{coach_id}/programs',[CoachController::class,'getPrograms']);
 
 Route::post('program',[ProgramsController::class,'create']);
+Route::get('program/{id}',[ProgramsController::class,'show']);
 
 Route::post('course',[CoursesController::class,'create']);
+Route::get('course/{id}',[CoursesController::class,'show']);
 Route::get('course/{id}/schedual',[CoursesController::class,'getSchedual']);
 Route::get('course/{id}/attendance',[CoursesController::class,'getAttendance']);
 Route::get('course/{id}/forms',[CoursesController::class,'getForms']);

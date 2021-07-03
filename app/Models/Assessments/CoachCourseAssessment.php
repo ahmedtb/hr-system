@@ -3,6 +3,7 @@
 namespace App\Models\Assessments;
 
 use App\Casts\Json;
+use App\Models\TrainingCourse;
 use Illuminate\Database\Eloquent\Model;
 use App\Filters\CoachCourseAssessmentFilters;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -30,5 +31,10 @@ class CoachCourseAssessment extends Model
     public function scopeFilter($query, CoachCourseAssessmentFilters $filters)
     {
         return $filters->apply($query);
+    }
+
+    public function TrainingCourse()
+    {
+        return $this->belongsTo(TrainingCourse::class);
     }
 }

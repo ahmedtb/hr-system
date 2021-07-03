@@ -26,6 +26,10 @@ import ConductTrialPeriodAssessment from './assessments/trialPeriod/ConductAsses
 import ConductTrainingPeriodAssessment from './assessments/TrainingPeriod/ConductAssessment'
 import TraineeCourseAssessment from './assessments/course/TraineeCourseAssessment'
 import ConductCoachCourseAssessment from './assessments/course/ConductCoachCourseAssessment'
+import AssessmentsIndex from './assessments/Index'
+
+import showCourse from './course/CourseShow'
+import showProgram from './program/ProgramShow'
 
 class App extends Component {
     render() {
@@ -60,7 +64,11 @@ class App extends Component {
                         <Route exact path={routes.conductTrainingPeriodAssessment} component={ConductTrainingPeriodAssessment} />
                         <Route exact path={routes.TraineeCourseAssessment} component={TraineeCourseAssessment} />
                         <Route exact path={routes.CoachCourseAssessment} component={ConductCoachCourseAssessment} />
+                        <Route exact path={routes.AssessmentsIndex} component={AssessmentsIndex} />
 
+                        <Route exact path={routes.showCourse} component={showCourse} />
+                        <Route exact path={routes.showProgram} component={showProgram} />
+                        
                         
 
                         <Route exact path={routes.dashboard} component={Dashboard} />

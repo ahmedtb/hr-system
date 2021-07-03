@@ -57,6 +57,6 @@ class TrialPeriodAssessmentsController extends Controller
      */
     protected function getAssessments(TrialPeriodAssessmentFilters $filters)
     {
-        return TrialPeriodAssessment::latest()->filter($filters)->get();
+        return TrialPeriodAssessment::latest()->with('employee')->filter($filters)->get();
     }
 }
