@@ -24,14 +24,45 @@ use App\Models\Assessments\TrainingPeriodAssessment;
 class DatabaseSeeder extends Seeder
 {
 
-    public function addBuildInBasicFormStructures()
+    public function seedPivotTables()
     {
-        FormStructure::create([
-            'id' => 1,
-            'type' =>  'نموذج طلب توظيف',
-            'array_of_fields' => ''
-        ]);
-        
+        for ($i = 0; $i < 100; $i++) {
+
+            DB::table('coach_training_course')->insert(
+                [
+                    'coach_id' => Coach::select('id')->orderByRaw("RAND()")->first()->id,
+                    'training_course_id' => TrainingCourse::select('id')->orderByRaw("RAND()")->first()->id,
+                ]
+            );
+
+            DB::table('targeted_individual_training_course')->insert(
+                [
+                    'targeted_individual_id' => TargetedIndividual::select('id')->orderByRaw("RAND()")->first()->id,
+                    'training_course_id' => TrainingCourse::select('id')->orderByRaw("RAND()")->first()->id,
+                ]
+            );
+
+            DB::table('employee_training_course')->insert(
+                [
+                    'employee_id' => Employee::select('id')->orderByRaw("RAND()")->first()->id,
+                    'training_course_id' => TrainingCourse::select('id')->orderByRaw("RAND()")->first()->id,
+                ]
+            );
+
+            DB::table('trainee_training_course')->insert(
+                [
+                    'trainee_id' => Trainee::select('id')->orderByRaw("RAND()")->first()->id,
+                    'training_course_id' => TrainingCourse::select('id')->orderByRaw("RAND()")->first()->id,
+                ]
+            );
+
+            DB::table('coach_training_program')->insert(
+                [
+                    'coach_id' => Coach::select('id')->orderByRaw("RAND()")->first()->id,
+                    'training_program_id' => TrainingProgram::select('id')->orderByRaw("RAND()")->first()->id,
+                ]
+            );
+        }
     }
     /**
      * Seed the application's database.
@@ -68,48 +99,24 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        TrialPeriodAssessment::factory(5)->create(
-            [
-                'employee_id' => Employee::select('id')->orderByRaw("RAND()")->first()->id,
-            ]
-        );
+        TrialPeriodAssessment::factory(5)->create([
+            'employee_id' => Employee::select('id')->orderByRaw("RAND()")->first()->id,
+        ]);
 
-        TrainingPeriodAssessment::factory(5)->create(
-            [
-                'employee_id' => Employee::select('id')->orderByRaw("RAND()")->first()->id,
-            ]
-        );
+        TrainingPeriodAssessment::factory(5)->create([
+            'employee_id' => Employee::select('id')->orderByRaw("RAND()")->first()->id,
+        ]);
 
-        TraineeCourseAssessment::factory(5)->create();
-        InterviewAssessment::factory(5)->create();
-        CoachCourseAssessment::factory(5)->create();
+        InterviewAssessment::factory(5)->create([
+            'interviewer_id' => Employee::select('id')->orderByRaw("RAND()")->first()->id,
+        ]);
+        TraineeCourseAssessment::factory(5)->create([
+            'training_course_id' => TrainingCourse::select('id')->orderByRaw("RAND()")->first()->id,
+        ]);
+        CoachCourseAssessment::factory(5)->create([
+            'training_course_id' => TrainingCourse::select('id')->orderByRaw("RAND()")->first()->id,
+        ]);
 
-        DB::table('coach_training_course')->insert(
-            [
-                'coach_id' => Coach::select('id')->orderByRaw("RAND()")->first()->id,
-                'training_course_id' => TrainingCourse::select('id')->orderByRaw("RAND()")->first()->id,
-            ]
-        );
-
-        DB::table('targeted_individual_training_course')->insert(
-            [
-                'targeted_individual_id' => TargetedIndividual::select('id')->orderByRaw("RAND()")->first()->id,
-                'training_course_id' => TrainingCourse::select('id')->orderByRaw("RAND()")->first()->id,
-            ]
-        );
-
-        DB::table('trainee_training_course')->insert(
-            [
-                'trainee_id' => Trainee::select('id')->orderByRaw("RAND()")->first()->id,
-                'training_course_id' => TrainingCourse::select('id')->orderByRaw("RAND()")->first()->id,
-            ]
-        );
-
-        DB::table('coach_training_program')->insert(
-            [
-                'coach_id' => Coach::select('id')->orderByRaw("RAND()")->first()->id,
-                'training_program_id' => TrainingProgram::select('id')->orderByRaw("RAND()")->first()->id,
-            ]
-        );
+        $this->seedPivotTables();
     }
 }

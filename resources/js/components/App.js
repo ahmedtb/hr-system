@@ -7,7 +7,6 @@ import CreateEmployee from './employee/CreateEmployee'
 import EmployeeShow from './employee/EmployeeShow'
 
 import CreateTargeted from './targeted/CreateTargeted'
-import TargetedShow from './targeted/TargetedShow'
 
 import FormStructuresIndex from './formStructure/FormStructuresIndex'
 import FormStructureShow from './formStructure/FormStructureShow'
@@ -28,8 +27,10 @@ import TraineeCourseAssessment from './assessments/course/TraineeCourseAssessmen
 import ConductCoachCourseAssessment from './assessments/course/ConductCoachCourseAssessment'
 import AssessmentsIndex from './assessments/Index'
 
-import showCourse from './course/CourseShow'
-import showProgram from './program/ProgramShow'
+import CourseShow from './course/CourseShow'
+import ProgramShow from './program/ProgramShow'
+import showJob from './job/JobShow'
+import TargetedShow from './targeted/TargetedShow'
 
 class App extends Component {
     render() {
@@ -42,7 +43,6 @@ class App extends Component {
 
 
                         <Route exact path={routes.createTargetedForm} component={CreateTargeted} />
-                        <Route exact path={routes.showTargeted} component={TargetedShow} />
 
 
                         <Route exact path={routes.showFormsStructures} component={FormStructuresIndex} />
@@ -66,8 +66,10 @@ class App extends Component {
                         <Route exact path={routes.CoachCourseAssessment} component={ConductCoachCourseAssessment} />
                         <Route exact path={routes.AssessmentsIndex} component={AssessmentsIndex} />
 
-                        <Route exact path={routes.showCourse} component={showCourse} />
-                        <Route exact path={routes.showProgram} component={showProgram} />
+                        <Route exact path={routes.showCourse} component={CourseShow} />
+                        <Route exact path={routes.showProgram} component={ProgramShow} />
+                        <Route exact path={routes.showJob} component={showJob} />
+                        <Route exact path={routes.showTargeted} component={TargetedShow} />
                         
                         
 

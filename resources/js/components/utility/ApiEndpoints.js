@@ -46,5 +46,6 @@ export default {
 
     getCourse: '/api/course/:id',
     getProgram: '/api/program/:id',
+    getJob: '/api/job/:id',
 
 }

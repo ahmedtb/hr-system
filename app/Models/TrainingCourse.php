@@ -34,7 +34,6 @@ class TrainingCourse extends Model
         return $this->belongsToMany(Trainee::class);
     }
 
-    // this relation could be omitted
     public function targetedIndividuals()
     {
         return $this->belongsToMany(TargetedIndividual::class);
@@ -68,5 +67,39 @@ class TrainingCourse extends Model
     {
         return $query->whereDate('start_date', '<', Carbon::now())
             ->whereDate('end_date', '>', Carbon::now());
+    }
+
+    public function isResumed()
+    {
+        return \Carbon\Carbon::now()->between($this->start_date, $this->end_date);
+    }
+
+    public function isPlanned()
+    {
+        return \Carbon\Carbon::now()->lt($this->start_date);
+    }
+
+    public function getDaysInRange($fromDate, $toDate, $dayName)
+    {
+        $days = [];
+        $startDate = Carbon::parse($fromDate)->modify('this ' . strtolower($dayName));
+        $endDate = Carbon::parse($toDate);
+
+        for ($date = $startDate; $date->lte($endDate); $date->addWeek()) {
+            $days[] = $date->format('Y-m-d');
+        }
+        return $days;
+    }
+
+    public function remainingDays()
+    {
+        if ($this->isResumed()) {
+            $count = 0;
+            foreach ($this->week_schedule as $dayName => $schedule) {
+                $days = $this->getDaysInRange(Carbon::now(), $this->end_date, $dayName);
+                $count += count($days);
+            }
+            return $count;
+        }
     }
 }

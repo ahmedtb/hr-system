@@ -21,6 +21,7 @@ use App\Http\Controllers\API\Assessments\CoachCourseAssessmentsController;
 use App\Http\Controllers\API\Assessments\TrialPeriodAssessmentsController;
 use App\Http\Controllers\API\Assessments\TraineeCourseAssessmentsController;
 use App\Http\Controllers\API\Assessments\TrainingPeriodAssessmentsController;
+use App\Http\Controllers\API\JobsController;
 use App\Http\Controllers\API\UnitsController;
 
 /*
@@ -33,75 +34,79 @@ use App\Http\Controllers\API\UnitsController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('/dashboard',[DashboardController::class,'show']);
 
-Route::get('/unitsTree', [ManagmentController::class,'UnitsTree']);
-Route::post('/createJob', [ManagmentController::class,'CreateJob']);
-Route::post('/createUnit', [ManagmentController::class,'CreateUnit']);
+Route::get('/dashboard', [DashboardController::class, 'show']);
 
-Route::get('/getUnits', [UnitsController::class,'getUnits']);
+Route::get('/unitsTree', [ManagmentController::class, 'UnitsTree']);
+
+Route::post('/createJob', [ManagmentController::class, 'CreateJob']);
+Route::get('job/{id}', [JobsController::class, 'show']);
+
+Route::post('/createUnit', [ManagmentController::class, 'CreateUnit']);
+
+Route::get('/getUnits', [UnitsController::class, 'getUnits']);
 
 
-Route::post('createEmployee', [EmployeesController::class,'create']);
+Route::post('createEmployee', [EmployeesController::class, 'create']);
 Route::get('/createEmployeeForm', [EmployeesController::class, 'createForm']);
 
-Route::post('createEmployeeWithJob', [EmployeesController::class,'createWithJob']);
-Route::put('editEmployee', [EmployeesController::class,'editEmployee']);
-Route::put('attackDocumentToEmployee', [EmployeesController::class,'attackDocument']);
-Route::put('rateEmployee', [EmployeesController::class,'rateEmployee']);
-Route::post('createCourseForEmployees', [EmployeesController::class,'createCourseForEmployees']);
-Route::get('getEmployees', [EmployeesController::class,'getEmployees']);
-Route::get('employee/{id}', [EmployeesController::class,'show']);
+Route::post('createEmployeeWithJob', [EmployeesController::class, 'createWithJob']);
+Route::put('editEmployee', [EmployeesController::class, 'editEmployee']);
+Route::put('attackDocumentToEmployee', [EmployeesController::class, 'attackDocument']);
+Route::put('rateEmployee', [EmployeesController::class, 'rateEmployee']);
+Route::post('createCourseForEmployees', [EmployeesController::class, 'createCourseForEmployees']);
+Route::get('getEmployees', [EmployeesController::class, 'getEmployees']);
+Route::get('employee/{id}', [EmployeesController::class, 'show']);
 
-Route::post('targeted/create', [TargetedIndividualsController::class,'create']);
-Route::get('targeted/{id}', [TargetedIndividualsController::class,'show']);
+Route::post('targeted/create', [TargetedIndividualsController::class, 'create']);
+Route::get('targeted/{id}', [TargetedIndividualsController::class, 'show']);
 
-Route::get('form/index', [FormsController::class,'index']);
-Route::get('form/{id}', [FormsController::class,'show']);
-Route::post('generateForm', [FormsController::class,'generateForm']);
-Route::get('getGeneratedForm/{access_token}', [FormsController::class,'getGeneratedForm']);
-Route::post('submitForm', [FormsController::class,'submitForm']);
-Route::get('getForms/{form_structure_id}', [FormsController::class,'getForms']);
-Route::post('form/search/{form_structure_id}', [FormsController::class,'search']);
+Route::get('form/index', [FormsController::class, 'index']);
+Route::get('form/{id}', [FormsController::class, 'show']);
+Route::post('generateForm', [FormsController::class, 'generateForm']);
+Route::get('getGeneratedForm/{access_token}', [FormsController::class, 'getGeneratedForm']);
+Route::post('submitForm', [FormsController::class, 'submitForm']);
+Route::get('getForms/{form_structure_id}', [FormsController::class, 'getForms']);
+Route::post('form/search/{form_structure_id}', [FormsController::class, 'search']);
 
-Route::get('structure/index',[FormStructuresController::class,'index']);
-Route::get('structure/{id}',[FormStructuresController::class,'show']);
+Route::get('structure/index', [FormStructuresController::class, 'index']);
+Route::get('structure/{id}', [FormStructuresController::class, 'show']);
 
-Route::get('structure/get',[FormStructuresController::class,'createForm']);
-Route::post('structure/create',[FormStructuresController::class,'create']);
+Route::get('structure/get', [FormStructuresController::class, 'createForm']);
+Route::post('structure/create', [FormStructuresController::class, 'create']);
 
 
-Route::post('employementApproval',[FormsController::class,'employementApproval']);
+Route::post('employementApproval', [FormsController::class, 'employementApproval']);
 
-Route::post('coach',[CoachController::class,'create']);
-Route::get('coach',[CoachController::class,'createForm']);
-Route::get('/coach/index',[CoachController::class,'index']);
-Route::get('coach/{coach_id}/programs',[CoachController::class,'getPrograms']);
+Route::post('coach', [CoachController::class, 'create']);
+Route::get('coach', [CoachController::class, 'createForm']);
+Route::get('/coach/index', [CoachController::class, 'index']);
+Route::get('coach/{coach_id}/programs', [CoachController::class, 'getPrograms']);
 
-Route::post('program',[ProgramsController::class,'create']);
-Route::get('program/{id}',[ProgramsController::class,'show']);
+Route::post('program', [ProgramsController::class, 'create']);
+Route::get('program/{id}', [ProgramsController::class, 'show']);
 
-Route::post('course',[CoursesController::class,'create']);
-Route::get('course/{id}',[CoursesController::class,'show']);
-Route::get('course/{id}/schedual',[CoursesController::class,'getSchedual']);
-Route::get('course/{id}/attendance',[CoursesController::class,'getAttendance']);
-Route::get('course/{id}/forms',[CoursesController::class,'getForms']);
-Route::get('course/{id}/employees',[CoursesController::class,'getEmployees']);
+Route::post('course', [CoursesController::class, 'create']);
+Route::get('course/{id}', [CoursesController::class, 'show']);
+Route::get('course/{id}/schedual', [CoursesController::class, 'getSchedual']);
+Route::get('course/{id}/attendance', [CoursesController::class, 'getAttendance']);
+Route::get('course/{id}/forms', [CoursesController::class, 'getForms']);
+Route::get('course/{id}/employees', [CoursesController::class, 'getEmployees']);
 
-Route::get('getTrainingCourses',[CoursesController::class,'getTrainingCourses']);
-Route::get('getTrainingCourses',[CoursesController::class,'getTrainingCourses']);
+Route::get('getTrainingCourses', [CoursesController::class, 'getTrainingCourses']);
+Route::get('getTrainingCourses', [CoursesController::class, 'getTrainingCourses']);
 
-Route::post('interview/create', [InterviewsAssessmentsController::class,'createInterview']);
-Route::get('interview/index', [InterviewsAssessmentsController::class,'indexInterviews']);
+Route::post('interview/create', [InterviewsAssessmentsController::class, 'createInterview']);
+Route::get('interview/index', [InterviewsAssessmentsController::class, 'indexInterviews']);
 
-Route::post('trialPeriodAssessment/create', [TrialPeriodAssessmentsController::class,'create']);
-Route::get('trialPeriodAssessment/index', [TrialPeriodAssessmentsController::class,'index']);
+Route::post('trialPeriodAssessment/create', [TrialPeriodAssessmentsController::class, 'create']);
+Route::get('trialPeriodAssessment/index', [TrialPeriodAssessmentsController::class, 'index']);
 
-Route::post('trainingPeriodAssessment/create', [TrainingPeriodAssessmentsController::class,'create']);
-Route::get('trainingPeriodAssessment/index', [TrainingPeriodAssessmentsController::class,'index']);
+Route::post('trainingPeriodAssessment/create', [TrainingPeriodAssessmentsController::class, 'create']);
+Route::get('trainingPeriodAssessment/index', [TrainingPeriodAssessmentsController::class, 'index']);
 
-Route::post('traineeCourseAssessment/create', [TraineeCourseAssessmentsController::class,'create']);
-Route::get('traineeCourseAssessment/index', [TraineeCourseAssessmentsController::class,'index']);
+Route::post('traineeCourseAssessment/create', [TraineeCourseAssessmentsController::class, 'create']);
+Route::get('traineeCourseAssessment/index', [TraineeCourseAssessmentsController::class, 'index']);
 
-Route::post('coachCourseAssessment/create', [CoachCourseAssessmentsController::class,'create']);
-Route::get('coachCourseAssessment/index', [CoachCourseAssessmentsController::class,'index']);
+Route::post('coachCourseAssessment/create', [CoachCourseAssessmentsController::class, 'create']);
+Route::get('coachCourseAssessment/index', [CoachCourseAssessmentsController::class, 'index']);

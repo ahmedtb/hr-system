@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import ApiEndpoints from '../utility/ApiEndpoints'
 import logError from '../utility/logError'
-
+import routes from '../utility/routesEndpoints'
 import { useParams, Link } from 'react-router-dom';
 
 export default function EmployeeShow(props) {
@@ -42,7 +42,8 @@ export default function EmployeeShow(props) {
                                 employment_date {employee?.employment_date}
                             </div>
                             <div className="group-list-item" >
-                                job name {employee?.job.name}
+                                job name 
+                                <Link to={routes.showJob.replace(':id',employee?.job.id)}>{employee?.job.name}</Link >
                             </div>
                             <div className="group-list-item" >
                                 name {employee?.name}
@@ -53,36 +54,7 @@ export default function EmployeeShow(props) {
 
                             <div className="group-list-item" >
                                 Trial Period Assessments
-                                {/* <table>
-                                    <thead>
-                                        <tr>
-                                            <th >رقم قيد النموذج</th>
-                                            <th>اسم النموذج</th>
-                                            <th>تركيبة النموذج </th>
-                                            <th>مخصص للاستعمال مع</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {structures.map((structure, index) => (
-                                            <tr key={index}>
-                                                <td>
-                                                    <a href={routes.showFormStructure + structure.id}>
-                                                        {structure.id}
-                                                    </a>
-                                                </td>
-                                                <td>{structure.type}</td>
-                                                <td>
-                                                    {
-                                                        structure.array_of_fields.fields.map((field, fieldIndex) => (
-                                                            null
-                                                        ))
-                                                    }
-                                                </td>
-                                                <td>{structure.formable_type}</td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table> */}
+
                             </div>
 
                         </div>

@@ -32,60 +32,6 @@ class FormFactory extends Factory
      */
     protected $model = Form::class;
 
-    public function FieldTypeFaker(array $fieldArray)
-    {
-        if ($fieldArray['class'] == DateField::class) {
-            // $instance = $fieldArray['class']::fromArray($fieldArray);
-            // return $instance->setValue(date('Y-m-d'));
-        } elseif ($fieldArray['class'] == DoubleField::class) {
-            $instance = $fieldArray['class']::fromArray($fieldArray);
-            return $instance->setValue(random_int(100, 10000));
-        } elseif ($fieldArray['class'] == EmailField::class) {
-            $instance = $fieldArray['class']::fromArray($fieldArray);
-            return $instance->setValue($this->faker->email());
-        } elseif ($fieldArray['class'] == JobField::class) {
-            $instance = $fieldArray['class']::fromArray($fieldArray);
-            return $instance->setValue(Job::factory()->create()->id);
-        } elseif ($fieldArray['class'] == PhoneNumberField::class) {
-            // $instance = $fieldArray['class']::fromArray($fieldArray);
-            // return $instance->setValue($this->faker->phoneNumber());
-        } elseif ($fieldArray['class'] == RatingField::class) {
-            // $instance = $fieldArray['class']::fromArray($fieldArray);
-            // return $instance->setValue(random_int(0, 5));
-        } elseif ($fieldArray['class'] == StringField::class) {
-            // $instance = $fieldArray['class']::fromArray($fieldArray);
-            // return $instance->setValue($this->faker->sentence());
-        } elseif ($fieldArray['class'] == TableField::class) {
-            // $instance = $fieldArray['class']::fromArray($fieldArray);
-            // // $numberOFCol = count($instance->columnsTitles);
-            // // $tableData = [];
-            // // for ($i = 0; $i < $numberOFCol; $i++) {
-            // //     array_push($tableData, array('test data', 'test data'));
-            // // }
-            // $instance->generateMockedValue();
-
-            // dd($tableData);
-            return $instance;
-        } elseif ($fieldArray['class'] == TextAreaField::class) {
-            // $instance = $fieldArray['class']::fromArray($fieldArray);
-            // return $instance->setValue($this->faker->sentence());
-        } elseif ($fieldArray['class'] == GenderField::class) {
-            // $genders = ['male', 'female'];
-            // $instance = $fieldArray['class']::fromArray($fieldArray);
-            // return $instance->setValue($genders[array_rand($genders)]);
-        } elseif ($fieldArray['class'] == SocialStatusField::class) {
-            // $status = ['single', 'married'];
-            // $instance = $fieldArray['class']::fromArray($fieldArray);
-            // return $instance->setValue($status[array_rand($status)]);
-        } elseif ($fieldArray['class'] == OptionsField::class) {
-            // $options = ['arabic', 'english', 'french'];
-            // $instance = $fieldArray['class']::fromArray($fieldArray);
-            // return $instance->setValue($options[array_rand($options)]);
-        }
-
-        throw new Exception($fieldArray['class'] . ' this type of field class does not exists');
-    }
-
     /**
      * Define the model's default state.
      *
@@ -115,4 +61,6 @@ class FormFactory extends Factory
             ];
         });
     }
+
+
 }

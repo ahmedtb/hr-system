@@ -10,6 +10,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use App\Models\Assessments\InterviewAssessment;
 use App\Models\Assessments\TrainingPeriodAssessment;
 use App\Models\Assessments\TrialPeriodAssessment;
+use App\Models\Job;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class EmployeesTest extends TestCase
@@ -56,6 +57,12 @@ class EmployeesTest extends TestCase
         $this->assertEquals($employee->TrialPeriodAssessments()->count(),$trial_assessments->count());
         $this->assertEquals($employee->TrainingPeriodAssessments()->count(),$training_assessments->count());
 
+    }
+
+    public function test_employee_model_allows_come_with_its_job()
+    {
+        $employee = Employee::factory()->create();
+        $this->assertTrue($employee->job instanceof Job);
     }
 
 }

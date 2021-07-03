@@ -26,6 +26,7 @@ const routes = {
     showEmployee: '/react/employee/:id',
     showCourse: '/react/course/:id',
     showProgram: '/react/program/:id',
+    showJob: '/react/job/:id',
 
 }
 

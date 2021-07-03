@@ -20,8 +20,8 @@ class CourseAttendanceTest extends TestCase
         $course = CourseAttendance::factory()->withProfile()->create();
         $this->assertNotEmpty($course->profile);
         $this->assertEmpty($course->person_name);
-
     }
+
 
     
 }

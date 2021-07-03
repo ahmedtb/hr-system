@@ -17,6 +17,14 @@ class Employee extends Model
         'medal_rating' => 'integer'
     ];
 
+    protected $appends = [
+        'job'
+    ];
+
+    public function getJobAttribute(){
+        return Job::where('id',$this->id)->first();
+    }
+
     public function job()
     {
         return $this->belongsTo(Job::class);

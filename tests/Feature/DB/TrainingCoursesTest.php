@@ -5,6 +5,8 @@ namespace Tests\Feature\DB;
 use Tests\TestCase;
 use App\Models\TrainingCourse;
 use App\Models\CourseAttendance;
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -33,13 +35,13 @@ class TrainingCoursesTest extends TestCase
         $length = sizeof($course->week_schedule);
 
         // length can not be zero...there should be a schedual
-        $this->assertNotEquals($length,0);
+        $this->assertNotEquals($length, 0);
 
-        foreach($course->week_schedule as $day => $value ){
-            $this->assertArrayHasKey('begin',$value);
+        foreach ($course->week_schedule as $day => $value) {
+            $this->assertArrayHasKey('begin', $value);
             // dd( gettype ($value['period']));
-            $this->assertArrayHasKey('period',$value);
-            $this->assertTrue(gettype ($value['period']) == 'integer');
+            $this->assertArrayHasKey('period', $value);
+            $this->assertTrue(gettype($value['period']) == 'integer');
         }
     }
 
@@ -50,6 +52,27 @@ class TrainingCoursesTest extends TestCase
             'training_course_id' => $course->id
         ]);
 
-        $this->assertEquals(count($course->attendances),10);
+        $this->assertEquals(count($course->attendances), 10);
+    }
+
+    public function test_the_model_can_say_if_it_is_period_passed_or_yet_to_start()
+    {
+        $course = TrainingCourse::factory()->resumed()->create();
+        $this->assertFalse($course->isPlanned());
+        $this->assertTrue($course->isResumed());
+        $course = TrainingCourse::factory()->planned()->create();
+        $this->assertFalse($course->isResumed());
+        $this->assertTrue($course->isPlanned());
+    }
+    public function test_the_model_can_calculate_the_days_went_in_the_course()
+    {
+        $course = TrainingCourse::factory()->resumed()->create([
+            'start_date' => new DateTime('now'),
+            'end_date' => new DateTime('now + 50 day')
+        ]);
+        $this->assertEquals($course->remainingDays(),51);
+    }
+    public function test_the_model_can_calculate_the_remaining_days_in_it()
+    {
     }
 }

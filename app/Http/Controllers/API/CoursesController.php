@@ -14,7 +14,9 @@ class CoursesController extends Controller
 
     public function show($id)
     {
-        return TrainingCourse::where('id', $id)->with('trainingProgram')->first();
+        return TrainingCourse::where('id', $id)
+            ->with(['trainingProgram', 'targetedIndividuals', 'employees'])
+            ->first();
     }
 
     public function create(Request $request)

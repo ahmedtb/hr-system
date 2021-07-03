@@ -29,7 +29,7 @@ class CreateTrainingPeriodAssessmentsTable extends Migration
             $table->tinyInteger('behavior');
             $table->tinyInteger('look');
             $table->tinyInteger('belief_and_loyalty');
-            $table->tinyInteger('final_degree');
+            $table->unsignedSmallInteger('final_degree');
             $table->foreignId('reporter_id')
                 ->references('id')
                 ->on('employees');

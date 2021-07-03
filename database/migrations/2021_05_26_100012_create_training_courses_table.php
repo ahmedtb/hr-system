@@ -28,13 +28,7 @@ class CreateTrainingCoursesTable extends Migration
             //         'Lecture period' => '111' //minutes
             //     ],
             //     ........
-            //     'friday' => [
-            //         'begin' => '00:00:00',
-            //         'Lecture period' => '111' //minutes
-            //     ]
-            //     ........
             // ]
-
             $table->timestamps();
         });
     }
