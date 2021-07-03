@@ -24,15 +24,15 @@ class CoachesTest extends TestCase
 
     public function test_coache_can_have_a_employee_profile_or_a_targeted_individual_profile()
     {
-        $employee = Employee::factory()->create();
         $coach = Coach::factory()->create();
-        $coach->profile()->save($employee);
-        $this->assertEquals($coach->profile,$employee->coach);
+        $employee = Employee::factory()->create();
+        $coach->profile()->associate($employee)->save();
+        $this->assertEquals($coach->profile,$employee);
 
         $targeted = TargetedIndividual::factory()->create();
         $coach = Coach::factory()->create();
-        $coach->profile()->save($targeted);
-        $this->assertEquals($coach->profile,$targeted->coach);
+        $coach->profile()->associate($targeted)->save();
+        $this->assertEquals($coach->profile,$targeted);
     }
 
     public function test_a_coach_can_have_many_programs_and_courses()

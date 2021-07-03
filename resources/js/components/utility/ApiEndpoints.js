@@ -3,6 +3,7 @@ export default {
     createEmployeeForm: '',
     createTargetedForm: '',
     createTargeted: '/api/targeted/create',
+    getTargeted: '/api/targeted/:id',
 
     showFormsStructure: '/api/structure/index',
     showFormStructure: '/api/structure/:id',
@@ -23,10 +24,13 @@ export default {
 
     createEmployeeForm: '/api/createEmployeeForm',
     createEmployee: '/api/createEmployee',
+    getEmployee: '/api/employee/:id',
     
     getEmployees: '/api/getEmployees',
     getUnits: '/api/getUnits',
     getTrainingCourses: '/api/getTrainingCourses',
+    getCoaches: '/api/coach/index',
+
 
     createInterview: '/api/interview/create',
     createTrialPeriodAssessment: '/api/trialPeriod/create',

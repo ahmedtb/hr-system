@@ -59,6 +59,10 @@ export default function ActionsPanel() {
                         <Link to={routes.CoachCourseAssessment}>تقييم مدرب لدورة</Link>
                     </li>
 
+                    <li className="list-group-item">
+                        <Link to={routes.CoachesList}>قائمة المدربيين</Link>
+                    </li>
+
                 </ul>
             </div>
         </div>

@@ -11,6 +11,14 @@ use Illuminate\Support\Facades\Validator;
 
 class CoachController extends Controller
 {
+    public function show(Coach $coach)
+    {
+        return $coach;
+    }
+    public function index()
+    {
+        return Coach::with('profile')->get();
+    }
     public function create(Request $request)
     {
         $validated = $request->validate([
@@ -21,18 +29,21 @@ class CoachController extends Controller
             'employee_id' => 'sometimes|exists:employees,id',
             'targeted_individual_id' => 'sometimes|exists:targeted_individuals,id',
         ]);
-        $coach = Coach::create($validated);
 
         if ($request->employee_id) {
-            // $employee = Employee::where('id',$request->employee_id)->first();
-            $coach->profile_id = $request->employee_id;
-            $coach->profile_type = Employee::class;
-            $coach->save();
+            $coach = Coach::create([
+                'CV' => $request->CV,
+                'speciality' => $request->speciality,
+                'profile_id' =>  $request->employee_id,
+                'profile_type' => Employee::class
+            ]);
         } elseif ($request->targeted_individual_id) {
-            // $targeted_individual = TargetedIndividual::where('id',$request->targeted_individual_id)->first();
-            $coach->profile_id = $request->targeted_individual_id;
-            $coach->profile_type = TargetedIndividual::class;
-            $coach->save();
+            $coach = Coach::create([
+                'CV' => $request->CV,
+                'speciality' => $request->speciality,
+                'profile_id' =>  $request->targeted_individual_id,
+                'profile_type' =>  TargetedIndividual::class
+            ]);
         }
 
         return response(['success' => 'coach created']);
@@ -50,11 +61,11 @@ class CoachController extends Controller
 
     public function getPrograms(int $coach_id)
     {
-        Validator::make(['coach_id' => $coach_id],[
+        Validator::make(['coach_id' => $coach_id], [
             'coach_id' => 'required|exists:coaches,id'
         ])->validate();
 
-        $coach = Coach::where('id',$coach_id)->first();
+        $coach = Coach::where('id', $coach_id)->first();
 
         return $coach->trainingPrograms;
     }

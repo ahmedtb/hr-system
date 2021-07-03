@@ -2028,27 +2028,30 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utility/routesEndpoints */ "./resources/js/components/utility/routesEndpoints.js");
 /* harmony import */ var _Dashboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Dashboard */ "./resources/js/components/Dashboard.js");
 /* harmony import */ var _employee_CreateEmployee__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./employee/CreateEmployee */ "./resources/js/components/employee/CreateEmployee.js");
-/* harmony import */ var _targeted_CreateTargeted__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./targeted/CreateTargeted */ "./resources/js/components/targeted/CreateTargeted.js");
-/* harmony import */ var _formStructure_FormStructuresIndex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./formStructure/FormStructuresIndex */ "./resources/js/components/formStructure/FormStructuresIndex.js");
-/* harmony import */ var _formStructure_FormStructureShow__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./formStructure/FormStructureShow */ "./resources/js/components/formStructure/FormStructureShow.js");
-/* harmony import */ var _form_FormsIndex__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./form/FormsIndex */ "./resources/js/components/form/FormsIndex.js");
-/* harmony import */ var _form_FormView__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./form/FormView */ "./resources/js/components/form/FormView.js");
-/* harmony import */ var _form_FormCreate__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./form/FormCreate */ "./resources/js/components/form/FormCreate.js");
-/* harmony import */ var _form_FormSearch__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./form/FormSearch */ "./resources/js/components/form/FormSearch.js");
-/* harmony import */ var _formStructure_FormStructuresCreate__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./formStructure/FormStructuresCreate */ "./resources/js/components/formStructure/FormStructuresCreate.js");
-/* harmony import */ var _coach_CreateCoach__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./coach/CreateCoach */ "./resources/js/components/coach/CreateCoach.js");
-/* harmony import */ var _program_CreateProgram__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./program/CreateProgram */ "./resources/js/components/program/CreateProgram.js");
-/* harmony import */ var _assessments_interview_ConductAssessment__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./assessments/interview/ConductAssessment */ "./resources/js/components/assessments/interview/ConductAssessment.js");
-/* harmony import */ var _assessments_trialPeriod_ConductAssessment__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./assessments/trialPeriod/ConductAssessment */ "./resources/js/components/assessments/trialPeriod/ConductAssessment.js");
-/* harmony import */ var _assessments_TrainingPeriod_ConductAssessment__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./assessments/TrainingPeriod/ConductAssessment */ "./resources/js/components/assessments/TrainingPeriod/ConductAssessment.js");
-/* harmony import */ var _assessments_course_TraineeCourseAssessment__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./assessments/course/TraineeCourseAssessment */ "./resources/js/components/assessments/course/TraineeCourseAssessment.js");
-/* harmony import */ var _assessments_course_ConductCoachCourseAssessment__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./assessments/course/ConductCoachCourseAssessment */ "./resources/js/components/assessments/course/ConductCoachCourseAssessment.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _employee_EmployeeShow__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./employee/EmployeeShow */ "./resources/js/components/employee/EmployeeShow.js");
+/* harmony import */ var _targeted_CreateTargeted__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./targeted/CreateTargeted */ "./resources/js/components/targeted/CreateTargeted.js");
+/* harmony import */ var _targeted_TargetedShow__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./targeted/TargetedShow */ "./resources/js/components/targeted/TargetedShow.js");
+/* harmony import */ var _formStructure_FormStructuresIndex__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./formStructure/FormStructuresIndex */ "./resources/js/components/formStructure/FormStructuresIndex.js");
+/* harmony import */ var _formStructure_FormStructureShow__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./formStructure/FormStructureShow */ "./resources/js/components/formStructure/FormStructureShow.js");
+/* harmony import */ var _form_FormsIndex__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./form/FormsIndex */ "./resources/js/components/form/FormsIndex.js");
+/* harmony import */ var _form_FormView__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./form/FormView */ "./resources/js/components/form/FormView.js");
+/* harmony import */ var _form_FormCreate__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./form/FormCreate */ "./resources/js/components/form/FormCreate.js");
+/* harmony import */ var _form_FormSearch__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./form/FormSearch */ "./resources/js/components/form/FormSearch.js");
+/* harmony import */ var _formStructure_FormStructuresCreate__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./formStructure/FormStructuresCreate */ "./resources/js/components/formStructure/FormStructuresCreate.js");
+/* harmony import */ var _coach_CreateCoach__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./coach/CreateCoach */ "./resources/js/components/coach/CreateCoach.js");
+/* harmony import */ var _coach_CoachIndex__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./coach/CoachIndex */ "./resources/js/components/coach/CoachIndex.js");
+/* harmony import */ var _program_CreateProgram__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./program/CreateProgram */ "./resources/js/components/program/CreateProgram.js");
+/* harmony import */ var _assessments_interview_ConductAssessment__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./assessments/interview/ConductAssessment */ "./resources/js/components/assessments/interview/ConductAssessment.js");
+/* harmony import */ var _assessments_trialPeriod_ConductAssessment__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./assessments/trialPeriod/ConductAssessment */ "./resources/js/components/assessments/trialPeriod/ConductAssessment.js");
+/* harmony import */ var _assessments_TrainingPeriod_ConductAssessment__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./assessments/TrainingPeriod/ConductAssessment */ "./resources/js/components/assessments/TrainingPeriod/ConductAssessment.js");
+/* harmony import */ var _assessments_course_TraineeCourseAssessment__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./assessments/course/TraineeCourseAssessment */ "./resources/js/components/assessments/course/TraineeCourseAssessment.js");
+/* harmony import */ var _assessments_course_ConductCoachCourseAssessment__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./assessments/course/ConductCoachCourseAssessment */ "./resources/js/components/assessments/course/ConductCoachCourseAssessment.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2095,6 +2098,9 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+
+
 var App = /*#__PURE__*/function (_Component) {
   _inherits(App, _Component);
 
@@ -2109,78 +2115,90 @@ var App = /*#__PURE__*/function (_Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_21__.BrowserRouter, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("div", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_22__.Switch, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_22__.Route, {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_24__.BrowserRouter, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Switch, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.createEmployeeForm,
               component: _employee_CreateEmployee__WEBPACK_IMPORTED_MODULE_4__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_22__.Route, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
+              exact: true,
+              path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showEmployee,
+              component: _employee_EmployeeShow__WEBPACK_IMPORTED_MODULE_5__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.createTargetedForm,
-              component: _targeted_CreateTargeted__WEBPACK_IMPORTED_MODULE_5__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_22__.Route, {
+              component: _targeted_CreateTargeted__WEBPACK_IMPORTED_MODULE_6__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
+              exact: true,
+              path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showTargeted,
+              component: _targeted_TargetedShow__WEBPACK_IMPORTED_MODULE_7__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showFormsStructures,
-              component: _formStructure_FormStructuresIndex__WEBPACK_IMPORTED_MODULE_6__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_22__.Route, {
+              component: _formStructure_FormStructuresIndex__WEBPACK_IMPORTED_MODULE_8__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showFormStructure + ':id',
-              component: _formStructure_FormStructureShow__WEBPACK_IMPORTED_MODULE_7__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_22__.Route, {
+              component: _formStructure_FormStructureShow__WEBPACK_IMPORTED_MODULE_9__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showForms,
-              component: _form_FormsIndex__WEBPACK_IMPORTED_MODULE_8__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_22__.Route, {
+              component: _form_FormsIndex__WEBPACK_IMPORTED_MODULE_10__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showForm,
-              component: _form_FormView__WEBPACK_IMPORTED_MODULE_9__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_22__.Route, {
+              component: _form_FormView__WEBPACK_IMPORTED_MODULE_11__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.generatedForm,
-              component: _form_FormCreate__WEBPACK_IMPORTED_MODULE_10__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_22__.Route, {
+              component: _form_FormCreate__WEBPACK_IMPORTED_MODULE_12__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.searchForms,
-              component: _form_FormSearch__WEBPACK_IMPORTED_MODULE_11__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_22__.Route, {
+              component: _form_FormSearch__WEBPACK_IMPORTED_MODULE_13__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.createFormStructureForm,
-              component: _formStructure_FormStructuresCreate__WEBPACK_IMPORTED_MODULE_12__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_22__.Route, {
+              component: _formStructure_FormStructuresCreate__WEBPACK_IMPORTED_MODULE_14__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.createCoachForm,
-              component: _coach_CreateCoach__WEBPACK_IMPORTED_MODULE_13__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_22__.Route, {
+              component: _coach_CreateCoach__WEBPACK_IMPORTED_MODULE_15__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
+              exact: true,
+              path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.CoachesList,
+              component: _coach_CoachIndex__WEBPACK_IMPORTED_MODULE_16__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.createProgramForm,
-              component: _program_CreateProgram__WEBPACK_IMPORTED_MODULE_14__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_22__.Route, {
+              component: _program_CreateProgram__WEBPACK_IMPORTED_MODULE_17__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.conductInterviewAssessment,
-              component: _assessments_interview_ConductAssessment__WEBPACK_IMPORTED_MODULE_15__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_22__.Route, {
+              component: _assessments_interview_ConductAssessment__WEBPACK_IMPORTED_MODULE_18__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.conductTrialPeriodAssessment,
-              component: _assessments_trialPeriod_ConductAssessment__WEBPACK_IMPORTED_MODULE_16__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_22__.Route, {
+              component: _assessments_trialPeriod_ConductAssessment__WEBPACK_IMPORTED_MODULE_19__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.conductTrainingPeriodAssessment,
-              component: _assessments_TrainingPeriod_ConductAssessment__WEBPACK_IMPORTED_MODULE_17__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_22__.Route, {
+              component: _assessments_TrainingPeriod_ConductAssessment__WEBPACK_IMPORTED_MODULE_20__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.TraineeCourseAssessment,
-              component: _assessments_course_TraineeCourseAssessment__WEBPACK_IMPORTED_MODULE_18__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_22__.Route, {
+              component: _assessments_course_TraineeCourseAssessment__WEBPACK_IMPORTED_MODULE_21__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.CoachCourseAssessment,
-              component: _assessments_course_ConductCoachCourseAssessment__WEBPACK_IMPORTED_MODULE_19__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_22__.Route, {
+              component: _assessments_course_ConductCoachCourseAssessment__WEBPACK_IMPORTED_MODULE_22__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.dashboard,
               component: _Dashboard__WEBPACK_IMPORTED_MODULE_3__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_22__.Route, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_25__.Route, {
               exact: true,
               path: "/",
               component: _Dashboard__WEBPACK_IMPORTED_MODULE_3__.default
@@ -2194,7 +2212,7 @@ var App = /*#__PURE__*/function (_Component) {
   return App;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
-react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(App, {}), document.getElementById('app'));
+react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__.jsx)(App, {}), document.getElementById('app'));
 
 /***/ }),
 
@@ -7371,6 +7389,114 @@ function ConductAssessment(props) {
 
 /***/ }),
 
+/***/ "./resources/js/components/coach/CoachIndex.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/coach/CoachIndex.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ CoachIndex)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utility/ApiEndpoints */ "./resources/js/components/utility/ApiEndpoints.js");
+/* harmony import */ var _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utility/routesEndpoints */ "./resources/js/components/utility/routesEndpoints.js");
+/* harmony import */ var _utility_logError__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utility/logError */ "./resources/js/components/utility/logError.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+function CoachIndex(props) {
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState([]),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      coaches = _React$useState2[0],
+      setcoaches = _React$useState2[1];
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    axios__WEBPACK_IMPORTED_MODULE_1___default().get(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.getCoaches).then(function (response) {
+      setcoaches(response.data);
+      console.log(response.data);
+    })["catch"](function (error) {
+      (0,_utility_logError__WEBPACK_IMPORTED_MODULE_4__.default)(error);
+    });
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    className: "col-md-10",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      className: "card",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        className: "card-header",
+        children: "\u0627\u0644\u0645\u062F\u0631\u0628\u064A\u064A\u0646"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        className: "card-body",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("table", {
+          className: "table table-bordered table-condensed",
+          style: {
+            marginBottom: 0
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("thead", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                children: "ID"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                children: "\u0627\u0644\u0627\u0633\u0645"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                children: "\u0627\u0644\u062A\u062E\u0635\u0635"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
+                children: "\u0627\u0644\u0633\u064A\u0631\u0629 \u0627\u0644\u0630\u0627\u062A\u064A\u0629"
+              })]
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("tbody", {
+            children: coaches.map(function (coach, index) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  children: coach.id
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  children: coach.profile_type == 'App\\Models\\TargetedIndividual' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
+                    to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.showTargeted.replace(':id', coach.profile_id),
+                    children: coach.profile.name
+                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
+                    to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.showEmployee.replace(':id', coach.profile_id),
+                    children: coach.profile.name
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  children: coach.speciality
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  children: coach.CV
+                })]
+              }, index);
+            })
+          })]
+        })
+      })]
+    })
+  });
+}
+
+/***/ }),
+
 /***/ "./resources/js/components/coach/CreateCoach.js":
 /*!******************************************************!*\
   !*** ./resources/js/components/coach/CreateCoach.js ***!
@@ -7879,6 +8005,79 @@ function CreateEmployee() {
         })]
       })
     })]
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/employee/EmployeeShow.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/employee/EmployeeShow.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ EmployeeShow)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utility/ApiEndpoints */ "./resources/js/components/utility/ApiEndpoints.js");
+/* harmony import */ var _utility_logError__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utility/logError */ "./resources/js/components/utility/logError.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+function EmployeeShow(props) {
+  var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useParams)(),
+      id = _useParams.id;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(null),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      employee = _React$useState2[0],
+      setemployee = _React$useState2[1];
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    axios__WEBPACK_IMPORTED_MODULE_1___default().get(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.getEmployee.replace(':id', id)).then(function (response) {
+      setemployee(response.data);
+      console.log(response.data);
+    })["catch"](function (err) {
+      (0,_utility_logError__WEBPACK_IMPORTED_MODULE_3__.default)(err);
+    });
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    className: "col-md-10",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      className: "card",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "card-header",
+        children: ["\u0645\u0648\u0638\u0641 \u0631\u0642\u0645 ", employee === null || employee === void 0 ? void 0 : employee.id]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "card-body",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "row justify-content-center"
+        })
+      })]
+    })
   });
 }
 
@@ -10365,6 +10564,12 @@ function ActionsPanel() {
             to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.CoachCourseAssessment,
             children: "\u062A\u0642\u064A\u064A\u0645 \u0645\u062F\u0631\u0628 \u0644\u062F\u0648\u0631\u0629"
           })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
+          className: "list-group-item",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.CoachesList,
+            children: "\u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u0645\u062F\u0631\u0628\u064A\u064A\u0646"
+          })
         })]
       })
     })]
@@ -10831,6 +11036,81 @@ function CreateTargeted() {
 
 /***/ }),
 
+/***/ "./resources/js/components/targeted/TargetedShow.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/targeted/TargetedShow.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ TargetedShow)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utility/ApiEndpoints */ "./resources/js/components/utility/ApiEndpoints.js");
+/* harmony import */ var _utility_logError__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utility/logError */ "./resources/js/components/utility/logError.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+function TargetedShow(props) {
+  var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useParams)(),
+      id = _useParams.id;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(null),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      targeted = _React$useState2[0],
+      settargeted = _React$useState2[1];
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    axios__WEBPACK_IMPORTED_MODULE_1___default().get(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.getTargeted.replace(':id', id)).then(function (response) {
+      settargeted(response.data);
+      console.log(response.data);
+      console.log(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.getTargeted.replace(':id', id));
+    })["catch"](function (err) {
+      (0,_utility_logError__WEBPACK_IMPORTED_MODULE_3__.default)(err);
+    });
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    className: "col-md-10",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      className: "card",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "card-header",
+        children: ["\u0627\u0644\u0645\u0633\u062A\u0647\u062F\u0641 \u0631\u0642\u0645 ", targeted === null || targeted === void 0 ? void 0 : targeted.id]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "card-body",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "row justify-content-center",
+          children: ["name: ", targeted === null || targeted === void 0 ? void 0 : targeted.name]
+        })
+      })]
+    })
+  });
+}
+
+/***/ }),
+
 /***/ "./resources/js/components/utility/ApiEndpoints.js":
 /*!*********************************************************!*\
   !*** ./resources/js/components/utility/ApiEndpoints.js ***!
@@ -10851,6 +11131,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   createEmployeeForm: '',
   createTargetedForm: '',
   createTargeted: '/api/targeted/create',
+  getTargeted: '/api/targeted/:id',
   showFormsStructure: '/api/structure/index',
   showFormStructure: '/api/structure/:id',
   formSearch: '/api/form/search/:form_structure_id',
@@ -10864,7 +11145,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   createCoachForm: '/api/coach',
   createProgramForm: '',
   createProgram: '/api/program'
-}, _defineProperty(_dashboard$createEmpl, "createEmployeeForm", '/api/createEmployeeForm'), _defineProperty(_dashboard$createEmpl, "createEmployee", '/api/createEmployee'), _defineProperty(_dashboard$createEmpl, "getEmployees", '/api/getEmployees'), _defineProperty(_dashboard$createEmpl, "getUnits", '/api/getUnits'), _defineProperty(_dashboard$createEmpl, "getTrainingCourses", '/api/getTrainingCourses'), _defineProperty(_dashboard$createEmpl, "createInterview", '/api/interview/create'), _defineProperty(_dashboard$createEmpl, "createTrialPeriodAssessment", '/api/trialPeriod/create'), _defineProperty(_dashboard$createEmpl, "createTrainingPeriodAssessment", '/api/trainingPeriod/create'), _defineProperty(_dashboard$createEmpl, "createTraineeCourseAssessments", '/api/traineeCourseAssessment/create'), _defineProperty(_dashboard$createEmpl, "createCoachCourseAssessments", '/api/coachCourseAssessment/create'), _dashboard$createEmpl);
+}, _defineProperty(_dashboard$createEmpl, "createEmployeeForm", '/api/createEmployeeForm'), _defineProperty(_dashboard$createEmpl, "createEmployee", '/api/createEmployee'), _defineProperty(_dashboard$createEmpl, "getEmployee", '/api/employee/:id'), _defineProperty(_dashboard$createEmpl, "getEmployees", '/api/getEmployees'), _defineProperty(_dashboard$createEmpl, "getUnits", '/api/getUnits'), _defineProperty(_dashboard$createEmpl, "getTrainingCourses", '/api/getTrainingCourses'), _defineProperty(_dashboard$createEmpl, "getCoaches", '/api/coach/index'), _defineProperty(_dashboard$createEmpl, "createInterview", '/api/interview/create'), _defineProperty(_dashboard$createEmpl, "createTrialPeriodAssessment", '/api/trialPeriod/create'), _defineProperty(_dashboard$createEmpl, "createTrainingPeriodAssessment", '/api/trainingPeriod/create'), _defineProperty(_dashboard$createEmpl, "createTraineeCourseAssessments", '/api/traineeCourseAssessment/create'), _defineProperty(_dashboard$createEmpl, "createCoachCourseAssessments", '/api/coachCourseAssessment/create'), _dashboard$createEmpl);
 
 /***/ }),
 
@@ -10924,7 +11205,10 @@ var routes = {
   conductTrialPeriodAssessment: '/react/assessment/trialPeriod',
   conductTrainingPeriodAssessment: '/react/assessment/trainingPeriod',
   TraineeCourseAssessment: '/react/assessment/traineeCourseAssessment',
-  CoachCourseAssessment: '/react/assessment/coachCourseAssessment'
+  CoachCourseAssessment: '/react/assessment/coachCourseAssessment',
+  CoachesList: '/react/coach/index',
+  showTargeted: '/react/targeted/:id',
+  showEmployee: '/react/employee/:id'
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (routes);
 

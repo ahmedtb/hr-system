@@ -16,6 +16,10 @@ use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class EmployeesController extends Controller
 {
+    public function show($id)
+    {
+        return Employee::where('id',$id)->first();
+    }
     public function create(Request $request)
     {
         $validateddata = $request->validate([

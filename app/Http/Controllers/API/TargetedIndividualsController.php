@@ -11,6 +11,12 @@ use App\Http\Controllers\Controller;
 
 class TargetedIndividualsController extends Controller
 {
+
+    public function show($id)
+    {
+        return TargetedIndividual::where('id',$id)->first();
+    }
+
     public function create(Request $request)
     {
         $validateddata = $request->validate([

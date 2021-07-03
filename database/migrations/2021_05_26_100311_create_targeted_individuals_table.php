@@ -15,6 +15,7 @@ class CreateTargetedIndividualsTable extends Migration
     {
         Schema::create('targeted_individuals', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->timestamps();
         });
     }

@@ -51,8 +51,10 @@ Route::put('attackDocumentToEmployee', [EmployeesController::class,'attackDocume
 Route::put('rateEmployee', [EmployeesController::class,'rateEmployee']);
 Route::post('createCourseForEmployees', [EmployeesController::class,'createCourseForEmployees']);
 Route::get('getEmployees', [EmployeesController::class,'getEmployees']);
+Route::get('employee/{id}', [EmployeesController::class,'show']);
 
 Route::post('targeted/create', [TargetedIndividualsController::class,'create']);
+Route::get('targeted/{id}', [TargetedIndividualsController::class,'show']);
 
 Route::get('form/index', [FormsController::class,'index']);
 Route::get('form/{id}', [FormsController::class,'show']);
@@ -73,7 +75,7 @@ Route::post('employementApproval',[FormsController::class,'employementApproval']
 
 Route::post('coach',[CoachController::class,'create']);
 Route::get('coach',[CoachController::class,'createForm']);
-
+Route::get('/coach/index',[CoachController::class,'index']);
 Route::get('coach/{coach_id}/programs',[CoachController::class,'getPrograms']);
 
 Route::post('program',[ProgramsController::class,'create']);

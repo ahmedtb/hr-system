@@ -15,7 +15,7 @@ class CreateCoachesTable extends Migration
     {
         Schema::create('coaches', function (Blueprint $table) {
             $table->id();
-            $table->nullableMorphs('profile'); // coach could be a employee or a targeted individual
+            $table->morphs('profile'); // coach could be a employee or a targeted individual
             $table->string('speciality');
             $table->text('CV')->nullable();
             $table->timestamps();

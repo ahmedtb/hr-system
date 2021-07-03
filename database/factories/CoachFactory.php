@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Coach;
+use App\Models\TargetedIndividual;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CoachFactory extends Factory
@@ -23,7 +24,9 @@ class CoachFactory extends Factory
     {
         return [
             'CV' => $this->faker->randomHtml(),
-            'speciality' => $this->faker->sentence()
+            'speciality' => $this->faker->sentence(),
+            'profile_id' => TargetedIndividual::factory()->create()->id,
+            'profile_type' => TargetedIndividual::class
         ];
     }
 }

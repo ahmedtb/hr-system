@@ -19,6 +19,11 @@ const routes = {
     TraineeCourseAssessment: '/react/assessment/traineeCourseAssessment',
     CoachCourseAssessment: '/react/assessment/coachCourseAssessment',
 
+    CoachesList: '/react/coach/index',
+
+    showTargeted: '/react/targeted/:id',
+    showEmployee: '/react/employee/:id',
+
 }
 
 export default routes;
