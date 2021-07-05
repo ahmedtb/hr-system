@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\TrainingCourse;
 use App\Models\TrainingProgram;
+use DateTime;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TrainingCourseFactory extends Factory
@@ -17,13 +18,18 @@ class TrainingCourseFactory extends Factory
 
     public function createRandomWeekSchedule()
     {
-        $weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-
+        $weekDays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+        $randKeys = array_rand($weekDays, 7);
+        $randDays = [];
+        foreach ($randKeys as $key) {
+            $randDays[] = $weekDays[$key];
+        }
         $schedule = [];
-        foreach ($weekDays as $key => $day) {
-            $schedule[$weekDays[$key]] = [
-                'begin' => $this->faker->time(),
-                'period' => rand(0, 120) //minutes
+        foreach ($randDays as $key => $day) {
+
+            $schedule[$randDays[$key]] = [
+                'begin' => (new DateTime('now'))->format('H:i:s'),
+                'end' => (new DateTime('now + 1 hour'))->format('H:i:s')
             ];
         }
         return $schedule;
@@ -36,8 +42,8 @@ class TrainingCourseFactory extends Factory
      */
     public function definition()
     {
-        $random = rand(0, 4);
-        $states = ['planned', 'resumed', 'done', 'canceled', 'archived'];
+        $random = rand(0, 1);
+        $states = ['normal', 'canceled'];
         return [
             'title' => $this->faker->title(),
             'training_program_id' => TrainingProgram::factory()->create()->id,
@@ -52,6 +58,7 @@ class TrainingCourseFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
+                'status' => 'normal',
                 'start_date' => ($start = $this->faker->dateTimeBetween('-1 month', 'now')),
                 'end_date' => $this->faker->dateTimeBetween('now', '1 month'),
             ];
@@ -62,8 +69,29 @@ class TrainingCourseFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
+                'status' => 'normal',
                 'start_date' => ($start = $this->faker->dateTimeBetween('1 month', '2 month')),
                 'end_date' => $this->faker->dateTimeBetween($start, '3 month'),
+            ];
+        });
+    }
+
+    public function done()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'status' => 'normal',
+                'start_date' => ($start = $this->faker->dateTimeBetween('-2 month', '-1 month')),
+                'end_date' => $this->faker->dateTimeBetween('-1 month', '-1 day'),
+            ];
+        });
+    }
+
+    public function canceled()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'status' => 'canceled'
             ];
         });
     }

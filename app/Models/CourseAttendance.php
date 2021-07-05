@@ -2,19 +2,34 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class CourseAttendance extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 
     public function profile()
     {
         return $this->morphTo();
     }
 
-    public function trainingCourse() {
+    public function trainingCourse()
+    {
         return $this->belongsTo(TrainingCourse::class);
+    }
+
+    public function scopeInDays($query, $days)
+    {
+        return $query->whereIn('date', $days);
+    }
+
+    public function scopeBetween($query, $first, $last)
+    {
+        return $query->whereDate('date', '>=', $first)
+            ->orWhereDate('date', '<=', $last);
     }
 }

@@ -16,10 +16,10 @@ class CreateCourseAttendancesTable extends Migration
         Schema::create('course_attendances', function (Blueprint $table) {
             $table->id();
             $table->string('person_name')->nullable();
-            $table->morphs('profile');
+            $table->nullableMorphs('profile');
             $table->date('date');
             $table->time('entrance_time');
-            $table->string('note');
+            $table->string('note')->nullable();
             $table->foreignId('training_course_id');
             $table->timestamps();
         });

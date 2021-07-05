@@ -17,6 +17,8 @@ class CreateEmployeeTrainingCourseTable extends Migration
             $table->id();
             $table->foreignId('employee_id');
             $table->foreignId('training_course_id');
+            $table->unique(['employee_id', 'training_course_id']);
+
             $table->timestamps();
         });
     }

@@ -2,10 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\CourseAttendance;
+use DateTime;
+use Carbon\Carbon;
 use App\Models\Employee;
-use App\Models\TargetedIndividual;
 use App\Models\TrainingCourse;
+use App\Models\CourseAttendance;
+use App\Models\TargetedIndividual;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CourseAttendanceFactory extends Factory
@@ -16,7 +18,8 @@ class CourseAttendanceFactory extends Factory
     {
         return [
             'person_name' => $this->faker->name(),
-            // 'profile' => null,
+            'profile_id' => Employee::factory()->create()->id,
+            'profile_type' => Employee::class,
             'date' => $this->faker->date(),
             'entrance_time' => $this->faker->time(),
             'note' => $this->faker->sentence(),
@@ -40,6 +43,15 @@ class CourseAttendanceFactory extends Factory
                     'profile_id' => TargetedIndividual::factory()->create()->id,
                     'profile_type' => TargetedIndividual::class,
                 ];
+        });
+    }
+
+    public function between(DateTime $first, DateTime $last)
+    {
+        return $this->state(function (array $attributes) use ($last, $first) {
+            return [
+                'date' => ($this->faker->dateTimeBetween($first, $last))->format('Y-m-d') 
+            ];
         });
     }
 }

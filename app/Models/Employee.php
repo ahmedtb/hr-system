@@ -13,7 +13,7 @@ class Employee extends Model
 
     protected $guarded = [];
 
-    protected $casts =[
+    protected $casts = [
         'medal_rating' => 'integer'
     ];
 
@@ -21,8 +21,9 @@ class Employee extends Model
         'job'
     ];
 
-    public function getJobAttribute(){
-        return Job::where('id',$this->id)->first();
+    public function getJobAttribute()
+    {
+        return Job::where('id', $this->id)->first();
     }
 
     public function job()
@@ -50,11 +51,24 @@ class Employee extends Model
         return $this->morphMany(CourseAttendance::class, 'profile');
     }
 
-    public function TrialPeriodAssessments(){
+    public function TrialPeriodAssessments()
+    {
         return $this->hasMany(TrialPeriodAssessment::class);
     }
 
-    public function TrainingPeriodAssessments(){
-        return $this->hasMany(TrainingPeriodAssessment::class);   
+    public function TrainingPeriodAssessments()
+    {
+        return $this->hasMany(TrainingPeriodAssessment::class);
     }
+
+    public function courses()
+    {
+        return $this->belongsToMany(TrainingCourse::class);
+    }
+
+    public function enrollInCourse(TrainingCourse $course)
+    {
+        $this->courses()->save($course);
+    }
+
 }
