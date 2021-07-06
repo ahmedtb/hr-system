@@ -14,9 +14,23 @@ class CoursesController extends Controller
 
     public function show($id)
     {
-        return TrainingCourse::where('id', $id)
+        $course = TrainingCourse::where('id', $id)
             ->with(['trainingProgram', 'targetedIndividuals', 'employees'])
             ->first();
+        // return $course;
+        $state = $course->calculateStatus();
+        $wentDays = $course->wentDays();
+        $remainingDays = $course->remainingDays();
+        $attendancePercentage = $course->attendancePercentage();
+        $schedualTable = $course->schedualTable();
+        return [
+            'course' => $course,
+            'state' => $state,
+            'wentDays' => $wentDays,
+            'remainingDays' => $remainingDays,
+            'attendancePercentage' => $attendancePercentage,
+            'schedualTable' => $schedualTable,
+        ];
     }
 
     public function create(Request $request)

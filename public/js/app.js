@@ -7945,9 +7945,40 @@ function CourseShow(props) {
       course = _React$useState2[0],
       setcourse = _React$useState2[1];
 
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0__.useState(null),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      state = _React$useState4[0],
+      setstate = _React$useState4[1];
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0__.useState(null),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      wentDays = _React$useState6[0],
+      setwentDays = _React$useState6[1];
+
+  var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_0__.useState(null),
+      _React$useState8 = _slicedToArray(_React$useState7, 2),
+      remainingDays = _React$useState8[0],
+      setremainingDays = _React$useState8[1];
+
+  var _React$useState9 = react__WEBPACK_IMPORTED_MODULE_0__.useState(null),
+      _React$useState10 = _slicedToArray(_React$useState9, 2),
+      attendancePercentage = _React$useState10[0],
+      setattendancePercentage = _React$useState10[1];
+
+  var _React$useState11 = react__WEBPACK_IMPORTED_MODULE_0__.useState(null),
+      _React$useState12 = _slicedToArray(_React$useState11, 2),
+      schedualTable = _React$useState12[0],
+      setschedualTable = _React$useState12[1];
+
   react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
     axios__WEBPACK_IMPORTED_MODULE_1___default().get(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.getCourse.replace(':id', id)).then(function (response) {
-      setcourse(response.data);
+      setcourse(response.data.course);
+      setstate(response.data.state);
+      setwentDays(response.data.wentDays);
+      setremainingDays(response.data.remainingDays);
+      setattendancePercentage(response.data.attendancePercentage);
+      setschedualTable(response.data.schedualTable);
+      console.log(response);
     })["catch"](function (err) {
       (0,_utility_logError__WEBPACK_IMPORTED_MODULE_3__.default)(err);
     });
@@ -7982,6 +8013,30 @@ function CourseShow(props) {
               })]
             })]
           })
+        })
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+      className: "card",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+        className: "card-header",
+        children: "\u0627\u062D\u0635\u0627\u0626\u064A\u0627\u062A"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+        className: "card-body",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("ul", {
+          className: "list-group",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("li", {
+            className: "list-group-item",
+            children: ["\u062D\u0627\u0644\u0629 \u0627\u0644\u062F\u0648\u0631\u0629 ", state]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("li", {
+            className: "list-group-item",
+            children: ["\u0627\u0644\u0627\u064A\u0627\u0645 \u0627\u0644\u062A\u064A \u0645\u0636\u062A \u0641\u064A \u0627\u0644\u062F\u0648\u0631\u0629 ", wentDays === null || wentDays === void 0 ? void 0 : wentDays.length]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("li", {
+            className: "list-group-item",
+            children: ["\u0627\u0644\u0627\u064A\u0627\u0645 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 ", remainingDays === null || remainingDays === void 0 ? void 0 : remainingDays.length]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("li", {
+            className: "list-group-item",
+            children: ["\u0646\u0633\u0628\u0629 \u0627\u0644\u062D\u0636\u0648\u0631\u0629 ", attendancePercentage, " %"]
+          })]
         })
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {

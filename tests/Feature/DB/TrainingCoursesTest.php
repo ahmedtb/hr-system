@@ -89,6 +89,26 @@ class TrainingCoursesTest extends TestCase
         $this->assertEquals(count($course->remainingDays()), 11);
     }
 
+    public function test_only_if_course_is_in_a_resumed_state_will_it_return_went_and_remaining_days_Calculations(){
+        $course = TrainingCourse::factory()->resumed()->create([
+            'start_date' => new DateTime('today - 10 day'),
+            'end_date' => new DateTime('today + 10 day'),
+            'status' => 'canceled'
+        ]);
+        $this->assertEmpty($course->wentDays());
+        $this->assertEmpty($course->remainingDays());
+
+    }
+
+    public function test_course_can_determine_if_its_resumed()
+    {
+        $course = TrainingCourse::factory()->resumed()->create();
+        $this->assertTrue($course->isResumed());
+        $this->assertTrue($course->calculateStatus() == 'resumed');
+        $course = TrainingCourse::factory()->canceled()->create();
+        $this->assertFalse($course->isResumed());
+    }
+
     public function test_course_can_determine_if_its_canceled()
     {
         $course = TrainingCourse::factory()->resumed()->create();

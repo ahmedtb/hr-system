@@ -94,9 +94,8 @@ class TrainingCourse extends Model
 
     public function isResumed()
     {
-        return Carbon::today()->between($this->start_date, $this->end_date)
-            || Carbon::today()->eq($this->start_date) || Carbon::today()->eq($this->end_date)
-            && $this->status == 'normal';
+        return $this->status == 'normal' && (Carbon::today()->between($this->start_date, $this->end_date)
+            || Carbon::today()->eq($this->start_date) || Carbon::today()->eq($this->end_date));
     }
 
     public function isPlanned()

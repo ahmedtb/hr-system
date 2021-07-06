@@ -10,9 +10,22 @@ export default function CourseShow(props) {
 
     const { id } = useParams();
     const [course, setcourse] = React.useState(null)
+    const [state, setstate] = React.useState(null)
+    const [wentDays, setwentDays] = React.useState(null)
+    const [remainingDays, setremainingDays] = React.useState(null)
+    const [attendancePercentage, setattendancePercentage] = React.useState(null)
+    const [schedualTable, setschedualTable] = React.useState(null)
+
     React.useEffect(() => {
         axios.get(ApiEndpoints.getCourse.replace(':id', id)).then((response) => {
-            setcourse(response.data)
+            setcourse(response.data.course)
+            setstate(response.data.state)
+            setwentDays(response.data.wentDays)
+            setremainingDays(response.data.remainingDays)
+            setattendancePercentage(response.data.attendancePercentage)
+            setschedualTable(response.data.schedualTable)
+
+            console.log(response)
         }).catch((err) => {
             logError(err)
         })
@@ -45,6 +58,29 @@ export default function CourseShow(props) {
                     </div>
                 </div>
 
+            </div>
+
+            <div className="card">
+                <div className="card-header">
+                    احصائيات
+                </div>
+
+                <div className="card-body">
+                        <ul className="list-group" >
+                            <li className="list-group-item" >
+                                حالة الدورة {state}
+                            </li>
+                            <li className="list-group-item" >
+                                الايام التي مضت في الدورة {wentDays?.length}
+                            </li>
+                            <li className="list-group-item" >
+                                الايام المتبقية {remainingDays?.length}
+                            </li>
+                            <li className="list-group-item" >
+                                نسبة الحضورة {attendancePercentage} %
+                            </li>
+                        </ul>
+                    </div>
             </div>
 
             <div className="card">
