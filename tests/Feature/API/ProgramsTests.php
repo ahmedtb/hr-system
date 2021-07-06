@@ -31,5 +31,12 @@ class ProgramsTests extends TestCase
         
     }
 
-    
+    public function test_program_index_endpoint()
+    {
+        TrainingProgram::factory(10)->create();
+        $response = $this->getJson('/api/program/index');
+        // dd($response->content());
+        $response->assertOk();
+        $response->assertJsonCount(10);
+    }
 }

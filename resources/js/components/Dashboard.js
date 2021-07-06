@@ -4,6 +4,7 @@ import ApiEndpoints from './utility/ApiEndpoints'
 import ActionsPanel from './partials/ActionsPanel'
 import FormsTable from './partials/FormsTable'
 import UnitsList from './partials/UnitsList'
+import CoursesTable from './partials/CoursesTable'
 export default function Dashboard() {
 
     const [employeesCount, setemployeesCount] = React.useState(null)
@@ -88,6 +89,7 @@ export default function Dashboard() {
                                 <h5 className=''>الدورات الجارية: {resumedCourses.length}</h5>
                             </div>
                             <div className=" card-body">
+                                <CoursesTable courses={resumedCourses}/>
                             </div>
                         </div>
 

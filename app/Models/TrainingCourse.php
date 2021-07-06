@@ -19,6 +19,35 @@ class TrainingCourse extends Model
         'week_schedule' => Json::class,
     ];
 
+    protected $appends = [
+        'state', 'attendancePercentage', 'schedualTable', 'wentDays',
+        'remainingDays'
+    ];
+
+    public function getStateAttribute()
+    {
+        return $this->calculateStatus();
+    }
+
+    public function getAttendancePercentageAttribute()
+    {
+        return $this->attendancePercentage();
+    }
+
+    public function getSchedualTableAttribute()
+    {
+        return $this->schedualTable();
+    }
+
+    public function getWentDaysAttribute()
+    {
+        return $this->wentDays();
+    }
+
+    public function getRemainingDaysAttribute()
+    {
+        return $this->remainingDays();
+    }
 
     public function coaches()
     {
@@ -67,8 +96,25 @@ class TrainingCourse extends Model
     public function scopeResumed($query)
     {
         return $query->whereDate('start_date', '<=', Carbon::today())
-            ->whereDate('end_date', '>=', Carbon::today());
+            ->whereDate('end_date', '>=', Carbon::today())->where('status','normal');
     }
+
+    public function scopePlanned($query)
+    {
+        return $query->whereDate('start_date', '>=', Carbon::today())->where('status','normal');
+    }
+
+    public function scopeDone($query)
+    {
+        return $query->whereDate('end_date', '<=', Carbon::today())->where('status','normal');
+    }
+
+    
+    public function scopeCanceled($query)
+    {
+        return $query->where('status','canceled');
+    }
+
 
     public function schedualTable()
     {
@@ -94,8 +140,10 @@ class TrainingCourse extends Model
 
     public function isResumed()
     {
-        return $this->status == 'normal' && (Carbon::today()->between($this->start_date, $this->end_date)
-            || Carbon::today()->eq($this->start_date) || Carbon::today()->eq($this->end_date));
+        return $this->status == 'normal' &&
+            (Carbon::today()->between($this->start_date, $this->end_date)
+                || Carbon::today()->eq($this->start_date)
+                || Carbon::today()->eq($this->end_date));
     }
 
     public function isPlanned()
@@ -124,8 +172,8 @@ class TrainingCourse extends Model
                 return 'resumed';
             if ($this->isDone())
                 return 'done';
-        } else if ($this->status == 'canceled') {
-            return 'canceled';
+        } else {
+            return $this->status;
         }
     }
 
@@ -167,6 +215,7 @@ class TrainingCourse extends Model
 
     public function attendancePercentage()
     {
+
         $studentsCount = $this->employees()->count() + $this->targetedIndividuals()->count();
         $wentDays = $this->wentDays();
         $wentDaysCount = count($wentDays);
@@ -176,7 +225,10 @@ class TrainingCourse extends Model
         // dd (300/10);
         // dd($studentsCount);
         // dd($wentDaysCount);
-        return $attendancesCount / ($studentsCount * $wentDaysCount) * 100;
+        if ($studentsCount != 0 && $wentDaysCount != 0)
+            return $attendancesCount / ($studentsCount * $wentDaysCount) * 100;
+        else
+            return 0;
         // return $attendances;
     }
 

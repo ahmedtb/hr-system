@@ -89,7 +89,8 @@ class TrainingCoursesTest extends TestCase
         $this->assertEquals(count($course->remainingDays()), 11);
     }
 
-    public function test_only_if_course_is_in_a_resumed_state_will_it_return_went_and_remaining_days_Calculations(){
+    public function test_only_if_course_is_in_a_resumed_state_will_it_return_went_and_remaining_days_Calculations()
+    {
         $course = TrainingCourse::factory()->resumed()->create([
             'start_date' => new DateTime('today - 10 day'),
             'end_date' => new DateTime('today + 10 day'),
@@ -97,7 +98,6 @@ class TrainingCoursesTest extends TestCase
         ]);
         $this->assertEmpty($course->wentDays());
         $this->assertEmpty($course->remainingDays());
-
     }
 
     public function test_course_can_determine_if_its_resumed()
@@ -259,10 +259,10 @@ class TrainingCoursesTest extends TestCase
     {
         $course = TrainingCourse::factory()->create([
             'start_date' => new DateTime('today - 9 day'),
-            'end_date' => new DateTime('today')
+            'end_date' => new DateTime('today'),
+            'status' => 'normal'
         ]);
         $schedualTable = $course->schedualTable();
-        // dd($course->week_schedule);
 
         $employees = Employee::factory(10)->create();
         foreach ($employees as $employee) {
@@ -279,7 +279,8 @@ class TrainingCoursesTest extends TestCase
 
         $course = TrainingCourse::factory()->create([
             'start_date' => new DateTime('today - 9 day'),
-            'end_date' => new DateTime('today')
+            'end_date' => new DateTime('today'),
+            'status' => 'normal'
         ]);
         // three attendanceds for each employee
         foreach ($employees as $employee) {
@@ -309,7 +310,8 @@ class TrainingCoursesTest extends TestCase
 
         $course = TrainingCourse::factory()->create([
             'start_date' => new DateTime('today - 9 day'),
-            'end_date' => new DateTime('today')
+            'end_date' => new DateTime('today'),
+            'status' => 'normal'
         ]);
         foreach ($employees as $employee) {
             $course->enrollEmployee($employee);
@@ -325,6 +327,54 @@ class TrainingCoursesTest extends TestCase
             }
         }
         $this->assertEquals($course->attendancePercentage(), 100.0);
+    }
+
+    public function test_attendancePercentage_does_not_allow_division_by_zero()
+    {
+        $course = TrainingCourse::factory()->create([
+            'start_date' => new DateTime('today + 1 day'),
+            'end_date' => new DateTime('today + 9 day'),
+            'status' => 'normal'
+        ]);
+        $this->assertEquals($course->attendancePercentage(), 0);
+
+        $employees = Employee::factory(10)->create();
+
+        foreach ($employees as $employee) {
+            $course->enrollEmployee($employee);
+        }
+
+        $this->assertEquals($course->attendancePercentage(), 0);
+    }
+
+    public function test_resumed_scope_return_only_normal_resumed_courses()
+    {
+        TrainingCourse::factory(5)->create([
+            'start_date' => new DateTime('today - 10 day'),
+            'end_date' => new DateTime('today + 10 day'),
+            'status' => 'normal'
+        ]);
+
+        TrainingCourse::factory(10)->create([
+            'start_date' => new DateTime('today - 10 day'),
+            'end_date' => new DateTime('today + 10 day'),
+            'status' => 'canceled'
+        ]);
+
+        $this->assertEquals(TrainingCourse::resumed()->count(),5);
+    }
+
+    public function test_system_can_query_the_courses_by_state()
+    {
+        TrainingCourse::factory(5)->resumed()->create();
+        TrainingCourse::factory(10)->planned()->create();
+        TrainingCourse::factory(15)->done()->create();
+        TrainingCourse::factory(20)->canceled()->create();
+
+        $this->assertEquals(TrainingCourse::resumed()->count(),5);
+        $this->assertEquals(TrainingCourse::planned()->count(),10);
+        $this->assertEquals(TrainingCourse::done()->count(),15);
+        $this->assertEquals(TrainingCourse::canceled()->count(),20);
 
     }
 }

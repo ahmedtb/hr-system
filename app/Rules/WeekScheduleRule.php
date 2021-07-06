@@ -16,6 +16,7 @@ class WeekScheduleRule implements Rule
         //
     }
 
+    protected $errorType = '';
     /**
      * Determine if the validation rule passes.
      *
@@ -25,17 +26,25 @@ class WeekScheduleRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        if (!is_array($value))
+        if (!is_array($value)){
+            $this->errorType='not array';
             return false;
+        }
 
         foreach ($value as $day => $schedule) {
-            if (!in_array($day, array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')))
+            if (!in_array($day, array('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'))){
+                $this->errorType='wrong week names';
                 return false;
+            }
 
-            if (gettype($schedule['begin']) != 'string')
+            if (gettype($schedule['begin']) != 'string'){
+                $this->errorType='wrong begin time';
                 return false;
-            if (gettype($schedule['period']) != 'integer')
+            }
+            if (gettype($schedule['end']) != 'string'){
+                $this->errorType='wrong end time';
                 return false;
+            }
         }
 
         return true;
@@ -48,6 +57,20 @@ class WeekScheduleRule implements Rule
      */
     public function message()
     {
-        return 'invalid week schedual provided';
+        if($this->errorType == 'not array'){
+            return 'invalid week schedual: week schedual should be an array';
+
+        }else if($this->errorType == 'wrong week names'){
+            return 'invalid week schedual: wrong week names';
+
+        }else if($this->errorType == 'wrong begin time'){
+            return 'invalid week schedual: wrong begin time';
+
+        }else if($this->errorType == 'wrong end time'){
+            return 'invalid week schedual: wrong end time';
+
+        }else {
+            return 'invalid week schedual provided';
+        }
     }
 }

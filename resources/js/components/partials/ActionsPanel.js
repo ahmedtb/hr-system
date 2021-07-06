@@ -67,6 +67,22 @@ export default function ActionsPanel() {
                         <Link to={routes.AssessmentsIndex}>جداول التقييمات</Link>
                     </li>
 
+                    <li className="list-group-item">
+                        <Link to={routes.programIndex}>قائمة البرامج التدريبية</Link>
+                    </li>
+
+                    <li className="list-group-item">
+                        <Link to={routes.programIndex}>قائمة البرامج التدريبية</Link>
+                    </li>
+
+                    <li className="list-group-item">
+                        <Link to={routes.createCourse}>تسجيل دورة</Link>
+                    </li>
+
+                    <li className="list-group-item">
+                        <Link to={routes.courseIndex}>قائمة الدورات</Link>
+                    </li>
+
                 </ul>
             </div>
         </div>

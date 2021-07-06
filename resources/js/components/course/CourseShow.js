@@ -6,26 +6,16 @@ import routes from '../utility/routesEndpoints'
 import { useParams, Link } from 'react-router-dom';
 import EmployeesTable from '../partials/EmployeesTable'
 import TargetedIndividualsTable from '../partials/TargetedIndividualsTable'
+import SchedualTable from './SchedualTable'
 export default function CourseShow(props) {
 
     const { id } = useParams();
     const [course, setcourse] = React.useState(null)
-    const [state, setstate] = React.useState(null)
-    const [wentDays, setwentDays] = React.useState(null)
-    const [remainingDays, setremainingDays] = React.useState(null)
-    const [attendancePercentage, setattendancePercentage] = React.useState(null)
-    const [schedualTable, setschedualTable] = React.useState(null)
 
     React.useEffect(() => {
-        axios.get(ApiEndpoints.getCourse.replace(':id', id)).then((response) => {
+        axios.get(ApiEndpoints.getCourse?.replace(':id', id)).then((response) => {
             setcourse(response.data.course)
-            setstate(response.data.state)
-            setwentDays(response.data.wentDays)
-            setremainingDays(response.data.remainingDays)
-            setattendancePercentage(response.data.attendancePercentage)
-            setschedualTable(response.data.schedualTable)
-
-            console.log(response)
+            console.log(response.data)
         }).catch((err) => {
             logError(err)
         })
@@ -66,21 +56,40 @@ export default function CourseShow(props) {
                 </div>
 
                 <div className="card-body">
-                        <ul className="list-group" >
-                            <li className="list-group-item" >
-                                حالة الدورة {state}
-                            </li>
-                            <li className="list-group-item" >
-                                الايام التي مضت في الدورة {wentDays?.length}
-                            </li>
-                            <li className="list-group-item" >
-                                الايام المتبقية {remainingDays?.length}
-                            </li>
-                            <li className="list-group-item" >
-                                نسبة الحضورة {attendancePercentage} %
-                            </li>
-                        </ul>
-                    </div>
+                    <ul className="list-group" >
+                        <li className="list-group-item" >
+                            حالة الدورة {course?.state}
+                        </li>
+                        <li className="list-group-item" >
+                            الايام التي مضت في الدورة {course?.wentDays?.length}
+                        </li>
+                        <li className="list-group-item" >
+                            الايام المتبقية {course?.remainingDays?.length}
+                        </li>
+                        <li className="list-group-item" >
+                            نسبة الحضورة {course?.attendancePercentage} %
+                        </li>
+                        <li className="list-group-item" >
+                            عدد المسجلين {course?.employees.length + course?.targeted_individuals.length}
+                        </li>
+                        <li className="list-group-item" >
+                            عدد الموظفيين المسجلين {course?.employees.length }
+                        </li>
+                        <li className="list-group-item" >
+                            عدد المستهدفين في المسجلين في الدورة {course?.targeted_individuals.length}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div className="card">
+                <div className="card-header">
+                    جدول الدورة
+                </div>
+
+                <div className="card-body">
+                    <SchedualTable schedualTable={course?.schedualTable} />
+                </div>
             </div>
 
             <div className="card">

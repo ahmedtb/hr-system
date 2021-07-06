@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\API;
 
 use App\Models\Document;
-use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Models\TrainingProgram;
 use Illuminate\Support\Facades\DB;
@@ -15,6 +14,12 @@ class ProgramsController extends Controller
     {
         return TrainingProgram::where('id', $id)->first();
     }
+
+    public function index()
+    {
+        return TrainingProgram::all();
+    }
+    
     public function create(Request $request)
     {
         // return $request->all();

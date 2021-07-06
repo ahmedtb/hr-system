@@ -26,10 +26,19 @@ class CoursesTests extends TestCase
             'end_date' => $course->end_date,
             'week_schedule' => $course->week_schedule
         ]);
-        // dd($response->json());
+
         $response->assertOk();
 
         $this->assertEquals(TrainingCourse::all()->count(), 1);
+    }
+
+    public function test_course_index_endpoint()
+    {
+        $course = TrainingCourse::factory(10)->create();
+        $response = $this->getJson('api/course/index');
+
+        $response->assertOk();
+        $response->assertJsonCount(10);
     }
 
     public function test_system_can_view_the_course_schedual()

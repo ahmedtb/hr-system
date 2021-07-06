@@ -16,7 +16,7 @@ class CourseStatusRule implements Rule
         //
     }
 
-    protected $statusEnum = array('planned', 'resumed', 'done', 'canceled', 'archived');
+    protected $statusEnum = array('normal', 'canceled');
     /**
      * Determine if the validation rule passes.
      *

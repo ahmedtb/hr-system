@@ -21,7 +21,7 @@ class DashboardController extends Controller
         $coachesCount = Coach::all()->count();
         $programsCount = TrainingProgram::count();
 
-        $resumedCourses = TrainingCourse::resumed()->get();
+        $resumedCourses = TrainingCourse::resumed()->with(['trainingProgram'])->get();
 
         $units = Unit::whereNull('parent_id')->get();
         $forms = Form::orderBy('id', 'desc')->with('structure')->take(5)->get();
