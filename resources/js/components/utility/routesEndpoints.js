@@ -11,6 +11,8 @@ const routes = {
     createCoachForm: '/react/coachCreate',
     createProgramForm: '/react/programCreate',
     createCourse: '/react/course/create',
+    jobCreate: '/react/job/create',
+    unitCreate: '/react/unit/create',
     
     conductInterviewAssessment: '/react/assessment/interview',
     conductTrialPeriodAssessment: '/react/assessment/trialPeriod',
@@ -23,7 +25,7 @@ const routes = {
     showEmployee: '/react/employee/:id',
     showCourse: '/react/course/:id',
     showProgram: '/react/program/:id',
-    
+    showUnit: '/react/unit/:id',
     showJob: '/react/job/:id',
     
     programIndex: '/react/program/index',
@@ -32,6 +34,12 @@ const routes = {
     showForms: '/react/formIndex',
     showFormsStructures: '/react/structureIndex',
     courseIndex: '/react/course/index',
+    employeeIndex: '/react/employee/index',
+    jobIndex: '/react/job/index',
+    unitIndex: '/react/unit/index',
+
+
+
 }
 
 export default routes;

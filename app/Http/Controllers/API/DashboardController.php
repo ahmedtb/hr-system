@@ -22,6 +22,9 @@ class DashboardController extends Controller
         $programsCount = TrainingProgram::count();
 
         $resumedCourses = TrainingCourse::resumed()->with(['trainingProgram'])->get();
+        $plannedCoursesCount = TrainingCourse::planned()->count();
+        $doneCoursesCount = TrainingCourse::done()->count();
+        $canceledCoursesCount = TrainingCourse::canceled()->count();
 
         $units = Unit::whereNull('parent_id')->get();
         $forms = Form::orderBy('id', 'desc')->with('structure')->take(5)->get();
@@ -30,9 +33,12 @@ class DashboardController extends Controller
             'targetedCount' => $targetedCount,
             'coachesCount' => $coachesCount,
             'programsCount' => $programsCount,
+            'resumedCourses' => $resumedCourses,
+            'plannedCoursesCount' => $plannedCoursesCount,
+            'doneCoursesCount' => $doneCoursesCount,
+            'canceledCoursesCount' => $canceledCoursesCount,
             'units' => $units,
             'forms' => $forms,
-            'resumedCourses' => $resumedCourses
         );
     }
 }

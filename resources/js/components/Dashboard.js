@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import ApiEndpoints from './utility/ApiEndpoints'
+import logError from './utility/logError'
 import ActionsPanel from './partials/ActionsPanel'
 import FormsTable from './partials/FormsTable'
 import UnitsList from './partials/UnitsList'
@@ -11,9 +12,13 @@ export default function Dashboard() {
     const [targetedCount, settargetedCount] = React.useState(null)
     const [coachesCount, setcoachesCount] = React.useState(null)
     const [programsCount, setprogramsCount] = React.useState(null)
+    const [resumedCourses, setresumedCourses] = React.useState([])
+    const [plannedCoursesCount, setplannedCoursesCount] = React.useState(null)
+    const [doneCoursesCount, setdoneCoursesCount] = React.useState(null)
+    const [canceledCoursesCount, setcanceledCoursesCount] = React.useState(null)
+
     const [units, setunits] = React.useState([])
     const [forms, setforms] = React.useState([])
-    const [resumedCourses, setresumedCourses] = React.useState([])
 
     React.useEffect(() => {
         axios.get(ApiEndpoints.dashboard).then((response) => {
@@ -21,12 +26,14 @@ export default function Dashboard() {
             settargetedCount(response.data.targetedCount)
             setcoachesCount(response.data.coachesCount)
             setprogramsCount(response.data.programsCount)
+            setplannedCoursesCount(response.data.plannedCoursesCount)
+            setdoneCoursesCount(response.data.doneCoursesCount)
+            setcanceledCoursesCount(response.data.canceledCoursesCount)
+
             setunits(response.data.units)
             setforms(response.data.forms)
             setresumedCourses(response.data.resumedCourses)
-        }).catch(() => {
-
-        })
+        }).catch((error) => logError(error))
     }, [])
 
     return (
@@ -69,6 +76,31 @@ export default function Dashboard() {
                                     </div>
                                 </div>
                             </div>
+
+                            <div className="col-6">
+                                <div className="list-group">
+                                    <div className="list-group-item">
+                                        عدد الدورات التدريبية المخطط لها {plannedCoursesCount}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="col-6">
+                                <div className="list-group">
+                                    <div className="list-group-item">
+                                        عدد الحقائب التدريبية المنتهية {doneCoursesCount}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="col-6">
+                                <div className="list-group">
+                                    <div className="list-group-item">
+                                        عدد الحقائب التدريبية الملغية {canceledCoursesCount}
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
                         <div className="card mt-1">

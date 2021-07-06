@@ -17,7 +17,9 @@ class CreateUnitsTable extends Migration
             $table->id();
             $table->foreignId('parent_id')->nullable()->onDelete('cascade');
             $table->string('name');
-            $table->foreignId('head_id');
+            $table->foreignId('head_id')
+                ->references('id')
+                ->on('employees');
             $table->string('purpose');
             $table->timestamps();
         });

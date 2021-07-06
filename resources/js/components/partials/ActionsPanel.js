@@ -82,7 +82,25 @@ export default function ActionsPanel() {
                     <li className="list-group-item">
                         <Link to={routes.courseIndex}>قائمة الدورات</Link>
                     </li>
+                    <li className="list-group-item">
+                        <Link to={routes.employeeIndex}>قائمة الموظفيين</Link>
+                    </li>
 
+                    <li className="list-group-item">
+                        <Link to={routes.jobCreate}>انشاء نوع وظيفة</Link>
+                    </li>
+
+                    <li className="list-group-item">
+                        <Link to={routes.jobIndex}>قائمة انواع الوظائف</Link>
+                    </li>
+
+                    <li className="list-group-item">
+                        <Link to={routes.unitIndex}>قائمة الوحدات الادارية</Link>
+                    </li>
+
+                    <li className="list-group-item">
+                        <Link to={routes.unitCreate}>انشاء وحدة ادارية</Link>
+                    </li>
                 </ul>
             </div>
         </div>

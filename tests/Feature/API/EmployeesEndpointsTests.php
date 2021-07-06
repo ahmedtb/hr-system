@@ -14,11 +14,14 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class EmployeesEndpointsTests extends TestCase
 {
     use RefreshDatabase;
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
+    
+    public function test_employees_index_endpoint()
+    {
+        Employee::factory(5)->create();
+        $response = $this->getJson('/api/employee/index');
+        $response->assertJsonCount(5);
+    }
+
     public function test_employee_can_be_created_after_creating_job()
     {
         // $this->withoutExceptionHandling();

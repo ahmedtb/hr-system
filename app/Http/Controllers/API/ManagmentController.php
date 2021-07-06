@@ -15,31 +15,4 @@ class ManagmentController extends Controller
         return $top;
     }
 
-    public function CreateJob(Request $request)
-    {
-        $data = $request->validate([
-            'unit_id' => 'required|exists:units,id',
-            'name' => 'required|string',
-            'purpose' => 'required|string',
-            'description' => 'required|min:20|max:5000'
-        ]);
-
-        // dd($data);
-        Job::create($data);
-
-        return response(['success'=>'job created']);
-    }
-    public function CreateUnit(Request $request)
-    {
-        $data = $request->validate([
-            'parent_id' => 'required|exists:units,id',
-            'name' => 'required|string',
-            'head_id' => 'required|exists:heads,id',
-            'purpose' => 'required|min:20|max:1000'
-        ]);
-
-        Unit::create($data);
-
-        return response(['success'=>'unit created']);
-    }
 }

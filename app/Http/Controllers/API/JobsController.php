@@ -25,6 +25,11 @@ class JobsController extends Controller
 
     public function show($id)
     {
-        return Job::where('id', $id)->first();
+        return Job::where('id', $id)->with('unit')->first();
+    }
+
+    public function index()
+    {
+        return Job::all();
     }
 }

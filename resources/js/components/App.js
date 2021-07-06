@@ -19,6 +19,9 @@ import CreateCoach from './coach/CreateCoach'
 
 import CreateCourse from './course/CourseCreate'
 import CreateProgram from './program/CreateProgram'
+import JobCreate from './job/JobCreate'
+import UnitCreate from './Unit/UnitCreate'
+
 import ConductInterviewAssessment from './assessments/interview/ConductAssessment'
 import ConductTrialPeriodAssessment from './assessments/trialPeriod/ConductAssessment'
 import ConductTrainingPeriodAssessment from './assessments/TrainingPeriod/ConductAssessment'
@@ -31,11 +34,15 @@ import CoachIndex from './coach/CoachIndex'
 import AssessmentsIndex from './assessments/Index'
 import ProgramIndex from './program/ProgramIndex'
 import CourseIndex from './course/CourseIndex'
+import EmployeeIndex from './employee/EmployeeIndex'
+import JobIndex from './job/JobIndex'
+import UnitIndex from './unit/UnitIndex'
 
 import CourseShow from './course/CourseShow'
 import ProgramShow from './program/ProgramShow'
 import showJob from './job/JobShow'
 import TargetedShow from './targeted/TargetedShow'
+import UnitShow from './unit/UnitShow'
 
 class App extends Component {
     render() {
@@ -44,7 +51,6 @@ class App extends Component {
                 <div>
                     <Switch>
                         <Route exact path={routes.createEmployeeForm} component={CreateEmployee} />
-                        <Route exact path={routes.showEmployee} component={EmployeeShow} />
 
 
                         <Route exact path={routes.createTargetedForm} component={CreateTargeted} />
@@ -56,19 +62,17 @@ class App extends Component {
                         <Route exact path={routes.searchForms} component={FormSearch} />
 
                         <Route exact path={routes.createFormStructureForm} component={FormStructureCreate} />
-
                         <Route exact path={routes.createCoachForm} component={CreateCoach} />
-
                         <Route exact path={routes.createProgramForm} component={CreateProgram} />
-
                         <Route exact path={routes.createCourse} component={CreateCourse} />
-
+                        <Route exact path={routes.jobCreate} component={JobCreate} />
+                        <Route exact path={routes.unitCreate} component={UnitCreate} />
+                        
                         <Route exact path={routes.conductInterviewAssessment} component={ConductInterviewAssessment} />
                         <Route exact path={routes.conductTrialPeriodAssessment} component={ConductTrialPeriodAssessment} />
                         <Route exact path={routes.conductTrainingPeriodAssessment} component={ConductTrainingPeriodAssessment} />
                         <Route exact path={routes.TraineeCourseAssessment} component={TraineeCourseAssessment} />
                         <Route exact path={routes.CoachCourseAssessment} component={ConductCoachCourseAssessment} />
-
 
                         <Route exact path={routes.programIndex} component={ProgramIndex} />
                         <Route exact path={routes.AssessmentsIndex} component={AssessmentsIndex} />
@@ -76,11 +80,16 @@ class App extends Component {
                         <Route exact path={routes.showForms} component={FormsIndex} />
                         <Route exact path={routes.showFormsStructures} component={FormStructuresIndex} />
                         <Route exact path={routes.courseIndex} component={CourseIndex} />
-
+                        <Route exact path={routes.employeeIndex} component={EmployeeIndex} />
+                        <Route exact path={routes.jobIndex} component={JobIndex} />
+                        <Route exact path={routes.unitIndex} component={UnitIndex} />
+                        
                         <Route exact path={routes.showCourse} component={CourseShow} />
                         <Route exact path={routes.showProgram} component={ProgramShow} />
                         <Route exact path={routes.showJob} component={showJob} />
                         <Route exact path={routes.showTargeted} component={TargetedShow} />
+                        <Route exact path={routes.showEmployee} component={EmployeeShow} />
+                        <Route exact path={routes.showUnit} component={UnitShow} />
 
                         <Route exact path={routes.dashboard} component={Dashboard} />
                         <Route exact path='/' component={Dashboard} />

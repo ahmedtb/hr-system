@@ -37,7 +37,7 @@ export default function ConductAssessment(props) {
         axios.get(ApiEndpoints.getEmployees)
             .then((res) => { setemployees(res.data) })
             .catch(err => logError(err))
-        axios.get(ApiEndpoints.getUnits)
+        axios.get(ApiEndpoints.unitIndex)
             .then((res) => { setunits(res.data) })
             .catch(err => logError(err))
     }, [])

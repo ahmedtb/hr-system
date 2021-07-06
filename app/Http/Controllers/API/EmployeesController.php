@@ -16,6 +16,12 @@ class EmployeesController extends Controller
     {
         return Employee::where('id',$id)->with(['job','TrialPeriodAssessments','TrainingPeriodAssessments'])->first();
     }
+    
+    public function index()
+    {
+        return Employee::with('job')->get();
+    }
+
     public function create(Request $request)
     {
         $validateddata = $request->validate([

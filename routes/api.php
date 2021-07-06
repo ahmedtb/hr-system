@@ -39,12 +39,13 @@ Route::get('/dashboard', [DashboardController::class, 'show']);
 
 Route::get('/unitsTree', [ManagmentController::class, 'UnitsTree']);
 
-Route::post('/createJob', [ManagmentController::class, 'CreateJob']);
+Route::post('/job/create', [JobsController::class, 'create']);
+Route::get('/job/index', [JobsController::class, 'index']);
 Route::get('job/{id}', [JobsController::class, 'show']);
 
-Route::post('/createUnit', [ManagmentController::class, 'CreateUnit']);
-
-Route::get('/getUnits', [UnitsController::class, 'getUnits']);
+Route::post('/unit/create', [UnitsController::class, 'create']);
+Route::get('/unit/index', [UnitsController::class, 'index']);
+Route::get('/unit/{id}', [UnitsController::class, 'show']);
 
 
 Route::post('createEmployee', [EmployeesController::class, 'create']);
@@ -56,6 +57,7 @@ Route::put('attackDocumentToEmployee', [EmployeesController::class, 'attackDocum
 Route::put('rateEmployee', [EmployeesController::class, 'rateEmployee']);
 Route::post('createCourseForEmployees', [EmployeesController::class, 'createCourseForEmployees']);
 Route::get('getEmployees', [EmployeesController::class, 'getEmployees']);
+Route::get('employee/index', [EmployeesController::class, 'index']);
 Route::get('employee/{id}', [EmployeesController::class, 'show']);
 
 Route::post('targeted/create', [TargetedIndividualsController::class, 'create']);
