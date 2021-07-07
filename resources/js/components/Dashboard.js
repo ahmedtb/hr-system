@@ -105,13 +105,20 @@ export default function Dashboard() {
                         </div>
 
                         <div className="card mt-1">
-                            <div className="card-header">
-                                <h5>اخر نماذج تم تعبئتها</h5>
-                            </div>
-                            <div className="card-body">
-                                <FormsTable forms={forms} />
+                            {
+                                (forms.length) ? (
+                                    <>
+                                        <div className="card-header">
+                                            <h5>نماذج تم تعبئتها مؤخرا</h5>
+                                        </div>
+                                        <div className="card-body">
+                                            <FormsTable forms={forms} />
 
-                            </div>
+                                        </div>
+                                    </>
+                                ) : null
+                            }
+
                         </div>
 
 

@@ -5,7 +5,7 @@ import routes from '../utility/routesEndpoints'
 export default function TopMenue() {
 
     return (
-        <div className="row">
+        <div className="row justify-content-center">
             <div className="dropdown">
                 <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     الموظفيين
@@ -80,8 +80,16 @@ export default function TopMenue() {
                     <Link className="dropdown-item" to={routes.CoachCourseAssessment}>تقييم مدرب لدورة</Link>
                     <Link className="dropdown-item" to={routes.conductTrialPeriodAssessment}>تقييم الموظف في الفترة التجريبية</Link>
                     <Link className="dropdown-item" to={routes.conductTrainingPeriodAssessment}>تقييم الموظف في الفترة التدريب</Link>
-                    <Link className="dropdown-item" to={routes.conductInterviewAssessment}>اجراء تقييم المقابلة</Link>
+                    <Link className="dropdown-item" to={routes.interviewAssessmentIndex}>تقييمات المقابلات</Link>
 
+                </div>
+            </div>
+
+            <div className="dropdown">
+                <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    احصائيات
+                </button>
+                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 </div>
             </div>
 

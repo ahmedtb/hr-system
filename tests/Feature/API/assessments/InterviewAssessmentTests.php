@@ -14,7 +14,7 @@ class InterviewAssessmentTests extends TestCase
     public function test_interview_assessment_form_could_be_created_and_archive_it()
     {
         $assessment = InterviewAssessment::factory()->make();
-        $response = $this->postJson('/api/interview/create',[
+        $response = $this->postJson('/api/interview/create', [
             'name' => $assessment->name,
             'look' => $assessment->look,
             'self_introduction' => $assessment->self_introduction,
@@ -63,4 +63,15 @@ class InterviewAssessmentTests extends TestCase
         $response->assertOk()->assertJsonCount(2);
     }
 
+    public function test_system_has_endpoint_fetching_statistics_about_the_interviews_done()
+    {
+        // number of interviews...
+        // interviews avergage rating at the specific traits
+        // best rated interviews list
+    }
+
+    public function test_system_can_mark_interview_assessment_as_archived()
+    {
+        
+    }
 }

@@ -375,6 +375,13 @@ class TrainingCoursesTest extends TestCase
         $this->assertEquals(TrainingCourse::planned()->count(),10);
         $this->assertEquals(TrainingCourse::done()->count(),15);
         $this->assertEquals(TrainingCourse::canceled()->count(),20);
+    }
 
+    public function test_system_can_calculate_employee_or_individual_attendance_count_and_percentage_for_course(){
+
+    }
+
+    public function test_system_can_calculate_attendance_count_and_percentage_for_particiual_day_in_the_course(){
+        
     }
 }

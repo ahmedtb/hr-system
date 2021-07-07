@@ -215,21 +215,14 @@ class TrainingCourse extends Model
 
     public function attendancePercentage()
     {
-
         $studentsCount = $this->employees()->count() + $this->targetedIndividuals()->count();
         $wentDays = $this->wentDays();
         $wentDaysCount = count($wentDays);
-        // dd($wentDaysCount);
         $attendancesCount = $this->attendances()->count();
-        // dd($attendancesCount);
-        // dd (300/10);
-        // dd($studentsCount);
-        // dd($wentDaysCount);
         if ($studentsCount != 0 && $wentDaysCount != 0)
             return $attendancesCount / ($studentsCount * $wentDaysCount) * 100;
         else
             return 0;
-        // return $attendances;
     }
 
     public function attendEmployee(Employee $employee, $date, $entrance_time, ?string $note = null)

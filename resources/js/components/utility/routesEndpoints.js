@@ -37,7 +37,7 @@ const routes = {
     employeeIndex: '/react/employee/index',
     jobIndex: '/react/job/index',
     unitIndex: '/react/unit/index',
-
+    interviewAssessmentIndex: '/react/assessment/interview/index',
 
 
 }
