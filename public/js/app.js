@@ -2310,10 +2310,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utility/ApiEndpoints */ "./resources/js/components/utility/ApiEndpoints.js");
 /* harmony import */ var _utility_logError__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utility/logError */ "./resources/js/components/utility/logError.js");
-/* harmony import */ var _partials_ActionsPanel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./partials/ActionsPanel */ "./resources/js/components/partials/ActionsPanel.js");
-/* harmony import */ var _partials_FormsTable__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./partials/FormsTable */ "./resources/js/components/partials/FormsTable.js");
-/* harmony import */ var _partials_UnitsList__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./partials/UnitsList */ "./resources/js/components/partials/UnitsList.js");
-/* harmony import */ var _partials_CoursesTable__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./partials/CoursesTable */ "./resources/js/components/partials/CoursesTable.js");
+/* harmony import */ var _partials_FormsTable__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./partials/FormsTable */ "./resources/js/components/partials/FormsTable.js");
+/* harmony import */ var _partials_UnitsList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./partials/UnitsList */ "./resources/js/components/partials/UnitsList.js");
+/* harmony import */ var _partials_CoursesTable__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./partials/CoursesTable */ "./resources/js/components/partials/CoursesTable.js");
+/* harmony import */ var _partials_TopMenue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./partials/TopMenue */ "./resources/js/components/partials/TopMenue.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -2407,8 +2407,8 @@ function Dashboard() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
     className: "row justify-content-center",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-      className: "col-md-3",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_partials_ActionsPanel__WEBPACK_IMPORTED_MODULE_4__.default, {})
+      className: "col-12",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_partials_TopMenue__WEBPACK_IMPORTED_MODULE_7__.default, {})
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
       className: "col-md-9",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
@@ -2493,7 +2493,7 @@ function Dashboard() {
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
               className: "card-body",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_partials_FormsTable__WEBPACK_IMPORTED_MODULE_5__.default, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_partials_FormsTable__WEBPACK_IMPORTED_MODULE_4__.default, {
                 forms: forms
               })
             })]
@@ -2507,7 +2507,7 @@ function Dashboard() {
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
               className: " card-body",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_partials_CoursesTable__WEBPACK_IMPORTED_MODULE_7__.default, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_partials_CoursesTable__WEBPACK_IMPORTED_MODULE_6__.default, {
                 courses: resumedCourses
               })
             })]
@@ -2520,7 +2520,7 @@ function Dashboard() {
           children: "\u0627\u0644\u062A\u0631\u0643\u064A\u0628\u0629 \u0627\u0644\u0627\u062F\u0627\u0631\u064A\u0629"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
           className: "card-body",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_partials_UnitsList__WEBPACK_IMPORTED_MODULE_6__.default, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_partials_UnitsList__WEBPACK_IMPORTED_MODULE_5__.default, {
             units: units
           })
         })]
@@ -12138,182 +12138,6 @@ function JobShow(props) {
 
 /***/ }),
 
-/***/ "./resources/js/components/partials/ActionsPanel.js":
-/*!**********************************************************!*\
-  !*** ./resources/js/components/partials/ActionsPanel.js ***!
-  \**********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ ActionsPanel)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utility/routesEndpoints */ "./resources/js/components/utility/routesEndpoints.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-function ActionsPanel() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-    className: "card",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-      className: "card-header",
-      children: "\u0637\u0644\u0628\u0627\u062A \u0645\u062A\u0627\u062D\u0629"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-      className: "card-body",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("ul", {
-        className: "list-group",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.createEmployeeForm,
-            children: "\u062A\u0633\u062C\u064A\u0644 \u0645\u0648\u0638\u0641"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.createTargetedForm,
-            children: "\u062A\u0633\u062C\u064A\u0644 \u0645\u0633\u062A\u0647\u062F\u0641"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.showFormsStructures,
-            children: "\u0639\u0631\u0636 \u0627\u0644\u0646\u0645\u0627\u0630\u062C \u0627\u0644\u0645\u062A\u0627\u062D\u0629"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.showForms,
-            children: "\u0639\u0631\u0636 \u0627\u0644\u0646\u0645\u0627\u0630\u062C \u0627\u0644\u0645\u0639\u0628\u0626\u0629"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.createFormStructureForm,
-            children: "\u0627\u0646\u0634\u0627\u0621 \u0646\u0648\u0639 \u0646\u0645\u0627\u0630\u062C \u062C\u062F\u064A\u062F"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.createCoachForm,
-            children: "\u062A\u0633\u062C\u064A\u0644 \u0645\u062F\u0631\u0628"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.createProgramForm,
-            children: "\u0627\u0646\u0634\u0627\u0621 \u062D\u0642\u064A\u0628\u0629 \u062A\u062F\u0631\u064A\u0628\u064A\u0629"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.conductInterviewAssessment,
-            children: "\u0627\u062C\u0631\u0627\u0621 \u062A\u0642\u064A\u064A\u0645 \u0627\u0644\u0645\u0642\u0627\u0628\u0644\u0629"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.conductTrialPeriodAssessment,
-            children: "\u062A\u0642\u064A\u064A\u0645 \u0627\u0644\u0645\u0648\u0638\u0641 \u0641\u064A \u0627\u0644\u0641\u062A\u0631\u0629 \u0627\u0644\u062A\u062C\u0631\u064A\u0628\u064A\u0629"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.conductTrainingPeriodAssessment,
-            children: "\u062A\u0642\u064A\u064A\u0645 \u0627\u0644\u0645\u0648\u0638\u0641 \u0641\u064A \u0627\u0644\u0641\u062A\u0631\u0629 \u0627\u0644\u062A\u062F\u0631\u064A\u0628"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.TraineeCourseAssessment,
-            children: "\u062A\u0642\u064A\u064A\u0645 \u0627\u0644\u0645\u062A\u062F\u0631\u0628 \u0644\u062F\u0648\u0631\u0629"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.CoachCourseAssessment,
-            children: "\u062A\u0642\u064A\u064A\u0645 \u0645\u062F\u0631\u0628 \u0644\u062F\u0648\u0631\u0629"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.CoachesList,
-            children: "\u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u0645\u062F\u0631\u0628\u064A\u064A\u0646"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.AssessmentsIndex,
-            children: "\u062C\u062F\u0627\u0648\u0644 \u0627\u0644\u062A\u0642\u064A\u064A\u0645\u0627\u062A"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.programIndex,
-            children: "\u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u0628\u0631\u0627\u0645\u062C \u0627\u0644\u062A\u062F\u0631\u064A\u0628\u064A\u0629"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.programIndex,
-            children: "\u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u0628\u0631\u0627\u0645\u062C \u0627\u0644\u062A\u062F\u0631\u064A\u0628\u064A\u0629"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.createCourse,
-            children: "\u062A\u0633\u062C\u064A\u0644 \u062F\u0648\u0631\u0629"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.courseIndex,
-            children: "\u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u062F\u0648\u0631\u0627\u062A"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.employeeIndex,
-            children: "\u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u0645\u0648\u0638\u0641\u064A\u064A\u0646"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.jobCreate,
-            children: "\u0627\u0646\u0634\u0627\u0621 \u0646\u0648\u0639 \u0648\u0638\u064A\u0641\u0629"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.jobIndex,
-            children: "\u0642\u0627\u0626\u0645\u0629 \u0627\u0646\u0648\u0627\u0639 \u0627\u0644\u0648\u0638\u0627\u0626\u0641"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.unitIndex,
-            children: "\u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u0648\u062D\u062F\u0627\u062A \u0627\u0644\u0627\u062F\u0627\u0631\u064A\u0629"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.unitCreate,
-            children: "\u0627\u0646\u0634\u0627\u0621 \u0648\u062D\u062F\u0629 \u0627\u062F\u0627\u0631\u064A\u0629"
-          })
-        })]
-      })
-    })]
-  });
-}
-
-/***/ }),
-
 /***/ "./resources/js/components/partials/CoachCourseAssessmentsTable.js":
 /*!*************************************************************************!*\
   !*** ./resources/js/components/partials/CoachCourseAssessmentsTable.js ***!
@@ -12782,6 +12606,243 @@ function TargetedIndividualsTable(props) {
           })]
         }, index);
       })
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/partials/TopMenue.js":
+/*!******************************************************!*\
+  !*** ./resources/js/components/partials/TopMenue.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ TopMenue)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utility/routesEndpoints */ "./resources/js/components/utility/routesEndpoints.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+function TopMenue() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "row",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "dropdown",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        className: "btn btn-secondary dropdown-toggle",
+        type: "button",
+        id: "dropdownMenuButton",
+        "data-toggle": "dropdown",
+        "aria-haspopup": "true",
+        "aria-expanded": "false",
+        children: "\u0627\u0644\u0645\u0648\u0638\u0641\u064A\u064A\u0646"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "dropdown-menu",
+        "aria-labelledby": "dropdownMenuButton",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+          className: "dropdown-item",
+          to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.employeeIndex,
+          children: "\u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u0645\u0648\u0638\u0641\u064A\u064A\u0646"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+          className: "dropdown-item",
+          to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.createEmployeeForm,
+          children: "\u062A\u0633\u062C\u064A\u0644 \u0645\u0648\u0638\u0641"
+        })]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "dropdown",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        className: "btn btn-secondary dropdown-toggle",
+        type: "button",
+        id: "dropdownMenuButton",
+        "data-toggle": "dropdown",
+        "aria-haspopup": "true",
+        "aria-expanded": "false",
+        children: "\u0627\u0644\u0645\u0633\u062A\u0647\u062F\u0641\u064A\u0646"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "dropdown-menu",
+        "aria-labelledby": "dropdownMenuButton",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+          className: "dropdown-item",
+          to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.createTargetedForm,
+          children: "\u062A\u0633\u062C\u064A\u0644 \u0645\u0633\u062A\u0647\u062F\u0641"
+        })
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "dropdown",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        className: "btn btn-secondary dropdown-toggle",
+        type: "button",
+        id: "dropdownMenuButton",
+        "data-toggle": "dropdown",
+        "aria-haspopup": "true",
+        "aria-expanded": "false",
+        children: "\u0646\u0645\u0627\u0630\u062C"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "dropdown-menu",
+        "aria-labelledby": "dropdownMenuButton",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+          className: "dropdown-item",
+          to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.showFormsStructures,
+          children: "\u0642\u0627\u0626\u0645\u0629 \u0642\u0648\u0627\u0644\u0628 \u0627\u0644\u0646\u0645\u0627\u0630\u062C"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+          className: "dropdown-item",
+          to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.createFormStructureForm,
+          children: "\u0627\u0646\u0634\u0627\u0621 \u0646\u0648\u0639 \u0646\u0645\u0627\u0630\u062C \u062C\u062F\u064A\u062F"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+          className: "dropdown-item",
+          to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.showForms,
+          children: "\u0639\u0631\u0636 \u0627\u0644\u0646\u0645\u0627\u0630\u062C \u0627\u0644\u0645\u0639\u0628\u0626\u0629"
+        })]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "dropdown",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        className: "btn btn-secondary dropdown-toggle",
+        type: "button",
+        id: "dropdownMenuButton",
+        "data-toggle": "dropdown",
+        "aria-haspopup": "true",
+        "aria-expanded": "false",
+        children: "\u0627\u0644\u0645\u062F\u0631\u0628\u064A\u0646"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "dropdown-menu",
+        "aria-labelledby": "dropdownMenuButton",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+          className: "dropdown-item",
+          to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.CoachesList,
+          children: "\u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u0645\u062F\u0631\u0628\u064A\u0646"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+          className: "dropdown-item",
+          to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.createCoachForm,
+          children: "\u062A\u0633\u062C\u064A\u0644 \u0645\u062F\u0631\u0628"
+        })]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "dropdown",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        className: "btn btn-secondary dropdown-toggle",
+        type: "button",
+        id: "dropdownMenuButton",
+        "data-toggle": "dropdown",
+        "aria-haspopup": "true",
+        "aria-expanded": "false",
+        children: "\u0627\u0644\u0628\u0631\u0627\u0645\u062C \u0627\u0644\u062A\u062F\u0631\u064A\u0628\u064A\u0629"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "dropdown-menu",
+        "aria-labelledby": "dropdownMenuButton",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+          className: "dropdown-item",
+          to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.programIndex,
+          children: "\u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u0628\u0631\u0627\u0645\u062C \u0627\u0644\u062A\u062F\u0631\u064A\u0628\u064A\u0629"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+          className: "dropdown-item",
+          to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.createProgramForm,
+          children: "\u062A\u0633\u062C\u064A\u0644 \u062D\u0642\u064A\u0628\u0629 \u062A\u062F\u0631\u064A\u0628\u064A\u0629"
+        })]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "dropdown",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        className: "btn btn-secondary dropdown-toggle",
+        type: "button",
+        id: "dropdownMenuButton",
+        "data-toggle": "dropdown",
+        "aria-haspopup": "true",
+        "aria-expanded": "false",
+        children: "\u0627\u0644\u062F\u0648\u0631\u0627\u062A"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "dropdown-menu",
+        "aria-labelledby": "dropdownMenuButton",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+          className: "dropdown-item",
+          to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.courseIndex,
+          children: "\u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u062F\u0648\u0631\u0627\u062A"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+          className: "dropdown-item",
+          to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.createCourse,
+          children: "\u062A\u0633\u062C\u064A\u0644 \u062F\u0648\u0631\u0629"
+        })]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "dropdown",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        className: "btn btn-secondary dropdown-toggle",
+        type: "button",
+        id: "dropdownMenuButton",
+        "data-toggle": "dropdown",
+        "aria-haspopup": "true",
+        "aria-expanded": "false",
+        children: "\u0627\u0644\u062A\u0642\u064A\u0645\u0627\u062A"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "dropdown-menu",
+        "aria-labelledby": "dropdownMenuButton",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+          className: "dropdown-item",
+          to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.AssessmentsIndex,
+          children: "\u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u062A\u0642\u064A\u064A\u0645\u0627\u062A \u0627\u0644\u0645\u0639\u0628\u0626\u0629"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+          className: "dropdown-item",
+          to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.TraineeCourseAssessment,
+          children: "\u062A\u0642\u064A\u064A\u0645 \u0627\u0644\u0645\u062A\u062F\u0631\u0628 \u0644\u062F\u0648\u0631\u0629"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+          className: "dropdown-item",
+          to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.CoachCourseAssessment,
+          children: "\u062A\u0642\u064A\u064A\u0645 \u0645\u062F\u0631\u0628 \u0644\u062F\u0648\u0631\u0629"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+          className: "dropdown-item",
+          to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.conductTrialPeriodAssessment,
+          children: "\u062A\u0642\u064A\u064A\u0645 \u0627\u0644\u0645\u0648\u0638\u0641 \u0641\u064A \u0627\u0644\u0641\u062A\u0631\u0629 \u0627\u0644\u062A\u062C\u0631\u064A\u0628\u064A\u0629"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+          className: "dropdown-item",
+          to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.conductTrainingPeriodAssessment,
+          children: "\u062A\u0642\u064A\u064A\u0645 \u0627\u0644\u0645\u0648\u0638\u0641 \u0641\u064A \u0627\u0644\u0641\u062A\u0631\u0629 \u0627\u0644\u062A\u062F\u0631\u064A\u0628"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+          className: "dropdown-item",
+          to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.conductInterviewAssessment,
+          children: "\u0627\u062C\u0631\u0627\u0621 \u062A\u0642\u064A\u064A\u0645 \u0627\u0644\u0645\u0642\u0627\u0628\u0644\u0629"
+        })]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "dropdown",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        className: "btn btn-secondary dropdown-toggle",
+        type: "button",
+        id: "dropdownMenuButton",
+        "data-toggle": "dropdown",
+        "aria-haspopup": "true",
+        "aria-expanded": "false",
+        children: "\u0627\u0644\u0648\u062D\u062F\u0627\u062A \u0627\u0644\u0627\u062F\u0627\u0631\u064A\u0629"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "dropdown-menu",
+        "aria-labelledby": "dropdownMenuButton",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+          className: "dropdown-item",
+          to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.unitIndex,
+          children: "\u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u0648\u062D\u062F\u0627\u062A \u0627\u0644\u0627\u062F\u0627\u0631\u064A\u0629"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+          className: "dropdown-item",
+          to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.unitCreate,
+          children: "\u0627\u0646\u0634\u0627\u0621 \u0648\u062D\u062F\u0629 \u0627\u062F\u0627\u0631\u064A\u0629"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+          className: "dropdown-item",
+          to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.jobIndex,
+          children: "\u0642\u0627\u0626\u0645\u0629 \u0627\u0646\u0648\u0627\u0639 \u0627\u0644\u0648\u0638\u0627\u0626\u0641"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+          className: "dropdown-item",
+          to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.jobCreate,
+          children: "\u0627\u0646\u0634\u0627\u0621 \u0646\u0648\u0639 \u0648\u0638\u064A\u0641\u0629 \u062C\u062F\u064A\u062F"
+        })]
+      })]
     })]
   });
 }

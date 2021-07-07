@@ -2,10 +2,10 @@ import React from 'react'
 import axios from 'axios'
 import ApiEndpoints from './utility/ApiEndpoints'
 import logError from './utility/logError'
-import ActionsPanel from './partials/ActionsPanel'
 import FormsTable from './partials/FormsTable'
 import UnitsList from './partials/UnitsList'
 import CoursesTable from './partials/CoursesTable'
+import TopMenue from './partials/TopMenue'
 export default function Dashboard() {
 
     const [employeesCount, setemployeesCount] = React.useState(null)
@@ -38,9 +38,10 @@ export default function Dashboard() {
 
     return (
         <div className="row justify-content-center">
-            <div className="col-md-3">
-                <ActionsPanel />
+            <div className="col-12">
+                <TopMenue />
             </div>
+
             <div className='col-md-9'>
                 <div className="card">
                     <div className="card-header">
@@ -121,7 +122,7 @@ export default function Dashboard() {
                                 <h5 className=''>الدورات الجارية: {resumedCourses.length}</h5>
                             </div>
                             <div className=" card-body">
-                                <CoursesTable courses={resumedCourses}/>
+                                <CoursesTable courses={resumedCourses} />
                             </div>
                         </div>
 
