@@ -29,13 +29,13 @@ class UnitFactory extends Factory
 
         return [
             // 'id' => $id,
-            'name' => $this->faker->name(),
+            'name' => $this->faker->company(),
             'head_id' => Head::factory()->create()->id,
             'purpose' => $this->faker->sentence(),
         ];
     }
 
-    public function withParent() 
+    public function withParent()
     {
         return $this->state(function (array $attributes) {
             return [
