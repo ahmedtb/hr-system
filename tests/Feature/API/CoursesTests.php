@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\API;
 
+use DateTime;
 use Tests\TestCase;
 use App\Models\Form;
 use App\Models\Employee;
@@ -76,7 +77,7 @@ class CoursesTests extends TestCase
         $response = $this->getJson('api/course/' . $course->id . '/forms');
         // dd($response->json());
         $response->assertOk();
-        $response->assertJsonCount($rand_int );
+        $response->assertJsonCount($rand_int);
     }
 
     public function test_can_get_list_of_employees_in_a_course()
@@ -116,5 +117,10 @@ class CoursesTests extends TestCase
         $course->employees()->attach($employees);
 
         $this->getJson('api/getCourseState/' . $course->id); //->assertOk();//->assertJsonCount(10);
+    }
+
+    public function test_we_can_fetch_courses_that_close_to_now()
+    {
+
     }
 }

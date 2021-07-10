@@ -8739,7 +8739,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utility/routesEndpoints */ "./resources/js/components/utility/routesEndpoints.js");
 /* harmony import */ var _utility_logError__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utility/logError */ "./resources/js/components/utility/logError.js");
 /* harmony import */ var _partials_CoursesTable__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../partials/CoursesTable */ "./resources/js/components/partials/CoursesTable.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _ScheduleDiagram__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ScheduleDiagram */ "./resources/js/components/course/ScheduleDiagram.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -8760,33 +8763,55 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
 function CourseIndex(props) {
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState([]),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       courses = _React$useState2[0],
       setcourses = _React$useState2[1];
 
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0__.useState([]),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      twentyDaysRangeCourses = _React$useState4[0],
+      setrangecourses = _React$useState4[1];
+
   react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
     axios__WEBPACK_IMPORTED_MODULE_1___default().get(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.courseIndex).then(function (response) {
-      setcourses(response.data);
+      setcourses(response.data.courses);
+      setrangecourses(response.data.twentyDaysRangeCourses);
+      console.log(response.data.twentyDaysRangeCourses);
     })["catch"](function (error) {
       return (0,_utility_logError__WEBPACK_IMPORTED_MODULE_4__.default)(error);
     });
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
     className: "col-md-10",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
       className: "card",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+        className: "card-header",
+        children: "\u0627\u062D\u0635\u0627\u0626\u064A\u0627\u062A \u0627\u0644\u062F\u0648\u0631\u0627\u062A"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+        className: "card-body",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_ScheduleDiagram__WEBPACK_IMPORTED_MODULE_6__.default, {
+          courses: twentyDaysRangeCourses,
+          rangeStartDate: moment__WEBPACK_IMPORTED_MODULE_7___default()().subtract(10, 'd').format('YYYY-MM-DD'),
+          rangeEndDate: moment__WEBPACK_IMPORTED_MODULE_7___default()().add(10, 'd').format('YYYY-MM-DD')
+        })
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+      className: "card",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
         className: "card-header",
         children: "\u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u062F\u0648\u0631\u0627\u062A"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
         className: "card-body",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_partials_CoursesTable__WEBPACK_IMPORTED_MODULE_5__.default, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_partials_CoursesTable__WEBPACK_IMPORTED_MODULE_5__.default, {
           courses: courses
         })
       })]
-    })
+    })]
   });
 }
 
@@ -9017,6 +9042,81 @@ function SchedualTable(props) {
           }, index);
         }) : null
       })]
+    })
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/course/ScheduleDiagram.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/course/ScheduleDiagram.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ScheduleDiagram)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+function RenderCourse(props) {}
+
+function ScheduleDiagram(props) {
+  var range_start = moment__WEBPACK_IMPORTED_MODULE_1___default()(props.rangeStartDate);
+  var range_end = moment__WEBPACK_IMPORTED_MODULE_1___default()(props.rangeEndDate);
+  var courses = props.courses;
+  var diffDays = range_end.diff(range_start, 'days');
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    children: courses.map(function (course, index) {
+      var courseStart = moment__WEBPACK_IMPORTED_MODULE_1___default()(course.start_date);
+      var courseEnd = moment__WEBPACK_IMPORTED_MODULE_1___default()(course.end_date);
+      var a = 0;
+      var b = 0;
+      var c = 0;
+
+      if (courseStart.isBefore(range_start, 'days') && courseEnd.isBefore(range_end, 'days')) {
+        var b = courseEnd.diff(range_start, 'days');
+        var c = range_end.diff(courseEnd, 'days');
+      } else if (courseStart.isAfter(range_start, 'days') && courseEnd.isBefore(range_end, 'days')) {
+        var a = courseStart.diff(range_start, 'days');
+        var b = courseStart.diff(courseEnd, 'days');
+        var c = range_end.diff(courseEnd, 'days');
+      } else if (courseStart.isAfter(range_start, 'days') && courseEnd.isAfter(range_end, 'days')) {
+        var a = courseStart.diff(range_start, 'days');
+        var b = range_end.diff(courseStart, 'days');
+      } else if (courseStart.isBefore(range_start, 'days') && courseEnd.isAfter(range_end, 'days')) {
+        var b = 1;
+      }
+
+      if (true) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "d-flex mt-2",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          style: {
+            flex: a
+          },
+          className: "p-1"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          style: {
+            flex: b
+          },
+          className: "bg-secondary p-1",
+          children: course.title
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          style: {
+            flex: c
+          },
+          className: "p-1"
+        })]
+      }, index);
     })
   });
 }

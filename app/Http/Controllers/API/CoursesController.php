@@ -7,6 +7,7 @@ use App\Models\TrainingCourse;
 use App\Rules\CourseStatusRule;
 use App\Rules\WeekScheduleRule;
 use App\Http\Controllers\Controller;
+use DateTime;
 use Illuminate\Support\Facades\Validator;
 
 class CoursesController extends Controller
@@ -24,7 +25,15 @@ class CoursesController extends Controller
 
     public function index()
     {
-        return TrainingCourse::with(['trainingProgram'])->get();
+
+
+        $courses = TrainingCourse::with(['trainingProgram'])->get();
+        $twentyDaysRangeCourses = TrainingCourse::whereDate('start_date', '<=', new DateTime('today +10 day'))
+        ->whereDate('end_date', '>=', new DateTime('today -10 day'))->get();
+        return [
+            'courses' => $courses,
+            'twentyDaysRangeCourses' => $twentyDaysRangeCourses
+        ];
     }
 
     public function create(Request $request)
