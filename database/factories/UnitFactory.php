@@ -2,8 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Job;
-use App\Models\Head;
 use App\Models\Unit;
 use App\Models\Employee;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -24,13 +22,10 @@ class UnitFactory extends Factory
      */
     public function definition()
     {
-        // $id = 11;
-        // $job = Job::factory()->create(['unit_id' => $id]);
 
         return [
-            // 'id' => $id,
             'name' => $this->faker->company(),
-            'head_id' => Head::factory()->create()->id,
+            // 'head_id' => $employee ? $employee->id : Employee::factory()->create()->id,
             'purpose' => $this->faker->sentence(),
         ];
     }

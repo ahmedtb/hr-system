@@ -23,8 +23,6 @@ class JobFactory extends Factory
      */
     public function definition()
     {
-        // $id = 13;
-        // $employee = Employee::factory()->create(['job_id' => $id]);
         return [
             'unit_id' => Unit::factory()->create()->id,
             'name' => $this->faker->jobTitle(),

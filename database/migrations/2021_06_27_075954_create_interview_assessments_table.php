@@ -17,22 +17,22 @@ class CreateInterviewAssessmentsTable extends Migration
             $table->id();
             $table->string('name');
 
-            $table->enum('look', ['excellent', 'good', 'medium', 'weak']);
-            $table->enum('self_introduction', ['excellent', 'good', 'medium', 'weak']);
-            $table->enum('personality', ['excellent', 'good', 'medium', 'weak']);
-            $table->enum('english', ['excellent', 'good', 'medium', 'weak']);
-            $table->enum('culture', ['excellent', 'good', 'medium', 'weak']);
-            $table->enum('arabic', ['excellent', 'good', 'medium', 'weak']);
-            $table->enum('initiative', ['excellent', 'good', 'medium', 'weak']);
-            $table->enum('sharing_skills', ['excellent', 'good', 'medium', 'weak']);
-            $table->enum('comprehension', ['excellent', 'good', 'medium', 'weak']);
-            $table->enum('decision_making', ['excellent', 'good', 'medium', 'weak']);
-            $table->enum('compatibility_of_education', ['excellent', 'good', 'medium', 'weak']);
-            $table->enum('compatibility_of_experiance', ['excellent', 'good', 'medium', 'weak']);
-            $table->enum('compatibility_of_skills', ['excellent', 'good', 'medium', 'weak']);
-            $table->enum('problem_solving_skills', ['excellent', 'good', 'medium', 'weak']);
-            $table->enum('stress_handling', ['excellent', 'good', 'medium', 'weak']);
-            $table->enum('moral_courage_self_confidence', ['excellent', 'good', 'medium', 'weak']);
+            $table->enum('look', [1, 2, 3, 4]);
+            $table->enum('self_introduction', [1, 2, 3, 4]);
+            $table->enum('personality', [1, 2, 3, 4]);
+            $table->enum('english', [1, 2, 3, 4]);
+            $table->enum('culture', [1, 2, 3, 4]);
+            $table->enum('arabic', [1, 2, 3, 4]);
+            $table->enum('initiative', [1, 2, 3, 4]);
+            $table->enum('sharing_skills', [1, 2, 3, 4]);
+            $table->enum('comprehension', [1, 2, 3, 4]);
+            $table->enum('decision_making', [1, 2, 3, 4]);
+            $table->enum('compatibility_of_education', [1, 2, 3, 4]);
+            $table->enum('compatibility_of_experiance', [1, 2, 3, 4]);
+            $table->enum('compatibility_of_skills', [1, 2, 3, 4]);
+            $table->enum('problem_solving_skills', [1, 2, 3, 4]);
+            $table->enum('stress_handling', [1, 2, 3, 4]);
+            $table->enum('moral_courage_self_confidence', [1, 2, 3, 4]);
             $table->foreignId('interviewer_id')
                 ->references('id')
                 ->on('employees');

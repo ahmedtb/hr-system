@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Exception;
 use App\Models\Job;
 use App\Models\Admin;
 use App\Models\Coach;
@@ -42,13 +43,16 @@ class DatabaseSeeder extends Seeder
                 ]
             );
 
-            DB::table('employee_training_course')->insert(
-                [
-                    'employee_id' => Employee::select('id')->orderByRaw("RAND()")->first()->id,
-                    'training_course_id' => TrainingCourse::select('id')->orderByRaw("RAND()")->first()->id,
-                ]
-            );
+            try {
+                DB::table('employee_training_course')->insert(
+                    [
+                        'employee_id' => Employee::select('id')->orderByRaw("RAND()")->first()->id,
+                        'training_course_id' => TrainingCourse::select('id')->orderByRaw("RAND()")->first()->id,
+                    ]
+                );
+            } catch (Exception $err) {
 
+            }
             DB::table('trainee_training_course')->insert(
                 [
                     'trainee_id' => Trainee::select('id')->orderByRaw("RAND()")->first()->id,

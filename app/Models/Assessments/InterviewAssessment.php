@@ -30,4 +30,52 @@ class InterviewAssessment extends Model
     {
         return $this->belongsTo(Employee::class);
     }
+    public function bestTraitsOrder()
+    {
+        $traits = [
+            'look',
+            'self_introduction',
+            'personality',
+            'english',
+            'culture',
+            'arabic',
+            'initiative',
+            'sharing_skills',
+            'comprehension',
+            'self_introduction',
+            'decision_making',
+            'compatibility_of_education',
+            'compatibility_of_experiance',
+            'compatibility_of_skills',
+            'problem_solving_skills',
+            'stress_handling',
+            'stress_handling',
+            'moral_courage_self_confidence',
+        ];
+        $excellent = [];
+        $good = [];
+        $medium = [];
+        $weak = [];
+
+        for ($i = 0; $i < 16; $i++) {
+            if ($this[$traits[$i]] == 1) {
+                $excellent[] = $traits[$i];
+            } else if ($this[$traits[$i]] == 2) {
+                $good[] = $traits[$i];
+            } else if ($this[$traits[$i]] == 3) {
+                $medium[] = $traits[$i];
+            } else if ($this[$traits[$i]] == 4) {
+                $weak[] = $traits[$i];
+            }
+        }
+        return array_merge($excellent, $good, $medium, $weak);
+    }
+
+    public function scopeOrderByTrait($query, $trait, $start_date, $end_date)
+    {
+        if ($start_date && $end_date)
+            return $query->orderBy($trait)->whereBetween('created_at', [$start_date, $end_date]);
+        else
+            return $query->orderBy($trait);
+    }
 }

@@ -22,7 +22,9 @@ class InterviewAssessmentFactory extends Factory
      */
     public function definition()
     {
-        $assessments = ['excellent','good','medium','weak'];
+        // $assessments = ['excellent','good','medium','weak'];
+        $assessments = [1,2,3,4];
+
         return [
             'name' => $this->faker->name(),
             'look' => $assessments[rand(0,3)],
