@@ -50,7 +50,20 @@ class CourseAttendanceFactory extends Factory
     {
         return $this->state(function (array $attributes) use ($last, $first) {
             return [
-                'date' => ($this->faker->dateTimeBetween($first, $last))->format('Y-m-d') 
+                'date' => ($this->faker->dateTimeBetween($first, $last))->format('Y-m-d')
+            ];
+        });
+    }
+
+    public function forCourse(TrainingCourse $course)
+    {
+        return $this->state(function (array $attributes) use ($course) {
+            $schedualTable = $course->schedualTable();
+            $day = array_rand($schedualTable);
+            $entrance_time = $schedualTable[$day][0];
+            return [
+                'date' => $day,
+                'entrance_time' => $entrance_time,
             ];
         });
     }

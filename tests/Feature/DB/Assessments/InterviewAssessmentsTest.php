@@ -15,7 +15,7 @@ class InterviewAssessmentsTest extends TestCase
     public function test_model_can_return_its_filled_fields_in_decending_order_according_to_rating()
     {
         $assessment = InterviewAssessment::factory()->create();
-        $traitsOrder = $assessment->bestTraitsOrder();
+        $traitsOrder = $assessment->orderTraits();
         $this->assertIsArray($traitsOrder);
         $this->assertEquals(count($traitsOrder), 16);
 
@@ -34,7 +34,7 @@ class InterviewAssessmentsTest extends TestCase
         $queryResult = InterviewAssessment::orderByTrait('look', new DateTime('now -1 day'), new DateTime('now 1 day'))->get();
         $this->assertEquals($queryResult->count(), 10);
 
-        $traits = ['excellent', 'good', 'medium', 'weak'];
+        $traits = [1, 2, 3, 4];
         $bestindex = 0;
         foreach ($queryResult as $assessment) {
             if ($assessment->look == $traits[$bestindex]) {
@@ -45,4 +45,5 @@ class InterviewAssessmentsTest extends TestCase
             }
         }
     }
+
 }

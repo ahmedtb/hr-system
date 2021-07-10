@@ -212,6 +212,7 @@ class TrainingCoursesTest extends TestCase
         ));
     }
 
+
     public function test_course_model_can_register_an_attendance_of_targeted_individual()
     {
         $course = TrainingCourse::factory()->create();
@@ -253,6 +254,32 @@ class TrainingCoursesTest extends TestCase
             '00:00:00', // random wrong entrance time
             null
         ));
+    }
+    
+    
+    public function  test_course_where_recording_attendance_check_it_is_duplicated()
+    {
+        $course = TrainingCourse::factory()->create();
+        $employee = Employee::factory()->create();
+        $course->enrollEmployee($employee);
+        $schedualTable = $course->schedualTable();
+
+        $day = array_key_first($schedualTable);
+        $entrance = $schedualTable[array_key_first($schedualTable)][0];
+        $this->assertTrue($course->attendEmployee(
+            $employee,
+            $day,
+            $entrance,
+            null
+        ));
+
+        $this->assertFalse($course->attendEmployee(
+            $employee,
+            $day,
+            $entrance,
+            null
+        ));
+
     }
 
     public function test_resumed_course_can_calculate_its_attendance_percentage()
@@ -361,7 +388,7 @@ class TrainingCoursesTest extends TestCase
             'status' => 'canceled'
         ]);
 
-        $this->assertEquals(TrainingCourse::resumed()->count(),5);
+        $this->assertEquals(TrainingCourse::resumed()->count(), 5);
     }
 
     public function test_system_can_query_the_courses_by_state()
@@ -371,17 +398,53 @@ class TrainingCoursesTest extends TestCase
         TrainingCourse::factory(15)->done()->create();
         TrainingCourse::factory(20)->canceled()->create();
 
-        $this->assertEquals(TrainingCourse::resumed()->count(),5);
-        $this->assertEquals(TrainingCourse::planned()->count(),10);
-        $this->assertEquals(TrainingCourse::done()->count(),15);
-        $this->assertEquals(TrainingCourse::canceled()->count(),20);
+        $this->assertEquals(TrainingCourse::resumed()->count(), 5);
+        $this->assertEquals(TrainingCourse::planned()->count(), 10);
+        $this->assertEquals(TrainingCourse::done()->count(), 15);
+        $this->assertEquals(TrainingCourse::canceled()->count(), 20);
     }
 
-    public function test_system_can_calculate_employee_or_individual_attendance_count_and_percentage_for_course(){
+    public function test_system_can_retrive_employee_or_individual_attendances_of_course()
+    {
+        $course = TrainingCourse::factory()->resumed()->create();
+        $employee = Employee::factory()->create();
+        $course->enrollEmployee($employee);
+        $schedualTable = $course->schedualTable();
 
+        $randomeDaysInSchedual = array_rand($schedualTable,count($schedualTable) / 2);
+        for ($i = 0; $i < 10; $i++) {
+            $course->attendEmployee(
+                $employee,
+                $day = $randomeDaysInSchedual[$i],
+                $schedualTable[$day][0]
+            );
+        }
+        CourseAttendance::factory(12)->create([
+            'training_course_id' => $course->id
+        ]);
+        $this->assertEquals($course->employeeAttendaces($employee)->count(), 10);
     }
 
-    public function test_system_can_calculate_attendance_count_and_percentage_for_particiual_day_in_the_course(){
-        
+    public function test_system_can_retrive_attendances_for_particiual_day_in_the_course()
+    {
+        $course = TrainingCourse::factory()->resumed()->create();
+        $schedualTable = $course->schedualTable();
+        $day1 = array_rand($schedualTable);
+        $entrance_time1 = $schedualTable[$day1][0];
+        CourseAttendance::factory(10)->create([
+            'training_course_id' => $course->id,
+            'date' => $day1,
+            'entrance_time' => $entrance_time1,
+        ]);
+
+        $day2 = array_rand($schedualTable);
+        $entrance_time2 = $schedualTable[$day2][0];
+        CourseAttendance::factory(20)->create([
+            'training_course_id' => $course->id,
+            'date' => $day2,
+            'entrance_time' => $entrance_time2,
+        ]);
+
+        $this->assertEquals($course->dayAttendaces($day2)->count(),20 );
     }
 }

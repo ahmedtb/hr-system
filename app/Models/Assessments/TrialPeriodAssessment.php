@@ -22,4 +22,12 @@ class TrialPeriodAssessment extends Model
     {
         return $this->belongsTo(Employee::class);
     }
+
+    public function scopeOrderByTrait($query, $trait, $start_date, $end_date)
+    {
+        if ($start_date && $end_date)
+            return $query->orderBy($trait,'DESC')->whereBetween('created_at', [$start_date, $end_date]);
+        else
+            return $query->orderBy($trait,'DESC');
+    }
 }

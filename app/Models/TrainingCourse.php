@@ -96,23 +96,23 @@ class TrainingCourse extends Model
     public function scopeResumed($query)
     {
         return $query->whereDate('start_date', '<=', Carbon::today())
-            ->whereDate('end_date', '>=', Carbon::today())->where('status','normal');
+            ->whereDate('end_date', '>=', Carbon::today())->where('status', 'normal');
     }
 
     public function scopePlanned($query)
     {
-        return $query->whereDate('start_date', '>=', Carbon::today())->where('status','normal');
+        return $query->whereDate('start_date', '>=', Carbon::today())->where('status', 'normal');
     }
 
     public function scopeDone($query)
     {
-        return $query->whereDate('end_date', '<=', Carbon::today())->where('status','normal');
+        return $query->whereDate('end_date', '<=', Carbon::today())->where('status', 'normal');
     }
 
-    
+
     public function scopeCanceled($query)
     {
-        return $query->where('status','canceled');
+        return $query->where('status', 'canceled');
     }
 
 
@@ -229,8 +229,12 @@ class TrainingCourse extends Model
     {
         $isInSchedual = $this->IsInSchedual($date, $entrance_time);
         $enrolled = $this->employees()->where('employees.id', $employee->id)->first() != null;
-        // dd($enrolled);
-        if ($enrolled && $isInSchedual) {
+        
+        $notAttendedTheDay = $this->attendances()
+            ->where('profile_id', $employee->id)
+            ->where('profile_type', Employee::class)
+            ->where('date', $date)->count() == 0;
+        if ($enrolled && $isInSchedual && $notAttendedTheDay) {
             CourseAttendance::create([
                 'profile_id' => $employee->id,
                 'profile_type' => Employee::class,
@@ -290,5 +294,15 @@ class TrainingCourse extends Model
     public function enrollIndividual(TargetedIndividual $individual)
     {
         $this->targetedIndividuals()->save($individual);
+    }
+
+    public function employeeAttendaces(Employee $employee)
+    {
+        return $this->attendances()->where('profile_id', $employee->id)->where('profile_type', Employee::class)->get();
+    }
+
+    public function dayAttendaces($date)
+    {
+        return $this->attendances()->where('date', $date)->get();
     }
 }

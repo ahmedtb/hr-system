@@ -13,6 +13,7 @@ class InterviewAssessment extends Model
 
     protected $guarded = [];
 
+    protected $appends = ['TraitsSum'];
 
     /**
      * Apply all relevant thread filters.
@@ -30,7 +31,38 @@ class InterviewAssessment extends Model
     {
         return $this->belongsTo(Employee::class);
     }
-    public function bestTraitsOrder()
+
+    public function getTraitsSumAttribute()
+    {
+        $traits = [
+            'look',
+            'self_introduction',
+            'personality',
+            'english',
+            'culture',
+            'arabic',
+            'initiative',
+            'sharing_skills',
+            'comprehension',
+            'self_introduction',
+            'decision_making',
+            'compatibility_of_education',
+            'compatibility_of_experiance',
+            'compatibility_of_skills',
+            'problem_solving_skills',
+            'stress_handling',
+            'stress_handling',
+            'moral_courage_self_confidence',
+        ];
+        $sum = 0;
+
+        for ($i = 0; $i < count($traits); $i++) {
+            $sum += $this[$traits[$i]];
+        }
+        return $sum;
+    }
+
+    public function orderTraits()
     {
         $traits = [
             'look',
@@ -57,7 +89,7 @@ class InterviewAssessment extends Model
         $medium = [];
         $weak = [];
 
-        for ($i = 0; $i < 16; $i++) {
+        for ($i = 0; $i < count($traits); $i++) {
             if ($this[$traits[$i]] == 1) {
                 $excellent[] = $traits[$i];
             } else if ($this[$traits[$i]] == 2) {
@@ -78,4 +110,5 @@ class InterviewAssessment extends Model
         else
             return $query->orderBy($trait);
     }
+
 }
