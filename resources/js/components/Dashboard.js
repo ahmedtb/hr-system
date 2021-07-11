@@ -42,7 +42,7 @@ export default function Dashboard() {
                 <TopMenue />
             </div>
 
-            <div className='col-md-9'>
+            <div className='col-md-12'>
                 <div className="card">
                     <div className="card-header">
                         احصائية عامة

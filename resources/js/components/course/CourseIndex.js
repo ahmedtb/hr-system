@@ -7,27 +7,61 @@ import CoursesTable from '../partials/CoursesTable';
 import ScheduleDiagram from './ScheduleDiagram'
 import moment from 'moment'
 
+
+function Pagination(props) {
+    const fetchPage = props.fetchPage
+    const links = props.links
+
+    return (
+        <nav aria-label="Page navigation example">
+            <ul className="pagination">
+
+                {
+                    links?.map((link, index) => {
+                        if (link['url'] && index == 0) {
+                            return <button key={index} className="page-link" onClick={() => fetchPage(link['url'])}>السابق</button>
+                        }
+                        if (link['url'] && index == links.length - 1) {
+                            return <button key={index} className="page-link" onClick={() => fetchPage(link['url'])}>التالي</button>
+                        }
+                        if (link['url'] && index && index != links.length - 1)
+                            return <button key={index} className="page-link" onClick={() => fetchPage(link['url'])}>{link['label']}</button>
+                    })
+                }
+
+            </ul>
+        </nav>
+    )
+}
+
 export default function CourseIndex(props) {
     const [courses, setcourses] = React.useState([])
     const [twentyDaysRangeCourses, setrangecourses] = React.useState([])
+    const [links, setlinks] = React.useState([])
 
-
-    React.useEffect(() => {
-        axios.get(ApiEndpoints.courseIndex).then((response) => {
-            setcourses(response.data.courses)
+    async function fetchPage(link = ApiEndpoints.courseIndex) {
+        axios.get(link).then((response) => {
+            setcourses(response.data.courses.data)
             setrangecourses(response.data.twentyDaysRangeCourses)
-            console.log(response.data.twentyDaysRangeCourses)
+            if (response.data.courses.links) {
+                setlinks(response.data.courses.links)
+            } else
+                setlinks(null)
+
         }).catch((error) => logError(error))
+    }
+    React.useEffect(() => {
+        fetchPage()
     }, [])
     return (
-        <div className="col-md-10">
+        <div className="col-md-12">
             <div className="card">
                 <div className="card-header">احصائيات الدورات</div>
                 <div className="card-body">
                     <ScheduleDiagram
                         courses={twentyDaysRangeCourses}
-                        rangeStartDate={moment().subtract(10,'d').format('YYYY-MM-DD')}
-                        rangeEndDate={moment().add(10,'d').format('YYYY-MM-DD')}
+                        rangeStartDate={moment().subtract(10, 'd').format('YYYY-MM-DD')}
+                        rangeEndDate={moment().add(10, 'd').format('YYYY-MM-DD')}
                     />
                 </div>
             </div>
@@ -35,6 +69,10 @@ export default function CourseIndex(props) {
             <div className="card">
                 <div className="card-header">قائمة الدورات</div>
                 <div className="card-body">
+                    <Pagination
+                        fetchPage={fetchPage}
+                        links={links}
+                    />
                     <CoursesTable courses={courses} />
                 </div>
             </div>

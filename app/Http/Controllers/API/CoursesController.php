@@ -27,7 +27,7 @@ class CoursesController extends Controller
     {
 
 
-        $courses = TrainingCourse::with(['trainingProgram'])->get();
+        $courses = TrainingCourse::with(['trainingProgram'])->paginate(5);
         $twentyDaysRangeCourses = TrainingCourse::whereDate('start_date', '<=', new DateTime('today +10 day'))
         ->whereDate('end_date', '>=', new DateTime('today -10 day'))->get();
         return [

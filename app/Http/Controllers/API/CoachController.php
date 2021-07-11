@@ -17,7 +17,7 @@ class CoachController extends Controller
     }
     public function index()
     {
-        return Coach::with('profile')->get();
+        return Coach::with('profile')->paginate(10);
     }
     public function create(Request $request)
     {

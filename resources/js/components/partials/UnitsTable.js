@@ -10,9 +10,9 @@ export default function UnitsList(props) {
             <thead>
                 <tr>
                     <th >ID</th>
-                    <th>name</th>
-                    <th>purpose </th>
-                    <th>parent</th>
+                    <th>الاسم</th>
+                    <th>وصفة الوحدة</th>
+                    <th>الوحدة التي تتبعها</th>
                 </tr>
             </thead>
             <tbody>

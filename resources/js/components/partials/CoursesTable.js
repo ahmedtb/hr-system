@@ -11,12 +11,12 @@ export default function CoursesTable(props) {
             <thead>
                 <tr>
                     <th >ID</th>
-                    <th>title</th>
-                    <th>program name</th>
-                    <th>state </th>
-                    <th>went days</th>
-                    <th>remaining days</th>
-                    <th>attendance percentage</th>
+                    <th>عنوان الدورة</th>
+                    <th>البرنامج التدريبي</th>
+                    <th>الحالة</th>
+                    <th>المحاضرات التي انجزت</th>
+                    <th>المحاضرات المتبيقة</th>
+                    <th>نسبة الحضور الكلية</th>
                 </tr>
             </thead>
             <tbody>

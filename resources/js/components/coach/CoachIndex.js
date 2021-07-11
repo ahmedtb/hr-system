@@ -4,21 +4,34 @@ import ApiEndpoints from '../utility/ApiEndpoints'
 import routes from '../utility/routesEndpoints';
 import logError from '../utility/logError';
 import { Link } from 'react-router-dom'
+import Pagination from '../utility/Pagination'
+
 export default function CoachIndex(props) {
     const [coaches, setcoaches] = React.useState([])
+    const [links, setlinks] = React.useState([])
+
+    async function fetchPage(link = ApiEndpoints.getCoaches) {
+        axios.get(link).then((response) => {
+            setcoaches(response.data.data)
+            if (response.data.links) {
+                setlinks(response.data.links)
+            } else
+                setlinks(null)
+
+        }).catch((error) => logError(error))
+    }
     React.useEffect(() => {
-        axios.get(ApiEndpoints.getCoaches).then((response) => {
-            setcoaches(response.data)
-            console.log(response.data)
-        }).catch((error) => {
-            logError(error)
-        })
+        fetchPage()
     }, [])
     return (
         <div className="col-md-10">
             <div className="card">
                 <div className="card-header">المدربيين</div>
                 <div className="card-body">
+                    <Pagination
+                        fetchPage={fetchPage}
+                        links={links}
+                    />
                     <table className="table table-bordered table-condensed" style={{ marginBottom: 0 }}>
                         <thead>
                             <tr>

@@ -10,7 +10,7 @@ class UnitsController extends Controller
 {
     public function index()
     {
-        return Unit::with('parent')->get();
+        return Unit::with('parent')->paginate(5);
     }
 
     public function show($id)

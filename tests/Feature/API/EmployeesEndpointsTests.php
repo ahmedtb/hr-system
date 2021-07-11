@@ -14,12 +14,27 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class EmployeesEndpointsTests extends TestCase
 {
     use RefreshDatabase;
-    
-    public function test_employees_index_endpoint()
+
+    public function test_employees_index_endpoint_providers_pagination_capability()
     {
-        Employee::factory(5)->create();
+        Employee::factory(50)->create();
         $response = $this->getJson('/api/employee/index');
-        $response->assertJsonCount(5);
+        dd($response->json());
+        
+        $response->assertJsonStructure([
+            'current_page', 'next_page_url', 'data', 'first_page_url','from','last_page','last_page_url'
+        ]);
+        $this->assertEquals(count($response['data']),10);
+
+
+        for($i = 0; $i < 4; $i++){
+            $response = $this->getJson($response['next_page_url']);
+            $response->assertJsonStructure([
+                'current_page', 'next_page_url', 'data', 'first_page_url','from','last_page','last_page_url'
+            ]);
+            $this->assertEquals(count($response['data']),10);
+        }
+
     }
 
     public function test_employee_can_be_created_after_creating_job()
@@ -41,7 +56,7 @@ class EmployeesEndpointsTests extends TestCase
         $this->assertNotEmpty(Employee::first());
     }
 
-    public function test_employee_can_be_created_after_creating_job_with_documents_attacked_to_it()
+    public function test_employee_can_be_created_with_documents_attacked_to_it()
     {
         $this->withoutExceptionHandling();
         $documents = Document::factory(5)->make();
@@ -62,7 +77,7 @@ class EmployeesEndpointsTests extends TestCase
         $response->assertOk()->assertJson(['success' => 'employee created with documents']);
         // dd($response->json());
         $this->assertNotEmpty(Employee::first());
-        $this->assertEquals(Document::all()->count(),5);
+        $this->assertEquals(Document::all()->count(), 5);
     }
 
     public function test_employee_can_be_created_togather_with_new_job_kind()
@@ -118,13 +133,13 @@ class EmployeesEndpointsTests extends TestCase
             'employee_id' => $employee->id,
             'name' => $document->name,
             'image' => $document->image
-        ])->assertOk()->assertJson(['success'=>'document attached to employee']);
-        $this->assertEquals($employee->documents()->count(),1);
+        ])->assertOk()->assertJson(['success' => 'document attached to employee']);
+        $this->assertEquals($employee->documents()->count(), 1);
     }
 
     public function test_employee_can_be_rated()
     {
-        $medals = array(1,2,3,4,5);
+        $medals = array(1, 2, 3, 4, 5);
         $randomRate = array_rand($medals);
         $employee = Employee::factory()->create();
         $response = $this->putJson('api/rateEmployee', [
@@ -140,9 +155,9 @@ class EmployeesEndpointsTests extends TestCase
             'title' => 'trail period program 1'
         ]);
         $employees = Employee::factory(10)->create();
-       
+
         $courseData = TrainingCourse::factory()->make();
-        $response = $this->postJson('api/createCourseForEmployees',[
+        $response = $this->postJson('api/createCourseForEmployees', [
             'employees' => $employees->pluck('id'),
 
             'title' => $courseData->title,
@@ -153,7 +168,6 @@ class EmployeesEndpointsTests extends TestCase
             'week_schedule' => $courseData->week_schedule
         ])->assertOk();
         $this->assertNotNull(TrainingCourse::first());
-        $this->assertEquals(TrainingCourse::first()->employees()->count(),10);
+        $this->assertEquals(TrainingCourse::first()->employees()->count(), 10);
     }
-
 }

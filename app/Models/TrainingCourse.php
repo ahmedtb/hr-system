@@ -26,6 +26,16 @@ class TrainingCourse extends Model
 
     public function getStateAttribute()
     {
+        switch ($this->calculateStatus()) {
+            case 'resumed':
+                return 'مستأنفة';
+            case 'planned':
+                return 'مخطط لها';
+            case 'canceled':
+                return 'ملغية';
+            case 'done':
+                return 'منتهية';
+        }
         return $this->calculateStatus();
     }
 
@@ -220,7 +230,8 @@ class TrainingCourse extends Model
         $wentDaysCount = count($wentDays);
         $attendancesCount = $this->attendances()->count();
         if ($studentsCount != 0 && $wentDaysCount != 0)
-            return $attendancesCount / ($studentsCount * $wentDaysCount) * 100;
+            return number_format($attendancesCount / ($studentsCount * $wentDaysCount) * 100, 2);
+
         else
             return 0;
     }
@@ -229,7 +240,7 @@ class TrainingCourse extends Model
     {
         $isInSchedual = $this->IsInSchedual($date, $entrance_time);
         $enrolled = $this->employees()->where('employees.id', $employee->id)->first() != null;
-        
+
         $notAttendedTheDay = $this->attendances()
             ->where('profile_id', $employee->id)
             ->where('profile_type', Employee::class)

@@ -17,7 +17,7 @@ class ProgramsController extends Controller
 
     public function index()
     {
-        return TrainingProgram::all();
+        return TrainingProgram::paginate(10);
     }
     
     public function create(Request $request)

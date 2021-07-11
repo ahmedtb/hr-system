@@ -19,7 +19,7 @@ class EmployeesController extends Controller
     
     public function index()
     {
-        return Employee::with('job')->get();
+        return Employee::with('job')->paginate(10);
     }
 
     public function create(Request $request)
