@@ -9062,62 +9062,92 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utility/routesEndpoints */ "./resources/js/components/utility/routesEndpoints.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
 
 
-function RenderCourse(props) {}
 
 function ScheduleDiagram(props) {
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useHistory)();
   var range_start = moment__WEBPACK_IMPORTED_MODULE_1___default()(props.rangeStartDate);
   var range_end = moment__WEBPACK_IMPORTED_MODULE_1___default()(props.rangeEndDate);
   var courses = props.courses;
   var diffDays = range_end.diff(range_start, 'days');
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-    children: courses.map(function (course, index) {
-      var courseStart = moment__WEBPACK_IMPORTED_MODULE_1___default()(course.start_date);
-      var courseEnd = moment__WEBPACK_IMPORTED_MODULE_1___default()(course.end_date);
-      var a = 0;
-      var b = 0;
-      var c = 0;
+  var topRuler = [];
+  var rulerDays = moment__WEBPACK_IMPORTED_MODULE_1___default()(props.rangeStartDate);
 
-      if (courseStart.isBefore(range_start, 'days') && courseEnd.isBefore(range_end, 'days')) {
-        var b = courseEnd.diff(range_start, 'days');
-        var c = range_end.diff(courseEnd, 'days');
-      } else if (courseStart.isAfter(range_start, 'days') && courseEnd.isBefore(range_end, 'days')) {
-        var a = courseStart.diff(range_start, 'days');
-        var b = courseStart.diff(courseEnd, 'days');
-        var c = range_end.diff(courseEnd, 'days');
-      } else if (courseStart.isAfter(range_start, 'days') && courseEnd.isAfter(range_end, 'days')) {
-        var a = courseStart.diff(range_start, 'days');
-        var b = range_end.diff(courseStart, 'days');
-      } else if (courseStart.isBefore(range_start, 'days') && courseEnd.isAfter(range_end, 'days')) {
-        var b = 1;
-      }
+  for (var i = 0; i < diffDays + 1; i++) {
+    topRuler.push( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      style: {
+        flex: 1,
+        borderLeft: '1px solid',
+        textAlign: 'center'
+      },
+      children: rulerDays.format('DD')
+    }, i));
+    rulerDays.add(1, 'day').format('DD');
+  }
 
-      if (true) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        className: "d-flex mt-2",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-          style: {
-            flex: a
-          },
-          className: "p-1"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-          style: {
-            flex: b
-          },
-          className: "bg-secondary p-1",
-          children: course.title
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-          style: {
-            flex: c
-          },
-          className: "p-1"
-        })]
-      }, index);
-    })
+  var backgrounds = ['grey', '#93b6ed', '#b5ebb2', '#6f7fe8', '#eb704b'];
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: "d-flex",
+      style: {
+        flexDirection: 'row',
+        border: '2px solid'
+      },
+      children: topRuler
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      children: courses.map(function (course, index) {
+        var courseStart = moment__WEBPACK_IMPORTED_MODULE_1___default()(course.start_date);
+        var courseEnd = moment__WEBPACK_IMPORTED_MODULE_1___default()(course.end_date);
+        var a = 0;
+        var b = 0;
+        var c = 0;
+
+        if (courseStart.isBefore(range_start, 'days') && courseEnd.isBefore(range_end, 'days')) {
+          var b = courseEnd.diff(range_start, 'days') + 1;
+          var c = range_end.diff(courseEnd, 'days');
+        } else if (courseStart.isAfter(range_start, 'days') && courseEnd.isBefore(range_end, 'days')) {
+          var a = courseStart.diff(range_start, 'days');
+          var b = courseEnd.diff(courseStart, 'days') + 1;
+          var c = range_end.diff(courseEnd, 'days');
+        } else if (courseStart.isAfter(range_start, 'days') && courseEnd.isAfter(range_end, 'days')) {
+          var a = courseStart.diff(range_start, 'days');
+          var b = range_end.diff(courseStart, 'days') + 1;
+        } else if (courseStart.isBefore(range_start, 'days') && courseEnd.isAfter(range_end, 'days')) {
+          var b = 1;
+        }
+
+        if (true) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "d-flex mt-1",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            style: {
+              flex: a
+            }
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            onClick: function onClick() {
+              return history.push(_utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showCourse.replace(':id', course.id));
+            },
+            style: {
+              flex: b,
+              background: backgrounds[Math.floor(Math.random() * backgrounds.length)],
+              borderRadius: 15,
+              textAlign: 'center'
+            },
+            children: course.title
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            style: {
+              flex: c
+            }
+          })]
+        }, index);
+      })
+    })]
   });
 }
 
