@@ -170,4 +170,9 @@ class EmployeesEndpointsTests extends TestCase
         $this->assertNotNull(TrainingCourse::first());
         $this->assertEquals(TrainingCourse::first()->employees()->count(), 10);
     }
+
+    public function test_employee_has_an_optional_profile_picture()
+    {
+        
+    }
 }

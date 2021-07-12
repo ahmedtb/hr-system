@@ -9,6 +9,8 @@ class TargetedIndividual extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function trainingCourses()
     {
         return $this->belongsToMany(TrainingCourse::class);

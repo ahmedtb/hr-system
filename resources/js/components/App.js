@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import routes from './utility/routesEndpoints'
-
+import TopMenue from './partials/TopMenue'
 import Dashboard from './Dashboard'
 import CreateEmployee from './employee/CreateEmployee'
 import EmployeeShow from './employee/EmployeeShow'
@@ -49,6 +49,8 @@ class App extends Component {
     render() {
         return (
             <BrowserRouter>
+                <TopMenue />
+
                 <div>
                     <Switch>
                         <Route exact path={routes.createEmployeeForm} component={CreateEmployee} />

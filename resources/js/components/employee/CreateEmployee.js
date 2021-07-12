@@ -79,6 +79,13 @@ export default function CreateEmployee() {
                         <label className="col-4">رقم هاتف الموظف</label>
                         <input className="col-8" value={phone_number} onChange={(e) => setphone_number(e.target.value)} name="phone_number" type="number" />
                     </div>
+
+                    
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">اسم الموظف</label>
+                        <input className="col-8" value={name} onChange={(e) => setname(e.target.value)} type="text" />
+                    </div>
+                    
                     <div className="col-5 p-2 border rounded m-2 row">
 
                         <label className="col-4">الوظيفة</label>

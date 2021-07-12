@@ -22,7 +22,13 @@ class TargetedIndividualFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name()
+            'name' => $this->faker->name(),
+            'address' => $this->faker->address(),
+            'phone_number' => $this->faker->phoneNumber(),
+            'email' => $this->faker->email(),
+            'description' => $this->faker->sentence(),
+            'profile' => getBase64DefaultImage(),
+
         ];
     }
 }

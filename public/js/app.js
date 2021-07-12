@@ -2028,44 +2028,45 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utility/routesEndpoints */ "./resources/js/components/utility/routesEndpoints.js");
-/* harmony import */ var _Dashboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Dashboard */ "./resources/js/components/Dashboard.js");
-/* harmony import */ var _employee_CreateEmployee__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./employee/CreateEmployee */ "./resources/js/components/employee/CreateEmployee.js");
-/* harmony import */ var _employee_EmployeeShow__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./employee/EmployeeShow */ "./resources/js/components/employee/EmployeeShow.js");
-/* harmony import */ var _targeted_CreateTargeted__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./targeted/CreateTargeted */ "./resources/js/components/targeted/CreateTargeted.js");
-/* harmony import */ var _formStructure_FormStructureShow__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./formStructure/FormStructureShow */ "./resources/js/components/formStructure/FormStructureShow.js");
-/* harmony import */ var _form_FormView__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./form/FormView */ "./resources/js/components/form/FormView.js");
-/* harmony import */ var _form_FormCreate__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./form/FormCreate */ "./resources/js/components/form/FormCreate.js");
-/* harmony import */ var _form_FormSearch__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./form/FormSearch */ "./resources/js/components/form/FormSearch.js");
-/* harmony import */ var _formStructure_FormStructuresCreate__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./formStructure/FormStructuresCreate */ "./resources/js/components/formStructure/FormStructuresCreate.js");
-/* harmony import */ var _coach_CreateCoach__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./coach/CreateCoach */ "./resources/js/components/coach/CreateCoach.js");
-/* harmony import */ var _course_CourseCreate__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./course/CourseCreate */ "./resources/js/components/course/CourseCreate.js");
-/* harmony import */ var _program_CreateProgram__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./program/CreateProgram */ "./resources/js/components/program/CreateProgram.js");
-/* harmony import */ var _job_JobCreate__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./job/JobCreate */ "./resources/js/components/job/JobCreate.js");
-/* harmony import */ var _Unit_UnitCreate__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./Unit/UnitCreate */ "./resources/js/components/Unit/UnitCreate.js");
-/* harmony import */ var _assessments_interview_ConductAssessment__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./assessments/interview/ConductAssessment */ "./resources/js/components/assessments/interview/ConductAssessment.js");
-/* harmony import */ var _assessments_trialPeriod_ConductAssessment__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./assessments/trialPeriod/ConductAssessment */ "./resources/js/components/assessments/trialPeriod/ConductAssessment.js");
-/* harmony import */ var _assessments_TrainingPeriod_ConductAssessment__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./assessments/TrainingPeriod/ConductAssessment */ "./resources/js/components/assessments/TrainingPeriod/ConductAssessment.js");
-/* harmony import */ var _assessments_course_TraineeCourseAssessment__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./assessments/course/TraineeCourseAssessment */ "./resources/js/components/assessments/course/TraineeCourseAssessment.js");
-/* harmony import */ var _assessments_course_ConductCoachCourseAssessment__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./assessments/course/ConductCoachCourseAssessment */ "./resources/js/components/assessments/course/ConductCoachCourseAssessment.js");
-/* harmony import */ var _formStructure_FormStructuresIndex__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./formStructure/FormStructuresIndex */ "./resources/js/components/formStructure/FormStructuresIndex.js");
-/* harmony import */ var _form_FormsIndex__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./form/FormsIndex */ "./resources/js/components/form/FormsIndex.js");
-/* harmony import */ var _coach_CoachIndex__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./coach/CoachIndex */ "./resources/js/components/coach/CoachIndex.js");
-/* harmony import */ var _assessments_Index__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./assessments/Index */ "./resources/js/components/assessments/Index.js");
-/* harmony import */ var _program_ProgramIndex__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./program/ProgramIndex */ "./resources/js/components/program/ProgramIndex.js");
-/* harmony import */ var _course_CourseIndex__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./course/CourseIndex */ "./resources/js/components/course/CourseIndex.js");
-/* harmony import */ var _employee_EmployeeIndex__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./employee/EmployeeIndex */ "./resources/js/components/employee/EmployeeIndex.js");
-/* harmony import */ var _job_JobIndex__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./job/JobIndex */ "./resources/js/components/job/JobIndex.js");
-/* harmony import */ var _unit_UnitIndex__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./unit/UnitIndex */ "./resources/js/components/unit/UnitIndex.js");
-/* harmony import */ var _assessments_interview_InterviewAssessmentIndex__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./assessments/interview/InterviewAssessmentIndex */ "./resources/js/components/assessments/interview/InterviewAssessmentIndex.js");
-/* harmony import */ var _course_CourseShow__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./course/CourseShow */ "./resources/js/components/course/CourseShow.js");
-/* harmony import */ var _program_ProgramShow__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./program/ProgramShow */ "./resources/js/components/program/ProgramShow.js");
-/* harmony import */ var _job_JobShow__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./job/JobShow */ "./resources/js/components/job/JobShow.js");
-/* harmony import */ var _targeted_TargetedShow__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./targeted/TargetedShow */ "./resources/js/components/targeted/TargetedShow.js");
-/* harmony import */ var _unit_UnitShow__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./unit/UnitShow */ "./resources/js/components/unit/UnitShow.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _partials_TopMenue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./partials/TopMenue */ "./resources/js/components/partials/TopMenue.js");
+/* harmony import */ var _Dashboard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Dashboard */ "./resources/js/components/Dashboard.js");
+/* harmony import */ var _employee_CreateEmployee__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./employee/CreateEmployee */ "./resources/js/components/employee/CreateEmployee.js");
+/* harmony import */ var _employee_EmployeeShow__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./employee/EmployeeShow */ "./resources/js/components/employee/EmployeeShow.js");
+/* harmony import */ var _targeted_CreateTargeted__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./targeted/CreateTargeted */ "./resources/js/components/targeted/CreateTargeted.js");
+/* harmony import */ var _formStructure_FormStructureShow__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./formStructure/FormStructureShow */ "./resources/js/components/formStructure/FormStructureShow.js");
+/* harmony import */ var _form_FormView__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./form/FormView */ "./resources/js/components/form/FormView.js");
+/* harmony import */ var _form_FormCreate__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./form/FormCreate */ "./resources/js/components/form/FormCreate.js");
+/* harmony import */ var _form_FormSearch__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./form/FormSearch */ "./resources/js/components/form/FormSearch.js");
+/* harmony import */ var _formStructure_FormStructuresCreate__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./formStructure/FormStructuresCreate */ "./resources/js/components/formStructure/FormStructuresCreate.js");
+/* harmony import */ var _coach_CreateCoach__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./coach/CreateCoach */ "./resources/js/components/coach/CreateCoach.js");
+/* harmony import */ var _course_CourseCreate__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./course/CourseCreate */ "./resources/js/components/course/CourseCreate.js");
+/* harmony import */ var _program_CreateProgram__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./program/CreateProgram */ "./resources/js/components/program/CreateProgram.js");
+/* harmony import */ var _job_JobCreate__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./job/JobCreate */ "./resources/js/components/job/JobCreate.js");
+/* harmony import */ var _Unit_UnitCreate__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./Unit/UnitCreate */ "./resources/js/components/Unit/UnitCreate.js");
+/* harmony import */ var _assessments_interview_ConductAssessment__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./assessments/interview/ConductAssessment */ "./resources/js/components/assessments/interview/ConductAssessment.js");
+/* harmony import */ var _assessments_trialPeriod_ConductAssessment__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./assessments/trialPeriod/ConductAssessment */ "./resources/js/components/assessments/trialPeriod/ConductAssessment.js");
+/* harmony import */ var _assessments_TrainingPeriod_ConductAssessment__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./assessments/TrainingPeriod/ConductAssessment */ "./resources/js/components/assessments/TrainingPeriod/ConductAssessment.js");
+/* harmony import */ var _assessments_course_TraineeCourseAssessment__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./assessments/course/TraineeCourseAssessment */ "./resources/js/components/assessments/course/TraineeCourseAssessment.js");
+/* harmony import */ var _assessments_course_ConductCoachCourseAssessment__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./assessments/course/ConductCoachCourseAssessment */ "./resources/js/components/assessments/course/ConductCoachCourseAssessment.js");
+/* harmony import */ var _formStructure_FormStructuresIndex__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./formStructure/FormStructuresIndex */ "./resources/js/components/formStructure/FormStructuresIndex.js");
+/* harmony import */ var _form_FormsIndex__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./form/FormsIndex */ "./resources/js/components/form/FormsIndex.js");
+/* harmony import */ var _coach_CoachIndex__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./coach/CoachIndex */ "./resources/js/components/coach/CoachIndex.js");
+/* harmony import */ var _assessments_Index__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./assessments/Index */ "./resources/js/components/assessments/Index.js");
+/* harmony import */ var _program_ProgramIndex__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./program/ProgramIndex */ "./resources/js/components/program/ProgramIndex.js");
+/* harmony import */ var _course_CourseIndex__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./course/CourseIndex */ "./resources/js/components/course/CourseIndex.js");
+/* harmony import */ var _employee_EmployeeIndex__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./employee/EmployeeIndex */ "./resources/js/components/employee/EmployeeIndex.js");
+/* harmony import */ var _job_JobIndex__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./job/JobIndex */ "./resources/js/components/job/JobIndex.js");
+/* harmony import */ var _unit_UnitIndex__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./unit/UnitIndex */ "./resources/js/components/unit/UnitIndex.js");
+/* harmony import */ var _assessments_interview_InterviewAssessmentIndex__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./assessments/interview/InterviewAssessmentIndex */ "./resources/js/components/assessments/interview/InterviewAssessmentIndex.js");
+/* harmony import */ var _course_CourseShow__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./course/CourseShow */ "./resources/js/components/course/CourseShow.js");
+/* harmony import */ var _program_ProgramShow__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./program/ProgramShow */ "./resources/js/components/program/ProgramShow.js");
+/* harmony import */ var _job_JobShow__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./job/JobShow */ "./resources/js/components/job/JobShow.js");
+/* harmony import */ var _targeted_TargetedShow__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./targeted/TargetedShow */ "./resources/js/components/targeted/TargetedShow.js");
+/* harmony import */ var _unit_UnitShow__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./unit/UnitShow */ "./resources/js/components/unit/UnitShow.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2129,6 +2130,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var App = /*#__PURE__*/function (_Component) {
   _inherits(App, _Component);
 
@@ -2143,152 +2145,152 @@ var App = /*#__PURE__*/function (_Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_38__.BrowserRouter, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)("div", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Switch, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.BrowserRouter, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(_partials_TopMenue__WEBPACK_IMPORTED_MODULE_3__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Switch, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.createEmployeeForm,
-              component: _employee_CreateEmployee__WEBPACK_IMPORTED_MODULE_4__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _employee_CreateEmployee__WEBPACK_IMPORTED_MODULE_5__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.createTargetedForm,
-              component: _targeted_CreateTargeted__WEBPACK_IMPORTED_MODULE_6__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _targeted_CreateTargeted__WEBPACK_IMPORTED_MODULE_7__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showFormStructure + ':id',
-              component: _formStructure_FormStructureShow__WEBPACK_IMPORTED_MODULE_7__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _formStructure_FormStructureShow__WEBPACK_IMPORTED_MODULE_8__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showForm,
-              component: _form_FormView__WEBPACK_IMPORTED_MODULE_8__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _form_FormView__WEBPACK_IMPORTED_MODULE_9__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.generatedForm,
-              component: _form_FormCreate__WEBPACK_IMPORTED_MODULE_9__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _form_FormCreate__WEBPACK_IMPORTED_MODULE_10__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.searchForms,
-              component: _form_FormSearch__WEBPACK_IMPORTED_MODULE_10__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _form_FormSearch__WEBPACK_IMPORTED_MODULE_11__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.createFormStructureForm,
-              component: _formStructure_FormStructuresCreate__WEBPACK_IMPORTED_MODULE_11__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _formStructure_FormStructuresCreate__WEBPACK_IMPORTED_MODULE_12__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.createCoachForm,
-              component: _coach_CreateCoach__WEBPACK_IMPORTED_MODULE_12__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _coach_CreateCoach__WEBPACK_IMPORTED_MODULE_13__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.createProgramForm,
-              component: _program_CreateProgram__WEBPACK_IMPORTED_MODULE_14__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _program_CreateProgram__WEBPACK_IMPORTED_MODULE_15__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.createCourse,
-              component: _course_CourseCreate__WEBPACK_IMPORTED_MODULE_13__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _course_CourseCreate__WEBPACK_IMPORTED_MODULE_14__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.jobCreate,
-              component: _job_JobCreate__WEBPACK_IMPORTED_MODULE_15__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _job_JobCreate__WEBPACK_IMPORTED_MODULE_16__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.unitCreate,
-              component: _Unit_UnitCreate__WEBPACK_IMPORTED_MODULE_16__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _Unit_UnitCreate__WEBPACK_IMPORTED_MODULE_17__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.conductInterviewAssessment,
-              component: _assessments_interview_ConductAssessment__WEBPACK_IMPORTED_MODULE_17__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _assessments_interview_ConductAssessment__WEBPACK_IMPORTED_MODULE_18__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.conductTrialPeriodAssessment,
-              component: _assessments_trialPeriod_ConductAssessment__WEBPACK_IMPORTED_MODULE_18__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _assessments_trialPeriod_ConductAssessment__WEBPACK_IMPORTED_MODULE_19__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.conductTrainingPeriodAssessment,
-              component: _assessments_TrainingPeriod_ConductAssessment__WEBPACK_IMPORTED_MODULE_19__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _assessments_TrainingPeriod_ConductAssessment__WEBPACK_IMPORTED_MODULE_20__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.TraineeCourseAssessment,
-              component: _assessments_course_TraineeCourseAssessment__WEBPACK_IMPORTED_MODULE_20__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _assessments_course_TraineeCourseAssessment__WEBPACK_IMPORTED_MODULE_21__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.CoachCourseAssessment,
-              component: _assessments_course_ConductCoachCourseAssessment__WEBPACK_IMPORTED_MODULE_21__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _assessments_course_ConductCoachCourseAssessment__WEBPACK_IMPORTED_MODULE_22__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.programIndex,
-              component: _program_ProgramIndex__WEBPACK_IMPORTED_MODULE_26__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _program_ProgramIndex__WEBPACK_IMPORTED_MODULE_27__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.AssessmentsIndex,
-              component: _assessments_Index__WEBPACK_IMPORTED_MODULE_25__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _assessments_Index__WEBPACK_IMPORTED_MODULE_26__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.CoachesList,
-              component: _coach_CoachIndex__WEBPACK_IMPORTED_MODULE_24__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _coach_CoachIndex__WEBPACK_IMPORTED_MODULE_25__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showForms,
-              component: _form_FormsIndex__WEBPACK_IMPORTED_MODULE_23__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _form_FormsIndex__WEBPACK_IMPORTED_MODULE_24__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showFormsStructures,
-              component: _formStructure_FormStructuresIndex__WEBPACK_IMPORTED_MODULE_22__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _formStructure_FormStructuresIndex__WEBPACK_IMPORTED_MODULE_23__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.courseIndex,
-              component: _course_CourseIndex__WEBPACK_IMPORTED_MODULE_27__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _course_CourseIndex__WEBPACK_IMPORTED_MODULE_28__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.employeeIndex,
-              component: _employee_EmployeeIndex__WEBPACK_IMPORTED_MODULE_28__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _employee_EmployeeIndex__WEBPACK_IMPORTED_MODULE_29__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.jobIndex,
-              component: _job_JobIndex__WEBPACK_IMPORTED_MODULE_29__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _job_JobIndex__WEBPACK_IMPORTED_MODULE_30__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.unitIndex,
-              component: _unit_UnitIndex__WEBPACK_IMPORTED_MODULE_30__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _unit_UnitIndex__WEBPACK_IMPORTED_MODULE_31__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.interviewAssessmentIndex,
-              component: _assessments_interview_InterviewAssessmentIndex__WEBPACK_IMPORTED_MODULE_31__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _assessments_interview_InterviewAssessmentIndex__WEBPACK_IMPORTED_MODULE_32__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showCourse,
-              component: _course_CourseShow__WEBPACK_IMPORTED_MODULE_32__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _course_CourseShow__WEBPACK_IMPORTED_MODULE_33__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showProgram,
-              component: _program_ProgramShow__WEBPACK_IMPORTED_MODULE_33__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _program_ProgramShow__WEBPACK_IMPORTED_MODULE_34__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showJob,
-              component: _job_JobShow__WEBPACK_IMPORTED_MODULE_34__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _job_JobShow__WEBPACK_IMPORTED_MODULE_35__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showTargeted,
-              component: _targeted_TargetedShow__WEBPACK_IMPORTED_MODULE_35__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _targeted_TargetedShow__WEBPACK_IMPORTED_MODULE_36__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showEmployee,
-              component: _employee_EmployeeShow__WEBPACK_IMPORTED_MODULE_5__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _employee_EmployeeShow__WEBPACK_IMPORTED_MODULE_6__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showUnit,
-              component: _unit_UnitShow__WEBPACK_IMPORTED_MODULE_36__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _unit_UnitShow__WEBPACK_IMPORTED_MODULE_37__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.dashboard,
-              component: _Dashboard__WEBPACK_IMPORTED_MODULE_3__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_39__.Route, {
+              component: _Dashboard__WEBPACK_IMPORTED_MODULE_4__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_40__.Route, {
               exact: true,
               path: "/",
-              component: _Dashboard__WEBPACK_IMPORTED_MODULE_3__.default
+              component: _Dashboard__WEBPACK_IMPORTED_MODULE_4__.default
             })]
           })
-        })
+        })]
       });
     }
   }]);
@@ -2296,7 +2298,7 @@ var App = /*#__PURE__*/function (_Component) {
   return App;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
-react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_37__.jsx)(App, {}), document.getElementById('app'));
+react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_38__.jsx)(App, {}), document.getElementById('app'));
 
 /***/ }),
 
@@ -2411,12 +2413,9 @@ function Dashboard() {
       return (0,_utility_logError__WEBPACK_IMPORTED_MODULE_3__.default)(error);
     });
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
     className: "row justify-content-center",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-      className: "col-12",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_partials_TopMenue__WEBPACK_IMPORTED_MODULE_7__.default, {})
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
       className: "col-md-12",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
         className: "card",
@@ -2534,7 +2533,7 @@ function Dashboard() {
           })
         })]
       })]
-    })]
+    })
   });
 }
 
@@ -9515,6 +9514,19 @@ function CreateEmployee() {
             type: "number"
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 p-2 border rounded m-2 row ",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+            className: "col-4",
+            children: "\u0627\u0633\u0645 \u0627\u0644\u0645\u0648\u0638\u0641"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            className: "col-8",
+            value: name,
+            onChange: function onChange(e) {
+              return setname(e.target.value);
+            },
+            type: "text"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
           className: "col-5 p-2 border rounded m-2 row",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
             className: "col-4",
@@ -14205,7 +14217,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utility/ApiEndpoints */ "./resources/js/components/utility/ApiEndpoints.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _utility_logError__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utility/logError */ "./resources/js/components/utility/logError.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -14229,11 +14242,37 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function CreateTargeted() {
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_1__.useState([]),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       documents = _React$useState2[0],
       setdocuments = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_1__.useState(null),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      name = _React$useState4[0],
+      setname = _React$useState4[1];
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_1__.useState(null),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      address = _React$useState6[0],
+      setaddress = _React$useState6[1];
+
+  var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_1__.useState(null),
+      _React$useState8 = _slicedToArray(_React$useState7, 2),
+      phone_number = _React$useState8[0],
+      setphone_number = _React$useState8[1];
+
+  var _React$useState9 = react__WEBPACK_IMPORTED_MODULE_1__.useState(null),
+      _React$useState10 = _slicedToArray(_React$useState9, 2),
+      email = _React$useState10[0],
+      setemail = _React$useState10[1];
+
+  var _React$useState11 = react__WEBPACK_IMPORTED_MODULE_1__.useState(null),
+      _React$useState12 = _slicedToArray(_React$useState11, 2),
+      description = _React$useState12[0],
+      setdescription = _React$useState12[1];
 
   function submit() {
     return _submit.apply(this, arguments);
@@ -14251,44 +14290,127 @@ function CreateTargeted() {
               documents.forEach(function (image) {
                 data.append('documents[]', image);
               });
-              _context.next = 5;
+              if (name) data.append('name', name);
+              if (address) data.append('address', address);
+              if (phone_number) data.append('phone_number', phone_number);
+              if (email) data.append('email', email);
+              if (description) data.append('description', description);
+              _context.next = 10;
               return axios__WEBPACK_IMPORTED_MODULE_2___default().post(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.createTargeted, data);
 
-            case 5:
+            case 10:
               res = _context.sent;
               console.log(res.data);
-              _context.next = 12;
+              _context.next = 17;
               break;
 
-            case 9:
-              _context.prev = 9;
+            case 14:
+              _context.prev = 14;
               _context.t0 = _context["catch"](0);
-              logError(_context.t0);
+              (0,_utility_logError__WEBPACK_IMPORTED_MODULE_4__.default)(_context.t0);
 
-            case 12:
+            case 17:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 9]]);
+      }, _callee, null, [[0, 14]]);
     }));
     return _submit.apply(this, arguments);
   }
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
     className: "card",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "card-header",
       children: "\u0627\u0636\u0627\u0641\u0629 \u0641\u0631\u062F \u0645\u0633\u062A\u0647\u062F\u0641"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      className: "card-body",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("ul", {
-        className: "list-group",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
-          className: "list-group-item",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      className: "card-body row",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "col-2 p-2 border rounded m-2 text-center",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+          className: "",
+          children: "\u0635\u0648\u0631\u0629 \u0644\u0644\u0645\u0633\u062A\u0647\u062F\u0641"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
+          height: "100",
+          onClick: function onClick() {},
+          src: '/css/profile.png'
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "col-10 row d-flex align-items-start",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 p-2 border rounded m-2 row ",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+            className: "col-4 p-0",
+            children: "\u0627\u0633\u0645 \u0627\u0644\u0645\u0633\u062A\u0647\u062F\u0641"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            className: "col-8",
+            onChange: function onChange(e) {
+              return setname(e.target.value);
+            },
+            type: "text"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 p-2 border rounded m-2 row",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+            className: "col-4 p-0",
+            children: "\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u0645\u0633\u062A\u0647\u062F\u0641"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            className: "col-8",
+            onChange: function onChange(e) {
+              return setaddress(e.target.value);
+            },
+            type: "text"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 p-2 border rounded m-2 row",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+            className: "col-5 p-0",
+            children: "\u0631\u0642\u0645 \u0647\u0627\u062A\u0641 \u0627\u0644\u0645\u0633\u062A\u0647\u062F\u0641"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            className: "col-7",
+            onChange: function onChange(e) {
+              return setphone_number(e.target.value);
+            },
+            name: "phone_number",
+            type: "number"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 p-2 border rounded m-2 row",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+            className: "col-4  p-0",
+            children: "\u0628\u0631\u064A\u062F\u0647 \u0627\u0644\u0627\u0644\u0643\u062A\u0631\u0648\u0646\u064A"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            className: "col-8",
+            onChange: function onChange(e) {
+              return setemail(e.target.value);
+            },
+            type: "email",
+            name: "email"
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "col-12 row d-flex align-items-start",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 p-2 border rounded m-2",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+            className: "col",
+            children: "\u0648\u0635\u0641 \u0627\u0648 \u0645\u0644\u0627\u062D\u0638\u0627\u062A"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("textarea", {
+            className: "col",
+            rows: "4",
+            onChange: function onChange(e) {
+              return setdescription(e.target.value);
+            },
+            type: "text"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 p-2 border rounded m-2 row",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+            className: "col-5 p-0",
             children: "\u0645\u0633\u062A\u0646\u062F\u0627\u062A \u062A\u062E\u0635 \u0627\u0644\u0645\u0633\u062A\u0647\u062F\u0641"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            className: "col-5 p-0",
             onChange: function onChange(e) {
               var array = [];
 
@@ -14303,15 +14425,15 @@ function CreateTargeted() {
             accept: "image/*",
             multiple: true
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-            onClick: submit,
-            type: "button",
-            value: "\u062A\u0633\u062C\u064A\u0644"
-          })
         })]
-      })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        className: "col-12 p-2 m-2 d-flex justify-content-center",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+          onClick: submit,
+          type: "button",
+          value: "\u062A\u0633\u062C\u064A\u0644"
+        })
+      })]
     })]
   });
 }

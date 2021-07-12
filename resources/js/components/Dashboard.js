@@ -38,9 +38,6 @@ export default function Dashboard() {
 
     return (
         <div className="row justify-content-center">
-            <div className="col-12">
-                <TopMenue />
-            </div>
 
             <div className='col-md-12'>
                 <div className="card">

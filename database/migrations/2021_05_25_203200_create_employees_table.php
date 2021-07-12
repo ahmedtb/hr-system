@@ -23,6 +23,7 @@ class CreateEmployeesTable extends Migration
             $table->foreignId('job_id')->onDelete('cascade');
             $table->string('email');
             $table->unsignedSmallInteger('medal_rating')->nullable();
+            $table->mediumText('profile')->nullable();
             $table->timestamps();
         });
     }
