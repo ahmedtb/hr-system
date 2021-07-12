@@ -9431,91 +9431,99 @@ function CreateEmployee() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "card-header",
       children: "\u0627\u0636\u0627\u0641\u0629 \u0645\u0648\u0638\u0641"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-      className: "card-body",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("ul", {
-        className: "list-group",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-          className: "list-group-item",
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      className: "card-body row",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "col-2 p-2 border rounded m-2 text-center",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+          className: "",
+          children: "\u0635\u0648\u0631\u0629 \u0627\u0644\u0645\u0648\u0638\u0641"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
+          height: "100",
+          onClick: function onClick() {},
+          src: '/css/profile.png'
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "col-10 row",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 p-2 border rounded m-2 row ",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-            htmlFor: "name",
+            className: "col-4",
             children: "\u0627\u0633\u0645 \u0627\u0644\u0645\u0648\u0638\u0641"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            className: "col-8",
             value: name,
             onChange: function onChange(e) {
               return setname(e.target.value);
             },
-            name: "name",
-            type: "text",
-            id: "name"
+            type: "text"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-          className: "list-group-item",
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 p-2 border rounded m-2 row",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-            htmlFor: "address",
+            className: "col-4",
             children: "\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u0645\u0648\u0638\u0641"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            className: "col-8",
             value: address,
             onChange: function onChange(e) {
               return setaddress(e.target.value);
             },
-            name: "address",
-            type: "text",
-            id: "address"
+            type: "text"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-          className: "list-group-item",
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 p-2 border rounded m-2 row",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-            htmlFor: "employment_date",
+            className: "col-4",
             children: "\u062A\u0627\u0631\u064A\u062E \u0627\u0644\u062A\u0648\u0638\u064A\u0641"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            className: "col-8",
             value: employment_date,
             onChange: function onChange(e) {
               return setemployment_date(e.target.value);
             },
-            name: "employment_date",
-            type: "date",
-            id: "employment_date"
+            type: "date"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-          className: "list-group-item",
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 p-2 border rounded m-2 row",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-            htmlFor: "basic_salary",
+            className: "col-4",
             children: "\u0645\u0631\u062A\u0628 \u0627\u0644\u0645\u0648\u0638\u0641"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            className: "col-8",
             value: basic_salary,
             onChange: function onChange(e) {
               return setbasic_salary(e.target.value);
             },
-            name: "basic_salary",
-            type: "number",
-            id: "basic_salary"
+            type: "number"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-          className: "list-group-item",
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "col-12 row",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 p-2 border rounded m-2 row",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-            htmlFor: "phone_number",
+            className: "col-4",
             children: "\u0631\u0642\u0645 \u0647\u0627\u062A\u0641 \u0627\u0644\u0645\u0648\u0638\u0641"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            className: "col-8",
             value: phone_number,
             onChange: function onChange(e) {
               return setphone_number(e.target.value);
             },
             name: "phone_number",
-            type: "number",
-            id: "phone_number"
+            type: "number"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-          className: "list-group-item",
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 p-2 border rounded m-2 row",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-            htmlFor: "job_id",
+            className: "col-4",
             children: "\u0627\u0644\u0648\u0638\u064A\u0641\u0629"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("select", {
+            className: "col-8",
             onChange: function onChange(e) {
               return setjob_id(e.target.value);
             },
-            id: "job_id",
-            name: "job_id",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("option", {
               children: "\u0646\u0631\u062C\u0648 \u0627\u062E\u062A\u064A\u0627\u0631 \u0646\u0648\u0639 \u0627\u0644\u0648\u0638\u064A\u0641\u0629"
             }), jobs.map(function (job, index) {
@@ -9525,26 +9533,27 @@ function CreateEmployee() {
               }, index);
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-          className: "list-group-item",
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 p-2 border rounded m-2 row",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-            htmlFor: "email",
+            className: "col-4",
             children: "\u0628\u0631\u064A\u062F \u0627\u0644\u0643\u062A\u0631\u0648\u0646\u064A"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            className: "col-8",
             value: email,
             onChange: function onChange(e) {
               return setemail(e.target.value);
             },
-            name: "email",
             type: "email",
-            id: "email"
+            name: "email"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-          className: "list-group-item",
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 p-2 border rounded m-2 row",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-            htmlFor: "documents[]",
-            children: "\u0645\u0633\u062A\u0646\u062F\u0627\u062A \u0627\u0644\u0645\u0648\u0638\u0641"
+            className: "col-4",
+            children: "\u0627\u0631\u0641\u0627\u0642 \u0645\u0633\u062A\u0646\u062F\u0627\u062A \u0627\u0644\u0645\u0648\u0638\u0641"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            className: "col-8",
             onChange: function onChange(e) {
               var array = [];
 
@@ -9556,21 +9565,19 @@ function CreateEmployee() {
               console.log(array);
               setdocuments(array);
             },
-            name: "documents[]",
             type: "file",
             accept: "image/*",
-            multiple: true,
-            id: "documents[]"
+            multiple: true
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-            onClick: submit,
-            type: "button",
-            value: "\u062A\u0633\u062C\u064A\u0644"
-          })
         })]
-      })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        className: "col-12 p-2 m-2 d-flex justify-content-center",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+          onClick: submit,
+          type: "button",
+          value: "\u062A\u0633\u062C\u064A\u0644"
+        })
+      })]
     })]
   });
 }

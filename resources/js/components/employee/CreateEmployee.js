@@ -33,7 +33,7 @@ export default function CreateEmployee() {
             if (job_id) data.append('job_id', job_id)
             if (email) data.append('email', email)
             documents.forEach(image => {
-                data.append('documents[]',image)
+                data.append('documents[]', image)
             });
 
             const res = await axios.post(ApiEndpoints.createEmployee, data)
@@ -47,31 +47,42 @@ export default function CreateEmployee() {
         <div className="card">
             <div className="card-header">اضافة موظف</div>
 
-            <div className="card-body">
-                <ul className="list-group">
-                    <li className="list-group-item">
-                        <label htmlFor="name">اسم الموظف</label>
-                        <input value={name} onChange={(e) => setname(e.target.value)} name="name" type="text" id="name" />
-                    </li>
-                    <li className="list-group-item">
-                        <label htmlFor="address">عنوان الموظف</label>
-                        <input value={address} onChange={(e) => setaddress(e.target.value)} name="address" type="text" id="address" />
-                    </li>
-                    <li className="list-group-item">
-                        <label htmlFor="employment_date">تاريخ التوظيف</label>
-                        <input value={employment_date} onChange={(e) => setemployment_date(e.target.value)} name="employment_date" type="date" id="employment_date" />
-                    </li>
-                    <li className="list-group-item">
-                        <label htmlFor="basic_salary">مرتب الموظف</label>
-                        <input value={basic_salary} onChange={(e) => setbasic_salary(e.target.value)} name="basic_salary" type="number" id="basic_salary" />
-                    </li>
-                    <li className="list-group-item">
-                        <label htmlFor="phone_number">رقم هاتف الموظف</label>
-                        <input value={phone_number} onChange={(e) => setphone_number(e.target.value)} name="phone_number" type="number" id="phone_number" />
-                    </li>
-                    <li className="list-group-item">
-                        <label htmlFor="job_id">الوظيفة</label>
-                        <select onChange={(e) => setjob_id(e.target.value)} id="job_id" name="job_id">
+            <div className="card-body row">
+
+                <div className="col-2 p-2 border rounded m-2 text-center">
+                    <label className="">صورة الموظف</label>
+                    <img height='100' onClick={()=>{}} src={'/css/profile.png'} />
+                </div>
+
+                <div className="col-10 row">
+
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">اسم الموظف</label>
+                        <input className="col-8" value={name} onChange={(e) => setname(e.target.value)} type="text" />
+                    </div>
+                    <div className="col-5 p-2 border rounded m-2 row">
+                        <label className="col-4">عنوان الموظف</label>
+                        <input className="col-8" value={address} onChange={(e) => setaddress(e.target.value)} type="text" />
+                    </div>
+                    <div className="col-5 p-2 border rounded m-2 row">
+                        <label className="col-4">تاريخ التوظيف</label>
+                        <input className="col-8" value={employment_date} onChange={(e) => setemployment_date(e.target.value)} type="date" />
+                    </div>
+                    <div className="col-5 p-2 border rounded m-2 row">
+                        <label className="col-4">مرتب الموظف</label>
+                        <input className="col-8" value={basic_salary} onChange={(e) => setbasic_salary(e.target.value)} type="number" />
+                    </div>
+                </div>
+                <div className="col-12 row">
+
+                    <div className="col-5 p-2 border rounded m-2 row">
+                        <label className="col-4">رقم هاتف الموظف</label>
+                        <input className="col-8" value={phone_number} onChange={(e) => setphone_number(e.target.value)} name="phone_number" type="number" />
+                    </div>
+                    <div className="col-5 p-2 border rounded m-2 row">
+
+                        <label className="col-4">الوظيفة</label>
+                        <select className="col-8" onChange={(e) => setjob_id(e.target.value)} >
                             <option >نرجو اختيار نوع الوظيفة</option>
 
                             {
@@ -80,29 +91,29 @@ export default function CreateEmployee() {
                                 ))
                             }
                         </select>
-                    </li>
+                    </div>
+                    <div className="col-5 p-2 border rounded m-2 row">
+                        <label className="col-4">بريد الكتروني</label>
+                        <input className="col-8" value={email} onChange={(e) => setemail(e.target.value)} type="email" name="email" />
+                    </div>
 
-                    <li className="list-group-item">
-                        <label htmlFor="email">بريد الكتروني</label>
-                        <input value={email} onChange={(e) => setemail(e.target.value)} name="email" type="email" id="email" />
-                    </li>
-                    <li className="list-group-item">
-                        <label htmlFor="documents[]">مستندات الموظف</label>
-                        <input onChange={(e) => {
+                    <div className="col-5 p-2 border rounded m-2 row">
+                        <label className="col-4">ارفاق مستندات الموظف</label>
+                        <input className="col-8" onChange={(e) => {
                             let array = []
-                            for( var i = 0; i < e.target.files.length; i++ ){
+                            for (var i = 0; i < e.target.files.length; i++) {
                                 let file = e.target.files[i];
                                 array.push(file);
                             }
                             console.log(array)
                             setdocuments(array)
-                        }} name="documents[]" type="file" accept="image/*" multiple id="documents[]" />
-                    </li>
-                    <li className="list-group-item">
-                        <input onClick={submit} type="button" value="تسجيل" />
-                    </li>
+                        }} type="file" accept="image/*" multiple />
+                    </div>
+                </div>
+                <div className="col-12 p-2 m-2 d-flex justify-content-center">
+                    <input onClick={submit} type="button" value="تسجيل" />
+                </div>
 
-                </ul>
             </div>
         </div>
     )
