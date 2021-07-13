@@ -1,6 +1,6 @@
 import React from 'react';
-import ApiEndpoints from '../utility/ApiEndpoints'
-import logError from '../utility/logError'
+import ApiEndpoints from '../../utility/ApiEndpoints'
+import logError from '../../utility/logError'
 
 import axios from 'axios';
 import StringField from './StringField';
@@ -118,46 +118,44 @@ function FieldsCreator() {
 
     return (
 
-        <>
-            name of the form structure <input type="string" onChange={(e) => setType(e.target.value)} />
+        <div>
+            <div className="text-center m-4">
+                <h3 className="row justify-content-center">عنوان النموذج</h3>
+                <input size="50" className="align-self-center" type="string" onChange={(e) => setType(e.target.value)} />
+            </div>
 
-            <ul className="list-group">
+            <div className="row warp ">
                 {
                     newFields.map((NewField, index) => (
-                        <li key={index} className="list-group-item">
-                            <div className="row">
-                                <div className="col">{NewField}</div>
-                                <div className="col">
-                                    <button type="button" onClick={() => removeField(index)}>X</button>
-                                </div>
+                        <div key={index} className="border border-success my-2">
+                                <div className="col-5">{NewField}</div>
+                                <div className="col-1">
+                                    <button className="btn btn-secondary" type="button" onClick={() => removeField(index)}>X</button>
                             </div>
-
-
-                        </li>
+                        </div>
                     ))
                 }
-            </ul>
+            </div>
 
-            <ul className="list-group">
+            <div className="row justify-content-between border">
                 <select
                     value={''}
                     onChange={typeChoice}
+                    className="p-2 rounded m-2"
                 >
-                    <option value=''>please choose type</option>
+                    <option value=''>اضف نوع حقل</option>
                     {
                         fieldsTypes.map((type, index) => (
                             <option key={index} value={type}>{type}</option>
                         ))
                     }
                 </select>
-            </ul>
 
-            <ul className="list-group">
-                <button onClick={() => submit()}>
-                    submit
+                <button className="btn btn-primary m-2" onClick={() => submit()}>
+                    انشاء
                 </button>
-            </ul>
-        </>
+            </div>
+        </div>
 
     );
 }

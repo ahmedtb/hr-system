@@ -1968,8 +1968,6 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./components/App */ "./resources/js/components/App.js");
 
-__webpack_require__(/*! ./components/FieldsCreator */ "./resources/js/components/FieldsCreator/index.js");
-
 __webpack_require__(/*! ./components/coach/CreateCoach */ "./resources/js/components/coach/CreateCoach.js");
 
 /***/ }),
@@ -2536,1427 +2534,6 @@ function Dashboard() {
     })
   });
 }
-
-/***/ }),
-
-/***/ "./resources/js/components/FieldsCreator/CustomRatingField.js":
-/*!********************************************************************!*\
-  !*** ./resources/js/components/FieldsCreator/CustomRatingField.js ***!
-  \********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-
-
-function CustomRatingField(props) {
-  var setField = props.setField;
-
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
-      _React$useState2 = _slicedToArray(_React$useState, 2),
-      label = _React$useState2[0],
-      setlabel = _React$useState2[1];
-
-  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
-      _React$useState4 = _slicedToArray(_React$useState3, 2),
-      max = _React$useState4[0],
-      setmax = _React$useState4[1];
-
-  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
-      _React$useState6 = _slicedToArray(_React$useState5, 2),
-      value = _React$useState6[0],
-      setvalue = _React$useState6[1];
-
-  function setConfig() {
-    setField({
-      "class": "App\\FieldsTypes\\CustomRatingField",
-      label: label,
-      max: max,
-      value: value
-    });
-  }
-
-  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
-    setConfig();
-  }, [label, max, value]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: ["custom rating field label ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: function onChange(e) {
-        setlabel(e.target.value);
-      }
-    }), "custom rating field max rating ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      type: "number",
-      onChange: function onChange(e) {
-        setmax(e.target.value);
-      }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: function onChange(e) {
-        setvalue(e.target.value);
-      },
-      type: "hidden",
-      value: ""
-    })]
-  });
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CustomRatingField);
-
-/***/ }),
-
-/***/ "./resources/js/components/FieldsCreator/DateField.js":
-/*!************************************************************!*\
-  !*** ./resources/js/components/FieldsCreator/DateField.js ***!
-  \************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-function DateField(props) {
-  var setField = props.setField;
-  var label = null;
-  var value = null;
-
-  function setConfig() {
-    setField({
-      "class": "App\\FieldsTypes\\DateField",
-      label: label,
-      value: value
-    });
-  }
-
-  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
-    setConfig();
-  }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: ["date field ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      onChange: function onChange(e) {
-        label = e.target.value;
-        setConfig();
-      }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      onChange: function onChange(e) {
-        value = e.target.value;
-        setConfig();
-      },
-      type: "hidden",
-      value: ""
-    })]
-  });
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DateField);
-
-/***/ }),
-
-/***/ "./resources/js/components/FieldsCreator/DoubleField.js":
-/*!**************************************************************!*\
-  !*** ./resources/js/components/FieldsCreator/DoubleField.js ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-function DoubleField(props) {
-  var setField = props.setField;
-  var label = null;
-  var value = null;
-
-  function setConfig() {
-    setField({
-      "class": "App\\FieldsTypes\\DoubleField",
-      label: label,
-      value: value
-    });
-  }
-
-  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
-    setConfig();
-  }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: ["double field render ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      onChange: function onChange(e) {
-        label = e.target.value;
-        setConfig();
-      }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      onChange: function onChange(e) {
-        value = e.target.value;
-        setConfig();
-      },
-      type: "hidden",
-      value: ""
-    })]
-  });
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DoubleField);
-
-/***/ }),
-
-/***/ "./resources/js/components/FieldsCreator/EmailField.js":
-/*!*************************************************************!*\
-  !*** ./resources/js/components/FieldsCreator/EmailField.js ***!
-  \*************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-function EmailField(props) {
-  var setField = props.setField;
-  var label = null;
-  var value = null;
-
-  function setConfig() {
-    setField({
-      "class": "App\\FieldsTypes\\EmailField",
-      label: label,
-      value: value
-    });
-  }
-
-  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
-    setConfig();
-  }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: ["email field render ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: function onChange(e) {
-        label = e.target.value;
-        setConfig();
-      }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: function onChange(e) {
-        value = e.target.value;
-        setConfig();
-      },
-      type: "hidden",
-      value: ""
-    })]
-  });
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EmailField);
-
-/***/ }),
-
-/***/ "./resources/js/components/FieldsCreator/GenderField.js":
-/*!**************************************************************!*\
-  !*** ./resources/js/components/FieldsCreator/GenderField.js ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-function GenderField(props) {
-  var setField = props.setField;
-  var label = null;
-  var value = null;
-
-  function setConfig() {
-    setField({
-      "class": "App\\FieldsTypes\\GenderField",
-      label: label,
-      value: value
-    });
-  }
-
-  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
-    setConfig();
-  }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: ["gender field label ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: function onChange(e) {
-        label = e.target.value;
-        setConfig();
-      }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: function onChange(e) {
-        value = e.target.value;
-        setConfig();
-      },
-      type: "hidden",
-      value: ""
-    })]
-  });
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (GenderField);
-
-/***/ }),
-
-/***/ "./resources/js/components/FieldsCreator/JobField.js":
-/*!***********************************************************!*\
-  !*** ./resources/js/components/FieldsCreator/JobField.js ***!
-  \***********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-function JobField(props) {
-  var setField = props.setField;
-  var label = null;
-  var value = null;
-
-  function setConfig() {
-    setField({
-      "class": "App\\FieldsTypes\\JobField",
-      label: label,
-      value: value
-    });
-  }
-
-  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
-    setConfig();
-  }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: ["Job field render ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      onChange: function onChange(e) {
-        label = e.target.value;
-        setConfig();
-      }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      onChange: function onChange(e) {
-        value = e.target.value;
-        setConfig();
-      },
-      type: "hidden",
-      value: ""
-    })]
-  });
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (JobField);
-
-/***/ }),
-
-/***/ "./resources/js/components/FieldsCreator/LabelField.js":
-/*!*************************************************************!*\
-  !*** ./resources/js/components/FieldsCreator/LabelField.js ***!
-  \*************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-function LabelField(props) {
-  var setField = props.setField;
-  var value = '';
-
-  function setConfig() {
-    setField({
-      "class": "App\\FieldsTypes\\LabelField",
-      value: value
-    });
-  }
-
-  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
-    setConfig();
-  }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: ["Label field ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: function onChange(e) {
-        value = e.target.value;
-        setConfig();
-      }
-    })]
-  });
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LabelField);
-
-/***/ }),
-
-/***/ "./resources/js/components/FieldsCreator/NumberField.js":
-/*!**************************************************************!*\
-  !*** ./resources/js/components/FieldsCreator/NumberField.js ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-function NumberField(props) {
-  var setField = props.setField;
-  var label = null;
-  var value = '';
-
-  function setConfig() {
-    setField({
-      "class": "App\\FieldsTypes\\NumberField",
-      label: label,
-      value: value
-    });
-  }
-
-  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
-    setConfig();
-  }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: ["number field ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: function onChange(e) {
-        label = e.target.value;
-        setConfig();
-      }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: function onChange(e) {
-        value = e.target.value;
-        setConfig();
-      },
-      type: "hidden",
-      value: ""
-    })]
-  });
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (NumberField);
-
-/***/ }),
-
-/***/ "./resources/js/components/FieldsCreator/OptionsField.js":
-/*!***************************************************************!*\
-  !*** ./resources/js/components/FieldsCreator/OptionsField.js ***!
-  \***************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-
-function OptionsField(props) {
-  var setField = props.setField;
-
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
-      _React$useState2 = _slicedToArray(_React$useState, 2),
-      label = _React$useState2[0],
-      setlabel = _React$useState2[1];
-
-  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
-      _React$useState4 = _slicedToArray(_React$useState3, 2),
-      value = _React$useState4[0],
-      setvalue = _React$useState4[1];
-
-  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0__.useState([]),
-      _React$useState6 = _slicedToArray(_React$useState5, 2),
-      options = _React$useState6[0],
-      setOptions = _React$useState6[1];
-
-  var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
-      _React$useState8 = _slicedToArray(_React$useState7, 2),
-      title = _React$useState8[0],
-      settitle = _React$useState8[1];
-
-  function addOption() {
-    setOptions(function (pre) {
-      return [].concat(_toConsumableArray(pre), [title]);
-    });
-  }
-
-  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
-    setConfig();
-  }, [options, value, label]);
-
-  function setConfig() {
-    setField({
-      "class": "App\\FieldsTypes\\OptionsField",
-      label: label,
-      options: options,
-      value: value
-    });
-  }
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      onChange: function onChange(e) {
-        setvalue(e.target.value);
-      },
-      type: "hidden",
-      value: ""
-    }), "options field label ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      onChange: function onChange(e) {
-        setlabel(e.target.value);
-      }
-    }), options.map(function (option, index) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        children: option
-      }, index);
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      onChange: function onChange(e) {
-        return settitle(e.target.value);
-      }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-      type: "button",
-      onClick: addOption,
-      children: "add option"
-    })]
-  });
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OptionsField);
-
-/***/ }),
-
-/***/ "./resources/js/components/FieldsCreator/PhoneNumberField.js":
-/*!*******************************************************************!*\
-  !*** ./resources/js/components/FieldsCreator/PhoneNumberField.js ***!
-  \*******************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-function PhoneNumberField(props) {
-  var setField = props.setField;
-  var label = null;
-  var value = '';
-
-  function setConfig() {
-    setField({
-      "class": "App\\FieldsTypes\\PhoneNumberField",
-      label: label,
-      value: value
-    });
-  }
-
-  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
-    setConfig();
-  }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: ["phone number field label ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: function onChange(e) {
-        label = e.target.value;
-        setConfig();
-      }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: function onChange(e) {
-        value = e.target.value;
-        setConfig();
-      },
-      type: "hidden",
-      value: ""
-    })]
-  });
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PhoneNumberField);
-
-/***/ }),
-
-/***/ "./resources/js/components/FieldsCreator/RatingField.js":
-/*!**************************************************************!*\
-  !*** ./resources/js/components/FieldsCreator/RatingField.js ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-function RatingField(props) {
-  var setField = props.setField;
-  var label = null;
-  var value = '';
-
-  function setConfig() {
-    setField({
-      "class": "App\\FieldsTypes\\RatingField",
-      label: label,
-      value: value
-    });
-  }
-
-  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
-    setConfig();
-  }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: ["rating field label ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      onChange: function onChange(e) {
-        label = e.target.value;
-        setConfig();
-      }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      onChange: function onChange(e) {
-        value = e.target.value;
-        setConfig();
-      },
-      type: "hidden",
-      value: ""
-    })]
-  });
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RatingField);
-
-/***/ }),
-
-/***/ "./resources/js/components/FieldsCreator/SocialStatusField.js":
-/*!********************************************************************!*\
-  !*** ./resources/js/components/FieldsCreator/SocialStatusField.js ***!
-  \********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-function SocialStatusField(props) {
-  var setField = props.setField;
-  var label = null;
-  var value = '';
-
-  function setConfig() {
-    setField({
-      "class": "App\\FieldsTypes\\SocialStatusField",
-      label: label,
-      value: value
-    });
-  }
-
-  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
-    setConfig();
-  }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: ["social status field label ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: function onChange(e) {
-        label = e.target.value;
-        setConfig();
-      }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: function onChange(e) {
-        value = e.target.value;
-        setConfig();
-      },
-      type: "hidden",
-      value: ""
-    })]
-  });
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SocialStatusField);
-
-/***/ }),
-
-/***/ "./resources/js/components/FieldsCreator/StringField.js":
-/*!**************************************************************!*\
-  !*** ./resources/js/components/FieldsCreator/StringField.js ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-function StringField(props) {
-  var setField = props.setField;
-  var label = null;
-  var value = '';
-
-  function setConfig() {
-    setField({
-      "class": "App\\FieldsTypes\\StringField",
-      label: label,
-      value: value
-    });
-  }
-
-  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
-    setConfig();
-  }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: ["string Field ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: function onChange(e) {
-        label = e.target.value;
-        setConfig();
-      }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: function onChange(e) {
-        value = e.target.value;
-        setConfig();
-      },
-      type: "hidden",
-      value: ""
-    })]
-  });
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StringField);
-
-/***/ }),
-
-/***/ "./resources/js/components/FieldsCreator/TableField2.js":
-/*!**************************************************************!*\
-  !*** ./resources/js/components/FieldsCreator/TableField2.js ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-
-function TableField2(props) {
-  var index = props.index;
-  var setField = props.setField;
-
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(2),
-      _React$useState2 = _slicedToArray(_React$useState, 2),
-      numberOfRows = _React$useState2[0],
-      setnumberOfRows = _React$useState2[1];
-
-  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
-      _React$useState4 = _slicedToArray(_React$useState3, 2),
-      label = _React$useState4[0],
-      setlabel = _React$useState4[1];
-
-  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0__.useState(['', '']),
-      _React$useState6 = _slicedToArray(_React$useState5, 2),
-      columnsTitles = _React$useState6[0],
-      setcolumnsTitles = _React$useState6[1];
-
-  var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_0__.useState([['', ''], ['', '']]),
-      _React$useState8 = _slicedToArray(_React$useState7, 2),
-      value = _React$useState8[0],
-      setvalue = _React$useState8[1];
-
-  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
-    setConfig();
-  }, [numberOfRows, label, columnsTitles, value]);
-
-  function setConfig() {
-    setField({
-      "class": "App\\FieldsTypes\\TableField2",
-      numberOfRows: numberOfRows,
-      columnsTitles: columnsTitles,
-      label: label,
-      value: value
-    });
-  }
-
-  function addColumn() {}
-
-  function addRow() {}
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: ["tabel field 2 render ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      onChange: function onChange(e) {
-        setlabel(e.target.value);
-      }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
-      className: "table",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            scope: "col",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              onChange: function onChange(e) {
-                var newArray = _toConsumableArray(columnsTitles);
-
-                newArray[0] = e.target.value;
-                setcolumnsTitles(newArray);
-              }
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            scope: "col",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              onChange: function onChange(e) {
-                var newArray = _toConsumableArray(columnsTitles);
-
-                newArray[1] = e.target.value;
-                setcolumnsTitles(newArray);
-              }
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            scope: "col",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-              onClick: addColumn,
-              children: "add new column"
-            })
-          })]
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tbody", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            scope: "row",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              onChange: function onChange(e) {
-                var newArray = _toConsumableArray(value);
-
-                newArray[0][0] = e.target.value;
-                setvalue(newArray);
-              }
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            scope: "row",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              onChange: function onChange(e) {
-                var newArray = _toConsumableArray(value);
-
-                newArray[0][1] = e.target.value;
-                setvalue(newArray);
-              }
-            })
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            scope: "row",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              onChange: function onChange(e) {
-                var newArray = _toConsumableArray(value);
-
-                newArray[1][0] = e.target.value;
-                setvalue(newArray);
-              }
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            scope: "row",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              onChange: function onChange(e) {
-                var newArray = _toConsumableArray(value);
-
-                newArray[1][1] = e.target.value;
-                setvalue(newArray);
-              }
-            })
-          })]
-        })]
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-      onClick: addRow,
-      children: "add new row"
-    })]
-  });
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TableField2);
-
-/***/ }),
-
-/***/ "./resources/js/components/FieldsCreator/TextAreaField.js":
-/*!****************************************************************!*\
-  !*** ./resources/js/components/FieldsCreator/TextAreaField.js ***!
-  \****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-function TextAreaField(props) {
-  var setField = props.setField;
-  var label = null;
-  var value = '';
-
-  function setConfig() {
-    setField({
-      "class": "App\\FieldsTypes\\TextAreaField",
-      label: label,
-      value: value
-    });
-  }
-
-  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
-    setConfig();
-  }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: ["text area field label ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: function onChange(e) {
-        label = e.target.value;
-        setConfig();
-      }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-      onChange: function onChange(e) {
-        value = e.target.value;
-        setConfig();
-      },
-      type: "hidden",
-      value: ""
-    })]
-  });
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TextAreaField);
-
-/***/ }),
-
-/***/ "./resources/js/components/FieldsCreator/index.js":
-/*!********************************************************!*\
-  !*** ./resources/js/components/FieldsCreator/index.js ***!
-  \********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utility/ApiEndpoints */ "./resources/js/components/utility/ApiEndpoints.js");
-/* harmony import */ var _utility_logError__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utility/logError */ "./resources/js/components/utility/logError.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _StringField__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./StringField */ "./resources/js/components/FieldsCreator/StringField.js");
-/* harmony import */ var _TableField2__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./TableField2 */ "./resources/js/components/FieldsCreator/TableField2.js");
-/* harmony import */ var _TextAreaField__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./TextAreaField */ "./resources/js/components/FieldsCreator/TextAreaField.js");
-/* harmony import */ var _SocialStatusField__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./SocialStatusField */ "./resources/js/components/FieldsCreator/SocialStatusField.js");
-/* harmony import */ var _RatingField__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./RatingField */ "./resources/js/components/FieldsCreator/RatingField.js");
-/* harmony import */ var _CustomRatingField__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./CustomRatingField */ "./resources/js/components/FieldsCreator/CustomRatingField.js");
-/* harmony import */ var _PhoneNumberField__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./PhoneNumberField */ "./resources/js/components/FieldsCreator/PhoneNumberField.js");
-/* harmony import */ var _NumberField__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./NumberField */ "./resources/js/components/FieldsCreator/NumberField.js");
-/* harmony import */ var _LabelField__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./LabelField */ "./resources/js/components/FieldsCreator/LabelField.js");
-/* harmony import */ var _JobField__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./JobField */ "./resources/js/components/FieldsCreator/JobField.js");
-/* harmony import */ var _GenderField__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./GenderField */ "./resources/js/components/FieldsCreator/GenderField.js");
-/* harmony import */ var _EmailField__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./EmailField */ "./resources/js/components/FieldsCreator/EmailField.js");
-/* harmony import */ var _DoubleField__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./DoubleField */ "./resources/js/components/FieldsCreator/DoubleField.js");
-/* harmony import */ var _DateField__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./DateField */ "./resources/js/components/FieldsCreator/DateField.js");
-/* harmony import */ var _OptionsField__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./OptionsField */ "./resources/js/components/FieldsCreator/OptionsField.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var fieldsTypes = ['textArea', 'table', 'string', 'socialStatus', 'rating', 'customRating', 'options', 'phoneNumber', 'number', 'label', 'job', 'gender', 'email', 'double', 'date'];
-
-function FieldsCreator() {
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_1__.useState([]),
-      _React$useState2 = _slicedToArray(_React$useState, 2),
-      fieldsConfigs = _React$useState2[0],
-      setFieldsConfigs = _React$useState2[1];
-
-  function setFieldConfig(index, config) {
-    setFieldsConfigs(function (data) {
-      return _objectSpread(_objectSpread({}, data), {}, _defineProperty({}, index, config));
-    });
-  }
-
-  function typeChoice(e) {
-    addField(e.target.value);
-  }
-
-  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_1__.useState([]),
-      _React$useState4 = _slicedToArray(_React$useState3, 2),
-      newFields = _React$useState4[0],
-      setNewFields = _React$useState4[1];
-
-  function addField(type) {
-    switch (type) {
-      case 'textArea':
-        setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_TextAreaField__WEBPACK_IMPORTED_MODULE_7__.default, {
-            setField: function setField(config) {
-              return setFieldConfig(newFields.length, config);
-            }
-          })]);
-        });
-        break;
-
-      case 'table':
-        setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_TableField2__WEBPACK_IMPORTED_MODULE_6__.default, {
-            setField: function setField(config) {
-              return setFieldConfig(newFields.length, config);
-            }
-          })]);
-        });
-        break;
-
-      case 'string':
-        setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_StringField__WEBPACK_IMPORTED_MODULE_5__.default, {
-            setField: function setField(config) {
-              return setFieldConfig(newFields.length, config);
-            }
-          })]);
-        });
-        break;
-
-      case 'socialStatus':
-        setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_SocialStatusField__WEBPACK_IMPORTED_MODULE_8__.default, {
-            setField: function setField(config) {
-              return setFieldConfig(newFields.length, config);
-            }
-          })]);
-        });
-        break;
-
-      case 'rating':
-        setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_RatingField__WEBPACK_IMPORTED_MODULE_9__.default, {
-            setField: function setField(config) {
-              return setFieldConfig(newFields.length, config);
-            }
-          })]);
-        });
-        break;
-
-      case 'customRating':
-        setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_CustomRatingField__WEBPACK_IMPORTED_MODULE_10__.default, {
-            setField: function setField(config) {
-              return setFieldConfig(newFields.length, config);
-            }
-          })]);
-        });
-        break;
-
-      case 'options':
-        setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_OptionsField__WEBPACK_IMPORTED_MODULE_19__.default, {
-            setField: function setField(config) {
-              return setFieldConfig(newFields.length, config);
-            }
-          })]);
-        });
-        break;
-
-      case 'phoneNumber':
-        setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_PhoneNumberField__WEBPACK_IMPORTED_MODULE_11__.default, {
-            setField: function setField(config) {
-              return setFieldConfig(newFields.length, config);
-            }
-          })]);
-        });
-        break;
-
-      case 'number':
-        setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_NumberField__WEBPACK_IMPORTED_MODULE_12__.default, {
-            setField: function setField(config) {
-              return setFieldConfig(newFields.length, config);
-            }
-          })]);
-        });
-        break;
-
-      case 'label':
-        setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_LabelField__WEBPACK_IMPORTED_MODULE_13__.default, {
-            setField: function setField(config) {
-              return setFieldConfig(newFields.length, config);
-            }
-          })]);
-        });
-        break;
-
-      case 'job':
-        setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_JobField__WEBPACK_IMPORTED_MODULE_14__.default, {
-            setField: function setField(config) {
-              return setFieldConfig(newFields.length, config);
-            }
-          })]);
-        });
-        break;
-
-      case 'gender':
-        setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_GenderField__WEBPACK_IMPORTED_MODULE_15__.default, {
-            setField: function setField(config) {
-              return setFieldConfig(newFields.length, config);
-            }
-          })]);
-        });
-        break;
-
-      case 'email':
-        setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_EmailField__WEBPACK_IMPORTED_MODULE_16__.default, {
-            setField: function setField(config) {
-              return setFieldConfig(newFields.length, config);
-            }
-          })]);
-        });
-        break;
-
-      case 'double':
-        setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_DoubleField__WEBPACK_IMPORTED_MODULE_17__.default, {
-            setField: function setField(config) {
-              return setFieldConfig(newFields.length, config);
-            }
-          })]);
-        });
-        break;
-
-      case 'date':
-        setNewFields(function (old) {
-          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_DateField__WEBPACK_IMPORTED_MODULE_18__.default, {
-            setField: function setField(config) {
-              return setFieldConfig(newFields.length, config);
-            }
-          })]);
-        });
-        break;
-    }
-  }
-
-  function removeField(index) {
-    setNewFields(newFields.filter(function (newField, i) {
-      return i != index;
-    }));
-  }
-
-  react__WEBPACK_IMPORTED_MODULE_1__.useEffect(function () {
-    console.log(fieldsConfigs);
-  }, [fieldsConfigs]);
-
-  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_1__.useState(''),
-      _React$useState6 = _slicedToArray(_React$useState5, 2),
-      type = _React$useState6[0],
-      setType = _React$useState6[1];
-
-  function submit() {
-    return _submit.apply(this, arguments);
-  }
-
-  function _submit() {
-    _submit = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      var res;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              _context.prev = 0;
-              _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_4___default().post(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.createFormStructure, {
-                type: type,
-                array_of_fields: {
-                  "class": 'App\\FieldsTypes\\ArrayOfFields',
-                  fields: fieldsConfigs
-                }
-              });
-
-            case 3:
-              res = _context.sent;
-              console.log(res.data);
-              _context.next = 10;
-              break;
-
-            case 7:
-              _context.prev = 7;
-              _context.t0 = _context["catch"](0);
-              (0,_utility_logError__WEBPACK_IMPORTED_MODULE_3__.default)(_context.t0);
-
-            case 10:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee, null, [[0, 7]]);
-    }));
-    return _submit.apply(this, arguments);
-  }
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.Fragment, {
-    children: ["name of the form structure ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("input", {
-      type: "string",
-      onChange: function onChange(e) {
-        return setType(e.target.value);
-      }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("ul", {
-      className: "list-group",
-      children: newFields.map(function (NewField, index) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)("div", {
-            className: "row",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("div", {
-              className: "col",
-              children: NewField
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("div", {
-              className: "col",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("button", {
-                type: "button",
-                onClick: function onClick() {
-                  return removeField(index);
-                },
-                children: "X"
-              })
-            })]
-          })
-        }, index);
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("ul", {
-      className: "list-group",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)("select", {
-        value: '',
-        onChange: typeChoice,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("option", {
-          value: "",
-          children: "please choose type"
-        }), fieldsTypes.map(function (type, index) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("option", {
-            value: type,
-            children: type
-          }, index);
-        })]
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("ul", {
-      className: "list-group",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("button", {
-        onClick: function onClick() {
-          return submit();
-        },
-        children: "submit"
-      })
-    })]
-  });
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FieldsCreator);
 
 /***/ }),
 
@@ -11473,6 +10050,1875 @@ function TextAreaField(props) {
 
 /***/ }),
 
+/***/ "./resources/js/components/formStructure/FieldsCreator/CustomRatingField.js":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/formStructure/FieldsCreator/CustomRatingField.js ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+function CustomRatingField(props) {
+  var setField = props.setField;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      label = _React$useState2[0],
+      setlabel = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0__.useState(5),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      max = _React$useState4[0],
+      setmax = _React$useState4[1];
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0__.useState(null),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      value = _React$useState6[0],
+      setvalue = _React$useState6[1];
+
+  function setConfig() {
+    setField({
+      "class": "App\\FieldsTypes\\CustomRatingField",
+      label: label,
+      max: max,
+      value: value
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, [label, max, value]);
+  var stars = [];
+
+  for (var i = 0; i < max; i++) {
+    stars[i] = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("svg", {
+      xmlns: "http://www.w3.org/2000/svg",
+      width: "16",
+      height: "16",
+      fill: "currentColor",
+      className: "bi bi-star",
+      viewBox: "0 0 16 16",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
+        d: "M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"
+      })
+    }, i);
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {}, [max]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "text-center",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h6", {
+        className: "row justify-content-center m-2",
+        children: "\u062D\u0642\u0644 \u062A\u0642\u064A\u064A\u0645 \u0645\u062A\u063A\u064A\u064A\u0631"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "row justify-content-center m-2",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "mr-2",
+          children: "\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u062D\u0642\u0644"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+          className: "rounded",
+          onChange: function onChange(e) {
+            setlabel(e.target.value);
+            setConfig();
+          }
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "row justify-content-center m-2",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "mr-2",
+          children: "\u0627\u0642\u0635\u0649 \u062A\u0642\u064A\u064A\u0645"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+          type: "number",
+          onChange: function onChange(e) {
+            setmax(e.target.value);
+          }
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("strong", {
+        className: "row justify-content-center m-2",
+        children: label
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "row justify-content-center w-auto",
+        children: stars
+      })]
+    })
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CustomRatingField);
+
+/***/ }),
+
+/***/ "./resources/js/components/formStructure/FieldsCreator/DateField.js":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/formStructure/FieldsCreator/DateField.js ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+function DateField(props) {
+  var setField = props.setField;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      label = _React$useState2[0],
+      setlabel = _React$useState2[1];
+
+  var value = null;
+
+  function setConfig() {
+    setField({
+      "class": "App\\FieldsTypes\\DateField",
+      label: label,
+      value: value
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "text-center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h6", {
+      className: "row justify-content-center m-2",
+      children: "\u062D\u0642\u0644 \u062A\u0627\u0631\u064A\u062E"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "row justify-content-center m-2",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "mr-2",
+        children: "\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u062D\u0642\u0644"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        className: "rounded",
+        onChange: function onChange(e) {
+          setlabel(e.target.value);
+          setConfig();
+        }
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+      className: "row justify-content-center m-2",
+      children: label
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+      size: "40",
+      placeholder: "\u062D\u0642\u0644 \u062A\u0627\u0631\u064A\u062E",
+      disabled: true
+    })]
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DateField);
+
+/***/ }),
+
+/***/ "./resources/js/components/formStructure/FieldsCreator/DoubleField.js":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/formStructure/FieldsCreator/DoubleField.js ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+function DoubleField(props) {
+  var setField = props.setField;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      label = _React$useState2[0],
+      setlabel = _React$useState2[1];
+
+  var value = null;
+
+  function setConfig() {
+    setField({
+      "class": "App\\FieldsTypes\\DoubleField",
+      label: label,
+      value: value
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "text-center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h6", {
+      className: "row justify-content-center m-2",
+      children: "\u062D\u0642\u0644 \u0631\u0642\u0645 \u0645\u0631\u0643\u0628"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "row justify-content-center m-2",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "mr-2",
+        children: "\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u062D\u0642\u0644"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        className: "rounded",
+        onChange: function onChange(e) {
+          setlabel(e.target.value);
+          setConfig();
+        }
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+      className: "row justify-content-center m-2",
+      children: label
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+      size: "40",
+      placeholder: "\u062D\u0642\u0644 \u0631\u0642\u0645 \u0645\u0631\u0643\u0628",
+      disabled: true
+    })]
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DoubleField);
+
+/***/ }),
+
+/***/ "./resources/js/components/formStructure/FieldsCreator/EmailField.js":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/formStructure/FieldsCreator/EmailField.js ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+function EmailField(props) {
+  var setField = props.setField;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      label = _React$useState2[0],
+      setlabel = _React$useState2[1];
+
+  var value = null;
+
+  function setConfig() {
+    setField({
+      "class": "App\\FieldsTypes\\EmailField",
+      label: label,
+      value: value
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "text-center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h6", {
+      className: "row justify-content-center m-2",
+      children: "\u062D\u0642\u0644 \u0628\u0631\u064A\u062F \u0627\u0644\u0643\u062A\u0631\u0648\u0646\u064A"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "row justify-content-center m-2",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "mr-2",
+        children: "\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u062D\u0642\u0644"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+        className: "rounded",
+        onChange: function onChange(e) {
+          setlabel(e.target.value);
+          setConfig();
+        }
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("strong", {
+      className: "row justify-content-center m-2",
+      children: label
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+      size: "30",
+      placeholder: "\u062D\u0642\u0644 \u0628\u0631\u064A\u062F \u0627\u0644\u0643\u062A\u0631\u0648\u0646\u064A",
+      disabled: true
+    })]
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EmailField);
+
+/***/ }),
+
+/***/ "./resources/js/components/formStructure/FieldsCreator/GenderField.js":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/formStructure/FieldsCreator/GenderField.js ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+function GenderField(props) {
+  var setField = props.setField;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      label = _React$useState2[0],
+      setlabel = _React$useState2[1];
+
+  var value = null;
+
+  function setConfig() {
+    setField({
+      "class": "App\\FieldsTypes\\GenderField",
+      label: label,
+      value: value
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "text-center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h6", {
+      className: "row justify-content-center m-2",
+      children: "\u062D\u0642\u0644 \u062A\u062D\u062F\u064A\u062F \u0627\u0644\u062C\u0646\u0633"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "row justify-content-center m-2",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "mr-2",
+        children: "\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u062D\u0642\u0644"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+        className: "rounded",
+        onChange: function onChange(e) {
+          setlabel(e.target.value);
+          setConfig();
+        }
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("strong", {
+      className: "row justify-content-center m-2",
+      children: label
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "form-check",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+        className: "form-check-input",
+        type: "radio",
+        disabled: true,
+        checked: value == 'married'
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+        className: "form-check-label",
+        children: "\u0630\u0643\u0631"
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "form-check",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+        className: "form-check-input",
+        type: "radio",
+        checked: value == 'single',
+        disabled: true
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+        className: "form-check-label",
+        children: "\u0627\u0646\u062B\u0649"
+      })]
+    })]
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (GenderField);
+
+/***/ }),
+
+/***/ "./resources/js/components/formStructure/FieldsCreator/JobField.js":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/formStructure/FieldsCreator/JobField.js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+function JobField(props) {
+  var setField = props.setField;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      label = _React$useState2[0],
+      setlabel = _React$useState2[1];
+
+  var value = null;
+
+  function setConfig() {
+    setField({
+      "class": "App\\FieldsTypes\\JobField",
+      label: label,
+      value: value
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "text-center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h6", {
+      className: "row justify-content-center m-2",
+      children: "\u062D\u0642\u0644 \u062A\u062D\u062F\u064A\u062F \u0627\u0644\u0648\u0638\u064A\u0641\u0629"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "row justify-content-center m-2",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "mr-2",
+        children: "\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u062D\u0642\u0644"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        className: "rounded",
+        onChange: function onChange(e) {
+          setlabel(e.target.value);
+          setConfig();
+        }
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+      className: "row justify-content-center m-2",
+      children: label
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "row justify-content-center m-2",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+        className: "mr-2",
+        children: "\u0627\u0644\u0648\u0638\u064A\u0641\u0629"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
+        className: "col-4",
+        disabled: true,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+          children: "\u0646\u0631\u062C\u0648 \u0627\u062E\u062A\u064A\u0627\u0631 \u0646\u0648\u0639 \u0627\u0644\u0648\u0638\u064A\u0641\u0629"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+          children: "aaaaaaaaaaaa"
+        })]
+      })]
+    })]
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (JobField);
+
+/***/ }),
+
+/***/ "./resources/js/components/formStructure/FieldsCreator/LabelField.js":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/formStructure/FieldsCreator/LabelField.js ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+function LabelField(props) {
+  var setField = props.setField;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      value = _React$useState2[0],
+      setvalue = _React$useState2[1];
+
+  function setConfig() {
+    setField({
+      "class": "App\\FieldsTypes\\LabelField",
+      value: value
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "text-center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h6", {
+      className: "row justify-content-center m-2",
+      children: "\u0646\u0635 \u062A\u0648\u0636\u064A\u062D\u064A"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "row justify-content-center m-2",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "mr-2",
+        children: "\u0627\u0644\u0646\u0635"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+        className: "rounded",
+        onChange: function onChange(e) {
+          setvalue(e.target.value);
+          setConfig();
+        }
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "col-12 m-1",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "row justify-content-center",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h5", {
+          children: value
+        })
+      })
+    })]
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LabelField);
+
+/***/ }),
+
+/***/ "./resources/js/components/formStructure/FieldsCreator/NumberField.js":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/formStructure/FieldsCreator/NumberField.js ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+function NumberField(props) {
+  var setField = props.setField;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      label = _React$useState2[0],
+      setlabel = _React$useState2[1];
+
+  var value = '';
+
+  function setConfig() {
+    setField({
+      "class": "App\\FieldsTypes\\NumberField",
+      label: label,
+      value: value
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "text-center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h6", {
+      className: "row justify-content-center m-2",
+      children: "\u062D\u0642\u0644 \u0639\u062F\u062F\u064A"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "row justify-content-center m-2",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "mr-2",
+        children: "\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u062D\u0642\u0644"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+        className: "rounded",
+        onChange: function onChange(e) {
+          setlabel(e.target.value);
+          setConfig();
+        }
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("strong", {
+      className: "row justify-content-center m-2",
+      children: label
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+      size: "40",
+      placeholder: "\u062D\u0642\u0644 \u0639\u062F\u062F\u064A",
+      disabled: true
+    })]
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (NumberField);
+
+/***/ }),
+
+/***/ "./resources/js/components/formStructure/FieldsCreator/OptionsField.js":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/formStructure/FieldsCreator/OptionsField.js ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+function OptionsField(props) {
+  var setField = props.setField;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      label = _React$useState2[0],
+      setlabel = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      value = _React$useState4[0],
+      setvalue = _React$useState4[1];
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0__.useState([]),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      options = _React$useState6[0],
+      setOptions = _React$useState6[1];
+
+  var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
+      _React$useState8 = _slicedToArray(_React$useState7, 2),
+      title = _React$useState8[0],
+      settitle = _React$useState8[1];
+
+  function addOption() {
+    setOptions(function (pre) {
+      return [].concat(_toConsumableArray(pre), [title]);
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, [options, value, label]);
+
+  function setConfig() {
+    setField({
+      "class": "App\\FieldsTypes\\OptionsField",
+      label: label,
+      options: options,
+      value: value
+    });
+  }
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "text-center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h6", {
+      className: "row justify-content-center m-2",
+      children: "\u062D\u0642\u0644 \u0627\u062E\u062A\u064A\u0627\u0631\u0627\u062A"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "row justify-content-center m-2",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "mr-2",
+        children: "\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u062D\u0642\u0644"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        className: "rounded",
+        onChange: function onChange(e) {
+          setlabel(e.target.value);
+          setConfig();
+        }
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+      className: "row justify-content-center m-2",
+      children: label
+    }), options.map(function (option, index) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "row mx-auto w-auto",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+          className: "form-check-input col-1",
+          type: "radio",
+          disabled: true
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+          className: "form-check-label col-5",
+          children: option
+        })]
+      }, index);
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+      onChange: function onChange(e) {
+        return settitle(e.target.value);
+      }
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+      type: "button",
+      onClick: addOption,
+      children: "add option"
+    })]
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OptionsField);
+
+/***/ }),
+
+/***/ "./resources/js/components/formStructure/FieldsCreator/PhoneNumberField.js":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/formStructure/FieldsCreator/PhoneNumberField.js ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+function PhoneNumberField(props) {
+  var setField = props.setField;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      label = _React$useState2[0],
+      setlabel = _React$useState2[1];
+
+  var value = '';
+
+  function setConfig() {
+    setField({
+      "class": "App\\FieldsTypes\\PhoneNumberField",
+      label: label,
+      value: value
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "text-center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h6", {
+      className: "row justify-content-center m-2",
+      children: "\u062D\u0642\u0644 \u0631\u0642\u0645 \u0647\u0627\u062A\u0641"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "row justify-content-center m-2",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "mr-2",
+        children: "\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u062D\u0642\u0644"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+        className: "rounded",
+        onChange: function onChange(e) {
+          setlabel(e.target.value);
+          setConfig();
+        }
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("strong", {
+      className: "row justify-content-center m-2",
+      children: label
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+      size: "40",
+      placeholder: "\u062D\u0642\u0644 \u0631\u0642\u0645 \u0647\u0627\u062A\u0641",
+      onChange: function onChange(e) {
+        value = e.target.value;
+        setConfig();
+      },
+      disabled: true
+    })]
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PhoneNumberField);
+
+/***/ }),
+
+/***/ "./resources/js/components/formStructure/FieldsCreator/RatingField.js":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/formStructure/FieldsCreator/RatingField.js ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+function RatingField(props) {
+  var setField = props.setField;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      label = _React$useState2[0],
+      setlable = _React$useState2[1];
+
+  var value = '';
+
+  function setConfig() {
+    setField({
+      "class": "App\\FieldsTypes\\RatingField",
+      label: label,
+      value: value
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, []);
+  var stars = [];
+
+  for (var i = 0; i < 5; i++) {
+    stars[i] = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+      xmlns: "http://www.w3.org/2000/svg",
+      width: "16",
+      height: "16",
+      fill: "currentColor",
+      className: "bi bi-star",
+      viewBox: "0 0 16 16",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+        d: "M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"
+      })
+    }, i);
+  }
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "text-center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h6", {
+      className: "row justify-content-center m-2",
+      children: "\u062D\u0642\u0644 \u062A\u0642\u064A\u064A\u0645"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "row justify-content-center m-2",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "mr-2",
+        children: "\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u062D\u0642\u0644"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        className: "rounded",
+        onChange: function onChange(e) {
+          setlable(e.target.value);
+          setConfig();
+        }
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+      className: "row justify-content-center m-2",
+      children: label
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "row justify-content-center",
+      children: stars
+    })]
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RatingField);
+
+/***/ }),
+
+/***/ "./resources/js/components/formStructure/FieldsCreator/SocialStatusField.js":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/formStructure/FieldsCreator/SocialStatusField.js ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+function SocialStatusField(props) {
+  var setField = props.setField;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      label = _React$useState2[0],
+      setlable = _React$useState2[1];
+
+  var value = '';
+
+  function setConfig() {
+    setField({
+      "class": "App\\FieldsTypes\\SocialStatusField",
+      label: label,
+      value: value
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "text-center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h6", {
+      className: "row justify-content-center m-2",
+      children: "\u062D\u0642\u0644 \u0627\u0644\u062D\u0627\u0644\u0629 \u0627\u0644\u0627\u062C\u062A\u0645\u0627\u0639\u064A\u0629"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "row justify-content-center m-2",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "mr-2",
+        children: "\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u062D\u0642\u0644"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+        className: "rounded",
+        onChange: function onChange(e) {
+          setlable(e.target.value);
+          setConfig();
+        }
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("strong", {
+      className: "row justify-content-center m-2",
+      children: label
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "form-check",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+        className: "form-check-input",
+        type: "radio",
+        disabled: true,
+        checked: value == 'married'
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+        className: "form-check-label",
+        children: "\u0645\u062A\u0632\u0648\u062C"
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "form-check",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+        className: "form-check-input",
+        type: "radio",
+        checked: value == 'single',
+        disabled: true
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+        className: "form-check-label",
+        children: "\u0627\u0639\u0632\u0628"
+      })]
+    })]
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SocialStatusField);
+
+/***/ }),
+
+/***/ "./resources/js/components/formStructure/FieldsCreator/StringField.js":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/formStructure/FieldsCreator/StringField.js ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+function StringField(props) {
+  var setField = props.setField;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      label = _React$useState2[0],
+      setlabel = _React$useState2[1];
+
+  var value = '';
+
+  function setConfig() {
+    setField({
+      "class": "App\\FieldsTypes\\StringField",
+      label: label,
+      value: value
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "text-center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h6", {
+      className: "row justify-content-center m-2",
+      children: "\u062D\u0642\u0644 \u0646\u0635\u064A"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "row justify-content-center m-2",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "mr-2",
+        children: "\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u062D\u0642\u0644"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+        className: "rounded",
+        onChange: function onChange(e) {
+          setlabel(e.target.value);
+          setConfig();
+        }
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("strong", {
+      className: "row justify-content-center m-2",
+      children: label
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+      size: "40",
+      placeholder: "\u062D\u0642\u0644 \u0646\u0635\u064A \u0639\u0627\u062F\u064A",
+      onChange: function onChange(e) {
+        value = e.target.value;
+        setConfig();
+      },
+      disabled: true
+    })]
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StringField);
+
+/***/ }),
+
+/***/ "./resources/js/components/formStructure/FieldsCreator/TableField2.js":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/formStructure/FieldsCreator/TableField2.js ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+function TableField2(props) {
+  var index = props.index;
+  var setField = props.setField;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(2),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      numberOfRows = _React$useState2[0],
+      setnumberOfRows = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      label = _React$useState4[0],
+      setlabel = _React$useState4[1];
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0__.useState(['', '']),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      columnsTitles = _React$useState6[0],
+      setcolumnsTitles = _React$useState6[1];
+
+  var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_0__.useState([['', ''], ['', '']]),
+      _React$useState8 = _slicedToArray(_React$useState7, 2),
+      value = _React$useState8[0],
+      setvalue = _React$useState8[1];
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, [numberOfRows, label, columnsTitles, value]);
+
+  function setConfig() {
+    setField({
+      "class": "App\\FieldsTypes\\TableField2",
+      numberOfRows: numberOfRows,
+      columnsTitles: columnsTitles,
+      label: label,
+      value: value
+    });
+  }
+
+  function addColumn() {
+    setcolumnsTitles(function (pre) {
+      return [].concat(_toConsumableArray(pre), ['']);
+    });
+    var newrows = [];
+    value.forEach(function (row) {
+      newrows.push([].concat(_toConsumableArray(row), ['']));
+    });
+    setvalue(newrows);
+  }
+
+  function addRow() {
+    var row = [];
+    columnsTitles.forEach(function (element) {
+      row.push('');
+    });
+    setvalue(function (pre) {
+      return [].concat(_toConsumableArray(pre), [row]);
+    });
+    setnumberOfRows(function (pre) {
+      return pre + 1;
+    });
+  }
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "text-center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h6", {
+      className: "row justify-content-center m-2",
+      children: "\u062C\u062F\u0648\u0644"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "row justify-content-center m-2",
+      children: ["\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u062C\u062F\u0648\u0644", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        onChange: function onChange(e) {
+          setlabel(e.target.value);
+        }
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
+      className: "table table-striped mx-auto w-auto",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
+          children: [columnsTitles.map(function (title, index) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+              scope: "col",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                onChange: function onChange(e) {
+                  var newArray = _toConsumableArray(columnsTitles);
+
+                  newArray[index] = e.target.value;
+                  setcolumnsTitles(newArray);
+                },
+                placeholder: "\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u0639\u0645\u0648\u062F (\u0645\u0637\u0644\u0648\u0628)"
+              })
+            }, index);
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+            scope: "col",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              className: "btn btn-info",
+              onClick: addColumn,
+              children: "\u0627\u0636\u0641 \u0639\u0645\u0648\u062F"
+            })
+          })]
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("tbody", {
+        children: value.map(function (row, rowindex) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("tr", {
+            children: columnsTitles.map(function (title, index) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+                scope: "row",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                  onChange: function onChange(e) {
+                    var newArray = _toConsumableArray(value);
+
+                    newArray[rowindex][index] = e.target.value;
+                    setvalue(newArray);
+                  },
+                  placeholder: "\u0627\u0644\u0646\u0635 \u0627\u0641\u062A\u0631\u0627\u0636\u064A \u0644\u0644\u062E\u0644\u064A\u0629 (\u0627\u062E\u062A\u064A\u0627\u0631\u064A)"
+                })
+              }, index);
+            })
+          }, rowindex);
+        })
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+      className: "btn btn-info",
+      onClick: addRow,
+      children: "\u0627\u0636\u0641 \u0635\u0641"
+    })]
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TableField2);
+
+/***/ }),
+
+/***/ "./resources/js/components/formStructure/FieldsCreator/TextAreaField.js":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/formStructure/FieldsCreator/TextAreaField.js ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+function TextAreaField(props) {
+  var setField = props.setField;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(null),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      label = _React$useState2[0],
+      setlable = _React$useState2[1];
+
+  var value = '';
+
+  function setConfig() {
+    setField({
+      "class": "App\\FieldsTypes\\TextAreaField",
+      label: label,
+      value: value
+    });
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
+    setConfig();
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "text-center",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h6", {
+      className: " justify-content-center m-2",
+      children: "\u062D\u0642\u0644 \u0646\u0635\u064A \u0637\u0648\u064A\u0644"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: " justify-content-center m-2",
+      children: ["\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u062D\u0642\u0644", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+        onChange: function onChange(e) {
+          setlable(e.target.value);
+          setConfig();
+        }
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("strong", {
+      className: " justify-content-center m-2",
+      children: label
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("textarea", {
+      className: "border border-1 rounded",
+      rows: "4",
+      cols: "50",
+      disabled: true
+    })]
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TextAreaField);
+
+/***/ }),
+
+/***/ "./resources/js/components/formStructure/FieldsCreator/index.js":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/formStructure/FieldsCreator/index.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utility/ApiEndpoints */ "./resources/js/components/utility/ApiEndpoints.js");
+/* harmony import */ var _utility_logError__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utility/logError */ "./resources/js/components/utility/logError.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _StringField__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./StringField */ "./resources/js/components/formStructure/FieldsCreator/StringField.js");
+/* harmony import */ var _TableField2__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./TableField2 */ "./resources/js/components/formStructure/FieldsCreator/TableField2.js");
+/* harmony import */ var _TextAreaField__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./TextAreaField */ "./resources/js/components/formStructure/FieldsCreator/TextAreaField.js");
+/* harmony import */ var _SocialStatusField__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./SocialStatusField */ "./resources/js/components/formStructure/FieldsCreator/SocialStatusField.js");
+/* harmony import */ var _RatingField__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./RatingField */ "./resources/js/components/formStructure/FieldsCreator/RatingField.js");
+/* harmony import */ var _CustomRatingField__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./CustomRatingField */ "./resources/js/components/formStructure/FieldsCreator/CustomRatingField.js");
+/* harmony import */ var _PhoneNumberField__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./PhoneNumberField */ "./resources/js/components/formStructure/FieldsCreator/PhoneNumberField.js");
+/* harmony import */ var _NumberField__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./NumberField */ "./resources/js/components/formStructure/FieldsCreator/NumberField.js");
+/* harmony import */ var _LabelField__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./LabelField */ "./resources/js/components/formStructure/FieldsCreator/LabelField.js");
+/* harmony import */ var _JobField__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./JobField */ "./resources/js/components/formStructure/FieldsCreator/JobField.js");
+/* harmony import */ var _GenderField__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./GenderField */ "./resources/js/components/formStructure/FieldsCreator/GenderField.js");
+/* harmony import */ var _EmailField__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./EmailField */ "./resources/js/components/formStructure/FieldsCreator/EmailField.js");
+/* harmony import */ var _DoubleField__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./DoubleField */ "./resources/js/components/formStructure/FieldsCreator/DoubleField.js");
+/* harmony import */ var _DateField__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./DateField */ "./resources/js/components/formStructure/FieldsCreator/DateField.js");
+/* harmony import */ var _OptionsField__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./OptionsField */ "./resources/js/components/formStructure/FieldsCreator/OptionsField.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var fieldsTypes = ['textArea', 'table', 'string', 'socialStatus', 'rating', 'customRating', 'options', 'phoneNumber', 'number', 'label', 'job', 'gender', 'email', 'double', 'date'];
+
+function FieldsCreator() {
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_1__.useState([]),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      fieldsConfigs = _React$useState2[0],
+      setFieldsConfigs = _React$useState2[1];
+
+  function setFieldConfig(index, config) {
+    setFieldsConfigs(function (data) {
+      return _objectSpread(_objectSpread({}, data), {}, _defineProperty({}, index, config));
+    });
+  }
+
+  function typeChoice(e) {
+    addField(e.target.value);
+  }
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_1__.useState([]),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      newFields = _React$useState4[0],
+      setNewFields = _React$useState4[1];
+
+  function addField(type) {
+    switch (type) {
+      case 'textArea':
+        setNewFields(function (old) {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_TextAreaField__WEBPACK_IMPORTED_MODULE_7__.default, {
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
+          })]);
+        });
+        break;
+
+      case 'table':
+        setNewFields(function (old) {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_TableField2__WEBPACK_IMPORTED_MODULE_6__.default, {
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
+          })]);
+        });
+        break;
+
+      case 'string':
+        setNewFields(function (old) {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_StringField__WEBPACK_IMPORTED_MODULE_5__.default, {
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
+          })]);
+        });
+        break;
+
+      case 'socialStatus':
+        setNewFields(function (old) {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_SocialStatusField__WEBPACK_IMPORTED_MODULE_8__.default, {
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
+          })]);
+        });
+        break;
+
+      case 'rating':
+        setNewFields(function (old) {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_RatingField__WEBPACK_IMPORTED_MODULE_9__.default, {
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
+          })]);
+        });
+        break;
+
+      case 'customRating':
+        setNewFields(function (old) {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_CustomRatingField__WEBPACK_IMPORTED_MODULE_10__.default, {
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
+          })]);
+        });
+        break;
+
+      case 'options':
+        setNewFields(function (old) {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_OptionsField__WEBPACK_IMPORTED_MODULE_19__.default, {
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
+          })]);
+        });
+        break;
+
+      case 'phoneNumber':
+        setNewFields(function (old) {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_PhoneNumberField__WEBPACK_IMPORTED_MODULE_11__.default, {
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
+          })]);
+        });
+        break;
+
+      case 'number':
+        setNewFields(function (old) {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_NumberField__WEBPACK_IMPORTED_MODULE_12__.default, {
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
+          })]);
+        });
+        break;
+
+      case 'label':
+        setNewFields(function (old) {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_LabelField__WEBPACK_IMPORTED_MODULE_13__.default, {
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
+          })]);
+        });
+        break;
+
+      case 'job':
+        setNewFields(function (old) {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_JobField__WEBPACK_IMPORTED_MODULE_14__.default, {
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
+          })]);
+        });
+        break;
+
+      case 'gender':
+        setNewFields(function (old) {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_GenderField__WEBPACK_IMPORTED_MODULE_15__.default, {
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
+          })]);
+        });
+        break;
+
+      case 'email':
+        setNewFields(function (old) {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_EmailField__WEBPACK_IMPORTED_MODULE_16__.default, {
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
+          })]);
+        });
+        break;
+
+      case 'double':
+        setNewFields(function (old) {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_DoubleField__WEBPACK_IMPORTED_MODULE_17__.default, {
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
+          })]);
+        });
+        break;
+
+      case 'date':
+        setNewFields(function (old) {
+          return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_DateField__WEBPACK_IMPORTED_MODULE_18__.default, {
+            setField: function setField(config) {
+              return setFieldConfig(newFields.length, config);
+            }
+          })]);
+        });
+        break;
+    }
+  }
+
+  function removeField(index) {
+    setNewFields(newFields.filter(function (newField, i) {
+      return i != index;
+    }));
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_1__.useEffect(function () {
+    console.log(fieldsConfigs);
+  }, [fieldsConfigs]);
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_1__.useState(''),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      type = _React$useState6[0],
+      setType = _React$useState6[1];
+
+  function submit() {
+    return _submit.apply(this, arguments);
+  }
+
+  function _submit() {
+    _submit = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_4___default().post(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.createFormStructure, {
+                type: type,
+                array_of_fields: {
+                  "class": 'App\\FieldsTypes\\ArrayOfFields',
+                  fields: fieldsConfigs
+                }
+              });
+
+            case 3:
+              res = _context.sent;
+              console.log(res.data);
+              _context.next = 10;
+              break;
+
+            case 7:
+              _context.prev = 7;
+              _context.t0 = _context["catch"](0);
+              (0,_utility_logError__WEBPACK_IMPORTED_MODULE_3__.default)(_context.t0);
+
+            case 10:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[0, 7]]);
+    }));
+    return _submit.apply(this, arguments);
+  }
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)("div", {
+      className: "text-center m-4",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("h3", {
+        className: "row justify-content-center",
+        children: "\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u0646\u0645\u0648\u0630\u062C"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("input", {
+        size: "50",
+        className: "align-self-center",
+        type: "string",
+        onChange: function onChange(e) {
+          return setType(e.target.value);
+        }
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("div", {
+      className: "row warp ",
+      children: newFields.map(function (NewField, index) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)("div", {
+          className: "border border-success my-2",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("div", {
+            className: "col-5",
+            children: NewField
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("div", {
+            className: "col-1",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("button", {
+              className: "btn btn-secondary",
+              type: "button",
+              onClick: function onClick() {
+                return removeField(index);
+              },
+              children: "X"
+            })
+          })]
+        }, index);
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)("div", {
+      className: "row justify-content-between border",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)("select", {
+        value: '',
+        onChange: typeChoice,
+        className: "p-2 rounded m-2",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("option", {
+          value: "",
+          children: "\u0627\u0636\u0641 \u0646\u0648\u0639 \u062D\u0642\u0644"
+        }), fieldsTypes.map(function (type, index) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("option", {
+            value: type,
+            children: type
+          }, index);
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("button", {
+        className: "btn btn-primary m-2",
+        onClick: function onClick() {
+          return submit();
+        },
+        children: "\u0627\u0646\u0634\u0627\u0621"
+      })]
+    })]
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FieldsCreator);
+
+/***/ }),
+
 /***/ "./resources/js/components/formStructure/FormStructureShow.js":
 /*!********************************************************************!*\
   !*** ./resources/js/components/formStructure/FormStructureShow.js ***!
@@ -11640,7 +12086,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _FieldsCreator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../FieldsCreator */ "./resources/js/components/FieldsCreator/index.js");
+/* harmony import */ var _FieldsCreator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FieldsCreator */ "./resources/js/components/formStructure/FieldsCreator/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -11649,7 +12095,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function FormStructuresCreate(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-    className: "col-md-10",
+    className: "col-md-12",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: "card",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
