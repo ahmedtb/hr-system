@@ -22,7 +22,7 @@ export default function CourseShow(props) {
     }, [])
 
     return (
-        <div className="col-md-10">
+        <div className="col-md-12">
 
             <div className="card">
                 <div className="card-header">
@@ -30,21 +30,42 @@ export default function CourseShow(props) {
                 </div>
 
                 <div className="card-body">
-                    <div className="row justify-content-center">
-                        <ul className="list-group" >
-                            <li className="list-group-item" >
-                                start_date {course?.start_date}
-                            </li>
-                            <li className="list-group-item" >
-                                title {course?.title}
-                            </li>
-                            <li className="list-group-item" >
-                                status {course?.status}
-                            </li>
-                            <li className="list-group-item" >
-                                program <Link to={routes.showProgram.replace(':id', course?.training_program.id)}>{course?.training_program.title}</Link>
-                            </li>
-                        </ul>
+                    <div className="row justify-content-center warp">
+                        <div className="col-5 border border-dark rounded m-2 text-center">
+                            عنوان الدورة: {course?.title}
+                        </div>
+                        <div className="col-5 border border-dark rounded m-2 text-center">
+                            <div className="row">
+                                تاريخ بدء الدورة: {course?.start_date}
+                            </div>
+                            <div className="row">
+                                تاريخ انتهاء الدورة: {course?.end_date}
+                            </div>
+                        </div>
+                        <div className="col-5 border  border-dark rounded m-2 text-center">
+                            حالة الدورة: {course?.state}
+                        </div>
+                        <div className="col-5 border  border-dark rounded m-2 text-center">
+                            اسم البرنامج التدريبي للدورة: <Link to={routes.showProgram.replace(':id', course?.training_program.id)}>{course?.training_program.title}</Link>
+                        </div>
+                        <div className="col-5 border  border-dark rounded m-2 text-center">
+                            الايام التي مضت في الدورة {course?.wentDays?.length}
+                        </div>
+                        <div className="col-5 border  border-dark rounded m-2 text-center">
+                            الايام المتبقية {course?.remainingDays?.length}
+                        </div>
+                        <div className="col-5 border  border-dark rounded m-2 text-center">
+                            نسبة الحضورة {course?.attendancePercentage} %
+                        </div>
+                        <div className="col-5 border  border-dark rounded m-2 text-center">
+                            عدد المسجلين {course?.employees.length + course?.targeted_individuals.length}
+                        </div>
+                        <div className="col-5 border  border-dark rounded m-2 text-center">
+                            عدد الموظفيين المسجلين {course?.employees.length}
+                        </div>
+                        <div className="col-5 border  border-dark rounded m-2 text-center">
+                            عدد المستهدفين في المسجلين في الدورة {course?.targeted_individuals.length}
+                        </div>
                     </div>
                 </div>
 
@@ -52,35 +73,14 @@ export default function CourseShow(props) {
 
             <div className="card">
                 <div className="card-header">
-                    احصائيات
+                    اجراءات
                 </div>
 
                 <div className="card-body">
-                    <ul className="list-group" >
-                        <li className="list-group-item" >
-                            حالة الدورة {course?.state}
-                        </li>
-                        <li className="list-group-item" >
-                            الايام التي مضت في الدورة {course?.wentDays?.length}
-                        </li>
-                        <li className="list-group-item" >
-                            الايام المتبقية {course?.remainingDays?.length}
-                        </li>
-                        <li className="list-group-item" >
-                            نسبة الحضورة {course?.attendancePercentage} %
-                        </li>
-                        <li className="list-group-item" >
-                            عدد المسجلين {course?.employees.length + course?.targeted_individuals.length}
-                        </li>
-                        <li className="list-group-item" >
-                            عدد الموظفيين المسجلين {course?.employees.length }
-                        </li>
-                        <li className="list-group-item" >
-                            عدد المستهدفين في المسجلين في الدورة {course?.targeted_individuals.length}
-                        </li>
-                    </ul>
+                   تسجيلات الحضور
                 </div>
             </div>
+
 
             <div className="card">
                 <div className="card-header">

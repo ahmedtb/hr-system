@@ -20,13 +20,13 @@ import DateField from './DateField'
 import OptionsField from './OptionsField';
 
 const fieldsTypes = [
-    'textArea', 'table', 'string', 'socialStatus', 'rating', 'customRating', 'options',
-    'phoneNumber', 'number', 'label', 'job', 'gender',
-    'email', 'double', 'date',
+    'حقل نص طويل', 'حقل جدول', 'حقل نصي', 'حقل حالة اجتماعية', 'حقل تقييم', 'حقل تقييم متغيير', 'حقل خيارات',
+    'حقل رقم هاتف', 'حقل رقم', 'حقل نص توضيحي', 'حقل تحديد الوظيفة', 'حقل تحديد الجنس',
+    'حقل البريد الالكتروني', 'حقل رقم مركب', 'حقل تاريخ',
 ]
 function FieldsCreator() {
 
-    const [fieldsConfigs, setFieldsConfigs] = React.useState([])
+    const [fieldsConfigs, setFieldsConfigs] = React.useState({})
 
     function setFieldConfig(index, config) {
         setFieldsConfigs(data => ({
@@ -42,56 +42,81 @@ function FieldsCreator() {
 
     function addField(type) {
         switch (type) {
-            case 'textArea':
+            case 'حقل نص طويل':
                 setNewFields(old => ([...old, <TextAreaField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
-            case 'table':
+            case 'حقل جدول':
                 setNewFields(old => ([...old, <TableField2 setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
-            case 'string':
+            case 'حقل نصي':
                 setNewFields(old => ([...old, <StringField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
-            case 'socialStatus':
+            case 'حقل حالة اجتماعية':
                 setNewFields(old => ([...old, <SocialStatusField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
-            case 'rating':
+            case 'حقل تقييم':
                 setNewFields(old => ([...old, <RatingField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
-            case 'customRating':
+            case 'حقل تقييم متغيير':
                 setNewFields(old => ([...old, <CustomRatingField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
-            case 'options':
+            case 'حقل خيارات':
                 setNewFields(old => ([...old, <OptionsField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
-            case 'phoneNumber':
+            case 'حقل رقم هاتف':
                 setNewFields(old => ([...old, <PhoneNumberField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
-            case 'number':
+            case 'حقل رقم':
                 setNewFields(old => ([...old, <NumberField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
-            case 'label':
+            case 'حقل نص توضيحي':
                 setNewFields(old => ([...old, <LabelField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
-            case 'job':
+            case 'حقل تحديد الوظيفة':
                 setNewFields(old => ([...old, <JobField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
-            case 'gender':
+            case 'حقل تحديد الجنس':
                 setNewFields(old => ([...old, <GenderField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
-            case 'email':
+            case 'حقل البريد الالكتروني':
                 setNewFields(old => ([...old, <EmailField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
-            case 'double':
+            case 'حقل رقم مركب':
                 setNewFields(old => ([...old, <DoubleField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
-            case 'date':
+            case 'حقل تاريخ':
                 setNewFields(old => ([...old, <DateField setField={(config) => setFieldConfig(newFields.length, config)} />]))
                 break;
         }
     }
 
     function removeField(index) {
-        setNewFields(newFields.filter((newField, i) => i != index));
+        // setFieldsConfigs({})
+        // setNewFields(old => {
+        //     let a = [...old]
+        //     a = a.filter((element, i) => i != index)
+        //     console.log(a)
+
+        //     a.map((field, i)=>{
+        //         console.log(field)
+        //         // field.props.setField = (config) => setFieldConfig(i, config)
+        //     })
+
+        //     return a
+        // })
+        // setFieldsConfigs(pre => {
+        //     let newConfig = {...pre}
+        //     delete newConfig[index]
+        //     let reorderIndexes = {}
+        //     let i = 0
+        //     for (const [key, value] of Object.entries(newConfig)) {
+        //         console.log('value', value)
+        //         reorderIndexes[i] = value
+        //         i++
+        //     }
+        //     return reorderIndexes
+        // })
+
     }
 
     React.useEffect(() => {
@@ -124,14 +149,14 @@ function FieldsCreator() {
                 <input size="50" className="align-self-center" type="string" onChange={(e) => setType(e.target.value)} />
             </div>
 
-            <div className="row warp ">
+            <div className="">
                 {
                     newFields.map((NewField, index) => (
-                        <div key={index} className="border border-success my-2">
-                                <div className="col-5">{NewField}</div>
-                                <div className="col-1">
-                                    <button className="btn btn-secondary" type="button" onClick={() => removeField(index)}>X</button>
-                            </div>
+                        <div key={index} className="col-12 border border-secondary rounded my-2 py-3">
+                            {/* <div className="row">
+                                <button className="btn btn-secondary ml-auto" type="button" onClick={() => removeField(index)}>X</button>
+                            </div> */}
+                            <div className="row justify-content-center">{NewField}</div>
                         </div>
                     ))
                 }

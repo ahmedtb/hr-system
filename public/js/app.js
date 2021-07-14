@@ -7592,7 +7592,7 @@ function CourseShow(props) {
     });
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
-    className: "col-md-10",
+    className: "col-md-12",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
       className: "card",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
@@ -7600,61 +7600,58 @@ function CourseShow(props) {
         children: ["\u0627\u0644\u062F\u0648\u0631\u0629 \u0631\u0642\u0645 ", course === null || course === void 0 ? void 0 : course.id]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
         className: "card-body",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-          className: "row justify-content-center",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("ul", {
-            className: "list-group",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("li", {
-              className: "list-group-item",
-              children: ["start_date ", course === null || course === void 0 ? void 0 : course.start_date]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("li", {
-              className: "list-group-item",
-              children: ["title ", course === null || course === void 0 ? void 0 : course.title]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("li", {
-              className: "list-group-item",
-              children: ["status ", course === null || course === void 0 ? void 0 : course.status]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("li", {
-              className: "list-group-item",
-              children: ["program ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Link, {
-                to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_4__.default.showProgram.replace(':id', course === null || course === void 0 ? void 0 : course.training_program.id),
-                children: course === null || course === void 0 ? void 0 : course.training_program.title
-              })]
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+          className: "row justify-content-center warp",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+            className: "col-5 border border-dark rounded m-2 text-center",
+            children: ["\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u062F\u0648\u0631\u0629: ", course === null || course === void 0 ? void 0 : course.title]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+            className: "col-5 border border-dark rounded m-2 text-center",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+              className: "row",
+              children: ["\u062A\u0627\u0631\u064A\u062E \u0628\u062F\u0621 \u0627\u0644\u062F\u0648\u0631\u0629: ", course === null || course === void 0 ? void 0 : course.start_date]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+              className: "row",
+              children: ["\u062A\u0627\u0631\u064A\u062E \u0627\u0646\u062A\u0647\u0627\u0621 \u0627\u0644\u062F\u0648\u0631\u0629: ", course === null || course === void 0 ? void 0 : course.end_date]
             })]
-          })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+            className: "col-5 border  border-dark rounded m-2 text-center",
+            children: ["\u062D\u0627\u0644\u0629 \u0627\u0644\u062F\u0648\u0631\u0629: ", course === null || course === void 0 ? void 0 : course.state]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+            className: "col-5 border  border-dark rounded m-2 text-center",
+            children: ["\u0627\u0633\u0645 \u0627\u0644\u0628\u0631\u0646\u0627\u0645\u062C \u0627\u0644\u062A\u062F\u0631\u064A\u0628\u064A \u0644\u0644\u062F\u0648\u0631\u0629: ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Link, {
+              to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_4__.default.showProgram.replace(':id', course === null || course === void 0 ? void 0 : course.training_program.id),
+              children: course === null || course === void 0 ? void 0 : course.training_program.title
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+            className: "col-5 border  border-dark rounded m-2 text-center",
+            children: ["\u0627\u0644\u0627\u064A\u0627\u0645 \u0627\u0644\u062A\u064A \u0645\u0636\u062A \u0641\u064A \u0627\u0644\u062F\u0648\u0631\u0629 ", course === null || course === void 0 ? void 0 : (_course$wentDays = course.wentDays) === null || _course$wentDays === void 0 ? void 0 : _course$wentDays.length]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+            className: "col-5 border  border-dark rounded m-2 text-center",
+            children: ["\u0627\u0644\u0627\u064A\u0627\u0645 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 ", course === null || course === void 0 ? void 0 : (_course$remainingDays = course.remainingDays) === null || _course$remainingDays === void 0 ? void 0 : _course$remainingDays.length]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+            className: "col-5 border  border-dark rounded m-2 text-center",
+            children: ["\u0646\u0633\u0628\u0629 \u0627\u0644\u062D\u0636\u0648\u0631\u0629 ", course === null || course === void 0 ? void 0 : course.attendancePercentage, " %"]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+            className: "col-5 border  border-dark rounded m-2 text-center",
+            children: ["\u0639\u062F\u062F \u0627\u0644\u0645\u0633\u062C\u0644\u064A\u0646 ", (course === null || course === void 0 ? void 0 : course.employees.length) + (course === null || course === void 0 ? void 0 : course.targeted_individuals.length)]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+            className: "col-5 border  border-dark rounded m-2 text-center",
+            children: ["\u0639\u062F\u062F \u0627\u0644\u0645\u0648\u0638\u0641\u064A\u064A\u0646 \u0627\u0644\u0645\u0633\u062C\u0644\u064A\u0646 ", course === null || course === void 0 ? void 0 : course.employees.length]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+            className: "col-5 border  border-dark rounded m-2 text-center",
+            children: ["\u0639\u062F\u062F \u0627\u0644\u0645\u0633\u062A\u0647\u062F\u0641\u064A\u0646 \u0641\u064A \u0627\u0644\u0645\u0633\u062C\u0644\u064A\u0646 \u0641\u064A \u0627\u0644\u062F\u0648\u0631\u0629 ", course === null || course === void 0 ? void 0 : course.targeted_individuals.length]
+          })]
         })
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
       className: "card",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
         className: "card-header",
-        children: "\u0627\u062D\u0635\u0627\u0626\u064A\u0627\u062A"
+        children: "\u0627\u062C\u0631\u0627\u0621\u0627\u062A"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
         className: "card-body",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("ul", {
-          className: "list-group",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("li", {
-            className: "list-group-item",
-            children: ["\u062D\u0627\u0644\u0629 \u0627\u0644\u062F\u0648\u0631\u0629 ", course === null || course === void 0 ? void 0 : course.state]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("li", {
-            className: "list-group-item",
-            children: ["\u0627\u0644\u0627\u064A\u0627\u0645 \u0627\u0644\u062A\u064A \u0645\u0636\u062A \u0641\u064A \u0627\u0644\u062F\u0648\u0631\u0629 ", course === null || course === void 0 ? void 0 : (_course$wentDays = course.wentDays) === null || _course$wentDays === void 0 ? void 0 : _course$wentDays.length]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("li", {
-            className: "list-group-item",
-            children: ["\u0627\u0644\u0627\u064A\u0627\u0645 \u0627\u0644\u0645\u062A\u0628\u0642\u064A\u0629 ", course === null || course === void 0 ? void 0 : (_course$remainingDays = course.remainingDays) === null || _course$remainingDays === void 0 ? void 0 : _course$remainingDays.length]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("li", {
-            className: "list-group-item",
-            children: ["\u0646\u0633\u0628\u0629 \u0627\u0644\u062D\u0636\u0648\u0631\u0629 ", course === null || course === void 0 ? void 0 : course.attendancePercentage, " %"]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("li", {
-            className: "list-group-item",
-            children: ["\u0639\u062F\u062F \u0627\u0644\u0645\u0633\u062C\u0644\u064A\u0646 ", (course === null || course === void 0 ? void 0 : course.employees.length) + (course === null || course === void 0 ? void 0 : course.targeted_individuals.length)]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("li", {
-            className: "list-group-item",
-            children: ["\u0639\u062F\u062F \u0627\u0644\u0645\u0648\u0638\u0641\u064A\u064A\u0646 \u0627\u0644\u0645\u0633\u062C\u0644\u064A\u0646 ", course === null || course === void 0 ? void 0 : course.employees.length]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("li", {
-            className: "list-group-item",
-            children: ["\u0639\u062F\u062F \u0627\u0644\u0645\u0633\u062A\u0647\u062F\u0641\u064A\u0646 \u0641\u064A \u0627\u0644\u0645\u0633\u062C\u0644\u064A\u0646 \u0641\u064A \u0627\u0644\u062F\u0648\u0631\u0629 ", course === null || course === void 0 ? void 0 : course.targeted_individuals.length]
-          })]
-        })
+        children: "\u062A\u0633\u062C\u064A\u0644\u0627\u062A \u0627\u0644\u062D\u0636\u0648\u0631"
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
       className: "card",
@@ -11507,10 +11504,10 @@ function TextAreaField(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "text-center",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h6", {
-      className: " justify-content-center m-2",
+      className: "row justify-content-center m-2",
       children: "\u062D\u0642\u0644 \u0646\u0635\u064A \u0637\u0648\u064A\u0644"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-      className: " justify-content-center m-2",
+      className: "row justify-content-center m-2",
       children: ["\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u062D\u0642\u0644", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
         onChange: function onChange(e) {
           setlable(e.target.value);
@@ -11518,7 +11515,7 @@ function TextAreaField(props) {
         }
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("strong", {
-      className: " justify-content-center m-2",
+      className: "row justify-content-center m-2",
       children: label
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("textarea", {
       className: "border border-1 rounded",
@@ -11620,10 +11617,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-var fieldsTypes = ['textArea', 'table', 'string', 'socialStatus', 'rating', 'customRating', 'options', 'phoneNumber', 'number', 'label', 'job', 'gender', 'email', 'double', 'date'];
+var fieldsTypes = ['حقل نص طويل', 'حقل جدول', 'حقل نصي', 'حقل حالة اجتماعية', 'حقل تقييم', 'حقل تقييم متغيير', 'حقل خيارات', 'حقل رقم هاتف', 'حقل رقم', 'حقل نص توضيحي', 'حقل تحديد الوظيفة', 'حقل تحديد الجنس', 'حقل البريد الالكتروني', 'حقل رقم مركب', 'حقل تاريخ'];
 
 function FieldsCreator() {
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_1__.useState([]),
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_1__.useState({}),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       fieldsConfigs = _React$useState2[0],
       setFieldsConfigs = _React$useState2[1];
@@ -11645,7 +11642,7 @@ function FieldsCreator() {
 
   function addField(type) {
     switch (type) {
-      case 'textArea':
+      case 'حقل نص طويل':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_TextAreaField__WEBPACK_IMPORTED_MODULE_7__.default, {
             setField: function setField(config) {
@@ -11655,7 +11652,7 @@ function FieldsCreator() {
         });
         break;
 
-      case 'table':
+      case 'حقل جدول':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_TableField2__WEBPACK_IMPORTED_MODULE_6__.default, {
             setField: function setField(config) {
@@ -11665,7 +11662,7 @@ function FieldsCreator() {
         });
         break;
 
-      case 'string':
+      case 'حقل نصي':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_StringField__WEBPACK_IMPORTED_MODULE_5__.default, {
             setField: function setField(config) {
@@ -11675,7 +11672,7 @@ function FieldsCreator() {
         });
         break;
 
-      case 'socialStatus':
+      case 'حقل حالة اجتماعية':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_SocialStatusField__WEBPACK_IMPORTED_MODULE_8__.default, {
             setField: function setField(config) {
@@ -11685,7 +11682,7 @@ function FieldsCreator() {
         });
         break;
 
-      case 'rating':
+      case 'حقل تقييم':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_RatingField__WEBPACK_IMPORTED_MODULE_9__.default, {
             setField: function setField(config) {
@@ -11695,7 +11692,7 @@ function FieldsCreator() {
         });
         break;
 
-      case 'customRating':
+      case 'حقل تقييم متغيير':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_CustomRatingField__WEBPACK_IMPORTED_MODULE_10__.default, {
             setField: function setField(config) {
@@ -11705,7 +11702,7 @@ function FieldsCreator() {
         });
         break;
 
-      case 'options':
+      case 'حقل خيارات':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_OptionsField__WEBPACK_IMPORTED_MODULE_19__.default, {
             setField: function setField(config) {
@@ -11715,7 +11712,7 @@ function FieldsCreator() {
         });
         break;
 
-      case 'phoneNumber':
+      case 'حقل رقم هاتف':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_PhoneNumberField__WEBPACK_IMPORTED_MODULE_11__.default, {
             setField: function setField(config) {
@@ -11725,7 +11722,7 @@ function FieldsCreator() {
         });
         break;
 
-      case 'number':
+      case 'حقل رقم':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_NumberField__WEBPACK_IMPORTED_MODULE_12__.default, {
             setField: function setField(config) {
@@ -11735,7 +11732,7 @@ function FieldsCreator() {
         });
         break;
 
-      case 'label':
+      case 'حقل نص توضيحي':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_LabelField__WEBPACK_IMPORTED_MODULE_13__.default, {
             setField: function setField(config) {
@@ -11745,7 +11742,7 @@ function FieldsCreator() {
         });
         break;
 
-      case 'job':
+      case 'حقل تحديد الوظيفة':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_JobField__WEBPACK_IMPORTED_MODULE_14__.default, {
             setField: function setField(config) {
@@ -11755,7 +11752,7 @@ function FieldsCreator() {
         });
         break;
 
-      case 'gender':
+      case 'حقل تحديد الجنس':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_GenderField__WEBPACK_IMPORTED_MODULE_15__.default, {
             setField: function setField(config) {
@@ -11765,7 +11762,7 @@ function FieldsCreator() {
         });
         break;
 
-      case 'email':
+      case 'حقل البريد الالكتروني':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_EmailField__WEBPACK_IMPORTED_MODULE_16__.default, {
             setField: function setField(config) {
@@ -11775,7 +11772,7 @@ function FieldsCreator() {
         });
         break;
 
-      case 'double':
+      case 'حقل رقم مركب':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_DoubleField__WEBPACK_IMPORTED_MODULE_17__.default, {
             setField: function setField(config) {
@@ -11785,7 +11782,7 @@ function FieldsCreator() {
         });
         break;
 
-      case 'date':
+      case 'حقل تاريخ':
         setNewFields(function (old) {
           return [].concat(_toConsumableArray(old), [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)(_DateField__WEBPACK_IMPORTED_MODULE_18__.default, {
             setField: function setField(config) {
@@ -11797,10 +11794,29 @@ function FieldsCreator() {
     }
   }
 
-  function removeField(index) {
-    setNewFields(newFields.filter(function (newField, i) {
-      return i != index;
-    }));
+  function removeField(index) {// setFieldsConfigs({})
+    // setNewFields(old => {
+    //     let a = [...old]
+    //     a = a.filter((element, i) => i != index)
+    //     console.log(a)
+    //     a.map((field, i)=>{
+    //         console.log(field)
+    //         // field.props.setField = (config) => setFieldConfig(i, config)
+    //     })
+    //     return a
+    // })
+    // setFieldsConfigs(pre => {
+    //     let newConfig = {...pre}
+    //     delete newConfig[index]
+    //     let reorderIndexes = {}
+    //     let i = 0
+    //     for (const [key, value] of Object.entries(newConfig)) {
+    //         console.log('value', value)
+    //         reorderIndexes[i] = value
+    //         i++
+    //     }
+    //     return reorderIndexes
+    // })
   }
 
   react__WEBPACK_IMPORTED_MODULE_1__.useEffect(function () {
@@ -11869,24 +11885,14 @@ function FieldsCreator() {
         }
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("div", {
-      className: "row warp ",
+      className: "",
       children: newFields.map(function (NewField, index) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)("div", {
-          className: "border border-success my-2",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("div", {
-            className: "col-5",
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("div", {
+          className: "col-12 border border-secondary rounded my-2 py-3",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("div", {
+            className: "row justify-content-center",
             children: NewField
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("div", {
-            className: "col-1",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsx)("button", {
-              className: "btn btn-secondary",
-              type: "button",
-              onClick: function onClick() {
-                return removeField(index);
-              },
-              children: "X"
-            })
-          })]
+          })
         }, index);
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_20__.jsxs)("div", {
