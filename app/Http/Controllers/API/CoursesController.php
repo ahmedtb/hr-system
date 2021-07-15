@@ -7,6 +7,7 @@ use App\Models\TrainingCourse;
 use App\Rules\CourseStatusRule;
 use App\Rules\WeekScheduleRule;
 use App\Http\Controllers\Controller;
+use App\Models\CourseAttendance;
 use DateTime;
 use Illuminate\Support\Facades\Validator;
 
@@ -18,8 +19,10 @@ class CoursesController extends Controller
         $course = TrainingCourse::where('id', $id)
             ->with(['trainingProgram', 'targetedIndividuals', 'employees'])
             ->first();
+        $todayAttendances = $course->attendances()->whereDate('date',(new DateTime('today'))->format('Y-m-d') )->get();
         return [
             'course' => $course,
+            // 'todayAttendances' => $todayAttendances
         ];
     }
 
@@ -63,7 +66,7 @@ class CoursesController extends Controller
         return $course->week_schedule;
     }
 
-    public function getAttendance(int $id)
+    public function getAttendances(int $id)
     {
         Validator::make(['id' => $id], [
             'id' => 'required|exists:training_courses,id'
@@ -72,6 +75,16 @@ class CoursesController extends Controller
         $course = TrainingCourse::where('id', $id)->first();
 
         return $course->attendances;
+    }
+
+    public function getAttendanceByDate(int $id, string $date)
+    {
+        Validator::make(['id' => $id, 'date' => $date], [
+            'id' => 'required|exists:training_courses,id',
+            'date' => 'required|date'
+
+        ])->validate();
+        return CourseAttendance::where('training_course_id', $id)->whereDate('date',$date)->get();
     }
 
     public function getForms(int $id)

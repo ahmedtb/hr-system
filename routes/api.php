@@ -93,12 +93,14 @@ Route::post('course', [CoursesController::class, 'create']);
 Route::get('course/index', [CoursesController::class, 'index']);
 Route::get('course/{id}', [CoursesController::class, 'show']);
 Route::get('course/{id}/schedual', [CoursesController::class, 'getSchedual']);
-Route::get('course/{id}/attendance', [CoursesController::class, 'getAttendance']);
+Route::get('course/{id}/attendances', [CoursesController::class, 'getAttendances']);
 Route::get('course/{id}/forms', [CoursesController::class, 'getForms']);
 Route::get('course/{id}/employees', [CoursesController::class, 'getEmployees']);
+Route::get('course/{id}/attendances/{date}', [CoursesController::class, 'getAttendanceByDate']);
 
 Route::get('getTrainingCourses', [CoursesController::class, 'getTrainingCourses']);
 Route::get('getTrainingCourses', [CoursesController::class, 'getTrainingCourses']);
+
 
 Route::post('interview/create', [InterviewsAssessmentsController::class, 'createInterview']);
 Route::get('interview/index', [InterviewsAssessmentsController::class, 'indexInterviews']);

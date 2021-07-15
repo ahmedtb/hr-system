@@ -8,6 +8,7 @@ use Tests\TestCase;
 use App\Models\CourseAttendance;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Feature\API\CoursesTests;
 
 class CourseAttendanceTest extends TestCase
 {
@@ -52,5 +53,12 @@ class CourseAttendanceTest extends TestCase
             ->create();
 
         $this->assertEquals(CourseAttendance::between(new DateTime('now'),new DateTime('now + 10 day'))->count(), 10);
+    }
+
+    public function test_attendance_record_allows_comes_with()
+    {
+        CourseAttendance::factory()->create();
+        $attendace = CourseAttendance::with('profile')->first();
+        dd($attendace);
     }
 }

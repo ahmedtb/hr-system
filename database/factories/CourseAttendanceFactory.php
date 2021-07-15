@@ -62,6 +62,8 @@ class CourseAttendanceFactory extends Factory
             $day = array_rand($schedualTable);
             $entrance_time = $schedualTable[$day][0];
             return [
+                'training_course_id' => $course->id,
+
                 'date' => $day,
                 'entrance_time' => $entrance_time,
             ];

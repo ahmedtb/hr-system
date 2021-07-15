@@ -12,6 +12,15 @@ class CourseAttendance extends Model
 
     protected $guarded = [];
 
+    protected $appends = [
+        'profile'
+    ];
+
+    public function getProfileAttribute()
+    {
+        return $this->profile();
+    }
+
     public function profile()
     {
         return $this->morphTo();
