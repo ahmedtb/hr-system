@@ -56,6 +56,8 @@ export default {
     getProgram: '/api/program/:id',
     getJob: '/api/job/:id',
     unitShow: '/api/unit/:id',
+    getAllAttendances: '/api/course/:id/attendances',
     getAttendancesByDay: '/api/course/:id/attendances/:date',
+
 
 }

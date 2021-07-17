@@ -136,6 +136,7 @@ class TrainingCourse extends Model
                 $scheduleTable[$day] = [$schedule['begin'], $schedule['end']];
             }
         }
+        ksort($scheduleTable);
         return $scheduleTable;
     }
 
@@ -202,7 +203,7 @@ class TrainingCourse extends Model
     public function wentDays()
     {
         $wentDays = [];
-        if ($this->isResumed()) {
+        if ($this->isResumed() || $this->isDone()) {
             foreach ($this->week_schedule as $dayName => $schedule) {
                 $days = $this->getDaysInRange($this->start_date, Carbon::today(), $dayName);
                 $wentDays = array_merge($wentDays, $days);

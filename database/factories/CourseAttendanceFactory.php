@@ -61,11 +61,26 @@ class CourseAttendanceFactory extends Factory
             $schedualTable = $course->schedualTable();
             $day = array_rand($schedualTable);
             $entrance_time = $schedualTable[$day][0];
+
+            $profile = null;
+            $random = rand(1, 2);
+            if ($random == 1) {
+                $profile = Employee::factory()->create();
+                $course->enrollEmployee($profile);
+            } else {
+                $profile = TargetedIndividual::factory()->create();
+                $course->enrollIndividual($profile);
+            }
+
+
             return [
                 'training_course_id' => $course->id,
-
                 'date' => $day,
                 'entrance_time' => $entrance_time,
+
+                'person_name' => null,
+                'profile_id' => $profile->id,
+                'profile_type' => ($random == 1)? Employee::class : TargetedIndividual::class,
             ];
         });
     }

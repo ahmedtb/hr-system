@@ -7,19 +7,17 @@ import { useParams, Link } from 'react-router-dom';
 import EmployeesTable from '../partials/EmployeesTable'
 import TargetedIndividualsTable from '../partials/TargetedIndividualsTable'
 import SchedualTable from './SchedualTable'
-// import AttendanceTable from './AttendanceTable'
-import AttendancesManager from './AttendancesManager'
 
 export default function CourseShow(props) {
 
     const { id } = useParams();
     const [course, setcourse] = React.useState(null)
-    // const [todayAttendances, settodayAttendances] = React.useState(null)
+    const [attendances, setattendances] = React.useState(null)
     React.useEffect(() => {
         axios.get(ApiEndpoints.getCourse?.replace(':id', id)).then((response) => {
             setcourse(response.data.course)
-            // settodayAttendances(response.data.todayAttendances)
-            console.log(response.data)
+            setattendances(response.data.attendances)
+            // console.log('getCourse', response.data)
         }).catch((err) => {
             logError(err)
         })
@@ -81,32 +79,14 @@ export default function CourseShow(props) {
                 </div>
 
                 <div className="card-body">
-
-                    <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#attendances">
-                        تسجيلات الحضور
-                    </button>
-
-                    <div className="modal fade" id="attendances" tabIndex="-1" role="dialog" aria-labelledby="attendancesTitle" aria-hidden="true">
-                        <div className="modal-dialog modal-dialog-centered" role="document">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h5 className="modal-title" id="exampleModalLongTitle">تسجيلات الحضور</h5>
-                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div className="modal-body">
-                                    {/* <AttendanceTable course={course} table={todayAttendances} /> */}
-                                    <AttendancesManager course={course} />
-                                </div>
-                                <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" className="btn btn-primary">Save changes</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    <Link
+                        to={{
+                            pathname: routes.showAttendances.replace(':course_id', course?.id),
+                            state: {
+                                attendances: attendances
+                            }
+                        }}
+                    >سجلات الحضور</Link>
                 </div>
             </div>
 
@@ -117,7 +97,7 @@ export default function CourseShow(props) {
                 </div>
 
                 <div className="card-body">
-                    <SchedualTable schedualTable={course?.schedualTable} />
+                    <SchedualTable schedualTable={course?.schedualTable} attendances={attendances} />
                 </div>
             </div>
 

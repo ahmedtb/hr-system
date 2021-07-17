@@ -19,10 +19,10 @@ class CoursesController extends Controller
         $course = TrainingCourse::where('id', $id)
             ->with(['trainingProgram', 'targetedIndividuals', 'employees'])
             ->first();
-        $todayAttendances = $course->attendances()->whereDate('date',(new DateTime('today'))->format('Y-m-d') )->get();
+        $attendances = $course->attendances;
         return [
             'course' => $course,
-            // 'todayAttendances' => $todayAttendances
+            'attendances' => $attendances
         ];
     }
 

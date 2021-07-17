@@ -27,6 +27,7 @@ const routes = {
     showProgram: '/react/program/:id',
     showUnit: '/react/unit/:id',
     showJob: '/react/job/:id',
+    showAttendances: '/react/attendances/:course_id',
     
     programIndex: '/react/program/index',
     CoachesList: '/react/coach/index',
