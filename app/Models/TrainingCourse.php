@@ -242,11 +242,11 @@ class TrainingCourse extends Model
         $isInSchedual = $this->IsInSchedual($date, $entrance_time);
         $enrolled = $this->employees()->where('employees.id', $employee->id)->first() != null;
 
-        $notAttendedTheDay = $this->attendances()
+        $notAttendedThisDay = $this->attendances()
             ->where('profile_id', $employee->id)
             ->where('profile_type', Employee::class)
             ->where('date', $date)->count() == 0;
-        if ($enrolled && $isInSchedual && $notAttendedTheDay) {
+        if ($enrolled && $isInSchedual && $notAttendedThisDay) {
             CourseAttendance::create([
                 'profile_id' => $employee->id,
                 'profile_type' => Employee::class,
@@ -265,8 +265,11 @@ class TrainingCourse extends Model
     {
         $isInSchedual = $this->IsInSchedual($date, $entrance_time);
         $enrolled = $this->targetedIndividuals()->where('targeted_individuals.id', $individual->id)->first() != null;
-        // dd($enrolled);
-        if ($enrolled && $isInSchedual) {
+        $notAttendedThisDay = $this->attendances()
+            ->where('profile_id', $individual->id)
+            ->where('profile_type', TargetedIndividual::class)
+            ->where('date', $date)->count() == 0;
+        if ($enrolled && $isInSchedual && $notAttendedThisDay) {
             CourseAttendance::create([
                 'profile_id' => $individual->id,
                 'profile_type' => TargetedIndividual::class,

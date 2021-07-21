@@ -112,4 +112,14 @@ class CoursesController extends Controller
         $course = TrainingCourse::where('id', $id)->first();
         return $course->employees()->get();
     }
+
+    public function getIndividuals($id)
+    {
+        $validation = Validator::make(['id' => $id], [
+            'id' => 'required|exists:training_courses,id'
+        ])->validate();
+
+        $course = TrainingCourse::where('id', $id)->first();
+        return $course->targetedIndividuals()->get();
+    }
 }

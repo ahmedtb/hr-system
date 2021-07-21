@@ -21,6 +21,7 @@ use App\Http\Controllers\API\Assessments\CoachCourseAssessmentsController;
 use App\Http\Controllers\API\Assessments\TrialPeriodAssessmentsController;
 use App\Http\Controllers\API\Assessments\TraineeCourseAssessmentsController;
 use App\Http\Controllers\API\Assessments\TrainingPeriodAssessmentsController;
+use App\Http\Controllers\API\CourseAttendancesController;
 use App\Http\Controllers\API\JobsController;
 use App\Http\Controllers\API\UnitsController;
 
@@ -96,11 +97,14 @@ Route::get('course/{id}/schedual', [CoursesController::class, 'getSchedual']);
 Route::get('course/{id}/attendances', [CoursesController::class, 'getAttendances']);
 Route::get('course/{id}/forms', [CoursesController::class, 'getForms']);
 Route::get('course/{id}/employees', [CoursesController::class, 'getEmployees']);
+Route::get('course/{id}/individuals', [CoursesController::class, 'getIndividuals']);
+
 Route::get('course/{id}/attendances/{date}', [CoursesController::class, 'getAttendanceByDate']);
 
 Route::get('getTrainingCourses', [CoursesController::class, 'getTrainingCourses']);
 Route::get('getTrainingCourses', [CoursesController::class, 'getTrainingCourses']);
 
+Route::post('attendance/create', [CourseAttendancesController::class, 'create']);
 
 Route::post('interview/create', [InterviewsAssessmentsController::class, 'createInterview']);
 Route::get('interview/index', [InterviewsAssessmentsController::class, 'indexInterviews']);

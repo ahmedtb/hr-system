@@ -6956,8 +6956,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _utility_logError__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utility/logError */ "./resources/js/components/utility/logError.js");
 /* harmony import */ var _utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utility/ApiEndpoints */ "./resources/js/components/utility/ApiEndpoints.js");
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -6983,17 +6993,326 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function AttendanceManager(props) {
-  var params = (0,react_router__WEBPACK_IMPORTED_MODULE_6__.useParams)();
-  var course_id = params.course_id;
-  var location = (0,react_router__WEBPACK_IMPORTED_MODULE_6__.useLocation)();
-  var attendancesFromState = location.state.attendances; // const course = props.course
-  // const [day, setday] = React.useState(props.day)
 
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_1__.useState(attendancesFromState !== null && attendancesFromState !== void 0 ? attendancesFromState : []),
+
+
+function RecordAttendanceComponent(props) {
+  var course_id = props.course_id;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_1__.useState(null),
       _React$useState2 = _slicedToArray(_React$useState, 2),
-      attendances = _React$useState2[0],
-      setattendances = _React$useState2[1]; // async function getattendances(date) {
+      employees = _React$useState2[0],
+      setemployees = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_1__.useState(null),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      individuals = _React$useState4[0],
+      setindividuals = _React$useState4[1];
+
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_1__.useState(''),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      profileChoice = _React$useState6[0],
+      setProfileChoice = _React$useState6[1];
+
+  function profileChoiceChange(e) {
+    setProfileChoice(e.target.value);
+  }
+
+  var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_1__.useState(null),
+      _React$useState8 = _slicedToArray(_React$useState7, 2),
+      profile_id = _React$useState8[0],
+      setprofile_id = _React$useState8[1];
+
+  var _React$useState9 = react__WEBPACK_IMPORTED_MODULE_1__.useState(null),
+      _React$useState10 = _slicedToArray(_React$useState9, 2),
+      date = _React$useState10[0],
+      setdate = _React$useState10[1];
+
+  var _React$useState11 = react__WEBPACK_IMPORTED_MODULE_1__.useState(null),
+      _React$useState12 = _slicedToArray(_React$useState11, 2),
+      entrance_time = _React$useState12[0],
+      setentrance_time = _React$useState12[1];
+
+  var _React$useState13 = react__WEBPACK_IMPORTED_MODULE_1__.useState(null),
+      _React$useState14 = _slicedToArray(_React$useState13, 2),
+      person_name = _React$useState14[0],
+      setperson_name = _React$useState14[1];
+
+  var _React$useState15 = react__WEBPACK_IMPORTED_MODULE_1__.useState(null),
+      _React$useState16 = _slicedToArray(_React$useState15, 2),
+      note = _React$useState16[0],
+      setnote = _React$useState16[1];
+
+  function getEnrolledEmployees() {
+    return _getEnrolledEmployees.apply(this, arguments);
+  }
+
+  function _getEnrolledEmployees() {
+    _getEnrolledEmployees = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_5___default().get(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_4__.default.getCourseEnrolledEmployees.replace(':id', course_id));
+
+            case 3:
+              res = _context.sent;
+              setemployees(res.data);
+              _context.next = 10;
+              break;
+
+            case 7:
+              _context.prev = 7;
+              _context.t0 = _context["catch"](0);
+              (0,_utility_logError__WEBPACK_IMPORTED_MODULE_3__.default)(_context.t0);
+
+            case 10:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[0, 7]]);
+    }));
+    return _getEnrolledEmployees.apply(this, arguments);
+  }
+
+  function getEnrolledIndividuals() {
+    return _getEnrolledIndividuals.apply(this, arguments);
+  }
+
+  function _getEnrolledIndividuals() {
+    _getEnrolledIndividuals = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      var res;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.prev = 0;
+              _context2.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_5___default().get(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_4__.default.getCourseEnrolledIndividuals.replace(':id', course_id));
+
+            case 3:
+              res = _context2.sent;
+              setindividuals(res.data);
+              _context2.next = 10;
+              break;
+
+            case 7:
+              _context2.prev = 7;
+              _context2.t0 = _context2["catch"](0);
+              (0,_utility_logError__WEBPACK_IMPORTED_MODULE_3__.default)(_context2.t0);
+
+            case 10:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[0, 7]]);
+    }));
+    return _getEnrolledIndividuals.apply(this, arguments);
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_1__.useEffect(function () {
+    getEnrolledEmployees();
+    getEnrolledIndividuals();
+  }, []);
+
+  function submit() {
+    var profile_type = null;
+
+    if (profileChoice == 'employee') {
+      profile_type = 'App\\Models\\Employee';
+    } else if (profileChoice == 'targeted') {
+      profile_type = 'App\\Models\\TargetedIndividual';
+    }
+
+    var data = {
+      person_name: person_name,
+      profile_type: profile_type,
+      profile_id: profile_id,
+      date: date,
+      entrance_time: entrance_time,
+      note: note,
+      training_course_id: course_id
+    };
+    axios__WEBPACK_IMPORTED_MODULE_5___default().post(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_4__.default.createAttendance, data).then(function (res) {
+      return console.log(res.data);
+    })["catch"](function (err) {
+      return (0,_utility_logError__WEBPACK_IMPORTED_MODULE_3__.default)(err);
+    });
+  }
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+      type: "button",
+      className: "btn btn-primary",
+      "data-toggle": "modal",
+      "data-target": "#exampleModal",
+      children: "Launch demo modal"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+      className: "modal fade",
+      id: "exampleModal",
+      tabIndex: "-1",
+      role: "dialog",
+      "aria-labelledby": "exampleModalLabel",
+      "aria-hidden": "true",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        className: "modal-dialog",
+        role: "document",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          className: "modal-content",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            className: "modal-header",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h5", {
+              className: "modal-title",
+              id: "exampleModalLabel",
+              children: "\u062A\u0633\u062C\u064A\u0644 \u062D\u0636\u0648\u0631"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+              type: "button",
+              className: "close",
+              "data-dismiss": "modal",
+              "aria-label": "Close",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+                "aria-hidden": "true",
+                children: "\xD7"
+              })
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            className: "modal-body",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+              children: ["\u0627\u0644\u062F\u0648\u0631\u0629 ", course_id]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
+              children: "\u0627\u0633\u0645 \u0627\u0644\u0634\u062E\u0635 (\u0627\u0630\u0627 \u0643\u0627\u0646 \u063A\u064A\u0631 \u0645\u0633\u062C\u0644):"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+              type: "text",
+              onChange: function onChange(e) {
+                return setperson_name(e.target.value);
+              }
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
+              children: "\u0627\u0644\u064A\u0648\u0645:"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+              type: "date",
+              onChange: function onChange(e) {
+                return setdate(e.target.value);
+              }
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
+              children: "\u0632\u0645\u0646 \u0627\u0644\u062F\u062E\u0648\u0644:"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+              type: "time",
+              onChange: function onChange(e) {
+                return setentrance_time(e.target.value);
+              }
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
+              className: "list-group-item",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("select", {
+                value: '',
+                onChange: profileChoiceChange,
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
+                  value: "",
+                  children: "please choose type"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
+                  value: "employee",
+                  children: "employee"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
+                  value: "targeted",
+                  children: "targeted"
+                })]
+              })
+            }), function () {
+              if (profileChoice == 'employee') {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("li", {
+                    className: "list-group-item",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
+                      htmlFor: "employee",
+                      children: "\u0627\u062E\u062A\u0631 \u0627\u0644\u0645\u0648\u0638\u0641"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("select", {
+                      onChange: function onChange(e) {
+                        return setprofile_id(e.target.value);
+                      },
+                      name: "employee_id",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
+                        value: "",
+                        children: "select employee name"
+                      }), employees === null || employees === void 0 ? void 0 : employees.map(function (employee, index) {
+                        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
+                          value: employee.id,
+                          children: employee.name
+                        }, index);
+                      })]
+                    })]
+                  })
+                });
+              } else if (profileChoice == 'targeted') {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("li", {
+                    className: "list-group-item",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
+                      htmlFor: "targeted",
+                      children: "\u0627\u062E\u062A\u0631 \u0627\u0644\u0645\u0633\u062A\u0647\u062F\u0641"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("select", {
+                      onChange: function onChange(e) {
+                        return setprofile_id(e.target.value);
+                      },
+                      name: "targeted_id",
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
+                        value: "",
+                        children: "select targeted name"
+                      }), individuals === null || individuals === void 0 ? void 0 : individuals.map(function (targeted, index) {
+                        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("option", {
+                          value: targeted.id,
+                          children: targeted.name
+                        }, index);
+                      })]
+                    })]
+                  })
+                });
+              }
+            }(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("label", {
+              children: "\u0645\u0644\u0627\u062D\u0638\u0629:"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("input", {
+              type: "text",
+              onChange: function onChange(e) {
+                return setnote(e.target.value);
+              }
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            className: "modal-footer",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+              type: "button",
+              className: "btn btn-secondary",
+              "data-dismiss": "modal",
+              children: "Close"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+              type: "button",
+              className: "btn btn-primary",
+              onClick: function onClick() {
+                return submit();
+              },
+              children: "Save changes"
+            })]
+          })]
+        })
+      })
+    })]
+  });
+}
+
+function AttendanceManager(props) {
+  var _sortAttends;
+
+  var params = (0,react_router__WEBPACK_IMPORTED_MODULE_7__.useParams)();
+  var course_id = params.course_id;
+  var location = (0,react_router__WEBPACK_IMPORTED_MODULE_7__.useLocation)();
+  var attendancesFromState = location.state.attendances;
+
+  var _React$useState17 = react__WEBPACK_IMPORTED_MODULE_1__.useState((_sortAttends = sortAttends(attendancesFromState)) !== null && _sortAttends !== void 0 ? _sortAttends : []),
+      _React$useState18 = _slicedToArray(_React$useState17, 2),
+      attendances = _React$useState18[0],
+      setattendances = _React$useState18[1]; // async function getattendances(date) {
   //     try {
   //         const response = await axios.get(
   //             ApiEndpoints.getAttendancesByDay?.replace(':id', course.id)
@@ -7012,81 +7331,108 @@ function AttendanceManager(props) {
   }
 
   function _getAllAttendances() {
-    _getAllAttendances = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+    _getAllAttendances = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
       var response;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
         while (1) {
-          switch (_context.prev = _context.next) {
+          switch (_context3.prev = _context3.next) {
             case 0:
-              _context.prev = 0;
-              _context.next = 3;
-              return axios.get(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_4__.default.getAllAttendances.replace(':id', course_id));
+              _context3.prev = 0;
+              _context3.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_5___default().get(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_4__.default.getAllAttendances.replace(':id', course_id));
 
             case 3:
-              response = _context.sent;
-              setattendances(response.data);
+              response = _context3.sent;
+              setattendances(sortAttends(response.data));
               console.log('attendance of: ', response.data);
-              _context.next = 11;
+              _context3.next = 11;
               break;
 
             case 8:
-              _context.prev = 8;
-              _context.t0 = _context["catch"](0);
-              (0,_utility_logError__WEBPACK_IMPORTED_MODULE_3__.default)(_context.t0);
+              _context3.prev = 8;
+              _context3.t0 = _context3["catch"](0);
+              (0,_utility_logError__WEBPACK_IMPORTED_MODULE_3__.default)(_context3.t0);
 
             case 11:
             case "end":
-              return _context.stop();
+              return _context3.stop();
           }
         }
-      }, _callee, null, [[0, 8]]);
+      }, _callee3, null, [[0, 8]]);
     }));
     return _getAllAttendances.apply(this, arguments);
   }
 
+  function sortAttends(attends) {
+    var newAttends = _toConsumableArray(attends);
+
+    newAttends.sort(function (a, b) {
+      return moment__WEBPACK_IMPORTED_MODULE_2___default()(a.date).diff(moment__WEBPACK_IMPORTED_MODULE_2___default()(b.date));
+    });
+    return newAttends;
+  }
+
   react__WEBPACK_IMPORTED_MODULE_1__.useEffect(function () {
-    // console.log('attendancesFromState',attendancesFromState)
-    if (!attendancesFromState) getAllAttendances();
+    if (!attendancesFromState && !attendances.length) {
+      getAllAttendances();
+    }
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+
+  function filterByDay(day, attends) {
+    var selected = moment__WEBPACK_IMPORTED_MODULE_2___default()(day);
+
+    var newAttends = _toConsumableArray(attends);
+
+    newAttends = newAttends.filter(function (attend) {
+      return moment__WEBPACK_IMPORTED_MODULE_2___default()(attend.date).isSame(selected);
+    });
+    return newAttends;
+  }
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
     className: "col-md-12",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "card",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
         className: "card-header",
         children: ["\u0633\u062C\u0644\u0627\u062A \u0627\u0644\u062D\u0636\u0648\u0631 \u0644\u0644\u062F\u0648\u0631\u0629 ", course_id]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("table", {
-        className: "table table-bordered table-condensed",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("thead", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-              children: "\u0627\u0644\u064A\u0648\u0645"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-              children: "\u0627\u0644\u0627\u0633\u0645"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-              children: "\u0632\u0645\u0646 \u0627\u0644\u062F\u062E\u0648\u0644"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-              children: "\u0645\u0644\u0627\u062D\u0638\u0629"
-            })]
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("tbody", {
-          children: attendances === null || attendances === void 0 ? void 0 : attendances.map(function (record, index) {
-            return (
-              /*#__PURE__*/
-              // console.log(record)
-              (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                  children: record.date
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                  children: record.profile.name
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                  children: record.entrance_time
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-                  children: record.note
-                })]
-              }, index)
-            );
-          })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        className: "card-body",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(RecordAttendanceComponent, {
+          course_id: course_id
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("table", {
+          className: "table table-bordered table-condensed",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("thead", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tr", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+                children: "\u0627\u0644\u064A\u0648\u0645"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+                children: "\u0627\u0644\u0627\u0633\u0645"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+                children: "\u0632\u0645\u0646 \u0627\u0644\u062F\u062E\u0648\u0644"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+                children: "\u0645\u0644\u0627\u062D\u0638\u0629"
+              })]
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("tbody", {
+            children: attendances === null || attendances === void 0 ? void 0 : attendances.map(function (record, index) {
+              return (
+                /*#__PURE__*/
+                // console.log(record)
+                (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tr", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+                    children: record.date
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+                    children: record.profile.name
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+                    children: record.entrance_time
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+                    children: record.note
+                  })]
+                }, index)
+              );
+            })
+          })]
         })]
       })]
     })
@@ -15436,7 +15782,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   createCoachForm: '/api/coach',
   createProgramForm: '',
   createProgram: '/api/program'
-}, _defineProperty(_dashboard$createEmpl, "createEmployeeForm", '/api/createEmployeeForm'), _defineProperty(_dashboard$createEmpl, "createEmployee", '/api/createEmployee'), _defineProperty(_dashboard$createEmpl, "getEmployee", '/api/employee/:id'), _defineProperty(_dashboard$createEmpl, "getEmployees", '/api/getEmployees'), _defineProperty(_dashboard$createEmpl, "getTrainingCourses", '/api/getTrainingCourses'), _defineProperty(_dashboard$createEmpl, "createInterview", '/api/interview/create'), _defineProperty(_dashboard$createEmpl, "createTrialPeriodAssessment", '/api/trialPeriodAssessment/create'), _defineProperty(_dashboard$createEmpl, "createTrainingPeriodAssessment", '/api/trainingPeriodAssessment/create'), _defineProperty(_dashboard$createEmpl, "createTraineeCourseAssessments", '/api/traineeCourseAssessment/create'), _defineProperty(_dashboard$createEmpl, "createCoachCourseAssessments", '/api/coachCourseAssessment/create'), _defineProperty(_dashboard$createEmpl, "jobCreate", '/api/job/create'), _defineProperty(_dashboard$createEmpl, "unitCreate", '/api/unit/create'), _defineProperty(_dashboard$createEmpl, "getTrainingPeriods", '/api/trainingPeriodAssessment/index'), _defineProperty(_dashboard$createEmpl, "getTraineeCourses", '/api/traineeCourseAssessment/index'), _defineProperty(_dashboard$createEmpl, "getCoachCourses", '/api/coachCourseAssessment/index'), _defineProperty(_dashboard$createEmpl, "getInterviewAssessments", '/api/interview/index'), _defineProperty(_dashboard$createEmpl, "getTrialPeriods", '/api/trialPeriodAssessment/index'), _defineProperty(_dashboard$createEmpl, "getCoaches", '/api/coach/index'), _defineProperty(_dashboard$createEmpl, "programIndex", '/api/program/index'), _defineProperty(_dashboard$createEmpl, "showForms", '/api/form/index'), _defineProperty(_dashboard$createEmpl, "showFormsStructure", '/api/structure/index'), _defineProperty(_dashboard$createEmpl, "courseIndex", '/api/course/index'), _defineProperty(_dashboard$createEmpl, "employeeIndex", '/api/employee/index'), _defineProperty(_dashboard$createEmpl, "unitIndex", '/api/unit/index'), _defineProperty(_dashboard$createEmpl, "jobIndex", '/api/job/index'), _defineProperty(_dashboard$createEmpl, "getCourse", '/api/course/:id'), _defineProperty(_dashboard$createEmpl, "getProgram", '/api/program/:id'), _defineProperty(_dashboard$createEmpl, "getJob", '/api/job/:id'), _defineProperty(_dashboard$createEmpl, "unitShow", '/api/unit/:id'), _defineProperty(_dashboard$createEmpl, "getAllAttendances", '/api/course/:id/attendances'), _defineProperty(_dashboard$createEmpl, "getAttendancesByDay", '/api/course/:id/attendances/:date'), _dashboard$createEmpl);
+}, _defineProperty(_dashboard$createEmpl, "createEmployeeForm", '/api/createEmployeeForm'), _defineProperty(_dashboard$createEmpl, "createEmployee", '/api/createEmployee'), _defineProperty(_dashboard$createEmpl, "getEmployee", '/api/employee/:id'), _defineProperty(_dashboard$createEmpl, "getEmployees", '/api/getEmployees'), _defineProperty(_dashboard$createEmpl, "getTrainingCourses", '/api/getTrainingCourses'), _defineProperty(_dashboard$createEmpl, "createInterview", '/api/interview/create'), _defineProperty(_dashboard$createEmpl, "createTrialPeriodAssessment", '/api/trialPeriodAssessment/create'), _defineProperty(_dashboard$createEmpl, "createTrainingPeriodAssessment", '/api/trainingPeriodAssessment/create'), _defineProperty(_dashboard$createEmpl, "createTraineeCourseAssessments", '/api/traineeCourseAssessment/create'), _defineProperty(_dashboard$createEmpl, "createCoachCourseAssessments", '/api/coachCourseAssessment/create'), _defineProperty(_dashboard$createEmpl, "jobCreate", '/api/job/create'), _defineProperty(_dashboard$createEmpl, "unitCreate", '/api/unit/create'), _defineProperty(_dashboard$createEmpl, "createAttendance", '/api/attendance/create'), _defineProperty(_dashboard$createEmpl, "getTrainingPeriods", '/api/trainingPeriodAssessment/index'), _defineProperty(_dashboard$createEmpl, "getTraineeCourses", '/api/traineeCourseAssessment/index'), _defineProperty(_dashboard$createEmpl, "getCoachCourses", '/api/coachCourseAssessment/index'), _defineProperty(_dashboard$createEmpl, "getInterviewAssessments", '/api/interview/index'), _defineProperty(_dashboard$createEmpl, "getTrialPeriods", '/api/trialPeriodAssessment/index'), _defineProperty(_dashboard$createEmpl, "getCoaches", '/api/coach/index'), _defineProperty(_dashboard$createEmpl, "programIndex", '/api/program/index'), _defineProperty(_dashboard$createEmpl, "showForms", '/api/form/index'), _defineProperty(_dashboard$createEmpl, "showFormsStructure", '/api/structure/index'), _defineProperty(_dashboard$createEmpl, "courseIndex", '/api/course/index'), _defineProperty(_dashboard$createEmpl, "employeeIndex", '/api/employee/index'), _defineProperty(_dashboard$createEmpl, "unitIndex", '/api/unit/index'), _defineProperty(_dashboard$createEmpl, "jobIndex", '/api/job/index'), _defineProperty(_dashboard$createEmpl, "getCourse", '/api/course/:id'), _defineProperty(_dashboard$createEmpl, "getProgram", '/api/program/:id'), _defineProperty(_dashboard$createEmpl, "getJob", '/api/job/:id'), _defineProperty(_dashboard$createEmpl, "unitShow", '/api/unit/:id'), _defineProperty(_dashboard$createEmpl, "getAllAttendances", '/api/course/:id/attendances'), _defineProperty(_dashboard$createEmpl, "getAttendancesByDay", '/api/course/:id/attendances/:date'), _defineProperty(_dashboard$createEmpl, "getCourseEnrolledEmployees", '/api/course/:id/employees'), _defineProperty(_dashboard$createEmpl, "getCourseEnrolledIndividuals", '/api/course/:id/individuals'), _dashboard$createEmpl);
 
 /***/ }),
 

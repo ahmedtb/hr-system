@@ -37,6 +37,8 @@ export default {
     createCoachCourseAssessments: '/api/coachCourseAssessment/create',
     jobCreate: '/api/job/create',
     unitCreate: '/api/unit/create',
+    createAttendance:'/api/attendance/create',
+
 
     getTrainingPeriods: '/api/trainingPeriodAssessment/index',
     getTraineeCourses: '/api/traineeCourseAssessment/index',
@@ -59,5 +61,7 @@ export default {
     getAllAttendances: '/api/course/:id/attendances',
     getAttendancesByDay: '/api/course/:id/attendances/:date',
 
+    getCourseEnrolledEmployees: '/api/course/:id/employees',
+    getCourseEnrolledIndividuals: '/api/course/:id/individuals',
 
 }

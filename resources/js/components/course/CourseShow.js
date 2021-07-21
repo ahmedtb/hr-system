@@ -82,9 +82,7 @@ export default function CourseShow(props) {
                     <Link
                         to={{
                             pathname: routes.showAttendances.replace(':course_id', course?.id),
-                            state: {
-                                attendances: attendances
-                            }
+                            state: {attendances: attendances}
                         }}
                     >سجلات الحضور</Link>
                 </div>
