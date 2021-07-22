@@ -24,4 +24,15 @@ class AttendancesTests extends TestCase
         $response = $this->getJson('api/course/' . $course->id .'/attendances/' . (new DateTime('today'))->format('Y-m-d') );
         $response->assertJsonCount(10);
     }
+
+    public function test_system_can_delete_attend_record_by_id()
+    {
+        $record = CourseAttendance::factory()->create();
+
+        $response = $this->deleteJson('api/attendance/'.$record->id);
+        // dd($response->json());
+        $response->assertJson(['success'=>'attendance record successfully deleted']);
+        $response->assertOk();
+        $this->assertEquals(CourseAttendance::all()->count(),0);
+    }
 }

@@ -55,10 +55,6 @@ class App extends Component {
 
                 <div>
                     <Switch>
-                        <Route exact path={routes.createEmployeeForm} component={CreateEmployee} />
-
-
-                        <Route exact path={routes.createTargetedForm} component={CreateTargeted} />
 
 
                         <Route exact path={routes.showFormStructure + ':id'} component={FormStructureShow} />
@@ -66,6 +62,8 @@ class App extends Component {
                         <Route exact path={routes.generatedForm} component={FormCreate} />
                         <Route exact path={routes.searchForms} component={FormSearch} />
 
+                        <Route exact path={routes.createEmployeeForm} component={CreateEmployee} />
+                        <Route exact path={routes.createTargetedForm} component={CreateTargeted} />
                         <Route exact path={routes.createFormStructureForm} component={FormStructureCreate} />
                         <Route exact path={routes.createCoachForm} component={CreateCoach} />
                         <Route exact path={routes.createProgramForm} component={CreateProgram} />

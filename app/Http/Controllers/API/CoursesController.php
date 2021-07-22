@@ -19,6 +19,7 @@ class CoursesController extends Controller
         $course = TrainingCourse::where('id', $id)
             ->with(['trainingProgram', 'targetedIndividuals', 'employees'])
             ->first();
+        
         $attendances = $course->attendances;
         return [
             'course' => $course,

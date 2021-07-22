@@ -7,6 +7,9 @@ import axios from 'axios'
 
 function RecordAttendanceComponent(props) {
     const course_id = props.course_id
+    const onChange = props.onChange
+    const [course, setcourse] = React.useState(null)
+    const [schedualTable, setschedualTable] = React.useState(null)
 
     const [employees, setemployees] = React.useState(null)
     const [individuals, setindividuals] = React.useState(null)
@@ -19,6 +22,17 @@ function RecordAttendanceComponent(props) {
     const [entrance_time, setentrance_time] = React.useState(null)
     const [person_name, setperson_name] = React.useState(null)
     const [note, setnote] = React.useState(null)
+
+    async function getCourse(id) {
+        try {
+            const response = await axios.get(ApiEndpoints.getCourse?.replace(':id', id))
+            setcourse(response.data.course)
+            setschedualTable(response.data.course.schedualTable)
+            console.log('course from api: ', response.data)
+        } catch (err) {
+            logError(err)
+        }
+    }
 
     async function getEnrolledEmployees() {
         try {
@@ -42,6 +56,7 @@ function RecordAttendanceComponent(props) {
     React.useEffect(() => {
         getEnrolledEmployees()
         getEnrolledIndividuals()
+        getCourse(course_id)
     }, [])
 
     function submit() {
@@ -61,98 +76,129 @@ function RecordAttendanceComponent(props) {
             training_course_id: course_id
         }
 
-        axios.post(ApiEndpoints.createAttendance,data)
-            .then(res => console.log(res.data))
+        axios.post(ApiEndpoints.createAttendance, data)
+            .then(res => {
+                console.log(res.data)
+                onChange()
+            })
             .catch(err => logError(err))
     }
 
     return (
         <div>
-            <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                Launch demo modal
-            </button>
-
-            <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog" role="document">
+            <div className="modal fade" id="recordAttendanceModal" tabIndex="-1" role="dialog" aria-labelledby="recordAttendanceModalLabel" aria-hidden="true">
+                <div className="modal-dialog modal-lg" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">تسجيل حضور</h5>
+                            <h5 className="modal-title" id="recordAttendanceModalLabel">تسجيل حضور في الدورة: {course?.title}</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div className="modal-body">
-                            <div>
-                                الدورة {course_id}
-                            </div>
-                            <label >اسم الشخص (اذا كان غير مسجل):</label>
+                        <div className="modal-body row">
 
-                            <input type="text" onChange={e => setperson_name(e.target.value)} />
+                            <div className="card col-11 mx-auto my-2 p-3">
+                                <div className="row justify-content-center">
+                                    <h4>حدد نوع الفرد</h4>
 
-                            <label >اليوم:</label>
+                                    <select
+                                        className="form-control"
+                                        value={''}
+                                        onChange={profileChoiceChange}
+                                    >
+                                        <option value=''>اختر نوع الفرد</option>
+                                        <option value='employee'>موظف</option>
+                                        <option value='targeted'>مستهدف</option>
+                                        <option value='anonymous'>غير مسجل (مجهول)</option>
 
-                            <input type="date" onChange={e => setdate(e.target.value)} />
+                                    </select>
+                                </div>
+                                {(() => {
+                                    if (profileChoice == 'employee') {
+                                        return (
+                                            <>
 
-                            <label >زمن الدخول:</label>
-
-                            <input type="time" onChange={e => setentrance_time(e.target.value)} />
-
-                            <li className="list-group-item">
-                                <select
-                                    value={''}
-                                    onChange={profileChoiceChange}
-                                >
-                                    <option value=''>please choose type</option>
-                                    <option value='employee'>employee</option>
-                                    <option value='targeted'>targeted</option>
-
-                                </select>
-                            </li>
-
-                            {(() => {
-                                if (profileChoice == 'employee') {
-                                    return (
-                                        <>
-                                            <li className="list-group-item">
                                                 <label htmlFor="employee">اختر الموظف</label>
-                                                <select onChange={(e) => setprofile_id(e.target.value)} name="employee_id">
-                                                    <option value=''>select employee name</option>
+                                                <select
+                                                    className="form-control"
+                                                    onChange={(e) => setprofile_id(e.target.value)} id="employee">
+                                                    <option value=''>قائمة الموظفين المسجلين في الدورة</option>
                                                     {
                                                         employees?.map((employee, index) => (
                                                             <option key={index} value={employee.id}>{employee.name}</option>
                                                         ))
                                                     }
                                                 </select>
-                                            </li>
-                                        </>
-                                    )
-                                } else if (profileChoice == 'targeted') {
-                                    return (
-                                        <>
-                                            <li className="list-group-item">
+
+                                            </>
+                                        )
+                                    } else if (profileChoice == 'targeted') {
+                                        return (
+                                            <>
+
                                                 <label htmlFor="targeted">اختر المستهدف</label>
-                                                <select onChange={(e) => setprofile_id(e.target.value)} name="targeted_id">
-                                                    <option value=''>select targeted name</option>
+                                                <select
+                                                    className="form-control"
+                                                    onChange={(e) => setprofile_id(e.target.value)} name="targeted_id">
+                                                    <option value=''>اسماء المستهدفين المسجلين في الدورة</option>
                                                     {
                                                         individuals?.map((targeted, index) => (
                                                             <option key={index} value={targeted.id}>{targeted.name}</option>
                                                         ))
                                                     }
                                                 </select>
-                                            </li>
-                                        </>
-                                    )
-                                }
-                            })()}
+
+                                            </>
+                                        )
+                                    } else if (profileChoice == 'anonymous') {
+                                        return (
+                                            <>
+                                                <label >اسم الشخص (اذا كان غير مسجل كموظف او مستهدف):</label>
+                                                <input className="form-control" type="text" className="flex-grow-1" onChange={e => setperson_name(e.target.value)} />
+                                            </>
+                                        )
+                                    }
+                                })()}
+
+                            </div>
+
+                            <div className="p-2 border rounded col-5 mx-auto">
+                                <h4>اليوم (من جدول الدورة)</h4>
+                                <select className="form-control" onChange={(e) => setdate(e.target.value)} >
+                                    <option value="">يوم الحصة من جدول الدورة</option>
+                                    {(schedualTable) ? Object.entries(schedualTable)?.map((day, index) => {
+
+                                        return (
+                                            <option key={index} value={day[0]}>{day[0]}</option>
+                                        )
+                                    }) : null}
+                                </select>
+                            </div>
+
+                            <div className="p-2 border rounded col-5 mx-auto">
+                                <h4>وقت الدخول</h4>
+                                <strong className="col-10">من {date ? moment(schedualTable[date][0], 'HH:mm:ss').format('h:mm:ss A') : null}</strong>
+                                <strong className="col-10">الى {date ? moment(schedualTable[date][1], 'HH:mm:ss').format('h:mm:ss A') : null}</strong>
+                                <input
+                                    type="time"
+                                    className="form-control"
+                                    onChange={e => setentrance_time(e.target.value)}
+                                    disabled={date == null ? true : false}
+                                />
+                            </div>
 
 
-                            <label>ملاحظة:</label>
+                            <div className="p-2 border rounded col-11 mx-auto">
 
-                            <input type="text" onChange={(e) => setnote(e.target.value)} />
+                                <h4>ملاحظة:</h4>
+
+                                <textarea type="text" className="form-control" onChange={(e) => setnote(e.target.value)} />
+                            </div>
+
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary" onClick={()=>submit()} >Save changes</button>
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                            <button type="button" className="btn btn-primary" onClick={() => submit()} >تسجيل الحضور</button>
                         </div>
                     </div>
                 </div>
@@ -168,21 +214,22 @@ export default function AttendanceManager(props) {
 
     const course_id = params.course_id
     const location = useLocation()
-    const attendancesFromState = location.state.attendances
-    const [attendances, setattendances] = React.useState(sortAttends(attendancesFromState) ?? [])
+    const [attendances, setattendances] = React.useState([])
 
-    // async function getattendances(date) {
-    //     try {
-    //         const response = await axios.get(
-    //             ApiEndpoints.getAttendancesByDay?.replace(':id', course.id)
-    //                 .replace(':date', date)
-    //         )
-    //         setattendances(response.data)
-    //         console.log('attendance of: ' + date, response.data)
-    //     } catch (err) {
-    //         logError(err)
-    //     }
-    // }
+
+
+    async function getAttendancesForDate(date) {
+        try {
+            const response = await axios.get(
+                ApiEndpoints.getAttendancesByDay?.replace(':id', course.id)
+                    .replace(':date', date)
+            )
+            setattendances(response.data)
+            console.log('attendance of date: ' + date, response.data)
+        } catch (err) {
+            logError(err)
+        }
+    }
 
     async function getAllAttendances() {
         try {
@@ -190,7 +237,7 @@ export default function AttendanceManager(props) {
                 ApiEndpoints.getAllAttendances.replace(':id', course_id)
             )
             setattendances(sortAttends(response.data))
-            console.log('attendance of: ', response.data)
+            console.log('attendances from api: ', response.data)
         } catch (err) {
             logError(err)
         }
@@ -203,9 +250,7 @@ export default function AttendanceManager(props) {
     }
 
     React.useEffect(() => {
-        if (!attendancesFromState && !attendances.length) {
-            getAllAttendances()
-        }
+        getAllAttendances()
     }, [])
 
     function filterByDay(day, attends) {
@@ -215,6 +260,17 @@ export default function AttendanceManager(props) {
         return newAttends
     }
 
+    async function deleteAttend(id) {
+        try {
+            const response = await axios.delete(ApiEndpoints.deleteAttendance.replace(':id', id))
+            console.log(response.data)
+            getAllAttendances()
+        } catch (err) {
+            logError(err)
+        }
+    }
+
+
 
     return (
         <div className="col-md-12">
@@ -223,9 +279,12 @@ export default function AttendanceManager(props) {
                 <div className="card-header">
                     سجلات الحضور للدورة {course_id}
                 </div>
-                <div className="card-body">
 
-                    <RecordAttendanceComponent course_id={course_id} />
+                <div className="card-body">
+                    <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#recordAttendanceModal">
+                        تسجيل حضور جديد
+                    </button>
+                    <RecordAttendanceComponent course_id={course_id} onChange={getAllAttendances} />
 
                     <table className="table table-bordered table-condensed">
                         <thead>
@@ -234,6 +293,8 @@ export default function AttendanceManager(props) {
                                 <th >الاسم</th>
                                 <th>زمن الدخول</th>
                                 <th>ملاحظة</th>
+                                <th></th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -242,9 +303,18 @@ export default function AttendanceManager(props) {
                                 // console.log(record)
                                 <tr key={index}>
                                     <td>{record.date}</td>
-                                    <td>{record.profile.name}</td>
+                                    <td>{(record.profile) ? record.profile.name : record.person_name}</td>
                                     <td>{record.entrance_time}</td>
                                     <td>{record.note}</td>
+                                    <td>
+                                        <button type="button" className="btn btn-dark" onClick={() => deleteAttend(record.id)}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash" viewBox="0 0 16 16">
+                                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                <path fillRule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                            </svg>
+                                        </button>
+                                    </td>
+
                                 </tr>
                             ))}
                         </tbody>

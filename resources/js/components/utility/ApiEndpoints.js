@@ -39,6 +39,7 @@ export default {
     unitCreate: '/api/unit/create',
     createAttendance:'/api/attendance/create',
 
+    deleteAttendance: '/api/attendance/:id',
 
     getTrainingPeriods: '/api/trainingPeriodAssessment/index',
     getTraineeCourses: '/api/traineeCourseAssessment/index',

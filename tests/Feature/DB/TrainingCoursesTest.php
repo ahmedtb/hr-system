@@ -52,14 +52,9 @@ class TrainingCoursesTest extends TestCase
 
     public function test_course_could_have_many_attendace_records()
     {
-        $employee = Employee::factory()->create();
         $course = TrainingCourse::factory()->create();
-        CourseAttendance::factory(10)->create([
-            'training_course_id' => $course->id,
-            'profile_id' => $employee->id,
-            'profile_type' => Employee::class
-        ]);
-
+        CourseAttendance::factory(10)->forCourse($course)->create();
+        // dd($course->attendances);
         $this->assertEquals(count($course->attendances), 10);
     }
 

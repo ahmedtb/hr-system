@@ -105,6 +105,7 @@ Route::get('getTrainingCourses', [CoursesController::class, 'getTrainingCourses'
 Route::get('getTrainingCourses', [CoursesController::class, 'getTrainingCourses']);
 
 Route::post('attendance/create', [CourseAttendancesController::class, 'create']);
+Route::delete('attendance/{id}', [CourseAttendancesController::class, 'delete']);
 
 Route::post('interview/create', [InterviewsAssessmentsController::class, 'createInterview']);
 Route::get('interview/index', [InterviewsAssessmentsController::class, 'indexInterviews']);

@@ -42,4 +42,11 @@ class CourseAttendancesController extends Controller
             return $course->attendAnonymous($request->person_name, $request->date, $request->entrance_time, $request->note);
         }
     }
+
+    public function delete($id){
+        $record = CourseAttendance::where('id',$id)->first();
+        $record->delete();
+
+        return ['success'=>'attendance record successfully deleted'];
+    }
 }
