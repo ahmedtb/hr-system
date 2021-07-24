@@ -11,6 +11,10 @@ class TrialPeriodAssessmentFilters extends Filters
      */
     protected $filters = [
         'excitement',
+        'orderByDesc',
+        'orderByAsc',
+        'from',
+        'to'
     ];
 
     /**
@@ -22,5 +26,25 @@ class TrialPeriodAssessmentFilters extends Filters
     protected function excitement($rating)
     {
         return $this->builder->where('excitement', (int)$rating);
+    }
+
+    protected function orderByDesc($trait)
+    {
+        return $this->builder->orderBy($trait, 'DESC');
+    }
+
+    protected function orderByAsc($trait)
+    {
+        return $this->builder->orderBy($trait, 'ASC');
+    }
+
+    protected function from($from_date)
+    {
+        return $this->builder->whereDate('created_at', '>=', $from_date);
+    }
+
+    protected function to($to_date)
+    {
+        return $this->builder->whereDate('created_at', '<=', $to_date);
     }
 }

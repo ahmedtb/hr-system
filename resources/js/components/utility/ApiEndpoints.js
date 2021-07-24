@@ -48,6 +48,7 @@ export default {
     getCoachCourses: '/api/coachCourseAssessment/index',
     getInterviewAssessments: '/api/interview/index',
     getTrialPeriods: '/api/trialPeriodAssessment/index',
+    
     getCoaches: '/api/coach/index',
     programIndex: '/api/program/index',
     showForms: '/api/form/index',

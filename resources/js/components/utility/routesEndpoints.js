@@ -20,6 +20,7 @@ const routes = {
     TraineeCourseAssessment: '/react/assessment/traineeCourseAssessment',
     CoachCourseAssessment: '/react/assessment/coachCourseAssessment',
     
+    TrialPeriodAssessmentIndex: '/react/assessment/trialPeriod/index',
     
     showTargeted: '/react/targeted/:id',
     showEmployee: '/react/employee/:id',

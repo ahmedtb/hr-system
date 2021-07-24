@@ -28,6 +28,9 @@ import ConductTrainingPeriodAssessment from './assessments/TrainingPeriod/Conduc
 import TraineeCourseAssessment from './assessments/course/TraineeCourseAssessment'
 import ConductCoachCourseAssessment from './assessments/course/ConductCoachCourseAssessment'
 
+import InterviewAssessmentIndex from './assessments/interview/InterviewAssessmentIndex'
+import TrialPeriodAssessmentIndex from './assessments/trialPeriod/TrialPeriodAssessmentIndex'
+
 import FormStructuresIndex from './formStructure/FormStructuresIndex'
 import FormsIndex from './form/FormsIndex'
 import CoachIndex from './coach/CoachIndex'
@@ -37,7 +40,6 @@ import CourseIndex from './course/CourseIndex'
 import EmployeeIndex from './employee/EmployeeIndex'
 import JobIndex from './job/JobIndex'
 import UnitIndex from './unit/UnitIndex'
-import InterviewAssessmentIndex from './assessments/interview/InterviewAssessmentIndex'
 
 import CourseShow from './course/CourseShow'
 import ProgramShow from './program/ProgramShow'
@@ -77,6 +79,9 @@ class App extends Component {
                         <Route exact path={routes.TraineeCourseAssessment} component={TraineeCourseAssessment} />
                         <Route exact path={routes.CoachCourseAssessment} component={ConductCoachCourseAssessment} />
 
+                        <Route exact path={routes.interviewAssessmentIndex} component={InterviewAssessmentIndex} />
+                        <Route exact path={routes.TrialPeriodAssessmentIndex} component={TrialPeriodAssessmentIndex} />
+
                         <Route exact path={routes.programIndex} component={ProgramIndex} />
                         <Route exact path={routes.AssessmentsIndex} component={AssessmentsIndex} />
                         <Route exact path={routes.CoachesList} component={CoachIndex} />
@@ -86,7 +91,6 @@ class App extends Component {
                         <Route exact path={routes.employeeIndex} component={EmployeeIndex} />
                         <Route exact path={routes.jobIndex} component={JobIndex} />
                         <Route exact path={routes.unitIndex} component={UnitIndex} />
-                        <Route exact path={routes.interviewAssessmentIndex} component={InterviewAssessmentIndex} />
                         
                         <Route exact path={routes.showCourse} component={CourseShow} />
                         <Route exact path={routes.showProgram} component={ProgramShow} />

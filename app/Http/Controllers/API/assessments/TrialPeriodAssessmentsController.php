@@ -26,7 +26,7 @@ class TrialPeriodAssessmentsController extends Controller
             'behavior' => 'required|min:0|max:15',
             'look' => 'required|min:0|max:15',
             'belief_and_loyalty' => 'required|min:0|max:15',
-            'final_degree' => 'required|min:0|max:130',
+            // 'final_degree' => 'required|min:0|max:130',
             'reporter_id' => 'required|exists:employees,id',
             'unit_head_recommendation' => 'required|string',
             'delay_in_min' => 'required|integer',
@@ -38,7 +38,16 @@ class TrialPeriodAssessmentsController extends Controller
             'management_decision' => 'required|string',
 
         ]);
-
+        $data['final_degree'] = $request->excitement +
+            $request->ability_to_improve +
+            $request->guidance_acceptance +
+            $request->handling_technology +
+            $request->maintaining_working_hours +
+            $request->relationship_with_colleagues +
+            $request->behavior +
+            $request->look +
+            $request->belief_and_loyalty;
+        // dd($data);
         TrialPeriodAssessment::create($data);
 
         return ['success' => 'trial period assessment archived'];
@@ -46,17 +55,7 @@ class TrialPeriodAssessmentsController extends Controller
 
     public function index(TrialPeriodAssessmentFilters $filters)
     {
-        return $this->getAssessments($filters);
+        return TrialPeriodAssessment::with(['employee','reporter'])->filter($filters)->paginate(10)->appends(request()->except('page'));
     }
 
-    /**
-     * Fetch all relevant threads.
-     *
-     * @param TrialPeriodAssessmentFilters $filters
-     * @return mixed
-     */
-    protected function getAssessments(TrialPeriodAssessmentFilters $filters)
-    {
-        return TrialPeriodAssessment::latest()->with('employee')->filter($filters)->get();
-    }
 }
