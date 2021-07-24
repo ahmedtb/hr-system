@@ -6,21 +6,27 @@ import routes from '../utility/routesEndpoints'
 import { useParams, Link } from 'react-router-dom';
 import EmployeesTable from '../partials/EmployeesTable'
 import TargetedIndividualsTable from '../partials/TargetedIndividualsTable'
-import SchedualTable from './SchedualTable'
+import SchedualTable from './components/SchedualTable'
+import EnrollmentModal from './components/EnrollmentModal'
 
 export default function CourseShow(props) {
 
     const { id } = useParams();
     const [course, setcourse] = React.useState(null)
     const [attendances, setattendances] = React.useState(null)
-    React.useEffect(() => {
-        axios.get(ApiEndpoints.getCourse?.replace(':id', id)).then((response) => {
+
+    async function getCourseAndAttendances() {
+        try {
+            const response = await axios.get(ApiEndpoints.getCourse?.replace(':id', id))
             setcourse(response.data.course)
             setattendances(response.data.attendances)
-            // console.log('getCourse', response.data)
-        }).catch((err) => {
+        } catch (err) {
             logError(err)
-        })
+        }
+    }
+
+    React.useEffect(() => {
+        getCourseAndAttendances()
     }, [])
 
     return (
@@ -105,6 +111,10 @@ export default function CourseShow(props) {
                 </div>
 
                 <div className="card-body">
+                    <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#EnrollmentModal">
+                        تسجيل موظف او مستهدف في الدورة
+                    </button>
+                    <EnrollmentModal onChange={getCourseAndAttendances} course={course} />
                     <ul className="list-group" >
                         <li className="list-group-item" >
                             موظفيين

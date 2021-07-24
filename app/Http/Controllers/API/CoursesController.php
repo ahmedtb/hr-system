@@ -8,6 +8,8 @@ use App\Rules\CourseStatusRule;
 use App\Rules\WeekScheduleRule;
 use App\Http\Controllers\Controller;
 use App\Models\CourseAttendance;
+use App\Models\Employee;
+use App\Models\TargetedIndividual;
 use DateTime;
 use Illuminate\Support\Facades\Validator;
 
@@ -19,7 +21,7 @@ class CoursesController extends Controller
         $course = TrainingCourse::where('id', $id)
             ->with(['trainingProgram', 'targetedIndividuals', 'employees'])
             ->first();
-        
+
         $attendances = $course->attendances;
         return [
             'course' => $course,
@@ -33,7 +35,7 @@ class CoursesController extends Controller
 
         $courses = TrainingCourse::with(['trainingProgram'])->paginate(5);
         $twentyDaysRangeCourses = TrainingCourse::whereDate('start_date', '<=', new DateTime('today +10 day'))
-        ->whereDate('end_date', '>=', new DateTime('today -10 day'))->get();
+            ->whereDate('end_date', '>=', new DateTime('today -10 day'))->get();
         return [
             'courses' => $courses,
             'twentyDaysRangeCourses' => $twentyDaysRangeCourses
@@ -85,7 +87,7 @@ class CoursesController extends Controller
             'date' => 'required|date'
 
         ])->validate();
-        return CourseAttendance::where('training_course_id', $id)->whereDate('date',$date)->get();
+        return CourseAttendance::where('training_course_id', $id)->whereDate('date', $date)->get();
     }
 
     public function getForms(int $id)
@@ -122,5 +124,29 @@ class CoursesController extends Controller
 
         $course = TrainingCourse::where('id', $id)->first();
         return $course->targetedIndividuals()->get();
+    }
+
+    public function enroll(Request $request, $id)
+    {
+        Validator::make(['id' => $id], [
+            'id' => 'required|exists:training_courses,id'
+        ])->validate();
+        $request->validate([
+            'profile_id' => 'required|integer',
+            'profile_type' => 'required|in:' . Employee::class . ',' . TargetedIndividual::class
+        ]);
+
+        $course = TrainingCourse::where('id',$id)->first();
+        if($request->profile_type == Employee::class){
+            $employee = Employee::where('id', $request->profile_id)->first();
+            $course->enrollEmployee($employee);
+            return ['success'=>'employee successfully enrolled'];
+        }else{
+            $individual = TargetedIndividual::where('id', $request->profile_id)->first();
+            $course->enrollIndividual($individual);
+            return ['success'=>'individual successfully enrolled'];
+        }
+
+        return response(['failure'=>'nothing is done'],501);
     }
 }

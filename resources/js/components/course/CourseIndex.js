@@ -4,7 +4,7 @@ import ApiEndpoints from '../utility/ApiEndpoints'
 import routes from '../utility/routesEndpoints';
 import logError from '../utility/logError';
 import CoursesTable from '../partials/CoursesTable';
-import ScheduleDiagram from './ScheduleDiagram'
+import ScheduleDiagram from './components/ScheduleDiagram'
 import moment from 'moment'
 
 

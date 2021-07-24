@@ -17,6 +17,11 @@ class TargetedIndividualsController extends Controller
         return TargetedIndividual::where('id', $id)->first();
     }
 
+    public function getIndividuals()
+    {
+        return TargetedIndividual::all();
+    }
+
     public function create(Request $request)
     {
         // dd($request->profile);

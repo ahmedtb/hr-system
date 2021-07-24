@@ -63,6 +63,7 @@ Route::get('employee/{id}', [EmployeesController::class, 'show']);
 
 Route::post('targeted/create', [TargetedIndividualsController::class, 'create']);
 Route::get('targeted/{id}', [TargetedIndividualsController::class, 'show']);
+Route::get('getIndividuals', [TargetedIndividualsController::class, 'getIndividuals']);
 
 Route::get('form/index', [FormsController::class, 'index']);
 Route::get('form/{id}', [FormsController::class, 'show']);
@@ -98,8 +99,8 @@ Route::get('course/{id}/attendances', [CoursesController::class, 'getAttendances
 Route::get('course/{id}/forms', [CoursesController::class, 'getForms']);
 Route::get('course/{id}/employees', [CoursesController::class, 'getEmployees']);
 Route::get('course/{id}/individuals', [CoursesController::class, 'getIndividuals']);
-
 Route::get('course/{id}/attendances/{date}', [CoursesController::class, 'getAttendanceByDate']);
+Route::post('course/{id}/enroll', [CoursesController::class, 'enroll']);
 
 Route::get('getTrainingCourses', [CoursesController::class, 'getTrainingCourses']);
 Route::get('getTrainingCourses', [CoursesController::class, 'getTrainingCourses']);

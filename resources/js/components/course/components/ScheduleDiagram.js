@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 import { useHistory } from 'react-router-dom';
-import routes from '../utility/routesEndpoints';
+import routes from '../../utility/routesEndpoints';
 export default function ScheduleDiagram(props) {
     const history = useHistory();
 

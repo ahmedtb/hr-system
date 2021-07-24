@@ -28,6 +28,7 @@ export default {
 
     getEmployees: '/api/getEmployees',
     getTrainingCourses: '/api/getTrainingCourses',
+    getIndividuals: '/api/getIndividuals',
 
 
     createInterview: '/api/interview/create',
@@ -37,8 +38,9 @@ export default {
     createCoachCourseAssessments: '/api/coachCourseAssessment/create',
     jobCreate: '/api/job/create',
     unitCreate: '/api/unit/create',
-    createAttendance:'/api/attendance/create',
 
+    enrollInCourse: '/api/course/:id/enroll',
+    createAttendance:'/api/attendance/create',
     deleteAttendance: '/api/attendance/:id',
 
     getTrainingPeriods: '/api/trainingPeriodAssessment/index',
