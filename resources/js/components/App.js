@@ -23,13 +23,16 @@ import JobCreate from './job/JobCreate'
 import UnitCreate from './Unit/UnitCreate'
 
 import ConductInterviewAssessment from './assessments/interview/ConductAssessment'
-import ConductTrialPeriodAssessment from './assessments/trialPeriod/ConductAssessment'
-import ConductTrainingPeriodAssessment from './assessments/TrainingPeriod/ConductAssessment'
-import TraineeCourseAssessment from './assessments/course/TraineeCourseAssessment'
+import ConductTrialPeriodAssessment from './assessments/trialPeriod/ConductTrialPeriodAssessment'
+import ConductTrainingPeriodAssessment from './assessments/TrainingPeriod/ConductTrainingPeriodAssessment'
+import ConductTraineeCourseAssessment from './assessments/course/ConductTraineeCourseAssessment'
 import ConductCoachCourseAssessment from './assessments/course/ConductCoachCourseAssessment'
 
 import InterviewAssessmentIndex from './assessments/interview/InterviewAssessmentIndex'
 import TrialPeriodAssessmentIndex from './assessments/trialPeriod/TrialPeriodAssessmentIndex'
+import CoachCourseAssessmentIndex from './assessments/course/CoachCourseAssessmentIndex'
+import TraineeCourseAssessmentIndex from './assessments/course/TraineeCourseAssessmentIndex'
+import TrainingPeriodAssessmentIndex from './assessments/trainingPeriod/TrainingPeriodAssessmentIndex'
 
 import FormStructuresIndex from './formStructure/FormStructuresIndex'
 import FormsIndex from './form/FormsIndex'
@@ -76,11 +79,14 @@ class App extends Component {
                         <Route exact path={routes.conductInterviewAssessment} component={ConductInterviewAssessment} />
                         <Route exact path={routes.conductTrialPeriodAssessment} component={ConductTrialPeriodAssessment} />
                         <Route exact path={routes.conductTrainingPeriodAssessment} component={ConductTrainingPeriodAssessment} />
-                        <Route exact path={routes.TraineeCourseAssessment} component={TraineeCourseAssessment} />
-                        <Route exact path={routes.CoachCourseAssessment} component={ConductCoachCourseAssessment} />
+                        <Route exact path={routes.conductTraineeCourseAssessment} component={ConductTraineeCourseAssessment} />
+                        <Route exact path={routes.conductCoachCourseAssessment} component={ConductCoachCourseAssessment} />
 
                         <Route exact path={routes.interviewAssessmentIndex} component={InterviewAssessmentIndex} />
                         <Route exact path={routes.TrialPeriodAssessmentIndex} component={TrialPeriodAssessmentIndex} />
+                        <Route exact path={routes.TrainingPeriodAssessmentIndex} component={TrainingPeriodAssessmentIndex} />
+                        <Route exact path={routes.CoachCourseAssessmentIndex} component={CoachCourseAssessmentIndex} />
+                        <Route exact path={routes.TraineeCourseAssessmentIndex} component={TraineeCourseAssessmentIndex} />
 
                         <Route exact path={routes.programIndex} component={ProgramIndex} />
                         <Route exact path={routes.AssessmentsIndex} component={AssessmentsIndex} />

@@ -76,12 +76,11 @@ export default function TopMenue() {
                 </button>
                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <Link className="dropdown-item" to={routes.AssessmentsIndex}>قائمة التقييمات المعبئة</Link>
-                    <Link className="dropdown-item" to={routes.TraineeCourseAssessment}>اجراء تقييم المتدرب لدورة</Link>
-                    <Link className="dropdown-item" to={routes.CoachCourseAssessment}>اجراء تقييم مدرب لدورة</Link>
-                    <Link className="dropdown-item" to={routes.conductTrialPeriodAssessment}>اجراء تقييم الموظف في الفترة التجريبية</Link>
-                    <Link className="dropdown-item" to={routes.conductTrainingPeriodAssessment}>اجراء تقييم الموظف في الفترة التدريب</Link>
-                    <Link className="dropdown-item" to={routes.TrialPeriodAssessmentIndex}>قائمة تقييم الموظف في الفترة التدريب</Link>
-                    <Link className="dropdown-item" to={routes.interviewAssessmentIndex}>اجراء تقييم مقابلة</Link>
+                    <Link className="dropdown-item" to={routes.TraineeCourseAssessmentIndex}>تقييمات المتدربيين لدورات</Link>
+                    <Link className="dropdown-item" to={routes.CoachCourseAssessmentIndex}>تقييمات المدربيين للدورات</Link>
+                    <Link className="dropdown-item" to={routes.TrainingPeriodAssessmentIndex}>تقييمات المظفيين في الفترة التدريب</Link>
+                    <Link className="dropdown-item" to={routes.TrialPeriodAssessmentIndex}>تقييمات المظفيين في الفترة التجريبية</Link>
+                    <Link className="dropdown-item" to={routes.interviewAssessmentIndex}>تقييمات المقابلات</Link>
 
                 </div>
             </div>

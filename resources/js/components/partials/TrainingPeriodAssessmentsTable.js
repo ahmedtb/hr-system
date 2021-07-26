@@ -3,7 +3,7 @@ import moment from 'moment'
 import { Link } from 'react-router-dom'
 import routes from '../utility/routesEndpoints'
 
-export default function TrainingPeriodsTable(props) {
+export default function TrainingPeriodAssessmentsTable(props) {
     const trainingPeriods = props.trainingPeriods
 
     return (

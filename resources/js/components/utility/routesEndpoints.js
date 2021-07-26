@@ -17,11 +17,14 @@ const routes = {
     conductInterviewAssessment: '/react/assessment/interview',
     conductTrialPeriodAssessment: '/react/assessment/trialPeriod',
     conductTrainingPeriodAssessment: '/react/assessment/trainingPeriod',
-    TraineeCourseAssessment: '/react/assessment/traineeCourseAssessment',
-    CoachCourseAssessment: '/react/assessment/coachCourseAssessment',
+    conductTraineeCourseAssessment: '/react/assessment/traineeCourseAssessment',
+    conductCoachCourseAssessment: '/react/assessment/coachCourseAssessment',
     
     TrialPeriodAssessmentIndex: '/react/assessment/trialPeriod/index',
-    
+    CoachCourseAssessmentIndex: '/react/assessment/coachCourseAssessment/index',
+    TraineeCourseAssessmentIndex: '/react/assessment/traineeCourseAssessment/index',
+    TrainingPeriodAssessmentIndex: '/react/assessment/trainingPeriodAssessment/index',
+
     showTargeted: '/react/targeted/:id',
     showEmployee: '/react/employee/:id',
     showCourse: '/react/course/:id',

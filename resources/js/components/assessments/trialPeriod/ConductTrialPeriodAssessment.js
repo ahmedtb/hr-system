@@ -3,7 +3,7 @@ import React from 'react'
 import ApiEndpoints from '../../utility/ApiEndpoints'
 import logError from '../../utility/logError'
 
-export default function ConductAssessment(props) {
+export default function ConductTrialPeriodAssessment(props) {
 
     const [date, setdate] = React.useState(null)
     const [employee_id, setemployee_id] = React.useState(null)
@@ -37,8 +37,11 @@ export default function ConductAssessment(props) {
         axios.get(ApiEndpoints.getEmployees)
             .then((res) => { setemployees(res.data) })
             .catch(err => logError(err))
-        axios.get(ApiEndpoints.unitIndex)
-            .then((res) => { setunits(res.data) })
+        axios.get(ApiEndpoints.getUnits)
+            .then((res) => { 
+                // console.log(res.data)
+                setunits(res.data) 
+            })
             .catch(err => logError(err))
     }, [])
 

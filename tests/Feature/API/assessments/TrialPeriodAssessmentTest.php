@@ -111,6 +111,22 @@ class TrialPeriodAssessmentTest extends TestCase
 
     }
 
+    public function test_system_can_retrive_trial_period_assessments_by_trial_begin_and_end_dates()
+    {
+        TrialPeriodAssessment::factory(10)->create([
+            'trial_begin_date' => '2021-07-24',
+            'trial_end_date' => '2021-07-29'
+        ]);
+        TrialPeriodAssessment::factory(6)->create([
+            'trial_begin_date' => '2021-07-10',
+            'trial_end_date' => '2021-07-29'
+        ]);
+        $response = $this->getJson('api/trialPeriodAssessment/index?trial_begin=2021-07-10&trial_end=2021-07-29');
+        // $response->assertOk()->assertJsonCount(6);
+        $this->assertEquals(sizeof($response->json()['data']),6 );
+
+    }
+
     public function test_model_automatically_calculate_summation_of_ratings()
     {
         $assessment = TrialPeriodAssessment::factory()->create();

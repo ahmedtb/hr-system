@@ -29,6 +29,7 @@ export default {
     getEmployees: '/api/getEmployees',
     getTrainingCourses: '/api/getTrainingCourses',
     getIndividuals: '/api/getIndividuals',
+    getUnits: '/api/getUnits',
 
 
     createInterview: '/api/interview/create',

@@ -47,6 +47,7 @@ Route::get('job/{id}', [JobsController::class, 'show']);
 Route::post('/unit/create', [UnitsController::class, 'create']);
 Route::get('/unit/index', [UnitsController::class, 'index']);
 Route::get('/unit/{id}', [UnitsController::class, 'show']);
+Route::get('getUnits', [UnitsController::class, 'getUnits']);
 
 
 Route::post('createEmployee', [EmployeesController::class, 'create']);

@@ -3,7 +3,7 @@ import React from 'react'
 import ApiEndpoints from '../../utility/ApiEndpoints'
 import logError from '../../utility/logError'
 
-export default function ConductAssessment(props) {
+export default function ConductTraineeCourseAssessment(props) {
 
     const [training_course_id, settraining_course_id] = React.useState(null)
     const [coach_understanding, setcoach_understanding] = React.useState(null)

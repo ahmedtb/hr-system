@@ -14,7 +14,9 @@ class TrialPeriodAssessmentFilters extends Filters
         'orderByDesc',
         'orderByAsc',
         'from',
-        'to'
+        'to',
+        'trial_begin',
+        'trial_end'
     ];
 
     /**
@@ -46,5 +48,17 @@ class TrialPeriodAssessmentFilters extends Filters
     protected function to($to_date)
     {
         return $this->builder->whereDate('created_at', '<=', $to_date);
+    }
+
+    protected function trial_begin($begin)
+
+    {
+        return $this->builder->whereDate('trial_begin_date', $begin);
+    }
+
+    protected function trial_end($end)
+    {
+        
+        return $this->builder->whereDate('trial_end_date', $end);
     }
 }

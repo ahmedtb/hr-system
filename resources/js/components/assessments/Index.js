@@ -21,7 +21,7 @@ export default function AssessmentsIndex(props) {
 
     React.useEffect(() => {
         axios.get(ApiEndpoints.getTrialPeriods).then((response) => {
-            settrialPeriods(response.data)
+            settrialPeriods(response.data.data)
             // console.log(response.data)
         }).catch((err) => {
             logError(err)

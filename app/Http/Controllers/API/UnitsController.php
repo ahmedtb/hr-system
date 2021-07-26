@@ -31,4 +31,9 @@ class UnitsController extends Controller
 
         return response(['success' => 'unit created']);
     }
+
+    public function getUnits()
+    {
+        return Unit::all();
+    }
 }

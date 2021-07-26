@@ -3,7 +3,7 @@ import moment from 'moment'
 import { Link } from 'react-router-dom'
 import routes from '../utility/routesEndpoints'
 
-export default function CoachCoursesTable(props) {
+export default function CoachCourseAssessmentsTable(props) {
     const coachCourses = props.coachCourses
 
     return (
