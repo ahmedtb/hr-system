@@ -3,6 +3,8 @@
 namespace Database\Factories\Assessments;
 
 use App\Models\Assessments\TraineeCourseAssessment;
+use App\Models\Employee;
+use App\Models\TargetedIndividual;
 use App\Models\TrainingCourse;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,7 +21,7 @@ class TraineeCourseAssessmentFactory extends Factory
     public function ratingWithComment()
     {
         return [
-            'rating' => random_int(0,5),
+            'rating' => random_int(0, 5),
             'comment' => $this->faker->sentence()
         ];
     }
@@ -30,7 +32,25 @@ class TraineeCourseAssessmentFactory extends Factory
      */
     public function definition()
     {
+        $rand = random_int(1, 3);
+        $trainee_id = null;
+        $trainee_type = null;
+        $person_name = null;
+
+        if ($rand == 1) {
+            $trainee_id = Employee::factory()->create()->id;
+            $trainee_type = Employee::class;
+        } else if ($rand == 2) {
+            $trainee_id = TargetedIndividual::factory()->create()->id;
+            $trainee_type = TargetedIndividual::class;
+        } else if ($rand == 3) {
+            $person_name = $this->faker->name();
+        }
         return [
+            'trainee_id' => $trainee_id,
+            'trainee_type' => $trainee_type,
+            'person_name' => $person_name,
+
             'training_course_id' => TrainingCourse::factory()->create()->id,
             'coach_understanding' => $this->ratingWithComment(),
             'coach_communication' => $this->ratingWithComment(),

@@ -11,8 +11,13 @@ use Illuminate\Support\Facades\Validator;
 
 class CoachController extends Controller
 {
-    public function show(Coach $coach)
+    public function show($id)
     {
+        Validator::make(['id' => $id], [
+            'id' => 'required|exists:coaches,id'
+        ])->validate();
+
+        $coach = Coach::where('id', $id)->first();
         return $coach;
     }
     public function index()

@@ -25,6 +25,7 @@ export default {
     createEmployeeForm: '/api/createEmployeeForm',
     createEmployee: '/api/createEmployee',
     getEmployee: '/api/employee/:id',
+    getEmployeeResumedCourses: '/api/employee/:id/courses/resumed',
 
     getEmployees: '/api/getEmployees',
     getTrainingCourses: '/api/getTrainingCourses',
@@ -65,8 +66,9 @@ export default {
     unitShow: '/api/unit/:id',
     getAllAttendances: '/api/course/:id/attendances',
     getAttendancesByDay: '/api/course/:id/attendances/:date',
-
+    
     getCourseEnrolledEmployees: '/api/course/:id/employees',
     getCourseEnrolledIndividuals: '/api/course/:id/individuals',
+    getCoach: '/api/coach/:id',
 
 }

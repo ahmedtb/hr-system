@@ -36,4 +36,9 @@ class TraineeCourseAssessment extends Model
     {
         return $this->belongsTo(TrainingCourse::class);
     }
+
+    public function trainee()
+    {
+        return $this->morphTo();
+    }
 }

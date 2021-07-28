@@ -16,7 +16,9 @@ class TrialPeriodAssessmentFilters extends Filters
         'from',
         'to',
         'trial_begin',
-        'trial_end'
+        'trial_end',
+        'employee_id'
+
     ];
 
     /**
@@ -51,14 +53,17 @@ class TrialPeriodAssessmentFilters extends Filters
     }
 
     protected function trial_begin($begin)
-
     {
         return $this->builder->whereDate('trial_begin_date', $begin);
     }
 
     protected function trial_end($end)
     {
-        
         return $this->builder->whereDate('trial_end_date', $end);
+    }
+
+    protected function employee_id($id)
+    {
+        return $this->builder->where('employee_id', $id);
     }
 }

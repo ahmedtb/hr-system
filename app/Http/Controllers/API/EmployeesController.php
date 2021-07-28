@@ -14,9 +14,26 @@ class EmployeesController extends Controller
 {
     public function show($id)
     {
-        return Employee::where('id',$id)->with(['job','TrialPeriodAssessments','TrainingPeriodAssessments'])->first();
+        $employee = Employee::where('id', $id)->with(['job'])->first();
+        $coach = $employee->coach;
+
+        $resumedCourses = $employee->courses()->resumed()->with(['trainingProgram'])->get();
+        foreach ($resumedCourses as $resumedCourse) {
+            $resumedCourse['employeeAttendaces'] = $resumedCourse->employeeAttendaces($employee);
+        }
+        $trialPeriodAssessments = $employee->TrialPeriodAssessments;
+        $trainingPeriodAssessments = $employee->TrainingPeriodAssessments;
+        $traineeCourseAssessments = $employee->TraineeCourseAssessments;
+        return [
+            'employee' => $employee,
+            'coach' => $coach,
+            'resumedCourses' => $resumedCourses,
+            'trialPeriodAssessments' => $trialPeriodAssessments,
+            'trainingPeriodAssessments' => $trainingPeriodAssessments,
+            'traineeCourseAssessments' => $traineeCourseAssessments
+        ];
     }
-    
+
     public function index()
     {
         return Employee::with('job')->paginate(10);
@@ -186,4 +203,5 @@ class EmployeesController extends Controller
     {
         return Employee::all();
     }
+
 }

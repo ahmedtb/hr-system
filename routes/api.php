@@ -87,6 +87,7 @@ Route::post('coach', [CoachController::class, 'create']);
 Route::get('coach', [CoachController::class, 'createForm']);
 Route::get('/coach/index', [CoachController::class, 'index']);
 Route::get('coach/{coach_id}/programs', [CoachController::class, 'getPrograms']);
+Route::get('coach/{id}', [CoachController::class, 'show']);
 
 Route::post('program', [ProgramsController::class, 'create']);
 Route::get('program/index', [ProgramsController::class, 'index']);

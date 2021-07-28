@@ -49,6 +49,7 @@ import ProgramShow from './program/ProgramShow'
 import showJob from './job/JobShow'
 import TargetedShow from './targeted/TargetedShow'
 import UnitShow from './unit/UnitShow'
+import CoachShow from './coach/CoachShow'
 
 import AttendanceManager from './course/AttendancesManager'
 
@@ -105,6 +106,7 @@ class App extends Component {
                         <Route exact path={routes.showEmployee} component={EmployeeShow} />
                         <Route exact path={routes.showUnit} component={UnitShow} />
                         <Route exact path={routes.showAttendances} component={AttendanceManager} />
+                        <Route exact path={routes.showCoach} component={CoachShow} />
 
 
                         <Route exact path={routes.dashboard} component={Dashboard} />

@@ -16,6 +16,10 @@ class CreateTraineeCourseAssessmentsTable extends Migration
         Schema::create('trainee_course_assessments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('training_course_id');
+
+            $table->nullableMorphs('trainee');
+            $table->string('person_name')->nullable();
+
             $table->string('coach_understanding');
             $table->string('coach_communication');
             $table->string('presentation');

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Assessments\TraineeCourseAssessment;
 use App\Models\Assessments\TrainingPeriodAssessment;
 use App\Models\Assessments\TrialPeriodAssessment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -49,6 +50,11 @@ class Employee extends Model
     public function CourseAttendances()
     {
         return $this->morphMany(CourseAttendance::class, 'profile');
+    }
+    
+    public function TraineeCourseAssessments()
+    {
+        return $this->morphMany(TraineeCourseAssessment::class, 'trainee');
     }
 
     public function TrialPeriodAssessments()

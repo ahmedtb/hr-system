@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
-import routes from '../utility/routesEndpoints'
+import routes from '../../utility/routesEndpoints'
 
 export default function CoursesTable(props) {
     const courses = props.courses
@@ -17,6 +17,7 @@ export default function CoursesTable(props) {
                     <th>المحاضرات التي انجزت</th>
                     <th>المحاضرات المتبيقة</th>
                     <th>نسبة الحضور الكلية</th>
+                    <th>نسبة حضور الموظف</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,7 +40,10 @@ export default function CoursesTable(props) {
                             {course.remainingDays.length}
                         </td>
                         <td>{course.attendancePercentage}</td>
+                        <td>{course.employeeAttendaces.length/course.wentDays.length*100}</td>
+
                     </tr>
+                    
                 ))}
             </tbody>
         </table>

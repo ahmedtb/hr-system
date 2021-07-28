@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, useParams, useLocation } from 'react-router-dom'
 import ApiEndpoints from '../../utility/ApiEndpoints'
 import routes from '../../utility/routesEndpoints'
 import logError from '../../utility/logError'
@@ -10,6 +10,7 @@ export default function TrialPeriodAssessmentIndex() {
 
     const [assessments, setassessments] = React.useState([])
     const [links, setlinks] = React.useState([])
+    // const urlParams = new URLSearchParams(useLocation().search);
 
     async function fetchPage(link = ApiEndpoints.getTrialPeriods, params = null) {
         axios.get(link, {
@@ -24,9 +25,6 @@ export default function TrialPeriodAssessmentIndex() {
 
         }).catch((error) => logError(error))
     }
-    React.useEffect(() => {
-        fetchPage()
-    }, [])
 
 
     const [dataShow, setdataShow] = React.useState({
@@ -83,15 +81,32 @@ export default function TrialPeriodAssessmentIndex() {
         }))
     }
 
-    React.useEffect(() => {
-        //    console.log(dataShow)
-    }, [dataShow])
+
 
     const [from, setfrom] = React.useState(null)
     const [to, setto] = React.useState(null)
 
     const [trial_begin, settrial_begin] = React.useState(null)
     const [trial_end, settrial_end] = React.useState(null)
+
+    const [employees, setemployees] = React.useState(null)
+    const [employee_id, setemployee_id] = React.useState(null)
+
+    async function getEmployees() {
+        axios.get(ApiEndpoints.getEmployees).then((response) => {
+            setemployees(response.data)
+            // console.log(response.data)
+
+        }).catch((err) => logError(err))
+    }
+
+    React.useEffect(() => {
+        getEmployees()
+        var params = Object.fromEntries(new URLSearchParams(location.search));
+        console.log(params)
+        fetchPage(ApiEndpoints.getTrialPeriods, params)
+
+    }, [])
 
     return (
         <div className="col-md-10">
@@ -162,6 +177,30 @@ export default function TrialPeriodAssessmentIndex() {
                                 trial_end === null ? null : { trial_end },
                             )
                             // console.log(params)
+                            fetchPage(ApiEndpoints.getTrialPeriods, params)
+                        }}>filter</button>
+
+                    </div>
+
+                    <div>
+                        <strong>تقييمات الموظف:</strong><br />
+                        <label className="form-check-label" >الموظف</label><br />
+                        <li className="list-group-item">
+                            <label htmlFor="employee">اختر الموظف</label>
+                            <select onChange={(e) => setemployee_id(e.target.value)} name="employee_id">
+                                <option value=''>select employee name</option>
+                                {
+                                    employees?.map((employee, index) => (
+                                        <option key={index} value={employee.id}>{employee.name}</option>
+                                    ))
+                                }
+                            </select>
+                        </li>
+                        {/* <input className="form-check-input" type="date" onChange={(e) => setemployee(e.target.value)} /><br /> */}
+                        <button onClick={() => {
+                            let params = Object.assign({},
+                                employee_id === null ? null : { employee_id },
+                            )
                             fetchPage(ApiEndpoints.getTrialPeriods, params)
                         }}>filter</button>
 

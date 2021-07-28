@@ -45,7 +45,10 @@ export default function CoachIndex(props) {
                             {coaches.map((coach, index) => (
                                 <tr key={index}>
                                     <td>
-                                        {coach.id}
+                                        <Link to={routes.showCoach.replace(':id', coach.id)}>
+                                            {coach.id}
+                                        </Link>
+
                                     </td>
                                     <td>
                                         {

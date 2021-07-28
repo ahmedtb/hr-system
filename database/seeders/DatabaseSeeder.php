@@ -87,8 +87,6 @@ class DatabaseSeeder extends Seeder
         TrainingCourse::factory(5)->planned()->create();
         TrainingCourse::factory(5)->canceled()->create();
 
-        
-
         FormStructure::factory(5)->create();
         Trainee::factory(5)->create();
         Coach::factory(5)->create();
