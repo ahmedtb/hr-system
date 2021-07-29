@@ -2,6 +2,8 @@
 
 namespace App\Filters;
 
+use App\Models\Employee;
+
 class TraineeCourseAssessmentFilters extends Filters
 {
     /**
@@ -11,6 +13,10 @@ class TraineeCourseAssessmentFilters extends Filters
      */
     protected $filters = [
         'coach_understanding',
+        'orderByDesc',
+        'orderByAsc',
+        'employee_id'
+
     ];
 
     /**
@@ -22,6 +28,21 @@ class TraineeCourseAssessmentFilters extends Filters
     protected function coach_understanding($rating)
     {
         return $this->builder->where('coach_understanding->rating', (int)$rating);
+    }
+
+    protected function orderByDesc($trait)
+    {
+        return $this->builder->orderBy($trait, 'DESC');
+    }
+
+    protected function orderByAsc($trait)
+    {
+        return $this->builder->orderBy($trait, 'ASC');
+    }
+    
+    protected function employee_id($id)
+    {
+        return $this->builder->where('trainee_id', $id)->where('trainee_type', Employee::class);
     }
 
 }

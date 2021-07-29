@@ -1,10 +1,10 @@
 import React from 'react'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
-import routes from '../utility/routesEndpoints'
+import routes from '../../../utility/routesEndpoints'
 
-export default function TrialPeriodAssessmentTable(props) {
-    const trialPeriods = props.trialPeriods
+export default function TraineeCourseAssessmentsTable(props) {
+    const traineeCourses = props.traineeCourses
 
     const [dataShow, setdataShow] = React.useState({
         employee_id: false,
@@ -63,50 +63,32 @@ export default function TrialPeriodAssessmentTable(props) {
             [e.target.value]: e.target.checked
         }))
     }
-
     return (
-        <>
-            <div>
-                <strong>عرض البيانات في الجدول</strong><br />
-                {
-                    Object.entries(dataShow).map((data, index) => (
-                        <div key={index} className="form-check-inline">
-                            <input className="form-check-input" type="checkbox" value={data[0]} onClick={(e) => toggleDataShow(e)} />
-                            <label className="form-check-label" >
-                                {labels[data[0]]}
-                            </label>
-                        </div>
-                    ))
-                }
 
-            </div>
-
-            <table className="table table-bordered table-condensed">
-                <thead>
-                    <tr>
-                        <th >ID</th>
-                        {
-                            Object.entries(dataShow).map((data, index) => (
-                                (data[1]) ? <td key={index}>{labels[data[0]]}</td> : null
-                            ))
-                        }
+        <table className="table table-bordered table-condensed">
+            <thead>
+                <tr>
+                    <th >ID</th>
+                    <th>training course title</th>
+                    <th>coach_communication </th>
+                    <th>coach_cooperation</th>
+                    <th>created_at</th>
+                </tr>
+            </thead>
+            <tbody>
+                {traineeCourses?.map((traineeCourse, index) => (
+                    <tr key={index}>
+                        <td>{traineeCourse.id}</td>
+                        <td>
+                            <Link to={routes.showCourse.replace(':id', traineeCourse.training_course.id)}>{traineeCourse.training_course.title}</Link>
+                        </td>
+                        <td>{traineeCourse.coach_communication.rating}</td>
+                        <td>{traineeCourse.coach_cooperation.rating}</td>
+                        <td>{moment(traineeCourse.created_at).format('yyyy-MM-DD')}</td>
                     </tr>
-                </thead>
-                <tbody>
-                    {trialPeriods.map((assessment, index) => (
-                        <tr key={index}>
-                            <td>
-                                {assessment.id}
-                            </td>
-                            {
-                                Object.entries(dataShow).map((data, index) => (
-                                    (data[1]) ? <td key={index}>{assessment[data[0]]}</td> : null
-                                ))
-                            }
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </>
+                ))}
+            </tbody>
+        </table>
+
     )
 }

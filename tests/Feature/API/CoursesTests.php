@@ -10,6 +10,7 @@ use App\Models\FormStructure;
 use App\Models\TrainingCourse;
 use App\Rules\WeekScheduleRule;
 use App\Models\CourseAttendance;
+use App\Models\TargetedIndividual;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CoursesTests extends TestCase
@@ -121,6 +122,41 @@ class CoursesTests extends TestCase
 
     public function test_we_can_fetch_courses_that_close_to_now()
     {
+    }
+
+    public function test_courses_can_be_filtered()
+    {
+        $course = TrainingCourse::factory(2)->create([
+            'start_date' => '2021-07-01',
+            'end_date' => '2021-07-10'
+        ]);
+        $course = TrainingCourse::factory(3)->create([
+            'start_date' => '2021-07-29',
+            'end_date' => '2021-08-10'
+        ]);
+
+        $response = $this->getJson('/api/course/index2?start_date=2021-07-29');
+        $this->assertEquals(sizeof($response->json()['data']), 3);
+
+        $response = $this->getJson('/api/course/index2?start_before=2021-08-01&end_after=2021-07-09');
+        $this->assertEquals(sizeof($response->json()['data']), 5);
+    }
+
+    public function test_courses_can_be_filtered_by_enrolled_employees_and_individuals()
+    {
+        TrainingCourse::factory(2)->create();
+        $course = TrainingCourse::factory()->create();
+
+        $employee = Employee::factory()->create();
+        $course->enrollEmployee($employee);
+        $response = $this->getJson('/api/course/index2?employee_id=' . $employee->id);
+        $this->assertEquals(sizeof($response->json()['data']), 1);
+
+        $individual = TargetedIndividual::factory()->create();
+        $course->enrollIndividual($individual);
+
+        $response = $this->getJson('/api/course/index2?individual_id=' . $individual->id);
+        $this->assertEquals(sizeof($response->json()['data']), 1);
 
     }
 }

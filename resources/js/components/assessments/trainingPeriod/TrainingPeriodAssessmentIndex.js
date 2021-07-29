@@ -4,22 +4,52 @@ import ApiEndpoints from '../../utility/ApiEndpoints'
 import routes from '../../utility/routesEndpoints'
 import logError from '../../utility/logError'
 import { Link } from 'react-router-dom'
-import TrainingPeriodAssessmentsTable from '../../partials/TrainingPeriodAssessmentsTable'
+import TrainingPeriodAssessmentsTable from './components/TrainingPeriodAssessmentsTable'
+import Pagination from '../../utility/Pagination'
+
+function Filters(props) {
+    const fetchPage = props.fetchPage
+
+    return (
+
+        <div className="card">
+
+            <div className="card-header">
+                filters
+            </div>
+
+            <div className="card-body">
+                <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'final_degree' })}>افضل الدرجة الكلية</button>
+                <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'excitement' })}>الافضل في الحماسة</button>
+
+            </div>
+
+        </div>
+    )
+}
+
 export default function TrainingPeriodAssessmentIndex() {
 
     const [trainingPeriods, settrainingPeriods] = React.useState(null)
+    const [links, setlinks] = React.useState([])
 
-    React.useEffect(() => {
-        axios.get(ApiEndpoints.getTrainingPeriods).then((response) => {
-            settrainingPeriods(response.data)
-            // console.log(response.data)
-        }).catch((err) => {
-            logError(err)
-        })
+    async function fetchPage(link = ApiEndpoints.getTrainingPeriods, params = null) {
+        axios.get(link, { params: params }).then((response) => {
+            settrainingPeriods(response.data.data)
+            console.log(response.data)
+            if (response.data.links) { setlinks(response.data.links) } else { setlinks(null) }
+
+        }).catch((error) => logError(error))
+    }
+
+    React.useEffect(() => { 
+        var params = Object.fromEntries(new URLSearchParams(location.search));
+
+        fetchPage(ApiEndpoints.getTrainingPeriods, params) 
     }, [])
 
     return (
-        <div className="col-md-10">
+        <div className="col-md-12">
 
             <div className="card">
 
@@ -35,6 +65,8 @@ export default function TrainingPeriodAssessmentIndex() {
 
             </div>
 
+            <Filters fetchPage={fetchPage} />
+
             <div className="card">
 
                 <div className="card-header">
@@ -43,7 +75,8 @@ export default function TrainingPeriodAssessmentIndex() {
 
                 <div className="card-body">
                     <div className="row justify-content-center">
-                    <TrainingPeriodAssessmentsTable trainingPeriods={trainingPeriods} />
+                        <Pagination fetchPage={fetchPage} links={links} />
+                        <TrainingPeriodAssessmentsTable trainingPeriods={trainingPeriods} />
                     </div>
                 </div>
 

@@ -46,17 +46,6 @@ class TrainingPeriodAssessmentsController extends Controller
 
     public function index(TrainingPeriodAssessmentFilters $filters)
     {
-        return $this->getAssessments($filters);
-    }
-
-    /**
-     * Fetch all relevant threads.
-     *
-     * @param TrainingPeriodAssessmentFilters $filters
-     * @return mixed
-     */
-    protected function getAssessments(TrainingPeriodAssessmentFilters $filters)
-    {
-        return TrainingPeriodAssessment::latest()->with('employee')->filter($filters)->get();
+        return TrainingPeriodAssessment::latest()->with('employee')->filter($filters)->paginate(10)->appends(request()->except('page'));
     }
 }

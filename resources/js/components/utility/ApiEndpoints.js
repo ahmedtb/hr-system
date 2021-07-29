@@ -55,7 +55,7 @@ export default {
     programIndex: '/api/program/index',
     showForms: '/api/form/index',
     showFormsStructure: '/api/structure/index',
-    courseIndex: '/api/course/index',
+    courseIndex: '/api/course/index2',
     employeeIndex: '/api/employee/index',
     unitIndex: '/api/unit/index',
     jobIndex: '/api/job/index',

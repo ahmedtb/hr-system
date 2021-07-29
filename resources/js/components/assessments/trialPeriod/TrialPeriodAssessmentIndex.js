@@ -81,8 +81,6 @@ export default function TrialPeriodAssessmentIndex() {
         }))
     }
 
-
-
     const [from, setfrom] = React.useState(null)
     const [to, setto] = React.useState(null)
 
@@ -95,15 +93,13 @@ export default function TrialPeriodAssessmentIndex() {
     async function getEmployees() {
         axios.get(ApiEndpoints.getEmployees).then((response) => {
             setemployees(response.data)
-            // console.log(response.data)
-
         }).catch((err) => logError(err))
     }
 
     React.useEffect(() => {
         getEmployees()
         var params = Object.fromEntries(new URLSearchParams(location.search));
-        console.log(params)
+        // console.log(params)
         fetchPage(ApiEndpoints.getTrialPeriods, params)
 
     }, [])

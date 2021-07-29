@@ -95,6 +95,7 @@ Route::get('program/{id}', [ProgramsController::class, 'show']);
 
 Route::post('course', [CoursesController::class, 'create']);
 Route::get('course/index', [CoursesController::class, 'index']);
+Route::get('course/index2', [CoursesController::class, 'index2']);
 Route::get('course/{id}', [CoursesController::class, 'show']);
 Route::get('course/{id}/schedual', [CoursesController::class, 'getSchedual']);
 Route::get('course/{id}/attendances', [CoursesController::class, 'getAttendances']);

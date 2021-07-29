@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use App\Casts\Json;
-use DateTime;
+use App\Filters\CourseFilters;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -320,4 +320,10 @@ class TrainingCourse extends Model
     {
         return $this->attendances()->where('date', $date)->get();
     }
+
+    public function scopeFilter($query, CourseFilters $filters)
+    {
+        return $filters->apply($query);
+    }
+
 }

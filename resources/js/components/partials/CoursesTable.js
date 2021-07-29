@@ -17,6 +17,9 @@ export default function CoursesTable(props) {
                     <th>المحاضرات التي انجزت</th>
                     <th>المحاضرات المتبيقة</th>
                     <th>نسبة الحضور الكلية</th>
+                    <th>تاريخ بدء الدورة</th>
+                    <th>تاريخ انتهاء الدورة</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -39,6 +42,9 @@ export default function CoursesTable(props) {
                             {course.remainingDays.length}
                         </td>
                         <td>{course.attendancePercentage}</td>
+                        <td>{course.start_date}</td>
+                        <td>{course.end_date}</td>
+
                     </tr>
                 ))}
             </tbody>

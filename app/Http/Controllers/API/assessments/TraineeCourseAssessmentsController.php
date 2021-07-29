@@ -62,19 +62,7 @@ class TraineeCourseAssessmentsController extends Controller
 
     public function index(TraineeCourseAssessmentFilters $filters)
     {
-        return $this->getAssessments($filters);
+        return TraineeCourseAssessment::latest()->with('TrainingCourse')->filter($filters)->paginate(10);
     }
 
-    /**
-     * Fetch all relevant threads.
-     *
-     * @param TraineeCourseAssessmentFilters $filters
-     * @return mixed
-     */
-    protected function getAssessments(TraineeCourseAssessmentFilters $filters)
-    {
-        $interviews = TraineeCourseAssessment::latest()->with('TrainingCourse')->filter($filters)->get();
-
-        return $interviews;
-    }
 }

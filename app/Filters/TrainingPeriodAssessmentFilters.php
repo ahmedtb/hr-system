@@ -11,6 +11,9 @@ class TrainingPeriodAssessmentFilters extends Filters
      */
     protected $filters = [
         'excitement',
+        'orderByDesc',
+        'orderByAsc',
+        'employee_id'
     ];
 
     /**
@@ -24,4 +27,18 @@ class TrainingPeriodAssessmentFilters extends Filters
         return $this->builder->where('excitement', (int)$rating);
     }
 
+    protected function orderByDesc($trait)
+    {
+        return $this->builder->orderBy($trait, 'DESC');
+    }
+
+    protected function orderByAsc($trait)
+    {
+        return $this->builder->orderBy($trait, 'ASC');
+    }
+    
+    protected function employee_id($id)
+    {
+        return $this->builder->where('employee_id', $id);
+    }
 }

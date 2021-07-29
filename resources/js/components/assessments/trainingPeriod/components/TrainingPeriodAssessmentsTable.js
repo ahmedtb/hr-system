@@ -1,10 +1,10 @@
 import React from 'react'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
-import routes from '../utility/routesEndpoints'
+import routes from '../../../utility/routesEndpoints'
 
-export default function TrialPeriodAssessmentTable(props) {
-    const trialPeriods = props.trialPeriods
+export default function TrainingPeriodAssessmentsTable(props) {
+    const trainingPeriods = props.trainingPeriods
 
     const [dataShow, setdataShow] = React.useState({
         employee_id: false,
@@ -67,6 +67,7 @@ export default function TrialPeriodAssessmentTable(props) {
     return (
         <>
             <div>
+
                 <strong>عرض البيانات في الجدول</strong><br />
                 {
                     Object.entries(dataShow).map((data, index) => (
@@ -78,13 +79,14 @@ export default function TrialPeriodAssessmentTable(props) {
                         </div>
                     ))
                 }
-
             </div>
-
             <table className="table table-bordered table-condensed">
                 <thead>
                     <tr>
                         <th >ID</th>
+                        <th>الموظف</th>
+                        <th>created_at</th>
+
                         {
                             Object.entries(dataShow).map((data, index) => (
                                 (data[1]) ? <td key={index}>{labels[data[0]]}</td> : null
@@ -93,20 +95,23 @@ export default function TrialPeriodAssessmentTable(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {trialPeriods.map((assessment, index) => (
+                    {trainingPeriods?.map((trainingPeriod, index) => (
                         <tr key={index}>
+                            <td>{trainingPeriod.id}</td>
                             <td>
-                                {assessment.id}
+                                <Link to={routes.showEmployee.replace(':id', trainingPeriod.employee.id)}>{trainingPeriod.employee.name}</Link>
                             </td>
+                            <td>{moment(trainingPeriod.created_at).format('yyyy-MM-DD')}</td>
                             {
                                 Object.entries(dataShow).map((data, index) => (
-                                    (data[1]) ? <td key={index}>{assessment[data[0]]}</td> : null
+                                    (data[1]) ? <td key={index}>{trainingPeriod[data[0]]}</td> : null
                                 ))
                             }
                         </tr>
                     ))}
                 </tbody>
             </table>
+
         </>
     )
 }

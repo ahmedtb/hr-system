@@ -27,6 +27,7 @@ export default function EmployeeShow(props) {
             setcoach(response.data.coach)
             setresumedCourses(response.data.resumedCourses)
             settrialPeriodAssessments(response.data.trialPeriodAssessments)
+            console.log(response.data.trialPeriodAssessments)
             settrainingPeriodAssessments(response.data.trainingPeriodAssessments)
             settraineeCourseAssessments(response.data.traineeCourseAssessments)
 

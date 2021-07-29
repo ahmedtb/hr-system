@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Filters\CourseFilters;
 use Illuminate\Http\Request;
 use App\Models\TrainingCourse;
 use App\Rules\CourseStatusRule;
@@ -31,8 +32,6 @@ class CoursesController extends Controller
 
     public function index()
     {
-
-
         $courses = TrainingCourse::with(['trainingProgram'])->paginate(5);
         $twentyDaysRangeCourses = TrainingCourse::whereDate('start_date', '<=', new DateTime('today +10 day'))
             ->whereDate('end_date', '>=', new DateTime('today -10 day'))->get();
@@ -40,6 +39,16 @@ class CoursesController extends Controller
             'courses' => $courses,
             'twentyDaysRangeCourses' => $twentyDaysRangeCourses
         ];
+    }
+
+    public function index2(CourseFilters $filters)
+    {
+        return TrainingCourse::filter($filters)->with(['trainingProgram'])->paginate(30)->appends(request()->except('page'));
+    }
+
+    public function getTrainingCourses(CourseFilters $filters)
+    {
+        return TrainingCourse::filter($filters)->get();
     }
 
     public function create(Request $request)
@@ -99,11 +108,6 @@ class CoursesController extends Controller
         $course = TrainingCourse::where('id', $id)->first();
 
         return $course->forms;
-    }
-
-    public function getTrainingCourses()
-    {
-        return TrainingCourse::all();
     }
 
     public function getEmployees($id)
