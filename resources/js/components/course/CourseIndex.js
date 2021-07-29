@@ -20,7 +20,9 @@ function CoursesViewerAndFilter(props) {
         }).catch((error) => logError(error))
     }
     React.useEffect(() => {
-        fetchPage()
+        var params = Object.fromEntries(new URLSearchParams(location.search));
+
+        fetchPage(ApiEndpoints.courseIndex, params)
     }, [])
 
     return (

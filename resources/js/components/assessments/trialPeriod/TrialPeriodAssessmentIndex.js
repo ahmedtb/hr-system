@@ -99,7 +99,6 @@ export default function TrialPeriodAssessmentIndex() {
     React.useEffect(() => {
         getEmployees()
         var params = Object.fromEntries(new URLSearchParams(location.search));
-        // console.log(params)
         fetchPage(ApiEndpoints.getTrialPeriods, params)
 
     }, [])
@@ -192,7 +191,6 @@ export default function TrialPeriodAssessmentIndex() {
                                 }
                             </select>
                         </li>
-                        {/* <input className="form-check-input" type="date" onChange={(e) => setemployee(e.target.value)} /><br /> */}
                         <button onClick={() => {
                             let params = Object.assign({},
                                 employee_id === null ? null : { employee_id },

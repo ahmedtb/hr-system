@@ -21,6 +21,10 @@ class EmployeesController extends Controller
         foreach ($resumedCourses as $resumedCourse) {
             $resumedCourse['employeeAttendaces'] = $resumedCourse->employeeAttendaces($employee);
         }
+        $plannedCourses = $employee->courses()->planned()->with(['trainingProgram'])->get();
+        $doneCourses = $employee->courses()->done()->with(['trainingProgram'])->get();
+        $canceledCourses = $employee->courses()->canceled()->with(['trainingProgram'])->get();
+
         $trialPeriodAssessments = $employee->TrialPeriodAssessments;
         $trainingPeriodAssessments = $employee->TrainingPeriodAssessments;
         $traineeCourseAssessments = $employee->TraineeCourseAssessments;
@@ -28,6 +32,10 @@ class EmployeesController extends Controller
             'employee' => $employee,
             'coach' => $coach,
             'resumedCourses' => $resumedCourses,
+            'plannedCourses' => $plannedCourses,
+            'doneCourses' => $doneCourses,
+            'canceledCourses' => $canceledCourses,
+
             'trialPeriodAssessments' => $trialPeriodAssessments,
             'trainingPeriodAssessments' => $trainingPeriodAssessments,
             'traineeCourseAssessments' => $traineeCourseAssessments

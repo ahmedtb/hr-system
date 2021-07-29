@@ -5084,51 +5084,126 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function Filters(props) {
   var fetchPage = props.fetchPage;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_1__.useState(null),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      employees = _React$useState2[0],
+      setemployees = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_1__.useState(null),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      employee_id = _React$useState4[0],
+      setemployee_id = _React$useState4[1];
+
+  function getEmployees() {
+    return _getEmployees.apply(this, arguments);
+  }
+
+  function _getEmployees() {
+    _getEmployees = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              axios__WEBPACK_IMPORTED_MODULE_2___default().get(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getEmployees).then(function (response) {
+                setemployees(response.data);
+              })["catch"](function (err) {
+                return (0,_utility_logError__WEBPACK_IMPORTED_MODULE_5__.default)(err);
+              });
+
+            case 1:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+    return _getEmployees.apply(this, arguments);
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_1__.useEffect(function () {
+    getEmployees();
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
     className: "card",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
       className: "card-header",
       children: "filters"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
       className: "card-body",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
         onClick: function onClick() {
           return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTraineeCourses, {
             orderByDesc: 'coach_understanding'
           });
         },
         children: "\u0641\u0647\u0645 \u0627\u0644\u0645\u062F\u0631\u0628"
-      })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("strong", {
+          children: "\u062A\u0642\u064A\u064A\u0645\u0627\u062A \u0627\u0644\u0645\u0648\u0638\u0641:"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("label", {
+          className: "form-check-label",
+          children: "\u0627\u0644\u0645\u0648\u0638\u0641"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("li", {
+          className: "list-group-item",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("label", {
+            htmlFor: "employee",
+            children: "\u0627\u062E\u062A\u0631 \u0627\u0644\u0645\u0648\u0638\u0641"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("select", {
+            onChange: function onChange(e) {
+              return setemployee_id(e.target.value);
+            },
+            name: "employee_id",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("option", {
+              value: "",
+              children: "select employee name"
+            }), employees === null || employees === void 0 ? void 0 : employees.map(function (employee, index) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("option", {
+                value: employee.id,
+                children: employee.name
+              }, index);
+            })]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("button", {
+          onClick: function onClick() {
+            var params = Object.assign({}, employee_id === null ? null : {
+              employee_id: employee_id
+            });
+            fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTraineeCourses, params);
+          },
+          children: "filter"
+        })]
+      })]
     })]
   });
 }
 
 function TraineeCourseAssessmentIndex() {
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_1__.useState(null),
-      _React$useState2 = _slicedToArray(_React$useState, 2),
-      traineeCourses = _React$useState2[0],
-      settraineeCourses = _React$useState2[1];
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_1__.useState(null),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      traineeCourses = _React$useState6[0],
+      settraineeCourses = _React$useState6[1];
 
-  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_1__.useState([]),
-      _React$useState4 = _slicedToArray(_React$useState3, 2),
-      links = _React$useState4[0],
-      setlinks = _React$useState4[1];
+  var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_1__.useState([]),
+      _React$useState8 = _slicedToArray(_React$useState7, 2),
+      links = _React$useState8[0],
+      setlinks = _React$useState8[1];
 
   function fetchPage() {
     return _fetchPage.apply(this, arguments);
   }
 
   function _fetchPage() {
-    _fetchPage = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+    _fetchPage = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
       var link,
           params,
-          _args = arguments;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          _args2 = arguments;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
-          switch (_context.prev = _context.next) {
+          switch (_context2.prev = _context2.next) {
             case 0:
-              link = _args.length > 0 && _args[0] !== undefined ? _args[0] : _utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTraineeCourses;
-              params = _args.length > 1 && _args[1] !== undefined ? _args[1] : null;
+              link = _args2.length > 0 && _args2[0] !== undefined ? _args2[0] : _utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTraineeCourses;
+              params = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : null;
               axios__WEBPACK_IMPORTED_MODULE_2___default().get(link, {
                 params: params
               }).then(function (response) {
@@ -5146,10 +5221,10 @@ function TraineeCourseAssessmentIndex() {
 
             case 3:
             case "end":
-              return _context.stop();
+              return _context2.stop();
           }
         }
-      }, _callee);
+      }, _callee2);
     }));
     return _fetchPage.apply(this, arguments);
   }
@@ -5241,103 +5316,185 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+function DataPresentation(row, property) {
+  if (property == 'trainee') {
+    if (row.trainee_type == 'App\\Models\\Employee') {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+        to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showEmployee.replace(':id', row.trainee_id),
+        children: row.trainee.name
+      });
+    } else if (row.trainee_type == 'App\\Models\\TargetedIndividual') {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+        to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showTargeted.replace(':id', row.trainee_id),
+        children: row.trainee.name
+      });
+    } else return row.trainee_type;
+  } else if (property == 'training_course') {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+      to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showCourse.replace(':id', row.training_course.id),
+      children: row.training_course.title
+    });
+  } else if (property == 'created_at') {
+    return moment__WEBPACK_IMPORTED_MODULE_1___default()(row.created_at).format('yyyy-MM-DD');
+  }
+
+  return row[property].comment;
+}
+
 function TraineeCourseAssessmentsTable(props) {
   var traineeCourses = props.traineeCourses;
 
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState({
-    employee_id: false,
-    reporter_id: false,
-    trial_begin_date: false,
-    trial_end_date: false,
-    excitement: false,
-    final_degree: false,
-    ability_to_improve: false,
-    guidance_acceptance: false,
-    handling_technology: false,
-    maintaining_working_hours: false,
-    relationship_with_colleagues: false,
-    behavior: false,
-    look: false,
-    belief_and_loyalty: false,
-    unit_head_recommendation: false,
-    delay_in_min: false,
-    early_departure_min: false,
-    delay_deduction: false,
-    footprint_deduction: false,
-    absence_days: false,
-    attendance_rate: false,
-    management_decision: false
+    training_course: {
+      visiblity: true,
+      label: 'عنوان البرنامج التدريبي',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'training_course');
+      }
+    },
+    trainee: {
+      visiblity: true,
+      label: 'المتدرب',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'trainee');
+      }
+    },
+    coach_understanding: {
+      visiblity: true,
+      label: 'إلمام المدرب بمواضيع البرنامج التدريبي',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'coach_understanding');
+      }
+    },
+    coach_communication: {
+      visiblity: false,
+      label: 'قدرة المدرب على توصيل المعلومات',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'coach_communication');
+      }
+    },
+    presentation: {
+      visiblity: false,
+      label: 'طريقة تنظيم العرض (من حيث الوضوح والكفاية )',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'presentation');
+      }
+    },
+    coach_cooperation: {
+      visiblity: false,
+      label: 'مدى تعاون وتفاعل المدرب مع المتدربين',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'coach_cooperation');
+      }
+    },
+    program_quality: {
+      visiblity: false,
+      label: 'جودة برنامج التدريب',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'program_quality');
+      }
+    },
+    technical_preparation: {
+      visiblity: false,
+      label: 'التجهيزات الفنية للدورة',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'technical_preparation');
+      }
+    },
+    training_hall_preparation: {
+      visiblity: false,
+      label: 'القاعة التدريبية  وتجهيزاتها (الإضاءة؛ التهوية؛ وسائل الإيضاح ... إلخ )',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'training_hall_preparation');
+      }
+    },
+    reception: {
+      visiblity: false,
+      label: 'لاستقبال و الإجراءات التنظيمية',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'reception');
+      }
+    },
+    hospitality_and_course_breaks: {
+      visiblity: false,
+      label: 'الضيافة وفترات الراحة بالدورة',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'hospitality_and_course_breaks');
+      }
+    },
+    training_unit_response: {
+      visiblity: false,
+      label: 'تعاون وتجاوب وحدة التدريب',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'training_unit_response');
+      }
+    },
+    created_at: {
+      visiblity: false,
+      label: 'تاريخ الانشاء',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'created_at');
+      }
+    }
   }),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       dataShow = _React$useState2[0],
       setdataShow = _React$useState2[1];
 
-  var labels = {
-    employee_id: 'رقم الموظف',
-    reporter_id: 'رقم معد التقرير',
-    trial_begin_date: 'بداية الفترة التجريبية',
-    trial_end_date: 'نهاية الفترة التجريبية',
-    excitement: 'الحماس',
-    final_degree: 'الدرجة النهائية',
-    ability_to_improve: 'القدرة على التعلم والتطور',
-    guidance_acceptance: 'تقبل واستيعاب التوجيه',
-    handling_technology: 'التعامل مع التقنية',
-    maintaining_working_hours: 'المحافظة على الوقت أثناء الدوام',
-    relationship_with_colleagues: 'العلاقة مع الزملاء',
-    behavior: 'حسن التصرف',
-    look: 'حسن المظهر',
-    belief_and_loyalty: 'الإيمان بسياسة القناة والولاء لها',
-    unit_head_recommendation: 'توصية مدير الإدارة',
-    delay_in_min: 'التأخير بالدقائق',
-    early_departure_min: 'الخروج المبكر بالدقائق',
-    delay_deduction: 'خصم يوم عن كل تأخير ثلاثة أيام متتالية',
-    footprint_deduction: 'خصم لكل يوم لا توجد به البصمة الكاملة',
-    absence_days: 'الغياب',
-    attendance_rate: 'نسبة الحضور',
-    management_decision: 'قرار اجتماع الإدارة العليا'
-  };
-
   function toggleDataShow(e) {
     setdataShow(function (pre) {
-      return _objectSpread(_objectSpread({}, pre), {}, _defineProperty({}, e.target.value, e.target.checked));
+      return _objectSpread(_objectSpread({}, pre), {}, _defineProperty({}, e.target.value, _objectSpread(_objectSpread({}, pre[e.target.value]), {}, {
+        visiblity: e.target.checked
+      })));
     });
   }
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("table", {
-    className: "table table-bordered table-condensed",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("thead", {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-          children: "ID"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-          children: "training course title"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-          children: "coach_communication "
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-          children: "coach_cooperation"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-          children: "created_at"
-        })]
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("tbody", {
-      children: traineeCourses === null || traineeCourses === void 0 ? void 0 : traineeCourses.map(function (traineeCourse, index) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-            children: traineeCourse.id
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
-              to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showCourse.replace(':id', traineeCourse.training_course.id),
-              children: traineeCourse.training_course.title
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-            children: traineeCourse.coach_communication.rating
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-            children: traineeCourse.coach_cooperation.rating
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-            children: moment__WEBPACK_IMPORTED_MODULE_1___default()(traineeCourse.created_at).format('yyyy-MM-DD')
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    children: [Object.entries(dataShow).map(function (data, index) {
+      return (
+        /*#__PURE__*/
+        // console.log(data)
+        (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "form-check-inline",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            className: "form-check-input",
+            type: "checkbox",
+            value: data[0],
+            onClick: function onClick(e) {
+              return toggleDataShow(e);
+            }
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+            className: "form-check-label",
+            children: data[1].label
           })]
-        }, index);
-      })
+        }, index)
+      );
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("table", {
+      className: "table table-bordered table-condensed",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("thead", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
+            children: "ID"
+          }), Object.entries(dataShow).map(function (data, index) {
+            return data[1].visiblity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
+              children: data[1].label
+            }, index) : null;
+          })]
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("tbody", {
+        children: traineeCourses === null || traineeCourses === void 0 ? void 0 : traineeCourses.map(function (traineeCourse, index) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
+              children: traineeCourse.id
+            }), Object.entries(dataShow).map(function (data, index) {
+              return data[1].visiblity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
+                children: data[1].presentation(traineeCourse)
+              }, index) : null;
+            })]
+          }, index);
+        })
+      })]
     })]
   });
 }
@@ -6307,65 +6464,190 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+function DataPresentation(row, property) {
+  if (property == 'employee_id') return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+    to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showEmployee.replace(':id', row.employee.id),
+    children: row.employee.name
+  });else if (property == 'created_at') return moment__WEBPACK_IMPORTED_MODULE_1___default()(row.created_at).format('yyyy-MM-DD');
+  return row[property];
+}
+
 function TrainingPeriodAssessmentsTable(props) {
   var trainingPeriods = props.trainingPeriods;
 
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState({
-    employee_id: false,
-    reporter_id: false,
-    trial_begin_date: false,
-    trial_end_date: false,
-    excitement: false,
-    final_degree: false,
-    ability_to_improve: false,
-    guidance_acceptance: false,
-    handling_technology: false,
-    maintaining_working_hours: false,
-    relationship_with_colleagues: false,
-    behavior: false,
-    look: false,
-    belief_and_loyalty: false,
-    unit_head_recommendation: false,
-    delay_in_min: false,
-    early_departure_min: false,
-    delay_deduction: false,
-    footprint_deduction: false,
-    absence_days: false,
-    attendance_rate: false,
-    management_decision: false
+    employee_id: {
+      visiblity: false,
+      label: 'رقم الموظف',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'employee_id');
+      }
+    },
+    reporter_id: {
+      visiblity: false,
+      label: 'رقم معد التقرير',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'reporter_id');
+      }
+    },
+    training_begin_date: {
+      visiblity: false,
+      label: 'بداية الفترة التجريبية',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'training_begin_date');
+      }
+    },
+    training_end_date: {
+      visiblity: false,
+      label: 'نهاية الفترة التجريبية',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'training_end_date');
+      }
+    },
+    excitement: {
+      visiblity: false,
+      label: 'الحماس',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'excitement');
+      }
+    },
+    final_degree: {
+      visiblity: false,
+      label: 'الدرجة النهائية',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'final_degree');
+      }
+    },
+    ability_to_improve: {
+      visiblity: false,
+      label: 'القدرة على التعلم والتطور',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'ability_to_improve');
+      }
+    },
+    guidance_acceptance: {
+      visiblity: false,
+      label: 'تقبل واستيعاب التوجيه',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'guidance_acceptance');
+      }
+    },
+    handling_technology: {
+      visiblity: false,
+      label: 'التعامل مع التقنية',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'handling_technology');
+      }
+    },
+    maintaining_working_hours: {
+      visiblity: false,
+      label: 'المحافظة على الوقت أثناء الدوام',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'maintaining_working_hours');
+      }
+    },
+    relationship_with_colleagues: {
+      visiblity: false,
+      label: 'العلاقة مع الزملاء',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'relationship_with_colleagues');
+      }
+    },
+    behavior: {
+      visiblity: false,
+      label: 'حسن التصرف',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'behavior');
+      }
+    },
+    look: {
+      visiblity: false,
+      label: 'حسن المظهر',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'look');
+      }
+    },
+    belief_and_loyalty: {
+      visiblity: false,
+      label: 'الإيمان بسياسة القناة والولاء لها',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'belief_and_loyalty');
+      }
+    },
+    unit_head_recommendation: {
+      visiblity: false,
+      label: 'توصية مدير الإدارة',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'unit_head_recommendation');
+      }
+    },
+    delay_in_min: {
+      visiblity: false,
+      label: 'التأخير بالدقائق',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'delay_in_min');
+      }
+    },
+    early_departure_min: {
+      visiblity: false,
+      label: 'الخروج المبكر بالدقائق',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'early_departure_min');
+      }
+    },
+    delay_deduction: {
+      visiblity: false,
+      label: 'خصم يوم عن كل تأخير ثلاثة أيام متتالية',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'delay_deduction');
+      }
+    },
+    footprint_deduction: {
+      visiblity: false,
+      label: 'خصم لكل يوم لا توجد به البصمة الكاملة',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'footprint_deduction');
+      }
+    },
+    absence_days: {
+      visiblity: false,
+      label: 'الغياب',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'absence_days');
+      }
+    },
+    attendance_rate: {
+      visiblity: false,
+      label: 'نسبة الحضور',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'attendance_rate');
+      }
+    },
+    management_decision: {
+      visiblity: false,
+      label: 'قرار اجتماع الإدارة العليا',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'management_decision');
+      }
+    },
+    created_at: {
+      visiblity: false,
+      label: 'تاريخ الانشاء',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'created_at');
+      }
+    }
   }),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       dataShow = _React$useState2[0],
       setdataShow = _React$useState2[1];
 
-  var labels = {
-    employee_id: 'رقم الموظف',
-    reporter_id: 'رقم معد التقرير',
-    trial_begin_date: 'بداية الفترة التجريبية',
-    trial_end_date: 'نهاية الفترة التجريبية',
-    excitement: 'الحماس',
-    final_degree: 'الدرجة النهائية',
-    ability_to_improve: 'القدرة على التعلم والتطور',
-    guidance_acceptance: 'تقبل واستيعاب التوجيه',
-    handling_technology: 'التعامل مع التقنية',
-    maintaining_working_hours: 'المحافظة على الوقت أثناء الدوام',
-    relationship_with_colleagues: 'العلاقة مع الزملاء',
-    behavior: 'حسن التصرف',
-    look: 'حسن المظهر',
-    belief_and_loyalty: 'الإيمان بسياسة القناة والولاء لها',
-    unit_head_recommendation: 'توصية مدير الإدارة',
-    delay_in_min: 'التأخير بالدقائق',
-    early_departure_min: 'الخروج المبكر بالدقائق',
-    delay_deduction: 'خصم يوم عن كل تأخير ثلاثة أيام متتالية',
-    footprint_deduction: 'خصم لكل يوم لا توجد به البصمة الكاملة',
-    absence_days: 'الغياب',
-    attendance_rate: 'نسبة الحضور',
-    management_decision: 'قرار اجتماع الإدارة العليا'
-  };
-
   function toggleDataShow(e) {
     setdataShow(function (pre) {
-      return _objectSpread(_objectSpread({}, pre), {}, _defineProperty({}, e.target.value, e.target.checked));
+      return _objectSpread(_objectSpread({}, pre), {}, _defineProperty({}, e.target.value, _objectSpread(_objectSpread({}, pre[e.target.value]), {}, {
+        visiblity: e.target.checked
+      })));
     });
   }
 
@@ -6374,20 +6656,24 @@ function TrainingPeriodAssessmentsTable(props) {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("strong", {
         children: "\u0639\u0631\u0636 \u0627\u0644\u0628\u064A\u0627\u0646\u0627\u062A \u0641\u064A \u0627\u0644\u062C\u062F\u0648\u0644"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), Object.entries(dataShow).map(function (data, index) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-          className: "form-check-inline",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-            className: "form-check-input",
-            type: "checkbox",
-            value: data[0],
-            onClick: function onClick(e) {
-              return toggleDataShow(e);
-            }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-            className: "form-check-label",
-            children: labels[data[0]]
-          })]
-        }, index);
+        return (
+          /*#__PURE__*/
+          // console.log(data)
+          (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            className: "form-check-inline",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              className: "form-check-input",
+              type: "checkbox",
+              value: data[0],
+              onClick: function onClick(e) {
+                return toggleDataShow(e);
+              }
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+              className: "form-check-label",
+              children: data[1].label
+            })]
+          }, index)
+        );
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("table", {
       className: "table table-bordered table-condensed",
@@ -6395,13 +6681,9 @@ function TrainingPeriodAssessmentsTable(props) {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
             children: "ID"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-            children: "\u0627\u0644\u0645\u0648\u0638\u0641"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-            children: "created_at"
           }), Object.entries(dataShow).map(function (data, index) {
-            return data[1] ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-              children: labels[data[0]]
+            return data[1].visiblity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
+              children: data[1].label
             }, index) : null;
           })]
         })
@@ -6410,16 +6692,9 @@ function TrainingPeriodAssessmentsTable(props) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
               children: trainingPeriod.id
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
-                to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showEmployee.replace(':id', trainingPeriod.employee.id),
-                children: trainingPeriod.employee.name
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-              children: moment__WEBPACK_IMPORTED_MODULE_1___default()(trainingPeriod.created_at).format('yyyy-MM-DD')
             }), Object.entries(dataShow).map(function (data, index) {
-              return data[1] ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-                children: trainingPeriod[data[0]]
+              return data[1].visiblity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
+                children: data[1].presentation(trainingPeriod)
               }, index) : null;
             })]
           }, index);
@@ -7561,8 +7836,7 @@ function TrialPeriodAssessmentIndex() {
 
   react__WEBPACK_IMPORTED_MODULE_1__.useEffect(function () {
     getEmployees();
-    var params = Object.fromEntries(new URLSearchParams(location.search)); // console.log(params)
-
+    var params = Object.fromEntries(new URLSearchParams(location.search));
     fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, params);
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
@@ -9116,7 +9390,8 @@ function CoursesViewerAndFilter(props) {
   }
 
   react__WEBPACK_IMPORTED_MODULE_1__.useEffect(function () {
-    fetchPage();
+    var params = Object.fromEntries(new URLSearchParams(location.search));
+    fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.courseIndex, params);
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
@@ -10897,7 +11172,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_CoursesTable__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/CoursesTable */ "./resources/js/components/employee/components/CoursesTable.js");
 /* harmony import */ var _partials_TrialPeriodAssessmentsTable__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../partials/TrialPeriodAssessmentsTable */ "./resources/js/components/partials/TrialPeriodAssessmentsTable.js");
 /* harmony import */ var _partials_TrainingPeriodAssessmentsTable__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../partials/TrainingPeriodAssessmentsTable */ "./resources/js/components/partials/TrainingPeriodAssessmentsTable.js");
-/* harmony import */ var _partials_traineeCourseAssessmentsTable__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../partials/traineeCourseAssessmentsTable */ "./resources/js/components/partials/traineeCourseAssessmentsTable.js");
+/* harmony import */ var _components_TraineeCourseAssessmentsTable__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/TraineeCourseAssessmentsTable */ "./resources/js/components/employee/components/TraineeCourseAssessmentsTable.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -10950,18 +11225,33 @@ function EmployeeShow(props) {
 
   var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_1__.useState([]),
       _React$useState8 = _slicedToArray(_React$useState7, 2),
-      trialPeriodAssessments = _React$useState8[0],
-      settrialPeriodAssessments = _React$useState8[1];
+      doneCourses = _React$useState8[0],
+      setdoneCourses = _React$useState8[1];
 
   var _React$useState9 = react__WEBPACK_IMPORTED_MODULE_1__.useState([]),
       _React$useState10 = _slicedToArray(_React$useState9, 2),
-      trainingPeriodAssessments = _React$useState10[0],
-      settrainingPeriodAssessments = _React$useState10[1];
+      plannedCourses = _React$useState10[0],
+      setplannedCourses = _React$useState10[1];
 
   var _React$useState11 = react__WEBPACK_IMPORTED_MODULE_1__.useState([]),
       _React$useState12 = _slicedToArray(_React$useState11, 2),
-      traineeCourseAssessments = _React$useState12[0],
-      settraineeCourseAssessments = _React$useState12[1];
+      canceledCourses = _React$useState12[0],
+      setcanceledCourses = _React$useState12[1];
+
+  var _React$useState13 = react__WEBPACK_IMPORTED_MODULE_1__.useState([]),
+      _React$useState14 = _slicedToArray(_React$useState13, 2),
+      trialPeriodAssessments = _React$useState14[0],
+      settrialPeriodAssessments = _React$useState14[1];
+
+  var _React$useState15 = react__WEBPACK_IMPORTED_MODULE_1__.useState([]),
+      _React$useState16 = _slicedToArray(_React$useState15, 2),
+      trainingPeriodAssessments = _React$useState16[0],
+      settrainingPeriodAssessments = _React$useState16[1];
+
+  var _React$useState17 = react__WEBPACK_IMPORTED_MODULE_1__.useState([]),
+      _React$useState18 = _slicedToArray(_React$useState17, 2),
+      traineeCourseAssessments = _React$useState18[0],
+      settraineeCourseAssessments = _React$useState18[1];
 
   function getEmployeeInfo() {
     return _getEmployeeInfo.apply(this, arguments);
@@ -10983,25 +11273,26 @@ function EmployeeShow(props) {
               setemployee(response.data.employee);
               setcoach(response.data.coach);
               setresumedCourses(response.data.resumedCourses);
+              setdoneCourses(response.data.doneCourses);
+              setplannedCourses(response.data.plannedCourses);
+              setcanceledCourses(response.data.canceledCourses);
               settrialPeriodAssessments(response.data.trialPeriodAssessments);
-              console.log(response.data.trialPeriodAssessments);
               settrainingPeriodAssessments(response.data.trainingPeriodAssessments);
               settraineeCourseAssessments(response.data.traineeCourseAssessments);
-              console.log(response.data);
-              _context.next = 17;
+              _context.next = 18;
               break;
 
-            case 14:
-              _context.prev = 14;
+            case 15:
+              _context.prev = 15;
               _context.t0 = _context["catch"](0);
               (0,_utility_logError__WEBPACK_IMPORTED_MODULE_4__.default)(_context.t0);
 
-            case 17:
+            case 18:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 14]]);
+      }, _callee, null, [[0, 15]]);
     }));
     return _getEmployeeInfo.apply(this, arguments);
   }
@@ -11104,7 +11395,7 @@ function EmployeeShow(props) {
         className: "card-body",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
           className: "row justify-content-center warp",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_partials_traineeCourseAssessmentsTable__WEBPACK_IMPORTED_MODULE_9__.default, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_TraineeCourseAssessmentsTable__WEBPACK_IMPORTED_MODULE_9__.default, {
             traineeCourses: traineeCourseAssessments
           })
         })
@@ -11122,27 +11413,45 @@ function EmployeeShow(props) {
             to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_5__.default.TrialPeriodAssessmentIndex + '?employee_id=' + id,
             children: ["\u062A\u0642\u064A\u064A\u0645\u0627\u062A \u0641\u062A\u0631\u0629 \u0627\u0644\u062A\u062C\u0631\u064A\u0628 \u0644\u0644\u0645\u0648\u0638\u0641 ", employee === null || employee === void 0 ? void 0 : employee.trial_period_assessments.length]
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
           className: "col-5 border border-dark rounded m-2 text-center",
-          children: ["\u062A\u0642\u064A\u064A\u0645\u0627\u062A \u0641\u062A\u0631\u0629 \u0627\u0644\u062A\u062F\u0631\u064A\u0628 ", employee === null || employee === void 0 ? void 0 : employee.training_period_assessments.length]
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Link, {
+            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_5__.default.TrainingPeriodAssessmentIndex + '?employee_id=' + id,
+            children: ["\u062A\u0642\u064A\u064A\u0645\u0627\u062A \u0641\u062A\u0631\u0629 \u0627\u0644\u062A\u062F\u0631\u064A\u0628 \u0644\u0644\u0645\u0648\u0638\u0641 ", employee === null || employee === void 0 ? void 0 : employee.training_period_assessments.length]
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
           className: "col-5 border border-dark rounded m-2 text-center",
           children: "\u062A\u0642\u064A\u064A\u0645\u0627\u062A \u0627\u0644\u0645\u0642\u0627\u0628\u0644\u0629 \u0627\u0644\u062A\u064A \u062A\u062E\u0635 \u0627\u0644\u0645\u0648\u0638\u0641"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
           className: "col-5 border border-dark rounded m-2 text-center",
-          children: "\u062A\u0642\u064A\u0645\u0645\u0627\u062A \u0627\u0644\u062F\u0648\u0631\u0627\u062A \u0627\u0644\u062A\u064A \u0642\u0627\u0645 \u0628\u0647\u0627 \u0627\u0644\u0645\u0648\u0638\u0641"
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Link, {
+            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_5__.default.TraineeCourseAssessmentIndex + '?employee_id=' + id,
+            children: ["\u062A\u0642\u064A\u064A\u0645\u0627\u062A \u0627\u0644\u0645\u0648\u0638\u0641 \u0644\u0644\u062F\u0648\u0631\u0627\u062A \u0627\u0644\u062A\u064A \u0645\u0631 \u0628\u0647\u0627 ", traineeCourseAssessments.length]
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
           className: "col-5 border border-dark rounded m-2 text-center",
-          children: "\u0627\u0644\u062F\u0648\u0631\u0627\u062A \u0627\u0644\u062C\u0627\u0631\u064A\u0629 \u0627\u0644\u0645\u0633\u062C\u0644 \u0628\u0647\u0627"
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Link, {
+            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_5__.default.courseIndex + '?resumed=true&employee_id=' + id,
+            children: ["\u0627\u0644\u062F\u0648\u0631\u0627\u062A \u0627\u0644\u062C\u0627\u0631\u064A\u0629 \u0627\u0644\u0645\u0633\u062C\u0644 \u0628\u0647\u0627 ", resumedCourses.length]
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
           className: "col-5 border border-dark rounded m-2 text-center",
-          children: "\u0627\u0644\u062F\u0648\u0631\u0627\u062A \u0627\u0644\u0645\u0646\u062A\u0647\u064A\u0629 \u0627\u0644\u0645\u0633\u062C\u0644 \u0628\u0647\u0627"
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Link, {
+            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_5__.default.courseIndex + '?done=true&employee_id=' + id,
+            children: ["\u0627\u0644\u062F\u0648\u0631\u0627\u062A \u0627\u0644\u0645\u0646\u062A\u0647\u064A\u0629 \u0627\u0644\u0645\u0633\u062C\u0644 \u0628\u0647\u0627 ", doneCourses.length]
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
           className: "col-5 border border-dark rounded m-2 text-center",
-          children: "\u0627\u0644\u062F\u0648\u0631\u0627\u062A \u0627\u0644\u0645\u0644\u063A\u064A\u0629 \u0627\u0644\u0645\u0633\u062C\u0644 \u0628\u0647\u0627"
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Link, {
+            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_5__.default.courseIndex + '?canceled=true&employee_id=' + id,
+            children: ["\u0627\u0644\u062F\u0648\u0631\u0627\u062A \u0627\u0644\u0645\u0644\u063A\u064A\u0629 \u0627\u0644\u0645\u0633\u062C\u0644 \u0628\u0647\u0627 ", canceledCourses.length]
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
           className: "col-5 border border-dark rounded m-2 text-center",
-          children: "\u0627\u0644\u062F\u0648\u0631\u0627\u062A \u0627\u0644\u0645\u062E\u0637\u0637 \u0644\u0647 \u0648\u0627\u0644\u0645\u0633\u062C\u0644 \u0628\u0647\u0627"
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Link, {
+            to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_5__.default.courseIndex + '?planned=true&employee_id=' + id,
+            children: ["\u0627\u0644\u062F\u0648\u0631\u0627\u062A \u0627\u0644\u0645\u062E\u0637\u0637 \u0644\u0647 \u0627\u0644\u0645\u0633\u062C\u0644 \u0628\u0647\u0627 ", plannedCourses.length]
+          })
         })]
       })
     })]
@@ -11228,6 +11537,234 @@ function CoursesTable(props) {
           })]
         }, index);
       })
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/employee/components/TraineeCourseAssessmentsTable.js":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/employee/components/TraineeCourseAssessmentsTable.js ***!
+  \**************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ TraineeCourseAssessmentsTable)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utility/routesEndpoints */ "./resources/js/components/utility/routesEndpoints.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+function DataPresentation(row, property) {
+  if (property == 'trainee') {
+    if (row.trainee_type == 'App\\Models\\Employee') {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+        to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showEmployee.replace(':id', row.trainee_id),
+        children: row.trainee.name
+      });
+    } else if (row.trainee_type == 'App\\Models\\TargetedIndividual') {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+        to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showTargeted.replace(':id', row.trainee_id),
+        children: row.trainee.name
+      });
+    } else return row.trainee_type;
+  } else if (property == 'training_course') {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+      to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showCourse.replace(':id', row.training_course.id),
+      children: row.training_course.title
+    });
+  } else if (property == 'created_at') {
+    return moment__WEBPACK_IMPORTED_MODULE_1___default()(row.created_at).format('yyyy-MM-DD');
+  }
+
+  return row[property].comment;
+}
+
+function TraineeCourseAssessmentsTable(props) {
+  var traineeCourses = props.traineeCourses;
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState({
+    training_course: {
+      visiblity: true,
+      label: 'عنوان البرنامج التدريبي',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'training_course');
+      }
+    },
+    trainee: {
+      visiblity: true,
+      label: 'المتدرب',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'trainee');
+      }
+    },
+    coach_understanding: {
+      visiblity: true,
+      label: 'إلمام المدرب بمواضيع البرنامج التدريبي',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'coach_understanding');
+      }
+    },
+    coach_communication: {
+      visiblity: false,
+      label: 'قدرة المدرب على توصيل المعلومات',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'coach_communication');
+      }
+    },
+    presentation: {
+      visiblity: false,
+      label: 'طريقة تنظيم العرض (من حيث الوضوح والكفاية )',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'presentation');
+      }
+    },
+    coach_cooperation: {
+      visiblity: false,
+      label: 'مدى تعاون وتفاعل المدرب مع المتدربين',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'coach_cooperation');
+      }
+    },
+    program_quality: {
+      visiblity: false,
+      label: 'جودة برنامج التدريب',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'program_quality');
+      }
+    },
+    technical_preparation: {
+      visiblity: false,
+      label: 'التجهيزات الفنية للدورة',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'technical_preparation');
+      }
+    },
+    training_hall_preparation: {
+      visiblity: false,
+      label: 'القاعة التدريبية  وتجهيزاتها (الإضاءة؛ التهوية؛ وسائل الإيضاح ... إلخ )',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'training_hall_preparation');
+      }
+    },
+    reception: {
+      visiblity: false,
+      label: 'لاستقبال و الإجراءات التنظيمية',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'reception');
+      }
+    },
+    hospitality_and_course_breaks: {
+      visiblity: false,
+      label: 'الضيافة وفترات الراحة بالدورة',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'hospitality_and_course_breaks');
+      }
+    },
+    training_unit_response: {
+      visiblity: false,
+      label: 'تعاون وتجاوب وحدة التدريب',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'training_unit_response');
+      }
+    },
+    created_at: {
+      visiblity: false,
+      label: 'تاريخ الانشاء',
+      presentation: function presentation(row) {
+        return DataPresentation(row, 'created_at');
+      }
+    }
+  }),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      dataShow = _React$useState2[0],
+      setdataShow = _React$useState2[1];
+
+  function toggleDataShow(e) {
+    setdataShow(function (pre) {
+      return _objectSpread(_objectSpread({}, pre), {}, _defineProperty({}, e.target.value, _objectSpread(_objectSpread({}, pre[e.target.value]), {}, {
+        visiblity: e.target.checked
+      })));
+    });
+  }
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    children: [Object.entries(dataShow).map(function (data, index) {
+      return (
+        /*#__PURE__*/
+        // console.log(data)
+        (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "form-check-inline",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+            className: "form-check-input",
+            type: "checkbox",
+            readOnly: true,
+            checked: data[1].visiblity,
+            value: data[0],
+            onClick: function onClick(e) {
+              return toggleDataShow(e);
+            }
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+            className: "form-check-label",
+            children: data[1].label
+          })]
+        }, index)
+      );
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("table", {
+      className: "table table-bordered table-condensed",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("thead", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
+            children: "ID"
+          }), Object.entries(dataShow).map(function (data, index) {
+            return data[1].visiblity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
+              children: data[1].label
+            }, index) : null;
+          })]
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("tbody", {
+        children: traineeCourses === null || traineeCourses === void 0 ? void 0 : traineeCourses.map(function (traineeCourse, index) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
+              children: traineeCourse.id
+            }), Object.entries(dataShow).map(function (data, index) {
+              return data[1].visiblity ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
+                children: data[1].presentation(traineeCourse)
+              }, index) : null;
+            })]
+          }, index);
+        })
+      })]
     })]
   });
 }
@@ -16637,13 +17174,15 @@ function TraineeCourseAssessmentsTable(props) {
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("tbody", {
       children: traineeCourses === null || traineeCourses === void 0 ? void 0 : traineeCourses.map(function (traineeCourse, index) {
+        var _traineeCourse$traini, _traineeCourse$traini2;
+
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
             children: traineeCourse.id
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
-              to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showCourse.replace(':id', traineeCourse.training_course.id),
-              children: traineeCourse.training_course.title
+              to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showCourse.replace(':id', (_traineeCourse$traini = traineeCourse.training_course) === null || _traineeCourse$traini === void 0 ? void 0 : _traineeCourse$traini.id),
+              children: (_traineeCourse$traini2 = traineeCourse.training_course) === null || _traineeCourse$traini2 === void 0 ? void 0 : _traineeCourse$traini2.title
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
             children: traineeCourse.coach_communication.rating
@@ -16977,72 +17516,6 @@ function UnitsList(props) {
               to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.showUnit.replace(':id', unit.parent_id),
               children: (_unit$parent = unit.parent) === null || _unit$parent === void 0 ? void 0 : _unit$parent.name
             })
-          })]
-        }, index);
-      })
-    })]
-  });
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/partials/traineeCourseAssessmentsTable.js":
-/*!***************************************************************************!*\
-  !*** ./resources/js/components/partials/traineeCourseAssessmentsTable.js ***!
-  \***************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ TraineeCourseAssessmentsTable)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utility/routesEndpoints */ "./resources/js/components/utility/routesEndpoints.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-function TraineeCourseAssessmentsTable(props) {
-  var traineeCourses = props.traineeCourses;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("table", {
-    className: "table table-bordered table-condensed",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("thead", {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-          children: "ID"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-          children: "training course title"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-          children: "coach_communication "
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-          children: "coach_cooperation"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
-          children: "created_at"
-        })]
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("tbody", {
-      children: traineeCourses === null || traineeCourses === void 0 ? void 0 : traineeCourses.map(function (traineeCourse, index) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-            children: traineeCourse.id
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
-              to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.showCourse.replace(':id', traineeCourse.training_course.id),
-              children: traineeCourse.training_course.title
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-            children: traineeCourse.coach_communication.rating
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-            children: traineeCourse.coach_cooperation.rating
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-            children: moment__WEBPACK_IMPORTED_MODULE_1___default()(traineeCourse.created_at).format('yyyy-MM-DD')
           })]
         }, index);
       })

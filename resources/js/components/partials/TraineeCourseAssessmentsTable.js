@@ -23,7 +23,7 @@ export default function TraineeCourseAssessmentsTable(props) {
                     <tr key={index}>
                         <td>{traineeCourse.id}</td>
                         <td>
-                            <Link to={routes.showCourse.replace(':id', traineeCourse.training_course.id)}>{traineeCourse.training_course.title}</Link>
+                            <Link to={routes.showCourse.replace(':id', traineeCourse.training_course?.id)}>{traineeCourse.training_course?.title}</Link>
                         </td>
                         <td>{traineeCourse.coach_communication.rating}</td>
                         <td>{traineeCourse.coach_cooperation.rating}</td>

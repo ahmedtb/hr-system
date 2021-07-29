@@ -62,7 +62,7 @@ class TraineeCourseAssessmentsController extends Controller
 
     public function index(TraineeCourseAssessmentFilters $filters)
     {
-        return TraineeCourseAssessment::latest()->with('TrainingCourse')->filter($filters)->paginate(10);
+        return TraineeCourseAssessment::latest()->with(['TrainingCourse','trainee'])->filter($filters)->paginate(10);
     }
 
 }

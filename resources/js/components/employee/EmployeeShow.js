@@ -7,7 +7,7 @@ import { useParams, Link } from 'react-router-dom';
 import CoursesTable from './components/CoursesTable'
 import TrialPeriodAssessmentTable from '../partials/TrialPeriodAssessmentsTable'
 import TrainingPeriodAssessmentsTable from '../partials/TrainingPeriodAssessmentsTable'
-import TraineeCourseAssessmentsTable from '../partials/traineeCourseAssessmentsTable'
+import TraineeCourseAssessmentsTable from './components/TraineeCourseAssessmentsTable'
 
 export default function EmployeeShow(props) {
 
@@ -16,6 +16,10 @@ export default function EmployeeShow(props) {
     const [coach, setcoach] = React.useState(null)
 
     const [resumedCourses, setresumedCourses] = React.useState([])
+    const [doneCourses, setdoneCourses] = React.useState([])
+    const [plannedCourses, setplannedCourses] = React.useState([])
+    const [canceledCourses, setcanceledCourses] = React.useState([])
+
     const [trialPeriodAssessments, settrialPeriodAssessments] = React.useState([])
     const [trainingPeriodAssessments, settrainingPeriodAssessments] = React.useState([])
     const [traineeCourseAssessments, settraineeCourseAssessments] = React.useState([])
@@ -26,12 +30,13 @@ export default function EmployeeShow(props) {
             setemployee(response.data.employee)
             setcoach(response.data.coach)
             setresumedCourses(response.data.resumedCourses)
+            setdoneCourses(response.data.doneCourses)
+            setplannedCourses(response.data.plannedCourses)
+            setcanceledCourses(response.data.canceledCourses)
+
             settrialPeriodAssessments(response.data.trialPeriodAssessments)
-            console.log(response.data.trialPeriodAssessments)
             settrainingPeriodAssessments(response.data.trainingPeriodAssessments)
             settraineeCourseAssessments(response.data.traineeCourseAssessments)
-
-            console.log(response.data)
         } catch (error) {
             logError(error)
         }
@@ -76,7 +81,7 @@ export default function EmployeeShow(props) {
                         {
                             coach ? (
                                 <div className="col-5 border border-dark rounded m-2 text-center">
-                                    الموظف كمدرب 
+                                    الموظف كمدرب
                                     <Link to={''} >{coach.id}</Link>
                                 </div>
                             ) : null
@@ -148,25 +153,37 @@ export default function EmployeeShow(props) {
                         </Link>
                     </div>
                     <div className="col-5 border border-dark rounded m-2 text-center">
-                        تقييمات فترة التدريب {employee?.training_period_assessments.length}
+                        <Link to={routes.TrainingPeriodAssessmentIndex + '?employee_id=' + id}>
+                            تقييمات فترة التدريب للموظف {employee?.training_period_assessments.length}
+                        </Link>
                     </div>
                     <div className="col-5 border border-dark rounded m-2 text-center">
                         تقييمات المقابلة التي تخص الموظف
                     </div>
                     <div className="col-5 border border-dark rounded m-2 text-center">
-                        تقيممات الدورات التي قام بها الموظف
+                        <Link to={routes.TraineeCourseAssessmentIndex + '?employee_id=' + id}>
+                            تقييمات الموظف للدورات التي مر بها {traineeCourseAssessments.length}
+                        </Link>
                     </div>
                     <div className="col-5 border border-dark rounded m-2 text-center">
-                        الدورات الجارية المسجل بها
+                        <Link to={routes.courseIndex + '?resumed=true&employee_id=' + id}>
+                            الدورات الجارية المسجل بها {resumedCourses.length}
+                        </Link>
                     </div>
                     <div className="col-5 border border-dark rounded m-2 text-center">
-                        الدورات المنتهية المسجل بها
+                        <Link to={routes.courseIndex + '?done=true&employee_id=' + id}>
+                            الدورات المنتهية المسجل بها {doneCourses.length}
+                        </Link>
                     </div>
                     <div className="col-5 border border-dark rounded m-2 text-center">
-                        الدورات الملغية المسجل بها
+                        <Link to={routes.courseIndex + '?canceled=true&employee_id=' + id}>
+                            الدورات الملغية المسجل بها {canceledCourses.length}
+                        </Link>
                     </div>
                     <div className="col-5 border border-dark rounded m-2 text-center">
-                        الدورات المخطط له والمسجل بها
+                        <Link to={routes.courseIndex + '?planned=true&employee_id=' + id}>
+                            الدورات المخطط له المسجل بها {plannedCourses.length}
+                        </Link>
                     </div>
                 </div>
 

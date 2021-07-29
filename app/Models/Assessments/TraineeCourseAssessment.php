@@ -27,6 +27,18 @@ class TraineeCourseAssessment extends Model
         'training_unit_response' => Json::class,
     ];
 
+    protected $appends = [
+        'trainee',
+        'training_course'
+    ];
+
+    public function getTraineeAttribute(){
+        return $this->trainee()->first();
+    }
+    public function getTrainingCourseAttribute(){
+        return $this->TrainingCourse()->first();
+    }
+
     public function scopeFilter($query, TraineeCourseAssessmentFilters $filters)
     {
         return $filters->apply($query);

@@ -10,6 +10,19 @@ import Pagination from '../../utility/Pagination'
 function Filters(props) {
     const fetchPage = props.fetchPage
 
+    const [employees, setemployees] = React.useState(null)
+    const [employee_id, setemployee_id] = React.useState(null)
+
+    async function getEmployees() {
+        axios.get(ApiEndpoints.getEmployees).then((response) => {
+            setemployees(response.data)
+        }).catch((err) => logError(err))
+    }
+
+    React.useEffect(() => {
+        getEmployees()
+    }, [])
+    
     return (
 
         <div className="card">
@@ -21,6 +34,28 @@ function Filters(props) {
             <div className="card-body">
                 <button onClick={() => fetchPage(ApiEndpoints.getTraineeCourses, { orderByDesc: 'coach_understanding' })}>فهم المدرب</button>
 
+                <div>
+                    <strong>تقييمات الموظف:</strong><br />
+                    <label className="form-check-label" >الموظف</label><br />
+                    <li className="list-group-item">
+                        <label htmlFor="employee">اختر الموظف</label>
+                        <select onChange={(e) => setemployee_id(e.target.value)} name="employee_id">
+                            <option value=''>select employee name</option>
+                            {
+                                employees?.map((employee, index) => (
+                                    <option key={index} value={employee.id}>{employee.name}</option>
+                                ))
+                            }
+                        </select>
+                    </li>
+                    <button onClick={() => {
+                        let params = Object.assign({},
+                            employee_id === null ? null : { employee_id },
+                        )
+                        fetchPage(ApiEndpoints.getTraineeCourses, params)
+                    }}>filter</button>
+
+                </div>
             </div>
 
         </div>

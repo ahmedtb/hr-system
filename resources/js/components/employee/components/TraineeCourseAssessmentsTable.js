@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
-import routes from '../../../utility/routesEndpoints'
+import routes from '../../utility/routesEndpoints'
 
 function DataPresentation(row, property) {
 
@@ -57,7 +57,7 @@ export default function TraineeCourseAssessmentsTable(props) {
                 Object.entries(dataShow).map((data, index) => (
                     // console.log(data)
                     <div key={index} className="form-check-inline">
-                        <input className="form-check-input" type="checkbox" value={data[0]} onClick={(e) => toggleDataShow(e)} />
+                        <input className="form-check-input" type="checkbox" readOnly checked={data[1].visiblity} value={data[0]} onClick={(e) => toggleDataShow(e)} />
                         <label className="form-check-label" >
                             {data[1].label}
                         </label>
