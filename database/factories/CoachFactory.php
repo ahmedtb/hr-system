@@ -36,7 +36,7 @@ class CoachFactory extends Factory
         }
         
         return [
-            'CV' => $this->faker->randomHtml(),
+            'CV' => $this->faker->sentence(1000),
             'speciality' => $this->faker->sentence(),
             'profile_id' => $profile_id,
             'profile_type' => $profile_type

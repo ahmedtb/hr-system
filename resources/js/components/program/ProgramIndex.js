@@ -50,7 +50,7 @@ export default function ProgramIndex(props) {
         fetchPage()
     }, [])
     return (
-        <div className="col-md-10">
+        <div className="col-md-12">
             <div className="card">
                 <div className="card-header">البرامج التدريبية</div>
                 <div className="card-body">

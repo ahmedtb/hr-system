@@ -8243,10 +8243,7 @@ function CoachIndex(props) {
           fetchPage: fetchPage,
           links: links
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("table", {
-          className: "table table-bordered table-condensed",
-          style: {
-            marginBottom: 0
-          },
+          className: "table table-bordered table-condensed table-striped table-sm",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("thead", {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("tr", {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
@@ -8262,6 +8259,7 @@ function CoachIndex(props) {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("tbody", {
             children: coaches.map(function (coach, index) {
               return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("tr", {
+                className: "",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
                     to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_4__.default.showCoach.replace(':id', coach.id),
@@ -8278,6 +8276,7 @@ function CoachIndex(props) {
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
                   children: coach.speciality
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
+                  "class": "overflow-auto",
                   children: coach.CV
                 })]
               }, index);
@@ -8405,7 +8404,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 function CreateCoach(props) {
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState([]),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -8473,115 +8471,148 @@ function CreateCoach(props) {
       return (0,_utility_logError__WEBPACK_IMPORTED_MODULE_3__.default)(err);
     });
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("ul", {
-      className: "list-group",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
-        className: "list-group-item",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-          children: "\u0627\u0633\u0645 \u0627\u0644\u0645\u062F\u0631\u0628"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-          onChange: function onChange(e) {
-            return setname(e.target.value);
-          },
-          type: "text"
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
-        className: "list-group-item",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-          children: "\u0627\u0644\u0633\u064A\u0631\u0629 \u0627\u0644\u0630\u0627\u062A\u064A\u0629"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("textarea", {
-          onChange: function onChange(e) {
-            return setCV(e.target.value);
-          },
-          cols: "50",
-          rows: "10"
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
-        className: "list-group-item",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-          children: "\u0627\u0644\u062A\u062E\u0635\u0635"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-          onChange: function onChange(e) {
-            return setspeciality(e.target.value);
-          },
-          type: "text"
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
-        className: "list-group-item",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
-          value: '',
-          onChange: profileChoiceChange,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-            value: "",
-            children: "please choose type"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-            value: "employee",
-            children: "employee"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-            value: "targeted",
-            children: "targeted"
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    className: "card",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      className: "card-header",
+      children: "\u0627\u0636\u0627\u0641\u0629 \u0645\u062F\u0631\u0628"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      className: "card-body row",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "col-2 ",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "p-2 border rounded m-2 text-center",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+            className: "",
+            children: "\u0635\u0648\u0631\u0629 \u0627\u0644\u0645\u062F\u0631\u0628"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+            height: "100",
+            onClick: function onClick() {},
+            src: '/css/profile.png'
           })]
         })
-      }), function () {
-        if (profileChoice == 'employee') {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
-              className: "list-group-item",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-                htmlFor: "employee",
-                children: "\u0627\u062E\u062A\u0631 \u0627\u0644\u0645\u0648\u0638\u0641"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
-                onChange: function onChange(e) {
-                  return setid(e.target.value);
-                },
-                name: "employee_id",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                  value: "",
-                  children: "select employee name"
-                }), employees.map(function (employee, index) {
-                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                    value: employee.id,
-                    children: employee.name
-                  }, index);
-                })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "col-10 row align-items-start",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "col-10 p-2 border rounded m-2 row",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+            className: "col-4",
+            children: "\u0627\u0633\u0645 \u0627\u0644\u0645\u062F\u0631\u0628"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+            className: "col-8 form-control",
+            value: name,
+            onChange: function onChange(e) {
+              return setname(e.target.value);
+            },
+            type: "text"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "col-10 p-2 border rounded m-2 row ",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+            className: "col-4",
+            children: "\u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u0634\u062E\u0635\u064A \u0644\u0644\u0641\u0631\u062F"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            className: "col-8  form-control",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
+              className: "form-control",
+              value: '',
+              onChange: profileChoiceChange,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                value: "",
+                children: "\u0627\u062E\u062A\u0631 \u0646\u0648\u0639 \u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u0634\u062E\u0635\u064A"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                value: "employee",
+                children: "\u0645\u0648\u0638\u0641"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                value: "targeted",
+                children: "\u0645\u0633\u062A\u0647\u062F\u0641"
               })]
-            })
-          });
-        } else if (profileChoice == 'targeted') {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
-              className: "list-group-item",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-                htmlFor: "targeted",
-                children: "\u0627\u062E\u062A\u0631 \u0627\u0644\u0645\u0633\u062A\u0647\u062F\u0641"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
-                onChange: function onChange(e) {
-                  return setid(e.target.value);
-                },
-                name: "targeted_id",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                  value: "",
-                  children: "select targeted name"
-                }), targetedIndividuals.map(function (targeted, index) {
-                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                    value: targeted.id,
-                    children: targeted.id
-                  }, index);
-                })]
-              })]
-            })
-          });
-        }
-      }(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
-        className: "list-group-item",
+            }), function () {
+              if (profileChoice == 'employee') {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                  className: "col-12 row",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                    className: "col-4",
+                    htmlFor: "employee",
+                    children: "\u0627\u062E\u062A\u0631 \u0627\u0644\u0645\u0648\u0638\u0641"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
+                    className: "col-8 form-control",
+                    onChange: function onChange(e) {
+                      return setid(e.target.value);
+                    },
+                    name: "employee_id",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                      value: "",
+                      children: "select employee name"
+                    }), employees.map(function (employee, index) {
+                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                        value: employee.id,
+                        children: employee.name
+                      }, index);
+                    })]
+                  })]
+                });
+              } else if (profileChoice == 'targeted') {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                  className: "col-12 row",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                    className: "col-4",
+                    htmlFor: "targeted",
+                    children: "\u0627\u062E\u062A\u0631 \u0627\u0644\u0645\u0633\u062A\u0647\u062F\u0641"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
+                    className: "col-8 form-control",
+                    onChange: function onChange(e) {
+                      return setid(e.target.value);
+                    },
+                    name: "targeted_id",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                      value: "",
+                      children: "select targeted name"
+                    }), targetedIndividuals.map(function (targeted, index) {
+                      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                        value: targeted.id,
+                        children: targeted.id
+                      }, index);
+                    })]
+                  })]
+                });
+              }
+            }()]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "col-10 p-2 border rounded m-2 row ",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+            className: "col-4",
+            children: "\u0627\u0644\u062A\u062E\u0635\u0635"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+            className: "col-8  form-control",
+            onChange: function onChange(e) {
+              return setspeciality(e.target.value);
+            },
+            type: "text"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          className: "col-10 p-2 border rounded m-2 row ",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+            className: "col-4",
+            children: "\u0627\u0644\u0633\u064A\u0631\u0629 \u0627\u0644\u0630\u0627\u062A\u064A\u0629"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("textarea", {
+            className: "col-8 form-control",
+            onChange: function onChange(e) {
+              return setCV(e.target.value);
+            },
+            rows: "5"
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "col-8 text-center",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
           type: "button",
           value: "\u062A\u0633\u062C\u064A\u0644",
           onClick: submit
         })
       })]
-    })
+    })]
   });
 }
 
@@ -17889,7 +17920,7 @@ function ProgramIndex(props) {
     fetchPage();
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-    className: "col-md-10",
+    className: "col-md-12",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "card",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {

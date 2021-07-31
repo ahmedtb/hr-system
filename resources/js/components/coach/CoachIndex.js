@@ -32,7 +32,7 @@ export default function CoachIndex(props) {
                         fetchPage={fetchPage}
                         links={links}
                     />
-                    <table className="table table-bordered table-condensed" style={{ marginBottom: 0 }}>
+                    <table className="table table-bordered table-condensed table-striped table-sm">
                         <thead>
                             <tr>
                                 <th >ID</th>
@@ -43,7 +43,7 @@ export default function CoachIndex(props) {
                         </thead>
                         <tbody>
                             {coaches.map((coach, index) => (
-                                <tr key={index}>
+                                <tr key={index} className="">
                                     <td>
                                         <Link to={routes.showCoach.replace(':id', coach.id)}>
                                             {coach.id}
@@ -70,7 +70,7 @@ export default function CoachIndex(props) {
                                     <td>
                                         {coach.speciality}
                                     </td>
-                                    <td>{coach.CV}</td>
+                                    <td class="overflow-auto">{coach.CV}</td>
                                 </tr>
                             ))}
                         </tbody>

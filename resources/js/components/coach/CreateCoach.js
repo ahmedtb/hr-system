@@ -19,13 +19,13 @@ function CreateCoach(props) {
 
     const submit = () => {
         let data = new FormData
-        if(name) data.append('name', name)
-        if(CV) data.append('CV', CV)
-        if(speciality) data.append('speciality', speciality)
+        if (name) data.append('name', name)
+        if (CV) data.append('CV', CV)
+        if (speciality) data.append('speciality', speciality)
         if (profileChoice == 'employee') {
-            if(id) data.append('employee_id', id)
+            if (id) data.append('employee_id', id)
         } else if (profileChoice == 'targeted') {
-            if(id) data.append('targeted_individual_id', id)
+            if (id) data.append('targeted_individual_id', id)
         }
         axios.post(ApiEndpoints.createCoach, data).then((response) => {
             console.log(response.data)
@@ -46,81 +46,93 @@ function CreateCoach(props) {
 
     return (
 
-        <>
-            <ul className="list-group">
-                <li className="list-group-item">
-                    <label >اسم المدرب</label>
-                    <input onChange={e => setname(e.target.value) } type="text" />
-                </li>
-                <li className="list-group-item">
-                    <label >السيرة الذاتية</label>
-                    <textarea onChange={e =>  setCV(e.target.value) } cols="50" rows="10"></textarea>
-                </li>
-                <li className="list-group-item">
-                    <label >التخصص</label>
-                    <input onChange={e => setspeciality(e.target.value) } type="text" />
-                </li>
+        <div className="card">
+            <div className="card-header">اضافة مدرب</div>
 
+            <div className="card-body row">
 
-                <li className="list-group-item">
-                    <select
-                        value={''}
-                        onChange={profileChoiceChange}
-                    >
-                        <option value=''>please choose type</option>
-                        <option value='employee'>employee</option>
-                        <option value='targeted'>targeted</option>
+                <div className="col-2 ">
+                    <div className="p-2 border rounded m-2 text-center">
+                        <label className="">صورة المدرب</label>
+                        <img height='100' onClick={() => { }} src={'/css/profile.png'} />
+                    </div>
+                </div>
 
-                    </select>
-                </li>
+                <div className="col-10 row align-items-start">
+                    <div className="col-10 p-2 border rounded m-2 row">
+                        <label className="col-4">اسم المدرب</label>
+                        <input className="col-8 form-control" value={name} onChange={(e) => setname(e.target.value)} type="text" />
+                    </div>
 
-                {(() => {
-                    if (profileChoice == 'employee') {
-                        return (
-                            <>
-                                <li className="list-group-item">
-                                    <label htmlFor="employee">اختر الموظف</label>
-                                    <select onChange={(e) => setid(e.target.value) } name="employee_id">
-                                        <option value=''>select employee name</option>
-                                        {
-                                            employees.map((employee, index) => (
-                                                <option key={index} value={employee.id}>{employee.name}</option>
-                                            ))
-                                        }
-                                    </select>
-                                </li>
-                            </>
-                        )
-                    } else if (profileChoice == 'targeted') {
-                        return (
-                            <>
-                                <li className="list-group-item">
-                                    <label htmlFor="targeted">اختر المستهدف</label>
-                                    <select onChange={(e) => setid(e.target.value) } name="targeted_id">
-                                        <option value=''>select targeted name</option>
-                                        {
-                                            targetedIndividuals.map((targeted, index) => (
-                                                <option key={index} value={targeted.id}>{targeted.id}</option>
-                                            ))
-                                        }
-                                    </select>
-                                </li>
-                            </>
-                        )
-                    }
-                })()}
+                    <div className="col-10 p-2 border rounded m-2 row ">
+                        <label className="col-4">الملف الشخصي للفرد</label>
 
+                        <div className="col-8  form-control">
+                            <select
+                                className="form-control"
+                                value={''}
+                                onChange={profileChoiceChange}
+                            >
+                                <option value=''>اختر نوع الملف الشخصي</option>
+                                <option value='employee'>موظف</option>
+                                <option value='targeted'>مستهدف</option>
 
+                            </select>
 
+                            {(() => {
+                                if (profileChoice == 'employee') {
+                                    return (
+                                        <div className="col-12 row">
+                                            <label className="col-4" htmlFor="employee">اختر الموظف</label>
+                                            <select className="col-8 form-control" onChange={(e) => setid(e.target.value)} name="employee_id">
+                                                <option value=''>select employee name</option>
+                                                {
+                                                    employees.map((employee, index) => (
+                                                        <option key={index} value={employee.id}>{employee.name}</option>
+                                                    ))
+                                                }
+                                            </select>
+                                        </div>
+                                    )
+                                } else if (profileChoice == 'targeted') {
+                                    return (
+                                        <div className="col-12 row">
 
+                                            <label className="col-4" htmlFor="targeted">اختر المستهدف</label>
+                                            <select className="col-8 form-control" onChange={(e) => setid(e.target.value)} name="targeted_id">
+                                                <option value=''>select targeted name</option>
+                                                {
+                                                    targetedIndividuals.map((targeted, index) => (
+                                                        <option key={index} value={targeted.id}>{targeted.id}</option>
+                                                    ))
+                                                }
+                                            </select>
+                                        </div>
+                                    )
+                                }
+                            })()}
 
-                <li className="list-group-item">
+                        </div>
+                    </div>
+
+                    <div className="col-10 p-2 border rounded m-2 row ">
+                        <label className="col-4">التخصص</label>
+                        <input className="col-8  form-control" onChange={e => setspeciality(e.target.value)} type="text" />
+                    </div>
+
+                    <div className="col-10 p-2 border rounded m-2 row ">
+                        <label className="col-4">السيرة الذاتية</label>
+                        <textarea className="col-8 form-control" onChange={e => setCV(e.target.value)} rows="5"></textarea>
+                    </div>
+                </div>
+
+                <div className="col-8 text-center">
                     <input type="button" value="تسجيل" onClick={submit} />
-                </li>
+                </div>
 
-            </ul>
+            </div>
+        </div >
 
-        </>
 
     );
 }
