@@ -21,7 +21,8 @@ class CourseFilters extends Filters
         'done',
         'canceled',
         'employee_id',
-        'individual_id'
+        'individual_id',
+        'training_program_id'
     ];
 
     protected function start_date($date)
@@ -87,4 +88,10 @@ class CourseFilters extends Filters
             return $query->where('targeted_individuals.id', $id);
         });
     }
+
+    protected function training_program_id($id)
+    {
+        return $this->builder->where('training_program_id',$id);
+    }
+    
 }

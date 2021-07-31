@@ -30,7 +30,7 @@ class EmployeeFactory extends Factory
             'employment_date' => $this->faker->date(),
             'basic_salary' => random_int ( 100 , 10000 ),
             'phone_number' => $this->faker->phoneNumber(),
-            'job_id' => Job::factory()->create()->id,
+            'job_id' => (Job::inRandomOrder()->first()->id ?? Job::factory()->create()->id),
             'email' => $this->faker->email(),
             'medal_rating' => $medals[array_rand($medals)]
         ];

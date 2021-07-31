@@ -34,6 +34,12 @@ class CoursesTests extends TestCase
         $this->assertEquals(TrainingCourse::all()->count(), 1);
     }
 
+    public function test_when_creating_a_course_the_system_can_warn_if_course_peroid_and_program_period_does_not_match()
+    {
+        
+    }
+
+
     public function test_course_index_endpoint()
     {
         $course = TrainingCourse::factory(10)->create();

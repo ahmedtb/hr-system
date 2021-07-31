@@ -25,7 +25,8 @@ class UnitFactory extends Factory
 
         return [
             'name' => $this->faker->company(),
-            // 'head_id' => $employee ? $employee->id : Employee::factory()->create()->id,
+            'parent_id' => (random_int(1,5) == 3) ? (Unit::inRandomOrder()->first()->id ?? Unit::factory()->create()->id) : null,
+            'head_id' => (random_int(1,5) == 3) ? (Employee::inRandomOrder()->first()->id ?? Employee::factory()->create()->id) : null,
             'purpose' => $this->faker->sentence(),
         ];
     }

@@ -35,24 +35,6 @@ class DatabaseSeeder extends Seeder
                     'training_course_id' => TrainingCourse::select('id')->orderByRaw("RAND()")->first()->id,
                 ]
             );
-
-            // DB::table('targeted_individual_training_course')->insert(
-            //     [
-            //         'targeted_individual_id' => TargetedIndividual::select('id')->orderByRaw("RAND()")->first()->id,
-            //         'training_course_id' => TrainingCourse::select('id')->orderByRaw("RAND()")->first()->id,
-            //     ]
-            // );
-
-            // try {
-            //     DB::table('employee_training_course')->insert(
-            //         [
-            //             'employee_id' => Employee::select('id')->orderByRaw("RAND()")->first()->id,
-            //             'training_course_id' => TrainingCourse::select('id')->orderByRaw("RAND()")->first()->id,
-            //         ]
-            //     );
-            // } catch (Exception $err) {
-            // }
-
             DB::table('trainee_training_course')->insert(
                 [
                     'trainee_id' => Trainee::select('id')->orderByRaw("RAND()")->first()->id,
@@ -76,6 +58,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        TrainingProgram::factory(50)->create();
+
         $courses = TrainingCourse::factory(5)->resumed()->create();
         foreach ($courses as $course)
             CourseAttendance::factory(15)->forCourse($course)->create();

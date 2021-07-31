@@ -46,7 +46,7 @@ class TrainingCourseFactory extends Factory
         $states = ['normal', 'canceled'];
         return [
             'title' => $this->faker->sentence(),
-            'training_program_id' => TrainingProgram::factory()->create()->id,
+            'training_program_id' => (TrainingProgram::inRandomOrder()->first()->id) ?? TrainingProgram::factory()->create()->id,
             'status' => $states[$random],
             'start_date' => ($start = $this->faker->dateTimeBetween('-1 month', '1 month')),
             'end_date' => $this->faker->dateTimeBetween($start, '1 month'),

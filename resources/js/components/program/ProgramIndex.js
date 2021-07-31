@@ -64,11 +64,11 @@ export default function ProgramIndex(props) {
                         <thead>
                             <tr>
                                 <th >id</th>
-                                <th>title</th>
-                                <th>category</th>
-                                <th>details</th>
-                                <th>goals</th>
-                                <th>period</th>
+                                <th>عنوان البرنامج</th>
+                                <th>تصنيف البرنامج</th>
+                                <th>تفاصيل البرنامج</th>
+                                <th>اهداف البرنامج</th>
+                                <th>المدة الزمنية بالدقائق</th>
                             </tr>
                         </thead>
                         <tbody>
