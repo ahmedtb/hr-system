@@ -104,7 +104,7 @@ export default function TrialPeriodAssessmentIndex() {
     }, [])
 
     return (
-        <div className="col-md-10">
+        <div className="col-12">
             <div className="card">
 
                 <div className="card-header">
@@ -119,143 +119,165 @@ export default function TrialPeriodAssessmentIndex() {
 
             </div>
 
-            <div className="card">
-                <div className="card-header">تقيمات فترة التجريب</div>
-                <div className="card-body">
+            <div className="row">
+                <div className="col-3">
+                    <div className="card">
+                        <div className="card-header">فلترة</div>
+                        <div className="card-body">
+                        
 
-                    <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'final_degree' })}>افضل الدرجة الكلية</button>
-                    <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'excitement' })}>الافضل في الحماسة</button>
-                    <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'ability_to_improve' })}>الافضل في القدرة على التعلم والتطور</button>
-                    <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'guidance_acceptance' })}>الافضل في تقبل واستيعاب التوجيه</button>
-                    <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'handling_technology' })}>الافضل في التعامل مع التقنية</button>
+                            <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'final_degree' })}>افضل الدرجة الكلية</button>
+                            <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'excitement' })}>الافضل في الحماسة</button>
+                            <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'ability_to_improve' })}>الافضل في القدرة على التعلم والتطور</button>
+                            <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'guidance_acceptance' })}>الافضل في تقبل واستيعاب التوجيه</button>
+                            <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'handling_technology' })}>الافضل في التعامل مع التقنية</button>
 
-                    <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'maintaining_working_hours' })}>الافضل في المحافظة على الوقت أثناء الدوام</button>
-                    <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'relationship_with_colleagues' })}>الافضل في العلاقة مع الزملاء</button>
-                    <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'behavior' })}>الافضل في حسن التصرف</button>
+                            <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'maintaining_working_hours' })}>الافضل في المحافظة على الوقت أثناء الدوام</button>
+                            <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'relationship_with_colleagues' })}>الافضل في العلاقة مع الزملاء</button>
+                            <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'behavior' })}>الافضل في حسن التصرف</button>
 
-                    <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'look' })}>الافضل في حسن المظهر</button>
-                    <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'belief_and_loyalty' })}>الافضل في الإيمان بسياسة القناة والولاء لها</button>
+                            <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'look' })}>الافضل في حسن المظهر</button>
+                            <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'belief_and_loyalty' })}>الافضل في الإيمان بسياسة القناة والولاء لها</button>
 
-                    <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByAsc: 'delay_in_min' })}>الافضل من حيث التأخير بالدقائق</button>
-                    <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByAsc: 'early_departure_min' })}>الافضل من حيث الخروج المبكر بالدقائق</button>
-                    <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByAsc: 'absence_days' })}>الافضل من حيث الغياب</button>
-                    <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'attendance_rate' })}>الافضل من حيث نسبة الحضور</button>
+                            <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByAsc: 'delay_in_min' })}>الافضل من حيث التأخير بالدقائق</button>
+                            <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByAsc: 'early_departure_min' })}>الافضل من حيث الخروج المبكر بالدقائق</button>
+                            <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByAsc: 'absence_days' })}>الافضل من حيث الغياب</button>
+                            <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'attendance_rate' })}>الافضل من حيث نسبة الحضور</button>
 
-                    <div>
-                        <strong>تاريخ اعداد التقرير بين:</strong><br />
-                        <label className="form-check-label" >بدء</label><br />
-                        <input className="form-check-input" type="date" onChange={(e) => setfrom(e.target.value)} /><br />
-                        <label className="form-check-label" >نهاية</label><br />
-                        <input className="form-check-input" type="date" onChange={(e) => setto(e.target.value)} /><br />
-                        <button onClick={() => {
-                            let params = Object.assign({},
-                                from === null ? null : { from },
-                                to === null ? null : { to },
-                            )
-                            // console.log(params)
-                            fetchPage(ApiEndpoints.getTrialPeriods, params)
-                        }}>filter</button>
+                            <div>
+                                <strong>تاريخ اعداد التقرير بين:</strong><br />
+                                <label className="form-check-label" >بدء</label><br />
+                                <input className="form-check-input" type="date" onChange={(e) => setfrom(e.target.value)} /><br />
+                                <label className="form-check-label" >نهاية</label><br />
+                                <input className="form-check-input" type="date" onChange={(e) => setto(e.target.value)} /><br />
+                                <button onClick={() => {
+                                    let params = Object.assign({},
+                                        from === null ? null : { from },
+                                        to === null ? null : { to },
+                                    )
+                                    // console.log(params)
+                                    fetchPage(ApiEndpoints.getTrialPeriods, params)
+                                }}>filter</button>
 
+                            </div>
+
+                            <div>
+                                <strong>تاريخ بدء ونهاية الفترة:</strong><br />
+                                <label className="form-check-label" >بداية</label><br />
+                                <input className="form-check-input" type="date" onChange={(e) => settrial_begin(e.target.value)} /><br />
+                                <label className="form-check-label" >نهاية</label><br />
+                                <input className="form-check-input" type="date" onChange={(e) => settrial_end(e.target.value)} /><br />
+
+
+                                <button onClick={() => {
+                                    let params = Object.assign({},
+                                        trial_begin === null ? null : { trial_begin },
+                                        trial_end === null ? null : { trial_end },
+                                    )
+                                    // console.log(params)
+                                    fetchPage(ApiEndpoints.getTrialPeriods, params)
+                                }}>filter</button>
+
+                            </div>
+
+                            <div>
+
+                                <strong>تقييمات الموظف:</strong><br />
+                                <label className="form-check-label" >الموظف</label><br />
+                                <li className="list-group-item">
+                                    <label htmlFor="employee">اختر الموظف</label>
+                                    <select onChange={(e) => setemployee_id(e.target.value)} name="employee_id">
+                                        <option value=''>select employee name</option>
+                                        {
+                                            employees?.map((employee, index) => (
+                                                <option key={index} value={employee.id}>{employee.name}</option>
+                                            ))
+                                        }
+                                    </select>
+                                </li>
+                                <button onClick={() => {
+                                    let params = Object.assign({},
+                                        employee_id === null ? null : { employee_id },
+                                    )
+                                    fetchPage(ApiEndpoints.getTrialPeriods, params)
+                                }}>filter</button>
+
+                            </div>
+
+
+
+                        </div>
                     </div>
-
-                    <div>
-                        <strong>تاريخ بدء ونهاية الفترة:</strong><br />
-                        <label className="form-check-label" >بداية</label><br />
-                        <input className="form-check-input" type="date" onChange={(e) => settrial_begin(e.target.value)} /><br />
-                        <label className="form-check-label" >نهاية</label><br />
-                        <input className="form-check-input" type="date" onChange={(e) => settrial_end(e.target.value)} /><br />
-
-
-                        <button onClick={() => {
-                            let params = Object.assign({},
-                                trial_begin === null ? null : { trial_begin },
-                                trial_end === null ? null : { trial_end },
-                            )
-                            // console.log(params)
-                            fetchPage(ApiEndpoints.getTrialPeriods, params)
-                        }}>filter</button>
-
-                    </div>
-
-                    <div>
-                        <strong>تقييمات الموظف:</strong><br />
-                        <label className="form-check-label" >الموظف</label><br />
-                        <li className="list-group-item">
-                            <label htmlFor="employee">اختر الموظف</label>
-                            <select onChange={(e) => setemployee_id(e.target.value)} name="employee_id">
-                                <option value=''>select employee name</option>
-                                {
-                                    employees?.map((employee, index) => (
-                                        <option key={index} value={employee.id}>{employee.name}</option>
-                                    ))
-                                }
-                            </select>
-                        </li>
-                        <button onClick={() => {
-                            let params = Object.assign({},
-                                employee_id === null ? null : { employee_id },
-                            )
-                            fetchPage(ApiEndpoints.getTrialPeriods, params)
-                        }}>filter</button>
-
-                    </div>
-
-                    <div>
-                        <strong>عرض البيانات في الجدول</strong><br />
-                        {
-                            Object.entries(dataShow).map((data, index) => (
-                                <div key={index} className="form-check-inline">
-                                    <input className="form-check-input" type="checkbox" value={data[0]} onClick={(e) => toggleDataShow(e)} />
-                                    <label className="form-check-label" >
-                                        {labels[data[0]]}
-                                    </label>
-                                </div>
-                            ))
-                        }
-
-                    </div>
-
-                    <Pagination
-                        fetchPage={fetchPage}
-                        links={links}
-                    />
-                    <table className="table table-bordered table-condensed" style={{ marginBottom: 0 }}>
-                        <thead>
-                            <tr>
-                                <th >ID</th>
-                                <th >الموظف</th>
-                                <th >معد التقرير</th>
-
-                                {
-                                    Object.entries(dataShow).map((data, index) => (
-                                        (data[1]) ? <td key={index}>{labels[data[0]]}</td> : null
-                                    ))
-                                }
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {assessments.map((assessment, index) => (
-                                <tr key={index}>
-                                    <td>
-                                        {assessment.id}
-                                    </td>
-                                    <td>
-                                        <Link to={routes.showEmployee.replace(':id', assessment.employee.id)}>{assessment.employee.name}</Link>
-                                    </td>
-                                    <td>
-                                        <Link to={routes.showEmployee.replace(':id', assessment.reporter.id)}>{assessment.reporter.name}</Link>
-                                    </td>
+                </div>
+                <div className="col-9 card">
+                    <div className="card-header">تقييمات فترة التجريب</div>
+                    <div className="card-body">
+                        <div>
+                            <p>
+                                <a className="btn btn-primary" data-toggle="collapse" href="#collapseShowColumns" role="button" aria-expanded="false" aria-controls="collapseShowColumns">
+                                    عرض البيانات في الجدول
+                                </a>
+                            </p>
+                            <div className="collapse" id="collapseShowColumns">
+                                <div className="row">
                                     {
                                         Object.entries(dataShow).map((data, index) => (
-                                            (data[1]) ? <td key={index}>{assessment[data[0]]}</td> : null
+                                            <div key={index} className="border rounded d-flex align-items-center mr-2 my-2 p-1">
+                                                <input className="mr-2" type="checkbox" value={data[0]} onClick={(e) => toggleDataShow(e)} />
+                                                <label className="" >
+                                                    {labels[data[0]]}
+                                                </label>
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <Pagination
+                            fetchPage={fetchPage}
+                            links={links}
+                        />
+                        <table className="table table-bordered table-condensed" style={{ marginBottom: 0 }}>
+                            <thead>
+                                <tr>
+                                    <th >ID</th>
+                                    <th >الموظف</th>
+                                    <th >معد التقرير</th>
+
+                                    {
+                                        Object.entries(dataShow).map((data, index) => (
+                                            (data[1]) ? <td key={index}>{labels[data[0]]}</td> : null
                                         ))
                                     }
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {assessments.map((assessment, index) => (
+                                    <tr key={index}>
+                                        <td>
+                                            {assessment.id}
+                                        </td>
+                                        <td>
+                                            <Link to={routes.showEmployee.replace(':id', assessment.employee.id)}>{assessment.employee.name}</Link>
+                                        </td>
+                                        <td>
+                                            <Link to={routes.showEmployee.replace(':id', assessment.reporter.id)}>{assessment.reporter.name}</Link>
+                                        </td>
+                                        {
+                                            Object.entries(dataShow).map((data, index) => (
+                                                (data[1]) ? <td key={index}>{assessment[data[0]]}</td> : null
+                                            ))
+                                        }
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div >
+        </div>
     )
 }

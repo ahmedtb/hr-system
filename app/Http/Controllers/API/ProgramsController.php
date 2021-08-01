@@ -15,9 +15,9 @@ class ProgramsController extends Controller
         return TrainingProgram::where('id', $id)->first();
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return TrainingProgram::paginate(10);
+        return TrainingProgram::paginate($request->get('page_size') ?? 10);
     }
     
     public function create(Request $request)

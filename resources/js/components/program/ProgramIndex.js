@@ -35,14 +35,10 @@ export default function ProgramIndex(props) {
     const [programs, setprograms] = React.useState([])
     const [links, setlinks] = React.useState([])
 
-    async function fetchPage(link = ApiEndpoints.programIndex) {
-        axios.get(link).then((response) => {
+    async function fetchPage(link = ApiEndpoints.programIndex, params = null) {
+        axios.get(link, { params: { ...params, page_size: 5 } }).then((response) => {
             setprograms(response.data.data)
-            if (response.data.links) {
-                setlinks(response.data.links)
-            } else
-                setlinks(null)
-
+            if (response.data.links) { setlinks(response.data.links) } else  setlinks(null)
         }).catch((error) => logError(error))
     }
 

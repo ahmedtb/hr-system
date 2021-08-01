@@ -19,7 +19,7 @@ export default function CoachCourseAssessmentIndex() {
     }, [])
 
     return (
-        <div className="col-md-10">
+        <div className="col-md-12">
 
             <div className="card">
 

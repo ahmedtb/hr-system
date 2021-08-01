@@ -6,13 +6,13 @@ import FormsTable from './partials/FormsTable'
 import UnitsList from './partials/UnitsList'
 import CoursesTable from './partials/CoursesTable'
 import TopMenue from './partials/TopMenue'
+import Pagination from './utility/Pagination'
 export default function Dashboard() {
 
     const [employeesCount, setemployeesCount] = React.useState(null)
     const [targetedCount, settargetedCount] = React.useState(null)
     const [coachesCount, setcoachesCount] = React.useState(null)
     const [programsCount, setprogramsCount] = React.useState(null)
-    const [resumedCourses, setresumedCourses] = React.useState([])
     const [plannedCoursesCount, setplannedCoursesCount] = React.useState(null)
     const [doneCoursesCount, setdoneCoursesCount] = React.useState(null)
     const [canceledCoursesCount, setcanceledCoursesCount] = React.useState(null)
@@ -20,7 +20,7 @@ export default function Dashboard() {
     const [units, setunits] = React.useState([])
     const [forms, setforms] = React.useState([])
 
-    React.useEffect(() => {
+    async function getDashboard() {
         axios.get(ApiEndpoints.dashboard).then((response) => {
             setemployeesCount(response.data.employeesCount)
             settargetedCount(response.data.targetedCount)
@@ -32,8 +32,25 @@ export default function Dashboard() {
 
             setunits(response.data.units)
             setforms(response.data.forms)
-            setresumedCourses(response.data.resumedCourses)
         }).catch((error) => logError(error))
+    }
+
+    const [resumedCourses, setresumedCourses] = React.useState([])
+    const [links, setlinks] = React.useState([])
+    async function getCourses(link = ApiEndpoints.courseIndex, params = null) {
+        try {
+            const response = await axios.get(link,{ params: {...params, resumed:true, page_size:5} })
+            setresumedCourses(response.data.data)
+            if (response.data.links) { setlinks(response.data.links) } else setlinks(null)
+        } catch (error) {
+            logError(error)
+        }
+        
+    }
+
+    React.useEffect(() => {
+        getDashboard()
+        getCourses()
     }, [])
 
     return (
@@ -126,6 +143,10 @@ export default function Dashboard() {
                                 <h5 className=''>الدورات الجارية: {resumedCourses.length}</h5>
                             </div>
                             <div className=" card-body">
+                                <Pagination
+                                    fetchPage={getCourses}
+                                    links={links}
+                                />
                                 <CoursesTable courses={resumedCourses} />
                             </div>
                         </div>

@@ -2347,16 +2347,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Dashboard)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utility/ApiEndpoints */ "./resources/js/components/utility/ApiEndpoints.js");
-/* harmony import */ var _utility_logError__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utility/logError */ "./resources/js/components/utility/logError.js");
-/* harmony import */ var _partials_FormsTable__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./partials/FormsTable */ "./resources/js/components/partials/FormsTable.js");
-/* harmony import */ var _partials_UnitsList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./partials/UnitsList */ "./resources/js/components/partials/UnitsList.js");
-/* harmony import */ var _partials_CoursesTable__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./partials/CoursesTable */ "./resources/js/components/partials/CoursesTable.js");
-/* harmony import */ var _partials_TopMenue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./partials/TopMenue */ "./resources/js/components/partials/TopMenue.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utility/ApiEndpoints */ "./resources/js/components/utility/ApiEndpoints.js");
+/* harmony import */ var _utility_logError__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utility/logError */ "./resources/js/components/utility/logError.js");
+/* harmony import */ var _partials_FormsTable__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./partials/FormsTable */ "./resources/js/components/partials/FormsTable.js");
+/* harmony import */ var _partials_UnitsList__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./partials/UnitsList */ "./resources/js/components/partials/UnitsList.js");
+/* harmony import */ var _partials_CoursesTable__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./partials/CoursesTable */ "./resources/js/components/partials/CoursesTable.js");
+/* harmony import */ var _partials_TopMenue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./partials/TopMenue */ "./resources/js/components/partials/TopMenue.js");
+/* harmony import */ var _utility_Pagination__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./utility/Pagination */ "./resources/js/components/utility/Pagination.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2380,189 +2395,271 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function Dashboard() {
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(null),
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_1__.useState(null),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       employeesCount = _React$useState2[0],
       setemployeesCount = _React$useState2[1];
 
-  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0__.useState(null),
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_1__.useState(null),
       _React$useState4 = _slicedToArray(_React$useState3, 2),
       targetedCount = _React$useState4[0],
       settargetedCount = _React$useState4[1];
 
-  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0__.useState(null),
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_1__.useState(null),
       _React$useState6 = _slicedToArray(_React$useState5, 2),
       coachesCount = _React$useState6[0],
       setcoachesCount = _React$useState6[1];
 
-  var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_0__.useState(null),
+  var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_1__.useState(null),
       _React$useState8 = _slicedToArray(_React$useState7, 2),
       programsCount = _React$useState8[0],
       setprogramsCount = _React$useState8[1];
 
-  var _React$useState9 = react__WEBPACK_IMPORTED_MODULE_0__.useState([]),
+  var _React$useState9 = react__WEBPACK_IMPORTED_MODULE_1__.useState(null),
       _React$useState10 = _slicedToArray(_React$useState9, 2),
-      resumedCourses = _React$useState10[0],
-      setresumedCourses = _React$useState10[1];
+      plannedCoursesCount = _React$useState10[0],
+      setplannedCoursesCount = _React$useState10[1];
 
-  var _React$useState11 = react__WEBPACK_IMPORTED_MODULE_0__.useState(null),
+  var _React$useState11 = react__WEBPACK_IMPORTED_MODULE_1__.useState(null),
       _React$useState12 = _slicedToArray(_React$useState11, 2),
-      plannedCoursesCount = _React$useState12[0],
-      setplannedCoursesCount = _React$useState12[1];
+      doneCoursesCount = _React$useState12[0],
+      setdoneCoursesCount = _React$useState12[1];
 
-  var _React$useState13 = react__WEBPACK_IMPORTED_MODULE_0__.useState(null),
+  var _React$useState13 = react__WEBPACK_IMPORTED_MODULE_1__.useState(null),
       _React$useState14 = _slicedToArray(_React$useState13, 2),
-      doneCoursesCount = _React$useState14[0],
-      setdoneCoursesCount = _React$useState14[1];
+      canceledCoursesCount = _React$useState14[0],
+      setcanceledCoursesCount = _React$useState14[1];
 
-  var _React$useState15 = react__WEBPACK_IMPORTED_MODULE_0__.useState(null),
+  var _React$useState15 = react__WEBPACK_IMPORTED_MODULE_1__.useState([]),
       _React$useState16 = _slicedToArray(_React$useState15, 2),
-      canceledCoursesCount = _React$useState16[0],
-      setcanceledCoursesCount = _React$useState16[1];
+      units = _React$useState16[0],
+      setunits = _React$useState16[1];
 
-  var _React$useState17 = react__WEBPACK_IMPORTED_MODULE_0__.useState([]),
+  var _React$useState17 = react__WEBPACK_IMPORTED_MODULE_1__.useState([]),
       _React$useState18 = _slicedToArray(_React$useState17, 2),
-      units = _React$useState18[0],
-      setunits = _React$useState18[1];
+      forms = _React$useState18[0],
+      setforms = _React$useState18[1];
 
-  var _React$useState19 = react__WEBPACK_IMPORTED_MODULE_0__.useState([]),
+  function getDashboard() {
+    return _getDashboard.apply(this, arguments);
+  }
+
+  function _getDashboard() {
+    _getDashboard = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              axios__WEBPACK_IMPORTED_MODULE_2___default().get(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.dashboard).then(function (response) {
+                setemployeesCount(response.data.employeesCount);
+                settargetedCount(response.data.targetedCount);
+                setcoachesCount(response.data.coachesCount);
+                setprogramsCount(response.data.programsCount);
+                setplannedCoursesCount(response.data.plannedCoursesCount);
+                setdoneCoursesCount(response.data.doneCoursesCount);
+                setcanceledCoursesCount(response.data.canceledCoursesCount);
+                setunits(response.data.units);
+                setforms(response.data.forms);
+              })["catch"](function (error) {
+                return (0,_utility_logError__WEBPACK_IMPORTED_MODULE_4__.default)(error);
+              });
+
+            case 1:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+    return _getDashboard.apply(this, arguments);
+  }
+
+  var _React$useState19 = react__WEBPACK_IMPORTED_MODULE_1__.useState([]),
       _React$useState20 = _slicedToArray(_React$useState19, 2),
-      forms = _React$useState20[0],
-      setforms = _React$useState20[1];
+      resumedCourses = _React$useState20[0],
+      setresumedCourses = _React$useState20[1];
 
-  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
-    axios__WEBPACK_IMPORTED_MODULE_1___default().get(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_2__.default.dashboard).then(function (response) {
-      setemployeesCount(response.data.employeesCount);
-      settargetedCount(response.data.targetedCount);
-      setcoachesCount(response.data.coachesCount);
-      setprogramsCount(response.data.programsCount);
-      setplannedCoursesCount(response.data.plannedCoursesCount);
-      setdoneCoursesCount(response.data.doneCoursesCount);
-      setcanceledCoursesCount(response.data.canceledCoursesCount);
-      setunits(response.data.units);
-      setforms(response.data.forms);
-      setresumedCourses(response.data.resumedCourses);
-    })["catch"](function (error) {
-      return (0,_utility_logError__WEBPACK_IMPORTED_MODULE_3__.default)(error);
-    });
+  var _React$useState21 = react__WEBPACK_IMPORTED_MODULE_1__.useState([]),
+      _React$useState22 = _slicedToArray(_React$useState21, 2),
+      links = _React$useState22[0],
+      setlinks = _React$useState22[1];
+
+  function getCourses() {
+    return _getCourses.apply(this, arguments);
+  }
+
+  function _getCourses() {
+    _getCourses = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      var link,
+          params,
+          response,
+          _args2 = arguments;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              link = _args2.length > 0 && _args2[0] !== undefined ? _args2[0] : _utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.courseIndex;
+              params = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : null;
+              _context2.prev = 2;
+              _context2.next = 5;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get(link, {
+                params: _objectSpread(_objectSpread({}, params), {}, {
+                  resumed: true,
+                  page_size: 5
+                })
+              });
+
+            case 5:
+              response = _context2.sent;
+              setresumedCourses(response.data.data);
+
+              if (response.data.links) {
+                setlinks(response.data.links);
+              } else setlinks(null);
+
+              _context2.next = 13;
+              break;
+
+            case 10:
+              _context2.prev = 10;
+              _context2.t0 = _context2["catch"](2);
+              (0,_utility_logError__WEBPACK_IMPORTED_MODULE_4__.default)(_context2.t0);
+
+            case 13:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[2, 10]]);
+    }));
+    return _getCourses.apply(this, arguments);
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_1__.useEffect(function () {
+    getDashboard();
+    getCourses();
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
     className: "row justify-content-center",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
       className: "col-md-12",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
         className: "card",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
           className: "card-header",
           children: "\u0627\u062D\u0635\u0627\u0626\u064A\u0629 \u0639\u0627\u0645\u0629"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
           className: "card-body",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
             className: "row",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
               className: "col-6",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
                 className: "list-group",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
                   className: "list-group-item",
                   children: ["\u0639\u062F\u062F \u0627\u0644\u0645\u0648\u0638\u0641\u064A\u0646 \u0641\u064A \u0627\u0644\u0645\u0646\u0638\u0648\u0645\u0629 ", employeesCount]
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
               className: "col-6",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
                 className: "list-group",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
                   className: "list-group-item",
                   children: ["\u0639\u062F\u062F \u0627\u0644\u0645\u0633\u062A\u0647\u062F\u0641\u064A\u0646 \u0641\u064A \u0627\u0644\u0645\u0646\u0638\u0648\u0645\u0629 ", targetedCount]
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
               className: "col-6",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
                 className: "list-group",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
                   className: "list-group-item",
                   children: ["\u0639\u062F\u062F \u0627\u0644\u0645\u062F\u0631\u0628\u064A\u0646 \u0641\u064A \u0627\u0644\u0645\u0646\u0638\u0648\u0645\u0629 ", coachesCount]
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
               className: "col-6",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
                 className: "list-group",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
                   className: "list-group-item",
                   children: ["\u0639\u062F\u062F \u0627\u0644\u062D\u0642\u0627\u0626\u0628 \u0627\u0644\u062A\u062F\u0631\u064A\u0628\u064A\u0629 \u0641\u064A \u0627\u0644\u0645\u0646\u0638\u0648\u0645\u0629 ", programsCount]
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
               className: "col-6",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
                 className: "list-group",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
                   className: "list-group-item",
                   children: ["\u0639\u062F\u062F \u0627\u0644\u062F\u0648\u0631\u0627\u062A \u0627\u0644\u062A\u062F\u0631\u064A\u0628\u064A\u0629 \u0627\u0644\u0645\u062E\u0637\u0637 \u0644\u0647\u0627 ", plannedCoursesCount]
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
               className: "col-6",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
                 className: "list-group",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
                   className: "list-group-item",
                   children: ["\u0639\u062F\u062F \u0627\u0644\u062D\u0642\u0627\u0626\u0628 \u0627\u0644\u062A\u062F\u0631\u064A\u0628\u064A\u0629 \u0627\u0644\u0645\u0646\u062A\u0647\u064A\u0629 ", doneCoursesCount]
                 })
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
               className: "col-6",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
                 className: "list-group",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
                   className: "list-group-item",
                   children: ["\u0639\u062F\u062F \u0627\u0644\u062D\u0642\u0627\u0626\u0628 \u0627\u0644\u062A\u062F\u0631\u064A\u0628\u064A\u0629 \u0627\u0644\u0645\u0644\u063A\u064A\u0629 ", canceledCoursesCount]
                 })
               })
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
             className: "card mt-1",
-            children: forms.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+            children: forms.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.Fragment, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
                 className: "card-header",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h5", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("h5", {
                   children: "\u0646\u0645\u0627\u0630\u062C \u062A\u0645 \u062A\u0639\u0628\u0626\u062A\u0647\u0627 \u0645\u0624\u062E\u0631\u0627"
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
                 className: "card-body",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_partials_FormsTable__WEBPACK_IMPORTED_MODULE_4__.default, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_partials_FormsTable__WEBPACK_IMPORTED_MODULE_5__.default, {
                   forms: forms
                 })
               })]
             }) : null
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
             className: "card mt-1",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
               className: "card-header",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("h5", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("h5", {
                 className: "",
                 children: ["\u0627\u0644\u062F\u0648\u0631\u0627\u062A \u0627\u0644\u062C\u0627\u0631\u064A\u0629: ", resumedCourses.length]
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
               className: " card-body",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_partials_CoursesTable__WEBPACK_IMPORTED_MODULE_6__.default, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_utility_Pagination__WEBPACK_IMPORTED_MODULE_9__.default, {
+                fetchPage: getCourses,
+                links: links
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_partials_CoursesTable__WEBPACK_IMPORTED_MODULE_7__.default, {
                 courses: resumedCourses
-              })
+              })]
             })]
           })]
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
         className: "card",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
           className: "card-header",
           children: "\u0627\u0644\u062A\u0631\u0643\u064A\u0628\u0629 \u0627\u0644\u0627\u062F\u0627\u0631\u064A\u0629"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
           className: "card-body",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_partials_UnitsList__WEBPACK_IMPORTED_MODULE_5__.default, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_partials_UnitsList__WEBPACK_IMPORTED_MODULE_6__.default, {
             units: units
           })
         })]
@@ -3900,7 +3997,7 @@ function CoachCourseAssessmentIndex() {
     });
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-    className: "col-md-10",
+    className: "col-md-12",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "card",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
@@ -7840,7 +7937,7 @@ function TrialPeriodAssessmentIndex() {
     fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, params);
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-    className: "col-md-10",
+    className: "col-12",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
       className: "card",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
@@ -7857,274 +7954,304 @@ function TrialPeriodAssessmentIndex() {
         })
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-      className: "card",
+      className: "row",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-        className: "card-header",
-        children: "\u062A\u0642\u064A\u0645\u0627\u062A \u0641\u062A\u0631\u0629 \u0627\u0644\u062A\u062C\u0631\u064A\u0628"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-        className: "card-body",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-          onClick: function onClick() {
-            return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
-              orderByDesc: 'final_degree'
-            });
-          },
-          children: "\u0627\u0641\u0636\u0644 \u0627\u0644\u062F\u0631\u062C\u0629 \u0627\u0644\u0643\u0644\u064A\u0629"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-          onClick: function onClick() {
-            return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
-              orderByDesc: 'excitement'
-            });
-          },
-          children: "\u0627\u0644\u0627\u0641\u0636\u0644 \u0641\u064A \u0627\u0644\u062D\u0645\u0627\u0633\u0629"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-          onClick: function onClick() {
-            return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
-              orderByDesc: 'ability_to_improve'
-            });
-          },
-          children: "\u0627\u0644\u0627\u0641\u0636\u0644 \u0641\u064A \u0627\u0644\u0642\u062F\u0631\u0629 \u0639\u0644\u0649 \u0627\u0644\u062A\u0639\u0644\u0645 \u0648\u0627\u0644\u062A\u0637\u0648\u0631"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-          onClick: function onClick() {
-            return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
-              orderByDesc: 'guidance_acceptance'
-            });
-          },
-          children: "\u0627\u0644\u0627\u0641\u0636\u0644 \u0641\u064A \u062A\u0642\u0628\u0644 \u0648\u0627\u0633\u062A\u064A\u0639\u0627\u0628 \u0627\u0644\u062A\u0648\u062C\u064A\u0647"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-          onClick: function onClick() {
-            return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
-              orderByDesc: 'handling_technology'
-            });
-          },
-          children: "\u0627\u0644\u0627\u0641\u0636\u0644 \u0641\u064A \u0627\u0644\u062A\u0639\u0627\u0645\u0644 \u0645\u0639 \u0627\u0644\u062A\u0642\u0646\u064A\u0629"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-          onClick: function onClick() {
-            return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
-              orderByDesc: 'maintaining_working_hours'
-            });
-          },
-          children: "\u0627\u0644\u0627\u0641\u0636\u0644 \u0641\u064A \u0627\u0644\u0645\u062D\u0627\u0641\u0638\u0629 \u0639\u0644\u0649 \u0627\u0644\u0648\u0642\u062A \u0623\u062B\u0646\u0627\u0621 \u0627\u0644\u062F\u0648\u0627\u0645"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-          onClick: function onClick() {
-            return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
-              orderByDesc: 'relationship_with_colleagues'
-            });
-          },
-          children: "\u0627\u0644\u0627\u0641\u0636\u0644 \u0641\u064A \u0627\u0644\u0639\u0644\u0627\u0642\u0629 \u0645\u0639 \u0627\u0644\u0632\u0645\u0644\u0627\u0621"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-          onClick: function onClick() {
-            return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
-              orderByDesc: 'behavior'
-            });
-          },
-          children: "\u0627\u0644\u0627\u0641\u0636\u0644 \u0641\u064A \u062D\u0633\u0646 \u0627\u0644\u062A\u0635\u0631\u0641"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-          onClick: function onClick() {
-            return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
-              orderByDesc: 'look'
-            });
-          },
-          children: "\u0627\u0644\u0627\u0641\u0636\u0644 \u0641\u064A \u062D\u0633\u0646 \u0627\u0644\u0645\u0638\u0647\u0631"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-          onClick: function onClick() {
-            return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
-              orderByDesc: 'belief_and_loyalty'
-            });
-          },
-          children: "\u0627\u0644\u0627\u0641\u0636\u0644 \u0641\u064A \u0627\u0644\u0625\u064A\u0645\u0627\u0646 \u0628\u0633\u064A\u0627\u0633\u0629 \u0627\u0644\u0642\u0646\u0627\u0629 \u0648\u0627\u0644\u0648\u0644\u0627\u0621 \u0644\u0647\u0627"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-          onClick: function onClick() {
-            return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
-              orderByAsc: 'delay_in_min'
-            });
-          },
-          children: "\u0627\u0644\u0627\u0641\u0636\u0644 \u0645\u0646 \u062D\u064A\u062B \u0627\u0644\u062A\u0623\u062E\u064A\u0631 \u0628\u0627\u0644\u062F\u0642\u0627\u0626\u0642"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-          onClick: function onClick() {
-            return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
-              orderByAsc: 'early_departure_min'
-            });
-          },
-          children: "\u0627\u0644\u0627\u0641\u0636\u0644 \u0645\u0646 \u062D\u064A\u062B \u0627\u0644\u062E\u0631\u0648\u062C \u0627\u0644\u0645\u0628\u0643\u0631 \u0628\u0627\u0644\u062F\u0642\u0627\u0626\u0642"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-          onClick: function onClick() {
-            return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
-              orderByAsc: 'absence_days'
-            });
-          },
-          children: "\u0627\u0644\u0627\u0641\u0636\u0644 \u0645\u0646 \u062D\u064A\u062B \u0627\u0644\u063A\u064A\u0627\u0628"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-          onClick: function onClick() {
-            return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
-              orderByDesc: 'attendance_rate'
-            });
-          },
-          children: "\u0627\u0644\u0627\u0641\u0636\u0644 \u0645\u0646 \u062D\u064A\u062B \u0646\u0633\u0628\u0629 \u0627\u0644\u062D\u0636\u0648\u0631"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("strong", {
-            children: "\u062A\u0627\u0631\u064A\u062E \u0627\u0639\u062F\u0627\u062F \u0627\u0644\u062A\u0642\u0631\u064A\u0631 \u0628\u064A\u0646:"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
-            className: "form-check-label",
-            children: "\u0628\u062F\u0621"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
-            className: "form-check-input",
-            type: "date",
-            onChange: function onChange(e) {
-              return setfrom(e.target.value);
-            }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
-            className: "form-check-label",
-            children: "\u0646\u0647\u0627\u064A\u0629"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
-            className: "form-check-input",
-            type: "date",
-            onChange: function onChange(e) {
-              return setto(e.target.value);
-            }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-            onClick: function onClick() {
-              var params = Object.assign({}, from === null ? null : {
-                from: from
-              }, to === null ? null : {
-                to: to
-              }); // console.log(params)
-
-              fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, params);
-            },
-            children: "filter"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("strong", {
-            children: "\u062A\u0627\u0631\u064A\u062E \u0628\u062F\u0621 \u0648\u0646\u0647\u0627\u064A\u0629 \u0627\u0644\u0641\u062A\u0631\u0629:"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
-            className: "form-check-label",
-            children: "\u0628\u062F\u0627\u064A\u0629"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
-            className: "form-check-input",
-            type: "date",
-            onChange: function onChange(e) {
-              return settrial_begin(e.target.value);
-            }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
-            className: "form-check-label",
-            children: "\u0646\u0647\u0627\u064A\u0629"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
-            className: "form-check-input",
-            type: "date",
-            onChange: function onChange(e) {
-              return settrial_end(e.target.value);
-            }
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-            onClick: function onClick() {
-              var params = Object.assign({}, trial_begin === null ? null : {
-                trial_begin: trial_begin
-              }, trial_end === null ? null : {
-                trial_end: trial_end
-              }); // console.log(params)
-
-              fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, params);
-            },
-            children: "filter"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("strong", {
-            children: "\u062A\u0642\u064A\u064A\u0645\u0627\u062A \u0627\u0644\u0645\u0648\u0638\u0641:"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
-            className: "form-check-label",
-            children: "\u0627\u0644\u0645\u0648\u0638\u0641"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("li", {
-            className: "list-group-item",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
-              htmlFor: "employee",
-              children: "\u0627\u062E\u062A\u0631 \u0627\u0644\u0645\u0648\u0638\u0641"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("select", {
-              onChange: function onChange(e) {
-                return setemployee_id(e.target.value);
+        className: "col-3",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+          className: "card",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+            className: "card-header",
+            children: "\u0641\u0644\u062A\u0631\u0629"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+            className: "card-body",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+              onClick: function onClick() {
+                return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
+                  orderByDesc: 'final_degree'
+                });
               },
-              name: "employee_id",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
-                value: "",
-                children: "select employee name"
-              }), employees === null || employees === void 0 ? void 0 : employees.map(function (employee, index) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
-                  value: employee.id,
-                  children: employee.name
-                }, index);
+              children: "\u0627\u0641\u0636\u0644 \u0627\u0644\u062F\u0631\u062C\u0629 \u0627\u0644\u0643\u0644\u064A\u0629"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+              onClick: function onClick() {
+                return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
+                  orderByDesc: 'excitement'
+                });
+              },
+              children: "\u0627\u0644\u0627\u0641\u0636\u0644 \u0641\u064A \u0627\u0644\u062D\u0645\u0627\u0633\u0629"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+              onClick: function onClick() {
+                return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
+                  orderByDesc: 'ability_to_improve'
+                });
+              },
+              children: "\u0627\u0644\u0627\u0641\u0636\u0644 \u0641\u064A \u0627\u0644\u0642\u062F\u0631\u0629 \u0639\u0644\u0649 \u0627\u0644\u062A\u0639\u0644\u0645 \u0648\u0627\u0644\u062A\u0637\u0648\u0631"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+              onClick: function onClick() {
+                return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
+                  orderByDesc: 'guidance_acceptance'
+                });
+              },
+              children: "\u0627\u0644\u0627\u0641\u0636\u0644 \u0641\u064A \u062A\u0642\u0628\u0644 \u0648\u0627\u0633\u062A\u064A\u0639\u0627\u0628 \u0627\u0644\u062A\u0648\u062C\u064A\u0647"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+              onClick: function onClick() {
+                return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
+                  orderByDesc: 'handling_technology'
+                });
+              },
+              children: "\u0627\u0644\u0627\u0641\u0636\u0644 \u0641\u064A \u0627\u0644\u062A\u0639\u0627\u0645\u0644 \u0645\u0639 \u0627\u0644\u062A\u0642\u0646\u064A\u0629"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+              onClick: function onClick() {
+                return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
+                  orderByDesc: 'maintaining_working_hours'
+                });
+              },
+              children: "\u0627\u0644\u0627\u0641\u0636\u0644 \u0641\u064A \u0627\u0644\u0645\u062D\u0627\u0641\u0638\u0629 \u0639\u0644\u0649 \u0627\u0644\u0648\u0642\u062A \u0623\u062B\u0646\u0627\u0621 \u0627\u0644\u062F\u0648\u0627\u0645"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+              onClick: function onClick() {
+                return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
+                  orderByDesc: 'relationship_with_colleagues'
+                });
+              },
+              children: "\u0627\u0644\u0627\u0641\u0636\u0644 \u0641\u064A \u0627\u0644\u0639\u0644\u0627\u0642\u0629 \u0645\u0639 \u0627\u0644\u0632\u0645\u0644\u0627\u0621"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+              onClick: function onClick() {
+                return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
+                  orderByDesc: 'behavior'
+                });
+              },
+              children: "\u0627\u0644\u0627\u0641\u0636\u0644 \u0641\u064A \u062D\u0633\u0646 \u0627\u0644\u062A\u0635\u0631\u0641"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+              onClick: function onClick() {
+                return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
+                  orderByDesc: 'look'
+                });
+              },
+              children: "\u0627\u0644\u0627\u0641\u0636\u0644 \u0641\u064A \u062D\u0633\u0646 \u0627\u0644\u0645\u0638\u0647\u0631"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+              onClick: function onClick() {
+                return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
+                  orderByDesc: 'belief_and_loyalty'
+                });
+              },
+              children: "\u0627\u0644\u0627\u0641\u0636\u0644 \u0641\u064A \u0627\u0644\u0625\u064A\u0645\u0627\u0646 \u0628\u0633\u064A\u0627\u0633\u0629 \u0627\u0644\u0642\u0646\u0627\u0629 \u0648\u0627\u0644\u0648\u0644\u0627\u0621 \u0644\u0647\u0627"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+              onClick: function onClick() {
+                return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
+                  orderByAsc: 'delay_in_min'
+                });
+              },
+              children: "\u0627\u0644\u0627\u0641\u0636\u0644 \u0645\u0646 \u062D\u064A\u062B \u0627\u0644\u062A\u0623\u062E\u064A\u0631 \u0628\u0627\u0644\u062F\u0642\u0627\u0626\u0642"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+              onClick: function onClick() {
+                return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
+                  orderByAsc: 'early_departure_min'
+                });
+              },
+              children: "\u0627\u0644\u0627\u0641\u0636\u0644 \u0645\u0646 \u062D\u064A\u062B \u0627\u0644\u062E\u0631\u0648\u062C \u0627\u0644\u0645\u0628\u0643\u0631 \u0628\u0627\u0644\u062F\u0642\u0627\u0626\u0642"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+              onClick: function onClick() {
+                return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
+                  orderByAsc: 'absence_days'
+                });
+              },
+              children: "\u0627\u0644\u0627\u0641\u0636\u0644 \u0645\u0646 \u062D\u064A\u062B \u0627\u0644\u063A\u064A\u0627\u0628"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+              onClick: function onClick() {
+                return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, {
+                  orderByDesc: 'attendance_rate'
+                });
+              },
+              children: "\u0627\u0644\u0627\u0641\u0636\u0644 \u0645\u0646 \u062D\u064A\u062B \u0646\u0633\u0628\u0629 \u0627\u0644\u062D\u0636\u0648\u0631"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("strong", {
+                children: "\u062A\u0627\u0631\u064A\u062E \u0627\u0639\u062F\u0627\u062F \u0627\u0644\u062A\u0642\u0631\u064A\u0631 \u0628\u064A\u0646:"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
+                className: "form-check-label",
+                children: "\u0628\u062F\u0621"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
+                className: "form-check-input",
+                type: "date",
+                onChange: function onChange(e) {
+                  return setfrom(e.target.value);
+                }
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
+                className: "form-check-label",
+                children: "\u0646\u0647\u0627\u064A\u0629"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
+                className: "form-check-input",
+                type: "date",
+                onChange: function onChange(e) {
+                  return setto(e.target.value);
+                }
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+                onClick: function onClick() {
+                  var params = Object.assign({}, from === null ? null : {
+                    from: from
+                  }, to === null ? null : {
+                    to: to
+                  }); // console.log(params)
+
+                  fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, params);
+                },
+                children: "filter"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("strong", {
+                children: "\u062A\u0627\u0631\u064A\u062E \u0628\u062F\u0621 \u0648\u0646\u0647\u0627\u064A\u0629 \u0627\u0644\u0641\u062A\u0631\u0629:"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
+                className: "form-check-label",
+                children: "\u0628\u062F\u0627\u064A\u0629"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
+                className: "form-check-input",
+                type: "date",
+                onChange: function onChange(e) {
+                  return settrial_begin(e.target.value);
+                }
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
+                className: "form-check-label",
+                children: "\u0646\u0647\u0627\u064A\u0629"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
+                className: "form-check-input",
+                type: "date",
+                onChange: function onChange(e) {
+                  return settrial_end(e.target.value);
+                }
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+                onClick: function onClick() {
+                  var params = Object.assign({}, trial_begin === null ? null : {
+                    trial_begin: trial_begin
+                  }, trial_end === null ? null : {
+                    trial_end: trial_end
+                  }); // console.log(params)
+
+                  fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, params);
+                },
+                children: "filter"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("strong", {
+                children: "\u062A\u0642\u064A\u064A\u0645\u0627\u062A \u0627\u0644\u0645\u0648\u0638\u0641:"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
+                className: "form-check-label",
+                children: "\u0627\u0644\u0645\u0648\u0638\u0641"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("li", {
+                className: "list-group-item",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
+                  htmlFor: "employee",
+                  children: "\u0627\u062E\u062A\u0631 \u0627\u0644\u0645\u0648\u0638\u0641"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("select", {
+                  onChange: function onChange(e) {
+                    return setemployee_id(e.target.value);
+                  },
+                  name: "employee_id",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
+                    value: "",
+                    children: "select employee name"
+                  }), employees === null || employees === void 0 ? void 0 : employees.map(function (employee, index) {
+                    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
+                      value: employee.id,
+                      children: employee.name
+                    }, index);
+                  })]
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+                onClick: function onClick() {
+                  var params = Object.assign({}, employee_id === null ? null : {
+                    employee_id: employee_id
+                  });
+                  fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, params);
+                },
+                children: "filter"
               })]
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-            onClick: function onClick() {
-              var params = Object.assign({}, employee_id === null ? null : {
-                employee_id: employee_id
-              });
-              fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getTrialPeriods, params);
-            },
-            children: "filter"
           })]
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+        className: "col-9 card",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+          className: "card-header",
+          children: "\u062A\u0642\u064A\u064A\u0645\u0627\u062A \u0641\u062A\u0631\u0629 \u0627\u0644\u062A\u062C\u0631\u064A\u0628"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("strong", {
-            children: "\u0639\u0631\u0636 \u0627\u0644\u0628\u064A\u0627\u0646\u0627\u062A \u0641\u064A \u0627\u0644\u062C\u062F\u0648\u0644"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), Object.entries(dataShow).map(function (data, index) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-              className: "form-check-inline",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
-                className: "form-check-input",
-                type: "checkbox",
-                value: data[0],
-                onClick: function onClick(e) {
-                  return toggleDataShow(e);
-                }
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
-                className: "form-check-label",
-                children: labels[data[0]]
-              })]
-            }, index);
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_utility_Pagination__WEBPACK_IMPORTED_MODULE_6__.default, {
-          fetchPage: fetchPage,
-          links: links
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("table", {
-          className: "table table-bordered table-condensed",
-          style: {
-            marginBottom: 0
-          },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("thead", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
-                children: "ID"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
-                children: "\u0627\u0644\u0645\u0648\u0638\u0641"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
-                children: "\u0645\u0639\u062F \u0627\u0644\u062A\u0642\u0631\u064A\u0631"
-              }), Object.entries(dataShow).map(function (data, index) {
-                return data[1] ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
-                  children: labels[data[0]]
-                }, index) : null;
-              })]
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("tbody", {
-            children: assessments.map(function (assessment, index) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("tr", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
-                  children: assessment.id
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
-                    to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_4__.default.showEmployee.replace(':id', assessment.employee.id),
-                    children: assessment.employee.name
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
-                    to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_4__.default.showEmployee.replace(':id', assessment.reporter.id),
-                    children: assessment.reporter.name
-                  })
+          className: "card-body",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("a", {
+                className: "btn btn-primary",
+                "data-toggle": "collapse",
+                href: "#collapseShowColumns",
+                role: "button",
+                "aria-expanded": "false",
+                "aria-controls": "collapseShowColumns",
+                children: "\u0639\u0631\u0636 \u0627\u0644\u0628\u064A\u0627\u0646\u0627\u062A \u0641\u064A \u0627\u0644\u062C\u062F\u0648\u0644"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              className: "collapse",
+              id: "collapseShowColumns",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+                className: "row",
+                children: Object.entries(dataShow).map(function (data, index) {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+                    className: "border rounded d-flex align-items-center mr-2 my-2 p-1",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
+                      className: "mr-2",
+                      type: "checkbox",
+                      value: data[0],
+                      onClick: function onClick(e) {
+                        return toggleDataShow(e);
+                      }
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
+                      className: "",
+                      children: labels[data[0]]
+                    })]
+                  }, index);
+                })
+              })
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_utility_Pagination__WEBPACK_IMPORTED_MODULE_6__.default, {
+            fetchPage: fetchPage,
+            links: links
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("table", {
+            className: "table table-bordered table-condensed",
+            style: {
+              marginBottom: 0
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("thead", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("tr", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
+                  children: "ID"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
+                  children: "\u0627\u0644\u0645\u0648\u0638\u0641"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
+                  children: "\u0645\u0639\u062F \u0627\u0644\u062A\u0642\u0631\u064A\u0631"
                 }), Object.entries(dataShow).map(function (data, index) {
                   return data[1] ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
-                    children: assessment[data[0]]
+                    children: labels[data[0]]
                   }, index) : null;
                 })]
-              }, index);
-            })
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("tbody", {
+              children: assessments.map(function (assessment, index) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("tr", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
+                    children: assessment.id
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
+                      to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_4__.default.showEmployee.replace(':id', assessment.employee.id),
+                      children: assessment.employee.name
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link, {
+                      to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_4__.default.showEmployee.replace(':id', assessment.reporter.id),
+                      children: assessment.reporter.name
+                    })
+                  }), Object.entries(dataShow).map(function (data, index) {
+                    return data[1] ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
+                      children: assessment[data[0]]
+                    }, index) : null;
+                  })]
+                }, index);
+              })
+            })]
           })]
         })]
       })]
@@ -17577,6 +17704,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -17600,6 +17729,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function CreateProgram() {
+  var _jsx2;
+
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_1__.useState(null),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       title = _React$useState2[0],
@@ -17679,107 +17810,111 @@ function CreateProgram() {
     className: "card",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "card-header",
-      children: "\u0627\u0636\u0627\u0641\u0629 \u0645\u0648\u0638\u0641"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-      className: "card-body",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("ul", {
-        className: "list-group",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-          className: "list-group-item",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-            htmlFor: "title",
-            children: "\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u0628\u0631\u0646\u0627\u0645\u062C"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-            onChange: function onChange(e) {
-              return setTitle(e.target.value);
-            },
-            name: "title",
-            type: "text",
-            id: "title"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-          className: "list-group-item",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-            htmlFor: "goals",
-            children: "\u0627\u0647\u062F\u0627\u0641 \u0627\u0644\u0628\u0631\u0646\u0627\u0645\u062C"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-            onChange: function onChange(e) {
-              return setGoals(e.target.value);
-            },
-            name: "goals",
-            type: "text",
-            id: "goals"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-          className: "list-group-item",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-            htmlFor: "period",
-            children: "\u0645\u062F\u0629 \u0627\u0644\u0628\u0631\u0646\u0627\u0645\u062C \u0628\u0627\u0644\u062F\u0642\u0627\u0626\u0642"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-            onChange: function onChange(e) {
-              return setPeriod(e.target.value);
-            },
-            name: "period",
-            type: "number",
-            id: "period"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-          className: "list-group-item",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-            htmlFor: "category",
-            children: "\u062A\u0635\u0646\u064A\u0641"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-            onChange: function onChange(e) {
-              return setcategory(e.target.value);
-            },
-            name: "category",
-            type: "text",
-            id: "category"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-          className: "list-group-item",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-            htmlFor: "details",
-            children: "\u062A\u0641\u0627\u0635\u064A\u0644"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-            onChange: function onChange(e) {
-              return setdetails(e.target.value);
-            },
-            name: "details",
-            type: "text",
-            id: "details"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-          className: "list-group-item",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-            htmlFor: "documents[]",
-            children: "\u0645\u0633\u062A\u0646\u062F\u0627\u062A \u0627\u0644\u0628\u0631\u0646\u0627\u0645\u062C"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-            onChange: function onChange(e) {
-              var array = [];
-
-              for (var i = 0; i < e.target.files.length; i++) {
-                var file = e.target.files[i];
-                array.push(file);
-              }
-
-              setdocuments(array);
-            },
-            name: "documents[]",
-            type: "file",
-            accept: "image/*",
-            multiple: true,
-            id: "documents[]"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-            onClick: submit,
-            type: "button",
-            value: "\u062A\u0633\u062C\u064A\u0644"
-          })
+      children: "\u062A\u0633\u062C\u064A\u0644 \u062D\u0642\u064A\u0628\u0629 \u062A\u062F\u0631\u064A\u0628\u064A\u0629"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      className: "card-body row justify-content-center",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "col-6",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+          htmlFor: "title",
+          children: "\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u0628\u0631\u0646\u0627\u0645\u062C"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+          className: "form-control",
+          onChange: function onChange(e) {
+            return setTitle(e.target.value);
+          },
+          name: "title",
+          type: "text",
+          id: "title"
         })]
-      })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "col-6",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+          htmlFor: "goals",
+          children: "\u0627\u0647\u062F\u0627\u0641 \u0627\u0644\u0628\u0631\u0646\u0627\u0645\u062C"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+          className: "form-control",
+          onChange: function onChange(e) {
+            return setGoals(e.target.value);
+          },
+          name: "goals",
+          type: "text",
+          id: "goals"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "col-6",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+          htmlFor: "period",
+          children: "\u0645\u062F\u0629 \u0627\u0644\u0628\u0631\u0646\u0627\u0645\u062C \u0628\u0627\u0644\u062F\u0642\u0627\u0626\u0642"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+          className: "form-control",
+          onChange: function onChange(e) {
+            return setPeriod(e.target.value);
+          },
+          name: "period",
+          type: "number",
+          id: "period"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "col-6",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+          htmlFor: "category",
+          children: "\u062A\u0635\u0646\u064A\u0641"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+          className: "form-control",
+          onChange: function onChange(e) {
+            return setcategory(e.target.value);
+          },
+          name: "category",
+          type: "text",
+          id: "category"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "col-6",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+          htmlFor: "details",
+          children: "\u062A\u0641\u0627\u0635\u064A\u0644 \u062D\u0648\u0644 \u0627\u0644\u0628\u0631\u0646\u0627\u0645\u062C"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("textarea", {
+          rows: "5",
+          className: "form-control",
+          onChange: function onChange(e) {
+            return setdetails(e.target.value);
+          },
+          name: "details",
+          type: "text",
+          id: "details"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "col-6",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+          htmlFor: "documents[]",
+          children: "\u0645\u0633\u062A\u0646\u062F\u0627\u062A \u0627\u0644\u0628\u0631\u0646\u0627\u0645\u062C"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+          className: "form-control",
+          onChange: function onChange(e) {
+            var array = [];
+
+            for (var i = 0; i < e.target.files.length; i++) {
+              var file = e.target.files[i];
+              array.push(file);
+            }
+
+            setdocuments(array);
+          },
+          name: "documents[]",
+          type: "file",
+          accept: "image/*",
+          multiple: true,
+          id: "documents[]"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        className: "col-2",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", (_jsx2 = {
+          type: "button",
+          className: "btn btn-success",
+          onClick: submit
+        }, _defineProperty(_jsx2, "type", "button"), _defineProperty(_jsx2, "value", "\u062A\u0633\u062C\u064A\u0644"), _defineProperty(_jsx2, "children", "\u062A\u0633\u062C\u064A\u0644"), _jsx2))
+      })]
     })]
   });
 }
@@ -17807,6 +17942,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utility_logError__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utility/logError */ "./resources/js/components/utility/logError.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
@@ -17890,13 +18031,19 @@ function ProgramIndex(props) {
   function _fetchPage() {
     _fetchPage = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
       var link,
+          params,
           _args = arguments;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               link = _args.length > 0 && _args[0] !== undefined ? _args[0] : _utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.programIndex;
-              axios__WEBPACK_IMPORTED_MODULE_2___default().get(link).then(function (response) {
+              params = _args.length > 1 && _args[1] !== undefined ? _args[1] : null;
+              axios__WEBPACK_IMPORTED_MODULE_2___default().get(link, {
+                params: _objectSpread(_objectSpread({}, params), {}, {
+                  page_size: 5
+                })
+              }).then(function (response) {
                 setprograms(response.data.data);
 
                 if (response.data.links) {
@@ -17906,7 +18053,7 @@ function ProgramIndex(props) {
                 return (0,_utility_logError__WEBPACK_IMPORTED_MODULE_5__.default)(error);
               });
 
-            case 2:
+            case 3:
             case "end":
               return _context.stop();
           }

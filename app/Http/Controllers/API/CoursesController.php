@@ -41,9 +41,9 @@ class CoursesController extends Controller
         ];
     }
 
-    public function index2(CourseFilters $filters)
+    public function index2(Request $request, CourseFilters $filters)
     {
-        return TrainingCourse::filter($filters)->with(['trainingProgram'])->paginate(30)->appends(request()->except('page'));
+        return TrainingCourse::filter($filters)->with(['trainingProgram'])->paginate($request->get('page_size') ?? 10)->appends(request()->except('page'));
     }
 
     public function getTrainingCourses(CourseFilters $filters)
@@ -140,17 +140,17 @@ class CoursesController extends Controller
             'profile_type' => 'required|in:' . Employee::class . ',' . TargetedIndividual::class
         ]);
 
-        $course = TrainingCourse::where('id',$id)->first();
-        if($request->profile_type == Employee::class){
+        $course = TrainingCourse::where('id', $id)->first();
+        if ($request->profile_type == Employee::class) {
             $employee = Employee::where('id', $request->profile_id)->first();
             $course->enrollEmployee($employee);
-            return ['success'=>'employee successfully enrolled'];
-        }else{
+            return ['success' => 'employee successfully enrolled'];
+        } else {
             $individual = TargetedIndividual::where('id', $request->profile_id)->first();
             $course->enrollIndividual($individual);
-            return ['success'=>'individual successfully enrolled'];
+            return ['success' => 'individual successfully enrolled'];
         }
 
-        return response(['failure'=>'nothing is done'],501);
+        return response(['failure' => 'nothing is done'], 501);
     }
 }
