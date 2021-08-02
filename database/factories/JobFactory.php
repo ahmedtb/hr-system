@@ -24,7 +24,7 @@ class JobFactory extends Factory
     public function definition()
     {
         return [
-            'unit_id' => Unit::factory()->create()->id,
+            'unit_id' => Unit::inRandomOrder()->first()->id ?? Unit::factory()->create()->id,
             'name' => $this->faker->sentence(),
             'purpose' => $this->faker->sentence(),
             'description' => $this->faker->text(),

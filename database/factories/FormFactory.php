@@ -39,7 +39,7 @@ class FormFactory extends Factory
      */
     public function definition()
     {
-        $form_structure = FormStructure::factory()->create();
+        $form_structure = (FormStructure::inRandomOrder()->first()) ?? FormStructure::factory()->create();
         $form_structure->array_of_fields->generateMockedValues();
 
 

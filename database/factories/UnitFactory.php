@@ -35,7 +35,7 @@ class UnitFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
-                'parent_id' => Unit::factory()->create()->id,
+                'parent_id' => (Unit::inRandomOrder()->first()->id) ?? Unit::factory()->create()->id,
             ];
         });
     }

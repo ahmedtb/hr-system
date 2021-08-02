@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Exception;
 use App\Models\Job;
+use App\Models\Form;
+use App\Models\Unit;
 use App\Models\Admin;
 use App\Models\Coach;
 use App\Models\Trainee;
@@ -58,7 +60,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        TrainingProgram::factory(50)->create();
+        Employee::factory(20)->create();
+        TargetedIndividual::factory(20)->create();
+        Admin::factory()->create();
+        Unit::factory(10)->create();
+
+        TrainingProgram::factory(20)->create();
 
         $courses = TrainingCourse::factory(5)->resumed()->create();
         foreach ($courses as $course)
@@ -67,53 +74,23 @@ class DatabaseSeeder extends Seeder
         $courses = TrainingCourse::factory(5)->done()->create();
         foreach ($courses as $course)
             CourseAttendance::factory(15)->forCourse($course)->create();
-        
+
         TrainingCourse::factory(5)->planned()->create();
         TrainingCourse::factory(5)->canceled()->create();
 
         FormStructure::factory(5)->create();
+        Form::factory(5)->create();
+
         Trainee::factory(5)->create();
         Coach::factory(5)->create();
-        Admin::factory(1)->create();
 
-        Document::factory(5)->create(
-            [
-                'documentable_type' => Employee::class,
-                'documentable_id' => Employee::select('id')->orderByRaw("RAND()")->first()->id,
-            ]
-        );
+        Document::factory(15)->create();
 
-        Document::factory(5)->create(
-            [
-                'documentable_type' => Trainee::class,
-                'documentable_id' => Trainee::select('id')->orderByRaw("RAND()")->first()->id,
-            ]
-        );
-
-        Document::factory(5)->create(
-            [
-                'documentable_type' => TrainingProgram::class,
-                'documentable_id' => TrainingProgram::select('id')->orderByRaw("RAND()")->first()->id,
-            ]
-        );
-
-        TrialPeriodAssessment::factory(5)->create([
-            'employee_id' => Employee::select('id')->orderByRaw("RAND()")->first()->id,
-        ]);
-
-        TrainingPeriodAssessment::factory(5)->create([
-            'employee_id' => Employee::select('id')->orderByRaw("RAND()")->first()->id,
-        ]);
-
-        InterviewAssessment::factory(5)->create([
-            'interviewer_id' => Employee::select('id')->orderByRaw("RAND()")->first()->id,
-        ]);
-        TraineeCourseAssessment::factory(5)->create([
-            'training_course_id' => TrainingCourse::select('id')->orderByRaw("RAND()")->first()->id,
-        ]);
-        CoachCourseAssessment::factory(5)->create([
-            'training_course_id' => TrainingCourse::select('id')->orderByRaw("RAND()")->first()->id,
-        ]);
+        TrialPeriodAssessment::factory(5)->create();
+        TrainingPeriodAssessment::factory(5)->create();
+        InterviewAssessment::factory(5)->create();
+        TraineeCourseAssessment::factory(5)->create();
+        CoachCourseAssessment::factory(5)->create();
 
         $this->seedPivotTables();
     }

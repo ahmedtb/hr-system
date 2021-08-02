@@ -18,7 +18,7 @@ class CourseAttendanceFactory extends Factory
     {
         return [
             'person_name' => $this->faker->name(),
-            'profile_id' => Employee::factory()->create()->id,
+            'profile_id' => (Employee::inRandomOrder()->first()->id) ?? Employee::factory()->create()->id,
             'profile_type' => Employee::class,
             'date' => $this->faker->date(),
             'entrance_time' => $this->faker->time(),
@@ -34,13 +34,13 @@ class CourseAttendanceFactory extends Factory
             if ($random == 1)
                 return [
                     'person_name' => null,
-                    'profile_id' => Employee::factory()->create()->id,
+                    'profile_id' => (Employee::inRandomOrder()->first()->id) ?? Employee::factory()->create()->id,
                     'profile_type' => Employee::class,
                 ];
             else
                 return [
                     'person_name' => null,
-                    'profile_id' => TargetedIndividual::factory()->create()->id,
+                    'profile_id' => (TargetedIndividual::inRandomOrder()->first()->id) ?? TargetedIndividual::factory()->create()->id,
                     'profile_type' => TargetedIndividual::class,
                 ];
         });
@@ -65,10 +65,13 @@ class CourseAttendanceFactory extends Factory
             $profile = null;
             $random = rand(1, 2);
             if ($random == 1) {
-                $profile = Employee::factory()->create();
+                $profile = (Employee::inRandomOrder()->first()) ?? Employee::factory()->create();
+                if ($course->isEnrolled($profile)) $profile = Employee::factory()->create();
                 $course->enrollEmployee($profile);
             } else {
-                $profile = TargetedIndividual::factory()->create();
+                $profile = (TargetedIndividual::inRandomOrder()->first()) ?? TargetedIndividual::factory()->create();
+                if ($course->isEnrolled($profile)) $profile = TargetedIndividual::factory()->create();
+
                 $course->enrollIndividual($profile);
             }
 
@@ -80,7 +83,7 @@ class CourseAttendanceFactory extends Factory
 
                 'person_name' => null,
                 'profile_id' => $profile->id,
-                'profile_type' => ($random == 1)? Employee::class : TargetedIndividual::class,
+                'profile_type' => ($random == 1) ? Employee::class : TargetedIndividual::class,
             ];
         });
     }

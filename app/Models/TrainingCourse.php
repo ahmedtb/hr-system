@@ -311,6 +311,14 @@ class TrainingCourse extends Model
         $this->targetedIndividuals()->save($individual);
     }
 
+    public function isEnrolled($person)
+    {
+        if (get_class($person) == Employee::class)
+            return $this->employees()->find($person->id) != null;
+        if (get_class($person) == TargetedIndividual::class)
+            return $this->targetedIndividuals()->find($person->id) != null;
+    }
+
     public function employeeAttendaces(Employee $employee)
     {
         return $this->attendances()->where('profile_id', $employee->id)->where('profile_type', Employee::class)->get();

@@ -25,8 +25,8 @@ class TrainingPeriodAssessmentFactory extends Factory
     {
         return [
             'date' => $this->faker->date(),
-            'employee_id' => Employee::factory()->create()->id,
-            'unit_id' => Unit::factory()->create()->id,
+            'employee_id' => Employee::inRandomOrder()->first()->id ?? Employee::factory()->create()->id,
+            'unit_id' => Unit::inRandomOrder()->first()->id ??  Unit::factory()->create()->id,
             'training_begin_date' => $this->faker->date(),
             'training_end_date' => $this->faker->date(),
             'excitement' => random_int(0,15),
@@ -39,7 +39,7 @@ class TrainingPeriodAssessmentFactory extends Factory
             'look' => random_int(0,15),
             'belief_and_loyalty' => random_int(0,10),
             'final_degree' => random_int(0,130),
-            'reporter_id' => Employee::factory()->create()->id,
+            'reporter_id' => Employee::inRandomOrder()->first()->id ?? Employee::factory()->create()->id,
             'unit_head_recommendation' => $this->faker->sentence(),
             'delay_in_min' => random_int(0,100),
             'early_departure_min' => random_int(0,100),

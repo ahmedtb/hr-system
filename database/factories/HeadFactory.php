@@ -23,7 +23,7 @@ class HeadFactory extends Factory
     public function definition()
     {
         return [
-            // 'employee_id' => Employee::factory()->create()->id, // nullable
+            'employee_id' => (Employee::inRandomOrder()->first()->id) ?? Employee::factory()->create()->id, // nullable
         ];
     }
 }

@@ -31,7 +31,7 @@ class CoachCourseAssessmentFactory extends Factory
     public function definition()
     {
         return [
-            'training_course_id' => TrainingCourse::factory()->create()->id,
+            'training_course_id' => (TrainingCourse::inRandomOrder()->first()->id) ?? TrainingCourse::factory()->create()->id,
             'trainees_discipline' => $this->ratingWithComment(),
             'trainees_interaction' => $this->ratingWithComment(),
             'congruence_with_content' => $this->ratingWithComment(),

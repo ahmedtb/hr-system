@@ -28,10 +28,10 @@ class CoachFactory extends Factory
         $profile_type = null;
 
         if ($rand == 1) {
-            $profile_id = (Employee::select('id')->orderByRaw("RAND()")->first()->id) ?? Employee::factory()->create()->id;
+            $profile_id = (Employee::inRandomOrder()->first()->id) ?? Employee::factory()->create()->id;
             $profile_type = Employee::class;
         } else if ($rand == 2) {
-            $profile_id = (TargetedIndividual::select('id')->orderByRaw("RAND()")->first()->id) ?? TargetedIndividual::factory()->create()->id;
+            $profile_id = (TargetedIndividual::inRandomOrder()->first()->id) ?? TargetedIndividual::factory()->create()->id;
             $profile_type = TargetedIndividual::class;
         }
         

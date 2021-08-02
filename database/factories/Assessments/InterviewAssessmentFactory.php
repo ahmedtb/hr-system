@@ -43,7 +43,7 @@ class InterviewAssessmentFactory extends Factory
             'problem_solving_skills' => $assessments[rand(0,3)],
             'stress_handling' => $assessments[rand(0,3)],
             'moral_courage_self_confidence' => $assessments[rand(0,3)],
-            'interviewer_id' => Employee::factory()->create()->id,
+            'interviewer_id' => Employee::inRandomOrder()->first()->id ?? Employee::factory()->create()->id,
             'interview_date' => $this->faker->date(),
         ];
     }
