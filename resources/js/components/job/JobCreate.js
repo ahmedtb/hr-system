@@ -6,7 +6,7 @@ import logError from '../utility/logError'
 export default function JobCreate() {
     const [units, setunits] = React.useState([])
     React.useEffect(() => {
-        axios.get(ApiEndpoints.unitIndex).then((response) => {
+        axios.get(ApiEndpoints.getUnits).then((response) => {
             setunits(response.data)
             console.log(response.data)
         }).catch((err) => {
@@ -37,37 +37,37 @@ export default function JobCreate() {
             <div className="card-header">تسجيل نوع وظايف جديد</div>
 
             <div className="card-body">
-                <ul className="list-group">
-                    <li className="list-group-item">
+                <div className="row align-items-start justify-content-center">
+                    <div className="col-5 border rounded m-2 p-1">
                         <label >تسمية الوظيفة</label>
-                        <input onChange={(e) => setname(e.target.value)} type="text" />
-                    </li>
-
-                    <li className="list-group-item">
-                        <label >الغرض من الوظيفة</label>
-                        <textarea  onChange={(e) => setpurpose(e.target.value)} rows="4" cols="50" />
-                    </li>
-                    <li className="list-group-item">
-                        <label>وصف الوظيفة</label>
-                        <textarea onChange={(e) => setdescription(e.target.value)} rows="4" cols="50" />
-                    </li>
-
-                    <li className="list-group-item">
+                        <input className="form-control" onChange={(e) => setname(e.target.value)} type="text" />
+                    </div>
+                    <div className="col-5 border rounded m-2 p-1">
                         <label >الوحدة الادارية التي تتبعها</label>
-                        <select onChange={(e) => setunit_id(e.target.value)} >
+                        <select className="form-control" onChange={(e) => setunit_id(e.target.value)} >
                             <option >نرجو اختيار الوحدة الادارية</option>
                             {units.map((unit, index) => (
                                 <option key={index} value={unit.id}>{unit.name}</option>
                             ))}
                         </select>
-                    </li>
+                    </div>
+                    <div className="col-5 border rounded m-2 p-1">
+                        <label >الغرض من الوظيفة</label>
+                        <textarea className="form-control"  onChange={(e) => setpurpose(e.target.value)} rows="4" cols="50" />
+                    </div>
+                    <div className="col-5 border rounded m-2 p-1">
+                        <label>وصف الوظيفة</label>
+                        <textarea className="form-control" onChange={(e) => setdescription(e.target.value)} rows="4" cols="50" />
+                    </div>
 
 
-                    <li className="list-group-item">
-                        <input onClick={submit} type="button" value="تسجيل" />
-                    </li>
+                    <div className="col-12 d-flex justify-content-center">
+                        <button onClick={submit} type="button" className="btn btn-success">
+                            تسجيل
+                        </button>
+                    </div>
 
-                </ul>
+                </div>
             </div>
         </div>
     )

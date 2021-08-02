@@ -8,13 +8,13 @@ export default function JobCreate() {
     const [employees, setemployees] = React.useState([])
 
     React.useEffect(() => {
-        axios.get(ApiEndpoints.unitIndex).then((response) => {
+        axios.get(ApiEndpoints.getUnits).then((response) => {
             setunits(response.data)
-            console.log(response.data)
+            // console.log(response.data)
         }).catch((err) => logError(err))
-        axios.get(ApiEndpoints.employeeIndex).then((response) => {
+        axios.get(ApiEndpoints.getEmployees).then((response) => {
             setemployees(response.data)
-            console.log(response.data)
+            // console.log(response.data)
         }).catch((err) => logError(err))
     }, [])
 
@@ -43,45 +43,47 @@ export default function JobCreate() {
             <div className="card-header">انشاء وحدة ادارية جديدة</div>
 
             <div className="card-body">
-                <ul className="list-group">
+                <div className="row align-items-start justify-content-center">
 
-                <li className="list-group-item">
+                    <div className="col-5 border rounded m-2 p-1">
                         <label >اختر رئيس الوحدة من الموظفيين</label>
-                        <select onChange={(e) => sethead_id(e.target.value)} >
+                        <select className="form-control" onChange={(e) => sethead_id(e.target.value)} >
                             <option >قائمة الموظفيين</option>
                             {employees.map((employee, index) => (
                                 <option key={index} value={employee.id}>{employee.name}</option>
                             ))}
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
+                    <div className="col-5 border rounded m-2 p-1">
                         <label >تسمية الوحدة الادارية</label>
-                        <input onChange={(e) => setname(e.target.value)} type="text" />
-                    </li>
+                        <input className="form-control" onChange={(e) => setname(e.target.value)} type="text" />
+                    </div>
 
-                    <li className="list-group-item">
+                    <div className="col-5 border rounded m-2 p-1">
                         <label >الغرض من الوحدة الادارية</label>
-                        <textarea onChange={(e) => setpurpose(e.target.value)} rows="4" cols="50" />
-                    </li>
+                        <textarea className="form-control" onChange={(e) => setpurpose(e.target.value)} rows="4" cols="50" />
+                    </div>
 
 
-                    <li className="list-group-item">
+                    <div className="col-5 border rounded m-2 p-1">
                         <label >الوحدة الادارية التي تتبعها</label>
-                        <select onChange={(e) => setparent_id(e.target.value)} >
+                        <select className="form-control" onChange={(e) => setparent_id(e.target.value)} >
                             <option >يجب اختيار الوحدة الادارية العليا</option>
                             {units.map((unit, index) => (
                                 <option key={index} value={unit.id}>{unit.name}</option>
                             ))}
                         </select>
-                    </li>
+                    </div>
 
 
-                    <li className="list-group-item">
-                        <input onClick={submit} type="button" value="تسجيل" />
-                    </li>
+                    <div className="col-12 d-flex justify-content-center">
+                        <button onClick={submit} type="button" className="btn btn-success">
+                            تسجيل
+                        </button>
+                    </div>
 
-                </ul>
+                </div>
             </div>
         </div>
     )

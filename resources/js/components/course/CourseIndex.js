@@ -12,10 +12,12 @@ function CoursesViewerAndFilter(props) {
     const [courses, setcourses] = React.useState([])
     const [links, setlinks] = React.useState([])
     const [start_date, setstart_date] = React.useState(null)
+    const [params, setparams] = React.useState(null)
 
     async function fetchPage(link = ApiEndpoints.courseIndex, params = null) {
         axios.get(link, { params: params }).then((response) => {
             setcourses(response.data.data)
+            setparams(params)
             if (response.data.links) { setlinks(response.data.links) } else setlinks(null)
         }).catch((error) => logError(error))
     }
@@ -28,29 +30,48 @@ function CoursesViewerAndFilter(props) {
     return (
         <>
             <div className="card">
-                <div className="card-header">فلترة</div>
-                <div className="card-body">
-                    <button onClick={() => fetchPage(ApiEndpoints.courseIndex, { resumed: 'true' })}>الدورات المستانفة</button>
-                    <button onClick={() => fetchPage(ApiEndpoints.courseIndex, { planned: 'true' })}>الدورات المخطط لها</button>
-                    <button onClick={() => fetchPage(ApiEndpoints.courseIndex, { done: 'true' })}>الدورات المنتهية</button><br />
-                    <button onClick={() => fetchPage(ApiEndpoints.courseIndex, { canceled: 'true' })}>الدورات الملغية</button><br />
-
-                    <strong>تاريخ بدء:</strong><br />
-                    <label className="form-check-label" >بداية</label><br />
-                    <input className="form-check-input" type="date" onChange={(e) => setstart_date(e.target.value)} /><br />
-
-                    <button onClick={() => {
-                        let params = Object.assign({},
-                            start_date === null ? null : { start_date },
-                        )
-                        fetchPage(ApiEndpoints.courseIndex, params)
-                    }}>filter</button>
-                </div>
-            </div>
-
-            <div className="card">
                 <div className="card-header">قائمة الدورات</div>
-                <div className="card-body">
+                <div className="card-body ">
+                    <div className="row align-items-start">
+                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            ترشيح الدورات وفقا لـ
+                        </button>
+                        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div className="modal-dialog modal-lg">
+                                <div className="modal-content">
+                                    <div className="modal-header">
+                                        <h5 className="modal-title" id="exampleModalLabel">ترشيح الدورات وفقا لــ</h5>
+                                    </div>
+                                    <div className="modal-body row">
+
+                                        <button type="button" className={(params?.resumed == 'true') ? "btn btn-success mx-2 my-1" : "btn btn-info mx-2 my-1"} onClick={() => fetchPage(ApiEndpoints.courseIndex, { resumed: 'true' })}>الدورات المستانفة</button>
+                                        <button type="button" className={(params?.planned == 'true') ? "btn btn-success mx-2 my-1" : "btn btn-info mx-2 my-1"} onClick={() => fetchPage(ApiEndpoints.courseIndex, { planned: 'true' })}>الدورات المخطط لها</button>
+                                        <button type="button" className={(params?.done == 'true') ? "btn btn-success mx-2 my-1" : "btn btn-info mx-2 my-1"} onClick={() => fetchPage(ApiEndpoints.courseIndex, { done: 'true' })}>الدورات المنتهية</button><br />
+                                        <button type="button" className={(params?.canceled == 'true') ? "btn btn-success mx-2 my-1" : "btn btn-info mx-2 my-1"} onClick={() => fetchPage(ApiEndpoints.courseIndex, { canceled: 'true' })}>الدورات الملغية</button><br />
+                                    </div>
+                                    <div className="modal-footer">
+                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="border rounded p-1 mx-2">
+                            <div className="d-flex flex-row my-2 align-items-center">
+                                <label>تاريخ بدء</label><br />
+                                <input className="form-control ml-1" type="date" onChange={(e) => setstart_date(e.target.value)} /><br />
+                                <button className="form-control btn btn-info ml-1" onClick={() => {
+                                    let params = Object.assign({},
+                                        start_date === null ? null : { start_date },
+                                    )
+                                    fetchPage(ApiEndpoints.courseIndex, params)
+                                }}>فلترة</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+
                     <Pagination
                         fetchPage={fetchPage}
                         links={links}
@@ -64,14 +85,39 @@ function CoursesViewerAndFilter(props) {
 
 export default function CourseIndex(props) {
     const [twentyDaysRangeCourses, setrangecourses] = React.useState([])
+    const [diagramPagination, setdiagramPagination] = React.useState([])
 
+    async function getTwentyDaysRangeCourses(link = ApiEndpoints.courseIndex, params = null) {
+        try {
+            const response = await axios.get(link,
+                {
+                    params: {
+                        ...params,
+                        start_before: moment().add('10 days').format('YYYY-MM-DD'),
+                        end_after: moment().subtract('10 days').format('YYYY-MM-DD'),
+                        page_size: 5
+                    }
+                })
+            // console.log(response.data)
+            setrangecourses(response.data.data)
+            setdiagramPagination(response.data.links)
+        } catch (error) { logError(error) }
+    }
+
+    React.useEffect(() => {
+        getTwentyDaysRangeCourses()
+    }, [])
 
     return (
         <div className="col-md-12">
 
             <div className="card">
-                <div className="card-header">احصائيات الدورات</div>
+                <div className="card-header">مخطط الدورات خلال الايام الحالية</div>
                 <div className="card-body">
+                    <Pagination
+                        fetchPage={getTwentyDaysRangeCourses}
+                        links={diagramPagination}
+                    />
                     <ScheduleDiagram
                         courses={twentyDaysRangeCourses}
                         rangeStartDate={moment().subtract(10, 'd').format('YYYY-MM-DD')}

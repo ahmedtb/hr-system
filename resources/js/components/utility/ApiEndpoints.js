@@ -31,7 +31,7 @@ export default {
     getTrainingCourses: '/api/getTrainingCourses',
     getIndividuals: '/api/getIndividuals',
     getUnits: '/api/getUnits',
-
+    getPrograms: '/api/getPrograms',
 
     createInterview: '/api/interview/create',
     createTrialPeriodAssessment: '/api/trialPeriodAssessment/create',
@@ -55,7 +55,7 @@ export default {
     programIndex: '/api/program/index',
     showForms: '/api/form/index',
     showFormsStructure: '/api/structure/index',
-    courseIndex: '/api/course/index2',
+    courseIndex: '/api/course/index',
     employeeIndex: '/api/employee/index',
     unitIndex: '/api/unit/index',
     jobIndex: '/api/job/index',

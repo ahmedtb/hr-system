@@ -85,13 +85,13 @@ export default function TopMenue() {
                 </div>
             </div>
 
-            <div className="dropdown">
+            {/* <div className="dropdown">
                 <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     احصائيات
                 </button>
                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 </div>
-            </div>
+            </div> */}
 
             <div className="dropdown">
                 <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

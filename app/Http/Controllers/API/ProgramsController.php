@@ -60,4 +60,9 @@ class ProgramsController extends Controller
             return response(['success' => 'program created']);
         }
     }
+
+    public function getPrograms(Request $request)
+    {
+        return TrainingProgram::all();
+    }
 }

@@ -2725,15 +2725,13 @@ function JobCreate() {
       setemployees = _React$useState4[1];
 
   react__WEBPACK_IMPORTED_MODULE_1__.useEffect(function () {
-    axios__WEBPACK_IMPORTED_MODULE_2___default().get(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.unitIndex).then(function (response) {
-      setunits(response.data);
-      console.log(response.data);
+    axios__WEBPACK_IMPORTED_MODULE_2___default().get(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getUnits).then(function (response) {
+      setunits(response.data); // console.log(response.data)
     })["catch"](function (err) {
       return (0,_utility_logError__WEBPACK_IMPORTED_MODULE_4__.default)(err);
     });
-    axios__WEBPACK_IMPORTED_MODULE_2___default().get(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.employeeIndex).then(function (response) {
-      setemployees(response.data);
-      console.log(response.data);
+    axios__WEBPACK_IMPORTED_MODULE_2___default().get(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getEmployees).then(function (response) {
+      setemployees(response.data); // console.log(response.data)
     })["catch"](function (err) {
       return (0,_utility_logError__WEBPACK_IMPORTED_MODULE_4__.default)(err);
     });
@@ -2808,13 +2806,14 @@ function JobCreate() {
       children: "\u0627\u0646\u0634\u0627\u0621 \u0648\u062D\u062F\u0629 \u0627\u062F\u0627\u0631\u064A\u0629 \u062C\u062F\u064A\u062F\u0629"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "card-body",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("ul", {
-        className: "list-group",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-          className: "list-group-item",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "row align-items-start justify-content-center",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 border rounded m-2 p-1",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
             children: "\u0627\u062E\u062A\u0631 \u0631\u0626\u064A\u0633 \u0627\u0644\u0648\u062D\u062F\u0629 \u0645\u0646 \u0627\u0644\u0645\u0648\u0638\u0641\u064A\u064A\u0646"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("select", {
+            className: "form-control",
             onChange: function onChange(e) {
               return sethead_id(e.target.value);
             },
@@ -2827,32 +2826,35 @@ function JobCreate() {
               }, index);
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-          className: "list-group-item",
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 border rounded m-2 p-1",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
             children: "\u062A\u0633\u0645\u064A\u0629 \u0627\u0644\u0648\u062D\u062F\u0629 \u0627\u0644\u0627\u062F\u0627\u0631\u064A\u0629"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            className: "form-control",
             onChange: function onChange(e) {
               return setname(e.target.value);
             },
             type: "text"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-          className: "list-group-item",
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 border rounded m-2 p-1",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
             children: "\u0627\u0644\u063A\u0631\u0636 \u0645\u0646 \u0627\u0644\u0648\u062D\u062F\u0629 \u0627\u0644\u0627\u062F\u0627\u0631\u064A\u0629"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("textarea", {
+            className: "form-control",
             onChange: function onChange(e) {
               return setpurpose(e.target.value);
             },
             rows: "4",
             cols: "50"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-          className: "list-group-item",
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 border rounded m-2 p-1",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
             children: "\u0627\u0644\u0648\u062D\u062F\u0629 \u0627\u0644\u0627\u062F\u0627\u0631\u064A\u0629 \u0627\u0644\u062A\u064A \u062A\u062A\u0628\u0639\u0647\u0627"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("select", {
+            className: "form-control",
             onChange: function onChange(e) {
               return setparent_id(e.target.value);
             },
@@ -2865,12 +2867,13 @@ function JobCreate() {
               }, index);
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          className: "col-12 d-flex justify-content-center",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
             onClick: submit,
             type: "button",
-            value: "\u062A\u0633\u062C\u064A\u0644"
+            className: "btn btn-success",
+            children: "\u062A\u0633\u062C\u064A\u0644"
           })
         })]
       })
@@ -9154,7 +9157,7 @@ function CourseCreate() {
       setprograms = _React$useState2[1];
 
   react__WEBPACK_IMPORTED_MODULE_1__.useEffect(function () {
-    axios__WEBPACK_IMPORTED_MODULE_2___default().get(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.programIndex).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default().get(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getPrograms).then(function (response) {
       setprograms(response.data);
     })["catch"](function (err) {
       (0,_utility_logError__WEBPACK_IMPORTED_MODULE_4__.default)(err);
@@ -9198,13 +9201,6 @@ function CourseCreate() {
           switch (_context.prev = _context.next) {
             case 0:
               _context.prev = 0;
-              // const data = new FormData()
-              // if (title) data.append('title', title)
-              // if (program_id) data.append('training_program_id', program_id)
-              // data.append('status', 'normal')
-              // if (start_date) data.append('start_date', start_date)
-              // if (end_date) data.append('end_date', end_date)
-              // if (week_schedule) data.append('week_schedule', week_schedule)
               data = {
                 title: title,
                 training_program_id: program_id,
@@ -9269,45 +9265,53 @@ function CourseCreate() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "card-header",
       children: "\u062A\u0633\u062C\u064A\u0644 \u062F\u0648\u0631\u0629"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
       className: "card-body",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("ul", {
-        className: "list-group",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-          className: "list-group-item",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "row justify-content-center",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 p-2 border rounded m-2 row ",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+            className: "col-4",
             children: "\u0627\u0644\u0639\u0646\u0648\u0627\u0646"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            className: "col-8 form-control",
             onChange: function onChange(e) {
               return settitle(e.target.value);
             },
             type: "text"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-          className: "list-group-item",
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 p-2 border rounded m-2 row ",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+            className: "col-4",
             children: "\u062A\u0627\u0631\u064A\u062E \u0628\u062F\u0621 \u0627\u0644\u062F\u0648\u0631\u0629"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            className: "col-8 form-control",
             onChange: function onChange(e) {
               return setstart_date(e.target.value);
             },
             type: "date"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-          className: "list-group-item",
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 p-2 border rounded m-2 row ",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+            className: "col-4",
             children: "\u062A\u0627\u0631\u064A\u062E \u0627\u0646\u062A\u0647\u0627\u0621 \u0627\u0644\u062F\u0648\u0631\u0629"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            className: "col-8 form-control",
             onChange: function onChange(e) {
               return setend_date(e.target.value);
             },
             type: "date"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-          className: "list-group-item",
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 p-2 border rounded m-2 row ",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+            className: "col-4",
             children: "\u0627\u0644\u062D\u0642\u064A\u0628\u0629 \u0627\u0644\u062A\u062F\u0631\u064A\u0628\u064A\u0629"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("select", {
+            className: "col-8 form-control",
             onChange: function onChange(e) {
               return setprogram_id(e.target.value);
             },
@@ -9320,9 +9324,10 @@ function CourseCreate() {
               }, index);
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-          className: "list-group-item",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 p-2 border rounded m-2 row",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("strong", {
+            className: "my-2 mx-auto",
             children: "\u062C\u062F\u0648\u0644 \u0627\u0644\u062F\u0648\u0631\u0629 \u0627\u0644\u0627\u0633\u0628\u0648\u0639\u064A"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("table", {
             className: "table",
@@ -9340,6 +9345,7 @@ function CourseCreate() {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    className: "",
                     id: "checkbox1",
                     type: "checkbox",
                     onChange: changeSchedual
@@ -9348,12 +9354,14 @@ function CourseCreate() {
                   children: "\u0627\u0644\u0633\u0628\u062A"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    className: "form-control",
                     id: "time11",
                     type: "time",
                     onChange: changeSchedual
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    className: "form-control",
                     id: "time12",
                     type: "time",
                     onChange: changeSchedual
@@ -9362,6 +9370,7 @@ function CourseCreate() {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    className: "",
                     id: "checkbox2",
                     type: "checkbox",
                     onChange: changeSchedual
@@ -9370,12 +9379,14 @@ function CourseCreate() {
                   children: "\u0627\u0644\u0627\u062D\u062F"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    className: "form-control",
                     id: "time21",
                     type: "time",
                     onChange: changeSchedual
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    className: "form-control",
                     id: "time22",
                     type: "time",
                     onChange: changeSchedual
@@ -9384,6 +9395,7 @@ function CourseCreate() {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    className: "",
                     id: "checkbox3",
                     type: "checkbox",
                     onChange: changeSchedual
@@ -9392,12 +9404,14 @@ function CourseCreate() {
                   children: "\u0627\u0644\u0627\u062B\u0646\u064A\u0646"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    className: "form-control",
                     id: "time31",
                     type: "time",
                     onChange: changeSchedual
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    className: "form-control",
                     id: "time32",
                     type: "time",
                     onChange: changeSchedual
@@ -9406,6 +9420,7 @@ function CourseCreate() {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    className: "",
                     id: "checkbox4",
                     type: "checkbox",
                     onChange: changeSchedual
@@ -9414,12 +9429,14 @@ function CourseCreate() {
                   children: "\u0627\u0644\u062B\u0644\u0627\u062B\u0627\u0621"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    className: "form-control",
                     id: "time41",
                     type: "time",
                     onChange: changeSchedual
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    className: "form-control",
                     id: "time42",
                     type: "time",
                     onChange: changeSchedual
@@ -9428,6 +9445,7 @@ function CourseCreate() {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    className: "",
                     id: "checkbox5",
                     type: "checkbox",
                     onChange: changeSchedual
@@ -9436,12 +9454,14 @@ function CourseCreate() {
                   children: "\u0627\u0644\u0627\u0631\u0628\u0639\u0627\u0621"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    className: "form-control",
                     id: "time51",
                     type: "time",
                     onChange: changeSchedual
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    className: "form-control",
                     id: "time52",
                     type: "time",
                     onChange: changeSchedual
@@ -9450,6 +9470,7 @@ function CourseCreate() {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    className: "",
                     id: "checkbox6",
                     type: "checkbox",
                     onChange: changeSchedual
@@ -9458,12 +9479,14 @@ function CourseCreate() {
                   children: "\u0627\u0644\u062E\u0645\u064A\u0633"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    className: "form-control",
                     id: "time61",
                     type: "time",
                     onChange: changeSchedual
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    className: "form-control",
                     id: "time62",
                     type: "time",
                     onChange: changeSchedual
@@ -9472,6 +9495,7 @@ function CourseCreate() {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    className: "",
                     id: "checkbox7",
                     type: "checkbox",
                     onChange: changeSchedual
@@ -9480,12 +9504,14 @@ function CourseCreate() {
                   children: "\u0627\u0644\u062C\u0645\u0639\u0629"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    className: "form-control",
                     id: "time71",
                     type: "time",
                     onChange: changeSchedual
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+                    className: "form-control",
                     id: "time72",
                     type: "time",
                     onChange: changeSchedual
@@ -9494,15 +9520,15 @@ function CourseCreate() {
               })]
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-            onClick: submit,
-            type: "button",
-            value: "\u062A\u0633\u062C\u064A\u0644"
-          })
         })]
-      })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        className: "col-5 p-2 border rounded m-2 row ",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+          onClick: submit,
+          type: "button",
+          value: "\u062A\u0633\u062C\u064A\u0644"
+        })
+      })]
     })]
   });
 }
@@ -9534,6 +9560,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _utility_Pagination__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utility/Pagination */ "./resources/js/components/utility/Pagination.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -9581,6 +9613,11 @@ function CoursesViewerAndFilter(props) {
       start_date = _React$useState6[0],
       setstart_date = _React$useState6[1];
 
+  var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_1__.useState(null),
+      _React$useState8 = _slicedToArray(_React$useState7, 2),
+      params = _React$useState8[0],
+      setparams = _React$useState8[1];
+
   function fetchPage() {
     return _fetchPage.apply(this, arguments);
   }
@@ -9600,6 +9637,7 @@ function CoursesViewerAndFilter(props) {
                 params: params
               }).then(function (response) {
                 setcourses(response.data.data);
+                setparams(params);
 
                 if (response.data.links) {
                   setlinks(response.data.links);
@@ -9622,101 +9660,204 @@ function CoursesViewerAndFilter(props) {
     var params = Object.fromEntries(new URLSearchParams(location.search));
     fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.courseIndex, params);
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
-      className: "card",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
-        className: "card-header",
-        children: "\u0641\u0644\u062A\u0631\u0629"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
-        className: "card-body",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
-          onClick: function onClick() {
-            return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.courseIndex, {
-              resumed: 'true'
-            });
-          },
-          children: "\u0627\u0644\u062F\u0648\u0631\u0627\u062A \u0627\u0644\u0645\u0633\u062A\u0627\u0646\u0641\u0629"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
-          onClick: function onClick() {
-            return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.courseIndex, {
-              planned: 'true'
-            });
-          },
-          children: "\u0627\u0644\u062F\u0648\u0631\u0627\u062A \u0627\u0644\u0645\u062E\u0637\u0637 \u0644\u0647\u0627"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
-          onClick: function onClick() {
-            return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.courseIndex, {
-              done: 'true'
-            });
-          },
-          children: "\u0627\u0644\u062F\u0648\u0631\u0627\u062A \u0627\u0644\u0645\u0646\u062A\u0647\u064A\u0629"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
-          onClick: function onClick() {
-            return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.courseIndex, {
-              canceled: 'true'
-            });
-          },
-          children: "\u0627\u0644\u062F\u0648\u0631\u0627\u062A \u0627\u0644\u0645\u0644\u063A\u064A\u0629"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("strong", {
-          children: "\u062A\u0627\u0631\u064A\u062E \u0628\u062F\u0621:"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("label", {
-          className: "form-check-label",
-          children: "\u0628\u062F\u0627\u064A\u0629"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("input", {
-          className: "form-check-input",
-          type: "date",
-          onChange: function onChange(e) {
-            return setstart_date(e.target.value);
-          }
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
-          onClick: function onClick() {
-            var params = Object.assign({}, start_date === null ? null : {
-              start_date: start_date
-            });
-            fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.courseIndex, params);
-          },
-          children: "filter"
-        })]
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
       className: "card",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
         className: "card-header",
         children: "\u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u062F\u0648\u0631\u0627\u062A"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
-        className: "card-body",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_utility_Pagination__WEBPACK_IMPORTED_MODULE_9__.default, {
+        className: "card-body ",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+          className: "row align-items-start",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
+            type: "button",
+            className: "btn btn-primary",
+            "data-toggle": "modal",
+            "data-target": "#exampleModal",
+            children: "\u062A\u0631\u0634\u064A\u062D \u0627\u0644\u062F\u0648\u0631\u0627\u062A \u0648\u0641\u0642\u0627 \u0644\u0640"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+            className: "modal fade",
+            id: "exampleModal",
+            tabIndex: "-1",
+            "aria-labelledby": "exampleModalLabel",
+            "aria-hidden": "true",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+              className: "modal-dialog modal-lg",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+                className: "modal-content",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                  className: "modal-header",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("h5", {
+                    className: "modal-title",
+                    id: "exampleModalLabel",
+                    children: "\u062A\u0631\u0634\u064A\u062D \u0627\u0644\u062F\u0648\u0631\u0627\u062A \u0648\u0641\u0642\u0627 \u0644\u0640\u0640"
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+                  className: "modal-body row",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
+                    type: "button",
+                    className: (params === null || params === void 0 ? void 0 : params.resumed) == 'true' ? "btn btn-success mx-2 my-1" : "btn btn-info mx-2 my-1",
+                    onClick: function onClick() {
+                      return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.courseIndex, {
+                        resumed: 'true'
+                      });
+                    },
+                    children: "\u0627\u0644\u062F\u0648\u0631\u0627\u062A \u0627\u0644\u0645\u0633\u062A\u0627\u0646\u0641\u0629"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
+                    type: "button",
+                    className: (params === null || params === void 0 ? void 0 : params.planned) == 'true' ? "btn btn-success mx-2 my-1" : "btn btn-info mx-2 my-1",
+                    onClick: function onClick() {
+                      return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.courseIndex, {
+                        planned: 'true'
+                      });
+                    },
+                    children: "\u0627\u0644\u062F\u0648\u0631\u0627\u062A \u0627\u0644\u0645\u062E\u0637\u0637 \u0644\u0647\u0627"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
+                    type: "button",
+                    className: (params === null || params === void 0 ? void 0 : params.done) == 'true' ? "btn btn-success mx-2 my-1" : "btn btn-info mx-2 my-1",
+                    onClick: function onClick() {
+                      return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.courseIndex, {
+                        done: 'true'
+                      });
+                    },
+                    children: "\u0627\u0644\u062F\u0648\u0631\u0627\u062A \u0627\u0644\u0645\u0646\u062A\u0647\u064A\u0629"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
+                    type: "button",
+                    className: (params === null || params === void 0 ? void 0 : params.canceled) == 'true' ? "btn btn-success mx-2 my-1" : "btn btn-info mx-2 my-1",
+                    onClick: function onClick() {
+                      return fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.courseIndex, {
+                        canceled: 'true'
+                      });
+                    },
+                    children: "\u0627\u0644\u062F\u0648\u0631\u0627\u062A \u0627\u0644\u0645\u0644\u063A\u064A\u0629"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("br", {})]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+                  className: "modal-footer",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
+                    type: "button",
+                    className: "btn btn-secondary",
+                    "data-dismiss": "modal",
+                    children: "\u0627\u063A\u0644\u0627\u0642"
+                  })
+                })]
+              })
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+            className: "border rounded p-1 mx-2",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+              className: "d-flex flex-row my-2 align-items-center",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("label", {
+                children: "\u062A\u0627\u0631\u064A\u062E \u0628\u062F\u0621"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("input", {
+                className: "form-control ml-1",
+                type: "date",
+                onChange: function onChange(e) {
+                  return setstart_date(e.target.value);
+                }
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
+                className: "form-control btn btn-info ml-1",
+                onClick: function onClick() {
+                  var params = Object.assign({}, start_date === null ? null : {
+                    start_date: start_date
+                  });
+                  fetchPage(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.courseIndex, params);
+                },
+                children: "\u0641\u0644\u062A\u0631\u0629"
+              })]
+            })
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_utility_Pagination__WEBPACK_IMPORTED_MODULE_9__.default, {
           fetchPage: fetchPage,
           links: links
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_partials_CoursesTable__WEBPACK_IMPORTED_MODULE_6__.default, {
           courses: courses
         })]
       })]
-    })]
+    })
   });
 }
 
 function CourseIndex(props) {
-  var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_1__.useState([]),
-      _React$useState8 = _slicedToArray(_React$useState7, 2),
-      twentyDaysRangeCourses = _React$useState8[0],
-      setrangecourses = _React$useState8[1];
+  var _React$useState9 = react__WEBPACK_IMPORTED_MODULE_1__.useState([]),
+      _React$useState10 = _slicedToArray(_React$useState9, 2),
+      twentyDaysRangeCourses = _React$useState10[0],
+      setrangecourses = _React$useState10[1];
 
+  var _React$useState11 = react__WEBPACK_IMPORTED_MODULE_1__.useState([]),
+      _React$useState12 = _slicedToArray(_React$useState11, 2),
+      diagramPagination = _React$useState12[0],
+      setdiagramPagination = _React$useState12[1];
+
+  function getTwentyDaysRangeCourses() {
+    return _getTwentyDaysRangeCourses.apply(this, arguments);
+  }
+
+  function _getTwentyDaysRangeCourses() {
+    _getTwentyDaysRangeCourses = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      var link,
+          params,
+          response,
+          _args2 = arguments;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              link = _args2.length > 0 && _args2[0] !== undefined ? _args2[0] : _utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.courseIndex;
+              params = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : null;
+              _context2.prev = 2;
+              _context2.next = 5;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get(link, {
+                params: _objectSpread(_objectSpread({}, params), {}, {
+                  start_before: moment__WEBPACK_IMPORTED_MODULE_8___default()().add('10 days').format('YYYY-MM-DD'),
+                  end_after: moment__WEBPACK_IMPORTED_MODULE_8___default()().subtract('10 days').format('YYYY-MM-DD'),
+                  page_size: 5
+                })
+              });
+
+            case 5:
+              response = _context2.sent;
+              // console.log(response.data)
+              setrangecourses(response.data.data);
+              setdiagramPagination(response.data.links);
+              _context2.next = 13;
+              break;
+
+            case 10:
+              _context2.prev = 10;
+              _context2.t0 = _context2["catch"](2);
+              (0,_utility_logError__WEBPACK_IMPORTED_MODULE_5__.default)(_context2.t0);
+
+            case 13:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[2, 10]]);
+    }));
+    return _getTwentyDaysRangeCourses.apply(this, arguments);
+  }
+
+  react__WEBPACK_IMPORTED_MODULE_1__.useEffect(function () {
+    getTwentyDaysRangeCourses();
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
     className: "col-md-12",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
       className: "card",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
         className: "card-header",
-        children: "\u0627\u062D\u0635\u0627\u0626\u064A\u0627\u062A \u0627\u0644\u062F\u0648\u0631\u0627\u062A"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+        children: "\u0645\u062E\u0637\u0637 \u0627\u0644\u062F\u0648\u0631\u0627\u062A \u062E\u0644\u0627\u0644 \u0627\u0644\u0627\u064A\u0627\u0645 \u0627\u0644\u062D\u0627\u0644\u064A\u0629"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
         className: "card-body",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_ScheduleDiagram__WEBPACK_IMPORTED_MODULE_7__.default, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_utility_Pagination__WEBPACK_IMPORTED_MODULE_9__.default, {
+          fetchPage: getTwentyDaysRangeCourses,
+          links: diagramPagination
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_ScheduleDiagram__WEBPACK_IMPORTED_MODULE_7__.default, {
           courses: twentyDaysRangeCourses,
           rangeStartDate: moment__WEBPACK_IMPORTED_MODULE_8___default()().subtract(10, 'd').format('YYYY-MM-DD'),
           rangeEndDate: moment__WEBPACK_IMPORTED_MODULE_8___default()().add(10, 'd').format('YYYY-MM-DD')
-        })
+        })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(CoursesViewerAndFilter, {})]
   });
@@ -16307,7 +16448,7 @@ function JobCreate() {
       setunits = _React$useState2[1];
 
   react__WEBPACK_IMPORTED_MODULE_1__.useEffect(function () {
-    axios__WEBPACK_IMPORTED_MODULE_2___default().get(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.unitIndex).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default().get(_utility_ApiEndpoints__WEBPACK_IMPORTED_MODULE_3__.default.getUnits).then(function (response) {
       setunits(response.data);
       console.log(response.data);
     })["catch"](function (err) {
@@ -16384,45 +16525,25 @@ function JobCreate() {
       children: "\u062A\u0633\u062C\u064A\u0644 \u0646\u0648\u0639 \u0648\u0638\u0627\u064A\u0641 \u062C\u062F\u064A\u062F"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "card-body",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("ul", {
-        className: "list-group",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-          className: "list-group-item",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        className: "row align-items-start justify-content-center",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 border rounded m-2 p-1",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
             children: "\u062A\u0633\u0645\u064A\u0629 \u0627\u0644\u0648\u0638\u064A\u0641\u0629"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            className: "form-control",
             onChange: function onChange(e) {
               return setname(e.target.value);
             },
             type: "text"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-          className: "list-group-item",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-            children: "\u0627\u0644\u063A\u0631\u0636 \u0645\u0646 \u0627\u0644\u0648\u0638\u064A\u0641\u0629"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("textarea", {
-            onChange: function onChange(e) {
-              return setpurpose(e.target.value);
-            },
-            rows: "4",
-            cols: "50"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-          className: "list-group-item",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-            children: "\u0648\u0635\u0641 \u0627\u0644\u0648\u0638\u064A\u0641\u0629"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("textarea", {
-            onChange: function onChange(e) {
-              return setdescription(e.target.value);
-            },
-            rows: "4",
-            cols: "50"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-          className: "list-group-item",
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 border rounded m-2 p-1",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
             children: "\u0627\u0644\u0648\u062D\u062F\u0629 \u0627\u0644\u0627\u062F\u0627\u0631\u064A\u0629 \u0627\u0644\u062A\u064A \u062A\u062A\u0628\u0639\u0647\u0627"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("select", {
+            className: "form-control",
             onChange: function onChange(e) {
               return setunit_id(e.target.value);
             },
@@ -16435,12 +16556,37 @@ function JobCreate() {
               }, index);
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
-          className: "list-group-item",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 border rounded m-2 p-1",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+            children: "\u0627\u0644\u063A\u0631\u0636 \u0645\u0646 \u0627\u0644\u0648\u0638\u064A\u0641\u0629"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("textarea", {
+            className: "form-control",
+            onChange: function onChange(e) {
+              return setpurpose(e.target.value);
+            },
+            rows: "4",
+            cols: "50"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          className: "col-5 border rounded m-2 p-1",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
+            children: "\u0648\u0635\u0641 \u0627\u0644\u0648\u0638\u064A\u0641\u0629"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("textarea", {
+            className: "form-control",
+            onChange: function onChange(e) {
+              return setdescription(e.target.value);
+            },
+            rows: "4",
+            cols: "50"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          className: "col-12 d-flex justify-content-center",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
             onClick: submit,
             type: "button",
-            value: "\u062A\u0633\u062C\u064A\u0644"
+            className: "btn btn-success",
+            children: "\u062A\u0633\u062C\u064A\u0644"
           })
         })]
       })
@@ -16504,7 +16650,7 @@ function JobIndex(props) {
     });
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-    className: "col-md-10",
+    className: "col-md-12",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "card",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
@@ -17308,20 +17454,6 @@ function TopMenue() {
           to: _utility_routesEndpoints__WEBPACK_IMPORTED_MODULE_1__.default.interviewAssessmentIndex,
           children: "\u062A\u0642\u064A\u064A\u0645\u0627\u062A \u0627\u0644\u0645\u0642\u0627\u0628\u0644\u0627\u062A"
         })]
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-      className: "dropdown",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-        className: "btn btn-secondary dropdown-toggle",
-        type: "button",
-        id: "dropdownMenuButton",
-        "data-toggle": "dropdown",
-        "aria-haspopup": "true",
-        "aria-expanded": "false",
-        children: "\u0627\u062D\u0635\u0627\u0626\u064A\u0627\u062A"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-        className: "dropdown-menu",
-        "aria-labelledby": "dropdownMenuButton"
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
       className: "dropdown",
@@ -18837,7 +18969,7 @@ function UnitIndex(props) {
     fetchPage();
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-    className: "col-md-10",
+    className: "col-md-12",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
       className: "card",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
@@ -18985,7 +19117,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   createCoachForm: '/api/coach',
   createProgramForm: '',
   createProgram: '/api/program'
-}, _defineProperty(_dashboard$createEmpl, "createEmployeeForm", '/api/createEmployeeForm'), _defineProperty(_dashboard$createEmpl, "createEmployee", '/api/createEmployee'), _defineProperty(_dashboard$createEmpl, "getEmployee", '/api/employee/:id'), _defineProperty(_dashboard$createEmpl, "getEmployeeResumedCourses", '/api/employee/:id/courses/resumed'), _defineProperty(_dashboard$createEmpl, "getEmployees", '/api/getEmployees'), _defineProperty(_dashboard$createEmpl, "getTrainingCourses", '/api/getTrainingCourses'), _defineProperty(_dashboard$createEmpl, "getIndividuals", '/api/getIndividuals'), _defineProperty(_dashboard$createEmpl, "getUnits", '/api/getUnits'), _defineProperty(_dashboard$createEmpl, "createInterview", '/api/interview/create'), _defineProperty(_dashboard$createEmpl, "createTrialPeriodAssessment", '/api/trialPeriodAssessment/create'), _defineProperty(_dashboard$createEmpl, "createTrainingPeriodAssessment", '/api/trainingPeriodAssessment/create'), _defineProperty(_dashboard$createEmpl, "createTraineeCourseAssessments", '/api/traineeCourseAssessment/create'), _defineProperty(_dashboard$createEmpl, "createCoachCourseAssessments", '/api/coachCourseAssessment/create'), _defineProperty(_dashboard$createEmpl, "jobCreate", '/api/job/create'), _defineProperty(_dashboard$createEmpl, "unitCreate", '/api/unit/create'), _defineProperty(_dashboard$createEmpl, "enrollInCourse", '/api/course/:id/enroll'), _defineProperty(_dashboard$createEmpl, "createAttendance", '/api/attendance/create'), _defineProperty(_dashboard$createEmpl, "deleteAttendance", '/api/attendance/:id'), _defineProperty(_dashboard$createEmpl, "getTrainingPeriods", '/api/trainingPeriodAssessment/index'), _defineProperty(_dashboard$createEmpl, "getTraineeCourses", '/api/traineeCourseAssessment/index'), _defineProperty(_dashboard$createEmpl, "getCoachCourses", '/api/coachCourseAssessment/index'), _defineProperty(_dashboard$createEmpl, "getInterviewAssessments", '/api/interview/index'), _defineProperty(_dashboard$createEmpl, "getTrialPeriods", '/api/trialPeriodAssessment/index'), _defineProperty(_dashboard$createEmpl, "getCoaches", '/api/coach/index'), _defineProperty(_dashboard$createEmpl, "programIndex", '/api/program/index'), _defineProperty(_dashboard$createEmpl, "showForms", '/api/form/index'), _defineProperty(_dashboard$createEmpl, "showFormsStructure", '/api/structure/index'), _defineProperty(_dashboard$createEmpl, "courseIndex", '/api/course/index2'), _defineProperty(_dashboard$createEmpl, "employeeIndex", '/api/employee/index'), _defineProperty(_dashboard$createEmpl, "unitIndex", '/api/unit/index'), _defineProperty(_dashboard$createEmpl, "jobIndex", '/api/job/index'), _defineProperty(_dashboard$createEmpl, "getCourse", '/api/course/:id'), _defineProperty(_dashboard$createEmpl, "getProgram", '/api/program/:id'), _defineProperty(_dashboard$createEmpl, "getJob", '/api/job/:id'), _defineProperty(_dashboard$createEmpl, "unitShow", '/api/unit/:id'), _defineProperty(_dashboard$createEmpl, "getAllAttendances", '/api/course/:id/attendances'), _defineProperty(_dashboard$createEmpl, "getAttendancesByDay", '/api/course/:id/attendances/:date'), _defineProperty(_dashboard$createEmpl, "getCourseEnrolledEmployees", '/api/course/:id/employees'), _defineProperty(_dashboard$createEmpl, "getCourseEnrolledIndividuals", '/api/course/:id/individuals'), _defineProperty(_dashboard$createEmpl, "getCoach", '/api/coach/:id'), _dashboard$createEmpl);
+}, _defineProperty(_dashboard$createEmpl, "createEmployeeForm", '/api/createEmployeeForm'), _defineProperty(_dashboard$createEmpl, "createEmployee", '/api/createEmployee'), _defineProperty(_dashboard$createEmpl, "getEmployee", '/api/employee/:id'), _defineProperty(_dashboard$createEmpl, "getEmployeeResumedCourses", '/api/employee/:id/courses/resumed'), _defineProperty(_dashboard$createEmpl, "getEmployees", '/api/getEmployees'), _defineProperty(_dashboard$createEmpl, "getTrainingCourses", '/api/getTrainingCourses'), _defineProperty(_dashboard$createEmpl, "getIndividuals", '/api/getIndividuals'), _defineProperty(_dashboard$createEmpl, "getUnits", '/api/getUnits'), _defineProperty(_dashboard$createEmpl, "getPrograms", '/api/getPrograms'), _defineProperty(_dashboard$createEmpl, "createInterview", '/api/interview/create'), _defineProperty(_dashboard$createEmpl, "createTrialPeriodAssessment", '/api/trialPeriodAssessment/create'), _defineProperty(_dashboard$createEmpl, "createTrainingPeriodAssessment", '/api/trainingPeriodAssessment/create'), _defineProperty(_dashboard$createEmpl, "createTraineeCourseAssessments", '/api/traineeCourseAssessment/create'), _defineProperty(_dashboard$createEmpl, "createCoachCourseAssessments", '/api/coachCourseAssessment/create'), _defineProperty(_dashboard$createEmpl, "jobCreate", '/api/job/create'), _defineProperty(_dashboard$createEmpl, "unitCreate", '/api/unit/create'), _defineProperty(_dashboard$createEmpl, "enrollInCourse", '/api/course/:id/enroll'), _defineProperty(_dashboard$createEmpl, "createAttendance", '/api/attendance/create'), _defineProperty(_dashboard$createEmpl, "deleteAttendance", '/api/attendance/:id'), _defineProperty(_dashboard$createEmpl, "getTrainingPeriods", '/api/trainingPeriodAssessment/index'), _defineProperty(_dashboard$createEmpl, "getTraineeCourses", '/api/traineeCourseAssessment/index'), _defineProperty(_dashboard$createEmpl, "getCoachCourses", '/api/coachCourseAssessment/index'), _defineProperty(_dashboard$createEmpl, "getInterviewAssessments", '/api/interview/index'), _defineProperty(_dashboard$createEmpl, "getTrialPeriods", '/api/trialPeriodAssessment/index'), _defineProperty(_dashboard$createEmpl, "getCoaches", '/api/coach/index'), _defineProperty(_dashboard$createEmpl, "programIndex", '/api/program/index'), _defineProperty(_dashboard$createEmpl, "showForms", '/api/form/index'), _defineProperty(_dashboard$createEmpl, "showFormsStructure", '/api/structure/index'), _defineProperty(_dashboard$createEmpl, "courseIndex", '/api/course/index'), _defineProperty(_dashboard$createEmpl, "employeeIndex", '/api/employee/index'), _defineProperty(_dashboard$createEmpl, "unitIndex", '/api/unit/index'), _defineProperty(_dashboard$createEmpl, "jobIndex", '/api/job/index'), _defineProperty(_dashboard$createEmpl, "getCourse", '/api/course/:id'), _defineProperty(_dashboard$createEmpl, "getProgram", '/api/program/:id'), _defineProperty(_dashboard$createEmpl, "getJob", '/api/job/:id'), _defineProperty(_dashboard$createEmpl, "unitShow", '/api/unit/:id'), _defineProperty(_dashboard$createEmpl, "getAllAttendances", '/api/course/:id/attendances'), _defineProperty(_dashboard$createEmpl, "getAttendancesByDay", '/api/course/:id/attendances/:date'), _defineProperty(_dashboard$createEmpl, "getCourseEnrolledEmployees", '/api/course/:id/employees'), _defineProperty(_dashboard$createEmpl, "getCourseEnrolledIndividuals", '/api/course/:id/individuals'), _defineProperty(_dashboard$createEmpl, "getCoach", '/api/coach/:id'), _dashboard$createEmpl);
 
 /***/ }),
 

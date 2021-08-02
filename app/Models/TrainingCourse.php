@@ -105,18 +105,18 @@ class TrainingCourse extends Model
 
     public function scopeResumed($query)
     {
-        return $query->whereDate('start_date', '<=', Carbon::today())
-            ->whereDate('end_date', '>=', Carbon::today())->where('status', 'normal');
+        return $query->where('status', 'normal')->whereDate('start_date', '<=', Carbon::today())
+            ->whereDate('end_date', '>=', Carbon::today());
     }
 
     public function scopePlanned($query)
     {
-        return $query->whereDate('start_date', '>=', Carbon::today())->where('status', 'normal');
+        return $query->where('status', 'normal')->whereDate('start_date', '>', Carbon::today());
     }
 
     public function scopeDone($query)
     {
-        return $query->whereDate('end_date', '<=', Carbon::today())->where('status', 'normal');
+        return $query->where('status', 'normal')->whereDate('end_date', '<', Carbon::today());
     }
 
 
@@ -325,5 +325,4 @@ class TrainingCourse extends Model
     {
         return $filters->apply($query);
     }
-
 }

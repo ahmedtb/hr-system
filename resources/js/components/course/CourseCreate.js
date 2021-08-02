@@ -6,7 +6,7 @@ import logError from '../utility/logError'
 export default function CourseCreate() {
     const [programs, setprograms] = React.useState([])
     React.useEffect(() => {
-        axios.get(ApiEndpoints.programIndex).then((response) => {
+        axios.get(ApiEndpoints.getPrograms).then((response) => {
             setprograms(response.data)
         }).catch((err) => {
             logError(err)
@@ -22,20 +22,11 @@ export default function CourseCreate() {
     async function submit() {
 
         try {
-            // const data = new FormData()
-            // if (title) data.append('title', title)
-            // if (program_id) data.append('training_program_id', program_id)
-            // data.append('status', 'normal')
-            // if (start_date) data.append('start_date', start_date)
-            // if (end_date) data.append('end_date', end_date)
-            // if (week_schedule) data.append('week_schedule', week_schedule)
-
             const data = {
                 title: title, training_program_id: program_id, status: 'normal',
                 start_date: start_date, end_date: end_date,
                 week_schedule: week_schedule
             }
-
 
             const res = await axios.post(ApiEndpoints.createCourse, data)
             console.log(res.data)
@@ -72,33 +63,38 @@ export default function CourseCreate() {
             <div className="card-header">تسجيل دورة</div>
 
             <div className="card-body">
-                <ul className="list-group">
-                    <li className="list-group-item">
-                        <label >العنوان</label>
-                        <input onChange={(e) => settitle(e.target.value)} type="text" />
-                    </li>
+                <div className="row justify-content-center">
 
-                    <li className="list-group-item">
-                        <label >تاريخ بدء الدورة</label>
-                        <input onChange={(e) => setstart_date(e.target.value)} type="date" />
-                    </li>
-                    <li className="list-group-item">
-                        <label>تاريخ انتهاء الدورة</label>
-                        <input onChange={(e) => setend_date(e.target.value)} type="date" />
-                    </li>
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">العنوان</label>
+                        <input className="col-8 form-control" onChange={(e) => settitle(e.target.value)} type="text" />
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >الحقيبة التدريبية</label>
-                        <select onChange={(e) => setprogram_id(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+
+                        <label className="col-4">تاريخ بدء الدورة</label>
+                        <input className="col-8 form-control" onChange={(e) => setstart_date(e.target.value)} type="date" />
+                    </div>
+                    <div className="col-5 p-2 border rounded m-2 row ">
+
+                        <label className="col-4">تاريخ انتهاء الدورة</label>
+                        <input className="col-8 form-control" onChange={(e) => setend_date(e.target.value)} type="date" />
+                    </div>
+
+                    <div className="col-5 p-2 border rounded m-2 row ">
+
+                        <label className="col-4">الحقيبة التدريبية</label>
+                        <select className="col-8 form-control" onChange={(e) => setprogram_id(e.target.value)} >
                             <option >نرجو اختيار نوع الحقيبة التدريبية</option>
                             {programs.map((program, index) => (
                                 <option key={index} value={program.id}>{program.title + '--' + program.category}</option>
                             ))}
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >جدول الدورة الاسبوعي</label>
+                    <div className="col-5 p-2 border rounded m-2 row">
+
+                        <strong className="my-2 mx-auto">جدول الدورة الاسبوعي</strong>
                         <table className="table">
                             <thead>
                                 <tr>
@@ -110,56 +106,58 @@ export default function CourseCreate() {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><input id='checkbox1' type='checkbox' onChange={changeSchedual} /></td>
+                                    <td><input className="" id='checkbox1' type='checkbox' onChange={changeSchedual} /></td>
                                     <td>السبت</td>
-                                    <td><input id='time11' type='time' onChange={changeSchedual} /></td>
-                                    <td><input id='time12' type='time' onChange={changeSchedual} /></td>
+                                    <td><input className="form-control" id='time11' type='time' onChange={changeSchedual} /></td>
+                                    <td><input className="form-control" id='time12' type='time' onChange={changeSchedual} /></td>
                                 </tr>
                                 <tr>
-                                    <td><input id='checkbox2' type='checkbox' onChange={changeSchedual} /></td>
+                                    <td><input className="" id='checkbox2' type='checkbox' onChange={changeSchedual} /></td>
                                     <td>الاحد</td>
-                                    <td><input id='time21' type='time' onChange={changeSchedual} /></td>
-                                    <td><input id='time22' type='time' onChange={changeSchedual} /></td>
+                                    <td><input className="form-control" id='time21' type='time' onChange={changeSchedual} /></td>
+                                    <td><input className="form-control" id='time22' type='time' onChange={changeSchedual} /></td>
                                 </tr>
                                 <tr>
-                                    <td><input id='checkbox3' type='checkbox' onChange={changeSchedual} /></td>
+                                    <td><input className="" id='checkbox3' type='checkbox' onChange={changeSchedual} /></td>
                                     <td>الاثنين</td>
-                                    <td><input id='time31' type='time' onChange={changeSchedual} /></td>
-                                    <td><input id='time32' type='time' onChange={changeSchedual} /></td>
+                                    <td><input className="form-control" id='time31' type='time' onChange={changeSchedual} /></td>
+                                    <td><input className="form-control" id='time32' type='time' onChange={changeSchedual} /></td>
                                 </tr>
                                 <tr>
-                                    <td><input id='checkbox4' type='checkbox' onChange={changeSchedual} /></td>
+                                    <td><input className="" id='checkbox4' type='checkbox' onChange={changeSchedual} /></td>
                                     <td>الثلاثاء</td>
-                                    <td><input id='time41' type='time' onChange={changeSchedual} /></td>
-                                    <td><input id='time42' type='time' onChange={changeSchedual} /></td>
+                                    <td><input className="form-control" id='time41' type='time' onChange={changeSchedual} /></td>
+                                    <td><input className="form-control" id='time42' type='time' onChange={changeSchedual} /></td>
                                 </tr>
                                 <tr>
-                                    <td><input id='checkbox5' type='checkbox' onChange={changeSchedual} /></td>
+                                    <td><input className="" id='checkbox5' type='checkbox' onChange={changeSchedual} /></td>
                                     <td>الاربعاء</td>
-                                    <td><input id='time51' type='time' onChange={changeSchedual} /></td>
-                                    <td><input id='time52' type='time' onChange={changeSchedual} /></td>
+                                    <td><input className="form-control" id='time51' type='time' onChange={changeSchedual} /></td>
+                                    <td><input className="form-control" id='time52' type='time' onChange={changeSchedual} /></td>
                                 </tr>
                                 <tr>
-                                    <td><input id='checkbox6' type='checkbox' onChange={changeSchedual} /></td>
+                                    <td><input className="" id='checkbox6' type='checkbox' onChange={changeSchedual} /></td>
                                     <td>الخميس</td>
-                                    <td><input id='time61' type='time' onChange={changeSchedual} /></td>
-                                    <td><input id='time62' type='time' onChange={changeSchedual} /></td>
+                                    <td><input className="form-control" id='time61' type='time' onChange={changeSchedual} /></td>
+                                    <td><input className="form-control" id='time62' type='time' onChange={changeSchedual} /></td>
                                 </tr>
                                 <tr>
-                                    <td><input id='checkbox7' type='checkbox' onChange={changeSchedual} /></td>
+                                    <td><input className="" id='checkbox7' type='checkbox' onChange={changeSchedual} /></td>
                                     <td>الجمعة</td>
-                                    <td><input id='time71' type='time' onChange={changeSchedual} /></td>
-                                    <td><input id='time72' type='time' onChange={changeSchedual} /></td>
+                                    <td><input className="form-control" id='time71' type='time' onChange={changeSchedual} /></td>
+                                    <td><input className="form-control" id='time72' type='time' onChange={changeSchedual} /></td>
                                 </tr>
                             </tbody>
                         </table>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <input onClick={submit} type="button" value="تسجيل" />
-                    </li>
+                </div>
+                <div className="col-5 p-2 border rounded m-2 row ">
 
-                </ul>
+                    <input onClick={submit} type="button" value="تسجيل" />
+                </div>
+
+
             </div>
         </div>
     )
