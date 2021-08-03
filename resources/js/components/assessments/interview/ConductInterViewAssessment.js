@@ -3,7 +3,7 @@ import React from 'react'
 import ApiEndpoints from '../../utility/ApiEndpoints'
 import logError from '../../utility/logError'
 
-export default function ConductAssessment(props) {
+export default function ConductInterViewAssessment(props) {
 
     const [name, setname] = React.useState('')
     const [look, setlook] = React.useState('')
@@ -68,193 +68,193 @@ export default function ConductAssessment(props) {
             <div className="card-header">اجراء تقييم مقابلة</div>
 
             <div className="card-body">
-                <ul className="list-group">
+                <div className="row justify-content-center">
 
-                    <li className="list-group-item">
-                        <label >الاسم</label>
-                        <input type="name" onChange={(e) => setname(e.target.value)} />
-                    </li>
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">الاسم</label>
+                        <input className="col-8 form-control" type="name" onChange={(e) => setname(e.target.value)} />
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >المظهر</label>
-                        <select onChange={(e) => setlook(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">المظهر</label>
+                        <select className="col-8 form-control" onChange={(e) => setlook(e.target.value)} >
                             <option >احتر</option>
                             <option value="excellent">ممتاز</option>
                             <option value="good">جيد</option>
                             <option value="medium">متوسط</option>
                             <option value="weak">ضعيف</option>
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >تعريفه لنفسه</label>
-                        <select onChange={(e) => setself_introduction(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">تعريفه لنفسه</label>
+                        <select className="col-8 form-control" onChange={(e) => setself_introduction(e.target.value)} >
                             <option >احتر</option>
                             <option value="excellent">ممتاز</option>
                             <option value="good">جيد</option>
                             <option value="medium">متوسط</option>
                             <option value="weak">ضعيف</option>
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >الشخصية</label>
-                        <select onChange={(e) => setpersonality(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">الشخصية</label>
+                        <select className="col-8 form-control" onChange={(e) => setpersonality(e.target.value)} >
                             <option >احتر</option>
                             <option value="excellent">ممتاز</option>
                             <option value="good">جيد</option>
                             <option value="medium">متوسط</option>
                             <option value="weak">ضعيف</option>
                         </select>
-                    </li>
+                    </div>
 
 
-                    <li className="list-group-item">
-                        <label >اللغة الانجليزية</label>
-                        <select onChange={(e) => setenglish(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">اللغة الانجليزية</label>
+                        <select className="col-8 form-control" onChange={(e) => setenglish(e.target.value)} >
                             <option >احتر</option>
                             <option value="excellent">ممتاز</option>
                             <option value="good">جيد</option>
                             <option value="medium">متوسط</option>
                             <option value="weak">ضعيف</option>
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >الثقافة</label>
-                        <select onChange={(e) => setculture(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">الثقافة</label>
+                        <select className="col-8 form-control" onChange={(e) => setculture(e.target.value)} >
                             <option >احتر</option>
                             <option value="excellent">ممتاز</option>
                             <option value="good">جيد</option>
                             <option value="medium">متوسط</option>
                             <option value="weak">ضعيف</option>
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >اللغة العربية</label>
-                        <select onChange={(e) => setarabic(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">اللغة العربية</label>
+                        <select className="col-8 form-control" onChange={(e) => setarabic(e.target.value)} >
                             <option >احتر</option>
                             <option value="excellent">ممتاز</option>
                             <option value="good">جيد</option>
                             <option value="medium">متوسط</option>
                             <option value="weak">ضعيف</option>
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >المبادرة</label>
-                        <select onChange={(e) => setinitiative(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">المبادرة</label>
+                        <select className="col-8 form-control" onChange={(e) => setinitiative(e.target.value)} >
                             <option >احتر</option>
                             <option value="excellent">ممتاز</option>
                             <option value="good">جيد</option>
                             <option value="medium">متوسط</option>
                             <option value="weak">ضعيف</option>
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >مهارات المشاركة</label>
-                        <select onChange={(e) => setsharing_skills(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">مهارات المشاركة</label>
+                        <select className="col-8 form-control" onChange={(e) => setsharing_skills(e.target.value)} >
                             <option >احتر</option>
                             <option value="excellent">ممتاز</option>
                             <option value="good">جيد</option>
                             <option value="medium">متوسط</option>
                             <option value="weak">ضعيف</option>
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >الاستيعاب</label>
-                        <select onChange={(e) => setcomprehension(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">الاستيعاب</label>
+                        <select className="col-8 form-control" onChange={(e) => setcomprehension(e.target.value)} >
                             <option >احتر</option>
                             <option value="excellent">ممتاز</option>
                             <option value="good">جيد</option>
                             <option value="medium">متوسط</option>
                             <option value="weak">ضعيف</option>
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >اتخاد القرار</label>
-                        <select onChange={(e) => setdecision_making(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">اتخاد القرار</label>
+                        <select className="col-8 form-control" onChange={(e) => setdecision_making(e.target.value)} >
                             <option >احتر</option>
                             <option value="excellent">ممتاز</option>
                             <option value="good">جيد</option>
                             <option value="medium">متوسط</option>
                             <option value="weak">ضعيف</option>
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >ملائمة المؤهل العلمي لمتطلبات الوظيفة</label>
-                        <select onChange={(e) => setcompatibility_of_education(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">ملائمة المؤهل العلمي لمتطلبات الوظيفة</label>
+                        <select className="col-8 form-control" onChange={(e) => setcompatibility_of_education(e.target.value)} >
                             <option >احتر</option>
                             <option value="excellent">ممتاز</option>
                             <option value="good">جيد</option>
                             <option value="medium">متوسط</option>
                             <option value="weak">ضعيف</option>
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >ملائمة الخبرات العلمية لمتطلبات الوظيفة</label>
-                        <select onChange={(e) => setcompatibility_of_experiance(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">ملائمة الخبرات العلمية لمتطلبات الوظيفة</label>
+                        <select className="col-8 form-control" onChange={(e) => setcompatibility_of_experiance(e.target.value)} >
                             <option >احتر</option>
                             <option value="excellent">ممتاز</option>
                             <option value="good">جيد</option>
                             <option value="medium">متوسط</option>
                             <option value="weak">ضعيف</option>
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >ملائمة المهارات المكتسبة لمتطلبات الوظيفة</label>
-                        <select onChange={(e) => setcompatibility_of_skills(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">ملائمة المهارات المكتسبة لمتطلبات الوظيفة</label>
+                        <select className="col-8 form-control" onChange={(e) => setcompatibility_of_skills(e.target.value)} >
                             <option >احتر</option>
                             <option value="excellent">ممتاز</option>
                             <option value="good">جيد</option>
                             <option value="medium">متوسط</option>
                             <option value="weak">ضعيف</option>
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >مدى استطاعته لحل المشاكل</label>
-                        <select onChange={(e) => setproblem_solving_skills(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">مدى استطاعته لحل المشاكل</label>
+                        <select className="col-8 form-control" onChange={(e) => setproblem_solving_skills(e.target.value)} >
                             <option >احتر</option>
                             <option value="excellent">ممتاز</option>
                             <option value="good">جيد</option>
                             <option value="medium">متوسط</option>
                             <option value="weak">ضعيف</option>
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >مدى تعامله مع الضغط والتوتر الوظيفي</label>
-                        <select onChange={(e) => setstress_handling(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">مدى تعامله مع الضغط والتوتر الوظيفي</label>
+                        <select className="col-8 form-control" onChange={(e) => setstress_handling(e.target.value)} >
                             <option >احتر</option>
                             <option value="excellent">ممتاز</option>
                             <option value="good">جيد</option>
                             <option value="medium">متوسط</option>
                             <option value="weak">ضعيف</option>
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >الشجاعة الأدبية والثقة بالنفس</label>
-                        <select onChange={(e) => setmoral_courage_self_confidence(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">الشجاعة الأدبية والثقة بالنفس</label>
+                        <select className="col-8 form-control" onChange={(e) => setmoral_courage_self_confidence(e.target.value)} >
                             <option >احتر</option>
                             <option value="excellent">ممتاز</option>
                             <option value="good">جيد</option>
                             <option value="medium">متوسط</option>
                             <option value="weak">ضعيف</option>
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >مجري المقابلة</label>
-                        <select onChange={(e) => setinterviewer_id(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">مجري المقابلة</label>
+                        <select className="col-8 form-control" onChange={(e) => setinterviewer_id(e.target.value)} >
                             <option >قائمة الموظفيين</option>
                             {
                                 employees?.map((employee, index) => (
@@ -262,17 +262,20 @@ export default function ConductAssessment(props) {
                                 ))
                             }
                         </select>
-                    </li>
-                    <li className="list-group-item">
-                        <label >تاريخ المقابلة</label>
-                        <input type="date" onChange={(e) => setinterview_date(e.target.value)} />
-                    </li>
+                    </div>
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">تاريخ المقابلة</label>
+                        <input className="col-8 form-control" type="date" onChange={(e) => setinterview_date(e.target.value)} />
+                    </div>
 
-                    <li className="list-group-item">
-                        <input onClick={submit} type="button" value="تسجيل" />
-                    </li>
+                    <div className="col-12 d-flex justify-content-center">
+                        <button onClick={submit} type="button" className="btn btn-success">
+                            تخزين
+                        </button>
+                    </div>
 
-                </ul>
+
+                </div>
             </div>
         </div>
     )

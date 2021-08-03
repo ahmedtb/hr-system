@@ -153,7 +153,6 @@ export default function CourseCreate() {
 
                 </div>
                 <div className="col-5 p-2 border rounded m-2 row ">
-
                     <input onClick={submit} type="button" value="تسجيل" />
                 </div>
 

@@ -59,21 +59,8 @@ class CoachCourseAssessmentsController extends Controller
         return ['success' => 'coach course assessment archived'];
     }
 
-    public function index(CoachCourseAssessmentFilters $filters)
+    public function index(CoachCourseAssessmentFilters $filters, Request $request)
     {
-        return $this->getAssessments($filters);
-    }
-
-    /**
-     * Fetch all relevant threads.
-     *
-     * @param CoachCourseAssessmentFilters $filters
-     * @return mixed
-     */
-    protected function getAssessments(CoachCourseAssessmentFilters $filters)
-    {
-        $interviews = CoachCourseAssessment::latest()->with('TrainingCourse')->filter($filters)->get();
-
-        return $interviews;
+        return CoachCourseAssessment::latest()->filter($filters)->paginate($request->input('page_size') ?? 10);
     }
 }

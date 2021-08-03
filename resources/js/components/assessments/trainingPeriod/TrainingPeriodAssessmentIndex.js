@@ -9,20 +9,34 @@ import Pagination from '../../utility/Pagination'
 
 function Filters(props) {
     const fetchPage = props.fetchPage
+    const params = props.params
 
     return (
 
-        <div className="card">
+        <div >
 
-            <div className="card-header">
-                filters
+
+            <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#filteringBy">
+                ترشيح الدورات وفقا لـ
+            </button>
+            <div className="modal fade" id="filteringBy" tabIndex="-1" aria-labelledby="filteringByLabel" aria-hidden="true">
+                <div className="modal-dialog modal-lg">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="filteringByLabel">ترشيح الدورات وفقا لــ</h5>
+                        </div>
+                        <div className="modal-body row">
+                            <button type="button" className={(params?.orderByDesc == 'final_degree') ? "btn btn-success mx-2 my-1" : "btn btn-info mx-2 my-1"} onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'final_degree' })}>افضل الدرجة الكلية</button>
+                            <button type="button" className={(params?.orderByDesc == 'excitement') ? "btn btn-success mx-2 my-1" : "btn btn-info mx-2 my-1"} onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'excitement' })}>الافضل في الحماسة</button>
+
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div className="card-body">
-                <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'final_degree' })}>افضل الدرجة الكلية</button>
-                <button onClick={() => fetchPage(ApiEndpoints.getTrialPeriods, { orderByDesc: 'excitement' })}>الافضل في الحماسة</button>
-
-            </div>
 
         </div>
     )
@@ -32,20 +46,23 @@ export default function TrainingPeriodAssessmentIndex() {
 
     const [trainingPeriods, settrainingPeriods] = React.useState(null)
     const [links, setlinks] = React.useState([])
+    const [params, setparams] = React.useState([])
 
     async function fetchPage(link = ApiEndpoints.getTrainingPeriods, params = null) {
         axios.get(link, { params: params }).then((response) => {
             settrainingPeriods(response.data.data)
+            setparams(params)
+
             console.log(response.data)
             if (response.data.links) { setlinks(response.data.links) } else { setlinks(null) }
 
         }).catch((error) => logError(error))
     }
 
-    React.useEffect(() => { 
+    React.useEffect(() => {
         var params = Object.fromEntries(new URLSearchParams(location.search));
 
-        fetchPage(ApiEndpoints.getTrainingPeriods, params) 
+        fetchPage(ApiEndpoints.getTrainingPeriods, params)
     }, [])
 
     return (
@@ -53,35 +70,35 @@ export default function TrainingPeriodAssessmentIndex() {
 
             <div className="card">
 
-                <div className="card-header">
-                    احصائيات
-                </div>
 
-                <div className="card-body">
-                    <div className="row justify-content-center">
-                        <Link to={routes.conductTrainingPeriodAssessment}>اجراء تقييم فترة التدريب</Link>
+                <div className="card-header">
+                    <div className="row justify-content-between">
+                        <div>
+                            تقييمات فترة التدريب
+                        </div>
+                        <div>
+                            <Link to={routes.conductTrainingPeriodAssessment}>اجراء تقييم مدرب لدورة</Link>
+                        </div>
                     </div>
                 </div>
 
-            </div>
-
-            <Filters fetchPage={fetchPage} />
-
-            <div className="card">
-
-                <div className="card-header">
-                    تقييمات فترة التدريب
+                <div className="row align-items-start">
+                    <Filters fetchPage={fetchPage} params={params}/>
                 </div>
 
-                <div className="card-body">
-                    <div className="row justify-content-center">
-                        <Pagination fetchPage={fetchPage} links={links} />
+
+                <div className="row justify-content-center">
+                    <Pagination fetchPage={fetchPage} links={links} />
+                    <div className="col-12">
+
                         <TrainingPeriodAssessmentsTable trainingPeriods={trainingPeriods} />
                     </div>
+
                 </div>
 
             </div>
         </div>
+
 
     )
 }

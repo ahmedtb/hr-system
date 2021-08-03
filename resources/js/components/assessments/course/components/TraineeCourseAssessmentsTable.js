@@ -23,7 +23,7 @@ function DataPresentation(row, property) {
         return moment(row.created_at).format('yyyy-MM-DD')
     }
 
-    return row[property].comment
+    return row[property].rating
 }
 
 export default function TraineeCourseAssessmentsTable(props) {
@@ -53,17 +53,30 @@ export default function TraineeCourseAssessmentsTable(props) {
 
     return (
         <div>
-            {
-                Object.entries(dataShow).map((data, index) => (
-                    // console.log(data)
-                    <div key={index} className="form-check-inline">
-                        <input className="form-check-input" type="checkbox" value={data[0]} onClick={(e) => toggleDataShow(e)} />
-                        <label className="form-check-label" >
-                            {data[1].label}
-                        </label>
+
+            <div>
+                <a className="btn btn-primary" data-toggle="collapse" href="#collapseShowColumns" role="button" aria-expanded="false" aria-controls="collapseShowColumns">
+                    عرض البيانات في الجدول
+                </a>
+                <div className="collapse" id="collapseShowColumns">
+                    <div className="row">
+
+                        {
+                            Object.entries(dataShow).map((data, index) => (
+                                <div key={index} className="border rounded d-flex align-items-center mr-2 my-2 p-1">
+                                    <input className="mr-2" type="checkbox" value={data[0]} onClick={(e) => toggleDataShow(e)} />
+                                    <label className="" >
+                                        {data[1].label}
+                                    </label>
+                                </div>
+                            ))
+                        }
+
+
                     </div>
-                ))
-            }
+                </div>
+            </div>
+
             <table className="table table-bordered table-condensed">
                 <thead>
                     <tr>

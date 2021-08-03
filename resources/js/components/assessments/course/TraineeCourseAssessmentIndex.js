@@ -9,6 +9,7 @@ import Pagination from '../../utility/Pagination'
 
 function Filters(props) {
     const fetchPage = props.fetchPage
+    const params = props.params
 
     const [employees, setemployees] = React.useState(null)
     const [employee_id, setemployee_id] = React.useState(null)
@@ -22,43 +23,56 @@ function Filters(props) {
     React.useEffect(() => {
         getEmployees()
     }, [])
-    
+
     return (
 
-        <div className="card">
+        <div className="row align-items-start">
 
-            <div className="card-header">
-                filters
+            <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#filteringBy">
+                ترشيح الدورات وفقا لـ
+            </button>
+            <div className="modal fade" id="filteringBy" tabIndex="-1" aria-labelledby="filteringByLabel" aria-hidden="true">
+                <div className="modal-dialog modal-lg">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="filteringByLabel">ترشيح الدورات وفقا لــ</h5>
+                        </div>
+                        <div className="modal-body row">
+
+                            <button type="button" className={(params?.orderByDesc == 'coach_understanding') ? "btn btn-success mx-2 my-1" : "btn btn-info mx-2 my-1"} onClick={() => fetchPage(ApiEndpoints.getTraineeCourses, { orderByDesc: 'coach_understanding' })}>فهم المدرب</button>
+
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div className="card-body">
-                <button onClick={() => fetchPage(ApiEndpoints.getTraineeCourses, { orderByDesc: 'coach_understanding' })}>فهم المدرب</button>
 
-                <div>
+            <div className="border rounded p-1 mx-2">
+                <div className="d-flex flex-row my-2 align-items-center">
                     <strong>تقييمات الموظف:</strong><br />
-                    <label className="form-check-label" >الموظف</label><br />
-                    <li className="list-group-item">
-                        <label htmlFor="employee">اختر الموظف</label>
-                        <select onChange={(e) => setemployee_id(e.target.value)} name="employee_id">
-                            <option value=''>select employee name</option>
-                            {
-                                employees?.map((employee, index) => (
-                                    <option key={index} value={employee.id}>{employee.name}</option>
-                                ))
-                            }
-                        </select>
-                    </li>
-                    <button onClick={() => {
+                    <select className="form-control" onChange={(e) => setemployee_id(e.target.value)} name="employee_id">
+                        <option value=''>select employee name</option>
+                        {
+                            employees?.map((employee, index) => (
+                                <option key={index} value={employee.id}>{employee.name}</option>
+                            ))
+                        }
+                    </select>
+
+                    <button type="button" className="btn btn-primary" onClick={() => {
                         let params = Object.assign({},
                             employee_id === null ? null : { employee_id },
                         )
                         fetchPage(ApiEndpoints.getTraineeCourses, params)
-                    }}>filter</button>
-
+                    }}>ترشيح</button>
                 </div>
-            </div>
 
+            </div>
         </div>
+
     )
 }
 
@@ -67,10 +81,12 @@ export default function TraineeCourseAssessmentIndex() {
     const [traineeCourses, settraineeCourses] = React.useState(null)
 
     const [links, setlinks] = React.useState([])
+    const [params, setparams] = React.useState([])
 
     async function fetchPage(link = ApiEndpoints.getTraineeCourses, params = null) {
         axios.get(link, { params: params }).then((response) => {
             settraineeCourses(response.data.data)
+            setparams(params)
             console.log(response.data)
             if (response.data.links) { setlinks(response.data.links) } else { setlinks(null) }
 
@@ -89,31 +105,27 @@ export default function TraineeCourseAssessmentIndex() {
             <div className="card">
 
                 <div className="card-header">
-                    احصائيات
-                </div>
-
-                <div className="card-body">
-                    <div className="row justify-content-center">
-                        <Link to={routes.conductTraineeCourseAssessment}>اجراء تقييم متدرب لدورة</Link>
+                    <div className="row justify-content-between">
+                        <div>
+                            تقييمات المتدربيين للدورات
+                        </div>
+                        <div>
+                            <Link to={routes.conductTraineeCourseAssessment}>اجراء تقييم متدرب لدورة</Link>
+                        </div>
                     </div>
                 </div>
 
-            </div>
-
-            <div className="card">
-
-                <div className="card-header">
-                    تقييمات المدربيين للدورات
-                </div>
-
-                <Filters fetchPage={fetchPage} />
 
 
                 <div className="card-body">
+                    <Filters fetchPage={fetchPage} params={params}/>
                     <div className="row justify-content-center">
                         <Pagination fetchPage={fetchPage} links={links} />
 
-                        <TraineeCourseAssessmentsTable traineeCourses={traineeCourses} />
+                        <div className="col-12">
+
+                            <TraineeCourseAssessmentsTable traineeCourses={traineeCourses} />
+                        </div>
                     </div>
                 </div>
 

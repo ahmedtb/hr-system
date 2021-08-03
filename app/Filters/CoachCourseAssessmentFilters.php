@@ -10,8 +10,8 @@ class CoachCourseAssessmentFilters extends Filters
      * @var array
      */
     protected $filters = [
-        'trainees_discipline', 
-
+        'trainees_discipline',
+        'orderByDesc',
     ];
 
     /**
@@ -25,4 +25,8 @@ class CoachCourseAssessmentFilters extends Filters
         return $this->builder->where('trainees_discipline->rating', (int)$rating);
     }
 
+    protected function orderByDesc($trait)
+    {
+        return $this->builder->orderBy($trait . '->rating', 'DESC');
+    }
 }

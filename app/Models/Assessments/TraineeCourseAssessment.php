@@ -32,10 +32,12 @@ class TraineeCourseAssessment extends Model
         'training_course'
     ];
 
-    public function getTraineeAttribute(){
-        return $this->trainee()->first();
+    public function getTraineeAttribute()
+    {
+        return ($this->trainee_type != null) ? $this->trainee()->first() : null;
     }
-    public function getTrainingCourseAttribute(){
+    public function getTrainingCourseAttribute()
+    {
         return $this->TrainingCourse()->first();
     }
 

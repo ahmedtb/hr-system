@@ -50,47 +50,54 @@ export default function TrainingPeriodAssessmentsTable(props) {
 
 
     return (
-        <>
-            <div>
+        <div>
+        <div>
+            <a className="btn btn-primary" data-toggle="collapse" href="#collapseShowColumns" role="button" aria-expanded="false" aria-controls="collapseShowColumns">
+                عرض البيانات في الجدول
+            </a>
+            <div className="collapse" id="collapseShowColumns">
+                <div className="row">
 
-                <strong>عرض البيانات في الجدول</strong><br />
-                {
-                    Object.entries(dataShow).map((data, index) => (
-                        // console.log(data)
-                        <div key={index} className="form-check-inline">
-                            <input className="form-check-input" type="checkbox" value={data[0]} onClick={(e) => toggleDataShow(e)} />
-                            <label className="form-check-label" >
-                                {data[1].label}
-                            </label>
-                        </div>
-                    ))
-                }
+                    {
+                        Object.entries(dataShow).map((data, index) => (
+                            <div key={index} className="border rounded d-flex align-items-center mr-2 my-2 p-1">
+                                <input className="mr-2" type="checkbox" value={data[0]} onClick={(e) => toggleDataShow(e)} />
+                                <label className="" >
+                                    {data[1].label}
+                                </label>
+                            </div>
+                        ))
+                    }
+
+
+                </div>
             </div>
-            <table className="table table-bordered table-condensed">
-                <thead>
-                    <tr>
-                        <th >ID</th>
+        </div>
+        <table className="table table-bordered table-condensed">
+            <thead>
+                <tr>
+                    <th >ID</th>
+                    {
+                        Object.entries(dataShow).map((data, index) => (
+                            (data[1].visiblity) ? <td key={index}>{data[1].label}</td> : null
+                        ))
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                
+                {trainingPeriods?.map((trainingPeriod, index) => (
+                    <tr key={index}>
+                        <td>{trainingPeriod.id}</td>
                         {
                             Object.entries(dataShow).map((data, index) => (
-                                (data[1].visiblity) ? <td key={index}>{data[1].label}</td> : null
+                                (data[1].visiblity) ? <td key={index}>{data[1].presentation(trainingPeriod)}</td> : null
                             ))
                         }
                     </tr>
-                </thead>
-                <tbody>
-                    {trainingPeriods?.map((trainingPeriod, index) => (
-                        <tr key={index}>
-                            <td>{trainingPeriod.id}</td>
-                            {
-                                Object.entries(dataShow).map((data, index) => (
-                                    (data[1].visiblity) ? <td key={index}>{data[1].presentation(trainingPeriod)}</td> : null
-                                ))
-                            }
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-
-        </>
+                ))}
+            </tbody>
+        </table>
+    </div >
     )
 }

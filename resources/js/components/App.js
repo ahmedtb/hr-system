@@ -22,7 +22,7 @@ import CreateProgram from './program/CreateProgram'
 import JobCreate from './job/JobCreate'
 import UnitCreate from './Unit/UnitCreate'
 
-import ConductInterviewAssessment from './assessments/interview/ConductAssessment'
+import ConductInterviewAssessment from './assessments/interview/ConductInterViewAssessment'
 import ConductTrialPeriodAssessment from './assessments/trialPeriod/ConductTrialPeriodAssessment'
 import ConductTrainingPeriodAssessment from './assessments/TrainingPeriod/ConductTrainingPeriodAssessment'
 import ConductTraineeCourseAssessment from './assessments/course/ConductTraineeCourseAssessment'

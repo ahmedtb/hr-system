@@ -51,12 +51,12 @@ export default function ConductAssessment(props) {
             <div className="card-header">تقييم دورة تدريبية من قبل مدرب</div>
 
             <div className="card-body">
-                <ul className="list-group">
+            <div className="row justify-content-center">
 
 
-                    <li className="list-group-item">
-                        <label >الدورة</label>
-                        <select onChange={(e) => settraining_course_id(e.target.value)} >
+                    <div className="col-8 p-2 border rounded m-2 row align-items-start">
+                        <label className="col-4" >الدورة</label>
+                        <select className="col-6 form-control" onChange={(e) => settraining_course_id(e.target.value)} >
                             <option >قائمة الدورات</option>
                             {
                                 trainingcourses?.map((course, index) => (
@@ -64,11 +64,11 @@ export default function ConductAssessment(props) {
                                 ))
                             }
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >انضباط المتدربين في الحضور والانصراف</label>
-                        <select onChange={(e) => settrainees_discipline({...trainees_discipline, rating: e.target.value})} >
+                    <div className="col-8 p-2 border rounded m-2 row align-items-start">
+                        <label className="col-4" >انضباط المتدربين في الحضور والانصراف</label>
+                        <select className="col-2 form-control" onChange={(e) => settrainees_discipline({...trainees_discipline, rating: e.target.value})} >
                             <option >من 5</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -76,12 +76,12 @@ export default function ConductAssessment(props) {
                             <option value={4}>4</option>
                             <option value={5}>5</option>
                         </select>
-                        <input type="text" onChange={(e) => settrainees_discipline({...trainees_discipline, comment: e.target.value})} />
-                    </li>
+                        <input className="col-6 form-control" type="text" onChange={(e) => settrainees_discipline({...trainees_discipline, comment: e.target.value})} />
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >تفاعل المتدربين أثناء المحاضرة</label>
-                        <select onChange={(e) => settrainees_interaction({...trainees_interaction, rating: e.target.value})} >
+                    <div className="col-8 p-2 border rounded m-2 row align-items-start">
+                        <label className="col-4" >تفاعل المتدربين أثناء المحاضرة</label>
+                        <select className="col-2 form-control" onChange={(e) => settrainees_interaction({...trainees_interaction, rating: e.target.value})} >
                             <option >من 5</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -89,12 +89,12 @@ export default function ConductAssessment(props) {
                             <option value={4}>4</option>
                             <option value={5}>5</option>
                         </select>
-                        <input type="text" onChange={(e) => settrainees_interaction({...trainees_interaction, comment: e.target.value})} />
-                    </li>
+                        <input className="col-6 form-control" type="text" onChange={(e) => settrainees_interaction({...trainees_interaction, comment: e.target.value})} />
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >انسجام المتدربين مع مادة الدورة</label>
-                        <select onChange={(e) => setcongruence_with_content({...congruence_with_content, rating: e.target.value})} >
+                    <div className="col-8 p-2 border rounded m-2 row align-items-start">
+                        <label className="col-4" >انسجام المتدربين مع مادة الدورة</label>
+                        <select className="col-2 form-control" onChange={(e) => setcongruence_with_content({...congruence_with_content, rating: e.target.value})} >
                             <option >من 5</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -102,12 +102,12 @@ export default function ConductAssessment(props) {
                             <option value={4}>4</option>
                             <option value={5}>5</option>
                         </select>
-                        <input type="text" onChange={(e) => setcongruence_with_content({...congruence_with_content, comment: e.target.value})} />
-                    </li>
+                        <input className="col-6 form-control" type="text" onChange={(e) => setcongruence_with_content({...congruence_with_content, comment: e.target.value})} />
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >مدى تعاون المتدربين</label>
-                        <select onChange={(e) => settrainees_cooperation({...trainees_cooperation, rating: e.target.value})} >
+                    <div className="col-8 p-2 border rounded m-2 row align-items-start">
+                        <label className="col-4" >مدى تعاون المتدربين</label>
+                        <select className="col-2 form-control" onChange={(e) => settrainees_cooperation({...trainees_cooperation, rating: e.target.value})} >
                             <option >من 5</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -115,12 +115,12 @@ export default function ConductAssessment(props) {
                             <option value={4}>4</option>
                             <option value={5}>5</option>
                         </select>
-                        <input type="text" onChange={(e) => settrainees_cooperation({...trainees_cooperation, comment: e.target.value})} />
-                    </li>
+                        <input className="col-6 form-control" type="text" onChange={(e) => settrainees_cooperation({...trainees_cooperation, comment: e.target.value})} />
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >استيعاب منهج الدورة</label>
-                        <select onChange={(e) => setsyllabus_understanding({...syllabus_understanding, rating: e.target.value})} >
+                    <div className="col-8 p-2 border rounded m-2 row align-items-start">
+                        <label className="col-4" >استيعاب منهج الدورة</label>
+                        <select className="col-2 form-control" onChange={(e) => setsyllabus_understanding({...syllabus_understanding, rating: e.target.value})} >
                             <option >من 5</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -128,12 +128,12 @@ export default function ConductAssessment(props) {
                             <option value={4}>4</option>
                             <option value={5}>5</option>
                         </select>
-                        <input type="text" onChange={(e) => setsyllabus_understanding({...syllabus_understanding, comment: e.target.value})} />
-                    </li>
+                        <input className="col-6 form-control" type="text" onChange={(e) => setsyllabus_understanding({...syllabus_understanding, comment: e.target.value})} />
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >تجهيزات القاعة (الإضاءة؛ التهوية؛ وسائل الإيضاح .. إلخ)</label>
-                        <select onChange={(e) => sethall_preparation({...hall_preparation, rating: e.target.value})} >
+                    <div className="col-8 p-2 border rounded m-2 row align-items-start">
+                        <label className="col-4" >تجهيزات القاعة (الإضاءة؛ التهوية؛ وسائل الإيضاح .. إلخ)</label>
+                        <select className="col-2 form-control" onChange={(e) => sethall_preparation({...hall_preparation, rating: e.target.value})} >
                             <option >من 5</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -141,12 +141,12 @@ export default function ConductAssessment(props) {
                             <option value={4}>4</option>
                             <option value={5}>5</option>
                         </select>
-                        <input type="text" onChange={(e) => sethall_preparation({...hall_preparation, comment: e.target.value})} />
-                    </li>
+                        <input className="col-6 form-control" type="text" onChange={(e) => sethall_preparation({...hall_preparation, comment: e.target.value})} />
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >الاستقبال والإشراف</label>
-                        <select onChange={(e) => setreception_supervision({...reception_supervision, rating: e.target.value})} >
+                    <div className="col-8 p-2 border rounded m-2 row align-items-start">
+                        <label className="col-4" >الاستقبال والإشراف</label>
+                        <select className="col-2 form-control" onChange={(e) => setreception_supervision({...reception_supervision, rating: e.target.value})} >
                             <option >من 5</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -154,12 +154,12 @@ export default function ConductAssessment(props) {
                             <option value={4}>4</option>
                             <option value={5}>5</option>
                         </select>
-                        <input type="text" onChange={(e) => setreception_supervision({...reception_supervision, comment: e.target.value})} />
-                    </li>
+                        <input className="col-6 form-control" type="text" onChange={(e) => setreception_supervision({...reception_supervision, comment: e.target.value})} />
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >الضيافة وفترات الراحة بالدورة</label>
-                        <select onChange={(e) => sethospitality_and_course_breaks({...hospitality_and_course_breaks, rating: e.target.value})} >
+                    <div className="col-8 p-2 border rounded m-2 row align-items-start">
+                        <label className="col-4" >الضيافة وفترات الراحة بالدورة</label>
+                        <select className="col-2 form-control" onChange={(e) => sethospitality_and_course_breaks({...hospitality_and_course_breaks, rating: e.target.value})} >
                             <option >من 5</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -167,12 +167,12 @@ export default function ConductAssessment(props) {
                             <option value={4}>4</option>
                             <option value={5}>5</option>
                         </select>
-                        <input type="text" onChange={(e) => sethospitality_and_course_breaks({...hospitality_and_course_breaks, comment: e.target.value})} />
-                    </li>
+                        <input className="col-6 form-control" type="text" onChange={(e) => sethospitality_and_course_breaks({...hospitality_and_course_breaks, comment: e.target.value})} />
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >تعاون وتجاوب إدارة التدريب</label>
-                        <select onChange={(e) => settraining_department_cooperation({...training_department_cooperation, rating: e.target.value})} >
+                    <div className="col-8 p-2 border rounded m-2 row align-items-start">
+                        <label className="col-4" >تعاون وتجاوب إدارة التدريب</label>
+                        <select className="col-2 form-control" onChange={(e) => settraining_department_cooperation({...training_department_cooperation, rating: e.target.value})} >
                             <option >من 5</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -180,14 +180,16 @@ export default function ConductAssessment(props) {
                             <option value={4}>4</option>
                             <option value={5}>5</option>
                         </select>
-                        <input type="text" onChange={(e) => settraining_department_cooperation({...training_department_cooperation, comment: e.target.value})} />
-                    </li>
+                        <input className="col-6 form-control" type="text" onChange={(e) => settraining_department_cooperation({...training_department_cooperation, comment: e.target.value})} />
+                    </div>
 
-                    <li className="list-group-item">
-                        <input onClick={submit} type="button" value="تسجيل" />
-                    </li>
+                    <div className="col-12 d-flex justify-content-center">
+                        <button onClick={submit} type="button" className="btn btn-success">
+                            تخزين
+                        </button>
+                    </div>
 
-                </ul>
+                </div>
             </div>
         </div>
     )

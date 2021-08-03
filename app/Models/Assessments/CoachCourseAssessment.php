@@ -28,9 +28,21 @@ class CoachCourseAssessment extends Model
         'training_department_cooperation' => Json::class,
     ];
 
+    protected $appends = [
+        'training_course'
+    ];
+
+
+
     public function scopeFilter($query, CoachCourseAssessmentFilters $filters)
     {
         return $filters->apply($query);
+    }
+
+    
+    public function getTrainingCourseAttribute()
+    {
+        return $this->TrainingCourse()->first();
     }
 
     public function TrainingCourse()

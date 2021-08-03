@@ -10,13 +10,25 @@ class InterviewAssessmentFilters extends Filters
      * @var array
      */
     protected $filters = [
+        'orderByDesc',
+        'orderByAsc',
         'confidence', 
         'self_introduction', 
         'personality', 
         'english', 
-        'culture'
+        'culture',
     ];
 
+    protected function orderByDesc($trait)
+    {
+        return $this->builder->orderBy($trait, 'DESC');
+    }
+
+    protected function orderByAsc($trait)
+    {
+        return $this->builder->orderBy($trait, 'ASC');
+    }
+    
     /**
      * Filter the query by a given moral_courage_self_confidence rating.
      *

@@ -80,19 +80,19 @@ export default function ConductTrainingPeriodAssessment(props) {
 
     return (
         <div className="card">
-            <div className="card-header">اجراء تقييم مقابلة</div>
+            <div className="card-header">اجراء تقييم موظف في فترته التدريبية</div>
 
             <div className="card-body">
-                <ul className="list-group">
+            <div className="row justify-content-center">
 
-                    <li className="list-group-item">
-                        <label >التاريخ</label>
-                        <input type="date" onChange={(e) => setdate(e.target.value)} />
-                    </li>
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">التاريخ</label>
+                        <input className="col-8 form-control" type="date" onChange={(e) => setdate(e.target.value)} />
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >الموظف</label>
-                        <select onChange={(e) => setemployee_id(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">الموظف</label>
+                        <select className="col-8 form-control" onChange={(e) => setemployee_id(e.target.value)} >
                             <option >قائمة الموظفيين</option>
                             {
                                 employees?.map((employee, index) => (
@@ -100,11 +100,11 @@ export default function ConductTrainingPeriodAssessment(props) {
                                 ))
                             }
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >الادارة (الوحدة)</label>
-                        <select onChange={(e) => setunit_id(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">الادارة (الوحدة)</label>
+                        <select className="col-8 form-control" onChange={(e) => setunit_id(e.target.value)} >
                             <option >قائمة الوحدات</option>
                             {
                                 units?.map((unit, index) => (
@@ -112,21 +112,21 @@ export default function ConductTrainingPeriodAssessment(props) {
                                 ))
                             }
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >بداية الفترة التجريبية</label>
-                        <input type="date" onChange={(e) => settraining_begin_date(e.target.value)} />
-                    </li>
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">بداية الفترة التجريبية</label>
+                        <input className="col-8 form-control" type="date" onChange={(e) => settraining_begin_date(e.target.value)} />
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >نهاية الفترة التجريبية</label>
-                        <input type="date" onChange={(e) => settraining_end_date(e.target.value)} />
-                    </li>
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">نهاية الفترة التجريبية</label>
+                        <input className="col-8 form-control" type="date" onChange={(e) => settraining_end_date(e.target.value)} />
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >الحماس في العمل</label>
-                        <select onChange={(e) => setexcitement(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">الحماس في العمل</label>
+                        <select className="col-8 form-control" onChange={(e) => setexcitement(e.target.value)} >
                             <option >من 15</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -144,11 +144,11 @@ export default function ConductTrainingPeriodAssessment(props) {
                             <option value={14}>14</option>
                             <option value={15}>15</option>
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >القدرة على التعلم والتطور</label>
-                        <select onChange={(e) => setability_to_improve(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">القدرة على التعلم والتطور</label>
+                        <select className="col-8 form-control" onChange={(e) => setability_to_improve(e.target.value)} >
                             <option >من 15</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -166,11 +166,11 @@ export default function ConductTrainingPeriodAssessment(props) {
                             <option value={14}>14</option>
                             <option value={15}>15</option>
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >تقبل واستيعاب التوجيه</label>
-                        <select onChange={(e) => setguidance_acceptance(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">تقبل واستيعاب التوجيه</label>
+                        <select className="col-8 form-control" onChange={(e) => setguidance_acceptance(e.target.value)} >
                             <option >من 15</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -188,11 +188,11 @@ export default function ConductTrainingPeriodAssessment(props) {
                             <option value={14}>14</option>
                             <option value={15}>15</option>
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >التعامل مع التقنية</label>
-                        <select onChange={(e) => sethandling_technology(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">التعامل مع التقنية</label>
+                        <select className="col-8 form-control" onChange={(e) => sethandling_technology(e.target.value)} >
                             <option >من 15</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -210,11 +210,11 @@ export default function ConductTrainingPeriodAssessment(props) {
                             <option value={14}>14</option>
                             <option value={15}>15</option>
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >المحافظة على الوقت أثناء الدوام</label>
-                        <select onChange={(e) => setmaintaining_working_hours(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">المحافظة على الوقت أثناء الدوام</label>
+                        <select className="col-8 form-control" onChange={(e) => setmaintaining_working_hours(e.target.value)} >
                             <option >من 15</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -232,11 +232,11 @@ export default function ConductTrainingPeriodAssessment(props) {
                             <option value={14}>14</option>
                             <option value={15}>15</option>
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >العلاقة مع الزملاء</label>
-                        <select onChange={(e) => setrelationship_with_colleagues(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">العلاقة مع الزملاء</label>
+                        <select className="col-8 form-control" onChange={(e) => setrelationship_with_colleagues(e.target.value)} >
                             <option >من 15</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -254,11 +254,11 @@ export default function ConductTrainingPeriodAssessment(props) {
                             <option value={14}>14</option>
                             <option value={15}>15</option>
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >حسن التصرف</label>
-                        <select onChange={(e) => setbehavior(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">حسن التصرف</label>
+                        <select className="col-8 form-control" onChange={(e) => setbehavior(e.target.value)} >
                             <option >من 15</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -276,11 +276,11 @@ export default function ConductTrainingPeriodAssessment(props) {
                             <option value={14}>14</option>
                             <option value={15}>15</option>
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >حسن المظهر</label>
-                        <select onChange={(e) => setlook(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">حسن المظهر</label>
+                        <select className="col-8 form-control" onChange={(e) => setlook(e.target.value)} >
                             <option >من 15</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -288,11 +288,11 @@ export default function ConductTrainingPeriodAssessment(props) {
                             <option value={4}>4</option>
                             <option value={5}>5</option>
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >الإيمان بسياسة القناة والولاء لها</label>
-                        <select onChange={(e) => setbelief_and_loyalty(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">الإيمان بسياسة القناة والولاء لها</label>
+                        <select className="col-8 form-control" onChange={(e) => setbelief_and_loyalty(e.target.value)} >
                             <option >من 15</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
@@ -305,16 +305,16 @@ export default function ConductTrainingPeriodAssessment(props) {
                             <option value={9}>9</option>
                             <option value={10}>10</option>
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >الدرجة النهائية</label>
-                        <input type="number" onChange={(e) => setfinal_degree(e.target.value)} />
-                    </li>
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">الدرجة النهائية</label>
+                        <input className="col-8 form-control" type="number" onChange={(e) => setfinal_degree(e.target.value)} />
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >معدّ التقرير:</label>
-                        <select onChange={(e) => setreporter_id(e.target.value)} >
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">معدّ التقرير:</label>
+                        <select className="col-8 form-control" onChange={(e) => setreporter_id(e.target.value)} >
                             <option >قائمة الموظفيين</option>
                             {
                                 employees?.map((employee, index) => (
@@ -322,53 +322,55 @@ export default function ConductTrainingPeriodAssessment(props) {
                                 ))
                             }
                         </select>
-                    </li>
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >توصية مدير الإدارة</label>
-                        <input type="text" onChange={(e) => setunit_head_recommendation(e.target.value)} />
-                    </li>
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">توصية مدير الإدارة</label>
+                        <input className="col-8 form-control" type="text" onChange={(e) => setunit_head_recommendation(e.target.value)} />
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >التأخير بالدقائق</label>
-                        <input type="number" onChange={(e) => setdelay_in_min(e.target.value)} />
-                    </li>
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">التأخير بالدقائق</label>
+                        <input className="col-8 form-control" type="number" onChange={(e) => setdelay_in_min(e.target.value)} />
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >الخروج المبكر بالدقاذق</label>
-                        <input type="number" onChange={(e) => setearly_departure_min(e.target.value)} />
-                    </li>
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">الخروج المبكر بالدقاذق</label>
+                        <input className="col-8 form-control" type="number" onChange={(e) => setearly_departure_min(e.target.value)} />
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >خصم يوم عن كل تأخير ثلاثة أيام متتالية</label>
-                        <input type="number" onChange={(e) => setdelay_deduction(e.target.value)} />
-                    </li>
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">خصم يوم عن كل تأخير ثلاثة أيام متتالية</label>
+                        <input className="col-8 form-control" type="number" onChange={(e) => setdelay_deduction(e.target.value)} />
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >خصم لكل يوم لا توجد به البصمة الكاملة</label>
-                        <input type="number" onChange={(e) => setfootprint_deduction(e.target.value)} />
-                    </li>
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">خصم لكل يوم لا توجد به البصمة الكاملة</label>
+                        <input className="col-8 form-control" type="number" onChange={(e) => setfootprint_deduction(e.target.value)} />
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >الغياب</label>
-                        <input type="number" onChange={(e) => setabsence_days(e.target.value)} />
-                    </li>
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">الغياب</label>
+                        <input className="col-8 form-control" type="number" onChange={(e) => setabsence_days(e.target.value)} />
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >نسبة الحضور</label>
-                        <input type="number" onChange={(e) => setattendance_rate(e.target.value)} />
-                    </li>
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">نسبة الحضور</label>
+                        <input className="col-8 form-control" type="number" onChange={(e) => setattendance_rate(e.target.value)} />
+                    </div>
 
-                    <li className="list-group-item">
-                        <label >قرار اجتماع الإدارة العليا</label>
-                        <input type="text" onChange={(e) => setmanagement_decision(e.target.value)} />
-                    </li>
+                    <div className="col-5 p-2 border rounded m-2 row ">
+                        <label className="col-4">قرار اجتماع الإدارة العليا</label>
+                        <input className="col-8 form-control" type="text" onChange={(e) => setmanagement_decision(e.target.value)} />
+                    </div>
 
-                    <li className="list-group-item">
-                        <input onClick={submit} type="button" value="تسجيل" />
-                    </li>
+                    <div className="col-12 d-flex justify-content-center">
+                        <button onClick={submit} type="button" className="btn btn-success">
+                            تخزين
+                        </button>
+                    </div>
 
-                </ul>
+                </div>
             </div>
         </div>
     )

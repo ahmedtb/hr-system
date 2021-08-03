@@ -38,21 +38,9 @@ class InterviewsAssessmentsController extends Controller
         return ['success' => 'interview assessment archived'];
     }
 
-    public function indexInterviews(InterviewAssessmentFilters $filters)
+    public function indexInterviews(InterviewAssessmentFilters $filters, Request $request)
     {
-        return $this->getAssessments($filters);
+        return InterviewAssessment::latest()->with('interviewer')->filter($filters)->paginate($request->input('page_size') ?? 10);
     }
 
-    /**
-     * Fetch all relevant threads.
-     *
-     * @param InterviewAssessmentFilters $filters
-     * @return mixed
-     */
-    protected function getAssessments(InterviewAssessmentFilters $filters)
-    {
-        $interviews = InterviewAssessment::latest()->with('interviewer')->filter($filters)->get();
-
-        return $interviews;
-    }
 }
