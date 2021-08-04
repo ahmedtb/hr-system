@@ -91,20 +91,24 @@ export default function EmployeeShow(props) {
                 </div>
 
             </div>
+            {
+                resumedCourses.length ? (
+                    <div className="card">
 
-            <div className="card">
+                        <div className="card-header">
+                            الدورات الجارية المسجل بها
+                        </div>
 
-                <div className="card-header">
-                    الدورات الجارية المسجل بها
-                </div>
-
-                <div className="card-body">
-                    <div className="row justify-content-center warp">
-                        <CoursesTable courses={resumedCourses} />
+                        <div className="card-body">
+                            <div className="row justify-content-center warp">
+                                <CoursesTable courses={resumedCourses} />
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div className="card">
+                ) : null
+            }
+
+            {/* <div className="card">
 
                 <div className="card-header">
                     تقييمات الفترة التجريبية للموظف
@@ -138,7 +142,7 @@ export default function EmployeeShow(props) {
                         <TraineeCourseAssessmentsTable traineeCourses={traineeCourseAssessments} />
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             <div className="card-header">
                 عمليات تخص الموظف
@@ -158,7 +162,9 @@ export default function EmployeeShow(props) {
                         </Link>
                     </div>
                     <div className="col-5 border border-dark rounded m-2 text-center">
-                        تقييمات المقابلة التي تخص الموظف
+                        <Link to={routes.interviewAssessmentIndex + '?name=' + employee?.name}>
+                            تقييمات المقابلة التي تخص الموظف
+                        </Link>
                     </div>
                     <div className="col-5 border border-dark rounded m-2 text-center">
                         <Link to={routes.TraineeCourseAssessmentIndex + '?employee_id=' + id}>

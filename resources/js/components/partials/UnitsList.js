@@ -1,5 +1,5 @@
 import React from 'react'
-
+import routes from '../utility/routesEndpoints'
 
 
 export default function UnitsList(props) {
@@ -11,7 +11,7 @@ export default function UnitsList(props) {
             <ul key={index} className="nested">
                 <li>
                     <span>
-                        <a href="{{route('showUnit',$unit->id)}}">{unit.name}</a>
+                        <a href={routes.showUnit.replace(':id',unit.id)}>{unit.name}</a>
                     </span>
                     {(unit.children) ? unit.children.map(renderUnit) : null}
                 </li>

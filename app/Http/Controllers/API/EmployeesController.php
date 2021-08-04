@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Filters\EmployeeFilters;
 use App\Models\Job;
 use App\Models\Document;
 use App\Models\Employee;
@@ -42,10 +43,14 @@ class EmployeesController extends Controller
         ];
     }
 
-    public function index()
+    public function index(EmployeeFilters $filters, Request $request)
     {
-        return Employee::with('job')->paginate(10);
+        return Employee::filter($filters)
+            ->with('job')
+            ->paginate($request->input('page_size') ?? 10)
+            ->appends(request()->except('page'));
     }
+
 
     public function create(Request $request)
     {
@@ -211,5 +216,4 @@ class EmployeesController extends Controller
     {
         return Employee::all();
     }
-
 }

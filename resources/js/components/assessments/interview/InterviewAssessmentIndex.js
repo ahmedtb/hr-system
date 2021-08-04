@@ -9,7 +9,6 @@ import Pagination from '../../utility/Pagination'
 
 export default function InterviewAssessmentIndex() {
     const [interviews, setinterviews] = React.useState(null)
-
     const [links, setlinks] = React.useState([])
     const [params, setparams] = React.useState([])
 
@@ -25,9 +24,14 @@ export default function InterviewAssessmentIndex() {
 
     React.useEffect(() => {
         var params = Object.fromEntries(new URLSearchParams(location.search));
-
         fetchPage(ApiEndpoints.getInterviewAssessments, params)
     }, [])
+
+    React.useEffect(() => {
+        setname(params.name)
+    }, [params])
+
+    const [name, setname] = React.useState(params.name)
 
     return (
         <div className="col-md-12">
@@ -65,11 +69,21 @@ export default function InterviewAssessmentIndex() {
 
                                     </div>
                                     <div className="modal-footer">
-                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                                        <button value={name} type="button" className="btn btn-secondary" data-dismiss="modal">اغلاق</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <div className="border rounded ml-2 p-2">
+                            <strong>البحث بالاسم</strong>
+                            <input value={name??''} className="form-control" type="text" onChange={(e) => setname(e.target.value)}/>
+                            <button type="button" className="btn btn-success" onClick={
+                                () => fetchPage(ApiEndpoints.getInterviewAssessments, {name:name})
+                            }>بحث</button>
+                            
+                        </div>
+
 
                     </div>
                     <div className="">

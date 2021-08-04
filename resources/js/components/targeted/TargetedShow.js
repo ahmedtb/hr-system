@@ -20,7 +20,7 @@ export default function TargetedShow(props) {
     }, [])
 
     return (
-        <div className="col-md-10">
+        <div className="col-md-12">
 
             <div className="card">
                 <div className="card-header">

@@ -40,7 +40,7 @@ class InterviewsAssessmentsController extends Controller
 
     public function indexInterviews(InterviewAssessmentFilters $filters, Request $request)
     {
-        return InterviewAssessment::latest()->with('interviewer')->filter($filters)->paginate($request->input('page_size') ?? 10);
+        return InterviewAssessment::latest()->with('interviewer')->filter($filters)->paginate($request->input('page_size') ?? 10)->appends(request()->except('page'));
     }
 
 }

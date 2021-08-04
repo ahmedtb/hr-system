@@ -13,7 +13,7 @@ export default function NumberField(props) {
                     <strong>
                         {field['label']}
                     </strong>
-                    <input class='border border-1 rounded ml-2' value={field['value']} disabled />
+                    <input className='border border-1 rounded ml-2' value={field['value']} disabled />
                 </div>
             </div>
         );

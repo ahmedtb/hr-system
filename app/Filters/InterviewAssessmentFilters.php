@@ -17,6 +17,7 @@ class InterviewAssessmentFilters extends Filters
         'personality', 
         'english', 
         'culture',
+        'name',
     ];
 
     protected function orderByDesc($trait)
@@ -82,5 +83,10 @@ class InterviewAssessmentFilters extends Filters
     protected function culture($rating)
     {
         return $this->builder->where('culture', $rating);
+    }
+
+    protected function name($search)
+    {
+        return $this->builder->where('name', 'LIKE', "%{$search}%");
     }
 }

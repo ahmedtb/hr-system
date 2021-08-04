@@ -60,10 +60,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        Unit::factory(10)->create();
         Employee::factory(20)->create();
         TargetedIndividual::factory(20)->create();
         Admin::factory()->create();
-        Unit::factory(10)->create();
 
         TrainingProgram::factory(20)->create();
 

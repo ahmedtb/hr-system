@@ -10,17 +10,28 @@ class Coach extends Model
     use HasFactory;
 
     protected $guarded = [];
-    
-    public function trainingPrograms(){
+
+    protected $appends = [
+        'profile'
+    ];
+
+    public function trainingPrograms()
+    {
         return $this->belongsToMany(TrainingProgram::class);
     }
 
-    public function trainingCourses(){
+    public function trainingCourses()
+    {
         return $this->belongsToMany(TrainingCourse::class);
     }
 
     public function profile()
     {
         return $this->morphTo();
+    }
+
+    public function getProfileAttribute()
+    {
+        return ($this->profile_type != null) ? $this->profile()->first() : null;
     }
 }

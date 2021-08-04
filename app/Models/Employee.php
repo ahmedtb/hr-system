@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use App\Filters\EmployeeFilters;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\Assessments\TrialPeriodAssessment;
 use App\Models\Assessments\TraineeCourseAssessment;
 use App\Models\Assessments\TrainingPeriodAssessment;
-use App\Models\Assessments\TrialPeriodAssessment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
@@ -24,12 +25,17 @@ class Employee extends Model
 
     public function getJobAttribute()
     {
-        return Job::where('id', $this->id)->first();
+        return Job::where('id', $this->job_id)->first();
     }
 
     public function job()
     {
         return $this->belongsTo(Job::class);
+    }
+
+    public function unit()
+    {
+        return $this->job()->first()->unit()->first();
     }
 
     public function documents()
@@ -51,7 +57,7 @@ class Employee extends Model
     {
         return $this->morphMany(CourseAttendance::class, 'profile');
     }
-    
+
     public function TraineeCourseAssessments()
     {
         return $this->morphMany(TraineeCourseAssessment::class, 'trainee');
@@ -77,4 +83,8 @@ class Employee extends Model
         $this->courses()->save($course);
     }
 
+    public function scopeFilter($query, EmployeeFilters $filters)
+    {
+        return $filters->apply($query);
+    }
 }

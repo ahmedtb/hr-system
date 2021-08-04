@@ -11,7 +11,7 @@ class Unit extends Model
 
     protected $guarded = [];
     protected $appends = ['children'];
-    
+
     public function parent()
     {
         return $this->belongsTo(Unit::class, 'parent_id');
@@ -22,7 +22,8 @@ class Unit extends Model
         return $this->belongsTo(Unit::class, 'id', 'parent_id');
     }
 
-    public function getChildrenAttribute(){
+    public function getChildrenAttribute()
+    {
         return $this->children()->get();
     }
 
@@ -31,13 +32,13 @@ class Unit extends Model
         return $this->belongsTo(Head::class);
     }
 
-    public function jobs() {
+    public function jobs()
+    {
         return $this->hasMany(Job::class);
     }
 
-    public function employees() {
-        return $this->hasManyThrough(Employee::class,Job::class);
+    public function employees()
+    {
+        return $this->hasManyThrough(Employee::class, Job::class);
     }
-
-
 }

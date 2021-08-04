@@ -60,9 +60,11 @@ class TraineeCourseAssessmentsController extends Controller
         return ['success' => 'trainee course assessment archived'];
     }
 
-    public function index(TraineeCourseAssessmentFilters $filters)
+    public function index(TraineeCourseAssessmentFilters $filters, Request $request)
     {
-        return TraineeCourseAssessment::latest()->filter($filters)->paginate(10);
+        return TraineeCourseAssessment::latest()
+            ->filter($filters)
+            ->paginate($request->input('page_size') ?? 10)
+            ->appends(request()->except('page'));
     }
-
 }

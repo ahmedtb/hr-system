@@ -24,7 +24,7 @@ export default function CoachIndex(props) {
         fetchPage()
     }, [])
     return (
-        <div className="col-md-10">
+        <div className="col-md-12">
             <div className="card">
                 <div className="card-header">المدربيين</div>
                 <div className="card-body">
@@ -70,7 +70,7 @@ export default function CoachIndex(props) {
                                     <td>
                                         {coach.speciality}
                                     </td>
-                                    <td class="overflow-auto">{coach.CV}</td>
+                                    <td className="overflow-auto">{coach.CV}</td>
                                 </tr>
                             ))}
                         </tbody>

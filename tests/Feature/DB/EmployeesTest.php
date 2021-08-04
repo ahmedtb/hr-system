@@ -5,6 +5,7 @@ namespace Tests\Feature\DB;
 use App\Models\Job;
 use Tests\TestCase;
 use App\Models\Head;
+use App\Models\Unit;
 use App\Models\Document;
 use App\Models\Employee;
 use App\Models\TrainingCourse;
@@ -88,4 +89,16 @@ class EmployeesTest extends TestCase
 
         $this->assertEquals($employee->courses()->count(), 2);
     }
+
+    public function test_employee_can_retrive_its_unit()
+    {
+
+        $employee = Employee::factory()->create();
+        // dd($employee->unit()->first());
+        $this->assertNotNull($employee->unit()->first());
+        $this->assertTrue(get_class($employee->unit()) == Unit::class);
+
+    }
+
+
 }

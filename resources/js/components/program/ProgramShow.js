@@ -22,7 +22,7 @@ export default function ProgramShow(props) {
     const [links, setlinks] = React.useState([])
 
     async function fetchCourses(link = ApiEndpoints.courseIndex, params = { training_program_id: id }) {
-        axios.get(link, { params: params }).then((response) => {
+        axios.get(link, { params: {...params,page_size:5} }).then((response) => {
             setcourses(response.data.data)
             if (response.data.links) { setlinks(response.data.links) } else setlinks(null)
         }).catch((error) => logError(error))

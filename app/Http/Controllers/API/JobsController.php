@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Models\Job;
+use App\Filters\JobFilters;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -28,8 +29,10 @@ class JobsController extends Controller
         return Job::where('id', $id)->with('unit')->first();
     }
 
-    public function index()
+    public function index(JobFilters $filters, Request $request)
     {
-        return Job::all();
+        return Job::filter($filters)
+            ->paginate($request->input('page_size') ?? 10)
+            ->appends(request()->except('page'));
     }
 }

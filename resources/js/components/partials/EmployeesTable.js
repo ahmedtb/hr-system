@@ -25,11 +25,11 @@ export default function EmployeesTable(props) {
                 {employees?.map((employee, index) => (
                     <tr key={index}>
                         <td>
-                            <Link to={routes.showEmployee.replace(':id', employee?.id)}>{employee?.id}</Link >
+                            <Link to={routes.showEmployee.replace(':id', employee.id)}>{employee.id}</Link >
                         </td>
                         <td>{employee.name}</td>
                         <td>
-                            <Link to={routes.showJob.replace(':id', employee?.job.id)}>{employee?.job.name}</Link >
+                            <Link to={routes.showJob.replace(':id', employee.job?.id)}>{employee.job?.name}</Link >
                         </td>
                         <td>
                             {employee.address}

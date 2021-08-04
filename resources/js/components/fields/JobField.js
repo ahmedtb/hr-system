@@ -15,9 +15,9 @@ export default function GenderField(props) {
                     </strong>
                     {
                         (field['value']) ?
-                            <div class='p-1 border border-1 rounded  ml-2'>اسم الوظيفة المحدد افتراضيا {field['value']}</div>
+                            <div className='p-1 border border-1 rounded  ml-2'>اسم الوظيفة المحدد افتراضيا {field['value']}</div>
                             :
-                            <input class='border border-1 rounded  ml-2' size="25" value="حقل تحديد وظيفة" disabled />
+                            <input className='border border-1 rounded  ml-2' size="25" value="حقل تحديد وظيفة" disabled />
                     }
                 </div>
             </div>

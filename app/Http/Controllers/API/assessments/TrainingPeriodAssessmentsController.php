@@ -44,8 +44,12 @@ class TrainingPeriodAssessmentsController extends Controller
         return ['success' => 'training period assessment archived'];
     }
 
-    public function index(TrainingPeriodAssessmentFilters $filters)
+    public function index(TrainingPeriodAssessmentFilters $filters, Request $request)
     {
-        return TrainingPeriodAssessment::latest()->with('employee')->filter($filters)->paginate(10)->appends(request()->except('page'));
+        return TrainingPeriodAssessment::latest()
+            ->with('employee')
+            ->filter($filters)
+            ->paginate($request->input('page_size') ?? 10)
+            ->appends(request()->except('page'));
     }
 }

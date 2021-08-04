@@ -18,7 +18,7 @@ class CourseAttendance extends Model
 
     public function getProfileAttribute()
     {
-        return ($this->profile_id != null) ?$this->profile()->first() : null;
+        return ($this->profile_type != null) ?$this->profile()->first() : null;
     }
 
     public function profile()

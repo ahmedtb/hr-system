@@ -4,6 +4,7 @@ namespace Tests\Feature\API;
 
 use App\Models\Job;
 use Tests\TestCase;
+use App\Models\Unit;
 use App\Models\Trainee;
 use App\Models\Document;
 use App\Models\Employee;
@@ -20,21 +21,20 @@ class EmployeesEndpointsTests extends TestCase
         Employee::factory(50)->create();
         $response = $this->getJson('/api/employee/index');
         dd($response->json());
-        
+
         $response->assertJsonStructure([
-            'current_page', 'next_page_url', 'data', 'first_page_url','from','last_page','last_page_url'
+            'current_page', 'next_page_url', 'data', 'first_page_url', 'from', 'last_page', 'last_page_url'
         ]);
-        $this->assertEquals(count($response['data']),10);
+        $this->assertEquals(count($response['data']), 10);
 
 
-        for($i = 0; $i < 4; $i++){
+        for ($i = 0; $i < 4; $i++) {
             $response = $this->getJson($response['next_page_url']);
             $response->assertJsonStructure([
-                'current_page', 'next_page_url', 'data', 'first_page_url','from','last_page','last_page_url'
+                'current_page', 'next_page_url', 'data', 'first_page_url', 'from', 'last_page', 'last_page_url'
             ]);
-            $this->assertEquals(count($response['data']),10);
+            $this->assertEquals(count($response['data']), 10);
         }
-
     }
 
     public function test_employee_can_be_created_after_creating_job()
@@ -173,6 +173,30 @@ class EmployeesEndpointsTests extends TestCase
 
     public function test_employee_has_an_optional_profile_picture()
     {
+    }
+
+    public function test_employees_can_be_filtered_by_job_id()
+    {
+        Employee::factory(3)->create();
+
+        $job = Job::factory()->create();
+        Employee::factory()->create(['job_id' => $job->id]);
         
+        $response = $this->getJson('/api/employee/index?job_id=' . $job->id);
+
+        $this->assertEquals($response->json()['total'],1);
+    }
+
+    public function test_employees_can_be_filtered_by_unit_id()
+    {
+        Employee::factory(3)->create();
+
+        $unit = Unit::factory()->create();
+        $job = Job::factory()->create(['unit_id' => $unit->id]);
+        Employee::factory()->create(['job_id' => $job->id]);
+        
+        $response = $this->getJson('/api/employee/index?unit_id=' . $job->id);
+
+        $this->assertEquals($response->json()['total'],1);
     }
 }
