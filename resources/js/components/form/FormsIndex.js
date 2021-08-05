@@ -11,7 +11,7 @@ export default function FormsIndex() {
         }).catch((err) => logError(err))
     }, [])
     return (
-        <div className="col-md-10">
+        <div className="col-md-12">
             <div className="card">
                 <div className="card-header">النماذج المعبئة</div>
 

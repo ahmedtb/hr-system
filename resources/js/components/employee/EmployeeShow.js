@@ -172,22 +172,22 @@ export default function EmployeeShow(props) {
                         </Link>
                     </div>
                     <div className="col-5 border border-dark rounded m-2 text-center">
-                        <Link to={routes.courseIndex + '?resumed=true&employee_id=' + id}>
+                        <Link to={routes.coursesBrowser + '?resumed=true&employee_id=' + id}>
                             الدورات الجارية المسجل بها {resumedCourses.length}
                         </Link>
                     </div>
                     <div className="col-5 border border-dark rounded m-2 text-center">
-                        <Link to={routes.courseIndex + '?done=true&employee_id=' + id}>
+                        <Link to={routes.coursesBrowser + '?done=true&employee_id=' + id}>
                             الدورات المنتهية المسجل بها {doneCourses.length}
                         </Link>
                     </div>
                     <div className="col-5 border border-dark rounded m-2 text-center">
-                        <Link to={routes.courseIndex + '?canceled=true&employee_id=' + id}>
+                        <Link to={routes.coursesBrowser + '?canceled=true&employee_id=' + id}>
                             الدورات الملغية المسجل بها {canceledCourses.length}
                         </Link>
                     </div>
                     <div className="col-5 border border-dark rounded m-2 text-center">
-                        <Link to={routes.courseIndex + '?planned=true&employee_id=' + id}>
+                        <Link to={routes.coursesBrowser + '?planned=true&employee_id=' + id}>
                             الدورات المخطط له المسجل بها {plannedCourses.length}
                         </Link>
                     </div>

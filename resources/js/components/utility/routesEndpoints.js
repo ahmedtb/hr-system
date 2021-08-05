@@ -33,13 +33,15 @@ const routes = {
     showJob: '/react/job/:id',
     showAttendances: '/react/attendances/:course_id',
     showCoach: '/react/coach/:id',
-    
+    showTrialPeriodAssessment: '/react/assessment/trialPeriod/:id',
+
     programIndex: '/react/program/index',
     CoachesList: '/react/coach/index',
     AssessmentsIndex: '/react/assessment/index',
     showForms: '/react/formIndex',
     showFormsStructures: '/react/structureIndex',
     courseIndex: '/react/course/index',
+    coursesBrowser: '/react/course/filters',
     employeeIndex: '/react/employee/index',
     jobIndex: '/react/job/index',
     unitIndex: '/react/unit/index',

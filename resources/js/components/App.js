@@ -50,8 +50,10 @@ import showJob from './job/JobShow'
 import TargetedShow from './targeted/TargetedShow'
 import UnitShow from './unit/UnitShow'
 import CoachShow from './coach/CoachShow'
-
+import TrialPeriodAssessmentShow from './assessments/trialPeriod/TrialPeriodAssessmentShow'
 import AttendanceManager from './course/AttendancesManager'
+
+import CoursesBrowser from './course/CoursesBrowser'
 
 class App extends Component {
     render() {
@@ -95,6 +97,8 @@ class App extends Component {
                         <Route exact path={routes.showForms} component={FormsIndex} />
                         <Route exact path={routes.showFormsStructures} component={FormStructuresIndex} />
                         <Route exact path={routes.courseIndex} component={CourseIndex} />
+                        <Route exact path={routes.coursesBrowser} component={CoursesBrowser} />
+
                         <Route exact path={routes.employeeIndex} component={EmployeeIndex} />
                         <Route exact path={routes.jobIndex} component={JobIndex} />
                         <Route exact path={routes.unitIndex} component={UnitIndex} />
@@ -107,7 +111,9 @@ class App extends Component {
                         <Route exact path={routes.showUnit} component={UnitShow} />
                         <Route exact path={routes.showAttendances} component={AttendanceManager} />
                         <Route exact path={routes.showCoach} component={CoachShow} />
+                        <Route exact path={routes.showTrialPeriodAssessment} component={TrialPeriodAssessmentShow} />
 
+                        
 
                         <Route exact path={routes.dashboard} component={Dashboard} />
                         <Route exact path='/' component={Dashboard} />

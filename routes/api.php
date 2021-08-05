@@ -117,6 +117,7 @@ Route::get('interview/index', [InterviewsAssessmentsController::class, 'indexInt
 
 Route::post('trialPeriodAssessment/create', [TrialPeriodAssessmentsController::class, 'create']);
 Route::get('trialPeriodAssessment/index', [TrialPeriodAssessmentsController::class, 'index']);
+Route::get('trialPeriodAssessment/{id}', [TrialPeriodAssessmentsController::class, 'show']);
 
 Route::post('trainingPeriodAssessment/create', [TrainingPeriodAssessmentsController::class, 'create']);
 Route::get('trainingPeriodAssessment/index', [TrainingPeriodAssessmentsController::class, 'index']);

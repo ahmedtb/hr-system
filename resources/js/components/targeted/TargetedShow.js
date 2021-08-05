@@ -14,9 +14,7 @@ export default function TargetedShow(props) {
             settargeted(response.data)
             console.log(response.data)
             console.log(ApiEndpoints.getTargeted.replace(':id', id))
-        }).catch((err) => {
-            logError(err)
-        })
+        }).catch((err) => { logError(err) })
     }, [])
 
     return (

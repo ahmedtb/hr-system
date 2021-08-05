@@ -13,7 +13,7 @@ export default function FormView() {
         }).catch((err) => logError(err))
     }, [])
     return (
-        <div className="col-md-8">
+        <div className="col-md-12">
             <div className="card">
                 <div className="card-header">نموذج {form?.id}</div>
 

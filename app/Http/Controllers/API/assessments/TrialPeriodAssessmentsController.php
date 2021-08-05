@@ -55,7 +55,11 @@ class TrialPeriodAssessmentsController extends Controller
 
     public function index(TrialPeriodAssessmentFilters $filters)
     {
-        return TrialPeriodAssessment::with(['employee','reporter'])->filter($filters)->paginate(10)->appends(request()->except('page'));
+        return TrialPeriodAssessment::with(['employee', 'reporter'])->filter($filters)->paginate(10)->appends(request()->except('page'));
     }
 
+    public function show($id)
+    {
+        return TrialPeriodAssessment::where('id', $id)->first();
+    }
 }

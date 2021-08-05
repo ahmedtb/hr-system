@@ -2,9 +2,10 @@
 
 namespace App\Models\Assessments;
 
+use App\Models\Unit;
+use App\Models\Employee;
 use Illuminate\Database\Eloquent\Model;
 use App\Filters\TrialPeriodAssessmentFilters;
-use App\Models\Employee;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class TrialPeriodAssessment extends Model
@@ -14,7 +15,11 @@ class TrialPeriodAssessment extends Model
     protected $guarded = [];
 
     protected $appends = [
-        'degrees_sum'
+        'degrees_sum',
+        'employee',
+        'unit',
+        'reporter',
+
     ];
 
     public function getDegreesSumAttribute()
@@ -31,6 +36,25 @@ class TrialPeriodAssessment extends Model
         return $sum;
     }
 
+    public function getEmployeeAttribute()
+    {
+
+        return ($this->employee_id) ? $this->employee()->first() : null;
+    }
+
+
+    public function getUnitAttribute()
+    {
+
+        return ($this->unit_id) ? $this->unit()->first() : null;
+    }
+
+    public function getReporterAttribute()
+    {
+
+        return ($this->reporter_id) ? $this->reporter()->first() : null;
+    }
+
     public function scopeFilter($query, TrialPeriodAssessmentFilters $filters)
     {
         return $filters->apply($query);
@@ -41,12 +65,17 @@ class TrialPeriodAssessment extends Model
         return $this->belongsTo(Employee::class);
     }
 
-    public function reporter()
+    public function unit()
     {
-        return $this->belongsTo(Employee::class,'reporter_id');
+        return $this->belongsTo(Unit::class);
     }
 
-    public function scopeOrderByTrait($query, $trait, $start_date = null, $end_date =null)
+    public function reporter()
+    {
+        return $this->belongsTo(Employee::class, 'reporter_id');
+    }
+
+    public function scopeOrderByTrait($query, $trait, $start_date = null, $end_date = null)
     {
         if ($start_date && $end_date)
             return $query->orderBy($trait, 'DESC')->whereBetween('created_at', [$start_date, $end_date]);
@@ -55,7 +84,7 @@ class TrialPeriodAssessment extends Model
     }
 
 
-    public function scopeOrderByBest($query, $start_date = null, $end_date =null)
+    public function scopeOrderByBest($query, $start_date = null, $end_date = null)
     {
         if ($start_date && $end_date)
             return $query->orderBy('final_degree', 'DESC')->orderBy('attendance_rate', 'DESC')->whereBetween('created_at', [$start_date, $end_date]);

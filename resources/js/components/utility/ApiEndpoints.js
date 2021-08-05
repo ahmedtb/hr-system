@@ -51,6 +51,9 @@ export default {
     getInterviewAssessments: '/api/interview/index',
     getTrialPeriods: '/api/trialPeriodAssessment/index',
     
+    getTrialPeriod: '/api/trialPeriodAssessment/:id',
+
+
     getCoaches: '/api/coach/index',
     programIndex: '/api/program/index',
     showForms: '/api/form/index',
@@ -70,5 +73,7 @@ export default {
     getCourseEnrolledEmployees: '/api/course/:id/employees',
     getCourseEnrolledIndividuals: '/api/course/:id/individuals',
     getCoach: '/api/coach/:id',
+
+    
 
 }

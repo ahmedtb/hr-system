@@ -5,6 +5,7 @@ import ApiEndpoints from '../../utility/ApiEndpoints'
 import routes from '../../utility/routesEndpoints'
 import logError from '../../utility/logError'
 import Pagination from '../../utility/Pagination'
+import TrialPeriodAssessmentTable from '../../partials/TrialPeriodAssessmentsTable'
 
 export default function TrialPeriodAssessmentIndex() {
 
@@ -245,41 +246,7 @@ export default function TrialPeriodAssessmentIndex() {
                                 fetchPage={fetchPage}
                                 links={links}
                             />
-                            <table className="table table-bordered table-condensed" style={{ marginBottom: 0 }}>
-                                <thead>
-                                    <tr>
-                                        <th >ID</th>
-                                        <th >الموظف</th>
-                                        <th >معد التقرير</th>
-
-                                        {
-                                            Object.entries(dataShow).map((data, index) => (
-                                                (data[1]) ? <th key={index}>{labels[data[0]]}</th> : null
-                                            ))
-                                        }
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {assessments.map((assessment, index) => (
-                                        <tr key={index}>
-                                            <td>
-                                                {assessment.id}
-                                            </td>
-                                            <td>
-                                                <Link to={routes.showEmployee.replace(':id', assessment.employee.id)}>{assessment.employee.name}</Link>
-                                            </td>
-                                            <td>
-                                                <Link to={routes.showEmployee.replace(':id', assessment.reporter.id)}>{assessment.reporter.name}</Link>
-                                            </td>
-                                            {
-                                                Object.entries(dataShow).map((data, index) => (
-                                                    (data[1]) ? <td key={index}>{assessment[data[0]]}</td> : null
-                                                ))
-                                            }
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
+                            <TrialPeriodAssessmentTable trialPeriods={assessments} />
                         </div>
 
                     </div>
