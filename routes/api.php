@@ -24,6 +24,7 @@ use App\Http\Controllers\API\Assessments\TrainingPeriodAssessmentsController;
 use App\Http\Controllers\API\CourseAttendancesController;
 use App\Http\Controllers\API\JobsController;
 use App\Http\Controllers\API\UnitsController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -127,3 +128,8 @@ Route::get('traineeCourseAssessment/index', [TraineeCourseAssessmentsController:
 
 Route::post('coachCourseAssessment/create', [CoachCourseAssessmentsController::class, 'create']);
 Route::get('coachCourseAssessment/index', [CoachCourseAssessmentsController::class, 'index']);
+
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});

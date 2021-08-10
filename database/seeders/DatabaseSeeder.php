@@ -23,6 +23,7 @@ use App\Models\Assessments\CoachCourseAssessment;
 use App\Models\Assessments\TrialPeriodAssessment;
 use App\Models\Assessments\TraineeCourseAssessment;
 use App\Models\Assessments\TrainingPeriodAssessment;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -60,6 +61,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        User::factory(10)->create();
+
         Unit::factory(10)->create();
         Employee::factory(20)->create();
         TargetedIndividual::factory(20)->create();

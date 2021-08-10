@@ -47,6 +47,7 @@ const routes = {
     unitIndex: '/react/unit/index',
     interviewAssessmentIndex: '/react/assessment/interview/index',
 
+    loginPage: '/react/login'
 
 }
 

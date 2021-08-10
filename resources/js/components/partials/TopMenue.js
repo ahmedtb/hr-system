@@ -1,14 +1,81 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import routes from '../utility/routesEndpoints'
+import ApiEndpoints from '../utility/ApiEndpoints'
+import logError from '../utility/logError'
 
-export default function TopMenue() {
+function AuthComponent(props) {
+
+    async function isLoggedIn() {
+        try {
+            const response = await axios.get('/api/user')
+            // console.log('isLoggedIn', (response.data));
+            props.refreshUser(response.data)
+
+        } catch (error) {
+            logError(error)
+        }
+    }
+
+    async function logout() {
+        try {
+            axios.defaults.headers.common['Accept'] = 'application/json';
+            const response = await axios.get('/logout')
+            console.log('logout', (response.data));
+            props.refreshUser(null)
+
+        } catch (error) {
+            logError(error)
+        }
+    }
+
+    React.useEffect(() => {
+        isLoggedIn()
+    }, [])
+
+    return (
+        <>
+            {
+                props.user ? (
+                    <>
+                        <li className="nav-item dropdown">
+                            <a id="navbarDropdown" className="nav-link dropdown-toggle" href="#" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {props.user.name}
+                            </a>
+
+                            <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a className="dropdown-item" onClick={logout}>
+                                    {'تسجيل الخروج'}
+                                </a>
+                            </div>
+                        </li>
+                    </>
+                ) : (
+                    <>
+                        <li className="nav-item">
+                            <a className="nav-link" href={routes.loginPage}>{'تسجيل الدخول'}</a>
+                        </li >
+
+                        <li className="nav-item">
+                            <a className="nav-link" href="{{ route('register') }}">{'تسجيل'}</a>
+                        </li>
+                    </>
+                )
+            }
+
+        </>
+    )
+}
+
+function TopMenue(props) {
 
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">منظومة الموارد البشرية</a>
+                    <Link className="navbar-brand" to={routes.dashboard}>منظومة الموارد البشرية</Link>
+
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -76,7 +143,7 @@ export default function TopMenue() {
 
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                التقيمات
+                                    التقيمات
                                 </a>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <Link className="dropdown-item" to={routes.AssessmentsIndex}>قائمة التقييمات المعبئة</Link>
@@ -100,10 +167,12 @@ export default function TopMenue() {
                                 </ul>
                             </li>
 
-
+                            <AuthComponent {...props} />
 
                         </ul>
                     </div>
+
+
                 </div>
             </nav>
 
@@ -111,3 +180,20 @@ export default function TopMenue() {
         </>
     )
 }
+
+import { refreshUser } from '../redux/stateActions'
+import { connect } from "react-redux"
+
+const mapStateToProps = state => {
+    return {
+        user: state.state.user,
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        refreshUser: (user) => dispatch(refreshUser(user)),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TopMenue)
