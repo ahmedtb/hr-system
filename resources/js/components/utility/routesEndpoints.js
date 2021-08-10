@@ -13,7 +13,8 @@ const routes = {
     createCourse: '/react/course/create',
     jobCreate: '/react/job/create',
     unitCreate: '/react/unit/create',
-    
+    attachDocument:'/react/document/create',
+
     conductInterviewAssessment: '/react/assessment/interview',
     conductTrialPeriodAssessment: '/react/assessment/trialPeriod',
     conductTrainingPeriodAssessment: '/react/assessment/trainingPeriod',

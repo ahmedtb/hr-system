@@ -22,6 +22,7 @@ use App\Http\Controllers\API\Assessments\TrialPeriodAssessmentsController;
 use App\Http\Controllers\API\Assessments\TraineeCourseAssessmentsController;
 use App\Http\Controllers\API\Assessments\TrainingPeriodAssessmentsController;
 use App\Http\Controllers\API\CourseAttendancesController;
+use App\Http\Controllers\API\DocumentsController;
 use App\Http\Controllers\API\JobsController;
 use App\Http\Controllers\API\UnitsController;
 use App\Http\Controllers\Auth\LoginController;
@@ -66,6 +67,9 @@ Route::get('employee/{id}', [EmployeesController::class, 'show']);
 Route::post('targeted/create', [TargetedIndividualsController::class, 'create']);
 Route::get('targeted/{id}', [TargetedIndividualsController::class, 'show']);
 Route::get('getIndividuals', [TargetedIndividualsController::class, 'getIndividuals']);
+
+Route::get('document/index', [DocumentsController::class, 'index']);
+
 
 Route::get('form/index', [FormsController::class, 'index']);
 Route::get('form/{id}', [FormsController::class, 'show']);

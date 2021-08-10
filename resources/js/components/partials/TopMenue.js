@@ -13,15 +13,15 @@ function AuthComponent(props) {
             props.refreshUser(response.data)
 
         } catch (error) {
-            logError(error)
+            // logError(error)
         }
     }
 
     async function logout() {
         try {
             axios.defaults.headers.common['Accept'] = 'application/json';
-            const response = await axios.get('/logout')
-            console.log('logout', (response.data));
+            const response = await axios.post('/logout')
+            // console.log('logout', (response.data));
             props.refreshUser(null)
 
         } catch (error) {
@@ -39,7 +39,7 @@ function AuthComponent(props) {
                 props.user ? (
                     <>
                         <li className="nav-item dropdown">
-                            <a id="navbarDropdown" className="nav-link dropdown-toggle" href="#" role="button"
+                            <a className="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {props.user.name}
                             </a>
@@ -54,12 +54,12 @@ function AuthComponent(props) {
                 ) : (
                     <>
                         <li className="nav-item">
-                            <a className="nav-link" href={routes.loginPage}>{'تسجيل الدخول'}</a>
+                            <Link className="nav-link" to={routes.loginPage}>{'تسجيل الدخول'}</Link>
                         </li >
 
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <a className="nav-link" href="{{ route('register') }}">{'تسجيل'}</a>
-                        </li>
+                        </li> */}
                     </>
                 )
             }
@@ -72,7 +72,7 @@ function TopMenue(props) {
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar navbar-expand-md navbar-light bg-white shadow-sm">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to={routes.dashboard}>منظومة الموارد البشرية</Link>
 
@@ -80,7 +80,7 @@ function TopMenue(props) {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        <ul className="navbar-nav mr-auto mb-2 mb-lg-0">
 
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
@@ -167,9 +167,14 @@ function TopMenue(props) {
                                 </ul>
                             </li>
 
+
+                        </ul>
+
+                        <ul className="navbar-nav ml-auto mb-2 mb-lg-0">
                             <AuthComponent {...props} />
 
                         </ul>
+
                     </div>
 
 

@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Filters\DocumentFilters;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Document extends Model
 {
@@ -14,5 +15,9 @@ class Document extends Model
     public function documentable()
     {
         return $this->morphTo();
+    }
+    public function scopeFilter($query, DocumentFilters $filters)
+    {
+        return $filters->apply($query);
     }
 }

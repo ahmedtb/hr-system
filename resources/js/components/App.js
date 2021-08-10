@@ -21,6 +21,7 @@ import CreateCourse from './course/CourseCreate'
 import CreateProgram from './program/CreateProgram'
 import JobCreate from './job/JobCreate'
 import UnitCreate from './Unit/UnitCreate'
+import DocumentCreate from './Document/DocumentCreate'
 
 import ConductInterviewAssessment from './assessments/interview/ConductInterViewAssessment'
 import ConductTrialPeriodAssessment from './assessments/trialPeriod/ConductTrialPeriodAssessment'
@@ -66,7 +67,7 @@ class App extends Component {
                 <Provider store={store}>
                     <TopMenue />
 
-                    <div>
+                    <main className="container">
                         <Switch>
 
 
@@ -83,7 +84,9 @@ class App extends Component {
                             <Route exact path={routes.createCourse} component={CreateCourse} />
                             <Route exact path={routes.jobCreate} component={JobCreate} />
                             <Route exact path={routes.unitCreate} component={UnitCreate} />
+                            {/* <Route exact path={routes.DocumentCreate} component={DocumentCreate} /> */}
 
+                            
                             <Route exact path={routes.conductInterviewAssessment} component={ConductInterviewAssessment} />
                             <Route exact path={routes.conductTrialPeriodAssessment} component={ConductTrialPeriodAssessment} />
                             <Route exact path={routes.conductTrainingPeriodAssessment} component={ConductTrainingPeriodAssessment} />
@@ -126,7 +129,7 @@ class App extends Component {
 
 
                         </Switch>
-                    </div>
+                    </main>
                 </Provider>
 
             </BrowserRouter>

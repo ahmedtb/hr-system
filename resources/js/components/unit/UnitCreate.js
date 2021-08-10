@@ -44,36 +44,42 @@ export default function JobCreate() {
 
             <div className="card-body">
                 <div className="row align-items-start justify-content-center">
-
-                    <div className="col-5 border rounded m-2 p-1">
-                        <label >اختر رئيس الوحدة من الموظفيين</label>
-                        <select className="form-control" onChange={(e) => sethead_id(e.target.value)} >
-                            <option >قائمة الموظفيين</option>
-                            {employees.map((employee, index) => (
-                                <option key={index} value={employee.id}>{employee.name}</option>
-                            ))}
-                        </select>
+                    <div className="col-2 p-2 border rounded m-2 text-center">
+                        <label className="">اضافة صورة رمزية للوحدة</label>
+                        <img height='100' onClick={() => { }} src={'/css/unitIcon.jpg'} />
                     </div>
+                    <div className="col-10 row">
 
-                    <div className="col-5 border rounded m-2 p-1">
-                        <label >تسمية الوحدة الادارية</label>
-                        <input className="form-control" onChange={(e) => setname(e.target.value)} type="text" />
-                    </div>
+                        <div className="col-5 border rounded m-2 p-1">
+                            <label >اختر رئيس الوحدة من الموظفيين</label>
+                            <select className="form-control" onChange={(e) => sethead_id(e.target.value)} >
+                                <option >قائمة الموظفيين</option>
+                                {employees.map((employee, index) => (
+                                    <option key={index} value={employee.id}>{employee.name}</option>
+                                ))}
+                            </select>
+                        </div>
 
-                    <div className="col-5 border rounded m-2 p-1">
-                        <label >الغرض من الوحدة الادارية</label>
-                        <textarea className="form-control" onChange={(e) => setpurpose(e.target.value)} rows="4" cols="50" />
-                    </div>
+                        <div className="col-5 border rounded m-2 p-1">
+                            <label >تسمية الوحدة الادارية</label>
+                            <input className="form-control" onChange={(e) => setname(e.target.value)} type="text" />
+                        </div>
+
+                        <div className="col-5 border rounded m-2 p-1">
+                            <label >الغرض من الوحدة الادارية</label>
+                            <textarea className="form-control" onChange={(e) => setpurpose(e.target.value)} rows="4" cols="50" />
+                        </div>
 
 
-                    <div className="col-5 border rounded m-2 p-1">
-                        <label >الوحدة الادارية التي تتبعها</label>
-                        <select className="form-control" onChange={(e) => setparent_id(e.target.value)} >
-                            <option >يجب اختيار الوحدة الادارية العليا</option>
-                            {units.map((unit, index) => (
-                                <option key={index} value={unit.id}>{unit.name}</option>
-                            ))}
-                        </select>
+                        <div className="col-5 border rounded m-2 p-1">
+                            <label >الوحدة الادارية التي تتبعها</label>
+                            <select className="form-control" onChange={(e) => setparent_id(e.target.value)} >
+                                <option >يجب اختيار الوحدة الادارية العليا</option>
+                                {units.map((unit, index) => (
+                                    <option key={index} value={unit.id}>{unit.name}</option>
+                                ))}
+                            </select>
+                        </div>
                     </div>
 
 

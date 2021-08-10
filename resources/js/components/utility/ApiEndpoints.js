@@ -21,6 +21,8 @@ export default {
     createCoachForm: '/api/coach',
     createProgramForm: '',
     createProgram: '/api/program',
+    createDocument: '/api/document',
+
 
     createEmployeeForm: '/api/createEmployeeForm',
     createEmployee: '/api/createEmployee',
@@ -62,6 +64,7 @@ export default {
     employeeIndex: '/api/employee/index',
     unitIndex: '/api/unit/index',
     jobIndex: '/api/job/index',
+    documentIndex: '/api/document/index',
 
     getCourse: '/api/course/:id',
     getProgram: '/api/program/:id',
