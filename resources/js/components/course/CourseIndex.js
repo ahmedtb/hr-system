@@ -7,6 +7,7 @@ import CoursesTable from '../partials/CoursesTable';
 import ScheduleDiagram from './components/ScheduleDiagram'
 import moment from 'moment'
 import Pagination from '../utility/Pagination';
+import { NumberFilter, TrainingProgramFilter, ScopeFilter, DateFilter } from '../components/Filters'
 
 function CoursesViewerAndFilter(props) {
     const [courses, setcourses] = React.useState([])
@@ -15,8 +16,9 @@ function CoursesViewerAndFilter(props) {
     const [params, setparams] = React.useState(null)
 
     async function fetchPage(link = ApiEndpoints.courseIndex, params = null) {
-        axios.get(link, { params: params }).then((response) => {
+        axios.get(link, { params: { ...params, page_size: 5 } }).then((response) => {
             setcourses(response.data.data)
+            console.log(response.data)
             setparams(params)
             if (response.data.links) { setlinks(response.data.links) } else setlinks(null)
         }).catch((error) => logError(error))
@@ -44,10 +46,30 @@ function CoursesViewerAndFilter(props) {
                                     </div>
                                     <div className="modal-body row">
 
-                                        <button type="button" className={(params?.resumed == 'true') ? "btn btn-success mx-2 my-1" : "btn btn-info mx-2 my-1"} onClick={() => fetchPage(ApiEndpoints.courseIndex, { resumed: 'true' })}>الدورات المستانفة</button>
-                                        <button type="button" className={(params?.planned == 'true') ? "btn btn-success mx-2 my-1" : "btn btn-info mx-2 my-1"} onClick={() => fetchPage(ApiEndpoints.courseIndex, { planned: 'true' })}>الدورات المخطط لها</button>
-                                        <button type="button" className={(params?.done == 'true') ? "btn btn-success mx-2 my-1" : "btn btn-info mx-2 my-1"} onClick={() => fetchPage(ApiEndpoints.courseIndex, { done: 'true' })}>الدورات المنتهية</button><br />
-                                        <button type="button" className={(params?.canceled == 'true') ? "btn btn-success mx-2 my-1" : "btn btn-info mx-2 my-1"} onClick={() => fetchPage(ApiEndpoints.courseIndex, { canceled: 'true' })}>الدورات الملغية</button><br />
+                                         <ScopeFilter
+                                            params={params}
+                                            fetchPage={(newparams) => fetchPage(ApiEndpoints.courseIndex, newparams)}
+                                            property={'planned'}
+                                            label={'الدورات المخطط لها'}
+                                        />
+                                        <ScopeFilter
+                                            params={params}
+                                            fetchPage={(newparams) => fetchPage(ApiEndpoints.courseIndex, newparams)}
+                                            property={'done'}
+                                            label={'الدورات المنتهية'}
+                                        />
+                                        <ScopeFilter
+                                            params={params}
+                                            fetchPage={(newparams) => fetchPage(ApiEndpoints.courseIndex, newparams)}
+                                            property={'canceled'}
+                                            label={'الدورات الملغية'}
+                                        />
+                                        <ScopeFilter
+                                            params={params}
+                                            fetchPage={(newparams) => fetchPage(ApiEndpoints.courseIndex, newparams)}
+                                            property={'resumed'}
+                                            label={'الدورات المستانفة'}
+                                        />
                                     </div>
                                     <div className="modal-footer">
                                         <button type="button" className="btn btn-secondary" data-dismiss="modal">اغلاق</button>
@@ -56,27 +78,27 @@ function CoursesViewerAndFilter(props) {
                             </div>
                         </div>
 
-                        <div className="border rounded p-1 mx-2">
-                            <div className="d-flex flex-row my-2 align-items-center">
-                                <label>تاريخ بدء</label><br />
-                                <input className="form-control ml-1" type="date" onChange={(e) => setstart_date(e.target.value)} /><br />
-                                <button className="form-control btn btn-info ml-1" onClick={() => {
-                                    let params = Object.assign({},
-                                        start_date === null ? null : { start_date },
-                                    )
-                                    fetchPage(ApiEndpoints.courseIndex, params)
-                                }}>فلترة</button>
-                            </div>
-
-                        </div>
+                        <DateFilter
+                            params={params}
+                            fetchPage={(newparams) => fetchPage(ApiEndpoints.courseIndex, newparams)}
+                            property={'start_date'}
+                            label={'تاريخ البدء'}
+                        />
+                        <TrainingProgramFilter
+                            params={params}
+                            fetchPage={(newparams) => fetchPage(ApiEndpoints.courseIndex, newparams)}
+                            property={'training_program_id'}
+                            label={'برنامج الدورة'}
+                        />
 
                     </div>
+
+                    <CoursesTable courses={courses} />
 
                     <Pagination
                         fetchPage={fetchPage}
                         links={links}
                     />
-                    <CoursesTable courses={courses} />
                 </div>
             </div>
         </>

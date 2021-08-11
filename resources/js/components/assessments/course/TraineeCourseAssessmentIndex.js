@@ -6,7 +6,7 @@ import logError from '../../utility/logError'
 import TraineeCourseAssessmentsTable from './components/TraineeCourseAssessmentsTable'
 import { Link } from 'react-router-dom'
 import Pagination from '../../utility/Pagination'
-
+import { EmployeeFilter } from '../../components/Filters'
 function Filters(props) {
     const fetchPage = props.fetchPage
     const params = props.params
@@ -49,8 +49,14 @@ function Filters(props) {
                 </div>
             </div>
 
+            <EmployeeFilter
+                params={params}
+                fetchPage={(newparams) => fetchPage(ApiEndpoints.getTraineeCourses, newparams)}
+                property={'employee_id'}
+                label={'المتدرب'}
+            />
 
-            <div className="border rounded p-1 mx-2">
+            {/* <div className="border rounded p-1 mx-2">
                 <div className="d-flex flex-row my-2 align-items-center">
                     <strong>تقييمات الموظف:</strong><br />
                     <select className="form-control" onChange={(e) => setemployee_id(e.target.value)} name="employee_id">
@@ -70,7 +76,7 @@ function Filters(props) {
                     }}>ترشيح</button>
                 </div>
 
-            </div>
+            </div> */}
         </div>
 
     )
@@ -118,7 +124,7 @@ export default function TraineeCourseAssessmentIndex() {
 
 
                 <div className="card-body">
-                    <Filters fetchPage={fetchPage} params={params}/>
+                    <Filters fetchPage={fetchPage} params={params} />
                     <div className="row justify-content-center">
 
                         <div className="col-12">

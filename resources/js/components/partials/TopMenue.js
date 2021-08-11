@@ -146,7 +146,7 @@ function TopMenue(props) {
                                     التقيمات
                                 </a>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <Link className="dropdown-item" to={routes.AssessmentsIndex}>قائمة التقييمات المعبئة</Link>
+                                    {/* <Link className="dropdown-item" to={routes.AssessmentsIndex}>قائمة التقييمات المعبئة</Link> */}
                                     <Link className="dropdown-item" to={routes.TraineeCourseAssessmentIndex}>تقييمات المتدربيين لدورات</Link>
                                     <Link className="dropdown-item" to={routes.CoachCourseAssessmentIndex}>تقييمات المدربيين للدورات</Link>
                                     <Link className="dropdown-item" to={routes.TrainingPeriodAssessmentIndex}>تقييمات المظفيين في الفترة التدريب</Link>

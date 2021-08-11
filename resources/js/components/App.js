@@ -38,7 +38,7 @@ import TrainingPeriodAssessmentIndex from './assessments/trainingPeriod/Training
 import FormStructuresIndex from './formStructure/FormStructuresIndex'
 import FormsIndex from './form/FormsIndex'
 import CoachIndex from './coach/CoachIndex'
-import AssessmentsIndex from './assessments/Index'
+// import AssessmentsIndex from './assessments/Index'
 import ProgramIndex from './program/ProgramIndex'
 import CourseIndex from './course/CourseIndex'
 import EmployeeIndex from './employee/EmployeeIndex'
@@ -100,7 +100,7 @@ class App extends Component {
                             <Route exact path={routes.TraineeCourseAssessmentIndex} component={TraineeCourseAssessmentIndex} />
 
                             <Route exact path={routes.programIndex} component={ProgramIndex} />
-                            <Route exact path={routes.AssessmentsIndex} component={AssessmentsIndex} />
+                            {/* <Route exact path={routes.AssessmentsIndex} component={AssessmentsIndex} /> */}
                             <Route exact path={routes.CoachesList} component={CoachIndex} />
                             <Route exact path={routes.showForms} component={FormsIndex} />
                             <Route exact path={routes.showFormsStructures} component={FormStructuresIndex} />

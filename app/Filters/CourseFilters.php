@@ -23,7 +23,8 @@ class CourseFilters extends Filters
         'employee_id',
         'individual_id',
         'training_program_id',
-        'coach_id'
+        'coach_id',
+        'wentDays',
     ];
 
     protected function start_date($date)
@@ -101,4 +102,5 @@ class CourseFilters extends Filters
             return $query->where('coaches.id', $id);
         });
     }
+
 }

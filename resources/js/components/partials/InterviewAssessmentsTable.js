@@ -24,9 +24,9 @@ export default function InterviewAssessmetsTable(props) {
     const [dataShow, setdataShow] = React.useState({
         name: { visiblity: true, label: 'اسم الشخص', presentation: (row) => DataPresentation(row, 'name') },
         look: { visiblity: true, label: 'حسن المظهر', presentation: (row) => DataPresentation(row, 'look') },
-        self_introduction: { visiblity: false, label: 'تفديمه لنفسه', presentation: (row) => DataPresentation(row, 'self_introduction') },
-        personality: { visiblity: false, label: 'الشخصية', presentation: (row) => DataPresentation(row, 'personality') },
-        english: { visiblity: false, label: 'اللغة', presentation: (row) => DataPresentation(row, 'english') },
+        self_introduction: { visiblity: true, label: 'تفديمه لنفسه', presentation: (row) => DataPresentation(row, 'self_introduction') },
+        personality: { visiblity: true, label: 'الشخصية', presentation: (row) => DataPresentation(row, 'personality') },
+        english: { visiblity: true, label: 'اللغة', presentation: (row) => DataPresentation(row, 'english') },
         culture: { visiblity: false, label: 'الثقافة', presentation: (row) => DataPresentation(row, 'culture') },
         arabic: { visiblity: false, label: 'اللغة العربية', presentation: (row) => DataPresentation(row, 'arabic') },
         initiative: { visiblity: false, label: 'المبادة', presentation: (row) => DataPresentation(row, 'initiative') },
@@ -62,7 +62,7 @@ export default function InterviewAssessmetsTable(props) {
                         {
                             Object.entries(dataShow).map((data, index) => (
                                 <div key={index} className="border rounded d-flex align-items-center mr-2 my-2 p-1">
-                                    <input className="mr-2" type="checkbox" value={data[0]} onClick={(e) => toggleDataShow(e)} />
+                                    <input className="mr-2" readOnly checked={data[1].visiblity} type="checkbox" value={data[0]} onClick={(e) => toggleDataShow(e)} />
                                     <label className="" >
                                         {data[1].label}
                                     </label>
