@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Filters\TrainingProgramFilters;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class TrainingProgram extends Model
 {
@@ -23,5 +24,11 @@ class TrainingProgram extends Model
     public function documents()
     {
         return $this->morphMany(Document::class, 'documentable');
+    }
+
+    
+    public function scopeFilter($query, TrainingProgramFilters $filters)
+    {
+        return $filters->apply($query);
     }
 }

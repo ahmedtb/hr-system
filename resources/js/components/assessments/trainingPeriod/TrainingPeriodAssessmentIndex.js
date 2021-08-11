@@ -88,11 +88,11 @@ export default function TrainingPeriodAssessmentIndex() {
 
 
                 <div className="row justify-content-center">
-                    <Pagination fetchPage={fetchPage} links={links} />
                     <div className="col-12">
 
                         <TrainingPeriodAssessmentsTable trainingPeriods={trainingPeriods} />
                     </div>
+                    <Pagination fetchPage={fetchPage} links={links} />
 
                 </div>
 

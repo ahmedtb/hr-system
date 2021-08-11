@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\TrainingProgram;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Filters\TrainingProgramFilters;
 
 class ProgramsController extends Controller
 {
@@ -15,11 +16,13 @@ class ProgramsController extends Controller
         return TrainingProgram::where('id', $id)->first();
     }
 
-    public function index(Request $request)
+    public function index(TrainingProgramFilters $filters, Request $request)
     {
-        return TrainingProgram::paginate($request->get('page_size') ?? 10);
+        return TrainingProgram::filter($filters)
+            ->paginate($request->input('page_size') ?? 10)
+            ->appends(request()->except('page'));
     }
-    
+
     public function create(Request $request)
     {
         // return $request->all();

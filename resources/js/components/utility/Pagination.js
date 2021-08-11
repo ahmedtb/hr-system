@@ -5,7 +5,7 @@ export default function Pagination(props) {
     const links = props.links
 
     return (
-        <nav aria-label="Page navigation example">
+        <nav className="" aria-label="Page navigation example">
             <ul className="pagination">
 
                 {

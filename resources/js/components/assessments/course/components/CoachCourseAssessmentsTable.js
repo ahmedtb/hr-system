@@ -22,9 +22,9 @@ export default function CoachCourseAssessmentsTable(props) {
     const [dataShow, setdataShow] = React.useState({
         training_course: { visiblity: true, label: 'عنوان البرنامج التدريبي', presentation: (row) => DataPresentation(row, 'training_course') },
         trainees_discipline: { visiblity: true, label: 'انضباط المتدربين في الحضور والانصراف  ', presentation: (row) => DataPresentation(row, 'trainees_discipline') },
-        trainees_interaction: { visiblity: false, label: 'تفاعل المتدربين أثناء المحاضرة', presentation: (row) => DataPresentation(row, 'trainees_interaction') },
-        congruence_with_content: { visiblity: false, label: 'انسجام المتدربين مع مادة الدورة', presentation: (row) => DataPresentation(row, 'congruence_with_content') },
-        trainees_cooperation: { visiblity: false, label: 'مدى تعاون المتدربين', presentation: (row) => DataPresentation(row, 'trainees_cooperation') },
+        trainees_interaction: { visiblity: true, label: 'تفاعل المتدربين أثناء المحاضرة', presentation: (row) => DataPresentation(row, 'trainees_interaction') },
+        congruence_with_content: { visiblity: true, label: 'انسجام المتدربين مع مادة الدورة', presentation: (row) => DataPresentation(row, 'congruence_with_content') },
+        trainees_cooperation: { visiblity: true, label: 'مدى تعاون المتدربين', presentation: (row) => DataPresentation(row, 'trainees_cooperation') },
         syllabus_understanding: { visiblity: false, label: 'استيعاب منهج الدورة', presentation: (row) => DataPresentation(row, 'syllabus_understanding') },
         hall_preparation: { visiblity: false, label: 'تجهيزات القاعة (الإضاءة؛ التهوية؛ وسائل الإيضاح .. إلخ)', presentation: (row) => DataPresentation(row, 'hall_preparation') },
         reception_supervision: { visiblity: false, label: 'القاعة التدريبية  وتجهيزاتها (الإضاءة؛ التهوية؛ وسائل الإيضاح ... إلخ )', presentation: (row) => DataPresentation(row, 'reception_supervision') },
@@ -52,7 +52,7 @@ export default function CoachCourseAssessmentsTable(props) {
                         {
                             Object.entries(dataShow).map((data, index) => (
                                 <div key={index} className="border rounded d-flex align-items-center mr-2 my-2 p-1">
-                                    <input className="mr-2" type="checkbox" value={data[0]} onClick={(e) => toggleDataShow(e)} />
+                                    <input className="mr-2" readOnly checked={data[1].visiblity} type="checkbox" value={data[0]} onClick={(e) => toggleDataShow(e)} />
                                     <label className="" >
                                         {data[1].label}
                                     </label>

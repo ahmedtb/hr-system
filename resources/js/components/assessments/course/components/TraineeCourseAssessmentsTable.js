@@ -32,9 +32,9 @@ export default function TraineeCourseAssessmentsTable(props) {
         training_course: { visiblity: true, label: 'عنوان البرنامج التدريبي', presentation: (row) => DataPresentation(row, 'training_course') },
         trainee: { visiblity: true, label: 'المتدرب', presentation: (row) => DataPresentation(row, 'trainee') },
         coach_understanding: { visiblity: true, label: 'إلمام المدرب بمواضيع البرنامج التدريبي', presentation: (row) => DataPresentation(row, 'coach_understanding') },
-        coach_communication: { visiblity: false, label: 'قدرة المدرب على توصيل المعلومات', presentation: (row) => DataPresentation(row, 'coach_communication') },
-        presentation: { visiblity: false, label: 'طريقة تنظيم العرض (من حيث الوضوح والكفاية )', presentation: (row) => DataPresentation(row, 'presentation') },
-        coach_cooperation: { visiblity: false, label: 'مدى تعاون وتفاعل المدرب مع المتدربين', presentation: (row) => DataPresentation(row, 'coach_cooperation') },
+        coach_communication: { visiblity: true, label: 'قدرة المدرب على توصيل المعلومات', presentation: (row) => DataPresentation(row, 'coach_communication') },
+        presentation: { visiblity: true, label: 'طريقة تنظيم العرض (من حيث الوضوح والكفاية )', presentation: (row) => DataPresentation(row, 'presentation') },
+        coach_cooperation: { visiblity: true, label: 'مدى تعاون وتفاعل المدرب مع المتدربين', presentation: (row) => DataPresentation(row, 'coach_cooperation') },
         program_quality: { visiblity: false, label: 'جودة برنامج التدريب', presentation: (row) => DataPresentation(row, 'program_quality') },
         technical_preparation: { visiblity: false, label: 'التجهيزات الفنية للدورة', presentation: (row) => DataPresentation(row, 'technical_preparation') },
         training_hall_preparation: { visiblity: false, label: 'القاعة التدريبية  وتجهيزاتها (الإضاءة؛ التهوية؛ وسائل الإيضاح ... إلخ )', presentation: (row) => DataPresentation(row, 'training_hall_preparation') },
@@ -64,7 +64,7 @@ export default function TraineeCourseAssessmentsTable(props) {
                         {
                             Object.entries(dataShow).map((data, index) => (
                                 <div key={index} className="border rounded d-flex align-items-center mr-2 my-2 p-1">
-                                    <input className="mr-2" type="checkbox" value={data[0]} onClick={(e) => toggleDataShow(e)} />
+                                    <input className="mr-2" readOnly checked={data[1].visiblity} type="checkbox" value={data[0]} onClick={(e) => toggleDataShow(e)} />
                                     <label className="" >
                                         {data[1].label}
                                     </label>

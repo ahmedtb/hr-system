@@ -120,12 +120,11 @@ export default function TraineeCourseAssessmentIndex() {
                 <div className="card-body">
                     <Filters fetchPage={fetchPage} params={params}/>
                     <div className="row justify-content-center">
-                        <Pagination fetchPage={fetchPage} links={links} />
 
                         <div className="col-12">
-
                             <TraineeCourseAssessmentsTable traineeCourses={traineeCourses} />
                         </div>
+                        <Pagination fetchPage={fetchPage} links={links} />
                     </div>
                 </div>
 

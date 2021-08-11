@@ -75,8 +75,8 @@ export default function CoachCourseAssessmentIndex() {
                     </div>
 
                     <div className="">
-                        <Pagination fetcPage={fetchPage} links={links} />
                         <CoachCourseAssessmentsTable coachCourses={coachCourses} />
+                        <Pagination fetcPage={fetchPage} links={links} />
 
                     </div>
                 </div>

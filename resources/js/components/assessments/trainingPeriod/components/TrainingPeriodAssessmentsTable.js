@@ -16,12 +16,12 @@ export default function TrainingPeriodAssessmentsTable(props) {
     const trainingPeriods = props.trainingPeriods
 
     const [dataShow, setdataShow] = React.useState({
-        employee_id: { visiblity: false, label: 'رقم الموظف', presentation: (row) => DataPresentation(row, 'employee_id') },
-        reporter_id: { visiblity: false, label: 'رقم معد التقرير', presentation: (row) => DataPresentation(row, 'reporter_id') },
-        training_begin_date: { visiblity: false, label: 'بداية الفترة التجريبية', presentation: (row) => DataPresentation(row, 'training_begin_date') },
-        training_end_date: { visiblity: false, label: 'نهاية الفترة التجريبية', presentation: (row) => DataPresentation(row, 'training_end_date') },
-        excitement: { visiblity: false, label: 'الحماس', presentation: (row) => DataPresentation(row, 'excitement') },
-        final_degree: { visiblity: false, label: 'الدرجة النهائية', presentation: (row) => DataPresentation(row, 'final_degree') },
+        employee_id: { visiblity: true, label: 'رقم الموظف', presentation: (row) => DataPresentation(row, 'employee_id') },
+        reporter_id: { visiblity: true, label: 'رقم معد التقرير', presentation: (row) => DataPresentation(row, 'reporter_id') },
+        training_begin_date: { visiblity: true, label: 'بداية الفترة التجريبية', presentation: (row) => DataPresentation(row, 'training_begin_date') },
+        training_end_date: { visiblity: true, label: 'نهاية الفترة التجريبية', presentation: (row) => DataPresentation(row, 'training_end_date') },
+        excitement: { visiblity: true, label: 'الحماس', presentation: (row) => DataPresentation(row, 'excitement') },
+        final_degree: { visiblity: true, label: 'الدرجة النهائية', presentation: (row) => DataPresentation(row, 'final_degree') },
         ability_to_improve: { visiblity: false, label: 'القدرة على التعلم والتطور', presentation: (row) => DataPresentation(row, 'ability_to_improve') },
         guidance_acceptance: { visiblity: false, label: 'تقبل واستيعاب التوجيه', presentation: (row) => DataPresentation(row, 'guidance_acceptance') },
         handling_technology: { visiblity: false, label: 'التعامل مع التقنية', presentation: (row) => DataPresentation(row, 'handling_technology') },
@@ -61,7 +61,7 @@ export default function TrainingPeriodAssessmentsTable(props) {
                     {
                         Object.entries(dataShow).map((data, index) => (
                             <div key={index} className="border rounded d-flex align-items-center mr-2 my-2 p-1">
-                                <input className="mr-2" type="checkbox" value={data[0]} onClick={(e) => toggleDataShow(e)} />
+                                <input className="mr-2" readOnly checked={data[1].visiblity} type="checkbox" value={data[0]} onClick={(e) => toggleDataShow(e)} />
                                 <label className="" >
                                     {data[1].label}
                                 </label>

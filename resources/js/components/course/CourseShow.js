@@ -19,6 +19,8 @@ export default function CourseShow(props) {
         try {
             const response = await axios.get(ApiEndpoints.getCourse?.replace(':id', id))
             setcourse(response.data.course)
+            console.log('course',response.data.course)
+
             setattendances(response.data.attendances)
         } catch (err) {
             logError(err)
