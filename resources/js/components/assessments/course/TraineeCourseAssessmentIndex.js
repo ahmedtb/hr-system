@@ -6,23 +6,10 @@ import logError from '../../utility/logError'
 import TraineeCourseAssessmentsTable from './components/TraineeCourseAssessmentsTable'
 import { Link } from 'react-router-dom'
 import Pagination from '../../utility/Pagination'
-import { EmployeeFilter } from '../../components/Filters'
+import { EmployeeFilter, OrderByDescFilter, TextFilter } from '../../components/Filters'
 function Filters(props) {
     const fetchPage = props.fetchPage
     const params = props.params
-
-    const [employees, setemployees] = React.useState(null)
-    const [employee_id, setemployee_id] = React.useState(null)
-
-    async function getEmployees() {
-        axios.get(ApiEndpoints.getEmployees).then((response) => {
-            setemployees(response.data)
-        }).catch((err) => logError(err))
-    }
-
-    React.useEffect(() => {
-        getEmployees()
-    }, [])
 
     return (
 
@@ -39,8 +26,66 @@ function Filters(props) {
                         </div>
                         <div className="modal-body row">
 
-                            <button type="button" className={(params?.orderByDesc == 'coach_understanding') ? "btn btn-success mx-2 my-1" : "btn btn-info mx-2 my-1"} onClick={() => fetchPage(ApiEndpoints.getTraineeCourses, { orderByDesc: 'coach_understanding' })}>فهم المدرب</button>
-
+                            <OrderByDescFilter
+                                params={params}
+                                fetchPage={(newparams) => fetchPage(ApiEndpoints.getTraineeCourses, newparams)}
+                                property={'coach_understanding'}
+                                label={'فهم المدرب'}
+                            />
+                            <OrderByDescFilter
+                                params={params}
+                                fetchPage={(newparams) => fetchPage(ApiEndpoints.getTraineeCourses, newparams)}
+                                property={'coach_communication'}
+                                label={'قدرة المدرب على توصيل المعلومات'}
+                            />
+                            <OrderByDescFilter
+                                params={params}
+                                fetchPage={(newparams) => fetchPage(ApiEndpoints.getTraineeCourses, newparams)}
+                                property={'طريقة تنظيم العرض'}
+                                label={'presentation'}
+                            />
+                            <OrderByDescFilter
+                                params={params}
+                                fetchPage={(newparams) => fetchPage(ApiEndpoints.getTraineeCourses, newparams)}
+                                property={'coach_cooperation'}
+                                label={'مدى تعاون وتفاعل المدرب مع المتدربين'}
+                            />
+                            <OrderByDescFilter
+                                params={params}
+                                fetchPage={(newparams) => fetchPage(ApiEndpoints.getTraineeCourses, newparams)}
+                                property={'program_quality'}
+                                label={'جودة برنامج التدريب'}
+                            />
+                            <OrderByDescFilter
+                                params={params}
+                                fetchPage={(newparams) => fetchPage(ApiEndpoints.getTraineeCourses, newparams)}
+                                property={'technical_preparation'}
+                                label={'التجهيزات الفنية للدورة	'}
+                            />
+                            <OrderByDescFilter
+                                params={params}
+                                fetchPage={(newparams) => fetchPage(ApiEndpoints.getTraineeCourses, newparams)}
+                                property={'training_hall_preparation'}
+                                label={'القاعة التدريبية وتجهيزاتها'}
+                            />
+                            <OrderByDescFilter
+                                params={params}
+                                fetchPage={(newparams) => fetchPage(ApiEndpoints.getTraineeCourses, newparams)}
+                                property={'reception'}
+                                label={'لاستقبال و الإجراءات التنظيمية'}
+                            />
+                            <OrderByDescFilter
+                                params={params}
+                                fetchPage={(newparams) => fetchPage(ApiEndpoints.getTraineeCourses, newparams)}
+                                property={'hospitality_and_course_breaks'}
+                                label={'الضيافة وفترات الراحة بالدورة'}
+                            />
+                            <OrderByDescFilter
+                                params={params}
+                                fetchPage={(newparams) => fetchPage(ApiEndpoints.getTraineeCourses, newparams)}
+                                property={'training_unit_response'}
+                                label={'تعاون وتجاوب وحدة التدريب'}
+                            />
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">اغلاق</button>
@@ -56,27 +101,12 @@ function Filters(props) {
                 label={'المتدرب'}
             />
 
-            {/* <div className="border rounded p-1 mx-2">
-                <div className="d-flex flex-row my-2 align-items-center">
-                    <strong>تقييمات الموظف:</strong><br />
-                    <select className="form-control" onChange={(e) => setemployee_id(e.target.value)} name="employee_id">
-                        <option value=''>select employee name</option>
-                        {
-                            employees?.map((employee, index) => (
-                                <option key={index} value={employee.id}>{employee.name}</option>
-                            ))
-                        }
-                    </select>
-
-                    <button type="button" className="btn btn-primary" onClick={() => {
-                        let params = Object.assign({},
-                            employee_id === null ? null : { employee_id },
-                        )
-                        fetchPage(ApiEndpoints.getTraineeCourses, params)
-                    }}>ترشيح</button>
-                </div>
-
-            </div> */}
+            <TextFilter
+                params={params}
+                fetchPage={(newparams) => fetchPage(ApiEndpoints.getTraineeCourses, newparams)}
+                property={'course_title'}
+                label={'عنوان البرنامج التدريبي	'}
+            />
         </div>
 
     )

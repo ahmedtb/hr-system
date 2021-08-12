@@ -3,14 +3,18 @@
 namespace App\Http\Controllers\API;
 
 use App\Models\Unit;
+use App\Filters\UnitFilters;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class UnitsController extends Controller
 {
-    public function index()
+    public function index(UnitFilters $filters, Request $request)
     {
-        return Unit::with('parent')->paginate(5);
+        return Unit::filter($filters)
+            ->with('parent')
+            ->paginate($request->input('page_size') ?? 10)
+            ->appends(request()->except('page'));
     }
 
     public function show($id)

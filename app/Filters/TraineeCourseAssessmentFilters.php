@@ -15,8 +15,8 @@ class TraineeCourseAssessmentFilters extends Filters
         'coach_understanding',
         'orderByDesc',
         'orderByAsc',
-        'employee_id'
-
+        'employee_id',
+        'course_title'
     ];
 
     /**
@@ -44,5 +44,11 @@ class TraineeCourseAssessmentFilters extends Filters
     {
         return $this->builder->where('trainee_id', $id)->where('trainee_type', Employee::class);
     }
-
+        
+    protected function course_title($course_title)
+    {
+        return $this->builder->whereHas('TrainingCourse', function ($query) use ($course_title) {
+            return $query->where('title', 'LIKE', "%{$course_title}%");
+        });
+    }
 }

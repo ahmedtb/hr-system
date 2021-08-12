@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Filters\UnitFilters;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Unit extends Model
 {
@@ -40,5 +41,10 @@ class Unit extends Model
     public function employees()
     {
         return $this->hasManyThrough(Employee::class, Job::class);
+    }
+    
+    public function scopeFilter($query, UnitFilters $filters)
+    {
+        return $filters->apply($query);
     }
 }

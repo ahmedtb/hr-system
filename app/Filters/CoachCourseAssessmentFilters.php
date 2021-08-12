@@ -12,6 +12,7 @@ class CoachCourseAssessmentFilters extends Filters
     protected $filters = [
         'trainees_discipline',
         'orderByDesc',
+        'note',
     ];
 
     /**
@@ -28,5 +29,10 @@ class CoachCourseAssessmentFilters extends Filters
     protected function orderByDesc($trait)
     {
         return $this->builder->orderBy($trait . '->rating', 'DESC');
+    }
+    
+    protected function note($note)
+    {
+        return $this->builder->where('note', 'LIKE', "%{$note}%");
     }
 }

@@ -13,6 +13,11 @@ function DataPresentation(row, property) {
 
         return moment(row.created_at).format('yyyy-MM-DD')
     }
+    else if (property == 'note') {
+
+        return row[property]
+    }
+
 
     return row[property].rating
 }
@@ -28,9 +33,10 @@ export default function CoachCourseAssessmentsTable(props) {
         syllabus_understanding: { visiblity: false, label: 'استيعاب منهج الدورة', presentation: (row) => DataPresentation(row, 'syllabus_understanding') },
         hall_preparation: { visiblity: false, label: 'تجهيزات القاعة (الإضاءة؛ التهوية؛ وسائل الإيضاح .. إلخ)', presentation: (row) => DataPresentation(row, 'hall_preparation') },
         reception_supervision: { visiblity: false, label: 'القاعة التدريبية  وتجهيزاتها (الإضاءة؛ التهوية؛ وسائل الإيضاح ... إلخ )', presentation: (row) => DataPresentation(row, 'reception_supervision') },
-        hospitality_and_course_breaks: { visiblity: false, label: 'الاستقبال والإشراف', presentation: (row) => DataPresentation(row, 'hospitality_and_course_breaks') },
-        training_department_cooperation: { visiblity: false, label: 'الضيافة وفترات الراحة بالدورة', presentation: (row) => DataPresentation(row, 'training_department_cooperation') },
-        note: { visiblity: false, label: 'تعاون وتجاوب وحدة التدريب', presentation: (row) => DataPresentation(row, 'note') },
+        reception_supervision: { visiblity: false, label: 'الاستقبال والإشراف', presentation: (row) => DataPresentation(row, 'hospitality_and_course_breaks') },
+        hospitality_and_course_breaks: { visiblity: false, label: 'الضيافة وفترات الراحة بالدورة', presentation: (row) => DataPresentation(row, 'training_department_cooperation') },
+        training_department_cooperation: { visiblity: false, label: 'تعاون وتجاوب وحدة التدريب', presentation: (row) => DataPresentation(row, 'note') },
+        note: { visiblity: false, label: 'ملاحظة التقييم', presentation: (row) => DataPresentation(row, 'note') },
         created_at: { visiblity: false, label: 'تاريخ الانشاء', presentation: (row) => DataPresentation(row, 'created_at') },
     })
 
@@ -76,7 +82,7 @@ export default function CoachCourseAssessmentsTable(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    
+
                     {coachCourses?.map((coachCourse, index) => (
                         <tr key={index}>
                             <td>{coachCourse.id}</td>

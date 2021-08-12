@@ -7,12 +7,11 @@ import CoursesTable from '../partials/CoursesTable';
 import ScheduleDiagram from './components/ScheduleDiagram'
 import moment from 'moment'
 import Pagination from '../utility/Pagination';
-import { NumberFilter, TrainingProgramFilter, ScopeFilter, DateFilter } from '../components/Filters'
+import { TextFilter, TrainingProgramFilter, ScopeFilter, DateFilter } from '../components/Filters'
 
 function CoursesViewerAndFilter(props) {
     const [courses, setcourses] = React.useState([])
     const [links, setlinks] = React.useState([])
-    const [start_date, setstart_date] = React.useState(null)
     const [params, setparams] = React.useState(null)
 
     async function fetchPage(link = ApiEndpoints.courseIndex, params = null) {
@@ -83,6 +82,18 @@ function CoursesViewerAndFilter(props) {
                             fetchPage={(newparams) => fetchPage(ApiEndpoints.courseIndex, newparams)}
                             property={'start_date'}
                             label={'تاريخ البدء'}
+                        />
+                        <DateFilter
+                            params={params}
+                            fetchPage={(newparams) => fetchPage(ApiEndpoints.courseIndex, newparams)}
+                            property={'end_date'}
+                            label={'تاريخ انتهاء الدورة'}
+                        />
+                        <TextFilter
+                            params={params}
+                            fetchPage={(newparams) => fetchPage(ApiEndpoints.courseIndex, newparams)}
+                            property={'title'}
+                            label={'عنوان الدورة'}
                         />
                         <TrainingProgramFilter
                             params={params}

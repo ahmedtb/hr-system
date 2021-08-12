@@ -24,7 +24,7 @@ class CourseFilters extends Filters
         'individual_id',
         'training_program_id',
         'coach_id',
-        'wentDays',
+        'title',
     ];
 
     protected function start_date($date)
@@ -103,4 +103,8 @@ class CourseFilters extends Filters
         });
     }
 
+    protected function title($title)
+    {
+        return $this->builder->where('title', 'LIKE', "%{$title}%");
+    }
 }
