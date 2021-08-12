@@ -45,6 +45,7 @@ Route::get('/unitsTree', [ManagmentController::class, 'UnitsTree']);
 Route::post('/job/create', [JobsController::class, 'create']);
 Route::get('/job/index', [JobsController::class, 'index']);
 Route::get('job/{id}', [JobsController::class, 'show']);
+Route::get('getJobs', [JobsController::class, 'getJobs']);
 
 Route::post('/unit/create', [UnitsController::class, 'create']);
 Route::get('/unit/index', [UnitsController::class, 'index']);

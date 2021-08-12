@@ -34,6 +34,7 @@ export default {
     getIndividuals: '/api/getIndividuals',
     getUnits: '/api/getUnits',
     getPrograms: '/api/getPrograms',
+    getJobs: '/api/getJobs',
 
     createInterview: '/api/interview/create',
     createTrialPeriodAssessment: '/api/trialPeriodAssessment/create',

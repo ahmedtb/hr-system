@@ -61,7 +61,7 @@ export function TrainingProgramFilter(props) {
                                 <option
                                     key={index}
                                     value={trainingProgram.id}
-                                    // selected={params?.training_program_id == trainingProgram.id}
+                                // selected={params?.training_program_id == trainingProgram.id}
                                 >
                                     {trainingProgram.title}
                                 </option>
@@ -113,7 +113,7 @@ export function EmployeeFilter(props) {
                                 <option
                                     key={index}
                                     value={employee.id}
-                                    // selected={params?.employee_id == employee.id}
+                                // selected={params?.employee_id == employee.id}
                                 >
                                     {employee.name}
                                 </option>
@@ -123,7 +123,59 @@ export function EmployeeFilter(props) {
 
                     <button type="button" className="btn btn-primary" onClick={() => {
                         let newparams = Object.assign({},
-                            employee_id === null || employee_id === ''  ? { [property ?? 'employee_id']: undefined } : { [property ?? 'employee_id']: employee_id },
+                            employee_id === null || employee_id === '' ? { [property ?? 'employee_id']: undefined } : { [property ?? 'employee_id']: employee_id },
+                        )
+                        fetchPage({ ...params, ...newparams })
+                    }}>ترشيح</button>
+                </div>
+
+            </div>
+        </>
+    )
+}
+
+export function JobFilter(props) {
+    const params = props.params
+    const fetchPage = props.fetchPage
+    const property = props.property
+    const label = props.label
+
+    const [jobs, setjobs] = React.useState(null)
+    const [job_id, setjob_id] = React.useState(null)
+
+    async function getjobs() {
+        axios.get(ApiEndpoints.getJobs).then((response) => {
+            setjobs(response.data)
+        }).catch((err) => logError(err))
+    }
+
+    React.useEffect(() => {
+        getjobs()
+    }, [])
+
+    return (
+        <>
+            <div className="border rounded p-1 mx-2">
+                <div className="d-flex flex-row my-2 align-items-center">
+                    <strong>{label ?? 'ترشيح بالوظيفة'}</strong><br />
+                    <select className="form-control" onChange={(e) => setjob_id(e.target.value)} name="job_id">
+                        <option value={''}>اختر الوظيفة</option>
+                        {
+                            jobs?.map((employee, index) => (
+                                <option
+                                    key={index}
+                                    value={employee.id}
+                                // selected={params?.job_id == employee.id}
+                                >
+                                    {employee.name}
+                                </option>
+                            ))
+                        }
+                    </select>
+
+                    <button type="button" className="btn btn-primary" onClick={() => {
+                        let newparams = Object.assign({},
+                            job_id === null || job_id === '' ? { [property ?? 'job_id']: undefined } : { [property ?? 'job_id']: job_id },
                         )
                         fetchPage({ ...params, ...newparams })
                     }}>ترشيح</button>
@@ -179,6 +231,59 @@ export function DateFilter(props) {
                         )
                         fetchPage({ ...params, ...newparams })
                     }}>فلترة</button>
+                </div>
+
+            </div>
+        </>
+    )
+}
+
+export function TextFilter(props) {
+    const params = props.params
+    const fetchPage = props.fetchPage
+    const property = props.property
+    const label = props.label
+
+    const [text, settext] = React.useState(null)
+
+    return (
+        <>
+            <div className="border rounded p-1 mx-2">
+                <div className="d-flex flex-row my-2 align-items-center">
+                    <label>{label ?? property}</label><br />
+                    <input className="form-control ml-1" type="text" onChange={(e) => settext(e.target.value)} /><br />
+                    <button className="form-control btn btn-info ml-1" onClick={() => {
+                        let newparams = Object.assign({},
+                            text === null ? null : { [property]: text },
+                        )
+                        fetchPage({ ...params, ...newparams })
+                    }}>فلترة</button>
+                </div>
+
+            </div>
+        </>
+    )
+}
+
+export function OrderByDescFilter(props) {
+    const params = props.params
+    const fetchPage = props.fetchPage
+    const property = props.property
+    const label = props.label
+
+    // const [trait, settrait] = React.useState(null)
+
+    return (
+        <>
+            <div className="border rounded p-1 mx-2">
+                <div className="d-flex flex-row my-2 align-items-center">
+                <button
+                        type="button"
+                        className={(params?.orderByDesc == property ) ? "btn btn-success mx-2 my-1" : "btn btn-info mx-2 my-1"}
+                        onClick={() => fetchPage(params['orderByDesc'] == property ? { ...params, orderByDesc: undefined } : { ...params, orderByDesc: property })}
+                    >
+                        {label ?? property}
+                    </button>
                 </div>
 
             </div>

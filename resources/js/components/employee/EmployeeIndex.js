@@ -2,24 +2,24 @@ import React from 'react'
 import axios from 'axios';
 import ApiEndpoints from '../utility/ApiEndpoints'
 import logError from '../utility/logError';
+import Pagination from '../utility/Pagination';
+
 import EmployeesTable from '../partials/EmployeesTable';
+import { TextFilter, JobFilter, OrderByDescFilter, DateFilter } from '../components/Filters';
+
 export default function employeeIndex(props) {
     const [employees, setemployees] = React.useState([])
-    const [nextpage, setnextpage] = React.useState(null)
-    const [prevpage, setprevpage] = React.useState(null)
-    const [links, setlinks] = React.useState([])
 
-    async function fetchPage(link) {
-        axios.get((link) ?? ApiEndpoints.employeeIndex).then((response) => {
+    const [links, setlinks] = React.useState([])
+    const [params, setparams] = React.useState([])
+
+    async function fetchPage(link, params = null) {
+        axios.get((link) ?? ApiEndpoints.employeeIndex,
+            { params: { ...params, page_size: 5 } }
+        ).then((response) => {
             setemployees(response.data.data)
-            if (response.data.next_page_url) {
-                setnextpage(response.data.next_page_url)
-            } else
-                setnextpage(null)
-            if (response.data.prev_page_url) {
-                setprevpage(response.data.prev_page_url)
-            } else
-                setprevpage(null)
+            setparams({ ...params, page_size: 5 })
+            console.log('employee index', response.data)
             if (response.data.links) {
                 setlinks(response.data.links)
             } else
@@ -32,37 +32,63 @@ export default function employeeIndex(props) {
         fetchPage()
     }, [])
 
-    async function nextPage() {
-        fetchPage(nextpage)
-    }
-
-    async function prevPage() {
-        fetchPage(prevpage)
-    }
     return (
         <div className="col-md-12">
             <div className="card">
                 <div className="card-header">قائمة الموظفيين</div>
                 <div className="card-body">
-
-                    <nav aria-label="Page navigation example">
-                        <ul className="pagination">
-                            <li className="page-item">
-                                {(prevpage) ? <button className="page-link" onClick={() => fetchPage(prevpage)}>السابق</button> : null}
-                            </li>
-                            {
-                                links?.map((link, index) => {
-                                    if (link['url'] && index && index != links.length-1)
-                                        return <button key={index} className="page-link" onClick={() => fetchPage(link['url'])}>{link['label']}</button>
-                                })
-                            }
-                            <li className="page-item">
-                                {(nextpage) ? <button className="page-link" onClick={() => fetchPage(nextpage)}>التالي</button> : null}
-                            </li>
-                        </ul>
-                    </nav>
-
+                    <div className="row">
+                        <TextFilter
+                            params={params}
+                            fetchPage={(alteredparams) => fetchPage(ApiEndpoints.employeeIndex, alteredparams)}
+                            property={'name'}
+                            label={'بحث بالاسم'}
+                        />
+                        <JobFilter
+                            params={params}
+                            fetchPage={(alteredparams) => fetchPage(ApiEndpoints.employeeIndex, alteredparams)}
+                            property={'job_id'}
+                            label={'بحث بالوظيفة'}
+                        />
+                        <TextFilter
+                            params={params}
+                            fetchPage={(alteredparams) => fetchPage(ApiEndpoints.employeeIndex, alteredparams)}
+                            property={'phone_number'}
+                            label={'بحث برقم الهاتف'}
+                        />
+                        <OrderByDescFilter
+                            params={params}
+                            fetchPage={(alteredparams) => fetchPage(ApiEndpoints.employeeIndex, alteredparams)}
+                            property={'basic_salary'}
+                            label={'ترتيب بالمرتب'}
+                        />
+                        <OrderByDescFilter
+                            params={params}
+                            fetchPage={(alteredparams) => fetchPage(ApiEndpoints.employeeIndex, alteredparams)}
+                            property={'employment_date'}
+                            label={'ترتيب بتاريخ التوظيف'}
+                        />
+                        <DateFilter
+                            params={params}
+                            fetchPage={(alteredparams) => fetchPage(ApiEndpoints.employeeIndex, alteredparams)}
+                            property={'employment_date'}
+                            label={'فلترة بتاريخ التوظيف'}
+                        />
+                        <TextFilter
+                            params={params}
+                            fetchPage={(alteredparams) => fetchPage(ApiEndpoints.employeeIndex, alteredparams)}
+                            property={'email'}
+                            label={'ترشيح بالبريد'}
+                        />
+                        <TextFilter
+                            params={params}
+                            fetchPage={(alteredparams) => fetchPage(ApiEndpoints.employeeIndex, alteredparams)}
+                            property={'address'}
+                            label={'ترشيح بعنوان الموظف'}
+                        />
+                    </div>
                     <EmployeesTable employees={employees} />
+                    <Pagination fetchPage={fetchPage} links={links} />
                 </div>
             </div>
         </div >

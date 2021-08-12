@@ -35,4 +35,9 @@ class JobsController extends Controller
             ->paginate($request->input('page_size') ?? 10)
             ->appends(request()->except('page'));
     }
+
+    public function getJobs()
+    {
+        return Job::all();
+    }
 }
