@@ -15,6 +15,10 @@ export default function TargetedIndividualsTable(props) {
                 <tr>
                     <th >ID</th>
                     <th>name</th>
+                    <th>address</th>
+                    <th>phone_number</th>
+                    <th>email</th>
+                    <th>description</th>
                     <th>created_at</th>
                 </tr>
             </thead>
@@ -25,6 +29,10 @@ export default function TargetedIndividualsTable(props) {
                             <Link to={routes.showTargeted.replace(':id', targeted?.id)}>{targeted?.id}</Link >
                         </td>
                         <td>{targeted.name}</td>
+                        <td>{targeted.address}</td>
+                        <td>{targeted.phone_number}</td>
+                        <td>{targeted.email}</td>
+                        <td>{targeted.description}</td>
                         <td>{moment(targeted.created_at).format('yyyy-MM-DD')}</td>
                     </tr>
                 ))}

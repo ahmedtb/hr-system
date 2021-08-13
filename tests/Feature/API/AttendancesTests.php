@@ -25,6 +25,11 @@ class AttendancesTests extends TestCase
         $response->assertJsonCount(10);
     }
 
+    public function test_system_properly_save_attendance_record()
+    {
+        
+    }
+
     public function test_system_can_delete_attend_record_by_id()
     {
         $record = CourseAttendance::factory()->create();

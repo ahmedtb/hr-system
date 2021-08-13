@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Filters\IndividualFilters;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Assessments\TraineeCourseAssessment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -40,5 +41,10 @@ class TargetedIndividual extends Model
     public function documents()
     {
         return $this->morphMany(Document::class, 'documentable');
+    }
+    
+    public function scopeFilter($query, IndividualFilters $filters)
+    {
+        return $filters->apply($query);
     }
 }

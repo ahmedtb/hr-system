@@ -96,7 +96,7 @@ function TopMenue(props) {
                                     المستهدفين
                                 </a>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    {/* <Link className="dropdown-item" to={routes.targeted}>قائمة المستهدفين</Link> */}
+                                    <Link className="dropdown-item" to={routes.individualIndex}>قائمة المستهدفين</Link>
                                     <Link className="dropdown-item" to={routes.createTargetedForm}>تسجيل مستهدف</Link>
                                 </ul>
                             </li>

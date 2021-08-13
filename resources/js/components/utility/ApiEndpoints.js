@@ -63,6 +63,7 @@ export default {
     showFormsStructure: '/api/structure/index',
     courseIndex: '/api/course/index',
     employeeIndex: '/api/employee/index',
+    individualIndex: '/api/individual/index',
     unitIndex: '/api/unit/index',
     jobIndex: '/api/job/index',
     documentIndex: '/api/document/index',

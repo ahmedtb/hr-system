@@ -44,6 +44,7 @@ import CourseIndex from './course/CourseIndex'
 import EmployeeIndex from './employee/EmployeeIndex'
 import JobIndex from './job/JobIndex'
 import UnitIndex from './unit/UnitIndex'
+import IndividualIndex from './targeted/IndividualIndex'
 
 import CourseShow from './course/CourseShow'
 import ProgramShow from './program/ProgramShow'
@@ -108,6 +109,8 @@ class App extends Component {
                             <Route exact path={routes.coursesBrowser} component={CoursesBrowser} />
 
                             <Route exact path={routes.employeeIndex} component={EmployeeIndex} />
+                            <Route exact path={routes.individualIndex} component={IndividualIndex} />
+
                             <Route exact path={routes.jobIndex} component={JobIndex} />
                             <Route exact path={routes.unitIndex} component={UnitIndex} />
 

@@ -44,6 +44,7 @@ const routes = {
     courseIndex: '/react/course/index',
     coursesBrowser: '/react/course/filters',
     employeeIndex: '/react/employee/index',
+    individualIndex: '/react/individual/index',
     jobIndex: '/react/job/index',
     unitIndex: '/react/unit/index',
     interviewAssessmentIndex: '/react/assessment/interview/index',

@@ -68,6 +68,7 @@ Route::get('employee/{id}', [EmployeesController::class, 'show']);
 Route::post('targeted/create', [TargetedIndividualsController::class, 'create']);
 Route::get('targeted/{id}', [TargetedIndividualsController::class, 'show']);
 Route::get('getIndividuals', [TargetedIndividualsController::class, 'getIndividuals']);
+Route::get('individual/index', [TargetedIndividualsController::class, 'index']);
 
 Route::get('document/index', [DocumentsController::class, 'index']);
 

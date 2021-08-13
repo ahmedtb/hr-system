@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Models\Document;
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use App\Filters\IndividualFilters;
 use App\Models\TargetedIndividual;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -68,5 +69,12 @@ class TargetedIndividualsController extends Controller
         } else {
             return response(['success' => 'targeted individual created']);
         }
+    }
+
+    public function index(IndividualFilters $filters, Request $request)
+    {
+        return TargetedIndividual::filter($filters)
+            ->paginate($request->input('page_size') ?? 10)
+            ->appends(request()->except('page'));
     }
 }
