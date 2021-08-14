@@ -124,7 +124,9 @@ export default function ProgramShow(props) {
             <div className="card">
                 <div className="card-header">
                     المستندات الملحق بالبرنامج
-                    <Link to={routes.attachDocument} >الحاق مستند جديد</Link>
+                    <Link to={{
+                        pathname: routes.attachDocument, state: { documentable: program, type:'App\\Models\\TrainingProgram' }
+                    }}>الحاق مستند جديد</Link>
                 </div>
 
                 <div className="card-body">

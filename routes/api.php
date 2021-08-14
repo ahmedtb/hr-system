@@ -71,6 +71,7 @@ Route::get('getIndividuals', [TargetedIndividualsController::class, 'getIndividu
 Route::get('individual/index', [TargetedIndividualsController::class, 'index']);
 
 Route::get('document/index', [DocumentsController::class, 'index']);
+Route::post('document/create', [DocumentsController::class, 'create']);
 
 
 Route::get('form/index', [FormsController::class, 'index']);

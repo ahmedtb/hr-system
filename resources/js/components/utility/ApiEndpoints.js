@@ -21,7 +21,7 @@ export default {
     createCoachForm: '/api/coach',
     createProgramForm: '',
     createProgram: '/api/program',
-    createDocument: '/api/document',
+    createDocument: '/api/document/create',
 
 
     createEmployeeForm: '/api/createEmployeeForm',

@@ -85,7 +85,7 @@ class App extends Component {
                             <Route exact path={routes.createCourse} component={CreateCourse} />
                             <Route exact path={routes.jobCreate} component={JobCreate} />
                             <Route exact path={routes.unitCreate} component={UnitCreate} />
-                            {/* <Route exact path={routes.DocumentCreate} component={DocumentCreate} /> */}
+                            <Route exact path={routes.attachDocument} component={DocumentCreate} />
 
                             
                             <Route exact path={routes.conductInterviewAssessment} component={ConductInterviewAssessment} />
