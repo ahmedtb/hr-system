@@ -2,7 +2,7 @@ const routes = {
     dashboard: '/react/',
     createEmployeeForm: '/react/createEmployeeForm',
     createTargetedForm: '/react/createTargetedForm',
-    showFormStructure: '/react/structure/',
+    showFormStructure: '/react/structure/:id',
     showForm: '/react/form/:id',
     generatedForm: '/react/form/token/:access_token',
     searchForms: '/react/form/search/:form_structure_id',
