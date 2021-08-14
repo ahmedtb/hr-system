@@ -4,7 +4,8 @@ import ApiEndpoints from '../utility/ApiEndpoints'
 import logError from '../utility/logError'
 
 import { useParams, Link } from 'react-router-dom';
-
+import RenderDocuments from '../components/RenderDocuments';
+import routes from '../utility/routesEndpoints';
 export default function TargetedShow(props) {
 
     const { id } = useParams();
@@ -33,6 +34,27 @@ export default function TargetedShow(props) {
                 </div>
 
             </div>
+
+            <div className="card">
+                <div className="card-header row">
+                    <div>المستندات الملحق بالمستهدف</div>
+                    <Link to={{
+                        pathname: routes.attachDocument, state: { documentable: targeted, type: 'App\\Models\\TargetedIndividual' }
+                    }}>الحاق مستند جديد</Link>
+                </div>
+
+                <div className="card-body">
+                    <div className="row">
+
+                        <RenderDocuments
+                            documentable_id={id}
+                            documentable_type='App\Models\TargetedIndividual'
+                        />
+
+                    </div>
+
+                </div>
+            </div >
         </div>
     )
 }

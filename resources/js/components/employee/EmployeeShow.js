@@ -5,9 +5,7 @@ import logError from '../utility/logError'
 import routes from '../utility/routesEndpoints'
 import { useParams, Link } from 'react-router-dom';
 import CoursesTable from './components/CoursesTable'
-import TrialPeriodAssessmentTable from '../partials/TrialPeriodAssessmentsTable'
-import TrainingPeriodAssessmentsTable from '../partials/TrainingPeriodAssessmentsTable'
-import TraineeCourseAssessmentsTable from './components/TraineeCourseAssessmentsTable'
+import RenderDocuments from '../components/RenderDocuments'
 
 export default function EmployeeShow(props) {
 
@@ -91,6 +89,28 @@ export default function EmployeeShow(props) {
                 </div>
 
             </div>
+            
+            <div className="card">
+                <div className="card-header row">
+                    <div>المستندات الملحق بالموظف</div>
+                    <Link to={{
+                        pathname: routes.attachDocument, state: { documentable: employee, type: 'App\\Models\\Employee' }
+                    }}>الحاق مستند جديد</Link>
+                </div>
+
+                <div className="card-body">
+                    <div className="row">
+
+                        <RenderDocuments
+                            documentable_id={id}
+                            documentable_type='App\Models\Employee'
+                        />
+
+                    </div>
+
+                </div>
+            </div >
+            
             {
                 resumedCourses.length ? (
                     <div className="card">

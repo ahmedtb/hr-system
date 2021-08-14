@@ -62,6 +62,10 @@ export default function DocumentCreate() {
                                     (() => {
                                         if (type == "App\\Models\\TrainingProgram")
                                             return ' برنامج تدريبي'
+                                        else if (type == "App\\Models\\Employee")
+                                        return ' موظف'
+                                        else if (type == "App\\Models\\TargetedIndividual")
+                                        return ' مستهدف'
                                     })()
                                 }
                             </p>
