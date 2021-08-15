@@ -24,6 +24,7 @@ class CreateEmployeesTable extends Migration
             $table->string('email');
             $table->unsignedSmallInteger('medal_rating')->nullable();
             $table->mediumText('profile')->nullable();
+            $table->string('password');
             $table->timestamps();
         });
     }

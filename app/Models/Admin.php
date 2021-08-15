@@ -14,4 +14,12 @@ class Admin extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    protected $appends = [
+        'role'
+    ];
+
+    public function getRoleAttribute(){
+        return 'admin';
+    }
 }

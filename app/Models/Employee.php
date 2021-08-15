@@ -4,12 +4,13 @@ namespace App\Models;
 
 use App\Filters\EmployeeFilters;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Assessments\TrialPeriodAssessment;
 use App\Models\Assessments\TraineeCourseAssessment;
 use App\Models\Assessments\TrainingPeriodAssessment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Employee extends Model
+class Employee extends Authenticatable
 {
     use HasFactory;
 

@@ -52,7 +52,7 @@ return [
             'driver' => 'session',
             'provider' => 'coaches',
         ],
-        'targeted' => [
+        'individual' => [
             'driver' => 'session',
             'provider' => 'targeted_individuals',
         ],

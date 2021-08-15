@@ -551,9 +551,6 @@ export default [
         path: routes.dashboard,
         title: 'Dashboard',
         permission: [
-            Roles.SUPER_ADMIN,
-            Roles.SUPRTVISOR,
-            Roles.COACH
         ],
         exact: true,
     },
@@ -562,9 +559,6 @@ export default [
         path: '/',
         title: 'Dashboard',
         permission: [
-            Roles.SUPER_ADMIN,
-            Roles.SUPRTVISOR,
-            Roles.COACH
         ],
         exact: true,
     },

@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Job;
 use App\Models\Unit;
 use App\Models\Employee;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class EmployeeFactory extends Factory
@@ -32,7 +33,9 @@ class EmployeeFactory extends Factory
             'phone_number' => $this->faker->phoneNumber(),
             'job_id' => (Job::inRandomOrder()->first()->id ?? Job::factory()->create()->id),
             'email' => $this->faker->email(),
-            'medal_rating' => $medals[array_rand($medals)]
+            'medal_rating' => $medals[array_rand($medals)],
+            'password' => Hash::make('password')
+
         ];
     }
 }

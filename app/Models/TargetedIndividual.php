@@ -6,8 +6,8 @@ use App\Filters\IndividualFilters;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Assessments\TraineeCourseAssessment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
-class TargetedIndividual extends Model
+use Illuminate\Foundation\Auth\User as Authenticatable;
+class TargetedIndividual extends Authenticatable
 {
     use HasFactory;
 

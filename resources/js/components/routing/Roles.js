@@ -1,7 +1,7 @@
 export default {
-    SUPER_ADMIN: 'admin',
+    ADMIN: 'admin',
     SUPRTVISOR: 'SUPRTVISOR',
-    EMPLOYEE: 'EMPLOYEE',
-    COACH: 'COACH',
-    INDIVIDUAL: 'INDIVIDUAL'
+    EMPLOYEE: 'employee',
+    COACH: 'coach',
+    INDIVIDUAL: 'individual'
 };

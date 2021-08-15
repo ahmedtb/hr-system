@@ -21,6 +21,8 @@ class CreateTargetedIndividualsTable extends Migration
             $table->string('address')->nullable();
             $table->string('description')->nullable();
             $table->mediumText('profile')->nullable();
+            $table->string('password');
+
             $table->timestamps();
         });
     }

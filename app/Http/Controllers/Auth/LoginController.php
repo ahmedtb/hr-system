@@ -30,13 +30,15 @@ class LoginController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
+    protected $request;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
+        $this->request = $request;
         $this->middleware('guest')->except('logout');
     }
 
@@ -54,12 +56,43 @@ class LoginController extends Controller
 
     protected function guard()
     {
-        return Auth::guard('admin');
+        return Auth::guard($this->request->type);
     }
- 
+
     protected function authenticated(Request $request, $user)
     {
-        $user->role = 'admin';
         return $user;
+    }
+
+    /**
+     * Validate the user login request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    protected function validateLogin(Request $request)
+    {
+        $request->validate([
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+            'type' => 'required|in:admin,employee,web,individual',
+
+        ]);
+    }
+
+    /**
+     * Attempt to log the user into the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return bool
+     */
+    protected function attemptLogin(Request $request)
+    {
+        return $this->guard($request->type)->attempt(
+            $this->credentials($request),
+            $request->filled('remember')
+        );
     }
 }

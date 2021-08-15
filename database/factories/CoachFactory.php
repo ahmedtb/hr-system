@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Coach;
 use App\Models\Employee;
 use App\Models\TargetedIndividual;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CoachFactory extends Factory
@@ -39,7 +40,9 @@ class CoachFactory extends Factory
             'CV' => $this->faker->sentence(1000),
             'speciality' => $this->faker->sentence(),
             'profile_id' => $profile_id,
-            'profile_type' => $profile_type
+            'profile_type' => $profile_type,
+            'password' => Hash::make('password')
+
         ];
     }
 }

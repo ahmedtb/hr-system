@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\TargetedIndividual;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TargetedIndividualFactory extends Factory
@@ -28,6 +29,7 @@ class TargetedIndividualFactory extends Factory
             'email' => $this->faker->email(),
             'description' => $this->faker->sentence(),
             'profile' => getBase64DefaultImage(),
+            'password' => Hash::make('password')
 
         ];
     }
