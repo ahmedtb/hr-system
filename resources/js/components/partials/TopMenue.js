@@ -69,7 +69,6 @@ function AuthComponent(props) {
 }
 
 function TopMenue(props) {
-    const allowedRoutes = props.allowedRoutes
     
     return (
         <>

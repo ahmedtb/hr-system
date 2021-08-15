@@ -1,5 +1,5 @@
 export default {
-    SUPER_ADMIN: 'SUPER_ADMIN',
+    SUPER_ADMIN: 'admin',
     SUPRTVISOR: 'SUPRTVISOR',
     EMPLOYEE: 'EMPLOYEE',
     COACH: 'COACH',

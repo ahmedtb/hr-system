@@ -542,9 +542,6 @@ export default [
         path: routes.loginPage,
         title: 'LoginPage',
         permission: [
-            Roles.SUPER_ADMIN,
-            Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
         ],
         exact: true,
     },

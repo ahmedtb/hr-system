@@ -57,4 +57,9 @@ class LoginController extends Controller
         return Auth::guard('admin');
     }
  
+    protected function authenticated(Request $request, $user)
+    {
+        $user->role = 'admin';
+        return $user;
+    }
 }

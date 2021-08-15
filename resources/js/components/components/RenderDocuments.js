@@ -15,7 +15,6 @@ export default function RenderDocuments(props) {
     async function fetchdocuments(link = ApiEndpoints.documentIndex, params = constparams) {
         axios.get(link, { params: { ...params, page_size: 5 } }).then((response) => {
             setdocuments(response.data.data)
-            console.log('fetchdocuments', response.data)
             if (response.data.links) {
                 setnext_page_url(response.data.next_page_url)
                 setprev_page_url(response.data.prev_page_url)
