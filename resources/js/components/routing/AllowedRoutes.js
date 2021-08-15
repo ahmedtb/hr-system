@@ -2,8 +2,8 @@ import React from 'react'
 import { intersection } from 'lodash';
 import Roles from './Roles';
 import PrivateRoutesConfig from './PrivateRoutesConfig'
-import { Route } from 'react-router-dom'
-
+import { Route, Switch } from 'react-router-dom'
+import NotFound from './NotFound';
 function isArrayWithLength(arr) {
     return (Array.isArray(arr) && arr.length)
 }
@@ -21,7 +21,7 @@ function AllowedRoutes(props) {
             })
         )
 
-    }, [  roles  ])
+    }, [roles])
     React.useEffect(() => {
         // console.log('allowedRoutes user', props.user)
         setroles([props.user?.role])
@@ -31,16 +31,24 @@ function AllowedRoutes(props) {
         console.log('allowedRoutes', allowedRoutes)
         // setroles([props.user?.role])
     }, [allowedRoutes])
-    
-    return allowedRoutes.map((route, index) => {
-        return <Route
-            key={index}
-            exact={route.exact}
-            title={route.title}
-            path={route.path}
-            component={route.component}
-        />
-    })
+
+    return <Switch>
+        {
+            allowedRoutes.map((route, index) => {
+                return <Route
+                    key={index}
+                    exact={route.exact}
+                    title={route.title}
+                    path={route.path}
+                    component={route.component}
+                />
+
+            })
+        }
+        <Route component={NotFound} />
+
+    </Switch>
+
 }
 
 import { refreshUser } from '../redux/stateActions'

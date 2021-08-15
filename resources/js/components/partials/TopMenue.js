@@ -11,7 +11,7 @@ function AuthComponent(props) {
         try {
             const response = await axios.get('/api/user')
             props.refreshUser(response.data)
-            console.log('/api/user',response.data)
+            // console.log('/api/user',response.data)
         } catch (error) {
             logError(error)
         }

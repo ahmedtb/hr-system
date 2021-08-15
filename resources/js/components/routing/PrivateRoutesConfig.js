@@ -71,17 +71,6 @@ export default [
         exact: true,
     },
     {
-        component: Dashboard,
-        path: routes.dashboard,
-        title: 'Dashboard',
-        permission: [
-            Roles.SUPER_ADMIN,
-            Roles.SUPRTVISOR,
-            Roles.COACH
-        ],
-        exact: true,
-    },
-    {
         component: CreateTargeted,
         path: routes.createTargetedForm,
         title: 'CreateTargeted',
@@ -440,11 +429,12 @@ export default [
     {
         component: EmployeeShow,
         path: routes.showEmployee,
-        title: 'Module - N',
+        title: 'EmployeeShow',
         permission: [
             Roles.SUPER_ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
+            Roles.EMPLOYEE,
+            Roles.COACH
         ],
         exact: true,
     },
@@ -553,6 +543,28 @@ export default [
             Roles.SUPER_ADMIN,
             Roles.SUPRTVISOR,
             Roles.EMPLOYEE
+        ],
+        exact: true,
+    },
+    {
+        component: Dashboard,
+        path: routes.dashboard,
+        title: 'Dashboard',
+        permission: [
+            Roles.SUPER_ADMIN,
+            Roles.SUPRTVISOR,
+            Roles.COACH
+        ],
+        exact: true,
+    },
+    {
+        component: Dashboard,
+        path: '/',
+        title: 'Dashboard',
+        permission: [
+            Roles.SUPER_ADMIN,
+            Roles.SUPRTVISOR,
+            Roles.COACH
         ],
         exact: true,
     },

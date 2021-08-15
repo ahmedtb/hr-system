@@ -9,18 +9,14 @@ import AllowedRoutes from './routing/AllowedRoutes'
 import NotFound from './routing/NotFound'
 
 function App() {
-    
+
     return (
         <BrowserRouter>
 
             <Provider store={store}>
                 <TopMenue />
-
                 <main className="container">
-                    <Switch>
-                        <AllowedRoutes />
-                        <Route component={NotFound} />
-                    </Switch>
+                    <AllowedRoutes />
                 </main>
             </Provider>
 
