@@ -67,7 +67,11 @@ export default [
     {
         component: CreateEmployee,
         path: routes.createEmployeeForm,
-        title: 'Module - 1',
+        title: 'createEmployeeForm',
+        permission: [
+            Roles.ADMIN,
+            Roles.SUPRTVISOR,
+        ],
         exact: true,
     },
     {
@@ -75,9 +79,8 @@ export default [
         path: routes.createTargetedForm,
         title: 'CreateTargeted',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
         ],
         exact: true,
     },
@@ -86,20 +89,18 @@ export default [
         path: routes.showFormStructure,
         title: 'FormStructureShow',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
         ],
         exact: true,
     },
     {
         component: FormView,
         path: routes.showForm,
-        title: 'Profile',
+        title: 'FormView',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
         ],
         exact: true,
     },
@@ -108,9 +109,8 @@ export default [
         path: routes.searchForms,
         title: 'FormSearch',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
         ],
         exact: true,
     },
@@ -119,9 +119,6 @@ export default [
         path: routes.generatedForm,
         title: 'FormCreate',
         permission: [
-            Roles.SUPER_ADMIN,
-            Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
         ],
         exact: true,
     },
@@ -131,9 +128,8 @@ export default [
         path: routes.createCoachForm,
         title: 'CreateCoach',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
         ],
         exact: true,
     },
@@ -142,9 +138,8 @@ export default [
         path: routes.createCourse,
         title: 'CreateCourse',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
         ],
         exact: true,
     },
@@ -153,9 +148,8 @@ export default [
         path: routes.createFormStructureForm,
         title: 'FormStructureCreate',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
         ],
         exact: true,
     },
@@ -164,9 +158,8 @@ export default [
         path: routes.createProgramForm,
         title: 'Profile',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
         ],
         exact: true,
     },
@@ -175,9 +168,8 @@ export default [
         path: routes.jobCreate,
         title: 'Profile',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
         ],
         exact: true,
     },
@@ -186,9 +178,8 @@ export default [
         path: routes.unitCreate,
         title: 'Profile',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
         ],
         exact: true,
     },
@@ -197,9 +188,8 @@ export default [
         path: routes.attachDocument,
         title: 'Profile',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
         ],
         exact: true,
     },
@@ -208,9 +198,8 @@ export default [
         path: routes.conductInterviewAssessment,
         title: 'ConductInterviewAssessment',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
         ],
         exact: true,
     },
@@ -219,9 +208,8 @@ export default [
         path: routes.conductTrialPeriodAssessment,
         title: 'ConductTrialPeriodAssessment',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
         ],
         exact: true,
     },
@@ -230,9 +218,8 @@ export default [
         path: routes.conductTrainingPeriodAssessment,
         title: 'ConductTrainingPeriodAssessment',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
         ],
         exact: true,
     },
@@ -241,9 +228,8 @@ export default [
         path: routes.conductTraineeCourseAssessment,
         title: 'ConductTraineeCourseAssessment',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
         ],
         exact: true,
     },
@@ -252,9 +238,9 @@ export default [
         path: routes.conductCoachCourseAssessment,
         title: 'ConductCoachCourseAssessment',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
+            Roles.COACH,
         ],
         exact: true,
     },
@@ -263,10 +249,8 @@ export default [
         path: routes.interviewAssessmentIndex,
         title: 'InterviewAssessmentIndex',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE,
-            Roles.COACH
         ],
         exact: true,
     },
@@ -275,10 +259,8 @@ export default [
         path: routes.TrialPeriodAssessmentIndex,
         title: 'TrialPeriodAssessmentIndex',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE,
-            Roles.COACH
         ],
         exact: true,
     },
@@ -287,9 +269,8 @@ export default [
         path: routes.CoachCourseAssessmentIndex,
         title: 'CoachCourseAssessmentIndex',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE,
             Roles.COACH
         ],
         exact: true,
@@ -299,10 +280,8 @@ export default [
         path: routes.TraineeCourseAssessmentIndex,
         title: 'TraineeCourseAssessmentIndex',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE,
-            Roles.COACH
         ],
         exact: true,
     },
@@ -311,10 +290,8 @@ export default [
         path: routes.TrainingPeriodAssessmentIndex,
         title: 'TrainingPeriodAssessmentIndex',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE,
-            Roles.COACH
         ],
         exact: true,
     },
@@ -323,10 +300,8 @@ export default [
         path: routes.showFormsStructures,
         title: 'FormStructuresIndex',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE,
-            Roles.COACH
         ],
         exact: true,
     },
@@ -335,10 +310,8 @@ export default [
         path: routes.showForms,
         title: 'FormsIndex',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE,
-            Roles.COACH
         ],
         exact: true,
     },
@@ -347,10 +320,8 @@ export default [
         path: routes.CoachesList,
         title: 'CoachIndex',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE,
-            Roles.COACH
         ],
         exact: true,
     },
@@ -359,10 +330,8 @@ export default [
         path: routes.programIndex,
         title: 'ProgramIndex',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE,
-            Roles.COACH
         ],
         exact: true,
     },
@@ -371,10 +340,11 @@ export default [
         path: routes.courseIndex,
         title: 'CourseIndex',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
             Roles.EMPLOYEE,
-            Roles.COACH
+            Roles.COACH,
+            Roles.INDIVIDUAL
         ],
         exact: true,
     },
@@ -383,10 +353,9 @@ export default [
         path: routes.employeeIndex,
         title: 'EmployeeIndex',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE,
-            Roles.COACH
+            Roles.EMPLOYEE
         ],
         exact: true,
     },
@@ -395,10 +364,8 @@ export default [
         path: routes.jobIndex,
         title: 'JobIndex',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE,
-            Roles.COACH
         ],
         exact: true,
     },
@@ -407,10 +374,8 @@ export default [
         path: routes.unitIndex,
         title: 'UnitIndex',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE,
-            Roles.COACH
         ],
         exact: true,
     },
@@ -419,10 +384,8 @@ export default [
         path: routes.individualIndex,
         title: 'IndividualIndex',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE,
-            Roles.COACH
         ],
         exact: true,
     },
@@ -431,22 +394,8 @@ export default [
         path: routes.showEmployee,
         title: 'EmployeeShow',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE,
-            Roles.COACH
-        ],
-        exact: true,
-    },
-    {
-        component: CourseShow,
-        path: routes.showCourse,
-        title: 'CourseShow',
-        permission: [
-            Roles.SUPER_ADMIN,
-            Roles.SUPRTVISOR,
-            Roles.EMPLOYEE,
-            Roles.COACH
         ],
         exact: true,
     },
@@ -455,9 +404,9 @@ export default [
         path: routes.showProgram,
         title: 'ProgramShow',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
+            Roles.COACH
         ],
         exact: true,
     },
@@ -466,9 +415,8 @@ export default [
         path: routes.showJob,
         title: 'showJob',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
         ],
         exact: true,
     },
@@ -477,9 +425,8 @@ export default [
         path: routes.showTargeted,
         title: 'TargetedShow',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
         ],
         exact: true,
     },
@@ -488,9 +435,8 @@ export default [
         path: routes.showUnit,
         title: 'UnitShow',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
         ],
         exact: true,
     },
@@ -499,9 +445,8 @@ export default [
         path: routes.showCoach,
         title: 'CoachShow',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
         ],
         exact: true,
     },
@@ -510,9 +455,8 @@ export default [
         path: routes.TrialPeriodAssessmentIndex,
         title: 'TrialPeriodAssessmentShow',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
         ],
         exact: true,
     },
@@ -521,9 +465,8 @@ export default [
         path: routes.showAttendances,
         title: 'AttendanceManager',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
         ],
         exact: true,
     },
@@ -540,9 +483,21 @@ export default [
         path: routes.coursesBrowser,
         title: 'CoursesBrowser',
         permission: [
-            Roles.SUPER_ADMIN,
+            Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
+        ],
+        exact: true,
+    },
+    {
+        component: CourseShow,
+        path: routes.showCourse,
+        title: 'CourseShow',
+        permission: [
+            Roles.ADMIN,
+            Roles.SUPRTVISOR,
+            Roles.EMPLOYEE,
+            Roles.COACH,
+            Roles.INDIVIDUAL
         ],
         exact: true,
     },
@@ -551,6 +506,8 @@ export default [
         path: routes.dashboard,
         title: 'Dashboard',
         permission: [
+            Roles.ADMIN,
+            Roles.SUPRTVISOR,
         ],
         exact: true,
     },
@@ -559,6 +516,8 @@ export default [
         path: '/',
         title: 'Dashboard',
         permission: [
+            Roles.ADMIN,
+            Roles.SUPRTVISOR,
         ],
         exact: true,
     },

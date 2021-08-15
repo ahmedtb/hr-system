@@ -13,8 +13,14 @@ class Coach extends Authenticatable
     protected $guarded = [];
 
     protected $appends = [
-        'profile'
+        'profile', 'role'
+
     ];
+
+    public function getRoleAttribute()
+    {
+        return 'coach';
+    }
 
     public function trainingPrograms()
     {

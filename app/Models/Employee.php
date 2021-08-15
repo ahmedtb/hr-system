@@ -21,8 +21,14 @@ class Employee extends Authenticatable
     ];
 
     protected $appends = [
-        'job'
+        'job', 'role'
+
     ];
+
+    public function getRoleAttribute()
+    {
+        return 'employee';
+    }
 
     public function getJobAttribute()
     {

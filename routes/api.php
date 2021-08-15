@@ -153,10 +153,10 @@ Route::get('/user', function (Request $request) {
         $coach = $request->user('coach');
         $coach->role = 'coach';
         return $coach;
-    } else if ($request->user('targeted')) {
-        $targeted = $request->user('targeted');
-        $targeted->role = 'targeted';
-        return $targeted;
+    } else if ($request->user('individual')) {
+        $individual = $request->user('individual');
+        $individual->role = 'individual';
+        return $individual;
     }
     return null;
 });

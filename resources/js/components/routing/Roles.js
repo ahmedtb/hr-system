@@ -1,6 +1,6 @@
 export default {
     ADMIN: 'admin',
-    SUPRTVISOR: 'SUPRTVISOR',
+    SUPRTVISOR: 'supervisor',
     EMPLOYEE: 'employee',
     COACH: 'coach',
     INDIVIDUAL: 'individual'

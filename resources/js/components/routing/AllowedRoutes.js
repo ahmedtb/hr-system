@@ -42,7 +42,6 @@ function AllowedRoutes(props) {
                     path={route.path}
                     component={route.component}
                 />
-
             })
         }
         <Route component={NotFound} />

@@ -7,11 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Assessments\TraineeCourseAssessment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+
 class TargetedIndividual extends Authenticatable
 {
     use HasFactory;
 
     protected $guarded = [];
+
+    protected $appends = [
+        'role'
+    ];
+
+    public function getRoleAttribute()
+    {
+        return 'individual';
+    }
 
     public function trainingCourses()
     {
@@ -32,7 +42,7 @@ class TargetedIndividual extends Authenticatable
     {
         return $this->morphMany(CourseAttendance::class, 'profile');
     }
-    
+
     public function TraineeCourseAssessments()
     {
         return $this->morphMany(TraineeCourseAssessment::class, 'trainee');
@@ -42,7 +52,7 @@ class TargetedIndividual extends Authenticatable
     {
         return $this->morphMany(Document::class, 'documentable');
     }
-    
+
     public function scopeFilter($query, IndividualFilters $filters)
     {
         return $filters->apply($query);
