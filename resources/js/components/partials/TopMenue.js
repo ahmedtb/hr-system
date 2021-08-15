@@ -3,17 +3,17 @@ import { Link } from 'react-router-dom';
 import routes from '../utility/routesEndpoints'
 import ApiEndpoints from '../utility/ApiEndpoints'
 import logError from '../utility/logError'
+import { intersection } from 'lodash';
 
 function AuthComponent(props) {
 
     async function isLoggedIn() {
         try {
             const response = await axios.get('/api/user')
-            // console.log('isLoggedIn', (response.data));
             props.refreshUser(response.data)
-
+            console.log('/api/user',response.data)
         } catch (error) {
-            // logError(error)
+            logError(error)
         }
     }
 
@@ -69,7 +69,8 @@ function AuthComponent(props) {
 }
 
 function TopMenue(props) {
-
+    const allowedRoutes = props.allowedRoutes
+    
     return (
         <>
             <nav className="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -87,10 +88,11 @@ function TopMenue(props) {
                                     الموظفيين
                                 </a>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <Link className="dropdown-item" to={routes.employeeIndex}>قائمة الموظفيين</Link>
+                                    {<Link className="dropdown-item" to={routes.employeeIndex}>قائمة الموظفيين</Link>}
                                     <Link className="dropdown-item" to={routes.createEmployeeForm}>تسجيل موظف</Link>
                                 </ul>
                             </li>
+
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                                     المستهدفين

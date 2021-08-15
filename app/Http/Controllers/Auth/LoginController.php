@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -41,7 +42,7 @@ class LoginController extends Controller
 
     public function username()
     {
-        return 'username';
+        return 'name';
     }
 
     protected function credentials(Request $request)
@@ -49,6 +50,11 @@ class LoginController extends Controller
         $data = $request->only($this->username(), 'password');
         // $data['email_confirmed'] = 1;
         return $data;
+    }
+
+    protected function guard()
+    {
+        return Auth::guard('admin');
     }
  
 }

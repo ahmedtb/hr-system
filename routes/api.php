@@ -2,18 +2,23 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\JobsController;
 use App\Http\Controllers\API\CoachController;
-use App\Http\Controllers\API\FormsController;
-use App\Http\Controllers\API\CoursesController;
 
+use App\Http\Controllers\API\FormsController;
+use App\Http\Controllers\API\UnitsController;
+
+
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\API\CoursesController;
 use App\Http\Controllers\API\ProgramsController;
 use App\Http\Controllers\API\DashboardController;
-
-
+use App\Http\Controllers\API\DocumentsController;
 use App\Http\Controllers\API\EmployeesController;
 use App\Http\Controllers\API\ManagmentController;
 use App\Http\Controllers\API\InterviewsController;
 use App\Http\Controllers\API\FormStructuresController;
+use App\Http\Controllers\API\CourseAttendancesController;
 use App\Http\Controllers\API\CoursesAndProgramsController;
 use App\Http\Controllers\API\TargetedIndividualsController;
 use App\Http\Controllers\API\Assessments\InterviewsAssessmentsController;
@@ -21,11 +26,6 @@ use App\Http\Controllers\API\Assessments\CoachCourseAssessmentsController;
 use App\Http\Controllers\API\Assessments\TrialPeriodAssessmentsController;
 use App\Http\Controllers\API\Assessments\TraineeCourseAssessmentsController;
 use App\Http\Controllers\API\Assessments\TrainingPeriodAssessmentsController;
-use App\Http\Controllers\API\CourseAttendancesController;
-use App\Http\Controllers\API\DocumentsController;
-use App\Http\Controllers\API\JobsController;
-use App\Http\Controllers\API\UnitsController;
-use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,7 +62,7 @@ Route::put('attackDocumentToEmployee', [EmployeesController::class, 'attackDocum
 Route::put('rateEmployee', [EmployeesController::class, 'rateEmployee']);
 Route::post('createCourseForEmployees', [EmployeesController::class, 'createCourseForEmployees']);
 Route::get('getEmployees', [EmployeesController::class, 'getEmployees']);
-Route::get('employee/index', [EmployeesController::class, 'index']);
+Route::get('employee/index', [EmployeesController::class, 'index'])->middleware('auth:admin');
 Route::get('employee/{id}', [EmployeesController::class, 'show']);
 
 Route::post('targeted/create', [TargetedIndividualsController::class, 'create']);
@@ -136,7 +136,27 @@ Route::get('traineeCourseAssessment/index', [TraineeCourseAssessmentsController:
 Route::post('coachCourseAssessment/create', [CoachCourseAssessmentsController::class, 'create']);
 Route::get('coachCourseAssessment/index', [CoachCourseAssessmentsController::class, 'index']);
 
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/user', function (Request $request) {
+    if ($request->user('admin')) {
+        $admin = $request->user('admin');
+        $admin->role = 'admin';
+        return $admin;
+    } else if ($request->user('sanctum')) {
+        $user = $request->user('sanctum');
+        $user->role = 'user';
+        return $user;
+    } else if ($request->user('employee')) {
+        $employee = $request->user('employee');
+        $employee->role = 'employee';
+        return $employee;
+    } else if ($request->user('coach')) {
+        $coach = $request->user('coach');
+        $coach->role = 'coach';
+        return $coach;
+    } else if ($request->user('targeted')) {
+        $targeted = $request->user('targeted');
+        $targeted->role = 'targeted';
+        return $targeted;
+    }
+    return null;
 });

@@ -5,14 +5,14 @@ import logError from './utility/logError'
 
 
 function LoginPage(props) {
-    const [username, setusername] = React.useState('')
+    const [name, setname] = React.useState('')
     const [password, setpassword] = React.useState('')
 
 
-    async function handleLogin(username, password) {
+    async function handleLogin(name, password) {
         try {
             await axios.get('/sanctum/csrf-cookie')
-            const response = await axios.post('/login', { username: username, password: password })
+            const response = await axios.post('/login', { name: name, password: password })
             console.log('User signed in!', (response.data));
             props.refreshUser(response.data)
 
@@ -28,12 +28,12 @@ function LoginPage(props) {
                     تسجيل الدخول
                 </div>
                 <div className='card-body'>
-                    <label>username</label>
-                    <input type='username' className='form-control' onChange={e => setusername(e.target.value)} />
+                    <label>name</label>
+                    <input type='name' className='form-control' onChange={e => setname(e.target.value)} />
                     <label>password</label>
                     <input type='password' className='form-control' onChange={e => setpassword(e.target.value)} />
 
-                    <button type="button" className="btn btn-success" onClick={() => handleLogin(username, password)}>login</button>
+                    <button type="button" className="btn btn-success" onClick={() => handleLogin(name, password)}>login</button>
 
                 </div>
             </div>
@@ -54,7 +54,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         refreshUser: (user) => dispatch(refreshUser(user)),
-        // loginUser: (username,password) => dispatch(loginUser(username,password)),
+        // loginUser: (name,password) => dispatch(loginUser(name,password)),
 
     }
 }

@@ -6,7 +6,7 @@ export function isArrayWithLength(arr) {
 
 export function getAllowedRoutes(routes) {
     const roles = [
-        Roles.CUSTOMER
+        Roles.SUPER_ADMIN
     ];
     return routes.filter(({ permission }) => {
         if (!permission) return true;

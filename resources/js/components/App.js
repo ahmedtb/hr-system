@@ -64,6 +64,7 @@ import store from './redux/store';
 
 import { getAllowedRoutes } from './routing/getAllowedRoutes'
 import PrivateRoutesConfig from './routing/PrivateRoutesConfig'
+import NotFound from './routing/NotFound'
 
 function App() {
     const [allowedRoutes, setallowedRoutes] = React.useState([])
@@ -77,15 +78,22 @@ function App() {
         <BrowserRouter>
 
             <Provider store={store}>
-                <TopMenue />
+                <TopMenue allowedRoutes={allowedRoutes}/>
 
                 <main className="container">
                     <Switch>
                         {
                             allowedRoutes.map((route, index) => {
-                                return <Route key={index} exact={route.exact} title={route.title} path={route.path} component={route.component} />
+                                return <Route
+                                    key={index}
+                                    exact={route.exact}
+                                    title={route.title}
+                                    path={route.path}
+                                    component={route.component}
+                                />
                             })
                         }
+                        <Route component={NotFound} />
                     </Switch>
                 </main>
             </Provider>
@@ -171,5 +179,6 @@ function App() {
     )
 
 }
+
 
 ReactDOM.render(<App />, document.getElementById('app'))
