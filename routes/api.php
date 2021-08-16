@@ -62,7 +62,7 @@ Route::put('attackDocumentToEmployee', [EmployeesController::class, 'attackDocum
 Route::put('rateEmployee', [EmployeesController::class, 'rateEmployee']);
 Route::post('createCourseForEmployees', [EmployeesController::class, 'createCourseForEmployees']);
 Route::get('getEmployees', [EmployeesController::class, 'getEmployees']);
-Route::get('employee/index', [EmployeesController::class, 'index'])->middleware('auth:admin');
+Route::get('employee/index', [EmployeesController::class, 'index']);
 Route::get('employee/{id}', [EmployeesController::class, 'show']);
 
 Route::post('targeted/create', [TargetedIndividualsController::class, 'create']);

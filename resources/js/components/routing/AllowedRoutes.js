@@ -1,35 +1,17 @@
 import React from 'react'
-import { intersection } from 'lodash';
-import Roles from './Roles';
-import PrivateRoutesConfig from './PrivateRoutesConfig'
 import { Route, Switch } from 'react-router-dom'
-import NotFound from './NotFound';
-function isArrayWithLength(arr) {
-    return (Array.isArray(arr) && arr.length)
-}
+import NotFound from './NotFound'
+
 
 function AllowedRoutes(props) {
 
-    const [roles, setroles] = React.useState([])
     const [allowedRoutes, setallowedRoutes] = React.useState([])
     React.useEffect(() => {
-        setallowedRoutes(PrivateRoutesConfig.filter(
-            ({ permission }) => {
-                if (!permission) return true;
-                else if (!isArrayWithLength(permission)) return true;
-                else return intersection(permission, roles).length;
-            })
-        )
-
-    }, [roles])
-    React.useEffect(() => {
-        // console.log('allowedRoutes user', props.user)
-        setroles([props.user?.role])
-    }, [props.user])
+        setallowedRoutes(props.allowedRoutes)
+    }, [props.allowedRoutes])
 
     React.useEffect(() => {
         console.log('allowedRoutes', allowedRoutes)
-        // setroles([props.user?.role])
     }, [allowedRoutes])
 
     return <Switch>
@@ -56,6 +38,8 @@ import { connect } from "react-redux"
 const mapStateToProps = state => {
     return {
         user: state.state.user,
+        allowedRoutes: state.state.allowedRoutes,
+
     }
 }
 

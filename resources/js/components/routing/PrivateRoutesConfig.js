@@ -505,20 +505,14 @@ export default [
         component: Dashboard,
         path: routes.dashboard,
         title: 'Dashboard',
-        permission: [
-            Roles.ADMIN,
-            Roles.SUPRTVISOR,
-        ],
+        permission: [],
         exact: true,
     },
     {
         component: Dashboard,
         path: '/',
         title: 'Dashboard',
-        permission: [
-            Roles.ADMIN,
-            Roles.SUPRTVISOR,
-        ],
+        permission: [],
         exact: true,
     },
 ]
