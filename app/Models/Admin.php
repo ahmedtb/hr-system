@@ -22,4 +22,8 @@ class Admin extends Authenticatable
     public function getRoleAttribute(){
         return 'admin';
     }
+
+    public function TrainingCourses(){
+        return TrainingCourse::with([]);
+    }
 }

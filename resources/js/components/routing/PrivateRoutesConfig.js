@@ -355,7 +355,6 @@ export default [
         permission: [
             Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.EMPLOYEE
         ],
         exact: true,
     },
@@ -451,26 +450,6 @@ export default [
         exact: true,
     },
     {
-        component: TrialPeriodAssessmentShow,
-        path: routes.TrialPeriodAssessmentIndex,
-        title: 'TrialPeriodAssessmentShow',
-        permission: [
-            Roles.ADMIN,
-            Roles.SUPRTVISOR,
-        ],
-        exact: true,
-    },
-    {
-        component: AttendanceManager,
-        path: routes.showAttendances,
-        title: 'AttendanceManager',
-        permission: [
-            Roles.ADMIN,
-            Roles.SUPRTVISOR,
-        ],
-        exact: true,
-    },
-    {
         component: LoginPage,
         path: routes.loginPage,
         title: 'LoginPage',
@@ -498,6 +477,26 @@ export default [
             Roles.EMPLOYEE,
             Roles.COACH,
             Roles.INDIVIDUAL
+        ],
+        exact: true,
+    },
+    {
+        component: TrialPeriodAssessmentShow,
+        path: routes.showTrialPeriodAssessment,
+        title: 'TrialPeriodAssessmentShow',
+        permission: [
+            Roles.ADMIN,
+            Roles.SUPRTVISOR,
+        ],
+        exact: true,
+    },
+    {
+        component: AttendanceManager,
+        path: routes.showAttendances,
+        title: 'AttendanceManager',
+        permission: [
+            Roles.ADMIN,
+            Roles.SUPRTVISOR,
         ],
         exact: true,
     },

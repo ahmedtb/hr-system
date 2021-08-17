@@ -5,6 +5,8 @@ namespace Tests\Feature\API;
 use DateTime;
 use Tests\TestCase;
 use App\Models\Form;
+use App\Models\Admin;
+use App\Models\Coach;
 use App\Models\Employee;
 use App\Models\FormStructure;
 use App\Models\TrainingCourse;
@@ -36,7 +38,6 @@ class CoursesTests extends TestCase
 
     public function test_when_creating_a_course_the_system_can_warn_if_course_peroid_and_program_period_does_not_match()
     {
-        
     }
 
 
@@ -141,10 +142,10 @@ class CoursesTests extends TestCase
             'end_date' => '2021-08-10'
         ]);
 
-        $response = $this->getJson('/api/course/index2?start_date=2021-07-29');
+        $response = $this->getJson('/api/course/index?start_date=2021-07-29');
         $this->assertEquals(sizeof($response->json()['data']), 3);
 
-        $response = $this->getJson('/api/course/index2?start_before=2021-08-01&end_after=2021-07-09');
+        $response = $this->getJson('/api/course/index?start_before=2021-08-01&end_after=2021-07-09');
         $this->assertEquals(sizeof($response->json()['data']), 5);
     }
 
@@ -155,14 +156,67 @@ class CoursesTests extends TestCase
 
         $employee = Employee::factory()->create();
         $course->enrollEmployee($employee);
-        $response = $this->getJson('/api/course/index2?employee_id=' . $employee->id);
+        $response = $this->getJson('/api/course/index?employee_id=' . $employee->id);
         $this->assertEquals(sizeof($response->json()['data']), 1);
 
         $individual = TargetedIndividual::factory()->create();
         $course->enrollIndividual($individual);
 
-        $response = $this->getJson('/api/course/index2?individual_id=' . $individual->id);
+        $response = $this->getJson('/api/course/index?individual_id=' . $individual->id);
         $this->assertEquals(sizeof($response->json()['data']), 1);
+    }
 
+
+    public function test_admin_user_will_get_only_courses_that_he_allowed_to_see()
+    {
+        TrainingCourse::factory(2)->create();
+        $admin = Admin::factory()->create();
+        $response = $this->actingAs($admin, 'admin')->getJson('/api/course/index');
+        $this->assertEquals($response->json()['total'], 2);
+    }
+
+    public function test_employee_user_will_get_only_courses_that_he_allowed_to_see()
+    {
+        TrainingCourse::factory(2)->create();
+        $employee = Employee::factory()->create();
+        $this->actingAs($employee, 'employee');
+        $response = $this->getJson('/api/course/index');
+        $this->assertEquals($response->json()['total'], 0);
+
+        TrainingCourse::factory()->create()->enrollEmployee($employee);
+        $response = $this->getJson('/api/course/index');
+        $this->assertEquals($response->json()['total'], 1);
+        // dd($response->content());
+        // dd($response->json());
+    }
+
+    public function test_coach_user_will_get_only_courses_that_he_allowed_to_see()
+    {
+        TrainingCourse::factory(2)->create();
+        $coach = Coach::factory()->create();
+        $this->actingAs($coach, 'coach');
+        $response = $this->getJson('/api/course/index');
+        $this->assertEquals($response->json()['total'], 0);
+
+        TrainingCourse::factory()->create()->attachCoach($coach);
+        $response = $this->getJson('/api/course/index');
+        $this->assertEquals($response->json()['total'], 1);
+        // dd($response->content());
+        // dd($response->json());
+    }
+
+    public function test_individual_user_will_get_only_courses_that_he_allowed_to_see()
+    {
+        TrainingCourse::factory(2)->create();
+        $individual = TargetedIndividual::factory()->create();
+        $this->actingAs($individual, 'individual');
+        $response = $this->getJson('/api/course/index');
+        $this->assertEquals($response->json()['total'], 0);
+
+        TrainingCourse::factory()->create()->enrollindividual($individual);
+        $response = $this->getJson('/api/course/index');
+        $this->assertEquals($response->json()['total'], 1);
+        // dd($response->content());
+        // dd($response->json());
     }
 }

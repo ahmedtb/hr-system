@@ -30,20 +30,18 @@ class CoursesController extends Controller
         ];
     }
 
-    // public function index()
-    // {
-    //     $courses = TrainingCourse::with(['trainingProgram'])->paginate(5);
-    //     $twentyDaysRangeCourses = TrainingCourse::whereDate('start_date', '<=', new DateTime('today +10 day'))
-    //         ->whereDate('end_date', '>=', new DateTime('today -10 day'))->get();
-    //     return [
-    //         'courses' => $courses,
-    //         'twentyDaysRangeCourses' => $twentyDaysRangeCourses
-    //     ];
-    // }
-
     public function index(Request $request, CourseFilters $filters)
     {
-        return TrainingCourse::filter($filters)->with(['trainingProgram'])->paginate($request->get('page_size') ?? 10)->appends(request()->except('page'));
+        // dd($request->user()->TrainingCourses());
+        return $request->user()->TrainingCourses()->filter($filters)
+            // ->user($request->user())
+            ->paginate($request->get('page_size') ?? 10)
+            ->appends(request()->except('page'));
+
+        return TrainingCourse::filter($filters)
+            // ->user($request->user())
+            ->paginate($request->get('page_size') ?? 10)
+            ->appends(request()->except('page'));
     }
 
     public function getTrainingCourses(CourseFilters $filters)

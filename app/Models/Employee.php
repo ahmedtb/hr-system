@@ -94,4 +94,12 @@ class Employee extends Authenticatable
     {
         return $filters->apply($query);
     }
+
+
+    public function TrainingCourses()
+    {
+        return TrainingCourse::whereHas('employees', function ($query) {
+            return $query->where('employees.id', $this->id);
+        });
+    }
 }

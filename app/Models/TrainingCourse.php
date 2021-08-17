@@ -21,7 +21,7 @@ class TrainingCourse extends Model
 
     protected $appends = [
         'state', 'attendancePercentage', 'schedualTable', 'wentDays',
-        'remainingDays'
+        'remainingDays', 'training_program'
     ];
 
     public function getStateAttribute()
@@ -57,6 +57,11 @@ class TrainingCourse extends Model
     public function getRemainingDaysAttribute()
     {
         return $this->remainingDays();
+    }
+
+    public function getTrainingProgramAttribute()
+    {
+        return ($this->training_program_id) ? $this->trainingProgram()->first() : null;
     }
 
     public function coaches()
@@ -309,6 +314,23 @@ class TrainingCourse extends Model
     public function enrollIndividual(TargetedIndividual $individual)
     {
         $this->targetedIndividuals()->save($individual);
+    }
+
+    /**
+     * attach coach to the course model.
+     *
+     * @param  \App\Models\Coach  $model
+     * @return bool true if success. false if coach is already attached
+     */
+    public function attachCoach(Coach $coach)
+    {
+        
+        if ($this->coaches()->find($coach->id))
+            return false;
+
+        $this->coaches()->save($coach);
+        return true;
+
     }
 
     public function isEnrolled($person)

@@ -2,16 +2,17 @@
 
 namespace Tests\Feature\DB;
 
-use Tests\TestCase;
-use App\Models\TrainingCourse;
-use App\Models\CourseAttendance;
-use App\Models\Employee;
-use App\Models\TargetedIndividual;
-use Carbon\Carbon;
 use DateTime;
+use Carbon\Carbon;
+use Tests\TestCase;
+use App\Models\Coach;
+use App\Models\Employee;
+use App\Models\TrainingCourse;
+use PhpParser\Node\Expr\Empty_;
+use App\Models\CourseAttendance;
+use App\Models\TargetedIndividual;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use PhpParser\Node\Expr\Empty_;
 
 class TrainingCoursesTest extends TestCase
 {
@@ -156,6 +157,14 @@ class TrainingCoursesTest extends TestCase
 
         $this->assertFalse($course->isEnrolled($employee));
         $this->assertFalse($course->isEnrolled($individual));
+    }
+
+    public function test_course_can_attach_coaches_to_the_course(){
+        $course = TrainingCourse::factory()->create();
+        $coach = Coach::factory()->create();
+        $this->assertEquals($course->attachCoach($coach),true);
+        $this->assertEquals($course->attachCoach($coach),false);
+
     }
 
     public function test_course_model_can_return_its_schedual_in_dates_and_time_frame()
