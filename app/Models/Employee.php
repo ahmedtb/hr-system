@@ -27,7 +27,10 @@ class Employee extends Authenticatable
 
     public function getRoleAttribute()
     {
-        return 'employee';
+        if ($this->coach()->exists())
+            return ['employee', 'coach'];
+        else
+            return ['employee'];
     }
 
     public function getJobAttribute()

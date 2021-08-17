@@ -20,7 +20,7 @@ class Admin extends Authenticatable
     ];
 
     public function getRoleAttribute(){
-        return 'admin';
+        return ['admin'];
     }
 
     public function TrainingCourses(){

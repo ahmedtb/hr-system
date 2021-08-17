@@ -49,8 +49,7 @@ return [
             'provider' => 'employees',
         ],
         'coach' => [
-            'driver' => 'session',
-            'provider' => 'coaches',
+            'driver' => 'coach-request',
         ],
         'individual' => [
             'driver' => 'session',

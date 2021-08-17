@@ -19,7 +19,7 @@ class Coach extends Authenticatable
 
     public function getRoleAttribute()
     {
-        return 'coach';
+        return ['coach'];
     }
 
     public function trainingPrograms()

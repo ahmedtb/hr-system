@@ -39,7 +39,7 @@ function LoginPage(props) {
                         <option value='employee'>employee</option>
                         <option value='web'>web</option>
                         <option value='individual'>individual</option>     
-                        <option value='coach'>coach</option>
+                        {/* <option value='coach'>coach</option> */}
                     </select>
                     <button type="button" className="btn btn-success" onClick={() => handleLogin(name, password)}>login</button>
 

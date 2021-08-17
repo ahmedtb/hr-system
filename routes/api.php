@@ -131,10 +131,10 @@ Route::post('trainingPeriodAssessment/create', [TrainingPeriodAssessmentsControl
 Route::get('trainingPeriodAssessment/index', [TrainingPeriodAssessmentsController::class, 'index']);
 
 Route::post('traineeCourseAssessment/create', [TraineeCourseAssessmentsController::class, 'create']);
-Route::get('traineeCourseAssessment/index', [TraineeCourseAssessmentsController::class, 'index']);
+Route::get('traineeCourseAssessment/index', [TraineeCourseAssessmentsController::class, 'index'])->middleware(['auth:employee']);
 
 Route::post('coachCourseAssessment/create', [CoachCourseAssessmentsController::class, 'create']);
-Route::get('coachCourseAssessment/index', [CoachCourseAssessmentsController::class, 'index']);
+Route::get('coachCourseAssessment/index', [CoachCourseAssessmentsController::class, 'index'])->middleware(['auth:admin,coach']);
 
 Route::get('/user', function (Request $request) {
     if ($request->user('admin')) {

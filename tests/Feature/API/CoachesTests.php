@@ -43,12 +43,40 @@ class CoachesTests extends TestCase
 
     public function test_system_can_get_coaches_programs()
     {
-        ;
         $coach = Coach::factory()->create();
         $coach->trainingPrograms()->saveMany(TrainingProgram::factory(5)->create());
         $response = $this->getJson('api/coach/'.$coach->id . '/programs');
         // dd($response->json());
         $response->assertOk();
         $response->assertJsonCount(5);
+    }
+
+    public function test_system_will_set_a_coach_guard_if_the_individual_or_employee_is_a_coach()
+    {
+        // based on that '/api/coachCourseAssessment/index' route is guarded with admin and coach guards
+
+        // employee that is not a coach
+        $employee = Employee::factory()->create();
+        $this->actingAs($employee,'employee');
+        $response = $this->getJson('/api/coachCourseAssessment/index');
+        $response->assertUnauthorized();
+
+        // individual that is not a coach
+        $individual = TargetedIndividual::factory()->create();
+        $this->actingAs($individual,'individual');
+        $response = $this->getJson('/api/coachCourseAssessment/index');
+        $response->assertUnauthorized();
+
+        // employee as coach
+        Coach::factory()->profile($employee)->create();
+        $this->actingAs($employee->refresh(),'employee');
+        $response = $this->getJson('/api/coachCourseAssessment/index');
+        $response->assertOk();
+
+        // individual as coach
+        Coach::factory()->profile($individual)->create();
+        $this->actingAs($individual->refresh(),'individual');
+        $response = $this->getJson('/api/coachCourseAssessment/index');
+        $response->assertOk();
     }
 }

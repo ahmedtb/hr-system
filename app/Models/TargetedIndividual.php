@@ -20,7 +20,10 @@ class TargetedIndividual extends Authenticatable
 
     public function getRoleAttribute()
     {
-        return 'individual';
+        if ($this->coach()->exists())
+            return ['individual','coach'];
+        else
+            return ['individual'];
     }
 
     public function trainingCourses()

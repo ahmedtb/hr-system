@@ -45,4 +45,14 @@ class CoachFactory extends Factory
 
         ];
     }
+    
+    public function profile($profile)
+    {
+        return $this->state(function (array $attributes) use($profile) {
+            return [
+                'profile_id' => $profile->id,
+                'profile_type' => get_class($profile)
+            ];
+        });
+    }
 }

@@ -6,6 +6,7 @@ use App\Models\Job;
 use Tests\TestCase;
 use App\Models\Head;
 use App\Models\Unit;
+use App\Models\Coach;
 use App\Models\Document;
 use App\Models\Employee;
 use App\Models\TrainingCourse;
@@ -98,6 +99,17 @@ class EmployeesTest extends TestCase
         $this->assertNotNull($employee->unit()->first());
         $this->assertTrue(get_class($employee->unit()) == Unit::class);
 
+    }
+
+    
+    public function test_employee_that_is_a_coach_return_coach_role_also()
+    {
+        $employee = Employee::factory()->create();
+        $coach = Coach::factory()->profile($employee)->create();
+        $this->assertEquals($employee->refresh()->role, ['employee', 'coach']);
+        
+        $employee = Employee::factory()->create();
+        $this->assertEquals($employee->refresh()->role, ['employee']);
     }
 
 
