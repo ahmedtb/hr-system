@@ -55,7 +55,6 @@ return [
             'driver' => 'session',
             'provider' => 'targeted_individuals',
         ],
-
         'api' => [
             'driver' => 'token',
             'provider' => 'users',

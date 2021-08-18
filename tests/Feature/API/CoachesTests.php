@@ -67,13 +67,13 @@ class CoachesTests extends TestCase
         $response = $this->getJson('/api/coachCourseAssessment/index');
         $response->assertUnauthorized();
 
-        // employee as coach
+        // employee that is a coach
         Coach::factory()->profile($employee)->create();
         $this->actingAs($employee->refresh(),'employee');
         $response = $this->getJson('/api/coachCourseAssessment/index');
         $response->assertOk();
 
-        // individual as coach
+        // individual that is a coach
         Coach::factory()->profile($individual)->create();
         $this->actingAs($individual->refresh(),'individual');
         $response = $this->getJson('/api/coachCourseAssessment/index');

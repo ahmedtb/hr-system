@@ -78,7 +78,6 @@ class LoginController extends Controller
             $this->username() => 'required|string',
             'password' => 'required|string',
             'type' => 'required|in:admin,employee,web,individual',
-
         ]);
     }
 

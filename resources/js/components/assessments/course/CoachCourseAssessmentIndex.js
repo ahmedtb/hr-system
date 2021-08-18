@@ -15,10 +15,11 @@ export default function CoachCourseAssessmentIndex() {
     const [params, setparams] = React.useState([])
 
     async function fetchPage(link = ApiEndpoints.getCoachCourses, params = null) {
+        // axios.defaults.headers.common['Content-Type'] = 'application/json';
         axios.get(link, { params: params }).then((response) => {
             setcoachCourses(response.data.data)
             setparams(params)
-            console.log(response.data)
+            console.log('getCoachCourses', response.data)
             if (response.data.links) { setlinks(response.data.links) } else { setlinks(null) }
 
         }).catch((error) => logError(error))
@@ -140,7 +141,7 @@ export default function CoachCourseAssessmentIndex() {
                         property={'note'}
                         label={'ملاحظة على الدورة'}
                     />
-                     <DateFilter
+                    <DateFilter
                         params={params}
                         fetchPage={(newparams) => fetchPage(ApiEndpoints.getCoachCourses, newparams)}
                         property={'created_at'}

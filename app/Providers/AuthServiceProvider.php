@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Employee;
+use Illuminate\Http\Request;
 use App\Models\TargetedIndividual;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -28,11 +29,13 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Auth::viaRequest('coach-request', function ($request) {
-            $user = $request->user();
-            if($user != null){
-                return $user->coach ?? null;
-            }
+        Auth::viaRequest('coach-request', function (Request $request) {
+            $user = $request->user('employee') ?? $request->user('individual');
+
+            if ($user != null) {
+                return $user->coach()->first() ??  null;
+            } else
+                return null;
         });
         //
     }
