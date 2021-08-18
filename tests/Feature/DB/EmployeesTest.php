@@ -111,6 +111,16 @@ class EmployeesTest extends TestCase
         $employee = Employee::factory()->create();
         $this->assertEquals($employee->refresh()->role, ['employee']);
     }
-
+    
+    public function test_employee_training_courses_fun_return_his_courses_as_a_coach_also()
+    {
+        $employee = Employee::factory()->create();
+        $coach = Coach::factory()->profile($employee)->create();
+        
+        TrainingCourse::factory()->create()->enrollEmployee($employee);
+        TrainingCourse::factory()->create()->attachCoach($coach);
+        
+        $this->assertEquals($employee->refresh()->TrainingCourses()->count(),2);
+    }
 
 }

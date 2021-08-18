@@ -9,7 +9,7 @@ import PrivateRoutesConfig from '../routing/PrivateRoutesConfig'
 import { intersection } from 'lodash';
 
 const calculateAllowedRoutes = (user) => {
-    const roles = user?.role.length ? user?.role : []
+    const roles = user.role?.length ? user.role : []
     return PrivateRoutesConfig.filter(
         ({ permission }) => {
             if (!permission) return true;

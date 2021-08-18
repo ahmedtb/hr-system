@@ -29,12 +29,10 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Auth::viaRequest('coach-request', function ($request) {
-            if (get_class($request->user()) == Employee::class) {
-                return $request->user()->coach;
-            } else if (get_class($request->user()) == TargetedIndividual::class) {
-                return $request->user()->coach;
-            } else
-                return null;
+            $user = $request->user();
+            if($user != null){
+                return $user->coach ?? null;
+            }
         });
         //
     }

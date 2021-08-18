@@ -99,10 +99,23 @@ class Employee extends Authenticatable
     }
 
 
-    public function TrainingCourses()
+    public function TrainingCourses($include_coach_courses = true)
     {
-        return TrainingCourse::whereHas('employees', function ($query) {
-            return $query->where('employees.id', $this->id);
-        });
+        if ($include_coach_courses && $this->coach) {
+            $employeeQuery = TrainingCourse::whereHas('employees', function ($query) {
+                return $query->where('employees.id', $this->id);
+            })->orWhereHas('coaches', function ($query) {
+                return $query->where('coaches.id', $this->coach->id);
+            });
+            // $coachQuery = $this->coach->trainingCourses();
+            // return $coachQuery;
+            return $employeeQuery;
+
+            // return $coachQuery->union($employeeQuery);
+        } else {
+            return TrainingCourse::whereHas('employees', function ($query) {
+                return $query->where('employees.id', $this->id);
+            });
+        }
     }
 }
