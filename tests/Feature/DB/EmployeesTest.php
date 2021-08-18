@@ -117,7 +117,9 @@ class EmployeesTest extends TestCase
         $employee = Employee::factory()->create();
         $coach = Coach::factory()->profile($employee)->create();
         
+        // create course without coach
         TrainingCourse::factory()->create()->enrollEmployee($employee);
+        // create course with the employee as the coach
         TrainingCourse::factory()->create()->attachCoach($coach);
         
         $this->assertEquals($employee->refresh()->TrainingCourses()->count(),2);

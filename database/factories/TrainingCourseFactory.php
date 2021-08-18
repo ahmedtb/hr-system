@@ -48,8 +48,8 @@ class TrainingCourseFactory extends Factory
             'title' => $this->faker->sentence(),
             'training_program_id' => (TrainingProgram::inRandomOrder()->first()->id) ?? TrainingProgram::factory()->create()->id,
             'status' => $states[$random],
-            'start_date' => ($start = $this->faker->dateTimeBetween('-1 month', '1 month')),
-            'end_date' => $this->faker->dateTimeBetween($start, '1 month'),
+            'start_date' => ($start = $this->faker->dateTimeBetween('-1 month', '1 month')->format('Y-m-d')),
+            'end_date' => $this->faker->dateTimeBetween($start, '1 month')->format('Y-m-d'),
             'week_schedule' => $this->createRandomWeekSchedule()
         ];
     }

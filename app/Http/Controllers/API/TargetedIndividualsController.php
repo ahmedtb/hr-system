@@ -9,6 +9,7 @@ use App\Filters\IndividualFilters;
 use App\Models\TargetedIndividual;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rules\Password;
 
 class TargetedIndividualsController extends Controller
 {
@@ -33,8 +34,9 @@ class TargetedIndividualsController extends Controller
             'phone_number' => 'sometimes|string',
             'email' => 'sometimes|email',
             'description' => 'sometimes|string',
-
             'profile' => 'sometimes|image|mimes:jpg,jpeg,png,bmp,tiff |max:1024',
+            'password' => ['required', 'confirmed', Password::min(8)]
+
 
         ]);
 
@@ -45,6 +47,8 @@ class TargetedIndividualsController extends Controller
                 'phone_number' => $request->phone_number,
                 'email' => $request->email,
                 'description' => $request->description,
+                'password' => $request->password,
+
             ]);
             if ($request->profile) {
                 $image = base64_encode(file_get_contents($request->file('profile')->path()));

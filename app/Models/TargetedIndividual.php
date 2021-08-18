@@ -21,14 +21,28 @@ class TargetedIndividual extends Authenticatable
     public function getRoleAttribute()
     {
         if ($this->coach()->exists())
-            return ['individual','coach'];
+            return ['individual', 'coach'];
         else
             return ['individual'];
     }
 
-    public function trainingCourses()
+    // public function trainingCourses()
+    // {
+    //     return $this->belongsToMany(TrainingCourse::class);
+    // }
+
+
+    public function TrainingCourses($include_coach_courses = true)
     {
-        return $this->belongsToMany(TrainingCourse::class);
+        if ($include_coach_courses && $this->coach) {
+            return TrainingCourse::whereHas('targetedIndividuals', function ($query) {
+                return $query->where('targeted_individuals.id', $this->id);
+            })->orWhereHas('coaches', function ($query) {
+                return $query->where('coaches.id', $this->coach->id);
+            });
+        } else {
+            return $this->belongsToMany(TrainingCourse::class);
+        }
     }
 
     public function coach()

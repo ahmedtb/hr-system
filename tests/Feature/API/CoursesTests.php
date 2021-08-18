@@ -19,9 +19,16 @@ class CoursesTests extends TestCase
 {
     use RefreshDatabase;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+    }
+
     public function test_course_create_endpoint()
     {
         $course = TrainingCourse::factory()->make();
+        // dd($course->start_date);
+
         $response = $this->postJson('api/course', [
             'title' => $course->title,
             'training_program_id' => $course->training_program_id,
@@ -30,9 +37,9 @@ class CoursesTests extends TestCase
             'end_date' => $course->end_date,
             'week_schedule' => $course->week_schedule
         ]);
-
+        // dd($response->json());
         $response->assertOk();
-
+        $response->assertJson(['success' => 'training coures created']);
         $this->assertEquals(TrainingCourse::all()->count(), 1);
     }
 
@@ -43,11 +50,14 @@ class CoursesTests extends TestCase
 
     public function test_course_index_endpoint()
     {
+        $admin = Admin::factory()->create();
+        $this->actingAs($admin, 'admin');
+
         $course = TrainingCourse::factory(10)->create();
         $response = $this->getJson('api/course/index');
-
+        // dd($response->json());
         $response->assertOk();
-        $response->assertJsonCount(10);
+        $this->assertEquals($response->json()['total'], 10);
     }
 
     public function test_system_can_view_the_course_schedual()
@@ -64,11 +74,10 @@ class CoursesTests extends TestCase
     public function test_system_can_get_attendance_records_of_any_course()
     {
         $course = TrainingCourse::factory()->create();
-        CourseAttendance::factory(10)->create([
-            'training_course_id' => $course->id
-        ]);
-        $response = $this->getJson('api/course/' . $course->id . '/attendance');
+        CourseAttendance::factory(10)->forCourse($course)->create();
+        $response = $this->getJson('api/course/' . $course->id . '/attendances');
 
+        // dd($response->json());
         $response->assertOk();
         $response->assertJsonCount(10);
     }
@@ -96,35 +105,13 @@ class CoursesTests extends TestCase
 
         $course->employees()->attach($employees);
 
-        $this->getJson('api/getCourseEmployees/' . $course->id)->assertOk()->assertJsonCount(10);
-    }
-
-    public function test_can_get_list_of_employees_and_targeted_indivituals_in_a_course()
-    {
-        $employees = Employee::factory(10)->create();
-
-        $course = TrainingCourse::factory()->create();
-
-        $course->employees()->attach($employees);
-
-        $response = $this->getJson('api/getCourseParticipants/' . $course->id);
-        dd($response->content());
-        //$response->assertOk()->assertJsonCount(10);
+        $response = $this->getJson('api/course/' . $course->id . '/employees');
+        // dd($response->json());
+        $response->assertOk()->assertJsonCount(10);
     }
 
     public function test_system_can_search_through_all_the_people_registered_in_the_courses_and_retrive_stats_about_them()
     {
-    }
-
-    public function test_course_statistics_can_be_retrived()
-    {
-        $employees = Employee::factory(10)->create();
-
-        $course = TrainingCourse::factory()->create();
-
-        $course->employees()->attach($employees);
-
-        $this->getJson('api/getCourseState/' . $course->id); //->assertOk();//->assertJsonCount(10);
     }
 
     public function test_we_can_fetch_courses_that_close_to_now()
@@ -133,6 +120,9 @@ class CoursesTests extends TestCase
 
     public function test_courses_can_be_filtered()
     {
+        $admin = Admin::factory()->create();
+        $this->actingAs($admin, 'admin');
+
         $course = TrainingCourse::factory(2)->create([
             'start_date' => '2021-07-01',
             'end_date' => '2021-07-10'
@@ -151,12 +141,17 @@ class CoursesTests extends TestCase
 
     public function test_courses_can_be_filtered_by_enrolled_employees_and_individuals()
     {
+        // set up employee as auth user
+        $admin = Admin::factory()->create();
+        $this->actingAs($admin, 'admin');
+
         TrainingCourse::factory(2)->create();
         $course = TrainingCourse::factory()->create();
 
         $employee = Employee::factory()->create();
         $course->enrollEmployee($employee);
         $response = $this->getJson('/api/course/index?employee_id=' . $employee->id);
+        // dd($response->json());
         $this->assertEquals(sizeof($response->json()['data']), 1);
 
         $individual = TargetedIndividual::factory()->create();
@@ -180,7 +175,10 @@ class CoursesTests extends TestCase
         TrainingCourse::factory(2)->create();
         $employee = Employee::factory()->create();
         $this->actingAs($employee, 'employee');
+        // $this->actingAs($employee, 'employee');
+
         $response = $this->getJson('/api/course/index');
+        // dd($response->json());
         $this->assertEquals($response->json()['total'], 0);
 
         TrainingCourse::factory()->create()->enrollEmployee($employee);

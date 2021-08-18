@@ -17,16 +17,18 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class FormsEndpointsTests extends TestCase
 {
     use RefreshDatabase;
+
     public function test_job_application_forms_could_be_generated_as_a_links_with_tokens()
     {
         $formStructure = FormStructure::factory()->create();
         $response = $this->postJson('api/generateForm', [
             'form_structure_id' => $formStructure->id,
         ]);
+        // dd($response->content());
         $response->assertOk();
-        $formLink = $response->content();
+        $formAccessToken = $response->content();
 
-        $response = $this->getJson($formLink);
+        $response = $this->getJson('/api/getGeneratedForm/' . $formAccessToken);
         $response->assertOk();
         $response->assertJson(
             function (AssertableJson $json) use ($formStructure) {
@@ -97,11 +99,12 @@ class FormsEndpointsTests extends TestCase
         $formStructure = FormStructure::factory()->create();
     }
 
+    // please implement this testing using a testing database and commenting DB_CONNECTION, DB_DATABASE in phpunit.xml
     public function test_form_can_be_searched_through_its_fields()
     {
         $searchFields = new ArrayOfFields(array(
             new StringField('label'),
-            new GenderField('label'),
+            new StringField('label'),
             new TableField2(
                 'label',
                 array(
@@ -129,15 +132,22 @@ class FormsEndpointsTests extends TestCase
         $response = $this->postJson('api/form/search/' . $structure->id, [
             'fields' => $searchFields
         ]);
+        // dd($response->json());
         $response->assertJsonCount(1);
+
         $response = $this->postJson('api/form/search/' . $structure->id, [
             'fields' => (new ArrayOfFields())->setField($searchFields->getField(0))
         ]);
+        // dd($response->json());
+
         $response->assertJsonCount(1);
+
         $response = $this->postJson('api/form/search/' . $structure->id, [
             'fields' => (new ArrayOfFields())->setField($searchFields->getField(1))
         ]);
+        // dd($response->json());
         $response->assertJsonCount(1);
+
         $response = $this->postJson('api/form/search/' . $structure->id, [
             'fields' => (new ArrayOfFields())->setField($searchFields->getField(2))
         ]);

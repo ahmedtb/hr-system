@@ -25,8 +25,8 @@ class UnitFactory extends Factory
 
         return [
             'name' => $this->faker->company(),
-            'parent_id' => (random_int(1,5) == 3) ? (Unit::inRandomOrder()->first()->id ?? Unit::factory()->create()->id) : null,
-            'head_id' => (random_int(1,5) == 3) ? (Employee::inRandomOrder()->first()->id ?? Employee::factory()->create()->id) : null,
+            // 'parent_id' => (random_int(1,5) == 3) ? (Unit::inRandomOrder()->first()->id ?? Unit::factory()->create()->id) : null,
+            // 'head_id' => (random_int(1,5) == 3) ? (Employee::inRandomOrder()->first()->id ?? Employee::factory()->create()->id) : null,
             'purpose' => $this->faker->sentence(),
         ];
     }
@@ -36,6 +36,34 @@ class UnitFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'parent_id' => (Unit::inRandomOrder()->first()->id) ?? Unit::factory()->create()->id,
+            ];
+        });
+    }
+
+    public function withoutParent()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'parent_id' => null,
+            ];
+        });
+    }
+
+    public function withHead()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'head_id' => (Employee::inRandomOrder()->first()->id ?? Employee::factory()->create()->id),
+            ];
+        });
+    }
+
+    
+    public function withoutHead()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'head_id' => null,
             ];
         });
     }

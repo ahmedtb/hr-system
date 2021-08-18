@@ -29,7 +29,7 @@ class ModelRefField extends FieldType
 
     public function setModelClass(string $modelClass)
     {
-        if (class_parents($modelClass) == [Model::class => Model::class])
+        if ( class_parents($modelClass)[Model::class] ==   Model::class  )
             $this->modelClass = $modelClass;
         else
             throw new Exception('invalid model class: ' . $modelClass);

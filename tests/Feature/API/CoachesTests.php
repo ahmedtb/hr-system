@@ -23,7 +23,9 @@ class CoachesTests extends TestCase
             'speciality' => $coach->speciality,
             'name' => $coach->speciality,
             'employee_id' => $employee->id
-        ])->assertOk();
+        ]);
+        // dd($response->json());
+        $response->assertOk();
 
         $this->assertEquals(Coach::all()->count(), 1);
         $this->assertEquals(Coach::all()[0]->profile_type, Employee::class);

@@ -35,32 +35,35 @@ class InterviewAssessmentTests extends TestCase
             'interviewer_id' => $assessment->interviewer_id,
             'interview_date' => $assessment->interview_date,
         ]);
+        // dd($response->json());
         $response->assertOk();
         $response->assertJson(['success' => 'interview assessment archived']);
-        // dd($response->json());
     }
 
     public function test_interview_Assessments_could_be_retrived()
     {
         InterviewAssessment::factory(10)->create();
         $response = $this->getJson('api/interview/index');
-        $response->assertOk()->assertJsonCount(10);
+        $response->assertOk();//->assertJsonCount(10);
+        $this->assertEquals($response->json()['total'], 10);
+
     }
 
     public function test_system_can_retrive_interviews_by_filtering()
     {
         InterviewAssessment::factory(2)->create([
-            'moral_courage_self_confidence' => 'excellent',
-            'self_introduction' => 'excellent'
+            'moral_courage_self_confidence' => 4,
+            'self_introduction' => 4
         ]);
         InterviewAssessment::factory(5)->create([
-            'moral_courage_self_confidence' => 'good',
-            'self_introduction' => 'good'
+            'moral_courage_self_confidence' => 2,
+            'self_introduction' => 2
 
         ]);
-        $response = $this->getJson('api/interview/index?confidence=excellent&self_introduction=excellent');
-
-        $response->assertOk()->assertJsonCount(2);
+        $response = $this->getJson('api/interview/index?confidence=4&self_introduction=4');
+        // dd( $response->json() );
+        $response->assertOk();//->assertJsonCount(2);
+        $this->assertEquals($response->json()['total'], 2);
     }
 
     public function test_system_has_endpoint_fetching_statistics_about_the_interviews_done()

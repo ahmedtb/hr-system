@@ -13,7 +13,7 @@ class TrainingPeriodAssessmentTest extends TestCase
     public function test_training_period_assessment_form_could_be_created_and_archive_it()
     {
         $assessment = TrainingPeriodAssessment::factory()->make();
-        $response = $this->postJson('/api/trainingPeriod/create', [
+        $response = $this->postJson('/api/trainingPeriodAssessment/create', [
             'date' => $assessment->date,
             'employee_id' => $assessment->employee_id,
             'unit_id' => $assessment->unit_id,
@@ -39,9 +39,10 @@ class TrainingPeriodAssessmentTest extends TestCase
             'attendance_rate' => $assessment->attendance_rate,
             'management_decision' => $assessment->management_decision,
         ]);
+
+        // dd($response->json());
         $response->assertOk();
         $response->assertJson(['success' => 'training period assessment archived']);
-        // dd($response->json());
     }
 
     public function test_training_period_assessment_could_be_retrived()
@@ -49,7 +50,9 @@ class TrainingPeriodAssessmentTest extends TestCase
         TrainingPeriodAssessment::factory(10)->create();
         $response = $this->getJson('api/trainingPeriodAssessment/index');
         // dd($response->json());
-        $response->assertOk()->assertJsonCount(10);
+        $response->assertOk();
+        $this->assertEquals($response->json()['total'], 10);
+        // $response->assertOk()->assertJsonCount(10);
     }
 
     public function test_system_can_retrive_training_period_assessments_by_filtering()
@@ -61,9 +64,11 @@ class TrainingPeriodAssessmentTest extends TestCase
             'excitement' => 1,
         ]);
         $response = $this->getJson('api/trainingPeriodAssessment/index?excitement=5');
-        $response->assertOk()->assertJsonCount(2);
+        $response->assertOk();
+        $this->assertEquals($response->json()['total'], 2);
 
         $response = $this->getJson('api/trainingPeriodAssessment/index?excitement=2');
-        $response->assertOk()->assertJsonCount(0);
+        $response->assertOk();
+        $this->assertEquals($response->json()['total'], 0);
     }
 }

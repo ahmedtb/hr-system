@@ -131,7 +131,7 @@ Route::post('trainingPeriodAssessment/create', [TrainingPeriodAssessmentsControl
 Route::get('trainingPeriodAssessment/index', [TrainingPeriodAssessmentsController::class, 'index']);
 
 Route::post('traineeCourseAssessment/create', [TraineeCourseAssessmentsController::class, 'create']);
-Route::get('traineeCourseAssessment/index', [TraineeCourseAssessmentsController::class, 'index'])->middleware(['auth:employee']);
+Route::get('traineeCourseAssessment/index', [TraineeCourseAssessmentsController::class, 'index'])->middleware(['auth:admin,employee']);
 
 Route::post('coachCourseAssessment/create', [CoachCourseAssessmentsController::class, 'create']);
 Route::get('coachCourseAssessment/index', [CoachCourseAssessmentsController::class, 'index'])->middleware(['auth:admin,coach']);
@@ -149,10 +149,10 @@ Route::get('/user', function (Request $request) {
         $employee = $request->user('employee');
         $employee->role = 'employee';
         return $employee;
-    } else if ($request->user('coach')) {
-        $coach = $request->user('coach');
-        $coach->role = 'coach';
-        return $coach;
+    // } else if ($request->user('coach')) {
+    //     $coach = $request->user('coach');
+    //     $coach->role = 'coach';
+    //     return $coach;
     } else if ($request->user('individual')) {
         $individual = $request->user('individual');
         $individual->role = 'individual';

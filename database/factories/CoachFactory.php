@@ -41,7 +41,7 @@ class CoachFactory extends Factory
             'speciality' => $this->faker->sentence(),
             'profile_id' => $profile_id,
             'profile_type' => $profile_type,
-            'password' => Hash::make('password')
+            // 'password' => Hash::make('password')
 
         ];
     }

@@ -6,6 +6,7 @@ use Tests\TestCase;
 use App\Models\Head;
 use App\Models\Coach;
 use App\Models\Document;
+use App\Models\TrainingCourse;
 use App\Models\TargetedIndividual;
 use Illuminate\Foundation\Testing\WithFaker;
 use App\Models\Assessments\InterviewAssessment;
@@ -42,5 +43,21 @@ class TargetedIndividualsTests extends TestCase
         
         $targeted = TargetedIndividual::factory()->create();
         $this->assertEquals($targeted->refresh()->role, ['individual']);
+    }
+
+        
+    public function test_individual_training_courses_fun_return_his_courses_as_a_coach_also()
+    {
+        $individual = TargetedIndividual::factory()->create();
+        $coach = Coach::factory()->profile($individual)->create();
+        
+        // create course without coach
+        TrainingCourse::factory()->create()->enrollIndividual($individual);
+
+        // create course with the individual as the coach
+        TrainingCourse::factory()->create()->attachCoach($coach);
+        
+        // dd($individual->refresh()->TrainingCourses()->get());
+        $this->assertEquals($individual->refresh()->TrainingCourses()->count(),2);
     }
 }

@@ -18,7 +18,7 @@ class CreateCoachesTable extends Migration
             $table->morphs('profile'); // coach could be a employee or a targeted individual
             $table->string('speciality');
             $table->text('CV')->nullable();
-            $table->string('password');
+            // $table->string('password');
             $table->timestamps();
         });
     }

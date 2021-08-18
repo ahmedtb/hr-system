@@ -27,6 +27,8 @@ class TargetedIndividualsTests extends TestCase
             'phone_number' => $targeted->phone_number,
             'email' => $targeted->email,
             'description' => $targeted->description,
+            'password' => 'password',
+            'password_confirmation' => 'password'
         ]);
         // dd($response->json());
         $response->assertOk();
@@ -48,7 +50,9 @@ class TargetedIndividualsTests extends TestCase
             'phone_number' => $targeted->phone_number,
             'email' => $targeted->email,
             'description' => $targeted->description,
-            'profile' => $profile
+            'profile' => $profile,
+            'password' => 'password',
+            'password_confirmation' => 'password'
         ]);
         $response->assertOk();
         $response->assertJson(['success' => 'targeted individual created']);

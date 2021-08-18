@@ -10,6 +10,8 @@ use App\Models\Document;
 use App\Models\Employee;
 use App\Models\TrainingCourse;
 use App\Models\TrainingProgram;
+use Illuminate\Http\Testing\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class EmployeesEndpointsTests extends TestCase
@@ -20,7 +22,7 @@ class EmployeesEndpointsTests extends TestCase
     {
         Employee::factory(50)->create();
         $response = $this->getJson('/api/employee/index');
-        dd($response->json());
+        // dd($response->json());
 
         $response->assertJsonStructure([
             'current_page', 'next_page_url', 'data', 'first_page_url', 'from', 'last_page', 'last_page_url'
@@ -50,17 +52,24 @@ class EmployeesEndpointsTests extends TestCase
             'phone_number' => $employee->phone_number,
             'job_id' => $job->id,
             'email' => $employee->email,
-            'medal_rating' => $employee->medal_rating
-        ])->assertOk()->assertJson(['success' => 'employee created']);
+            'medal_rating' => $employee->medal_rating,
+            'password' => 'password',
+            'password_confirmation' => 'password'
+
+        ]);//->assertOk()->assertJson(['success' => 'employee created']);
         // dd($response->json());
         $this->assertNotEmpty(Employee::first());
     }
 
     public function test_employee_can_be_created_with_documents_attacked_to_it()
     {
-        $this->withoutExceptionHandling();
-        $documents = Document::factory(5)->make();
+        // $this->withoutExceptionHandling();
+        // $documents = Document::factory(5)->make();
 
+        Storage::fake('public');
+
+        $documents = [File::image('icon.png', 400, 100),File::image('icon.png', 400, 100)];
+        
         $job = Job::factory()->create();
         $employee = Employee::factory()->make();
         $response = $this->postJson('api/createEmployee', [
@@ -72,12 +81,14 @@ class EmployeesEndpointsTests extends TestCase
             'job_id' => $job->id,
             'email' => $employee->email,
             'medal_rating' => $employee->medal_rating,
-            'documents' => $documents
+            'documents' => $documents,
+            'password' => 'password',
+            'password_confirmation' => 'password'
         ]);
-        $response->assertOk()->assertJson(['success' => 'employee created with documents']);
         // dd($response->json());
+        $response->assertOk()->assertJson(['success' => 'employee created with documents']);
         $this->assertNotEmpty(Employee::first());
-        $this->assertEquals(Document::all()->count(), 5);
+        $this->assertEquals(Document::all()->count(), 2);
     }
 
     public function test_employee_can_be_created_togather_with_new_job_kind()
@@ -99,7 +110,9 @@ class EmployeesEndpointsTests extends TestCase
             'phone_number' => $employee->phone_number,
             // 'job_id' => $job->id,
             'email' => $employee->email,
-            'medal_rating' => $employee->medal_rating
+            'medal_rating' => $employee->medal_rating,
+            'password' => 'password',
+            'password_confirmation' => 'password'
         ])->assertOk()->assertJson(['success' => 'job and employee created']);
         // dd($response->json());
 

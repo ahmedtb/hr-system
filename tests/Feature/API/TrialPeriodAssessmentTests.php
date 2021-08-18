@@ -86,7 +86,7 @@ class TrialPeriodAssessmentTests extends TestCase
         $response = $this->postJson('api/generateForm', [
             'form_structure_id' => $this->formStructure->id,
         ]);
-        $access_token = explode('/', $response->content())[2];
+        $access_token = $response->content();
 
         $form = Form::factory()->forStructure($this->formStructure->id)->make();
         $this->postJson('api/submitForm', [

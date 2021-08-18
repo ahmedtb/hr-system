@@ -37,6 +37,7 @@ class ProgramsTests extends TestCase
         $response = $this->getJson('/api/program/index');
         // dd($response->content());
         $response->assertOk();
-        $response->assertJsonCount(10);
+        $this->assertEquals($response->json()['total'],10);
+        // $response->assertJsonCount(10);
     }
 }

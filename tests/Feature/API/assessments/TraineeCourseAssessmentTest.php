@@ -3,6 +3,8 @@
 namespace Tests\Feature\API\Assessments;
 
 use Tests\TestCase;
+use App\Models\Coach;
+use App\Models\Employee;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\Assessments\TraineeCourseAssessment;
@@ -10,6 +12,16 @@ use App\Models\Assessments\TraineeCourseAssessment;
 class TraineeCourseAssessmentTest extends TestCase
 {
     use RefreshDatabase;
+    
+    protected function setUp(): void
+    {
+        parent::setUp();
+        
+        // set up employee as auth user
+        $employee = Employee::factory()->create();
+        $this->actingAs($employee, 'employee');
+    }
+    
     public function test_trainee_course_assessment_form_could_be_created_and_archive_it()
     {
         $assessment = TraineeCourseAssessment::factory()->make();
@@ -36,7 +48,8 @@ class TraineeCourseAssessmentTest extends TestCase
         $assessments = TraineeCourseAssessment::factory(10)->create();
         $response = $this->getJson('api/traineeCourseAssessment/index');
         // dd($response->json());
-        $response->assertOk()->assertJsonCount(10);
+        $response->assertOk();//->assertJsonCount(2);
+        $this->assertEquals($response->json()['total'], 10);
     }
 
     public function test_system_can_retrive_trainee_course_assessments_by_filtering()
@@ -48,9 +61,12 @@ class TraineeCourseAssessmentTest extends TestCase
             'coach_understanding' => ['rating'=>1,'comment'=>'aaa'],
         ]);
         $response = $this->getJson('api/traineeCourseAssessment/index?coach_understanding=5');
-        $response->assertOk()->assertJsonCount(2);
+        // dd($response->json());
+        $response->assertOk();//->assertJsonCount(2);
+        $this->assertEquals($response->json()['total'], 2);
         
         $response = $this->getJson('api/traineeCourseAssessment/index?coach_understanding=2');
-        $response->assertOk()->assertJsonCount(0);
+        $response->assertOk();//->assertJsonCount(2);
+        $this->assertEquals($response->json()['total'], 0);
     }
 }

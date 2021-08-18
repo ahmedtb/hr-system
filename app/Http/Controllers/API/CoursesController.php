@@ -81,6 +81,7 @@ class CoursesController extends Controller
         Validator::make(['id' => $id], [
             'id' => 'required|exists:training_courses,id'
         ])->validate();
+        
 
         $course = TrainingCourse::where('id', $id)->first();
 

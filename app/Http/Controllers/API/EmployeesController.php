@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Filters\EmployeeFilters;
 use App\Models\Job;
 use App\Models\Document;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Models\TrainingCourse;
+use App\Filters\EmployeeFilters;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class EmployeesController extends Controller
 {
@@ -64,6 +66,8 @@ class EmployeesController extends Controller
             'email' => 'required|email',
             'medal_rating' => 'sometimes|integer',
             'documents.*' => 'sometimes|image|mimes:jpg,jpeg,png,bmp,tiff |max:1024',
+            'password' => ['required', 'confirmed', Password::min(8)]
+
         ]);
 
         DB::transaction(function ()  use ($request, $validateddata) {
@@ -76,6 +80,8 @@ class EmployeesController extends Controller
                 'job_id' => $request->job_id,
                 'email' => $request->email,
                 'medal_rating' => $request->medal_rating,
+                'password' => Hash::make($request->password),
+
             ]);
 
             if ($request->documents) {
@@ -122,7 +128,8 @@ class EmployeesController extends Controller
             'phone_number' => 'required|string',
             // 'job_id' => 'required|exists:jobs,id',
             'email' => 'required|email',
-            'medal_rating' => 'sometimes|integer'
+            'medal_rating' => 'sometimes|integer',
+            'password' => ['required', 'confirmed', Password::min(8)]
         ]);
 
         $job = Job::create($jobFields);
