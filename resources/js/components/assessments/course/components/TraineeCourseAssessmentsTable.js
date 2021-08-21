@@ -22,6 +22,10 @@ function DataPresentation(row, property) {
 
         return moment(row.created_at).format('yyyy-MM-DD')
     }
+    else if (property == 'id') {
+
+        return <Link to={routes.showTraineeCourseAssessment.replace(':id', row.id)}>{row.id}</Link>
+    }
 
     return row[property].rating
 }
@@ -29,6 +33,7 @@ function DataPresentation(row, property) {
 export default function TraineeCourseAssessmentsTable(props) {
     const traineeCourses = props.traineeCourses
     const [dataShow, setdataShow] = React.useState({
+        id: { visiblity: true, label: 'Id', presentation: (row) => DataPresentation(row, 'id') },
         training_course: { visiblity: true, label: 'عنوان البرنامج التدريبي', presentation: (row) => DataPresentation(row, 'training_course') },
         trainee: { visiblity: true, label: 'المتدرب', presentation: (row) => DataPresentation(row, 'trainee') },
         coach_understanding: { visiblity: true, label: 'إلمام المدرب بمواضيع البرنامج التدريبي', presentation: (row) => DataPresentation(row, 'coach_understanding') },
@@ -80,7 +85,6 @@ export default function TraineeCourseAssessmentsTable(props) {
             <table className="table table-bordered table-condensed">
                 <thead>
                     <tr>
-                        <th >ID</th>
                         {
                             Object.entries(dataShow).map((data, index) => (
                                 (data[1].visiblity) ? <td key={index}>{data[1].label}</td> : null
@@ -91,7 +95,6 @@ export default function TraineeCourseAssessmentsTable(props) {
                 <tbody>
                     {traineeCourses?.map((traineeCourse, index) => (
                         <tr key={index}>
-                            <td>{traineeCourse.id}</td>
                             {
                                 Object.entries(dataShow).map((data, index) => (
                                     (data[1].visiblity) ? <td key={index}>{data[1].presentation(traineeCourse)}</td> : null

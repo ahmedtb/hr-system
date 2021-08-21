@@ -56,7 +56,9 @@ export default {
     
     getTrialPeriod: '/api/trialPeriodAssessment/:id',
     getCoachCourse: '/api/coachCourseAssessment/:id',
-
+    getTraineeCourse: '/api/traineeCourseAssessment/:id',
+    getTrainingPeriod: '/api/trainingPeriodAssessment/:id',
+    getInterview: '/api/interview/:id',
 
     getCoaches: '/api/coach/index',
     programIndex: '/api/program/index',

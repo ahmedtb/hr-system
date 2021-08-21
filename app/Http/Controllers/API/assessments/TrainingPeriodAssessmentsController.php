@@ -52,4 +52,8 @@ class TrainingPeriodAssessmentsController extends Controller
             ->paginate($request->input('page_size') ?? 10)
             ->appends(request()->except('page'));
     }
+    public function show($id)
+    {
+        return TrainingPeriodAssessment::where('id', $id)->first();
+    }
 }

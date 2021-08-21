@@ -21,7 +21,7 @@ class TraineeCourseAssessmentFactory extends Factory
     public function ratingWithComment()
     {
         return [
-            'rating' => random_int(0, 5),
+            'rating' => random_int(1, 5),
             'comment' => $this->faker->sentence()
         ];
     }

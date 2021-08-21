@@ -13,6 +13,20 @@ class TrainingPeriodAssessment extends Model
 
     protected $guarded = [];
 
+    protected $appends = [
+        'employee','reporter'
+    ];
+    public function getEmployeeAttribute()
+    {
+
+        return ($this->employee_id) ? $this->employee()->first() : null;
+    }
+    public function getReporterAttribute()
+    {
+
+        return ($this->reporter_id) ? $this->reporter()->first() : null;
+    }
+
     public function scopeFilter($query, TrainingPeriodAssessmentFilters $filters)
     {
         return $filters->apply($query);
@@ -21,5 +35,10 @@ class TrainingPeriodAssessment extends Model
     public function employee()
     {
         return $this->belongsTo(Employee::class);
+    }
+
+    public function reporter()
+    {
+        return $this->belongsTo(Employee::class, 'reporter_id');
     }
 }

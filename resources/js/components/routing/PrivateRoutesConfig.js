@@ -53,6 +53,9 @@ import UnitShow from '../unit/UnitShow'
 import CoachShow from '../coach/CoachShow'
 import TrialPeriodAssessmentShow from '../assessments/trialPeriod/TrialPeriodAssessmentShow'
 import CoachCourseAssessmentsShow from '../assessments/course/CoachCourseAssessmentsShow'
+import TraineeCourseAssessmentShow from '../assessments/course/TraineeCourseAssessmentShow'
+import TrainingPeriodAssessmentShow from '../assessments/trainingPeriod/TrainingPeriodAssessmentShow'
+import InterviewAssessmentShow from '../assessments/interview/InterviewAssessmentShow'
 
 import AttendanceManager from '../course/AttendancesManager'
 
@@ -496,6 +499,36 @@ export default [
         component: CoachCourseAssessmentsShow,
         path: routes.showCoachCourseAssessment,
         title: 'CoachCourseAssessmentsShow',
+        permission: [
+            Roles.ADMIN,
+            Roles.SUPRTVISOR,
+        ],
+        exact: true,
+    },
+    {
+        component: TraineeCourseAssessmentShow,
+        path: routes.showTraineeCourseAssessment,
+        title: 'TraineeCourseAssessmentShow',
+        permission: [
+            Roles.ADMIN,
+            Roles.SUPRTVISOR,
+        ],
+        exact: true,
+    },
+    {
+        component: TrainingPeriodAssessmentShow,
+        path: routes.showTrainingCourseAssessment,
+        title: 'TrainingPeriodAssessmentShow',
+        permission: [
+            Roles.ADMIN,
+            Roles.SUPRTVISOR,
+        ],
+        exact: true,
+    },
+    {
+        component: InterviewAssessmentShow,
+        path: routes.showInterviewAssessment,
+        title: 'InterviewAssessmentShow',
         permission: [
             Roles.ADMIN,
             Roles.SUPRTVISOR,

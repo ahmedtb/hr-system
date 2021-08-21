@@ -43,4 +43,8 @@ class InterviewsAssessmentsController extends Controller
         return InterviewAssessment::latest()->with('interviewer')->filter($filters)->paginate($request->input('page_size') ?? 10)->appends(request()->except('page'));
     }
 
+    public function show($id)
+    {
+        return InterviewAssessment::where('id', $id)->first();
+    }
 }

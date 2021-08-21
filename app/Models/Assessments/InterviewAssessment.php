@@ -13,7 +13,7 @@ class InterviewAssessment extends Model
 
     protected $guarded = [];
 
-    protected $appends = ['TraitsSum'];
+    protected $appends = ['TraitsSum','interviewer'];
 
     /**
      * Apply all relevant thread filters.
@@ -31,6 +31,13 @@ class InterviewAssessment extends Model
     {
         return $this->belongsTo(Employee::class);
     }
+
+    public function getInterviewerAttribute()
+    {
+
+        return ($this->interviewer_id) ? $this->interviewer()->first() : null;
+    }
+
 
     public function getTraitsSumAttribute()
     {

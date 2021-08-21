@@ -67,4 +67,8 @@ class TraineeCourseAssessmentsController extends Controller
             ->paginate($request->input('page_size') ?? 10)
             ->appends(request()->except('page'));
     }
+    public function show($id)
+    {
+        return TraineeCourseAssessment::where('id', $id)->first();
+    }
 }

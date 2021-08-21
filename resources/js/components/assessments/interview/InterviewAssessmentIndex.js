@@ -3,7 +3,7 @@ import axios from 'axios'
 import ApiEndpoints from '../../utility/ApiEndpoints'
 import routes from '../../utility/routesEndpoints'
 import logError from '../../utility/logError'
-import InterviewAssessmentsTable from '../../partials/InterviewAssessmentsTable'
+import InterviewAssessmentsTable from './components/InterviewAssessmentsTable'
 import { Link } from 'react-router-dom'
 import Pagination from '../../utility/Pagination'
 

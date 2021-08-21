@@ -122,6 +122,7 @@ Route::delete('attendance/{id}', [CourseAttendancesController::class, 'delete'])
 
 Route::post('interview/create', [InterviewsAssessmentsController::class, 'createInterview']);
 Route::get('interview/index', [InterviewsAssessmentsController::class, 'indexInterviews']);
+Route::get('interview/{id}', [InterviewsAssessmentsController::class, 'show']);
 
 Route::post('trialPeriodAssessment/create', [TrialPeriodAssessmentsController::class, 'create']);
 Route::get('trialPeriodAssessment/index', [TrialPeriodAssessmentsController::class, 'index']);
@@ -129,9 +130,12 @@ Route::get('trialPeriodAssessment/{id}', [TrialPeriodAssessmentsController::clas
 
 Route::post('trainingPeriodAssessment/create', [TrainingPeriodAssessmentsController::class, 'create']);
 Route::get('trainingPeriodAssessment/index', [TrainingPeriodAssessmentsController::class, 'index']);
+Route::get('trainingPeriodAssessment/{id}', [TrainingPeriodAssessmentsController::class, 'show'])->middleware(['auth:admin,employee']);
 
 Route::post('traineeCourseAssessment/create', [TraineeCourseAssessmentsController::class, 'create']);
 Route::get('traineeCourseAssessment/index', [TraineeCourseAssessmentsController::class, 'index'])->middleware(['auth:admin,employee']);
+Route::get('traineeCourseAssessment/{id}', [TraineeCourseAssessmentsController::class, 'show'])->middleware(['auth:admin,employee']);
+
 
 Route::post('coachCourseAssessment/create', [CoachCourseAssessmentsController::class, 'create']);
 Route::get('coachCourseAssessment/index', [CoachCourseAssessmentsController::class, 'index'])->middleware(['auth:admin,coach']);
