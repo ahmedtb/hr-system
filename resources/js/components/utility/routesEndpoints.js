@@ -35,6 +35,7 @@ const routes = {
     showAttendances: '/react/attendances/:course_id',
     showCoach: '/react/coach/:id',
     showTrialPeriodAssessment: '/react/assessment/trialPeriod/:id',
+    showCoachCourseAssessment: '/react/assessment/course/coachCourseAssessment/:id',
 
     programIndex: '/react/program/index',
     CoachesList: '/react/coach/index',

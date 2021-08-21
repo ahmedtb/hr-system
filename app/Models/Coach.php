@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Filters\CoachFilters;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -40,5 +41,10 @@ class Coach extends Authenticatable
     public function getProfileAttribute()
     {
         return ($this->profile_type != null) ? $this->profile()->first() : null;
+    }
+
+    public function scopeFilter($query, CoachFilters $filters)
+    {
+        return $filters->apply($query);
     }
 }

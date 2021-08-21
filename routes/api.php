@@ -135,6 +135,7 @@ Route::get('traineeCourseAssessment/index', [TraineeCourseAssessmentsController:
 
 Route::post('coachCourseAssessment/create', [CoachCourseAssessmentsController::class, 'create']);
 Route::get('coachCourseAssessment/index', [CoachCourseAssessmentsController::class, 'index'])->middleware(['auth:admin,coach']);
+Route::get('coachCourseAssessment/{id}', [CoachCourseAssessmentsController::class, 'show'])->middleware(['auth:admin,coach']);
 
 Route::get('/user', function (Request $request) {
     if ($request->user('admin')) {

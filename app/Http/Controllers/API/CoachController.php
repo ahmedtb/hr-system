@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\API;
 
 use App\Models\Coach;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Employee;
+use Illuminate\Http\Request;
+use App\Filters\CoachFilters;
 use App\Models\TargetedIndividual;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
 class CoachController extends Controller
@@ -20,9 +21,12 @@ class CoachController extends Controller
         $coach = Coach::where('id', $id)->first();
         return $coach;
     }
-    public function index()
+    public function index(CoachFilters $filters, Request $request)
     {
-        return Coach::with('profile')->paginate(10);
+        return Coach::filter($filters)
+            ->with('profile')
+            ->paginate($request->input('page_size') ?? 10)
+            ->appends(request()->except('page'));
     }
     public function create(Request $request)
     {

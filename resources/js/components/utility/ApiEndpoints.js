@@ -55,6 +55,7 @@ export default {
     getTrialPeriods: '/api/trialPeriodAssessment/index',
     
     getTrialPeriod: '/api/trialPeriodAssessment/:id',
+    getCoachCourse: '/api/coachCourseAssessment/:id',
 
 
     getCoaches: '/api/coach/index',

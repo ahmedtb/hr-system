@@ -63,4 +63,8 @@ class CoachCourseAssessmentsController extends Controller
     {
         return CoachCourseAssessment::latest()->filter($filters)->paginate($request->input('page_size') ?? 10);
     }
+    public function show($id)
+    {
+        return CoachCourseAssessment::where('id', $id)->first();
+    }
 }

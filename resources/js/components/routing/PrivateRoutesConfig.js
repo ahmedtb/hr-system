@@ -52,6 +52,8 @@ import TargetedShow from '../targeted/TargetedShow'
 import UnitShow from '../unit/UnitShow'
 import CoachShow from '../coach/CoachShow'
 import TrialPeriodAssessmentShow from '../assessments/trialPeriod/TrialPeriodAssessmentShow'
+import CoachCourseAssessmentsShow from '../assessments/course/CoachCourseAssessmentsShow'
+
 import AttendanceManager from '../course/AttendancesManager'
 
 import CoursesBrowser from '../course/CoursesBrowser'
@@ -484,6 +486,16 @@ export default [
         component: TrialPeriodAssessmentShow,
         path: routes.showTrialPeriodAssessment,
         title: 'TrialPeriodAssessmentShow',
+        permission: [
+            Roles.ADMIN,
+            Roles.SUPRTVISOR,
+        ],
+        exact: true,
+    },
+    {
+        component: CoachCourseAssessmentsShow,
+        path: routes.showCoachCourseAssessment,
+        title: 'CoachCourseAssessmentsShow',
         permission: [
             Roles.ADMIN,
             Roles.SUPRTVISOR,
