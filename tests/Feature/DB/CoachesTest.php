@@ -27,12 +27,12 @@ class CoachesTest extends TestCase
         $coach = Coach::factory()->create();
         $employee = Employee::factory()->create();
         $coach->profile()->associate($employee)->save();
-        $this->assertEquals($coach->profile,$employee);
+        $this->assertEquals($coach->profile->email,$employee->email);
 
         $targeted = TargetedIndividual::factory()->create();
         $coach = Coach::factory()->create();
         $coach->profile()->associate($targeted)->save();
-        $this->assertEquals($coach->profile,$targeted);
+        $this->assertEquals($coach->profile->email,$targeted->email);
     }
 
     public function test_a_coach_can_have_many_programs_and_courses()

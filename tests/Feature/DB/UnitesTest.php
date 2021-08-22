@@ -36,8 +36,7 @@ class UnitesTest extends TestCase
 
     public function test_unit_has_a_name_a_head_employee_and_a_general_purpose_description()
     {
-        $unit = Unit::factory()->create();
-
+        $unit = Unit::factory()->withHead()->create();
         $this->assertNotEmpty($unit->name);
         $this->assertNotEmpty($unit->head);
         $this->assertNotEmpty($unit->purpose);

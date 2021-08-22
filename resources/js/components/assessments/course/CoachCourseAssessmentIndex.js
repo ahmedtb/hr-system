@@ -104,12 +104,6 @@ export default function CoachCourseAssessmentIndex() {
                                         <OrderByDescFilter
                                             params={params}
                                             fetchPage={(newparams) => fetchPage(ApiEndpoints.getCoachCourses, newparams)}
-                                            property={'hall_preparation'}
-                                            label={'القاعة التدريبية وتجهيزاتها'}
-                                        />
-                                        <OrderByDescFilter
-                                            params={params}
-                                            fetchPage={(newparams) => fetchPage(ApiEndpoints.getCoachCourses, newparams)}
                                             property={'reception_supervision'}
                                             label={'الاستقبال والإشراف'}
                                         />

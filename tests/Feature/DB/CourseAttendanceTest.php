@@ -59,6 +59,6 @@ class CourseAttendanceTest extends TestCase
     {
         CourseAttendance::factory()->create();
         $attendace = CourseAttendance::with('profile')->first();
-        dd($attendace);
+        // dd($attendace);
     }
 }

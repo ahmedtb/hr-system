@@ -16,10 +16,11 @@ class InterviewAssessmentsTest extends TestCase
     {
         $assessment = InterviewAssessment::factory()->create();
         $traitsOrder = $assessment->orderTraits();
+        // dd($traitsOrder);
         $this->assertIsArray($traitsOrder);
-        $this->assertEquals(count($traitsOrder), 16);
+        $this->assertEquals(count($traitsOrder), 18);
 
-        for ($i = 0; $i < 15; $i++) {
+        for ($i = 0; $i < 17; $i++) {
             $this->assertTrue($assessment[$traitsOrder[$i]] <= $assessment[$traitsOrder[$i + 1]]);
         }
     }

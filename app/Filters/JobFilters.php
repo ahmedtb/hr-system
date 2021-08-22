@@ -10,12 +10,24 @@ class JobFilters extends Filters
      * @var array
      */
     protected $filters = [
-        'unit_id',
+        'name',
+        'purpose',
+        'description',
+
     ];
 
-    protected function unit_id($id)
+    protected function name($name)
     {
-        return $this->builder->where('unit_id', $id);
+        return $this->builder->where('name', 'LIKE', "%{$name}%");
     }
     
+    protected function purpose($purpose)
+    {
+        return $this->builder->where('purpose', 'LIKE', "%{$purpose}%");
+    }
+    
+    protected function description($description)
+    {
+        return $this->builder->where('description', 'LIKE', "%{$description}%");
+    }
 }

@@ -79,17 +79,6 @@ class EmployeesTest extends TestCase
         $this->assertEquals($employee->courses()->count(), 2);
     }
 
-    
-    public function test_employee_can_attend_only_resumed_course_he_enrolled_in()
-    {
-
-        $employee = Employee::factory()->create();
-        $course = TrainingCourse::factory()->create();
-        $employee->enrollInCourse($course);
-
-
-        $this->assertEquals($employee->courses()->count(), 2);
-    }
 
     public function test_employee_can_retrive_its_unit()
     {

@@ -30,7 +30,7 @@ class Unit extends Model
 
     public function head()
     {
-        return $this->belongsTo(Head::class);
+        return $this->belongsTo(Employee::class, 'head_id');
     }
 
     public function jobs()

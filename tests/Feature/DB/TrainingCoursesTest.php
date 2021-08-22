@@ -432,7 +432,7 @@ class TrainingCoursesTest extends TestCase
         $employee = Employee::factory()->create();
         $course->enrollEmployee($employee);
         $schedualTable = $course->schedualTable();
-
+        // dd( count($schedualTable) );
         $randomeDaysInSchedual = array_rand($schedualTable, count($schedualTable) / 2);
         for ($i = 0; $i < 10; $i++) {
             $course->attendEmployee(
@@ -442,7 +442,8 @@ class TrainingCoursesTest extends TestCase
             );
         }
         CourseAttendance::factory(12)->create([
-            'training_course_id' => $course->id
+            'training_course_id' => $course->id,
+            'profile_id' => 3
         ]);
         $this->assertEquals($course->employeeAttendaces($employee)->count(), 10);
     }
