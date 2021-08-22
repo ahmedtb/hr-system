@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom'
 import routes from '../../utility/routesEndpoints'
 export default function CoachesTable(props) {
     const coaches = props.coaches
+
+    function truncate(str) {
+        return str.length > 10 ? str.substring(0, 200) + "....." : str;
+    }
+
     return (
         <table className="table table-bordered table-condensed table-striped table-sm">
             <thead>
@@ -42,7 +47,7 @@ export default function CoachesTable(props) {
                         <td>
                             {coach.speciality}
                         </td>
-                        <td className="overflow-auto">{coach.CV}</td>
+                        <td className="overflow-auto">{truncate( coach.CV )}</td>
                     </tr>
                 ))}
             </tbody>
