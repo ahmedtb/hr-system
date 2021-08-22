@@ -4,6 +4,7 @@ import ApiEndpoints from '../utility/ApiEndpoints'
 import routes from '../utility/routesEndpoints';
 import logError from '../utility/logError';
 import Pagination from '../utility/Pagination'
+import { NumberFilter, TextFilter } from '../components/Filters'
 
 function Filters(props) {
     const params = props.params
@@ -16,29 +17,24 @@ function Filters(props) {
 
     return (
         <>
-            <div className="col-3">
-                <strong>ترشيح بالعنوان البرنامج</strong>
-                <input value={title ?? ''} className="form-control" type="text" onChange={(e) => settitle(e.target.value)} />
-                <button type="button" className="btn btn-success" onClick={
-                    () => fetchPage({ ...params, title: title })
-                }>بحث</button>
-            </div>
-
-            <div className="col-3">
-                <strong>ترشيح وفق تصنيف البرنامج</strong>
-                <input value={category ?? ''} className="form-control" type="text" onChange={(e) => setcategory(e.target.value)} />
-                <button type="button" className="btn btn-success" onClick={
-                    () => fetchPage({ ...params, category: category })
-                }>بحث</button>
-            </div>
-
-            <div className="col-3">
-                <strong>ترشيح وفق المدة الزمنية للبرنامج</strong>
-                <input value={period ?? ''} className="form-control" type="number" onChange={(e) => setperiod(e.target.value)} />
-                <button type="button" className="btn btn-success" onClick={
-                    () => fetchPage({ ...params, period: period })
-                }>بحث</button>
-            </div>
+            <TextFilter
+                params={params}
+                fetchPage={(newparams) => fetchPage(newparams)}
+                property={'title'}
+                label={'ترشيح بالعنوان البرنامج'}
+            />
+            <TextFilter
+                params={params}
+                fetchPage={(newparams) => fetchPage(newparams)}
+                property={'category'}
+                label={'ترشيح وفق تصنيف البرنامج'}
+            />
+            <NumberFilter
+                params={params}
+                fetchPage={(newparams) => fetchPage(newparams)}
+                property={'period'}
+                label={'ترشيح وفق المدة الزمنية للبرنامج'}
+            />
         </>
     )
 }

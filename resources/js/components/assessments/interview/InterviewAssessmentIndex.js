@@ -6,6 +6,7 @@ import logError from '../../utility/logError'
 import InterviewAssessmentsTable from './components/InterviewAssessmentsTable'
 import { Link } from 'react-router-dom'
 import Pagination from '../../utility/Pagination'
+import { DateFilter, OrderByDescFilter, TextFilter } from '../../components/Filters'
 
 export default function InterviewAssessmentIndex() {
     const [interviews, setinterviews] = React.useState(null)
@@ -27,11 +28,6 @@ export default function InterviewAssessmentIndex() {
         fetchPage(ApiEndpoints.getInterviewAssessments, params)
     }, [])
 
-    React.useEffect(() => {
-        setname(params.name)
-    }, [params])
-
-    const [name, setname] = React.useState(params.name)
 
     return (
         <div className="col-md-12">
@@ -54,7 +50,7 @@ export default function InterviewAssessmentIndex() {
 
                     <div className="row align-items-start">
 
-                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#filteringBy">
+                        <button type="button" className="m-2 btn btn-primary" data-toggle="modal" data-target="#filteringBy">
                             ترشيح المقابلات وفقا لـ
                         </button>
                         <div className="modal fade" id="filteringBy" tabIndex="-1" aria-labelledby="filteringByLabel" aria-hidden="true">
@@ -75,14 +71,13 @@ export default function InterviewAssessmentIndex() {
                             </div>
                         </div>
 
-                        <div className="border rounded ml-2 p-2">
-                            <strong>البحث بالاسم</strong>
-                            <input value={name??''} className="form-control" type="text" onChange={(e) => setname(e.target.value)}/>
-                            <button type="button" className="btn btn-success" onClick={
-                                () => fetchPage(ApiEndpoints.getInterviewAssessments, {name:name})
-                            }>بحث</button>
-                            
-                        </div>
+                        
+                        <TextFilter
+                            params={params}
+                            fetchPage={(newparams) => fetchPage(ApiEndpoints.getInterviewAssessments, newparams)}
+                            property={'name'}
+                            label={'البحث بالاسم'}
+                        />
 
 
                     </div>

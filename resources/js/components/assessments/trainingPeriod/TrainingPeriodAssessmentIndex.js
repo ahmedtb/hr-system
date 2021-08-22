@@ -16,7 +16,7 @@ function Filters(props) {
         <div >
 
 
-            <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#filteringBy">
+            <button type="button" className="m-2 btn btn-primary" data-toggle="modal" data-target="#filteringBy">
                 ترشيح الدورات وفقا لـ
             </button>
             <div className="modal fade" id="filteringBy" tabIndex="-1" aria-labelledby="filteringByLabel" aria-hidden="true">
@@ -82,18 +82,20 @@ export default function TrainingPeriodAssessmentIndex() {
                     </div>
                 </div>
 
-                <div className="row align-items-start">
-                    <Filters fetchPage={fetchPage} params={params}/>
-                </div>
+                <div className="card-body">
 
-
-                <div className="row justify-content-center">
-                    <div className="col-12">
-
-                        <TrainingPeriodAssessmentsTable trainingPeriods={trainingPeriods} />
+                    <div className="row align-items-start">
+                        <Filters fetchPage={fetchPage} params={params} />
                     </div>
-                    <Pagination fetchPage={fetchPage} links={links} />
 
+
+                    <div className="row justify-content-center">
+                        <div className="col-12">
+                            <TrainingPeriodAssessmentsTable trainingPeriods={trainingPeriods} />
+                        </div>
+                        <Pagination fetchPage={fetchPage} links={links} />
+
+                    </div>
                 </div>
 
             </div>

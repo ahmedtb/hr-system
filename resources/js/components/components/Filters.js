@@ -13,13 +13,13 @@ export function NumberFilter(props) {
 
     return (
         <>
-            <div className="border rounded p-1 mx-2">
+            <div className="col-5 border rounded p-1 mx-2">
                 <div className="d-flex flex-row my-2 align-items-center">
                     <label>{label ?? property}</label><br />
                     <input className="form-control ml-1" type="number" onChange={(e) => setnumber(e.target.value)} /><br />
-                    <button className="form-control btn btn-info ml-1" onClick={() => {
+                    <button className="col-2 form-control btn btn-success ml-1" onClick={() => {
                         let newparams = Object.assign({},
-                            number === null ? null : { property: number },
+                            number === null ? null : { [property]: number },
                         )
                         fetchPage({ ...params, ...newparams })
                     }}>فلترة</button>
@@ -51,7 +51,7 @@ export function TrainingProgramFilter(props) {
 
     return (
         <>
-            <div className="border rounded p-1 mx-2">
+            <div className="col-5 border rounded p-1 m-2">
                 <div className="d-flex flex-row my-2 align-items-center">
                     <strong>{label ?? 'ترشيح بالبرنامج التدريبي'}</strong><br />
                     <select className="form-control" onChange={(e) => settraining_program_id(e.target.value)} name="training_program_id">
@@ -103,7 +103,7 @@ export function EmployeeFilter(props) {
 
     return (
         <>
-            <div className="border rounded p-1 mx-2">
+            <div className="col-5 border rounded p-1 m-2">
                 <div className="d-flex flex-row my-2 align-items-center">
                     <strong>{label ?? 'ترشيح بالموظف'}</strong><br />
                     <select className="form-control" onChange={(e) => setemployee_id(e.target.value)} name="employee_id">
@@ -155,7 +155,7 @@ export function JobFilter(props) {
 
     return (
         <>
-            <div className="border rounded p-1 mx-2">
+            <div className="col-5 border rounded p-1 m-2">
                 <div className="d-flex flex-row my-2 align-items-center">
                     <strong>{label ?? 'ترشيح بالوظيفة'}</strong><br />
                     <select className="form-control" onChange={(e) => setjob_id(e.target.value)} name="job_id">
@@ -194,11 +194,11 @@ export function ScopeFilter(props) {
 
     return (
         <>
-            <div className="border rounded p-1 mx-2">
+            <div className="col-5 border rounded p-1 mx-2">
                 <div className="d-flex flex-row my-2 align-items-center">
                     <button
                         type="button"
-                        className={(params?.[property] == 'true') ? "btn btn-success mx-2 my-1" : "btn btn-info mx-2 my-1"}
+                        className={(params?.[property] == 'true') ? "btn btn-success mx-2 my-1" : "btn btn-success mx-2 my-1"}
                         onClick={() => fetchPage(params[property] == 'true' ? { ...params, [property]: undefined } : { ...params, [property]: 'true' })}
                     >
                         {label ?? property}
@@ -221,11 +221,11 @@ export function DateFilter(props) {
 
     return (
         <>
-            <div className="border rounded p-1 mx-2">
+            <div className="col-5 border rounded p-1 m-2">
                 <div className="d-flex flex-row my-2 align-items-center">
                     <label>{label ?? property}</label><br />
                     <input className="form-control ml-1" type="date" onChange={(e) => setdate(e.target.value)} /><br />
-                    <button className="form-control btn btn-info ml-1" onClick={() => {
+                    <button className="col-2 form-control btn btn-success ml-1" onClick={() => {
                         let newparams = Object.assign({},
                             date === null ? null : { [property]: date },
                         )
@@ -248,11 +248,11 @@ export function TextFilter(props) {
 
     return (
         <>
-            <div className="border rounded p-1 mx-2">
+            <div className="col-5 border rounded p-1 m-2">
                 <div className="d-flex flex-row my-2 align-items-center">
-                    <label>{label ?? property}</label><br />
+                    <label className="">{label ?? property}</label><br />
                     <input className="form-control ml-1" type="text" onChange={(e) => settext(e.target.value)} /><br />
-                    <button className="form-control btn btn-info ml-1" onClick={() => {
+                    <button className="col-2 form-control btn btn-success ml-1" onClick={() => {
                         let newparams = Object.assign({},
                             text === null ? null : { [property]: text },
                         )
@@ -275,7 +275,7 @@ export function OrderByDescFilter(props) {
 
     return (
         <>
-            <div className="border rounded p-1 mx-2">
+            <div className="col-5 border rounded p-1 m-2">
                 <div className="d-flex flex-row my-2 align-items-center">
                 <button
                         type="button"

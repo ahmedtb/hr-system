@@ -31,24 +31,27 @@ export default function UnitIndex(props) {
             <div className="card">
                 <div className="card-header">قائمة الوحدات الادارية</div>
                 <div className="card-body">
-                    <TextFilter
-                        params={params}
-                        fetchPage={(newparams) => fetchPage(ApiEndpoints.unitIndex, newparams)}
-                        property={'name'}
-                        label={'الاسم'}
-                    />
-                    <TextFilter
-                        params={params}
-                        fetchPage={(newparams) => fetchPage(ApiEndpoints.unitIndex, newparams)}
-                        property={'purpose'}
-                        label={'الوصف'}
-                    />
-                    <TextFilter
-                        params={params}
-                        fetchPage={(newparams) => fetchPage(ApiEndpoints.unitIndex, newparams)}
-                        property={'parent_name'}
-                        label={'الوحدة العليا التي تتبعها'}
-                    />
+                    <div className="row align-items-start">
+
+                        <TextFilter
+                            params={params}
+                            fetchPage={(newparams) => fetchPage(ApiEndpoints.unitIndex, newparams)}
+                            property={'name'}
+                            label={'الاسم'}
+                        />
+                        <TextFilter
+                            params={params}
+                            fetchPage={(newparams) => fetchPage(ApiEndpoints.unitIndex, newparams)}
+                            property={'purpose'}
+                            label={'الوصف'}
+                        />
+                        <TextFilter
+                            params={params}
+                            fetchPage={(newparams) => fetchPage(ApiEndpoints.unitIndex, newparams)}
+                            property={'parent_name'}
+                            label={'الوحدة العليا التي تتبعها'}
+                        />
+                    </div>
                     <UnitsTable units={units} />
                     <Pagination
                         fetchPage={fetchPage}

@@ -53,7 +53,7 @@ export default function CoachCourseAssessmentIndex() {
 
                     <div className="row align-items-start">
 
-                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#filteringBy">
+                        <button type="button" className="m-2 btn btn-primary" data-toggle="modal" data-target="#filteringBy">
                             ترشيح الدورات وفقا لـ
                         </button>
                         <div className="modal fade" id="filteringBy" tabIndex="-1" aria-labelledby="filteringByLabel" aria-hidden="true">
@@ -127,20 +127,20 @@ export default function CoachCourseAssessmentIndex() {
                             </div>
                         </div>
 
-                    </div>
 
-                    <TextFilter
-                        params={params}
-                        fetchPage={(newparams) => fetchPage(ApiEndpoints.getCoachCourses, newparams)}
-                        property={'note'}
-                        label={'ملاحظة على الدورة'}
-                    />
-                    <DateFilter
-                        params={params}
-                        fetchPage={(newparams) => fetchPage(ApiEndpoints.getCoachCourses, newparams)}
-                        property={'created_at'}
-                        label={'تاريخ انشاء التقييم'}
-                    />
+                        <TextFilter
+                            params={params}
+                            fetchPage={(newparams) => fetchPage(ApiEndpoints.getCoachCourses, newparams)}
+                            property={'note'}
+                            label={'ملاحظة على الدورة'}
+                        />
+                        <DateFilter
+                            params={params}
+                            fetchPage={(newparams) => fetchPage(ApiEndpoints.getCoachCourses, newparams)}
+                            property={'created_at'}
+                            label={'تاريخ انشاء التقييم'}
+                        />
+                    </div>
 
                     <div className="">
                         <CoachCourseAssessmentsTable coachCourses={coachCourses} />

@@ -29,24 +29,26 @@ export default function JobIndex(props) {
             <div className="card">
                 <div className="card-header">قائمة الوظائف</div>
                 <div className="card-body">
-                    <TextFilter
-                        params={params}
-                        fetchPage={(newparams) => fetchPage(ApiEndpoints.jobIndex, newparams)}
-                        property={'name'}
-                        label={'اسم الوظيفة'}
-                    />
-                    <TextFilter
-                        params={params}
-                        fetchPage={(newparams) => fetchPage(ApiEndpoints.jobIndex, newparams)}
-                        property={'purpose'}
-                        label={'الغرض من الوظيفة'}
-                    />
-                    <TextFilter
-                        params={params}
-                        fetchPage={(newparams) => fetchPage(ApiEndpoints.jobIndex, newparams)}
-                        property={'description'}
-                        label={'وصف الوظيفة'}
-                    />
+                    <div className="row align-items-start">
+                        <TextFilter
+                            params={params}
+                            fetchPage={(newparams) => fetchPage(ApiEndpoints.jobIndex, newparams)}
+                            property={'name'}
+                            label={'اسم الوظيفة'}
+                        />
+                        <TextFilter
+                            params={params}
+                            fetchPage={(newparams) => fetchPage(ApiEndpoints.jobIndex, newparams)}
+                            property={'purpose'}
+                            label={'الغرض من الوظيفة'}
+                        />
+                        <TextFilter
+                            params={params}
+                            fetchPage={(newparams) => fetchPage(ApiEndpoints.jobIndex, newparams)}
+                            property={'description'}
+                            label={'وصف الوظيفة'}
+                        />
+                    </div>
                     <Pagination fetchPage={fetchPage} links={links} />
 
                     <JobsTable jobs={jobs} />

@@ -34,7 +34,7 @@ function CoursesViewerAndFilter(props) {
                 <div className="card-header">قائمة الدورات</div>
                 <div className="card-body ">
                     <div className="row align-items-start">
-                        <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        <button type="button" className="m-2 btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                             ترشيح الدورات وفقا لـ
                         </button>
                         <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

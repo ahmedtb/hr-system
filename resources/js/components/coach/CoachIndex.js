@@ -32,24 +32,28 @@ export default function CoachIndex(props) {
             <div className="card">
                 <div className="card-header">المدربيين</div>
                 <div className="card-body">
-                    <TextFilter
-                        params={params}
-                        fetchPage={(newparams) => fetchPage(ApiEndpoints.getCoaches, newparams)}
-                        property={'speciality'}
-                        label={'تخصص المدرب'}
-                    />
-                    <TextFilter
-                        params={params}
-                        fetchPage={(newparams) => fetchPage(ApiEndpoints.getCoaches, newparams)}
-                        property={'CV'}
-                        label={'السيرة الذاتية'}
-                    />
-                    <TextFilter
-                        params={params}
-                        fetchPage={(newparams) => fetchPage(ApiEndpoints.getCoaches, newparams)}
-                        property={'name'}
-                        label={'اسم المدرب'}
-                    />
+                    <div className="row align-items-start">
+
+                        <TextFilter
+                            params={params}
+                            fetchPage={(newparams) => fetchPage(ApiEndpoints.getCoaches, newparams)}
+                            property={'speciality'}
+                            label={'تخصص المدرب'}
+                        />
+                        <TextFilter
+                            params={params}
+                            fetchPage={(newparams) => fetchPage(ApiEndpoints.getCoaches, newparams)}
+                            property={'CV'}
+                            label={'السيرة الذاتية'}
+                        />
+                        <TextFilter
+                            params={params}
+                            fetchPage={(newparams) => fetchPage(ApiEndpoints.getCoaches, newparams)}
+                            property={'name'}
+                            label={'اسم المدرب'}
+                        />
+                    </div>
+
                     <Pagination
                         fetchPage={fetchPage}
                         links={links}
