@@ -5,7 +5,7 @@ import routes from '../utility/routesEndpoints';
 import logError from '../utility/logError';
 import Pagination from '../utility/Pagination'
 import { NumberFilter, TextFilter } from '../components/Filters'
-
+import FiltersContainer from '../components/FiltersContainer';
 function Filters(props) {
     const params = props.params
     const fetchPage = props.fetchPage
@@ -14,27 +14,34 @@ function Filters(props) {
     const [category, setcategory] = React.useState(null)
     const [period, setperiod] = React.useState(null)
 
+    async function clearFilters() {
+        fetchPage(null)
+    }
+
 
     return (
         <>
-            <TextFilter
-                params={params}
-                fetchPage={(newparams) => fetchPage(newparams)}
-                property={'title'}
-                label={'ترشيح بالعنوان البرنامج'}
-            />
-            <TextFilter
-                params={params}
-                fetchPage={(newparams) => fetchPage(newparams)}
-                property={'category'}
-                label={'ترشيح وفق تصنيف البرنامج'}
-            />
-            <NumberFilter
-                params={params}
-                fetchPage={(newparams) => fetchPage(newparams)}
-                property={'period'}
-                label={'ترشيح وفق المدة الزمنية للبرنامج'}
-            />
+            <FiltersContainer label="ترشيح البرامج التدريبية" clearFilters={clearFilters}>
+
+                <TextFilter
+                    params={params}
+                    fetchPage={(newparams) => fetchPage(newparams)}
+                    property={'title'}
+                    label={'ترشيح بالعنوان البرنامج'}
+                />
+                <TextFilter
+                    params={params}
+                    fetchPage={(newparams) => fetchPage(newparams)}
+                    property={'category'}
+                    label={'ترشيح وفق تصنيف البرنامج'}
+                />
+                <NumberFilter
+                    params={params}
+                    fetchPage={(newparams) => fetchPage(newparams)}
+                    property={'period'}
+                    label={'ترشيح وفق المدة الزمنية للبرنامج'}
+                />
+            </FiltersContainer>
         </>
     )
 }

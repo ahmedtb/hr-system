@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import Pagination from '../utility/Pagination'
 import CoachesTable from './components/CoachesTable';
 import { TextFilter } from '../components/Filters'
-
+import FiltersContainer from '../components/FiltersContainer';
 export default function CoachIndex(props) {
     const [coaches, setcoaches] = React.useState([])
     const [links, setlinks] = React.useState([])
@@ -24,6 +24,10 @@ export default function CoachIndex(props) {
 
         }).catch((error) => logError(error))
     }
+    async function clearFilters() {
+        fetchPage(ApiEndpoints.getCoaches, null)
+    }
+
     React.useEffect(() => {
         fetchPage()
     }, [])
@@ -32,8 +36,7 @@ export default function CoachIndex(props) {
             <div className="card">
                 <div className="card-header">المدربيين</div>
                 <div className="card-body">
-                    <div className="row align-items-start">
-
+                    <FiltersContainer label="ترشيح المدربيين" clearFilters={clearFilters}>
                         <TextFilter
                             params={params}
                             fetchPage={(newparams) => fetchPage(ApiEndpoints.getCoaches, newparams)}
@@ -52,7 +55,7 @@ export default function CoachIndex(props) {
                             property={'name'}
                             label={'اسم المدرب'}
                         />
-                    </div>
+                    </FiltersContainer>
 
                     <Pagination
                         fetchPage={fetchPage}

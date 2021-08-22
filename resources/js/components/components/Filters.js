@@ -198,7 +198,7 @@ export function ScopeFilter(props) {
                 <div className="d-flex flex-row my-2 align-items-center">
                     <button
                         type="button"
-                        className={(params?.[property] == 'true') ? "btn btn-success mx-2 my-1" : "btn btn-success mx-2 my-1"}
+                        className={(params?.[property] == 'true') ? "btn btn-success mx-2 my-1" : "btn btn-info mx-2 my-1"}
                         onClick={() => fetchPage(params[property] == 'true' ? { ...params, [property]: undefined } : { ...params, [property]: 'true' })}
                     >
                         {label ?? property}

@@ -6,6 +6,7 @@ import Pagination from '../utility/Pagination';
 import TargetedIndividualsTable from '../partials/TargetedIndividualsTable';
 
 import { TextFilter, JobFilter, OrderByDescFilter, DateFilter } from '../components/Filters';
+import FiltersContainer from '../components/FiltersContainer';
 
 export default function IndividualIndex(props) {
     const [individuals, setindividuals] = React.useState([])
@@ -28,6 +29,10 @@ export default function IndividualIndex(props) {
         }).catch((error) => logError(error))
     }
 
+    async function clearFilters() {
+        fetchPage(ApiEndpoints.individualIndex, null)
+    }
+
     React.useEffect(() => {
         fetchPage()
     }, [])
@@ -38,48 +43,51 @@ export default function IndividualIndex(props) {
                 <div className="card-header">قائمة المستهدفيين</div>
                 <div className="card-body">
                     <div className="row">
-                        <TextFilter
-                            params={params}
-                            fetchPage={(alteredparams) => fetchPage(ApiEndpoints.individualIndex, alteredparams)}
-                            property={'name'}
-                            label={'بحث بالاسم'}
-                        />
-                        <TextFilter
-                            params={params}
-                            fetchPage={(alteredparams) => fetchPage(ApiEndpoints.individualIndex, alteredparams)}
-                            property={'phone_number'}
-                            label={'بحث برقم الهاتف'}
-                        />
-                        <TextFilter
-                            params={params}
-                            fetchPage={(alteredparams) => fetchPage(ApiEndpoints.individualIndex, alteredparams)}
-                            property={'description'}
-                            label={'بحث بوصف المستهدف'}
-                        />
-                        <TextFilter
-                            params={params}
-                            fetchPage={(alteredparams) => fetchPage(ApiEndpoints.individualIndex, alteredparams)}
-                            property={'email'}
-                            label={'ترشيح بالبريد'}
-                        />
-                        <TextFilter
-                            params={params}
-                            fetchPage={(alteredparams) => fetchPage(ApiEndpoints.individualIndex, alteredparams)}
-                            property={'address'}
-                            label={'ترشيح بعنوان المستهدف'}
-                        />
-                        <OrderByDescFilter
-                            params={params}
-                            fetchPage={(alteredparams) => fetchPage(ApiEndpoints.individualIndex, alteredparams)}
-                            property={'created_at'}
-                            label={'ترتيب وفق تاريخ التسجيل'}
-                        />
-                        <DateFilter
-                            params={params}
-                            fetchPage={(alteredparams) => fetchPage(ApiEndpoints.individualIndex, alteredparams)}
-                            property={'created_at'}
-                            label={'فلترة بتاريخ التسجيل'}
-                        />
+                        <FiltersContainer label="مرشحات المستهدفيين" clearFilters={clearFilters}>
+                            <TextFilter
+                                params={params}
+                                fetchPage={(alteredparams) => fetchPage(ApiEndpoints.individualIndex, alteredparams)}
+                                property={'name'}
+                                label={'بحث بالاسم'}
+                            />
+                            <TextFilter
+                                params={params}
+                                fetchPage={(alteredparams) => fetchPage(ApiEndpoints.individualIndex, alteredparams)}
+                                property={'phone_number'}
+                                label={'بحث برقم الهاتف'}
+                            />
+                            <TextFilter
+                                params={params}
+                                fetchPage={(alteredparams) => fetchPage(ApiEndpoints.individualIndex, alteredparams)}
+                                property={'description'}
+                                label={'بحث بوصف المستهدف'}
+                            />
+                            <TextFilter
+                                params={params}
+                                fetchPage={(alteredparams) => fetchPage(ApiEndpoints.individualIndex, alteredparams)}
+                                property={'email'}
+                                label={'ترشيح بالبريد'}
+                            />
+                            <TextFilter
+                                params={params}
+                                fetchPage={(alteredparams) => fetchPage(ApiEndpoints.individualIndex, alteredparams)}
+                                property={'address'}
+                                label={'ترشيح بعنوان المستهدف'}
+                            />
+                            <OrderByDescFilter
+                                params={params}
+                                fetchPage={(alteredparams) => fetchPage(ApiEndpoints.individualIndex, alteredparams)}
+                                property={'created_at'}
+                                label={'ترتيب وفق تاريخ التسجيل'}
+                            />
+                            <DateFilter
+                                params={params}
+                                fetchPage={(alteredparams) => fetchPage(ApiEndpoints.individualIndex, alteredparams)}
+                                property={'created_at'}
+                                label={'فلترة بتاريخ التسجيل'}
+                            />
+                        </FiltersContainer>
+
                     </div>
                     <TargetedIndividualsTable individuals={individuals} />
                     <Pagination fetchPage={fetchPage} links={links} />

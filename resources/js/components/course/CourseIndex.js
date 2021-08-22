@@ -8,7 +8,8 @@ import ScheduleDiagram from './components/ScheduleDiagram'
 import moment from 'moment'
 import Pagination from '../utility/Pagination';
 import { TextFilter, TrainingProgramFilter, ScopeFilter, DateFilter } from '../components/Filters'
-
+import FiltersContainer from '../components/FiltersContainer';
+import CustomModal from '../components/CustomModal';
 function CoursesViewerAndFilter(props) {
     const [courses, setcourses] = React.useState([])
     const [links, setlinks] = React.useState([])
@@ -22,6 +23,10 @@ function CoursesViewerAndFilter(props) {
             if (response.data.links) { setlinks(response.data.links) } else setlinks(null)
         }).catch((error) => logError(error))
     }
+    async function clearFilters() {
+        fetchPage(ApiEndpoints.courseIndex, null)
+    }
+
     React.useEffect(() => {
         var params = Object.fromEntries(new URLSearchParams(location.search));
 
@@ -33,77 +38,65 @@ function CoursesViewerAndFilter(props) {
             <div className="card">
                 <div className="card-header">قائمة الدورات</div>
                 <div className="card-body ">
-                    <div className="row align-items-start">
-                        <button type="button" className="m-2 btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                            ترشيح الدورات وفقا لـ
-                        </button>
-                        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div className="modal-dialog modal-lg">
-                                <div className="modal-content">
-                                    <div className="modal-header">
-                                        <h5 className="modal-title" id="exampleModalLabel">ترشيح الدورات وفقا لــ</h5>
-                                    </div>
-                                    <div className="modal-body row">
+                    <FiltersContainer label="ترشيح الدورات" clearFilters={clearFilters}>
 
-                                         <ScopeFilter
-                                            params={params}
-                                            fetchPage={(newparams) => fetchPage(ApiEndpoints.courseIndex, newparams)}
-                                            property={'planned'}
-                                            label={'الدورات المخطط لها'}
-                                        />
-                                        <ScopeFilter
-                                            params={params}
-                                            fetchPage={(newparams) => fetchPage(ApiEndpoints.courseIndex, newparams)}
-                                            property={'done'}
-                                            label={'الدورات المنتهية'}
-                                        />
-                                        <ScopeFilter
-                                            params={params}
-                                            fetchPage={(newparams) => fetchPage(ApiEndpoints.courseIndex, newparams)}
-                                            property={'canceled'}
-                                            label={'الدورات الملغية'}
-                                        />
-                                        <ScopeFilter
-                                            params={params}
-                                            fetchPage={(newparams) => fetchPage(ApiEndpoints.courseIndex, newparams)}
-                                            property={'resumed'}
-                                            label={'الدورات المستانفة'}
-                                        />
-                                    </div>
-                                    <div className="modal-footer">
-                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">اغلاق</button>
-                                    </div>
-                                </div>
-                            </div>
+                        <div className="row align-items-start">
+                            <CustomModal label="ترشيح الدورات وفقا لـ">
+                                <ScopeFilter
+                                    params={params}
+                                    fetchPage={(newparams) => fetchPage(ApiEndpoints.courseIndex, newparams)}
+                                    property={'planned'}
+                                    label={'الدورات المخطط لها'}
+                                />
+                                <ScopeFilter
+                                    params={params}
+                                    fetchPage={(newparams) => fetchPage(ApiEndpoints.courseIndex, newparams)}
+                                    property={'done'}
+                                    label={'الدورات المنتهية'}
+                                />
+                                <ScopeFilter
+                                    params={params}
+                                    fetchPage={(newparams) => fetchPage(ApiEndpoints.courseIndex, newparams)}
+                                    property={'canceled'}
+                                    label={'الدورات الملغية'}
+                                />
+                                <ScopeFilter
+                                    params={params}
+                                    fetchPage={(newparams) => fetchPage(ApiEndpoints.courseIndex, newparams)}
+                                    property={'resumed'}
+                                    label={'الدورات المستانفة'}
+                                />
+                            </CustomModal>
+
+
+                            <DateFilter
+                                params={params}
+                                fetchPage={(newparams) => fetchPage(ApiEndpoints.courseIndex, newparams)}
+                                property={'start_date'}
+                                label={'تاريخ البدء'}
+                            />
+                            <DateFilter
+                                params={params}
+                                fetchPage={(newparams) => fetchPage(ApiEndpoints.courseIndex, newparams)}
+                                property={'end_date'}
+                                label={'تاريخ انتهاء الدورة'}
+                            />
+                            <TextFilter
+                                params={params}
+                                fetchPage={(newparams) => fetchPage(ApiEndpoints.courseIndex, newparams)}
+                                property={'title'}
+                                label={'عنوان الدورة'}
+                            />
+                            <TrainingProgramFilter
+                                params={params}
+                                fetchPage={(newparams) => fetchPage(ApiEndpoints.courseIndex, newparams)}
+                                property={'training_program_id'}
+                                label={'برنامج الدورة'}
+                            />
+
                         </div>
 
-                        <DateFilter
-                            params={params}
-                            fetchPage={(newparams) => fetchPage(ApiEndpoints.courseIndex, newparams)}
-                            property={'start_date'}
-                            label={'تاريخ البدء'}
-                        />
-                        <DateFilter
-                            params={params}
-                            fetchPage={(newparams) => fetchPage(ApiEndpoints.courseIndex, newparams)}
-                            property={'end_date'}
-                            label={'تاريخ انتهاء الدورة'}
-                        />
-                        <TextFilter
-                            params={params}
-                            fetchPage={(newparams) => fetchPage(ApiEndpoints.courseIndex, newparams)}
-                            property={'title'}
-                            label={'عنوان الدورة'}
-                        />
-                        <TrainingProgramFilter
-                            params={params}
-                            fetchPage={(newparams) => fetchPage(ApiEndpoints.courseIndex, newparams)}
-                            property={'training_program_id'}
-                            label={'برنامج الدورة'}
-                        />
-
-                    </div>
-
+                    </FiltersContainer>
                     <CoursesTable courses={courses} />
 
                     <Pagination
