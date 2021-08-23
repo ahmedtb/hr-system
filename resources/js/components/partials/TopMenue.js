@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import routes from '../utility/routesEndpoints'
 import ApiEndpoints from '../utility/ApiEndpoints'
 import logError from '../utility/logError'
-import { intersection } from 'lodash';
 
 function AuthComponent(props) {
 
@@ -30,8 +29,10 @@ function AuthComponent(props) {
     }
 
     React.useEffect(() => {
-        isLoggedIn()
-    }, [])
+        if (props.user == null)
+            isLoggedIn()
+        // console.log('top menue', props.user)
+    }, [props.user])
 
     return (
         <>
@@ -106,20 +107,20 @@ function TopMenue(props) {
         return (
 
             FilteredLinks.length ?
-            <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                    {label}
-                </a>
-                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                    {
-                        FilteredLinks.map((link, index) => {
-                            return (
-                                <Link key={index} className="dropdown-item" to={link.to}>{link.label}</Link>
-                            )
-                        })
-                    }
-                </ul>
-            </li> : null
+                <li className="nav-item dropdown">
+                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                        {label}
+                    </a>
+                    <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {
+                            FilteredLinks.map((link, index) => {
+                                return (
+                                    <Link key={index} className="dropdown-item" to={link.to}>{link.label}</Link>
+                                )
+                            })
+                        }
+                    </ul>
+                </li> : null
         )
     }
 
@@ -240,7 +241,7 @@ function TopMenue(props) {
                                 ]}
                             />
 
-                             {/* <li className="nav-item dropdown">
+                            {/* <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                                     التقيمات
                                 </a>

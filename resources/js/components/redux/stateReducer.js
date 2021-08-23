@@ -9,7 +9,7 @@ import PrivateRoutesConfig from '../routing/PrivateRoutesConfig'
 import { intersection } from 'lodash';
 
 const calculateAllowedRoutes = (user) => {
-    const roles = user.role?.length ? user.role : []
+    const roles = user?.role?.length ? user.role : []
     return PrivateRoutesConfig.filter(
         ({ permission }) => {
             if (!permission) return true;
@@ -21,7 +21,6 @@ const calculateAllowedRoutes = (user) => {
 const stateReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case 'refresh-user':
-            console.log('refresh-user', action.user)
             return {
                 ...state,
                 user: action.user,

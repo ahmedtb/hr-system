@@ -1,8 +1,6 @@
 import React from 'react'
-import moment from 'moment'
-import { Link } from 'react-router-dom'
 import routes from '../utility/routesEndpoints'
-
+import AllowedLink from '../components/AllowedLink'
 export default function EmployeesTable(props) {
     const employees = props.employees
 
@@ -25,11 +23,11 @@ export default function EmployeesTable(props) {
                 {employees?.map((employee, index) => (
                     <tr key={index}>
                         <td>
-                            <Link to={routes.showEmployee.replace(':id', employee.id)}>{employee.id}</Link >
+                            <AllowedLink to={routes.showEmployee.replace(':id', employee.id)}>{employee.id}</AllowedLink >
                         </td>
                         <td>{employee.name}</td>
                         <td>
-                            <Link to={routes.showJob.replace(':id', employee.job?.id)}>{employee.job?.name}</Link >
+                            <AllowedLink to={routes.showJob.replace(':id', employee.job?.id)}>{employee.job?.name}</AllowedLink >
                         </td>
                         <td>
                             {employee.address}

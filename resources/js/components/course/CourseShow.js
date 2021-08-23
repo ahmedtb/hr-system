@@ -8,18 +8,24 @@ import EmployeesTable from '../partials/EmployeesTable'
 import TargetedIndividualsTable from '../partials/TargetedIndividualsTable'
 import SchedualTable from './components/SchedualTable'
 import EnrollmentModal from './components/EnrollmentModal'
-
+import AllowedLink from '../components/AllowedLink'
 export default function CourseShow(props) {
 
     const { id } = useParams();
     const [course, setcourse] = React.useState(null)
+    const [program, setprogram] = React.useState(null)
+    const [employees, setemployees] = React.useState(null)
+    const [individuals, setindividuals] = React.useState(null)
     const [attendances, setattendances] = React.useState(null)
 
     async function getCourseAndAttendances() {
         try {
             const response = await axios.get(ApiEndpoints.getCourse?.replace(':id', id))
             setcourse(response.data.course)
-            console.log('course',response.data.course)
+            setprogram(response.data.program)
+            setemployees(response.data.employees)
+            setindividuals(response.data.individuals)
+            console.log('course show', response.data)
 
             setattendances(response.data.attendances)
         } catch (err) {
@@ -56,7 +62,7 @@ export default function CourseShow(props) {
                             حالة الدورة: {course?.state}
                         </div>
                         <div className="col-5 border  border-dark rounded m-2 text-center">
-                            اسم البرنامج التدريبي للدورة: <Link to={routes.showProgram.replace(':id', course?.training_program.id)}>{course?.training_program.title}</Link>
+                            اسم البرنامج التدريبي للدورة: <AllowedLink to={routes.showProgram.replace(':id', program?.id)}>{program?.title}</AllowedLink>
                         </div>
                         <div className="col-5 border  border-dark rounded m-2 text-center">
                             الايام التي مضت في الدورة {course?.wentDays?.length}
@@ -68,13 +74,13 @@ export default function CourseShow(props) {
                             نسبة الحضورة {course?.attendancePercentage} %
                         </div>
                         <div className="col-5 border  border-dark rounded m-2 text-center">
-                            عدد المسجلين {course?.employees.length + course?.targeted_individuals.length}
+                            عدد المسجلين {employees?.length + individuals?.length}
                         </div>
                         <div className="col-5 border  border-dark rounded m-2 text-center">
-                            عدد الموظفيين المسجلين {course?.employees.length}
+                            عدد الموظفيين المسجلين {employees?.length}
                         </div>
                         <div className="col-5 border  border-dark rounded m-2 text-center">
-                            عدد الافراد المستهدفين المسجلين في الدورة {course?.targeted_individuals.length}
+                            عدد الافراد المستهدفين المسجلين في الدورة {individuals?.length}
                         </div>
                     </div>
                 </div>
@@ -87,12 +93,13 @@ export default function CourseShow(props) {
                 </div>
 
                 <div className="card-body">
-                    <Link
+                    <AllowedLink
+                        hide={true}
                         to={{
                             pathname: routes.showAttendances.replace(':course_id', course?.id),
                             // state: {attendances: attendances}
                         }}
-                    >سجلات الحضور</Link>
+                    >سجلات الحضور</AllowedLink>
                 </div>
             </div>
 
@@ -120,11 +127,11 @@ export default function CourseShow(props) {
                     <ul className="list-group" >
                         <li className="list-group-item" >
                             موظفيين
-                            <EmployeesTable employees={course?.employees} />
+                            <EmployeesTable employees={employees} />
                         </li>
                         <li className="list-group-item" >
                             مستهدفيين
-                            <TargetedIndividualsTable individuals={course?.targeted_individuals} />
+                            <TargetedIndividualsTable individuals={individuals} />
                         </li>
 
                     </ul>

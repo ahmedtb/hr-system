@@ -105,7 +105,7 @@ Route::get('getPrograms', [ProgramsController::class, 'getPrograms']);
 Route::post('course', [CoursesController::class, 'create']);
 // Route::get('course/index', [CoursesController::class, 'index']);
 Route::get('course/index', [CoursesController::class, 'index'])->middleware('auth:admin,employee,coach,individual');
-Route::get('course/{id}', [CoursesController::class, 'show']);
+Route::get('course/{id}', [CoursesController::class, 'show'])->middleware('auth:admin,employee,coach,individual');;
 Route::get('course/{id}/schedual', [CoursesController::class, 'getSchedual']);
 Route::get('course/{id}/attendances', [CoursesController::class, 'getAttendances']);
 Route::get('course/{id}/forms', [CoursesController::class, 'getForms']);

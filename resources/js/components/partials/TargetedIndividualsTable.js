@@ -4,6 +4,7 @@ import React from 'react'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 import routes from '../utility/routesEndpoints'
+import AllowedLink from '../components/AllowedLink'
 
 export default function TargetedIndividualsTable(props) {
     const individuals = props.individuals
@@ -26,7 +27,7 @@ export default function TargetedIndividualsTable(props) {
                 {individuals?.map((targeted, index) => (
                     <tr key={index}>
                         <td>
-                            <Link to={routes.showTargeted.replace(':id', targeted?.id)}>{targeted?.id}</Link >
+                            <AllowedLink to={routes.showTargeted.replace(':id', targeted?.id)}>{targeted?.id}</AllowedLink >
                         </td>
                         <td>{targeted.name}</td>
                         <td>{targeted.address}</td>

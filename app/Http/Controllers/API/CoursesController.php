@@ -12,20 +12,28 @@ use App\Models\CourseAttendance;
 use App\Models\Employee;
 use App\Models\TargetedIndividual;
 use DateTime;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;
 
 class CoursesController extends Controller
 {
 
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        $course = TrainingCourse::where('id', $id)
-            ->with(['trainingProgram', 'targetedIndividuals', 'employees'])
-            ->first();
+        $user = $request->user();
 
-        $attendances = $course->attendances;
+        $course = TrainingCourse::where('id', $id)
+            ->first();
+        $program = Gate::allows('viewCourseProgram', $course) ? $course->trainingProgram : null;
+        $individuals = Gate::allows('viewCourseTrainees', $course) ? $course->targetedIndividuals : null;
+        $employees = Gate::allows('viewCourseTrainees', $course) ? $course->employees : null;
+        $attendances = Gate::allows('viewCourseAttendances', $course) ? $course->attendances : null;
+
         return [
-            'course' => $course,
+            'course' => Gate::allows('viewCourse', $course) ? $course : null,
+            'program' => $program,
+            'individuals' => $individuals,
+            'employees' => $employees,
             'attendances' => $attendances
         ];
     }
@@ -81,7 +89,7 @@ class CoursesController extends Controller
         Validator::make(['id' => $id], [
             'id' => 'required|exists:training_courses,id'
         ])->validate();
-        
+
 
         $course = TrainingCourse::where('id', $id)->first();
 
