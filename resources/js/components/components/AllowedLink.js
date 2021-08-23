@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, matchPath } from 'react-router-dom'
 
 function AllowedLink(props) {
     const to = props.to
@@ -12,7 +12,10 @@ function AllowedLink(props) {
     function isPathAllowed(path) {
         if (allowedRoutes.length) {
             for (let i = 0; i < allowedRoutes.length; i++) {
-                if (allowedRoutes[i].path == path) {
+                if (matchPath(path, {
+                    path: allowedRoutes[i].path,
+                    exact: true,
+                })) {
                     return true
                 }
             }

@@ -32,7 +32,7 @@ const routes = {
     showProgram: '/react/program/:id',
     showUnit: '/react/unit/:id',
     showJob: '/react/job/:id',
-    showAttendances: '/react/attendances/:course_id',
+    showAttendances: '/react/attendances/:id',
     showCoach: '/react/coach/:id',
     showTrialPeriodAssessment: '/react/assessment/trialPeriod/:id',
     showCoachCourseAssessment: '/react/assessment/course/coachCourseAssessment/:id',
