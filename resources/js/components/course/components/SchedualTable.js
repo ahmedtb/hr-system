@@ -3,10 +3,11 @@ import moment from 'moment'
 export default function SchedualTable(props) {
     const schedualTable = props.schedualTable
     const attendances = props.attendances
+    const className = props.className
     React.useEffect(() => {
     }, [schedualTable])
     return (
-        <div>
+        <div className={className}>
 
             <table className="table table-bordered table-condensed">
                 <thead>
@@ -25,9 +26,10 @@ export default function SchedualTable(props) {
                         const dayAttends = attendances?.filter(function (el) {
                             return el.date == day[0];
                         })
+                        console.log('isafter ', moment().isAfter(day[0]) )
 
                         return (
-                            <tr key={index}>
+                            <tr key={index} style={{backgroundColor: moment().isAfter(day[0]) ? '#b6c6f2' : ''}}>
                                 <td>{day[0]}</td>
                                 <td>{moment(day[0]).locale('ar').format('dddd')}</td>
                                 <td>{day[1][0]}</td>
