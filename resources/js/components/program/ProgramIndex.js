@@ -6,6 +6,7 @@ import logError from '../utility/logError';
 import Pagination from '../utility/Pagination'
 import { NumberFilter, TextFilter } from '../components/Filters'
 import FiltersContainer from '../components/FiltersContainer';
+import AllowedLink from '../components/AllowedLink';
 function Filters(props) {
     const params = props.params
     const fetchPage = props.fetchPage
@@ -67,7 +68,17 @@ export default function ProgramIndex(props) {
     return (
         <div className="col-md-12">
             <div className="card">
-                <div className="card-header">البرامج التدريبية</div>
+                <div className="card-header">
+                    <div className="row justify-content-between">
+                        <div>
+                            البرامج التدريبية
+                        </div>
+                        <div>
+                            <AllowedLink to={routes.createProgramForm}>تسجيل برامج تدريبي</AllowedLink>
+                        </div>
+                    </div>
+
+                </div>
                 <div className="card-body">
                     <div className="row">
                         <Filters params={params} fetchPage={(params) => fetchPage(ApiEndpoints.programIndex, params)} />

@@ -6,6 +6,8 @@ import logError from '../utility/logError';
 import JobsTable from '../partials/JobsTable';
 import Pagination from '../utility/Pagination'
 import { TextFilter } from '../components/Filters'
+import AllowedLink from '../components/AllowedLink';
+
 export default function JobIndex(props) {
     const [jobs, setjobs] = React.useState([])
     const [links, setlinks] = React.useState(null)
@@ -27,7 +29,16 @@ export default function JobIndex(props) {
     return (
         <div className="col-md-12">
             <div className="card">
-                <div className="card-header">قائمة الوظائف</div>
+                <div className="card-header">
+                    <div className="row justify-content-between">
+                        <div>
+                            قائمة الوظائف
+                        </div>
+                        <div>
+                            <AllowedLink to={routes.jobCreate}>تسجيل نوع وظائف جديد</AllowedLink>
+                        </div>
+                    </div>
+                </div>
                 <div className="card-body">
                     <div className="row align-items-start">
                         <TextFilter

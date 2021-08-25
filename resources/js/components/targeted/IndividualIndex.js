@@ -4,10 +4,10 @@ import ApiEndpoints from '../utility/ApiEndpoints'
 import logError from '../utility/logError';
 import Pagination from '../utility/Pagination';
 import TargetedIndividualsTable from '../partials/TargetedIndividualsTable';
-
 import { TextFilter, JobFilter, OrderByDescFilter, DateFilter } from '../components/Filters';
 import FiltersContainer from '../components/FiltersContainer';
-
+import routes from '../utility/routesEndpoints';
+import AllowedLink from '../components/AllowedLink';
 export default function IndividualIndex(props) {
     const [individuals, setindividuals] = React.useState([])
 
@@ -40,7 +40,16 @@ export default function IndividualIndex(props) {
     return (
         <div className="col-md-12">
             <div className="card">
-                <div className="card-header">قائمة المستهدفيين</div>
+                <div className="card-header">
+                    <div className="row justify-content-between">
+                        <div>
+                            قائمة المستهدفيين
+                        </div>
+                        <div>
+                            <AllowedLink to={routes.createTargetedForm}>تسجيل مستهدف</AllowedLink>
+                        </div>
+                    </div>
+                </div>
                 <div className="card-body">
                     <div className="row">
                         <FiltersContainer label="مرشحات المستهدفيين" clearFilters={clearFilters}>

@@ -6,6 +6,7 @@ import logError from '../utility/logError';
 import UnitsTable from '../partials/UnitsTable';
 import Pagination from '../utility/Pagination'
 import { TextFilter } from '../components/Filters'
+import AllowedLink from '../components/AllowedLink';
 export default function UnitIndex(props) {
     const [units, setunits] = React.useState([])
     const [links, setlinks] = React.useState([])
@@ -29,7 +30,16 @@ export default function UnitIndex(props) {
     return (
         <div className="col-md-12">
             <div className="card">
-                <div className="card-header">قائمة الوحدات الادارية</div>
+                <div className="card-header">
+                    <div className="row justify-content-between">
+                        <div>
+                            قائمة الوحدات الادارية
+                        </div>
+                        <div>
+                            <AllowedLink to={routes.unitCreate}>انشاء وحدة ادارية</AllowedLink>
+                        </div>
+                    </div>
+                </div>
                 <div className="card-body">
                     <div className="row align-items-start">
 

@@ -10,6 +10,7 @@ import Pagination from '../utility/Pagination';
 import { TextFilter, TrainingProgramFilter, ScopeFilter, DateFilter } from '../components/Filters'
 import FiltersContainer from '../components/FiltersContainer';
 import CustomModal from '../components/CustomModal';
+import AllowedLink from '../components/AllowedLink';
 function CoursesViewerAndFilter(props) {
     const [courses, setcourses] = React.useState([])
     const [links, setlinks] = React.useState([])
@@ -36,7 +37,16 @@ function CoursesViewerAndFilter(props) {
     return (
         <>
             <div className="card">
-                <div className="card-header">قائمة الدورات</div>
+                <div className="card-header">
+                    <div className="row justify-content-between">
+                        <div>
+                        قائمة الدورات
+                        </div>
+                        <div>
+                            <AllowedLink to={routes.createCourse}>تسجيل دورة</AllowedLink>
+                        </div>
+                    </div>
+                </div>
                 <div className="card-body ">
                     <FiltersContainer label="ترشيح الدورات" clearFilters={clearFilters}>
 

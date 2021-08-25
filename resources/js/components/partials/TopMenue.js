@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import routes from '../utility/routesEndpoints'
 import ApiEndpoints from '../utility/ApiEndpoints'
 import logError from '../utility/logError'
-
 function AuthComponent(props) {
 
     async function isLoggedIn() {
@@ -55,11 +54,11 @@ function AuthComponent(props) {
                 ) : (
                     <>
                         <li className="nav-item">
-                            <AllowedLink hide={true} className="nav-link" to={routes.loginPage}>{'تسجيل الدخول'}</AllowedLink>
+                            <AllowedLink hide={true} className="nav-link mx-2" to={routes.loginPage}>{'تسجيل الدخول'}</AllowedLink>
                         </li >
 
                         {/* <li className="nav-item">
-                            <a className="nav-link" href="{{ route('register') }}">{'تسجيل'}</a>
+                            <a className="nav-link mx-2" href="{{ route('register') }}">{'تسجيل'}</a>
                         </li> */}
                     </>
                 )
@@ -71,6 +70,18 @@ function AuthComponent(props) {
 
 
 import AllowedLink from '../components/AllowedLink';
+import {
+    FaUserTie,
+    FaUserCheck,
+    FaWpforms,
+    FaChalkboardTeacher,
+    FaSuitcase,
+    FaGraduationCap,
+    FaChartLine,
+    FaBuilding,
+    FaNetworkWired,
+    FaLaptop
+} from 'react-icons/fa'
 
 
 function TopMenue(props) {
@@ -135,54 +146,26 @@ function TopMenue(props) {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav mr-auto mb-2 mb-lg-0">
+                        <ul className="navbar-nav">
 
-                            {/* <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                    الموظفيين
-                                </a>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <AllowedLink hide={true} className="dropdown-item" to={routes.employeeIndex}>قائمة الموظفيين</AllowedLink>
-                                    <AllowedLink hide={true} className="dropdown-item" to={routes.createEmployeeForm}>تسجيل موظف</AllowedLink>
-                                </ul>
-                            </li> */}
-                            <AllowedMenue
-                                label={'الموظفيين'}
-                                links={[
-                                    { label: 'قائمة الموظفيين', to: routes.employeeIndex },
-                                    { label: 'تسجيل موظف', to: routes.createEmployeeForm },
-                                ]}
-                            />
+                            <AllowedLink hide={true} className="nav-link mx-2" to={routes.employeeIndex}>
+                                <FaUserTie />
+                                الموظفيين
+                            </AllowedLink>
 
-                            {/* <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                    المستهدفين
-                                </a>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <AllowedLink hide={true} className="dropdown-item" to={routes.individualIndex}>قائمة المستهدفين</AllowedLink>
-                                    <AllowedLink hide={true} className="dropdown-item" to={routes.createTargetedForm}>تسجيل مستهدف</AllowedLink>
-                                </ul>
-                            </li> */}
-                            <AllowedMenue
-                                label={'المستهدفين'}
-                                links={[
-                                    { label: 'قائمة المستهدفين', to: routes.individualIndex },
-                                    { label: 'تسجيل مستهدف', to: routes.createTargetedForm },
-                                ]}
-                            />
+                            <AllowedLink hide={true} className="nav-link mx-2" to={routes.individualIndex}>
+                                <FaUserCheck />
+                                المستهدفين
+                            </AllowedLink>
 
-                            {/* <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                    نماذج
-                                </a>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <AllowedLink hide={true} className="dropdown-item" to={routes.showFormsStructures}>قائمة قوالب النماذج</AllowedLink>
-                                    <AllowedLink hide={true} className="dropdown-item" to={routes.createFormStructureForm}>انشاء نوع نماذج جديد</AllowedLink>
-                                    <AllowedLink hide={true} className="dropdown-item" to={routes.showForms}>عرض النماذج المعبئة</AllowedLink>
-                                </ul>
-                            </li> */}
+
                             <AllowedMenue
-                                label={'نماذج'}
+                                label={
+                                    <div>
+                                        <FaWpforms />
+                                        نماذج
+                                    </div>
+                                }
                                 links={[
                                     { label: 'قائمة قوالب النماذج', to: routes.showFormsStructures },
                                     { label: 'انشاء نوع نماذج جديد', to: routes.createFormStructureForm },
@@ -190,71 +173,28 @@ function TopMenue(props) {
                                 ]}
                             />
 
-                            {/* <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                    المدربين
-                                </a>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <AllowedLink hide={true} className="dropdown-item" to={routes.CoachesList}>قائمة المدربين</AllowedLink>
-                                    <AllowedLink hide={true} className="dropdown-item" to={routes.createCoachForm}>تسجيل مدرب</AllowedLink>
-                                </ul>
-                            </li> */}
-                            <AllowedMenue
-                                label={'المدربين'}
-                                links={[
-                                    { label: 'قائمة المدربين', to: routes.CoachesList },
-                                    { label: 'تسجيل مدرب', to: routes.createCoachForm },
-                                ]}
-                            />
+                            <AllowedLink hide={true} className="nav-link mx-2" to={routes.CoachesList}>
+                                <FaChalkboardTeacher />
+                                المدربين
+                            </AllowedLink>
 
-                            {/* <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                    البرامج التدريبية
-                                </a>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <AllowedLink hide={true} className="dropdown-item" to={routes.programIndex}>قائمة البرامج التدريبية</AllowedLink>
-                                    <AllowedLink hide={true} className="dropdown-item" to={routes.createProgramForm}>تسجيل حقيبة تدريبية</AllowedLink>
-                                </ul>
-                            </li> */}
-                            <AllowedMenue
-                                label={'البرامج التدريبية'}
-                                links={[
-                                    { label: 'قائمة البرامج التدريبية', to: routes.programIndex },
-                                    { label: 'تسجيل حقيبة تدريبية', to: routes.createProgramForm },
-                                ]}
-                            />
+                            <AllowedLink hide={true} className="nav-link mx-2" to={routes.programIndex}>
+                                <FaSuitcase />
+                                البرامج التدريبية
+                            </AllowedLink>
 
-                            {/* <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                    الدورات
-                                </a>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <AllowedLink hide={true} className="dropdown-item" to={routes.courseIndex}>قائمة الدورات</AllowedLink>
-                                    <AllowedLink hide={true} className="dropdown-item" to={routes.createCourse}>تسجيل دورة</AllowedLink>
-                                </ul>
-                            </li> */}
-                            <AllowedMenue
-                                label={'الدورات'}
-                                links={[
-                                    { label: 'قائمة الدورات', to: routes.courseIndex },
-                                    { label: 'تسجيل دورة', to: routes.createCourse },
-                                ]}
-                            />
+                            <AllowedLink hide={true} className="nav-link mx-2" to={routes.courseIndex}>
+                                <FaGraduationCap />
+                                الدورات
+                            </AllowedLink>
 
-                            {/* <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                    التقيمات
-                                </a>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <AllowedLink hide={true} className="dropdown-item" to={routes.TraineeCourseAssessmentIndex}>تقييمات المتدربيين لدورات</AllowedLink>
-                                    <AllowedLink hide={true} className="dropdown-item" to={routes.CoachCourseAssessmentIndex}>تقييمات المدربيين للدورات</AllowedLink>
-                                    <AllowedLink hide={true} className="dropdown-item" to={routes.TrainingPeriodAssessmentIndex}>تقييمات المظفيين في الفترة التدريب</AllowedLink>
-                                    <AllowedLink hide={true} className="dropdown-item" to={routes.TrialPeriodAssessmentIndex}>تقييمات المظفيين في الفترة التجريبية</AllowedLink>
-                                    <AllowedLink hide={true} className="dropdown-item" to={routes.interviewAssessmentIndex}>تقييمات المقابلات</AllowedLink>
-                                </ul>
-                            </li>  */}
                             <AllowedMenue
-                                label={'التقيمات'}
+                                label={
+                                    <div>
+                                        <FaChartLine />
+                                        التقيمات
+                                    </div>
+                                }
                                 links={[
                                     { label: 'تقييمات المتدربيين لدورات', to: routes.TraineeCourseAssessmentIndex },
                                     { label: 'تقييمات المدربيين للدورات', to: routes.CoachCourseAssessmentIndex },
@@ -264,35 +204,24 @@ function TopMenue(props) {
 
                                 ]}
                             />
-
-                            {/* <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                            <AllowedLink hide={true} className="nav-link mx-2" to={routes.unitIndex}>
+                                <div>
+                                    <FaNetworkWired />
                                     الوحدات الادارية
-                                </a>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <AllowedLink hide={true} className="dropdown-item" to={routes.unitIndex}>قائمة الوحدات الادارية</AllowedLink>
-                                    <AllowedLink hide={true} className="dropdown-item" to={routes.unitCreate}>انشاء وحدة ادارية</AllowedLink>
-                                    <AllowedLink hide={true} className="dropdown-item" to={routes.jobIndex}>قائمة انواع الوظائف</AllowedLink>
-                                    <AllowedLink hide={true} className="dropdown-item" to={routes.jobCreate}>انشاء نوع وظيفة جديد</AllowedLink>
-                                </ul>
-                            </li> */}
-                            <AllowedMenue
-                                label={'الوحدات الادارية'}
-                                links={[
-                                    { label: 'قائمة الوحدات الادارية', to: routes.unitIndex },
-                                    { label: 'انشاء وحدة ادارية', to: routes.unitCreate },
-                                    { label: 'قائمة انواع الوظائف', to: routes.jobIndex },
-                                    { label: 'انشاء نوع وظيفة جديد', to: routes.jobCreate },
-
-                                ]}
-                            />
+                                </div>
+                            </AllowedLink>
+                            <AllowedLink hide={true} className="nav-link mx-2" to={routes.jobIndex}>
+                                <div>
+                                    <FaLaptop />
+                                    انواع الوظائف
+                                </div>
+                            </AllowedLink>
 
 
                         </ul>
 
                         <ul className="navbar-nav ml-auto mb-2 mb-lg-0">
                             <AuthComponent {...props} />
-
                         </ul>
 
                     </div>

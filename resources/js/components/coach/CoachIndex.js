@@ -8,6 +8,7 @@ import Pagination from '../utility/Pagination'
 import CoachesTable from './components/CoachesTable';
 import { TextFilter } from '../components/Filters'
 import FiltersContainer from '../components/FiltersContainer';
+import AllowedLink from '../components/AllowedLink';
 export default function CoachIndex(props) {
     const [coaches, setcoaches] = React.useState([])
     const [links, setlinks] = React.useState([])
@@ -34,7 +35,16 @@ export default function CoachIndex(props) {
     return (
         <div className="col-md-12">
             <div className="card">
-                <div className="card-header">المدربيين</div>
+                <div className="card-header">
+                    <div className="row justify-content-between">
+                        <div>
+                            المدربيين
+                        </div>
+                        <div>
+                            <AllowedLink to={routes.createCoachForm}>تسجيل مدرب</AllowedLink>
+                        </div>
+                    </div>
+                </div>
                 <div className="card-body">
                     <FiltersContainer label="ترشيح المدربيين" clearFilters={clearFilters}>
                         <TextFilter
