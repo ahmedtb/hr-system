@@ -2,7 +2,7 @@ import React from 'react'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 import routes from '../utility/routesEndpoints'
-
+import AllowedLink from '../components/AllowedLink'
 export default function CoursesTable(props) {
     const courses = props.courses
     return (
@@ -26,13 +26,13 @@ export default function CoursesTable(props) {
                 {courses?.map((course, index) => (
                     <tr key={index}>
                         <td>
-                            <Link to={routes.showCourse.replace(':id', course.id)}>{course.id}</Link >
+                            <AllowedLink to={routes.showCourse.replace(':id', course.id)}>{course.id}</AllowedLink >
                         </td>
                         <td>
                             {course.title}
                         </td>
                         <td>
-                            <Link to={routes.showProgram.replace(':id', course.training_program_id)}>{course.training_program?.title}</Link >
+                            <AllowedLink to={routes.showProgram.replace(':id', course.training_program_id)}>{course.training_program?.title}</AllowedLink >
                         </td>
                         <td>{course.state}</td>
                         <td>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link  } from 'react-router-dom';
 import routes from '../utility/routesEndpoints'
 import ApiEndpoints from '../utility/ApiEndpoints'
 import logError from '../utility/logError'
@@ -21,7 +21,6 @@ function AuthComponent(props) {
             const response = await axios.post('/logout')
             // console.log('logout', (response.data));
             props.refreshUser(null)
-
         } catch (error) {
             logError(error)
         }

@@ -40,7 +40,7 @@ function CoursesViewerAndFilter(props) {
                 <div className="card-header">
                     <div className="row justify-content-between">
                         <div>
-                        قائمة الدورات
+                            قائمة الدورات
                         </div>
                         <div>
                             <AllowedLink to={routes.createCourse}>تسجيل دورة</AllowedLink>
@@ -121,7 +121,6 @@ function CoursesViewerAndFilter(props) {
 
 export default function CourseIndex(props) {
     const [twentyDaysRangeCourses, setrangecourses] = React.useState([])
-    const [diagramPagination, setdiagramPagination] = React.useState([])
 
     async function getTwentyDaysRangeCourses(link = ApiEndpoints.courseIndex, params = null) {
         try {
@@ -131,12 +130,12 @@ export default function CourseIndex(props) {
                         ...params,
                         start_before: moment().add('10 days').format('YYYY-MM-DD'),
                         end_after: moment().subtract('10 days').format('YYYY-MM-DD'),
-                        page_size: 5
+                        page_size: 10
                     }
                 })
-            // console.log(response.data)
-            setrangecourses(response.data.data)
-            setdiagramPagination(response.data.links)
+            // set the diagram only if the total courses in the range is or under ten courses
+            if (response.data.total <= 10)
+                setrangecourses(response.data.data)
         } catch (error) { logError(error) }
     }
 
@@ -147,20 +146,20 @@ export default function CourseIndex(props) {
     return (
         <div className="col-md-12">
 
-            <div className="card">
-                <div className="card-header">مخطط الدورات خلال الايام الحالية</div>
-                <div className="card-body">
-                    <Pagination
-                        fetchPage={getTwentyDaysRangeCourses}
-                        links={diagramPagination}
-                    />
-                    <ScheduleDiagram
-                        courses={twentyDaysRangeCourses}
-                        rangeStartDate={moment().subtract(10, 'd').format('YYYY-MM-DD')}
-                        rangeEndDate={moment().add(10, 'd').format('YYYY-MM-DD')}
-                    />
-                </div>
-            </div>
+            {
+                twentyDaysRangeCourses.length ?
+                    <div className="card">
+                        <div className="card-header">مخطط الدورات خلال الايام الحالية</div>
+                        <div className="card-body">
+                            <ScheduleDiagram
+                                courses={twentyDaysRangeCourses}
+                                rangeStartDate={moment().subtract(10, 'd').format('YYYY-MM-DD')}
+                                rangeEndDate={moment().add(10, 'd').format('YYYY-MM-DD')}
+                            />
+
+                        </div>
+                    </div> : null
+            }
 
             <CoursesViewerAndFilter />
         </div >

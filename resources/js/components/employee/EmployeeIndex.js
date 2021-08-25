@@ -104,7 +104,9 @@ export default function employeeIndex(props) {
                         />
                     </FiltersContainer>
 
-                    <EmployeesTable employees={employees} />
+                    <div className="col-12">
+                        <EmployeesTable employees={employees} />
+                    </div>
                     <Pagination fetchPage={fetchPage} links={links} />
                 </div>
             </div>

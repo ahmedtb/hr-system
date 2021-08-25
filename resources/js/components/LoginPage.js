@@ -5,15 +5,15 @@ import logError from './utility/logError'
 
 
 function LoginPage(props) {
-    const [name, setname] = React.useState('')
+    const [username, setusername] = React.useState('')
     const [password, setpassword] = React.useState('')
     const [type, settype] = React.useState('admin')
 
 
-    async function handleLogin(name, password) {
+    async function handleLogin(username, password) {
         try {
             await axios.get('/sanctum/csrf-cookie')
-            const response = await axios.post('/login', { name: name, password: password, type: type })
+            const response = await axios.post('/login', { username: username, password: password, type: type })
             console.log('User signed in!', (response.data));
             props.refreshUser(response.data)
 
@@ -29,19 +29,18 @@ function LoginPage(props) {
                     تسجيل الدخول
                 </div>
                 <div className='card-body'>
-                    <label>name</label>
-                    <input type='name' className='form-control' onChange={e => setname(e.target.value)} />
+                    <label>username</label>
+                    <input type='username' className='form-control' onChange={e => setusername(e.target.value)} />
                     <label>password</label>
                     <input type='password' className='form-control' onChange={e => setpassword(e.target.value)} />
                     <label>نوع المستخدم</label>
                     <select onChange={e => settype(e.target.value)} className='form-control'>
                         <option value='admin'>admin</option>
                         <option value='employee'>employee</option>
-                        <option value='web'>web</option>
                         <option value='individual'>individual</option>     
                         {/* <option value='coach'>coach</option> */}
                     </select>
-                    <button type="button" className="btn btn-success" onClick={() => handleLogin(name, password)}>login</button>
+                    <button type="button" className="btn btn-success" onClick={() => handleLogin(username, password)}>login</button>
 
                 </div>
             </div>

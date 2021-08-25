@@ -24,6 +24,7 @@ class TargetedIndividualFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
+            'username' => $this->faker->userName(),
             'address' => $this->faker->address(),
             'phone_number' => $this->faker->phoneNumber(),
             'email' => $this->faker->email(),

@@ -44,7 +44,7 @@ class LoginController extends Controller
 
     public function username()
     {
-        return 'name';
+        return 'username';
     }
 
     protected function credentials(Request $request)
@@ -93,5 +93,31 @@ class LoginController extends Controller
             $this->credentials($request),
             $request->filled('remember')
         );
+    }
+
+    public function user(Request $request)
+    {
+        if ($request->user('admin')) {
+            $admin = $request->user('admin');
+            $admin->role = 'admin';
+            return $admin;
+        } else if ($request->user('sanctum')) {
+            $user = $request->user('sanctum');
+            $user->role = 'user';
+            return $user;
+        } else if ($request->user('employee')) {
+            $employee = $request->user('employee');
+            $employee->role = 'employee';
+            return $employee;
+            // } else if ($request->user('coach')) {
+            //     $coach = $request->user('coach');
+            //     $coach->role = 'coach';
+            //     return $coach;
+        } else if ($request->user('individual')) {
+            $individual = $request->user('individual');
+            $individual->role = 'individual';
+            return $individual;
+        }
+        return null;
     }
 }

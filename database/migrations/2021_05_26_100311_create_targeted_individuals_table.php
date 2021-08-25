@@ -16,6 +16,7 @@ class CreateTargetedIndividualsTable extends Migration
         Schema::create('targeted_individuals', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('username');
             $table->string('phone_number')->nullable();
             $table->string('email')->nullable();
             $table->string('address')->nullable();

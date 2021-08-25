@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import routes from '../../utility/routesEndpoints'
+import AllowedLink from '../../components/AllowedLink'
 export default function CoachesTable(props) {
     const coaches = props.coaches
 
@@ -22,24 +23,24 @@ export default function CoachesTable(props) {
                 {coaches.map((coach, index) => (
                     <tr key={index} className="">
                         <td>
-                            <Link to={routes.showCoach.replace(':id', coach.id)}>
+                            <AllowedLink to={routes.showCoach.replace(':id', coach.id)}>
                                 {coach.id}
-                            </Link>
+                            </AllowedLink>
 
                         </td>
                         <td>
                             {
                                 (coach.profile_type == 'App\\Models\\TargetedIndividual') ?
                                     (
-                                        <Link to={routes.showTargeted.replace(':id', coach.profile_id)}>
+                                        <AllowedLink to={routes.showTargeted.replace(':id', coach.profile_id)}>
                                             {coach.profile.name}
-                                        </Link>
+                                        </AllowedLink>
                                     )
                                     :
                                     (
-                                        <Link to={routes.showEmployee.replace(':id', coach.profile_id)}>
+                                        <AllowedLink to={routes.showEmployee.replace(':id', coach.profile_id)}>
                                             {coach.profile.name}
-                                        </Link>
+                                        </AllowedLink>
                                     )
                             }
 

@@ -116,26 +116,34 @@ export default function CourseShow(props) {
                                         <p className="">{course?.attendancePercentage}</p>
                                     </div>
 
-                                    <div className="d-flex flex-row justify-content-center mb-2">
-                                        <FaCalculator className="mr-2" />
+                                    {
+                                        employees?.length && individuals?.length ?
+                                            <div className="d-flex flex-row justify-content-center mb-2">
+                                                <FaCalculator className="mr-2" />
 
-                                        <strong className="mr-2">عدد المسجلين</strong>
-                                        <p className="">{employees?.length + individuals?.length}</p>
-                                    </div>
+                                                <strong className="mr-2">عدد المسجلين</strong>
+                                                <p className="">{employees?.length + individuals?.length}</p>
+                                            </div> : null
+                                    }
+                                    {
+                                        employees?.length ?
+                                            <div className="d-flex flex-row justify-content-center mb-2">
+                                                <FaAccusoft className="mr-2" />
 
-                                    <div className="d-flex flex-row justify-content-center mb-2">
-                                        <FaAccusoft className="mr-2" />
+                                                <strong className="mr-2">عدد الموظفيين المسجلين</strong>
+                                                <p className="">{employees?.length}</p>
+                                            </div> : null
+                                    }
+                                    {
+                                        individuals?.length ?
+                                            <div className="d-flex flex-row justify-content-center mb-2">
+                                                <FaUsers className="mr-2" />
 
-                                        <strong className="mr-2">عدد الموظفيين المسجلين</strong>
-                                        <p className="">{employees?.length}</p>
-                                    </div>
+                                                <strong className="mr-2">عدد المستهدفين المسجلين</strong>
+                                                <p className="">{individuals?.length}</p>
+                                            </div> : null
+                                    }
 
-                                    <div className="d-flex flex-row justify-content-center mb-2">
-                                        <FaUsers className="mr-2" />
-
-                                        <strong className="mr-2">عدد المستهدفين المسجلين</strong>
-                                        <p className="">{individuals?.length}</p>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -164,40 +172,41 @@ export default function CourseShow(props) {
                         </div>
                     </div>
 
-                    <div className="card">
-                        <div className="card-header">
-                            <div className="row justify-content-between">
-                                <strong>المسجلين بالدورة</strong>
-                                <a className="text-primary" data-toggle="modal" data-target="#EnrollmentModal">
-                                    تسجيل موظف او مستهدف في الدورة
-                                </a>
-                                <EnrollmentModal onChange={getCourseAndAttendances} course={course} />
-                            </div>
-                        </div>
-
-                        <div className="card-body">
-
-                            <div className="" >
-                                <div className="" >
-                                    <h5 className="text-center">موظفيين</h5>
-                                    <EmployeesTable employees={employees} />
+                    {employees && individuals ?
+                        < div className="card">
+                            <div className="card-header">
+                                <div className="row justify-content-between">
+                                    <strong>المسجلين بالدورة</strong>
+                                    <a className="text-primary" data-toggle="modal" data-target="#EnrollmentModal">
+                                        تسجيل موظف او مستهدف في الدورة
+                                    </a>
+                                    <EnrollmentModal onChange={getCourseAndAttendances} course={course} />
                                 </div>
-                                <div className="" >
-                                    <h5 className="text-center">مستهدفيين</h5>
-                                    <TargetedIndividualsTable individuals={individuals} />
-                                </div>
-
                             </div>
-                        </div>
 
-                    </div>
+                            <div className="card-body">
 
+                                <div className="" >
+                                    <div className="" >
+                                        <h5 className="text-center">موظفيين</h5>
+                                        <EmployeesTable employees={employees} />
+                                    </div>
+                                    <div className="" >
+                                        <h5 className="text-center">مستهدفيين</h5>
+                                        <TargetedIndividualsTable individuals={individuals} />
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div> : null
+                    }
                 </div>
             </div>
 
 
 
 
-        </div>
+        </div >
     )
 }

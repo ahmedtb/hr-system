@@ -15,7 +15,7 @@ function App() {
 
             <Provider store={store}>
                 <TopMenue />
-                <main className="container">
+                <main className="container-fluid">
                     <AllowedRoutes />
                 </main>
             </Provider>

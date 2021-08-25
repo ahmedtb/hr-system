@@ -25,8 +25,8 @@ class TrainingCoursePolicy
     public function userIsCourseCoach(Authenticatable $user, TrainingCourse $course)
     {
         if (
-            $user instanceof Employee ||
-            $user instanceof TargetedIndividual &&
+            ($user instanceof Employee ||
+            $user instanceof TargetedIndividual) &&
             $user->coach()->exists() &&
             $course->coaches()->where('coaches.id', $user->coach->id)->count() != 0
         ) {
@@ -46,7 +46,7 @@ class TrainingCoursePolicy
             return true;
         } else if (
             $user instanceof TargetedIndividual &&
-            $course->individuals()->where('targeted_individual.id', $user->id)->count() != 0
+            $course->targetedIndividuals()->where('targeted_individuals.id', $user->id)->count() != 0
         ) {
             return true;
         } else return false;
@@ -69,7 +69,7 @@ class TrainingCoursePolicy
 
     public function viewCourseProgram(Authenticatable $user, TrainingCourse $course)
     {
-        if ($this->userIsCourseCoach($user, $course)) {
+        if ($this->userIsTraineeInTheCourse($user, $course) || $this->userIsCourseCoach($user, $course)) {
             return true;
         }
         return in_array('admin', $user->role);

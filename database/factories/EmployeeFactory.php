@@ -27,6 +27,7 @@ class EmployeeFactory extends Factory
         $medals = array(1,2,3,4,5);
         return [
             'name' => $this->faker->name(),
+            'username' => $this->faker->userName(),
             'address' => $this->faker->address(),
             'employment_date' => $this->faker->date(),
             'basic_salary' => random_int ( 100 , 10000 ),

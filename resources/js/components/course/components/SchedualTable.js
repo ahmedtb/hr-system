@@ -26,10 +26,9 @@ export default function SchedualTable(props) {
                         const dayAttends = attendances?.filter(function (el) {
                             return el.date == day[0];
                         })
-                        console.log('isafter ', moment().isAfter(day[0]) )
 
                         return (
-                            <tr key={index} style={{backgroundColor: moment().isAfter(day[0]) ? '#b6c6f2' : ''}}>
+                            <tr key={index} style={{backgroundColor: moment().isAfter(day[0]) ? '#dbc5b6' : ''}}>
                                 <td>{day[0]}</td>
                                 <td>{moment(day[0]).locale('ar').format('dddd')}</td>
                                 <td>{day[1][0]}</td>
