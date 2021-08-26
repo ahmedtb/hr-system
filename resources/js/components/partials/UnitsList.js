@@ -1,4 +1,5 @@
 import React from 'react'
+import AllowedLink from '../components/AllowedLink'
 import routes from '../utility/routesEndpoints'
 
 
@@ -11,7 +12,7 @@ export default function UnitsList(props) {
             <ul key={index} className="nested">
                 <li>
                     <span>
-                        <a href={routes.showUnit.replace(':id',unit.id)}>{unit.name}</a>
+                        <AllowedLink to={routes.showUnit.replace(':id',unit.id)}>{unit.name}</AllowedLink>
                     </span>
                     {(unit.children) ? unit.children.map(renderUnit) : null}
                 </li>

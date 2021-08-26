@@ -17,8 +17,6 @@ export default function FormsIndex() {
 
                 <div className="card-body">
                     <FormsTable forms={forms}/>
-                    {/* @include('partials.FormsTable',['forms'=>$forms]) */}
-
                 </div>
 
             </div>

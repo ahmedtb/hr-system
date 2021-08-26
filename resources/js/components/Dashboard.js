@@ -7,6 +7,8 @@ import UnitsList from './partials/UnitsList'
 import CoursesTable from './partials/CoursesTable'
 import TopMenue from './partials/TopMenue'
 import Pagination from './utility/Pagination'
+
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 export default function Dashboard() {
 
     const [employeesCount, setemployeesCount] = React.useState(null)
@@ -19,6 +21,7 @@ export default function Dashboard() {
 
     const [units, setunits] = React.useState([])
     const [forms, setforms] = React.useState([])
+    const [attendancesCount, setattendancesCount] = React.useState([])
 
     async function getDashboard() {
         axios.get(ApiEndpoints.dashboard).then((response) => {
@@ -32,20 +35,24 @@ export default function Dashboard() {
 
             setunits(response.data.units)
             setforms(response.data.forms)
+            console.log('dashboard', response.data.attendancesCount)
+            setattendancesCount(response.data.attendancesCount)
         }).catch((error) => logError(error))
     }
 
     const [resumedCourses, setresumedCourses] = React.useState([])
+    const [resumedCoursesTotal, setresumedCoursesTotal] = React.useState([])
     const [links, setlinks] = React.useState([])
     async function getCourses(link = ApiEndpoints.courseIndex, params = null) {
         try {
-            const response = await axios.get(link,{ params: {...params, resumed:true, page_size:5} })
+            const response = await axios.get(link, { params: { ...params, resumed: true, page_size: 5 } })
             setresumedCourses(response.data.data)
+            setresumedCoursesTotal(response.data.total)
             if (response.data.links) { setlinks(response.data.links) } else setlinks(null)
         } catch (error) {
             logError(error)
         }
-        
+
     }
 
     React.useEffect(() => {
@@ -56,7 +63,10 @@ export default function Dashboard() {
     return (
         <div className="row justify-content-center">
 
+
+
             <div className='col-md-12'>
+
                 <div className="card">
                     <div className="card-header">
                         احصائية عامة
@@ -118,38 +128,38 @@ export default function Dashboard() {
 
                         </div>
 
-                        <div className="card mt-1">
+                        <div className="row">
+
+
                             {
                                 (forms.length) ? (
-                                    <>
-                                        <div className="card-header">
-                                            <h5>نماذج تم تعبئتها مؤخرا</h5>
-                                        </div>
-                                        <div className="card-body">
-                                            <FormsTable forms={forms} />
+                                    <div className="col-6">
+                                        <h3 className="text-center">نماذج تم تعبئتها مؤخرا</h3>
+                                        <FormsTable forms={forms} />
 
-                                        </div>
-                                    </>
+                                    </div>
                                 ) : null
                             }
+                            <div className="col-6">
+                                <h3 className="text-center">الحضور اليومي للدورات</h3>
+                                <LineChart width={600} height={300} data={attendancesCount}>
+                                    <Line type="monotone" dataKey="attendances_count" stroke="#8884d8" />
+                                    <CartesianGrid stroke="#ccc" />
+                                    <XAxis dataKey="date" />
+                                    <YAxis />
+                                    <Tooltip />
+
+                                </LineChart>
+                            </div>
 
                         </div>
 
-
-
-                        <div className="card mt-1">
-
-                            <div className="card-header">
-                                <h5 className=''>الدورات الجارية: {resumedCourses.length}</h5>
-                            </div>
-                            <div className=" card-body">
-                                <Pagination
-                                    fetchPage={getCourses}
-                                    links={links}
-                                />
-                                <CoursesTable courses={resumedCourses} />
-                            </div>
-                        </div>
+                        <h3 className='text-center'>الدورات الجارية: {resumedCoursesTotal}</h3>
+                        <Pagination
+                            fetchPage={getCourses}
+                            links={links}
+                        />
+                        <CoursesTable courses={resumedCourses} />
 
 
                     </div>

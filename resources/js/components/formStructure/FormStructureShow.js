@@ -6,7 +6,8 @@ import logError from '../utility/logError'
 
 import Fields from '../fields/Fields'
 import { useParams, Link } from 'react-router-dom';
-
+import AllowedLink from '../components/AllowedLink'
+import { FaSearch } from 'react-icons/fa'
 export default function FormStructureShow(props) {
 
     const { id } = useParams();
@@ -45,8 +46,18 @@ export default function FormStructureShow(props) {
 
             <div className="card">
                 <div className="card-header">
-                    نموذج {structure?.id}
-                    <Link to={routes.searchForms.replace(':form_structure_id', structure?.id)}>search</Link>
+                    <div className="d-flex flex-row justify-content-between">
+                        <div>نموذج {structure?.id}</div>
+                        <div className="">
+                            <AllowedLink to={routes.searchForms.replace(':form_structure_id', structure?.id)}>
+                                <FaSearch />
+                                بحث في النماذج المعبئة
+                            </AllowedLink>
+                            <button type='button' className='btn btn-primary' onClick={generateForm}>
+                                انشاء نسخة من نموذج
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="card-body">
@@ -56,9 +67,7 @@ export default function FormStructureShow(props) {
                     <div className="row">
                         <Fields fields={structure?.array_of_fields.fields} type='render' />
                     </div>
-                    <button onClick={generateForm}>
-                        انشاء نسخة نموذج
-                    </button>
+
                 </div>
 
             </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import routes from '../utility/routesEndpoints'
-
+import moment from 'moment'
 export default function FormsTable(props) {
     const forms = props.forms
     return (
@@ -19,7 +19,7 @@ export default function FormsTable(props) {
                     <tr key={index}>
                         <td><Link to={routes.showForm.replace(':id',form.id)}>{form.id}</Link></td>
                         <td>{form.structure.type}</td>
-                        <td>{form.created_at}</td>
+                        <td>{moment(form.created_at).format('yyyy-MM-DD')}</td>
                         <td>
                             {form.filled_fields.fields.length}
                         </td>

@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios';
 import ApiEndpoints from '../utility/ApiEndpoints'
 import routes from '../utility/routesEndpoints';
-
+import AllowedLink from '../components/AllowedLink'
 export default function FormStructuresIndex(props) {
     const [structures, setStructures] = React.useState([])
     React.useEffect(() => {
@@ -22,7 +22,7 @@ export default function FormStructuresIndex(props) {
                             <tr>
                                 <th >رقم قيد النموذج</th>
                                 <th>اسم النموذج</th>
-                                <th>تركيبة النموذج </th>
+                                <th>عدد الحقول </th>
                                 <th>مخصص للاستعمال مع</th>
                             </tr>
                         </thead>
@@ -30,16 +30,14 @@ export default function FormStructuresIndex(props) {
                             {structures.map((structure, index) => (
                                 <tr key={index}>
                                     <td>
-                                        <a href={routes.showFormStructure + structure.id}>
+                                        <AllowedLink to={routes.showFormStructure.replace(':id',structure.id) }>
                                             {structure.id}
-                                        </a>
+                                        </AllowedLink>
                                     </td>
                                     <td>{structure.type}</td>
                                     <td>
                                         {
-                                            structure.array_of_fields.fields.map((field, fieldIndex) => (
-                                                null
-                                            ))
+                                            structure.array_of_fields.fields.length
                                         }
                                     </td>
                                     <td>{structure.formable_type}</td>
