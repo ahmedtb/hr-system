@@ -99,9 +99,9 @@ export default function ProgramIndex(props) {
                             {programs.map((program, index) => (
                                 <tr key={index}>
                                     <td>
-                                        <a href={routes.showProgram.replace(':id', program.id)}>
+                                        <AllowedLink to={routes.showProgram.replace(':id', program.id)}>
                                             {program.id}
-                                        </a>
+                                        </AllowedLink>
                                     </td>
                                     <td>{program.title}</td>
                                     <td>{program.category}</td>

@@ -7,6 +7,7 @@ import Pagination from '../utility/Pagination';
 import CoursesTable from '../partials/CoursesTable';
 import routes from '../utility/routesEndpoints';
 import RenderDocuments from '../components/RenderDocuments'
+import AllowedLink from '../components/AllowedLink';
 
 export default function ProgramShow(props) {
 
@@ -72,9 +73,9 @@ export default function ProgramShow(props) {
             <div className="card">
                 <div className="card-header row">
                     <div>المستندات الملحق بالبرنامج</div>
-                    <Link to={{
+                    <AllowedLink to={{
                         pathname: routes.attachDocument, state: { documentable: program, type: 'App\\Models\\TrainingProgram' }
-                    }}>الحاق مستند جديد</Link>
+                    }}>الحاق مستند جديد</AllowedLink>
                 </div>
 
                 <div className="card-body">

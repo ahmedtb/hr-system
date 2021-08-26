@@ -29,7 +29,7 @@ const routes = {
     showTargeted: '/react/targeted/:id',
     showEmployee: '/react/employee/:id',
     showCourse: '/react/course/:id',
-    showProgram: '/react/program/:id',
+    showProgram: '/react/showProgram/:id',
     showUnit: '/react/unit/:id',
     showJob: '/react/job/:id',
     showAttendances: '/react/attendances/:id',

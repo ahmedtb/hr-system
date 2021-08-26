@@ -12,7 +12,7 @@ export default function AttendanceManager(props) {
 
     const params = useParams()
 
-    const course_id = params.course_id
+    const id = params.id
     const [attendances, setattendances] = React.useState([])
 
 
@@ -33,7 +33,7 @@ export default function AttendanceManager(props) {
     async function getAllAttendances() {
         try {
             const response = await axios.get(
-                ApiEndpoints.getAllAttendances.replace(':id', course_id)
+                ApiEndpoints.getAllAttendances.replace(':id', id)
             )
             setattendances(sortAttends(response.data))
             console.log('attendances from api: ', response.data)
@@ -76,14 +76,14 @@ export default function AttendanceManager(props) {
 
             <div className="card">
                 <div className="card-header">
-                    سجلات الحضور للدورة {course_id}
+                    سجلات الحضور للدورة {id}
                 </div>
 
                 <div className="card-body">
                     <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#recordAttendanceModal">
                         تسجيل حضور جديد
                     </button>
-                    <RecordAttendanceModal course_id={course_id} onChange={getAllAttendances} />
+                    <RecordAttendanceModal course_id={id} onChange={getAllAttendances} />
 
                     <table className="table table-bordered table-condensed">
                         <thead>

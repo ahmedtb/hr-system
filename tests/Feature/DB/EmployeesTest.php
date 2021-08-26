@@ -101,11 +101,13 @@ class EmployeesTest extends TestCase
         $this->assertEquals($employee->refresh()->role, ['employee']);
     }
     
-    public function test_employee_training_courses_fun_return_his_courses_as_a_coach_also()
+    public function test_employee_model_training_courses_function_return_his_courses_as_a_employee_and_coach_if_he_is()
     {
         $employee = Employee::factory()->create();
         $coach = Coach::factory()->profile($employee)->create();
         
+        // create random courses
+        TrainingCourse::factory(5)->create();
         // create course without coach
         TrainingCourse::factory()->create()->enrollEmployee($employee);
         // create course with the employee as the coach

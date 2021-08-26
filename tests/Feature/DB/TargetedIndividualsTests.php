@@ -46,7 +46,7 @@ class TargetedIndividualsTests extends TestCase
     }
 
         
-    public function test_individual_training_courses_fun_return_his_courses_as_a_coach_also()
+    public function test_individual_training_courses_function_return_his_courses_as_a_employee_and_coach_if_he_is()
     {
         $individual = TargetedIndividual::factory()->create();
         $coach = Coach::factory()->profile($individual)->create();

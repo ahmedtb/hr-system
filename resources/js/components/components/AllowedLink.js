@@ -15,6 +15,9 @@ function AllowedLink(props) {
                 if (matchPath(path, {
                     path: allowedRoutes[i].path,
                     exact: true,
+                }) || matchPath(path.pathname, {
+                    path: allowedRoutes[i].path,
+                    exact: true,
                 })) {
                     return true
                 }

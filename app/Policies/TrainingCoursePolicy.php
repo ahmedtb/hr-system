@@ -22,7 +22,7 @@ class TrainingCoursePolicy
         //
     }
 
-    public function userIsCourseCoach(Authenticatable $user, TrainingCourse $course)
+    private function userIsCourseCoach(Authenticatable $user, TrainingCourse $course)
     {
         if (
             ($user instanceof Employee ||
@@ -36,7 +36,7 @@ class TrainingCoursePolicy
         }
     }
 
-    public function userIsTraineeInTheCourse(Authenticatable $user, TrainingCourse $course)
+    private function userIsTraineeInTheCourse(Authenticatable $user, TrainingCourse $course)
     {
 
         if (

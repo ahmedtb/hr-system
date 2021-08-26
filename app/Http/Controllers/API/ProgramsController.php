@@ -18,7 +18,7 @@ class ProgramsController extends Controller
 
     public function index(TrainingProgramFilters $filters, Request $request)
     {
-        return TrainingProgram::filter($filters)
+        return $request->user()->trainingPrograms()->filter($filters)
             ->paginate($request->input('page_size') ?? 10)
             ->appends(request()->except('page'));
     }
@@ -66,6 +66,6 @@ class ProgramsController extends Controller
 
     public function getPrograms(Request $request)
     {
-        return TrainingProgram::all();
+        return TrainingProgram::select(['id','title'])->get();
     }
 }

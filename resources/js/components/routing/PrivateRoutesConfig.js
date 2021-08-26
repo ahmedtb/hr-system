@@ -145,6 +145,7 @@ export default [
         permission: [
             Roles.ADMIN,
             Roles.SUPRTVISOR,
+            Roles.COACH
         ],
         exact: true,
     },
@@ -165,6 +166,7 @@ export default [
         permission: [
             Roles.ADMIN,
             Roles.SUPRTVISOR,
+            Roles.COACH
         ],
         exact: true,
     },
@@ -195,6 +197,7 @@ export default [
         permission: [
             Roles.ADMIN,
             Roles.SUPRTVISOR,
+            Roles.COACH
         ],
         exact: true,
     },
@@ -337,6 +340,7 @@ export default [
         permission: [
             Roles.ADMIN,
             Roles.SUPRTVISOR,
+            Roles.COACH
         ],
         exact: true,
     },
@@ -410,7 +414,9 @@ export default [
         permission: [
             Roles.ADMIN,
             Roles.SUPRTVISOR,
-            Roles.COACH
+            Roles.COACH,
+            Roles.EMPLOYEE,
+            Roles.INDIVIDUAL
         ],
         exact: true,
     },
@@ -542,6 +548,7 @@ export default [
         permission: [
             Roles.ADMIN,
             Roles.SUPRTVISOR,
+            Roles.COACH
         ],
         exact: true,
     },

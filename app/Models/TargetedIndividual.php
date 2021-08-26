@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Filters\IndividualFilters;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Assessments\TraineeCourseAssessment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -25,12 +26,6 @@ class TargetedIndividual extends Authenticatable
         else
             return ['individual'];
     }
-
-    // public function trainingCourses()
-    // {
-    //     return $this->belongsToMany(TrainingCourse::class);
-    // }
-
 
     public function TrainingCourses($include_coach_courses = true)
     {

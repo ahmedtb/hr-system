@@ -40,14 +40,7 @@ class CoursesController extends Controller
 
     public function index(Request $request, CourseFilters $filters)
     {
-        // dd($request->user()->TrainingCourses());
         return $request->user()->TrainingCourses()->filter($filters)
-            // ->user($request->user())
-            ->paginate($request->get('page_size') ?? 10)
-            ->appends(request()->except('page'));
-
-        return TrainingCourse::filter($filters)
-            // ->user($request->user())
             ->paginate($request->get('page_size') ?? 10)
             ->appends(request()->except('page'));
     }

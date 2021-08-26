@@ -83,11 +83,6 @@ class Employee extends Authenticatable
         return $this->hasMany(TrainingPeriodAssessment::class);
     }
 
-    public function courses()
-    {
-        return $this->belongsToMany(TrainingCourse::class);
-    }
-
     public function enrollInCourse(TrainingCourse $course)
     {
         $this->courses()->save($course);
@@ -107,15 +102,11 @@ class Employee extends Authenticatable
             })->orWhereHas('coaches', function ($query) {
                 return $query->where('coaches.id', $this->coach->id);
             });
-            // $coachQuery = $this->coach->trainingCourses();
-            // return $coachQuery;
             return $employeeQuery;
 
-            // return $coachQuery->union($employeeQuery);
         } else {
-            return TrainingCourse::whereHas('employees', function ($query) {
-                return $query->where('employees.id', $this->id);
-            });
+            return $this->courses();
         }
     }
+
 }

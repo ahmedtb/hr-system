@@ -33,6 +33,15 @@ class Coach extends Authenticatable
         return $this->belongsToMany(TrainingCourse::class);
     }
 
+    public function scopeMyCoursesPrograms()
+    {
+        return TrainingProgram::whereHas('trainingCourses', function ($query) {
+            return $query->whereHas('coaches', function ($query) {
+                return $query->where('coaches.id', $this->id);
+            });
+        });
+    }
+
     public function profile()
     {
         return $this->morphTo();

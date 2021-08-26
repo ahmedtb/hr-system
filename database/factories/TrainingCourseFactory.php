@@ -95,4 +95,13 @@ class TrainingCourseFactory extends Factory
             ];
         });
     }
+
+    public function withNewProgram()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'training_program_id' =>  TrainingProgram::factory()->create()->id,
+            ];
+        });
+    }
 }

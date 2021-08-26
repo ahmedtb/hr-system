@@ -40,7 +40,7 @@ export default function IndividualIndex(props) {
     return (
         <div className="col-md-12">
             <div className="card">
-                <div className="card-header">
+                <div className="card-header bg-light">
                     <div className="row justify-content-between">
                         <div>
                             قائمة المستهدفيين

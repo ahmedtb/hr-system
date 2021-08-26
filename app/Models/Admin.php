@@ -26,4 +26,8 @@ class Admin extends Authenticatable
     public function TrainingCourses(){
         return TrainingCourse::with([]);
     }
+
+    public function trainingPrograms(){
+        return TrainingProgram::with([]);
+    }
 }

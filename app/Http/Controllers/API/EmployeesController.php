@@ -221,6 +221,6 @@ class EmployeesController extends Controller
 
     public function getEmployees()
     {
-        return Employee::all();
+        return Employee::select(['id','name'])->get();
     }
 }

@@ -21,7 +21,7 @@ class TargetedIndividualsController extends Controller
 
     public function getIndividuals()
     {
-        return TargetedIndividual::all();
+        return TargetedIndividual::select(['id','name'])->get();
     }
 
     public function create(Request $request)
