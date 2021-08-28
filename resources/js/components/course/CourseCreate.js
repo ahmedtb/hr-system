@@ -35,7 +35,7 @@ export default function CourseCreate() {
         }
     }
 
-    function changeSchedual() {
+    function changeSchedule() {
         const weekdays = ['saturday', 'sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday']
         setweek_schedule([])
         for (let i = 1; i <= 7; i++) {
@@ -106,46 +106,46 @@ export default function CourseCreate() {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><input className="" id='checkbox1' type='checkbox' onChange={changeSchedual} /></td>
+                                    <td><input className="" id='checkbox1' type='checkbox' onChange={changeSchedule} /></td>
                                     <td>السبت</td>
-                                    <td><input className="form-control" id='time11' type='time' onChange={changeSchedual} /></td>
-                                    <td><input className="form-control" id='time12' type='time' onChange={changeSchedual} /></td>
+                                    <td><input className="form-control" id='time11' type='time' onChange={changeSchedule} /></td>
+                                    <td><input className="form-control" id='time12' type='time' onChange={changeSchedule} /></td>
                                 </tr>
                                 <tr>
-                                    <td><input className="" id='checkbox2' type='checkbox' onChange={changeSchedual} /></td>
+                                    <td><input className="" id='checkbox2' type='checkbox' onChange={changeSchedule} /></td>
                                     <td>الاحد</td>
-                                    <td><input className="form-control" id='time21' type='time' onChange={changeSchedual} /></td>
-                                    <td><input className="form-control" id='time22' type='time' onChange={changeSchedual} /></td>
+                                    <td><input className="form-control" id='time21' type='time' onChange={changeSchedule} /></td>
+                                    <td><input className="form-control" id='time22' type='time' onChange={changeSchedule} /></td>
                                 </tr>
                                 <tr>
-                                    <td><input className="" id='checkbox3' type='checkbox' onChange={changeSchedual} /></td>
+                                    <td><input className="" id='checkbox3' type='checkbox' onChange={changeSchedule} /></td>
                                     <td>الاثنين</td>
-                                    <td><input className="form-control" id='time31' type='time' onChange={changeSchedual} /></td>
-                                    <td><input className="form-control" id='time32' type='time' onChange={changeSchedual} /></td>
+                                    <td><input className="form-control" id='time31' type='time' onChange={changeSchedule} /></td>
+                                    <td><input className="form-control" id='time32' type='time' onChange={changeSchedule} /></td>
                                 </tr>
                                 <tr>
-                                    <td><input className="" id='checkbox4' type='checkbox' onChange={changeSchedual} /></td>
+                                    <td><input className="" id='checkbox4' type='checkbox' onChange={changeSchedule} /></td>
                                     <td>الثلاثاء</td>
-                                    <td><input className="form-control" id='time41' type='time' onChange={changeSchedual} /></td>
-                                    <td><input className="form-control" id='time42' type='time' onChange={changeSchedual} /></td>
+                                    <td><input className="form-control" id='time41' type='time' onChange={changeSchedule} /></td>
+                                    <td><input className="form-control" id='time42' type='time' onChange={changeSchedule} /></td>
                                 </tr>
                                 <tr>
-                                    <td><input className="" id='checkbox5' type='checkbox' onChange={changeSchedual} /></td>
+                                    <td><input className="" id='checkbox5' type='checkbox' onChange={changeSchedule} /></td>
                                     <td>الاربعاء</td>
-                                    <td><input className="form-control" id='time51' type='time' onChange={changeSchedual} /></td>
-                                    <td><input className="form-control" id='time52' type='time' onChange={changeSchedual} /></td>
+                                    <td><input className="form-control" id='time51' type='time' onChange={changeSchedule} /></td>
+                                    <td><input className="form-control" id='time52' type='time' onChange={changeSchedule} /></td>
                                 </tr>
                                 <tr>
-                                    <td><input className="" id='checkbox6' type='checkbox' onChange={changeSchedual} /></td>
+                                    <td><input className="" id='checkbox6' type='checkbox' onChange={changeSchedule} /></td>
                                     <td>الخميس</td>
-                                    <td><input className="form-control" id='time61' type='time' onChange={changeSchedual} /></td>
-                                    <td><input className="form-control" id='time62' type='time' onChange={changeSchedual} /></td>
+                                    <td><input className="form-control" id='time61' type='time' onChange={changeSchedule} /></td>
+                                    <td><input className="form-control" id='time62' type='time' onChange={changeSchedule} /></td>
                                 </tr>
                                 <tr>
-                                    <td><input className="" id='checkbox7' type='checkbox' onChange={changeSchedual} /></td>
+                                    <td><input className="" id='checkbox7' type='checkbox' onChange={changeSchedule} /></td>
                                     <td>الجمعة</td>
-                                    <td><input className="form-control" id='time71' type='time' onChange={changeSchedual} /></td>
-                                    <td><input className="form-control" id='time72' type='time' onChange={changeSchedual} /></td>
+                                    <td><input className="form-control" id='time71' type='time' onChange={changeSchedule} /></td>
+                                    <td><input className="form-control" id='time72' type='time' onChange={changeSchedule} /></td>
                                 </tr>
                             </tbody>
                         </table>

@@ -128,42 +128,6 @@ export default function EmployeeShow(props) {
                 ) : null
             }
 
-            {/* <div className="card">
-
-                <div className="card-header">
-                    تقييمات الفترة التجريبية للموظف
-                </div>
-
-                <div className="card-body">
-                    <div className="row justify-content-center warp">
-                        <TrialPeriodAssessmentTable trialPeriods={trialPeriodAssessments} />
-                    </div>
-                </div>
-            </div>
-            <div className="card">
-
-                <div className="card-header">
-                    تقييمات الفترة التدريبية للموظف
-                </div>
-
-                <div className="card-body">
-                    <div className="row justify-content-center warp">
-                        <TrainingPeriodAssessmentsTable trialPeriods={trainingPeriodAssessments} />
-                    </div>
-                </div>
-            </div>
-            <div className="card">
-
-                <div className="card-header">
-                    تقييمات الموظف للدورات التي مرة بها
-                </div>
-                <div className="card-body">
-                    <div className="row justify-content-center warp">
-                        <TraineeCourseAssessmentsTable traineeCourses={traineeCourseAssessments} />
-                    </div>
-                </div>
-            </div> */}
-
             <div className="card-header">
                 عمليات تخص الموظف
             </div>

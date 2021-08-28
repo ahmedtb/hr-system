@@ -1,11 +1,11 @@
 import React from 'react'
 import moment from 'moment'
-export default function SchedualTable(props) {
-    const schedualTable = props.schedualTable
+export default function ScheduleTable(props) {
+    const scheduleTable = props.scheduleTable
     const attendances = props.attendances
     const className = props.className
     React.useEffect(() => {
-    }, [schedualTable])
+    }, [scheduleTable])
     return (
         <div className={className}>
 
@@ -21,7 +21,7 @@ export default function SchedualTable(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {(schedualTable) ? Object.entries(schedualTable)?.map((day, index) => {
+                    {(scheduleTable) ? Object.entries(scheduleTable)?.map((day, index) => {
 
                         const dayAttends = attendances?.filter(function (el) {
                             return el.date == day[0];

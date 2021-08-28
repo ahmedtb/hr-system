@@ -23,7 +23,7 @@ class CourseAttendanceFactory extends Factory
             'date' => $this->faker->date(),
             'entrance_time' => $this->faker->time(),
             'note' => $this->faker->sentence(),
-            'training_course_id' => TrainingCourse::factory()->create(),
+            'training_course_id' => (TrainingCourse::inRandomOrder()->first()->id) ?? TrainingCourse::factory()->create(),
         ];
     }
 
@@ -58,9 +58,9 @@ class CourseAttendanceFactory extends Factory
     public function forCourse(TrainingCourse $course)
     {
         return $this->state(function (array $attributes) use ($course) {
-            $schedualTable = $course->schedualTable();
-            $day = array_rand($schedualTable);
-            $entrance_time = $schedualTable[$day][0];
+            $scheduleTable = $course->scheduleTable();
+            $day = array_rand($scheduleTable);
+            $entrance_time = $scheduleTable[$day][0];
 
             $profile = null;
             $random = rand(1, 2);

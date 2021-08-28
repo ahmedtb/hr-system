@@ -60,11 +60,11 @@ class CoursesTests extends TestCase
         $this->assertEquals($response->json()['total'], 10);
     }
 
-    public function test_system_can_view_the_course_schedual()
+    public function test_system_can_view_the_course_schedule()
     {
         $course = TrainingCourse::factory()->create();
 
-        $response = $this->getJson('api/course/' . $course->id . '/schedual');
+        $response = $this->getJson('api/course/' . $course->id . '/schedule');
 
         $response->assertOk();
         $scheduleRule = new WeekScheduleRule();

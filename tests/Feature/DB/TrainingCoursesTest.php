@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Tests\TestCase;
 use App\Models\Coach;
 use App\Models\Employee;
+use Illuminate\Support\Str;
 use App\Models\TrainingCourse;
 use PhpParser\Node\Expr\Empty_;
 use App\Models\CourseAttendance;
@@ -22,7 +23,7 @@ class TrainingCoursesTest extends TestCase
      *
      * @return void
      */
-    public function test_course_have_a_title_a_program_status_start_and_end_date_and_a_scheduale()
+    public function test_course_have_a_title_a_program_status_start_and_end_date_and_a_schedulee()
     {
         $course = TrainingCourse::factory()->create();
         $this->assertNotEmpty($course->title);
@@ -33,12 +34,12 @@ class TrainingCoursesTest extends TestCase
         $this->assertNotEmpty($course->week_schedule);
     }
 
-    public function test_course_should_have_a_week_scheduale_in_correct_formate()
+    public function test_course_should_have_a_week_schedulee_in_correct_formate()
     {
         $course = TrainingCourse::factory()->create();
         $length = sizeof($course->week_schedule);
 
-        // length can not be zero...there should be a schedual
+        // length can not be zero...there should be a schedule
         $this->assertNotEquals($length, 0);
 
         foreach ($course->week_schedule as $day => $value) {
@@ -159,26 +160,26 @@ class TrainingCoursesTest extends TestCase
         $this->assertFalse($course->isEnrolled($individual));
     }
 
-    public function test_course_can_attach_coaches_to_the_course(){
-        $course = TrainingCourse::factory()->create();
-        $coach = Coach::factory()->create();
-        $this->assertEquals($course->attachCoach($coach),true);
-        $this->assertEquals($course->attachCoach($coach),false);
-
-    }
-
-    public function test_course_model_can_return_its_schedual_in_dates_and_time_frame()
+    public function test_course_can_attach_coaches_to_the_course()
     {
         $course = TrainingCourse::factory()->create();
-        $this->assertIsArray($course->schedualTable());
-        foreach ($course->schedualTable() as $schedual) {
-            $this->assertArrayHasKey(0, $schedual);
-            $this->assertArrayHasKey(1, $schedual);
-            Carbon::parse($schedual[1])->gt($schedual[0]);
+        $coach = Coach::factory()->create();
+        $this->assertEquals($course->attachCoach($coach), true);
+        $this->assertEquals($course->attachCoach($coach), false);
+    }
+
+    public function test_course_model_can_return_its_schedule_in_dates_and_time_frame()
+    {
+        $course = TrainingCourse::factory()->create();
+        $this->assertIsArray($course->scheduleTable());
+        foreach ($course->scheduleTable() as $schedule) {
+            $this->assertArrayHasKey(0, $schedule);
+            $this->assertArrayHasKey(1, $schedule);
+            Carbon::parse($schedule[1])->gt($schedule[0]);
         }
     }
 
-    public function test_course_model_can_check_if_date_and_time_is_included_in_the_schedual()
+    public function test_course_model_can_check_if_date_and_time_is_included_in_the_schedule()
     {
         $course = TrainingCourse::factory()->create([
             'week_schedule' => [
@@ -198,18 +199,18 @@ class TrainingCoursesTest extends TestCase
             'start_date' => '2021-07-05',
             'end_date' => '2021-07-09',
         ]);
-        $IsIncluded = $course->IsInSchedual('2021-07-05', '12:30:00');
+        $IsIncluded = $course->IsInSchedule('2021-07-05', '12:30:00');
         $this->assertTrue($IsIncluded);
-        $IsIncluded = $course->IsInSchedual('2021-07-05', '12:00:00');
+        $IsIncluded = $course->IsInSchedule('2021-07-05', '12:00:00');
         $this->assertTrue($IsIncluded);
-        $IsIncluded = $course->IsInSchedual('2021-07-07', '14:00:00');
+        $IsIncluded = $course->IsInSchedule('2021-07-07', '14:00:00');
         $this->assertTrue($IsIncluded);
 
-        $IsIncluded = $course->IsInSchedual('2021-07-05', '13:01:00');
+        $IsIncluded = $course->IsInSchedule('2021-07-05', '13:01:00');
         $this->assertFalse($IsIncluded);
-        $IsIncluded = $course->IsInSchedual('2021-07-06', '12:30:00');
+        $IsIncluded = $course->IsInSchedule('2021-07-06', '12:30:00');
         $this->assertFalse($IsIncluded);
-        $IsIncluded = $course->IsInSchedual('2021-07-09', '09:59:00');
+        $IsIncluded = $course->IsInSchedule('2021-07-09', '09:59:00');
         $this->assertFalse($IsIncluded);
     }
 
@@ -218,18 +219,18 @@ class TrainingCoursesTest extends TestCase
         $course = TrainingCourse::factory()->create();
         $employee = Employee::factory()->create();
         $course->enrollEmployee($employee);
-        $schedualTable = $course->schedualTable();
+        $scheduleTable = $course->scheduleTable();
 
         $this->assertTrue($course->attendEmployee(
             $employee,
-            array_key_first($schedualTable),
-            $schedualTable[array_key_first($schedualTable)][0],
+            array_key_first($scheduleTable),
+            $scheduleTable[array_key_first($scheduleTable)][0],
             null
         ));
 
         $this->assertFalse($course->attendEmployee(
             $employee,
-            array_key_first($schedualTable),
+            array_key_first($scheduleTable),
             '00:00:00', // random wrong entrance time
             null
         ));
@@ -241,18 +242,18 @@ class TrainingCoursesTest extends TestCase
         $course = TrainingCourse::factory()->create();
         $targeted = TargetedIndividual::factory()->create();
         $course->enrollIndividual($targeted);
-        $schedualTable = $course->schedualTable();
+        $scheduleTable = $course->scheduleTable();
 
         $this->assertTrue($course->attendIndividual(
             $targeted,
-            array_key_first($schedualTable),
-            $schedualTable[array_key_first($schedualTable)][0],
+            array_key_first($scheduleTable),
+            $scheduleTable[array_key_first($scheduleTable)][0],
             null
         ));
 
         $this->assertFalse($course->attendIndividual(
             $targeted,
-            array_key_first($schedualTable),
+            array_key_first($scheduleTable),
             '00:00:00', // random wrong entrance time
             null
         ));
@@ -262,18 +263,18 @@ class TrainingCoursesTest extends TestCase
     {
         $course = TrainingCourse::factory()->create();
 
-        $schedualTable = $course->schedualTable();
+        $scheduleTable = $course->scheduleTable();
 
         $this->assertTrue($course->attendAnonymous(
             'ahmed',
-            array_key_first($schedualTable),
-            $schedualTable[array_key_first($schedualTable)][0],
+            array_key_first($scheduleTable),
+            $scheduleTable[array_key_first($scheduleTable)][0],
             null
         ));
 
         $this->assertFalse($course->attendAnonymous(
             'ahmed',
-            array_key_first($schedualTable),
+            array_key_first($scheduleTable),
             '00:00:00', // random wrong entrance time
             null
         ));
@@ -285,10 +286,10 @@ class TrainingCoursesTest extends TestCase
         $course = TrainingCourse::factory()->create();
         $employee = Employee::factory()->create();
         $course->enrollEmployee($employee);
-        $schedualTable = $course->schedualTable();
+        $scheduleTable = $course->scheduleTable();
 
-        $day = array_key_first($schedualTable);
-        $entrance = $schedualTable[array_key_first($schedualTable)][0];
+        $day = array_key_first($scheduleTable);
+        $entrance = $scheduleTable[array_key_first($scheduleTable)][0];
         $this->assertTrue($course->attendEmployee(
             $employee,
             $day,
@@ -311,15 +312,15 @@ class TrainingCoursesTest extends TestCase
             'end_date' => new DateTime('today'),
             'status' => 'normal'
         ]);
-        $schedualTable = $course->schedualTable();
+        $scheduleTable = $course->scheduleTable();
 
         $employees = Employee::factory(10)->create();
         foreach ($employees as $employee) {
             $course->enrollEmployee($employee);
             $course->attendEmployee(
                 $employee,
-                $day = array_rand($schedualTable),
-                $schedualTable[$day][0], // entrance at begin time exactly
+                $day = array_rand($scheduleTable),
+                $scheduleTable[$day][0], // entrance at begin time exactly
                 null
             );
         }
@@ -334,23 +335,23 @@ class TrainingCoursesTest extends TestCase
         // three attendanceds for each employee
         foreach ($employees as $employee) {
             $course->enrollEmployee($employee);
-            $threeAttendDays = array_rand($schedualTable, 3);
+            $threeAttendDays = array_rand($scheduleTable, 3);
             $course->attendEmployee(
                 $employee,
                 $threeAttendDays[0],
-                $schedualTable[$threeAttendDays[0]][0], // entrance at begin time exactly
+                $scheduleTable[$threeAttendDays[0]][0], // entrance at begin time exactly
                 null
             );
             $course->attendEmployee(
                 $employee,
                 $threeAttendDays[1],
-                $schedualTable[$threeAttendDays[1]][0], // entrance at begin time exactly
+                $scheduleTable[$threeAttendDays[1]][0], // entrance at begin time exactly
                 null
             );
             $course->attendEmployee(
                 $employee,
                 $threeAttendDays[2],
-                $schedualTable[$threeAttendDays[2]][0], // entrance at begin time exactly
+                $scheduleTable[$threeAttendDays[2]][0], // entrance at begin time exactly
                 null
             );
         }
@@ -365,12 +366,12 @@ class TrainingCoursesTest extends TestCase
         foreach ($employees as $employee) {
             $course->enrollEmployee($employee);
         }
-        foreach ($schedualTable as $schedualDay => $schedualDayTime) {
+        foreach ($scheduleTable as $scheduleDay => $scheduleDayTime) {
             foreach ($employees as $employee) {
                 $course->attendEmployee(
                     $employee,
-                    $schedualDay,
-                    $schedualDayTime[0], // entrance at begin time exactly
+                    $scheduleDay,
+                    $scheduleDayTime[0], // entrance at begin time exactly
                     null
                 );
             }
@@ -431,14 +432,14 @@ class TrainingCoursesTest extends TestCase
         $course = TrainingCourse::factory()->resumed()->create();
         $employee = Employee::factory()->create();
         $course->enrollEmployee($employee);
-        $schedualTable = $course->schedualTable();
-        // dd( count($schedualTable) );
-        $randomeDaysInSchedual = array_rand($schedualTable, count($schedualTable) / 2);
+        $scheduleTable = $course->scheduleTable();
+        // dd( count($scheduleTable) );
+        $randomeDaysInSchedule = array_rand($scheduleTable, count($scheduleTable) / 2);
         for ($i = 0; $i < 10; $i++) {
             $course->attendEmployee(
                 $employee,
-                $day = $randomeDaysInSchedual[$i],
-                $schedualTable[$day][0]
+                $day = $randomeDaysInSchedule[$i],
+                $scheduleTable[$day][0]
             );
         }
         CourseAttendance::factory(12)->create([
@@ -451,17 +452,17 @@ class TrainingCoursesTest extends TestCase
     public function test_system_can_retrive_attendances_for_particiual_day_in_the_course()
     {
         $course = TrainingCourse::factory()->resumed()->create();
-        $schedualTable = $course->schedualTable();
-        $day1 = array_rand($schedualTable);
-        $entrance_time1 = $schedualTable[$day1][0];
+        $scheduleTable = $course->scheduleTable();
+        $day1 = array_rand($scheduleTable);
+        $entrance_time1 = $scheduleTable[$day1][0];
         CourseAttendance::factory(10)->create([
             'training_course_id' => $course->id,
             'date' => $day1,
             'entrance_time' => $entrance_time1,
         ]);
 
-        $day2 = array_rand($schedualTable);
-        $entrance_time2 = $schedualTable[$day2][0];
+        $day2 = array_rand($scheduleTable);
+        $entrance_time2 = $scheduleTable[$day2][0];
         CourseAttendance::factory(20)->create([
             'training_course_id' => $course->id,
             'date' => $day2,
@@ -469,5 +470,21 @@ class TrainingCoursesTest extends TestCase
         ]);
 
         $this->assertEquals($course->dayAttendaces($day2)->count(), 20);
+    }
+
+    public function test_system_can_get_the_schedule_of_all_lectures_for_a_specific_day()
+    {
+        TrainingCourse::factory(10)->create();
+        TrainingCourse::factory(5)->resumed()->create();
+
+        $courses = TrainingCourse::withDateSchedule(Carbon::today()->format('Y-m-d'))->get();
+        $schedules = $courses->each(function ($item, $key) {
+            $item->daySchedule = $item->scheduleTable[Carbon::today()->format('Y-m-d')];
+        });
+        $schedules->each(function ($course, $key) {
+            $this->assertEquals($course->state, 'مستأنفة');
+            $this->assertIsArray($course->daySchedule);
+        });
+        $this->assertTrue($schedules->count() >= 5);
     }
 }

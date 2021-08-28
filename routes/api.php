@@ -103,7 +103,7 @@ Route::post('course', [CoursesController::class, 'create'])->middleware(['auth:a
 // Route::get('course/index', [CoursesController::class, 'index']);
 Route::get('course/index', [CoursesController::class, 'index'])->middleware('auth:admin,employee,individual,coach');
 Route::get('course/{id}', [CoursesController::class, 'show'])->middleware('auth:admin,employee,coach,individual');
-Route::get('course/{id}/schedual', [CoursesController::class, 'getSchedual'])->middleware('auth:admin,employee,coach,individual');
+Route::get('course/{id}/schedule', [CoursesController::class, 'getSchedule'])->middleware('auth:admin,employee,coach,individual');
 Route::get('course/{id}/attendances', [CoursesController::class, 'getAttendances'])->middleware('auth:admin,coach');
 Route::get('course/{id}/forms', [CoursesController::class, 'getForms'])->middleware('auth:admin,coach');
 Route::get('course/{id}/employees', [CoursesController::class, 'getEmployees'])->middleware('auth:admin,coach');

@@ -66,7 +66,7 @@ class CoursesController extends Controller
         return response(['success' => 'training coures created']);
     }
 
-    public function getSchedual(int $id)
+    public function getSchedule(int $id)
     {
         Validator::make(['id' => $id], [
             'id' => 'required|exists:training_courses,id'

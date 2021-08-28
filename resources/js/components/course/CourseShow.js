@@ -6,7 +6,7 @@ import routes from '../utility/routesEndpoints'
 import { useParams, Link } from 'react-router-dom';
 import EmployeesTable from '../partials/EmployeesTable'
 import TargetedIndividualsTable from '../partials/TargetedIndividualsTable'
-import SchedualTable from './components/SchedualTable'
+import ScheduleTable from './components/ScheduleTable'
 import EnrollmentModal from './components/EnrollmentModal'
 import AllowedLink from '../components/AllowedLink'
 import {
@@ -167,7 +167,7 @@ export default function CourseShow(props) {
 
                         <div className="card-body">
                             <div style={{ maxHeight: 500, overflow: 'auto', display: 'inline-block' }}>
-                                <SchedualTable schedualTable={course?.schedualTable} attendances={attendances} />
+                                <ScheduleTable scheduleTable={course?.scheduleTable} attendances={attendances} />
                             </div>
                         </div>
                     </div>

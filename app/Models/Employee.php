@@ -105,7 +105,7 @@ class Employee extends Authenticatable
             return $employeeQuery;
 
         } else {
-            return $this->courses();
+            return $this->belongsToMany(TrainingCourse::class);
         }
     }
 

@@ -8,7 +8,7 @@ export default function RecordAttendanceModal(props) {
     const course_id = props.course_id
     const onChange = props.onChange
     const [course, setcourse] = React.useState(null)
-    const [schedualTable, setschedualTable] = React.useState(null)
+    const [scheduleTable, setscheduleTable] = React.useState(null)
 
     const [employees, setemployees] = React.useState(null)
     const [individuals, setindividuals] = React.useState(null)
@@ -26,7 +26,7 @@ export default function RecordAttendanceModal(props) {
         try {
             const response = await axios.get(ApiEndpoints.getCourse?.replace(':id', id))
             setcourse(response.data.course)
-            setschedualTable(response.data.course.schedualTable)
+            setscheduleTable(response.data.course.scheduleTable)
             console.log('course from api: ', response.data)
         } catch (err) {
             logError(err)
@@ -165,7 +165,7 @@ export default function RecordAttendanceModal(props) {
                                 <h4>اليوم (من جدول الدورة)</h4>
                                 <select className="form-control" onChange={(e) => setdate(e.target.value)} >
                                     <option value="">يوم الحصة من جدول الدورة</option>
-                                    {(schedualTable) ? Object.entries(schedualTable)?.map((day, index) => {
+                                    {(scheduleTable) ? Object.entries(scheduleTable)?.map((day, index) => {
 
                                         return (
                                             <option key={index} value={day[0]}>{day[0]}</option>
@@ -176,8 +176,8 @@ export default function RecordAttendanceModal(props) {
 
                             <div className="p-2 border rounded col-5 mx-auto">
                                 <h4>وقت الدخول</h4>
-                                <strong className="col-10">من {date ? moment(schedualTable[date][0], 'HH:mm:ss').format('h:mm:ss A') : null}</strong>
-                                <strong className="col-10">الى {date ? moment(schedualTable[date][1], 'HH:mm:ss').format('h:mm:ss A') : null}</strong>
+                                <strong className="col-10">من {date ? moment(scheduleTable[date][0], 'HH:mm:ss').format('h:mm:ss A') : null}</strong>
+                                <strong className="col-10">الى {date ? moment(scheduleTable[date][1], 'HH:mm:ss').format('h:mm:ss A') : null}</strong>
                                 <input
                                     type="time"
                                     className="form-control"

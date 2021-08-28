@@ -20,13 +20,13 @@ class EmployeesController extends Controller
         $employee = Employee::where('id', $id)->with(['job'])->first();
         $coach = $employee->coach;
 
-        $resumedCourses = $employee->courses()->resumed()->with(['trainingProgram'])->get();
+        $resumedCourses = $employee->TrainingCourses(false)->resumed()->with(['trainingProgram'])->get();
         foreach ($resumedCourses as $resumedCourse) {
             $resumedCourse['employeeAttendaces'] = $resumedCourse->employeeAttendaces($employee);
         }
-        $plannedCourses = $employee->courses()->planned()->with(['trainingProgram'])->get();
-        $doneCourses = $employee->courses()->done()->with(['trainingProgram'])->get();
-        $canceledCourses = $employee->courses()->canceled()->with(['trainingProgram'])->get();
+        $plannedCourses = $employee->TrainingCourses(false)->planned()->with(['trainingProgram'])->get();
+        $doneCourses = $employee->TrainingCourses(false)->done()->with(['trainingProgram'])->get();
+        $canceledCourses = $employee->TrainingCourses(false)->canceled()->with(['trainingProgram'])->get();
 
         $trialPeriodAssessments = $employee->TrialPeriodAssessments;
         $trainingPeriodAssessments = $employee->TrainingPeriodAssessments;

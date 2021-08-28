@@ -58,19 +58,19 @@ class WeekScheduleRule implements Rule
     public function message()
     {
         if($this->errorType == 'not array'){
-            return 'invalid week schedual: week schedual should be an array';
+            return 'invalid week schedule: week schedule should be an array';
 
         }else if($this->errorType == 'wrong week names'){
-            return 'invalid week schedual: wrong week names';
+            return 'invalid week schedule: wrong week names';
 
         }else if($this->errorType == 'wrong begin time'){
-            return 'invalid week schedual: wrong begin time';
+            return 'invalid week schedule: wrong begin time';
 
         }else if($this->errorType == 'wrong end time'){
-            return 'invalid week schedual: wrong end time';
+            return 'invalid week schedule: wrong end time';
 
         }else {
-            return 'invalid week schedual provided';
+            return 'invalid week schedule provided';
         }
     }
 }

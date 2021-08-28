@@ -36,7 +36,7 @@ class DashboardController extends Controller
             'date',
             '>=',
             Carbon::now()->subDays(5)
-        )->whereDate('date', '<=', Carbon::now()->addDays(5))
+        )->whereDate('date', '<=', Carbon::now())
             ->select('date', DB::raw('count(*) as attendances_count'))
             ->orderBy('date','ASC')
             ->groupBy('date')

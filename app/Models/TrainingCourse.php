@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Casts\Json;
 use App\Filters\CourseFilters;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -20,7 +21,7 @@ class TrainingCourse extends Model
     ];
 
     protected $appends = [
-        'state', 'attendancePercentage', 'schedualTable', 'wentDays',
+        'state', 'attendancePercentage', 'scheduleTable', 'wentDays',
         'remainingDays', 'training_program'
     ];
 
@@ -44,9 +45,9 @@ class TrainingCourse extends Model
         return $this->attendancePercentage();
     }
 
-    public function getSchedualTableAttribute()
+    public function getScheduleTableAttribute()
     {
-        return $this->schedualTable();
+        return $this->scheduleTable();
     }
 
     public function getWentDaysAttribute()
@@ -131,7 +132,7 @@ class TrainingCourse extends Model
     }
 
 
-    public function schedualTable()
+    public function scheduleTable()
     {
         $scheduleTable = [];
         foreach ($this->week_schedule as $dayName => $schedule) {
@@ -145,11 +146,11 @@ class TrainingCourse extends Model
         return $scheduleTable;
     }
 
-    public function IsInSchedual($date, $entrance_time)
+    public function IsInSchedule($date, $entrance_time)
     {
-        $schedualTable = $this->schedualTable();
-        if (array_key_exists($date, $schedualTable)) {
-            return Carbon::parse($entrance_time)->between($schedualTable[$date][0], $schedualTable[$date][1]);
+        $scheduleTable = $this->scheduleTable();
+        if (array_key_exists($date, $scheduleTable)) {
+            return Carbon::parse($entrance_time)->between($scheduleTable[$date][0], $scheduleTable[$date][1]);
         } else
             return false;
     }
@@ -164,14 +165,12 @@ class TrainingCourse extends Model
 
     public function isPlanned()
     {
-        return Carbon::today()->lt($this->start_date)
-            && $this->status == 'normal';;
+        return  $this->status == 'normal' && Carbon::today()->lt($this->start_date);
     }
 
     public function isDone()
     {
-        return Carbon::today()->gt($this->end_date)
-            && $this->status == 'normal';
+        return  $this->status == 'normal' && Carbon::today()->gt($this->end_date);
     }
 
     public function isCanceled()
@@ -244,14 +243,14 @@ class TrainingCourse extends Model
 
     public function attendEmployee(Employee $employee, $date, $entrance_time, ?string $note = null)
     {
-        $isInSchedual = $this->IsInSchedual($date, $entrance_time);
+        $isInSchedule = $this->IsInSchedule($date, $entrance_time);
         $enrolled = $this->employees()->where('employees.id', $employee->id)->first() != null;
 
         $notAttendedThisDay = $this->attendances()
             ->where('profile_id', $employee->id)
             ->where('profile_type', Employee::class)
             ->where('date', $date)->count() == 0;
-        if ($enrolled && $isInSchedual && $notAttendedThisDay) {
+        if ($enrolled && $isInSchedule && $notAttendedThisDay) {
             CourseAttendance::create([
                 'profile_id' => $employee->id,
                 'profile_type' => Employee::class,
@@ -268,13 +267,13 @@ class TrainingCourse extends Model
 
     public function attendIndividual(TargetedIndividual $individual, $date, $entrance_time, ?string $note = null)
     {
-        $isInSchedual = $this->IsInSchedual($date, $entrance_time);
+        $isInSchedule = $this->IsInSchedule($date, $entrance_time);
         $enrolled = $this->targetedIndividuals()->where('targeted_individuals.id', $individual->id)->first() != null;
         $notAttendedThisDay = $this->attendances()
             ->where('profile_id', $individual->id)
             ->where('profile_type', TargetedIndividual::class)
             ->where('date', $date)->count() == 0;
-        if ($enrolled && $isInSchedual && $notAttendedThisDay) {
+        if ($enrolled && $isInSchedule && $notAttendedThisDay) {
             CourseAttendance::create([
                 'profile_id' => $individual->id,
                 'profile_type' => TargetedIndividual::class,
@@ -291,8 +290,8 @@ class TrainingCourse extends Model
 
     public function attendAnonymous(string $name, $date, $entrance_time, ?string $note = null)
     {
-        $isInSchedual = $this->IsInSchedual($date, $entrance_time);
-        if ($isInSchedual) {
+        $isInSchedule = $this->IsInSchedule($date, $entrance_time);
+        if ($isInSchedule) {
             CourseAttendance::create([
                 'person_name' => $name,
                 'date' => $date,
@@ -324,13 +323,12 @@ class TrainingCourse extends Model
      */
     public function attachCoach(Coach $coach)
     {
-        
+
         if ($this->coaches()->find($coach->id))
             return false;
 
         $this->coaches()->save($coach);
         return true;
-
     }
 
     public function isEnrolled($person)
@@ -354,5 +352,18 @@ class TrainingCourse extends Model
     public function scopeFilter($query, CourseFilters $filters)
     {
         return $filters->apply($query);
+    }
+
+    public function scopeWithDateSchedule($query, $date)
+    {
+        $message = [
+            'date' => 'invalid date. required format: Y-m-d'
+        ];
+        Validator::make(['date_value' => $date], [
+            'date_value' => 'required|date_format:Y-m-d',
+        ], $message)->validate();
+
+        return $query->resumed()->where('week_schedule->' . Carbon::parse($date)->format('l')); //->get();
+
     }
 }
