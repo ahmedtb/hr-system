@@ -26,6 +26,7 @@ use App\Http\Controllers\API\Assessments\CoachCourseAssessmentsController;
 use App\Http\Controllers\API\Assessments\TrialPeriodAssessmentsController;
 use App\Http\Controllers\API\Assessments\TraineeCourseAssessmentsController;
 use App\Http\Controllers\API\Assessments\TrainingPeriodAssessmentsController;
+use App\Http\Controllers\API\CommentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -136,5 +137,10 @@ Route::get('traineeCourseAssessment/{id}', [TraineeCourseAssessmentsController::
 Route::post('coachCourseAssessment/create', [CoachCourseAssessmentsController::class, 'create'])->middleware(['auth:admin,coach']);
 Route::get('coachCourseAssessment/index', [CoachCourseAssessmentsController::class, 'index'])->middleware(['auth:admin,coach']);
 Route::get('coachCourseAssessment/{id}', [CoachCourseAssessmentsController::class, 'show'])->middleware(['auth:admin,coach']);
+
+Route::post('comment/create', [CommentsController::class, 'create'])->middleware(['auth:admin,coach']);
+Route::get('comment/index', [CommentsController::class, 'index'])->middleware(['auth:admin,coach']);
+Route::get('comment/{id}', [CommentsController::class, 'show'])->middleware(['auth:admin,coach']);
+
 
 Route::get('/user', [LoginController::class, 'user']);

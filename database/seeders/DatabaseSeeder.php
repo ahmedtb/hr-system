@@ -23,6 +23,8 @@ use App\Models\Assessments\CoachCourseAssessment;
 use App\Models\Assessments\TrialPeriodAssessment;
 use App\Models\Assessments\TraineeCourseAssessment;
 use App\Models\Assessments\TrainingPeriodAssessment;
+use App\Models\Comment;
+use App\Models\Supervisor;
 use App\Models\User;
 
 class DatabaseSeeder extends Seeder
@@ -66,7 +68,8 @@ class DatabaseSeeder extends Seeder
         Unit::factory(10)->create();
         Employee::factory(20)->create();
         TargetedIndividual::factory(20)->create();
-        Admin::factory()->create();
+        Admin::factory(5)->create();
+        Supervisor::factory(5)->create();
 
         TrainingProgram::factory(20)->create();
 
@@ -96,5 +99,7 @@ class DatabaseSeeder extends Seeder
         CoachCourseAssessment::factory(5)->create();
 
         $this->seedPivotTables();
+
+        Comment::factory(30)->create();
     }
 }

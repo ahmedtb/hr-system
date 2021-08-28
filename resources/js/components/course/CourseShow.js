@@ -117,7 +117,7 @@ export default function CourseShow(props) {
                                     </div>
 
                                     {
-                                        employees?.length && individuals?.length ?
+                                        employees?.length >= 0 && individuals?.length >= 0 ?
                                             <div className="d-flex flex-row justify-content-center mb-2">
                                                 <FaCalculator className="mr-2" />
 
@@ -126,7 +126,7 @@ export default function CourseShow(props) {
                                             </div> : null
                                     }
                                     {
-                                        employees?.length ?
+                                        employees?.length >= 0 ?
                                             <div className="d-flex flex-row justify-content-center mb-2">
                                                 <FaAccusoft className="mr-2" />
 
@@ -135,7 +135,7 @@ export default function CourseShow(props) {
                                             </div> : null
                                     }
                                     {
-                                        individuals?.length ?
+                                        individuals?.length >= 0 ?
                                             <div className="d-flex flex-row justify-content-center mb-2">
                                                 <FaUsers className="mr-2" />
 
@@ -201,6 +201,27 @@ export default function CourseShow(props) {
 
                         </div> : null
                     }
+                </div>
+                <div className="col-12">
+                    <div className="card">
+                        <div className="card-header ">
+                            <div className="row justify-content-between">
+                                <strong>تعليقات حول الدورة</strong>
+
+                                {/* <AllowedLink
+                                    hide={true}
+                                    to={routes.showAttendances.replace(':id', course?.id)}
+                                ><FaBook /> سجلات الحضور</AllowedLink> */}
+
+                            </div>
+                        </div>
+
+                        <div className="card-body">
+                            <div style={{ maxHeight: 500, overflow: 'auto', display: 'inline-block' }}>
+                                <ScheduleTable scheduleTable={course?.scheduleTable} attendances={attendances} />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

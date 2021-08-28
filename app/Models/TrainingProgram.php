@@ -31,4 +31,9 @@ class TrainingProgram extends Model
     {
         return $filters->apply($query);
     }
+            
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
 }

@@ -76,7 +76,7 @@ class EmployeesTest extends TestCase
         $course = TrainingCourse::factory()->create();
         $employee->enrollInCourse($course);
 
-        $this->assertEquals($employee->courses()->count(), 2);
+        $this->assertEquals($employee->TrainingCourses(false)->count(), 2);
     }
 
 

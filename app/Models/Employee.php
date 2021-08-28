@@ -85,7 +85,7 @@ class Employee extends Authenticatable
 
     public function enrollInCourse(TrainingCourse $course)
     {
-        $this->courses()->save($course);
+        $this->TrainingCourses(false)->save($course);
     }
 
     public function scopeFilter($query, EmployeeFilters $filters)
@@ -108,5 +108,9 @@ class Employee extends Authenticatable
             return $this->belongsToMany(TrainingCourse::class);
         }
     }
-
+        
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
 }

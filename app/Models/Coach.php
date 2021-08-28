@@ -56,4 +56,20 @@ class Coach extends Authenticatable
     {
         return $filters->apply($query);
     }
+    
+    public function myComments()
+    {
+        return $this->morphMany(Comment::class, 'commenter');
+    }
+
+    public function myCommentsOnCourses()
+    {
+        return $this->morphMany(Comment::class, 'commenter')->where('commentable_type', TrainingCourse::class);
+    }
+    
+    public function myCommentsOnPrograms()
+    {
+        return $this->morphMany(Comment::class, 'commenter')->where('commentable_type', TrainingProgram::class);
+    }
+        
 }

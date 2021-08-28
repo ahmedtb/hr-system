@@ -69,4 +69,9 @@ class TargetedIndividual extends Authenticatable
     {
         return $filters->apply($query);
     }
+            
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
 }

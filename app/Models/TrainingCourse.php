@@ -366,4 +366,9 @@ class TrainingCourse extends Model
         return $query->resumed()->where('week_schedule->' . Carbon::parse($date)->format('l')); //->get();
 
     }
+        
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
 }
