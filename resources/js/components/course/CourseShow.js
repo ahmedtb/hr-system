@@ -24,6 +24,7 @@ import {
 
 } from 'react-icons/fa';
 import Comments from '../components/Comments'
+import RenderDocuments from '../components/RenderDocuments'
 
 export default function CourseShow(props) {
 
@@ -204,6 +205,27 @@ export default function CourseShow(props) {
                     }
                 </div>
                 <div className="col-12">
+                    <div className="card">
+                        <div className="card-header row">
+                            <div>المستندات الملحق بالدورة</div>
+                            <AllowedLink to={{
+                                pathname: routes.attachDocument, state: { documentable: program, type: 'App\\Models\\TrainingCourse' }
+                            }}>الحاق مستند جديد</AllowedLink>
+                        </div>
+
+                        <div className="card-body">
+                            <div className="row">
+
+                                <RenderDocuments
+                                    documentable_id={id}
+                                    documentable_type='App\Models\TrainingCourse'
+                                />
+
+                            </div>
+
+                        </div>
+                    </div >
+
                     <div className="card">
                         <div className="card-header ">
                             <div className="row justify-content-between">

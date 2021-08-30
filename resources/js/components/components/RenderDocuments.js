@@ -2,6 +2,50 @@ import React from 'react'
 import axios from 'axios'
 import ApiEndpoints from '../utility/ApiEndpoints'
 import logError from '../utility/logError'
+import { FaFileWord } from 'react-icons/fa'
+function RenderImage(props) {
+    const type = props.type
+    const content = props.content
+    const index = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5)
+
+    return (
+        <>
+            <button data-toggle="modal" data-target={"#documentModel" + index}>
+                <img key={index} src={"data:image/" + type + ";base64," + content} width="60" />
+            </button>
+
+            <div className="modal fade" id={"documentModel" + index} tabIndex="-1" aria-labelledby="documentModelLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="documentModelLabel">Modal title</h5>
+                            <button type="button" className="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                            <img key={index} src={"data:image/" + type + ";base64," + content} />
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+function RenderDocx(props) {
+    const type = props.type
+    const content = props.content
+    const index = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5)
+
+    return (
+        <>
+            <FaFileWord />
+        </>
+    )
+}
 
 export default function RenderDocuments(props) {
     const documentable_id = props.documentable_id
@@ -47,32 +91,11 @@ export default function RenderDocuments(props) {
 
             {
                 documents?.map((document, index) => {
-                    return (
-                        <div className="" key={index}>
-                            <button data-toggle="modal" data-target={"#documentModel" + index}>
-                                <img key={index} src={"data:image/png;base64," + document.image} width="60" />
-                            </button>
-
-                            <div className="modal fade" id={"documentModel" + index} tabIndex="-1" aria-labelledby="documentModelLabel" aria-hidden="true">
-                                <div className="modal-dialog">
-                                    <div className="modal-content">
-                                        <div className="modal-header">
-                                            <h5 className="modal-title" id="documentModelLabel">Modal title</h5>
-                                            <button type="button" className="btn-close" data-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div className="modal-body">
-                                            <img key={index} src={"data:image/png;base64," + document.image} />
-                                        </div>
-                                        <div className="modal-footer">
-                                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" className="btn btn-primary">Save changes</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    )
-
+                    if (document.type == 'png')
+                        return <RenderImage key={index} type="png" content={document.content} />
+                    else if (document.type = 'docx') {
+                        return <RenderDocx key={index} type="png" content={document.content} />
+                    }
                 })
             }
 

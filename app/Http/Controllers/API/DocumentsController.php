@@ -21,6 +21,8 @@ class DocumentsController extends Controller
     {
         if ($documentable_type == 'App\\Models\\TrainingProgram')
             return 'training_programs';
+        elseif ($documentable_type == 'App\\Models\\TrainingCourse')
+            return 'training_courses';
         elseif ($documentable_type == 'App\\Models\\Employee')
             return 'employees';
         elseif ($documentable_type == 'App\\Models\\TargetedIndividual')
@@ -30,20 +32,18 @@ class DocumentsController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
-            'image' => 'required|image|mimes:jpg,jpeg,png,bmp,tiff |max:1024',
-            'documentable_type' => 'required|in:App\\Models\\TrainingProgram,App\\Models\\Employee,App\\Models\\TargetedIndividual',
+            'content' => 'required|file|mimes:docx,jpg,jpeg,png,bmp,tiff,pdf |max:1024',
+            'documentable_type' => 'required|in:App\\Models\\TrainingProgram,App\\Models\\TrainingCourse,App\\Models\\Employee,App\\Models\\TargetedIndividual',
             'documentable_id' => ['required', Rule::exists($this->getDocumentableTable($request->documentable_type), 'id')],
+            'type' => 'required|in:png,jpg,jpeg,bmp,tiff,docx,pdf'
         ]);
 
+        $content = base64_encode(file_get_contents($request->file('content')->path()));
 
-        // return $request->all();
-
-        
-        $image = base64_encode(file_get_contents($request->file('image')->path()));
-        
         Document::create([
-            'name' => $request->file('image')->getClientOriginalName(),
-            'image' => $image,
+            'name' => $request->file('content')->getClientOriginalName(),
+            'content' => $content,
+            'type' => $request->type,
             'documentable_id' => $request->documentable_id,
             'documentable_type' => $request->documentable_type
         ]);

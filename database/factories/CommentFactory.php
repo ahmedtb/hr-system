@@ -51,9 +51,9 @@ class CommentFactory extends Factory
         else
             switch (random_int(1, 2)) {
                 case 1:
-                    return TrainingCourse::inRandomOrder()->first()->id ?? TrainingCourse::factory()->create();
+                    return TrainingCourse::inRandomOrder()->first() ?? TrainingCourse::factory()->create();
                 case 2:
-                    return TrainingProgram::inRandomOrder()->first()->id ?? TrainingProgram::factory()->create();
+                    return TrainingProgram::inRandomOrder()->first() ?? TrainingProgram::factory()->create();
             }
     }
 

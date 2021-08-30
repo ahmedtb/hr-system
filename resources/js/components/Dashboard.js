@@ -11,10 +11,10 @@ import AllowedLink from './components/AllowedLink'
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 import routes from './utility/routesEndpoints'
 import {FaUserTie, FaUserCheck, FaChalkboardTeacher, FaSuitcase, FaGraduationCap} from 'react-icons/fa'
-
+import moment from 'moment'
 function DateSchedule(props) {
     const resumedCourses = props.resumedCourses
-    console.log('DateSchedule', resumedCourses)
+    
     return (
         <table className="table table-bordered table-condensed table-responsive">
             <thead>
@@ -32,10 +32,10 @@ function DateSchedule(props) {
 
                         </td>
                         <td>
-                            {course.scheduleTable['2021-08-28'][0]}
+                            {course.scheduleTable[moment().format('Y-MM-DD')][0]}
                         </td>
                         <td>
-                            {course.scheduleTable['2021-08-28'][1]}
+                            {course.scheduleTable[moment().format('Y-MM-DD')][1]}
                         </td>
                     </tr>
                 ))}
@@ -70,7 +70,7 @@ export default function Dashboard() {
 
             setunits(response.data.units)
             setforms(response.data.forms)
-            console.log('dashboard', response.data.attendancesCount)
+            // console.log('attendancesCount', response.data.attendancesCount)
             setattendancesCount(response.data.attendancesCount)
         }).catch((error) => logError(error))
     }
@@ -81,6 +81,7 @@ export default function Dashboard() {
     async function getCourses(link = ApiEndpoints.courseIndex, params = null) {
         try {
             const response = await axios.get(link, { params: { ...params, resumed: true, page_size: 5 } })
+            // console.log('dashboard getCourses', response.data)
             setresumedCourses(response.data.data)
             setresumedCoursesTotal(response.data.total)
             if (response.data.links) { setlinks(response.data.links) } else setlinks(null)

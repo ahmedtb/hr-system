@@ -61,7 +61,8 @@ class TargetedIndividualsController extends Controller
                     $image = base64_encode(file_get_contents($document->path()));
                     Document::create([
                         'name' => $document->getClientOriginalName(),
-                        'image' => $image,
+                        'content' => $image,
+                        'type' => 'png',
                         'documentable_id' => $targeted->id,
                         'documentable_type' => TargetedIndividual::class
                     ]);

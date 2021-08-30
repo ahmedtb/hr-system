@@ -16,8 +16,9 @@ class CreateDocumentsTable extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->mediumText('image');
+            $table->mediumText('content');
             $table->morphs('documentable');
+            $table->enum('type', ['jpg','jpeg','png','bmp','tiff', 'pdf', 'word']);
             $table->timestamps();
         });
     }

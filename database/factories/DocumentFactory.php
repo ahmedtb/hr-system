@@ -44,9 +44,10 @@ class DocumentFactory extends Factory
 
         return [
             'name' => $this->faker->name(),
-            'image' => getBase64DefaultImage(),
+            'content' => getBase64DefaultImage(),
             'documentable_type' => get_class($documentable),
             'documentable_id' => $documentable->id,
+            'type' => 'png'
         ];
     }
 }

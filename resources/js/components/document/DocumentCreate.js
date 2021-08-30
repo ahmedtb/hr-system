@@ -7,7 +7,7 @@ export default function DocumentCreate() {
     const location = useLocation()
     const { documentable, type } = location.state
     const [name, setname] = React.useState(null)
-    const [image, setimage] = React.useState(null)
+    const [content, setcontent] = React.useState(null)
 
 
     async function submit() {
@@ -15,8 +15,8 @@ export default function DocumentCreate() {
             const data = new FormData()
             if (name) data.append('name', name)
 
-            if (image)
-                data.append('image', image)
+            if (content)
+                data.append('content', content)
 
             if (documentable)
                 data.append('documentable_id', documentable.id)
@@ -40,11 +40,11 @@ export default function DocumentCreate() {
                 <div className="row align-items-start justify-content-center">
                     <div className="col-2 p-2 border rounded m-2 text-center">
                         <label className="">اضافة المستند</label>
-                        <img height='100' src={image ? window.URL.createObjectURL(image) : '/css/DocumentIcon.png'} />
+                        <img height='100' src={content ? window.URL.createObjectURL(content) : '/css/DocumentIcon.png'} />
                         <input className="form-control" onChange={(e) => {
                             console.log(e.target.files[0])
-                            setimage(e.target.files[0])
-                        }} type="file" accept="image/*" />
+                            setcontent(e.target.files[0])
+                        }} type="file" accept=".jpg,.png,.docx,.pdf" />
 
 
                     </div>
@@ -63,9 +63,12 @@ export default function DocumentCreate() {
                                         if (type == "App\\Models\\TrainingProgram")
                                             return ' برنامج تدريبي'
                                         else if (type == "App\\Models\\Employee")
-                                        return ' موظف'
+                                            return ' موظف'
                                         else if (type == "App\\Models\\TargetedIndividual")
-                                        return ' مستهدف'
+                                            return ' مستهدف'
+
+                                        else if (type == "App\\Models\\TrainingCourse")
+                                            return ' دورة'
                                     })()
                                 }
                             </p>

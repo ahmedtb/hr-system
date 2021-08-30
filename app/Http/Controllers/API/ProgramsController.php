@@ -50,7 +50,8 @@ class ProgramsController extends Controller
                     $image = base64_encode(file_get_contents($document->path()));
                     Document::create([
                         'name' => $document->getClientOriginalName(),
-                        'image' => $image,
+                        'content' => $image,
+                        'type' => 'png',
                         'documentable_id' => $employee->id,
                         'documentable_type' => TrainingProgram::class
                     ]);
@@ -66,6 +67,6 @@ class ProgramsController extends Controller
 
     public function getPrograms(Request $request)
     {
-        return TrainingProgram::select(['id','title'])->get();
+        return TrainingProgram::select(['id', 'title'])->get();
     }
 }

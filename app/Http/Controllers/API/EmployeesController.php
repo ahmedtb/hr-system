@@ -89,7 +89,8 @@ class EmployeesController extends Controller
                     $image = base64_encode(file_get_contents($document->path()));
                     Document::create([
                         'name' => $document->getClientOriginalName(),
-                        'image' => $image,
+                        'content' => $image,
+                        'type' => 'image',
                         'documentable_id' => $employee->id,
                         'documentable_type' => Employee::class
                     ]);
@@ -171,7 +172,7 @@ class EmployeesController extends Controller
         ]);
         $validateddata = $request->validate([
             'name' => 'required|string',
-            'image' => 'required|string',
+            'content' => 'required|string',
         ]);
 
         $employee = Employee::where('id', $request->employee_id)->first();
@@ -179,7 +180,8 @@ class EmployeesController extends Controller
         Document::create(
             array_merge($validateddata, [
                 'documentable_id' => $employee->id,
-                'documentable_type' => Employee::class
+                'documentable_type' => Employee::class,
+                'type' => 'image',
             ])
         );
 
