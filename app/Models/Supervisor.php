@@ -9,6 +9,12 @@ class Supervisor extends Authenticatable
 {
     use HasFactory;
     
+    protected $appends = ['name'];
+
+    public function getNameAttribute(){
+        return $this->profile()->first()->name;
+    }
+
     public function profile()
     {
         return $this->morphTo();

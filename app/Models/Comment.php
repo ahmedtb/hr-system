@@ -10,6 +10,11 @@ class Comment extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
+    protected $appends = [
+        'commenter'
+    ];
 
     public function scopeFilter($query, CommentFilters $filters)
     {
@@ -20,7 +25,9 @@ class Comment extends Model
     {
         return $this->morphTo();
     }
-    
+    public function getCommenterAttribute(){
+        return $this->commenter()->first();
+    }
     public function commenter()
     {
         return $this->morphTo();

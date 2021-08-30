@@ -8,7 +8,7 @@ import CoursesTable from '../partials/CoursesTable';
 import routes from '../utility/routesEndpoints';
 import RenderDocuments from '../components/RenderDocuments'
 import AllowedLink from '../components/AllowedLink';
-
+import Comments from '../components/Comments';
 export default function ProgramShow(props) {
 
     const { id } = useParams();
@@ -105,6 +105,19 @@ export default function ProgramShow(props) {
                 </div>
             </div>
 
+            <div className="card">
+                <div className="card-header ">
+                    <div className="row justify-content-between">
+                        <strong>تعليقات حول البرنامج</strong>
+                    </div>
+                </div>
+
+                <div className="card-body">
+                    <div style={{ maxHeight: 500, overflow: 'auto', display: 'inline-block' }}>
+                        <Comments commentable_id={id} type={'program'} />
+                    </div>
+                </div>
+            </div>
 
         </div >
     )

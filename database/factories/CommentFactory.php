@@ -25,12 +25,12 @@ class CommentFactory extends Factory
 
     private function randomCommenter()
     {
-        switch (random_int(1, 2)) {
+        switch (random_int(1, 3)) {
             case 1:
                 return Admin::inRandomOrder()->first()?? Admin::factory()->create();
             case 2:
                 return Supervisor::inRandomOrder()->first()?? Supervisor::factory()->create();
-            case 2:
+            case 3:
                 return Coach::inRandomOrder()->first()?? Coach::factory()->create();
         }
     }

@@ -23,6 +23,7 @@ import {
     FaShoppingBag,
 
 } from 'react-icons/fa';
+import Comments from '../components/Comments'
 
 export default function CourseShow(props) {
 
@@ -218,7 +219,7 @@ export default function CourseShow(props) {
 
                         <div className="card-body">
                             <div style={{ maxHeight: 500, overflow: 'auto', display: 'inline-block' }}>
-                                <ScheduleTable scheduleTable={course?.scheduleTable} attendances={attendances} />
+                                <Comments commentable_id={id} type={'course'} />
                             </div>
                         </div>
                     </div>

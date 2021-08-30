@@ -22,6 +22,7 @@ export default {
     createProgramForm: '',
     createProgram: '/api/program',
     createDocument: '/api/document/create',
+    createComment: '/api/comment/create',
 
 
     createEmployeeForm: '/api/createEmployeeForm',
@@ -70,6 +71,7 @@ export default {
     unitIndex: '/api/unit/index',
     jobIndex: '/api/job/index',
     documentIndex: '/api/document/index',
+    commentIndex: '/api/comment/index',
 
     getCourse: '/api/course/:id',
     getProgram: '/api/program/:id',
