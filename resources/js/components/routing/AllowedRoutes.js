@@ -10,9 +10,9 @@ function AllowedRoutes(props) {
         setallowedRoutes(props.allowedRoutes)
     }, [props.allowedRoutes])
 
-    React.useEffect(() => {
-        console.log('allowedRoutes', allowedRoutes)
-    }, [allowedRoutes])
+    // React.useEffect(() => {
+        // console.log('allowedRoutes', allowedRoutes)
+    // }, [allowedRoutes])
 
     return <Switch>
         {

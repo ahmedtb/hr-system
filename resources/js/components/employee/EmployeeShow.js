@@ -6,7 +6,7 @@ import routes from '../utility/routesEndpoints'
 import { useParams, Link } from 'react-router-dom';
 import CoursesTable from './components/CoursesTable'
 import RenderDocuments from '../components/RenderDocuments'
-
+import Comments from '../components/Comments'
 export default function EmployeeShow(props) {
 
     const { id } = useParams();
@@ -177,6 +177,20 @@ export default function EmployeeShow(props) {
                     </div>
                 </div>
 
+            </div>
+
+            <div className="card">
+                <div className="card-header ">
+                    <div className="row justify-content-between">
+                        <strong>ملاحظات حول ملف الموظف</strong>
+                    </div>
+                </div>
+
+                <div className="card-body">
+                    <div style={{ maxHeight: 500, overflow: 'auto', display: 'inline-block' }}>
+                        <Comments commentable_id={id} type={'employee'} />
+                    </div>
+                </div>
             </div>
 
         </div>

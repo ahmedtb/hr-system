@@ -51,6 +51,8 @@ import showJob from '../job/JobShow'
 import TargetedShow from '../targeted/TargetedShow'
 import UnitShow from '../unit/UnitShow'
 import CoachShow from '../coach/CoachShow'
+import SupervisorShow from '../supervisor/SupervisorShow'
+import AdminShow from '../admin/AdminShow'
 import TrialPeriodAssessmentShow from '../assessments/trialPeriod/TrialPeriodAssessmentShow'
 import CoachCourseAssessmentsShow from '../assessments/course/CoachCourseAssessmentsShow'
 import TraineeCourseAssessmentShow from '../assessments/course/TraineeCourseAssessmentShow'
@@ -454,6 +456,29 @@ export default [
         component: CoachShow,
         path: routes.showCoach,
         title: 'CoachShow',
+        permission: [
+            Roles.ADMIN,
+            Roles.SUPRTVISOR,
+            Roles.COACH,
+        ],
+        exact: true,
+    },
+    {
+        component: SupervisorShow,
+        path: routes.showSupervisor,
+        title: 'SupervisorShow',
+        permission: [
+            Roles.ADMIN,
+            Roles.SUPRTVISOR,
+            Roles.COACH,
+
+        ],
+        exact: true,
+    },
+    {
+        component: AdminShow,
+        path: routes.showAdmin,
+        title: 'AdminShow',
         permission: [
             Roles.ADMIN,
             Roles.SUPRTVISOR,

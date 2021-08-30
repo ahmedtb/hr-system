@@ -39,7 +39,8 @@ const routes = {
     showTraineeCourseAssessment: '/react/assessment/course/traineeCourseAssessment/:id',
     showTrainingCourseAssessment: '/react/assessment/course/trainingCourseAssessment/:id',
     showInterviewAssessment: '/react/assessment/course/interviewAssessment/:id',
-
+    showSupervisor: '/react/supervisor/:id',
+    showAdmin: '/react/admin/:id',
     programIndex: '/react/program/index',
     CoachesList: '/react/coach/index',
     AssessmentsIndex: '/react/assessment/index',
