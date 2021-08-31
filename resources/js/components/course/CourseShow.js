@@ -42,7 +42,7 @@ export default function CourseShow(props) {
             setprogram(response.data.program)
             setemployees(response.data.employees)
             setindividuals(response.data.individuals)
-            console.log('course show', response.data)
+            // console.log('course show', response.data)
 
             setattendances(response.data.attendances)
         } catch (err) {
@@ -56,6 +56,7 @@ export default function CourseShow(props) {
 
     return (
         <div className="col-md-12">
+
 
             <div className="row wrap">
                 <div className="col-3">
@@ -167,9 +168,18 @@ export default function CourseShow(props) {
                             </div>
                         </div>
 
-                        <div className="card-body">
+                        <div className="card-body row">
                             <div style={{ maxHeight: 500, overflow: 'auto', display: 'inline-block' }}>
                                 <ScheduleTable scheduleTable={course?.scheduleTable} attendances={attendances} />
+                            </div>
+
+                            <div className="col-4 border border-primary bg-light">
+                                <h4>ملاحظات حول الدورة</h4>
+
+
+                                <div style={{ maxHeight: 500, overflow: 'auto', display: 'inline-block' }}>
+                                    <Comments commentable_id={id} type={'course'} />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -205,16 +215,17 @@ export default function CourseShow(props) {
                     }
                 </div>
                 <div className="col-12">
+
                     <div className="card">
-                        <div className="card-header row">
-                            <div>المستندات الملحق بالدورة</div>
-                            <AllowedLink to={{
-                                pathname: routes.attachDocument, state: { documentable: program, type: 'App\\Models\\TrainingCourse' }
-                            }}>الحاق مستند جديد</AllowedLink>
-                        </div>
 
                         <div className="card-body">
-                            <div className="row">
+                            <div className="row justify-content-between">
+                                <h4>المستندات الملحق بالدورة</h4>
+                                <AllowedLink to={{
+                                    pathname: routes.attachDocument, state: { documentable: course, type: 'App\\Models\\TrainingCourse' }
+                                }}>الحاق مستند جديد</AllowedLink>
+                            </div>
+                            <div className="row bg-light">
 
                                 <RenderDocuments
                                     documentable_id={id}
@@ -223,30 +234,14 @@ export default function CourseShow(props) {
 
                             </div>
 
-                        </div>
+                        </div >
                     </div >
 
-                    <div className="card">
-                        <div className="card-header ">
-                            <div className="row justify-content-between">
-                                <strong>تعليقات حول الدورة</strong>
-
-                                {/* <AllowedLink
-                                    hide={true}
-                                    to={routes.showAttendances.replace(':id', course?.id)}
-                                ><FaBook /> سجلات الحضور</AllowedLink> */}
-
-                            </div>
-                        </div>
-
-                        <div className="card-body">
-                            <div style={{ maxHeight: 500, overflow: 'auto', display: 'inline-block' }}>
-                                <Comments commentable_id={id} type={'course'} />
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
+
+
+
 
 
 

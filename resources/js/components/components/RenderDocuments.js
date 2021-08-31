@@ -2,10 +2,11 @@ import React from 'react'
 import axios from 'axios'
 import ApiEndpoints from '../utility/ApiEndpoints'
 import logError from '../utility/logError'
-import { FaFileWord } from 'react-icons/fa'
+import { FaFileWord,FaFilePdf } from 'react-icons/fa'
 function RenderImage(props) {
-    const type = props.type
-    const content = props.content
+    const document = props.document
+    const type = document.type
+    const content = document.content
     const index = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5)
 
     return (
@@ -36,13 +37,25 @@ function RenderImage(props) {
 }
 
 function RenderDocx(props) {
-    const type = props.type
-    const content = props.content
+    const document = props.document
     const index = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5)
 
     return (
         <>
-            <FaFileWord />
+            <FaFileWord size={50}/>
+            <div>{document.name}</div>
+        </>
+    )
+}
+
+function RenderPdf(props) {
+    const document = props.document
+    const index = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5)
+    console.log('pdf', document)
+    return (
+        <>
+            <FaFilePdf size={50}/>
+            <div>{document.name}</div>
         </>
     )
 }
@@ -59,6 +72,7 @@ export default function RenderDocuments(props) {
     async function fetchdocuments(link = ApiEndpoints.documentIndex, params = constparams) {
         axios.get(link, { params: { ...params, page_size: 5 } }).then((response) => {
             setdocuments(response.data.data)
+            console.log('fetch documents', response.data.data)
             if (response.data.links) {
                 setnext_page_url(response.data.next_page_url)
                 setprev_page_url(response.data.prev_page_url)
@@ -91,10 +105,12 @@ export default function RenderDocuments(props) {
 
             {
                 documents?.map((document, index) => {
-                    if (document.type == 'png')
-                        return <RenderImage key={index} type="png" content={document.content} />
-                    else if (document.type = 'docx') {
-                        return <RenderDocx key={index} type="png" content={document.content} />
+                    if (document.type == 'png' || document.type == 'jpg' )
+                        return <RenderImage key={index} document={document} />
+                    else if (document.type == 'docx') {
+                        return <RenderDocx key={index} document={document} />
+                    }else if (document.type == 'pdf') {
+                        return <RenderPdf key={index} document={document} />
                     }
                 })
             }

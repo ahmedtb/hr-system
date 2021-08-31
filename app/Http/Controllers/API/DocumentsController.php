@@ -30,18 +30,19 @@ class DocumentsController extends Controller
     }
     public function create(Request $request)
     {
+        // return ($request->all());
         $request->validate([
             'name' => 'required|string',
-            'content' => 'required|file|mimes:docx,jpg,jpeg,png,bmp,tiff,pdf |max:1024',
+            'content' => 'required|file|mimes:docx,pdf,jpg,jpeg,png,bmp,tiff |max:1024',
             'documentable_type' => 'required|in:App\\Models\\TrainingProgram,App\\Models\\TrainingCourse,App\\Models\\Employee,App\\Models\\TargetedIndividual',
             'documentable_id' => ['required', Rule::exists($this->getDocumentableTable($request->documentable_type), 'id')],
-            'type' => 'required|in:png,jpg,jpeg,bmp,tiff,docx,pdf'
+            'type' => 'required|in:docx,jpg,jpeg,png,bmp,tiff,pdf'
         ]);
 
         $content = base64_encode(file_get_contents($request->file('content')->path()));
 
         Document::create([
-            'name' => $request->file('content')->getClientOriginalName(),
+            'name' => $request->name,
             'content' => $content,
             'type' => $request->type,
             'documentable_id' => $request->documentable_id,

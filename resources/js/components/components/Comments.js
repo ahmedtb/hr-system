@@ -13,9 +13,9 @@ function Commenter(props) {
         <>
             {(() => {
                 if (commenter_type == 'App\\Models\\Admin') {
-                    return <AllowedLink to={routes.showAdmin.replace(':id',commenter.id)}>{commenter.name}</AllowedLink>
+                    return <AllowedLink to={routes.showAdmin.replace(':id', commenter.id)}>{commenter.name}</AllowedLink>
                 } else if (commenter_type == 'App\\Models\\Supervisor') {
-                    return <AllowedLink to={routes.showSupervisor.replace(':id',commenter.id)}>{commenter.name}</AllowedLink>
+                    return <AllowedLink to={routes.showSupervisor.replace(':id', commenter.id)}>{commenter.name}</AllowedLink>
                 } else if (commenter_type == 'App\\Models\\Coach') {
                     return <AllowedLink to={routes.showCoach.replace(':id', commenter.id)}>{commenter.profile.name}</AllowedLink>
                 } else return <div>no header</div>
@@ -41,7 +41,7 @@ function Comments(props) {
                     employee_id: type == 'employee' ? commentable_id : undefined,
                 }
             })
-            console.log('fetchComments', response.data)
+            // console.log('fetchComments', response.data)
             setcomments(response.data.data)
         } catch (error) { logError(error) }
     }
@@ -68,14 +68,18 @@ function Comments(props) {
         <>
             {
                 comments.map((comment, index) => (
-                    <div key={index}>
-                        <Commenter commenter={comment.commenter} commenter_type={comment.commenter_type} />
-                        {comment.content}
+                    <div key={index} className="border rounded">
+                        <h5>
+                            <Commenter commenter={comment.commenter} commenter_type={comment.commenter_type} />
+                        </h5>
+                        <div>
+                            {comment.content}
+                        </div>
                     </div>
                 ))
             }
-            <input type='text' onChange={(e) => { setcreate(e.target.value) }} />
-            <button onClick={() => submit()}>submit</button>
+            <input className='form-control' type='text' onChange={(e) => { setcreate(e.target.value) }} />
+            <button className="btn btn-success" onClick={() => submit()}>تعليق</button>
         </>
     )
 }

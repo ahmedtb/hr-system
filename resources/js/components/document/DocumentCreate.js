@@ -15,13 +15,16 @@ export default function DocumentCreate() {
             const data = new FormData()
             if (name) data.append('name', name)
 
-            if (content)
+            if (content) {
                 data.append('content', content)
+                data.append('type', (/[.]/.exec(content.name)) ? /[^.]+$/.exec(content.name) : undefined )
+            }
 
             if (documentable)
                 data.append('documentable_id', documentable.id)
             if (type)
                 data.append('documentable_type', type)
+
 
             const res = await axios.post(ApiEndpoints.createDocument, data)
             console.log(res.data)
@@ -30,6 +33,7 @@ export default function DocumentCreate() {
         }
     }
     React.useEffect(() => {
+        console.log('documentCreate documentalbe',documentable)
     }, [documentable])
 
     return (

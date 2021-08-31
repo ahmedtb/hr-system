@@ -18,7 +18,7 @@ class CreateDocumentsTable extends Migration
             $table->string('name');
             $table->mediumText('content');
             $table->morphs('documentable');
-            $table->enum('type', ['jpg','jpeg','png','bmp','tiff', 'pdf', 'word']);
+            $table->string('type');
             $table->timestamps();
         });
     }
