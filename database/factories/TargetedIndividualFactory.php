@@ -29,7 +29,7 @@ class TargetedIndividualFactory extends Factory
             'phone_number' => $this->faker->phoneNumber(),
             'email' => $this->faker->email(),
             'description' => $this->faker->sentence(),
-            'profile' => getBase64DefaultImage(),
+            'profile_image' => getBase64DefaultImage(),
             'password' => Hash::make('password')
 
         ];

@@ -8,6 +8,7 @@ import ApiEndpoints from './utility/ApiEndpoints'
 export default function SeedDatabase(props) {
     const [users, setusers] = React.useState(null)
     const [departments, setdepartments] = React.useState(null)
+    const [individuals, setindividuals] = React.useState(null)
 
 
     async function submit() {
@@ -20,7 +21,9 @@ export default function SeedDatabase(props) {
             if (departments) {
                 data.append('departments', departments)
             }
-
+            if (individuals) {
+                data.append('individuals', individuals)
+            }
             const res = await axios.post(ApiEndpoints.seedDatabase, data)
             console.log(res.data)
         } catch (error) {
@@ -37,14 +40,18 @@ export default function SeedDatabase(props) {
                     <div className="col-2 p-2 border rounded m-2 text-center">
                         <label className="">users json</label>
                         <input className="form-control" onChange={(e) => {
-                            console.log(e.target.files[0])
+                            // console.log(e.target.files[0])
                             setusers(e.target.files[0])
                         }} type="file" accept=".json" />
 
                         <label className="">departments json</label>
                         <input className="form-control" onChange={(e) => {
-                            console.log(e.target.files[0])
                             setdepartments(e.target.files[0])
+                        }} type="file" accept=".json" />
+
+                        <label className="">individuals json</label>
+                        <input className="form-control" onChange={(e) => {
+                            setindividuals(e.target.files[0])
                         }} type="file" accept=".json" />
 
                     </div>

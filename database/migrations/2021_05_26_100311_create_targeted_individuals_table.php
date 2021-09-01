@@ -20,8 +20,8 @@ class CreateTargetedIndividualsTable extends Migration
             $table->string('phone_number')->nullable();
             $table->string('email')->nullable();
             $table->string('address')->nullable();
-            $table->string('description')->nullable();
-            $table->mediumText('profile')->nullable();
+            $table->string('description',3000)->nullable();
+            $table->mediumText('profile_image')->nullable();
             $table->string('password');
 
             $table->timestamps();

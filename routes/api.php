@@ -33,6 +33,7 @@ use App\Http\Controllers\API\Assessments\CoachCourseAssessmentsController;
 use App\Http\Controllers\API\Assessments\TrialPeriodAssessmentsController;
 use App\Http\Controllers\API\Assessments\TraineeCourseAssessmentsController;
 use App\Http\Controllers\API\Assessments\TrainingPeriodAssessmentsController;
+use App\Models\TargetedIndividual;
 
 /*
 |--------------------------------------------------------------------------
@@ -154,6 +155,8 @@ Route::get('/user', [LoginController::class, 'user']);
 Route::post('/seedDatabase', function (Request $request) {
     $users =  json_decode(file_get_contents($request->file('users')->path()));
     $departments =  json_decode(file_get_contents($request->file('departments')->path()));
+    $individuals =  json_decode(file_get_contents($request->file('individuals')->path()));
+
     foreach ($users as $user) {
 
         Employee::create([
@@ -162,8 +165,6 @@ Route::post('/seedDatabase', function (Request $request) {
             'username' => $user->username,
             'address' => 'لا توجد بيانات',
             'employment_date' => $user->starting_date ?? Carbon::today()->format('Y-m-d'),
-            'basic_salary' => $user->basic_salary,
-            'phone_number' => 'لا توجد بيانات',
             'basic_salary' => $user->basic_salary,
             'phone_number' => 'لا توجد بيانات',
             'job_id' => 1,
@@ -193,6 +194,19 @@ Route::post('/seedDatabase', function (Request $request) {
 
         Employee::where('id', $user->id)->first()->update([
             'job_id' => $user->department_id ? Job::where('unit_id', $user->department_id)->first()->id : 1
+        ]);
+    }
+    foreach ($individuals as $individual) {
+        TargetedIndividual::create([
+            'id' => $individual->id,
+            'name' => $individual->name,
+            'username' => $individual->username,
+            'phone_number' => $individual->phone_number,
+            'email' => $individual->email,
+            'address' => $individual->address,
+            'description' => $individual->description,
+            'profile_image' => null,
+            'password' => Hash::make('password'),
         ]);
     }
     Admin::create([

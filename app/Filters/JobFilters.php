@@ -13,7 +13,7 @@ class JobFilters extends Filters
         'name',
         'purpose',
         'description',
-
+        'unit_id'
     ];
 
     protected function name($name)
@@ -29,5 +29,10 @@ class JobFilters extends Filters
     protected function description($description)
     {
         return $this->builder->where('description', 'LIKE', "%{$description}%");
+    }    
+
+    protected function unit_id($id)
+    {
+        return $this->builder->where('id', $id);
     }
 }
