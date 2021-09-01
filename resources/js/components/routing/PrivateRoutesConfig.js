@@ -63,7 +63,7 @@ import AttendanceManager from '../course/AttendancesManager'
 
 import CoursesBrowser from '../course/CoursesBrowser'
 import LoginPage from '../LoginPage'
-
+import SeedDatabase from '../SeedDatabase'
 // TODO:
 /*
 * 1. Make title optional
@@ -575,6 +575,13 @@ export default [
             Roles.SUPRTVISOR,
             Roles.COACH
         ],
+        exact: true,
+    },
+    {
+        component: SeedDatabase,
+        path: routes.seedDatabase,
+        title: 'SeedDatabase',
+        permission: [],
         exact: true,
     },
     {

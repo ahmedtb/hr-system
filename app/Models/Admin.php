@@ -15,6 +15,8 @@ class Admin extends Authenticatable
         'remember_token',
     ];
 
+    protected $guarded = [];
+
     protected $appends = [
         'role'
     ];

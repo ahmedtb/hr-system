@@ -46,7 +46,7 @@ export default {
     unitCreate: '/api/unit/create',
 
     enrollInCourse: '/api/course/:id/enroll',
-    createAttendance:'/api/attendance/create',
+    createAttendance: '/api/attendance/create',
     deleteAttendance: '/api/attendance/:id',
 
     getTrainingPeriods: '/api/trainingPeriodAssessment/index',
@@ -54,7 +54,7 @@ export default {
     getCoachCourses: '/api/coachCourseAssessment/index',
     getInterviewAssessments: '/api/interview/index',
     getTrialPeriods: '/api/trialPeriodAssessment/index',
-    
+
     getTrialPeriod: '/api/trialPeriodAssessment/:id',
     getCoachCourse: '/api/coachCourseAssessment/:id',
     getTraineeCourse: '/api/traineeCourseAssessment/:id',
@@ -79,11 +79,12 @@ export default {
     unitShow: '/api/unit/:id',
     getAllAttendances: '/api/course/:id/attendances',
     getAttendancesByDay: '/api/course/:id/attendances/:date',
-    
+
     getCourseEnrolledEmployees: '/api/course/:id/employees',
     getCourseEnrolledIndividuals: '/api/course/:id/individuals',
     getCoach: '/api/coach/:id',
 
-    
+    seedDatabase: '/api/seedDatabase',
+
 
 }

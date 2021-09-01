@@ -1,16 +1,23 @@
 <?php
 
+use Carbon\Carbon;
+use App\Models\Job;
+use App\Models\Unit;
+use App\Models\Admin;
+
+use App\Models\Employee;
 use Illuminate\Http\Request;
+
+
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\JobsController;
 use App\Http\Controllers\API\CoachController;
-
 use App\Http\Controllers\API\FormsController;
 use App\Http\Controllers\API\UnitsController;
-
-
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\API\CoursesController;
+use App\Http\Controllers\API\CommentsController;
 use App\Http\Controllers\API\ProgramsController;
 use App\Http\Controllers\API\DashboardController;
 use App\Http\Controllers\API\DocumentsController;
@@ -26,7 +33,6 @@ use App\Http\Controllers\API\Assessments\CoachCourseAssessmentsController;
 use App\Http\Controllers\API\Assessments\TrialPeriodAssessmentsController;
 use App\Http\Controllers\API\Assessments\TraineeCourseAssessmentsController;
 use App\Http\Controllers\API\Assessments\TrainingPeriodAssessmentsController;
-use App\Http\Controllers\API\CommentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -144,3 +150,57 @@ Route::get('comment/{id}', [CommentsController::class, 'show'])->middleware(['au
 
 
 Route::get('/user', [LoginController::class, 'user']);
+
+Route::post('/seedDatabase', function (Request $request) {
+    $users =  json_decode(file_get_contents($request->file('users')->path()));
+    $departments =  json_decode(file_get_contents($request->file('departments')->path()));
+    foreach ($users as $user) {
+
+        Employee::create([
+            'id' => $user->id,
+            'name' => $user->name,
+            'username' => $user->username,
+            'address' => 'لا توجد بيانات',
+            'employment_date' => $user->starting_date ?? Carbon::today()->format('Y-m-d'),
+            'basic_salary' => $user->basic_salary,
+            'phone_number' => 'لا توجد بيانات',
+            'basic_salary' => $user->basic_salary,
+            'phone_number' => 'لا توجد بيانات',
+            'job_id' => 1,
+            'email' => $user->email ?? 'testing@test.com',
+            'medal_rating' => 1,
+            'profile_image' => getBase64DefaultImage(),
+            'password' => Hash::make('password'),
+        ]);
+    }
+    foreach ($departments as $department) {
+
+        $unit = Unit::create([
+            'id' => $department->id,
+            'parent_id' => $department->parent_id,
+            'name' => $department->name,
+            'head_id' => $department->department_manager,
+            'purpose' => 'لا توجد بيانات',
+        ]);
+        Job::create([
+            'unit_id' => $unit->id,
+            'name' => 'وظيفة في الوحدة ' . $unit->id,
+            'purpose' => 'لا توجد بيانات',
+            'description' => 'لا توجد بيانات',
+        ]);
+    }
+    foreach ($users as $user) {
+
+        Employee::where('id', $user->id)->first()->update([
+            'job_id' => $user->department_id ? Job::where('unit_id', $user->department_id)->first()->id : 1
+        ]);
+    }
+    Admin::create([
+        'name' => 'ahmed',
+        'username' => 'ahmed',
+        'email' => 'testing@test.com',
+        'password' => Hash::make('password')
+    ]);
+
+    return 'done';
+});

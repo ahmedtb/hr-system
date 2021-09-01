@@ -35,6 +35,7 @@ class EmployeeFactory extends Factory
             'job_id' => (Job::inRandomOrder()->first()->id ?? Job::factory()->create()->id),
             'email' => $this->faker->email(),
             'medal_rating' => $medals[array_rand($medals)],
+            'profile_image' => getBase64DefaultImage(),
             'password' => Hash::make('password')
 
         ];
