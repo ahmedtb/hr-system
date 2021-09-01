@@ -157,6 +157,14 @@ Route::post('/seedDatabase1', function (Request $request) {
     $users =  json_decode(file_get_contents($request->file('users')->path()));
     $departments =  json_decode(file_get_contents($request->file('departments')->path()));
 
+    Admin::create([
+        'name' => 'ahmed',
+        'username' => 'ahmed',
+        'email' => 'testing@test.com',
+        'password' => Hash::make('password')
+    ]);
+
+    
     foreach ($users as $user) {
 
         Employee::create([
@@ -196,6 +204,7 @@ Route::post('/seedDatabase1', function (Request $request) {
             'job_id' => $user->department_id ? Job::where('unit_id', $user->department_id)->first()->id : 1
         ]);
     }
+    
     return 'done';
 });
 
@@ -215,12 +224,6 @@ Route::post('/seedDatabase2', function (Request $request) {
             'password' => Hash::make('password'),
         ]);
     }
-    Admin::create([
-        'name' => 'ahmed',
-        'username' => 'ahmed',
-        'email' => 'testing@test.com',
-        'password' => Hash::make('password')
-    ]);
-
+    
     return 'done';
 });

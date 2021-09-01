@@ -14,10 +14,12 @@ use App\Models\CourseAttendance;
 use App\Models\TargetedIndividual;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
+use Illuminate\Support\Facades\Gate;
 
 class DashboardController extends Controller
 {
-    public function show()
+    public function show(Request $request)
     {
         $employeesCount = Employee::all()->count();
         $targetedCount = TargetedIndividual::all()->count();
@@ -29,7 +31,7 @@ class DashboardController extends Controller
         $doneCoursesCount = TrainingCourse::done()->count();
         $canceledCoursesCount = TrainingCourse::canceled()->count();
 
-        $units = Unit::whereNull('parent_id')->get();
+        $units = $request->user('admin') instanceof Admin ? Unit::whereNull('parent_id')->get() : [];
         $forms = Form::orderBy('created_at', 'desc')->with('structure')->get();
         
         $attendancesCount = DB::table('course_attendances')->whereDate(

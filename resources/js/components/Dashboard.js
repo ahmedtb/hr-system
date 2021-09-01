@@ -75,7 +75,7 @@ export default function Dashboard() {
             setunits(response.data.units)
             setforms(response.data.forms)
             setattendancesCount(response.data.attendancesCount)
-            // console.log('dashboard units', response.data.units)
+            console.log('dashboard units', response.data.units)
         }).catch((error) => logError(error))
     }
 

@@ -3,6 +3,8 @@
 namespace Tests\Feature\DB;
 
 use Tests\TestCase;
+use App\Models\Unit;
+use App\Models\Admin;
 use App\Models\Coach;
 use App\Models\Employee;
 use App\Models\TrainingCourse;
@@ -59,5 +61,15 @@ class GatesTest extends TestCase
         $course->enrollindividual($individual);
         $this->actingAs($individual, 'individual');
         $this->assertTrue(Gate::allows('accessProgram', $program));
+    }
+
+    public function test_program_only_admins_can_reach_the_units()
+    {
+        $unit = Unit::factory()->create();
+        $admin = Admin::factory()->create();
+        $this->assertFalse(Gate::allows('access', Unit::class));
+
+        $this->actingAs($admin, 'admin');
+        $this->assertTrue(Gate::allows('access', Unit::class));
     }
 }
