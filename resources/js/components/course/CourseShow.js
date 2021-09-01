@@ -3,7 +3,7 @@ import axios from 'axios'
 import ApiEndpoints from '../utility/ApiEndpoints'
 import logError from '../utility/logError'
 import routes from '../utility/routesEndpoints'
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 import EmployeesTable from '../partials/EmployeesTable'
 import TargetedIndividualsTable from '../partials/TargetedIndividualsTable'
 import ScheduleTable from './components/ScheduleTable'
@@ -25,6 +25,7 @@ import {
 } from 'react-icons/fa';
 import Comments from '../components/Comments'
 import RenderDocuments from '../components/RenderDocuments'
+import CustomModal from '../components/CustomModal'
 
 export default function CourseShow(props) {
 
@@ -54,6 +55,18 @@ export default function CourseShow(props) {
         getCourseAndAttendances()
     }, [])
 
+    async function deleteCourse() {
+        try {
+            const response = await  axios.delete(ApiEndpoints.deleteCourse.replace(':id',course.id))
+            console.log('courseShow delete', response.data)
+            setredirect(true)
+        } catch (error) { logError(error) }
+    }
+    const [redirect, setredirect] = React.useState(false)
+    if (redirect) {
+        return <Redirect to={routes.dashboard} />;
+    }
+
     return (
         <div className="col-md-12">
 
@@ -62,7 +75,11 @@ export default function CourseShow(props) {
                 <div className="col-3">
                     <div className="card">
                         <div className="card-header">
-                            الدورة رقم {course?.id}
+                            <div className="d-flex flex-row justifiy-content-between">
+                                <h4>
+                                    الدورة رقم {course?.id}
+                                </h4>
+                            </div>
                         </div>
 
                         <div className="card-body p-1">
@@ -146,6 +163,14 @@ export default function CourseShow(props) {
                                                 <p className="">{individuals?.length}</p>
                                             </div> : null
                                     }
+                                    <CustomModal buttonClass="btn btn-info" label={'حدف الدورة من السجلات'} >
+                                        <div>
+                                            هل تود فعلا حدف الدورة من السجل بشكل دائما؟
+                                        </div>
+                                        <button className="btn btn-secondary" onClick={deleteCourse} data-dismiss="modal">نعم</button>
+                                        <button className='btn btn-success' data-dismiss="modal">لا</button>
+
+                                    </CustomModal>
 
                                 </div>
                             </div>

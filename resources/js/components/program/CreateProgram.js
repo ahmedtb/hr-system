@@ -2,7 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import ApiEndpoints from '../utility/ApiEndpoints'
 import logError from '../utility/logError'
-
+import { Redirect } from 'react-router'
+import routes from '../utility/routesEndpoints'
 export default function CreateProgram() {
     const [title, setTitle] = React.useState(null)
     const [goals, setGoals] = React.useState(null)
@@ -27,9 +28,17 @@ export default function CreateProgram() {
 
             const res = await axios.post(ApiEndpoints.createProgram, data)
             console.log(res.data)
+            setredirect(true)
+
         } catch (error) {
             logError(error)
         }
+    }
+
+    
+    const [redirect, setredirect] = React.useState(false)
+    if (redirect) {
+        return <Redirect to={routes.dashboard} />;
     }
 
     return (

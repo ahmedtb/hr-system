@@ -10,11 +10,11 @@ import Pagination from './utility/Pagination'
 import AllowedLink from './components/AllowedLink'
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 import routes from './utility/routesEndpoints'
-import {FaUserTie, FaUserCheck, FaChalkboardTeacher, FaSuitcase, FaGraduationCap} from 'react-icons/fa'
+import { FaUserTie, FaUserCheck, FaChalkboardTeacher, FaSuitcase, FaGraduationCap } from 'react-icons/fa'
 import moment from 'moment'
 function DateSchedule(props) {
     const resumedCourses = props.resumedCourses
-    
+
     return (
         <table className="table table-bordered table-condensed table-responsive">
             <thead>
@@ -26,18 +26,22 @@ function DateSchedule(props) {
             </thead>
             <tbody>
                 {resumedCourses?.map((course, index) => (
-                    <tr key={index}>
-                        <td>
-                            <AllowedLink to={routes.showCourse.replace(':id', course.id)}>{course.title}</AllowedLink >
 
-                        </td>
-                        <td>
-                            {course.scheduleTable[moment().format('Y-MM-DD')][0]}
-                        </td>
-                        <td>
-                            {course.scheduleTable[moment().format('Y-MM-DD')][1]}
-                        </td>
-                    </tr>
+                    course.scheduleTable[moment().format('Y-MM-DD')] ? (
+                        <tr key={index}>
+                            <td>
+                                <AllowedLink to={routes.showCourse.replace(':id', course.id)}>{course.title}</AllowedLink >
+
+                            </td>
+                            <td>
+                                {course.scheduleTable[moment().format('Y-MM-DD')][0]}
+                            </td>
+                            <td>
+                                {course.scheduleTable[moment().format('Y-MM-DD')][1]}
+                            </td>
+                        </tr>
+                    ) : null
+
                 ))}
             </tbody>
         </table>
@@ -71,7 +75,7 @@ export default function Dashboard() {
             setunits(response.data.units)
             setforms(response.data.forms)
             setattendancesCount(response.data.attendancesCount)
-            console.log('dashboard units', response.data.units)
+            // console.log('dashboard units', response.data.units)
         }).catch((error) => logError(error))
     }
 
@@ -81,7 +85,7 @@ export default function Dashboard() {
     async function getCourses(link = ApiEndpoints.courseIndex, params = null) {
         try {
             const response = await axios.get(link, { params: { ...params, resumed: true, page_size: 5 } })
-            // console.log('dashboard getCourses', response.data)
+            // console.log('dashboard resumedCourses', response.data.data)
             setresumedCourses(response.data.data)
             setresumedCoursesTotal(response.data.total)
             if (response.data.links) { setlinks(response.data.links) } else setlinks(null)

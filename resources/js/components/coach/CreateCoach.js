@@ -3,6 +3,8 @@ import axios from 'axios';
 import ApiEndpoints from '../utility/ApiEndpoints'
 import logError from '../utility/logError'
 
+import routes from '../utility/routesEndpoints'
+import { Redirect } from 'react-router'
 function CreateCoach(props) {
 
     const [employees, setEmployees] = React.useState([])
@@ -29,6 +31,7 @@ function CreateCoach(props) {
         }
         axios.post(ApiEndpoints.createCoach, data).then((response) => {
             console.log(response.data)
+            setredirect(true)
         }).catch((err) => logError(err))
 
     }
@@ -43,6 +46,10 @@ function CreateCoach(props) {
     }, [])
 
 
+    const [redirect, setredirect] = React.useState(false)
+    if (redirect) {
+        return <Redirect to={routes.dashboard} />;
+    }
 
     return (
 

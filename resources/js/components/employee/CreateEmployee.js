@@ -2,7 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import ApiEndpoints from '../utility/ApiEndpoints'
 import logError from '../utility/logError'
-
+import { Redirect } from 'react-router'
+import routes from '../utility/routesEndpoints'
 export default function CreateEmployee() {
     const [jobs, setJobs] = React.useState([])
     React.useEffect(() => {
@@ -38,11 +39,17 @@ export default function CreateEmployee() {
 
             const res = await axios.post(ApiEndpoints.createEmployee, data)
             console.log(res.data)
+            setredirect(true)
+
+            
         } catch (error) {
             logError(error)
         }
     }
-
+    const [redirect, setredirect] = React.useState(false)
+    if (redirect) {
+        return <Redirect to={routes.dashboard} />;
+    }
     return (
         <div className="card">
             <div className="card-header">اضافة موظف</div>
@@ -81,10 +88,6 @@ export default function CreateEmployee() {
                     </div>
 
                     
-                    <div className="col-5 p-2 border rounded m-2 row ">
-                        <label className="col-4">اسم الموظف</label>
-                        <input className="col-8" value={name} onChange={(e) => setname(e.target.value)} type="text" />
-                    </div>
                     
                     <div className="col-5 p-2 border rounded m-2 row">
 

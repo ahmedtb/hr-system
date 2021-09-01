@@ -7,9 +7,10 @@ import logError from '../utility/logError'
 export default function CustomModal(props) {
     const label = props.label
     const children = props.children
+    const buttonClass = props.buttonClass
     return (
         <>
-            <button type="button" className="m-2 btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            <button type="button" className={buttonClass} data-toggle="modal" data-target="#exampleModal">
                 {label}
             </button>
             <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

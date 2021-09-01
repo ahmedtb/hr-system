@@ -2,7 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import ApiEndpoints from '../utility/ApiEndpoints'
 import logError from '../utility/logError'
-
+import routes from '../utility/routesEndpoints'
+import { Redirect } from 'react-router'
 export default function CourseCreate() {
     const [programs, setprograms] = React.useState([])
     React.useEffect(() => {
@@ -30,6 +31,8 @@ export default function CourseCreate() {
 
             const res = await axios.post(ApiEndpoints.createCourse, data)
             console.log(res.data)
+            setredirect(true)
+
         } catch (error) {
             logError(error)
         }
@@ -57,6 +60,11 @@ export default function CourseCreate() {
     React.useEffect(() => {
         console.log(week_schedule)
     }, [week_schedule])
+
+    const [redirect, setredirect] = React.useState(false)
+    if (redirect) {
+        return <Redirect to={routes.dashboard} />;
+    }
 
     return (
         <div className="card">

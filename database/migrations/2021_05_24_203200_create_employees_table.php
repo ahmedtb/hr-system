@@ -21,7 +21,7 @@ class CreateEmployeesTable extends Migration
             $table->date('employment_date');
             $table->double('basic_salary');
             $table->string('phone_number');
-            $table->foreignId('job_id')->onDelete('cascade');
+            $table->foreignId('job_id')->nullable();
             $table->string('email');
             $table->unsignedSmallInteger('medal_rating')->nullable();
             $table->mediumText('profile_image')->nullable();

@@ -4,11 +4,13 @@ namespace App\Http\Controllers\API;
 
 use App\Models\Document;
 use App\Models\Employee;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Filters\IndividualFilters;
 use App\Models\TargetedIndividual;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 
 class TargetedIndividualsController extends Controller
@@ -28,26 +30,25 @@ class TargetedIndividualsController extends Controller
     {
         // dd($request->profile);
         $validateddata = $request->validate([
-            'documents.*' => 'sometimes|image|mimes:jpg,jpeg,png,bmp,tiff |max:1024',
-            'name' => 'sometimes|string',
+            'name' => 'required|string|unique:targeted_individuals,name',
             'address' => 'sometimes|string',
-            'phone_number' => 'sometimes|string',
-            'email' => 'sometimes|email',
+            'phone_number' => 'sometimes|string|unique:targeted_individuals,phone_number',
+            'email' => 'sometimes|email|unique:targeted_individuals,email',
             'description' => 'sometimes|string',
-            'profile' => 'sometimes|image|mimes:jpg,jpeg,png,bmp,tiff |max:1024',
-            'password' => ['required', 'confirmed', Password::min(8)]
-
-
+            'documents.*' => 'sometimes|image|mimes:jpg,jpeg,png,bmp,tiff |max:1024',
+            'profile_image' => 'sometimes|image|mimes:jpg,jpeg,png,bmp,tiff |max:1024',
+            // 'password' => ['required', 'confirmed', Password::min(8)]
         ]);
 
         DB::transaction(function ()  use ($request, $validateddata) {
             $targeted = TargetedIndividual::create([
                 'name' => $request->name,
+                'username' => $request->name,
                 'address' => $request->address,
                 'phone_number' => $request->phone_number,
                 'email' => $request->email,
                 'description' => $request->description,
-                'password' => $request->password,
+                'password' => Hash::make(Str::random(8)),
 
             ]);
             if ($request->profile) {

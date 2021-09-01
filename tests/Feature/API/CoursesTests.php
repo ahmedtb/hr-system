@@ -43,6 +43,27 @@ class CoursesTests extends TestCase
         $this->assertEquals(TrainingCourse::all()->count(), 1);
     }
 
+    public function test_system_will_reject_the_request_if_the_end_date_smaller_than_start_date()
+    {
+        $admin = Admin::factory()->create();
+        $this->actingAs($admin, 'admin');
+        $course = TrainingCourse::factory()->make();
+        // dd($course->start_date);
+
+        $response = $this->postJson('api/course', [
+            'title' => $course->title,
+            'training_program_id' => $course->training_program_id,
+            'status' => $course->status,
+            'start_date' => '2021-08-02',
+            'end_date' => '2021-07-12',
+            'week_schedule' => $course->week_schedule
+        ]);
+        // dd($response->json());
+
+        $response->assertStatus(422);
+        $this->assertEquals(TrainingCourse::all()->count(), 0);
+    }
+
     public function test_when_creating_a_course_the_system_can_warn_if_course_peroid_and_program_period_does_not_match()
     {
     }

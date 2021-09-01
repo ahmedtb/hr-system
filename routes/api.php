@@ -103,12 +103,13 @@ Route::get('coach/{coach_id}/programs', [CoachController::class, 'getPrograms'])
 Route::get('coach/{id}', [CoachController::class, 'show'])->middleware(['auth:admin,coach']);
 
 Route::post('program', [ProgramsController::class, 'create'])->middleware(['auth:admin,coach']);
+Route::delete('program/{id}', [ProgramsController::class, 'delete'])->middleware(['auth:admin,coach']);
 Route::get('program/index', [ProgramsController::class, 'index'])->middleware(['auth:admin,coach,employee,individual']);
 Route::get('program/{id}', [ProgramsController::class, 'show'])->middleware(['auth:admin,coach,employee,individual']);
 Route::get('getPrograms', [ProgramsController::class, 'getPrograms'])->middleware(['auth:admin,coach,employee,individual']);
 
 Route::post('course', [CoursesController::class, 'create'])->middleware(['auth:admin,coach']);
-// Route::get('course/index', [CoursesController::class, 'index']);
+Route::delete('course/{id}', [CoursesController::class, 'delete'])->middleware(['auth:admin,coach']);
 Route::get('course/index', [CoursesController::class, 'index'])->middleware('auth:admin,employee,individual,coach');
 Route::get('course/{id}', [CoursesController::class, 'show'])->middleware('auth:admin,employee,coach,individual');
 Route::get('course/{id}/schedule', [CoursesController::class, 'getSchedule'])->middleware('auth:admin,employee,coach,individual');
@@ -152,10 +153,9 @@ Route::get('comment/{id}', [CommentsController::class, 'show'])->middleware(['au
 
 Route::get('/user', [LoginController::class, 'user']);
 
-Route::post('/seedDatabase', function (Request $request) {
+Route::post('/seedDatabase1', function (Request $request) {
     $users =  json_decode(file_get_contents($request->file('users')->path()));
     $departments =  json_decode(file_get_contents($request->file('departments')->path()));
-    $individuals =  json_decode(file_get_contents($request->file('individuals')->path()));
 
     foreach ($users as $user) {
 
@@ -196,6 +196,12 @@ Route::post('/seedDatabase', function (Request $request) {
             'job_id' => $user->department_id ? Job::where('unit_id', $user->department_id)->first()->id : 1
         ]);
     }
+    return 'done';
+});
+
+Route::post('/seedDatabase2', function (Request $request) {
+    $individuals =  json_decode(file_get_contents($request->file('individuals')->path()));
+
     foreach ($individuals as $individual) {
         TargetedIndividual::create([
             'id' => $individual->id,

@@ -2,6 +2,8 @@ import axios from 'axios'
 import React from 'react'
 import ApiEndpoints from '../../utility/ApiEndpoints'
 import logError from '../../utility/logError'
+import { Redirect } from 'react-router'
+import routes from '../../utility/routesEndpoints'
 
 export default function ConductTrainingPeriodAssessment(props) {
 
@@ -73,9 +75,14 @@ export default function ConductTrainingPeriodAssessment(props) {
 
             const res = await axios.post(ApiEndpoints.createTrainingPeriodAssessment, data)
             console.log(res.data)
+            setredirect(true)
         } catch (error) {
             logError(error)
         }
+    }
+    const [redirect, setredirect] = React.useState(false)
+    if (redirect) {
+        return <Redirect to={routes.dashboard} />;
     }
 
     return (
@@ -83,7 +90,7 @@ export default function ConductTrainingPeriodAssessment(props) {
             <div className="card-header">اجراء تقييم موظف في فترته التدريبية</div>
 
             <div className="card-body">
-            <div className="row justify-content-center">
+                <div className="row justify-content-center">
 
                     <div className="col-5 p-2 border rounded m-2 row ">
                         <label className="col-4">التاريخ</label>

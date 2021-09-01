@@ -27,7 +27,7 @@ class ProgramsController extends Controller
     {
         // return $request->all();
         $validated = $request->validate([
-            'title' => 'required|string',
+            'title' => 'required|string|unique:training_programs,title',
             'goals' => 'required|string',
             'category' => 'required|string',
             'period' => 'required|integer',
@@ -67,6 +67,14 @@ class ProgramsController extends Controller
 
     public function getPrograms(Request $request)
     {
-        return TrainingProgram::select(['id', 'title'])->get();
+        return TrainingProgram::select(['id', 'title', 'category'])->get();
+    }
+
+    
+    public function delete($id)
+    {
+        TrainingProgram::where('id', $id)->first()->delete();
+
+        return response()->json(['success' => 'training program ' . $id . ' deleted'], 202 );
     }
 }

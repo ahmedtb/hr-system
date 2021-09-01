@@ -5,6 +5,7 @@ namespace Tests\Feature\API;
 use App\Models\Job;
 use Tests\TestCase;
 use App\Models\Unit;
+use App\Models\Admin;
 use App\Models\Trainee;
 use App\Models\Document;
 use App\Models\Employee;
@@ -17,7 +18,13 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class EmployeesEndpointsTests extends TestCase
 {
     use RefreshDatabase;
-
+    
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $admin = Admin::factory()->create();
+        $this->actingAs($admin, 'admin');
+    }
     public function test_employees_index_endpoint_providers_pagination_capability()
     {
         Employee::factory(50)->create();
@@ -182,6 +189,44 @@ class EmployeesEndpointsTests extends TestCase
         ])->assertOk();
         $this->assertNotNull(TrainingCourse::first());
         $this->assertEquals(TrainingCourse::first()->employees()->count(), 10);
+    }
+
+    
+    public function test_employee_name_username_email_phone_number_should_be_unique()
+    {
+        $job = Job::factory()->create();
+        $employee = Employee::factory()->make();
+        $response = $this->postJson('/api/createEmployee', [
+            'name' => 'name',
+            'address' => $employee->address,
+            'employment_date' => $employee->employment_date,
+            'basic_salary' => $employee->basic_salary,
+            'phone_number' => '091435421',
+            // 'job_id' => null,
+            'email' =>'email@email.com',
+            'medal_rating' => $employee->medal_rating,
+        ]);
+        // dd($response->json());
+        $response->assertOk();
+        $response->assertJson(['success' => 'employee created']);
+
+        $response = $this->postJson('/api/createEmployee', [
+            'name' => 'name',
+            'address' => $employee->address,
+            'employment_date' => $employee->employment_date,
+            'basic_salary' => $employee->basic_salary,
+            'phone_number' => '091435421',
+            // 'job_id' => $job->id,
+            'email' =>'email@email.com',
+            'medal_rating' => $employee->medal_rating,
+        ]);
+        // dd($response->json());
+
+        // $response->assertOk();
+        $response->assertJsonValidationErrors(['name','email','phone_number']);
+
+        $response->assertStatus(422);
+        $this->assertEquals(Employee::all()->count(), 1);
     }
 
     public function test_employee_has_an_optional_profile_picture()

@@ -57,13 +57,20 @@ class CoursesController extends Controller
             'training_program_id' => 'required|exists:training_programs,id',
             'status' => ['required', new CourseStatusRule()],
             'start_date' => 'required|date',
-            'end_date' => 'required|date',
+            'end_date' => 'required|date|after:start_date',
             'week_schedule' => ['required', new WeekScheduleRule()] // need fourther validation of structure
         ]);
 
         TrainingCourse::create($validated);
 
         return response(['success' => 'training coures created']);
+    }
+
+    public function delete(Request $request, $id)
+    {
+        TrainingCourse::where('id', $id)->first()->delete();
+
+        return response()->json(['success' => 'training coures ' . $id . ' deleted'], 202 );
     }
 
     public function getSchedule(int $id)

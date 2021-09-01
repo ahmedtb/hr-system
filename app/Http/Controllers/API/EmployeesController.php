@@ -57,22 +57,23 @@ class EmployeesController extends Controller
     public function create(Request $request)
     {
         $validateddata = $request->validate([
-            'name' => 'required|string',
+            'name' => 'required|string|unique:employees,name',
             'address' => 'required|string',
             'employment_date' => 'required|date',
             'basic_salary' => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/',
-            'phone_number' => 'required|string',
-            'job_id' => 'required|exists:jobs,id',
-            'email' => 'required|email',
+            'phone_number' => 'required|string|unique:employees,phone_number',
+            'job_id' => 'sometimes|exists:jobs,id',
+            'email' => 'required|email|unique:employees,email',
             'medal_rating' => 'sometimes|integer',
             'documents.*' => 'sometimes|image|mimes:jpg,jpeg,png,bmp,tiff |max:1024',
-            'password' => ['required', 'confirmed', Password::min(8)]
+            // 'password' => ['required', 'confirmed', Password::min(8)]
 
         ]);
 
         DB::transaction(function ()  use ($request, $validateddata) {
             $employee = Employee::create([
                 'name' => $request->name,
+                'username' => $request->name,
                 'address' => $request->address,
                 'employment_date' => $request->employment_date,
                 'basic_salary' => $request->basic_salary,

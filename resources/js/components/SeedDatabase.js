@@ -11,7 +11,7 @@ export default function SeedDatabase(props) {
     const [individuals, setindividuals] = React.useState(null)
 
 
-    async function submit() {
+    async function submitUserDepartement() {
         try {
             const data = new FormData()
 
@@ -21,10 +21,23 @@ export default function SeedDatabase(props) {
             if (departments) {
                 data.append('departments', departments)
             }
+            const res = await axios.post('/api/seedDatabase1', data)
+            console.log(res.data)
+        } catch (error) {
+            logError(error)
+        }
+    }
+
+
+    async function submitIndivituals() {
+        try {
+            const data = new FormData()
+
             if (individuals) {
                 data.append('individuals', individuals)
             }
-            const res = await axios.post(ApiEndpoints.seedDatabase, data)
+
+            const res = await axios.post('/api/seedDatabase2', data)
             console.log(res.data)
         } catch (error) {
             logError(error)
@@ -33,7 +46,7 @@ export default function SeedDatabase(props) {
 
     return (
         <div className="card">
-            <div className="card-header">الحاق مستند</div>
+            <div className="card-header">تخزين الموظفين والوحدات</div>
 
             <div className="card-body">
                 <div className="row align-items-start justify-content-center">
@@ -49,6 +62,25 @@ export default function SeedDatabase(props) {
                             setdepartments(e.target.files[0])
                         }} type="file" accept=".json" />
 
+
+                    </div>
+
+                    <div className="col-12 d-flex justify-content-center">
+                        <button onClick={submitUserDepartement} type="button" className="btn btn-success">
+                            seed
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div className="card-header">تخزين المستهدفيين</div>
+
+            <div className="card-body">
+                <div className="row align-items-start justify-content-center">
+                    <div className="col-2 p-2 border rounded m-2 text-center">
+
+
                         <label className="">individuals json</label>
                         <input className="form-control" onChange={(e) => {
                             setindividuals(e.target.files[0])
@@ -57,8 +89,8 @@ export default function SeedDatabase(props) {
                     </div>
 
                     <div className="col-12 d-flex justify-content-center">
-                        <button onClick={submit} type="button" className="btn btn-success">
-                            seed
+                        <button onClick={submitIndivituals} type="button" className="btn btn-success">
+                            save individuals
                         </button>
                     </div>
 

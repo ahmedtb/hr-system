@@ -4,7 +4,8 @@ import ApiEndpoints from '../utility/ApiEndpoints'
 import logError from '../utility/logError'
 import Fields from '../fields/Fields';
 import { useParams } from 'react-router';
-
+import { Redirect } from 'react-router'
+import routes from '../utility/routesEndpoints'
 export default function FormCreate(props) {
     const { access_token } = useParams()
 
@@ -20,14 +21,17 @@ export default function FormCreate(props) {
         }
     }
 
-    async function submit(){
+    async function submit() {
         try {
             structure.array_of_fields.fields = fields
-            const response = await axios.post(ApiEndpoints.submitForm,{
+            const response = await axios.post(ApiEndpoints.submitForm, {
                 fields: structure.array_of_fields,
                 access_token: access_token
             })
             console.log(response.data)
+
+            setredirect(true)
+
         } catch (err) {
             logError(err)
         }
@@ -36,6 +40,11 @@ export default function FormCreate(props) {
     React.useEffect(() => {
         getGeneratedForm()
     }, [])
+
+    const [redirect, setredirect] = React.useState(false)
+    if (redirect) {
+        return <Redirect to={routes.dashboard} />;
+    }
     return (
         <div className="col-md-12">
 

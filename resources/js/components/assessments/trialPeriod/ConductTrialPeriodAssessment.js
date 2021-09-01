@@ -3,6 +3,9 @@ import React from 'react'
 import ApiEndpoints from '../../utility/ApiEndpoints'
 import logError from '../../utility/logError'
 import moment from 'moment'
+import { Redirect } from 'react-router'
+import routes from '../../utility/routesEndpoints'
+
 export default function ConductTrialPeriodAssessment(props) {
 
     const [date, setdate] = React.useState(moment().format('YYYY-MM-DD'))
@@ -76,9 +79,14 @@ export default function ConductTrialPeriodAssessment(props) {
 
             const res = await axios.post(ApiEndpoints.createTrialPeriodAssessment, data)
             console.log(res.data)
+            setredirect(true)
         } catch (error) {
             logError(error)
         }
+    }
+    const [redirect, setredirect] = React.useState(false)
+    if (redirect) {
+        return <Redirect to={routes.dashboard} />;
     }
 
     return (

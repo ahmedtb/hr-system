@@ -18,7 +18,8 @@ import EmailField from './EmailField'
 import DoubleField from './DoubleField'
 import DateField from './DateField'
 import OptionsField from './OptionsField';
-
+import { Redirect } from 'react-router'
+import routes from '../../utility/routesEndpoints'
 const fieldsTypes = [
     'حقل نص طويل', 'حقل جدول', 'حقل نصي', 'حقل حالة اجتماعية', 'حقل تقييم', 'حقل تقييم متغيير', 'حقل خيارات',
     'حقل رقم هاتف', 'حقل رقم', 'حقل نص توضيحي', 'حقل تحديد الوظيفة', 'حقل تحديد الجنس',
@@ -136,11 +137,16 @@ function FieldsCreator() {
             })
             console.log(res.data)
 
+            setredirect(true)
+
         } catch (err) {
             logError(err)
         }
     }
-
+    const [redirect, setredirect] = React.useState(false)
+    if (redirect) {
+        return <Redirect to={routes.dashboard} />;
+    }
     return (
 
         <div>

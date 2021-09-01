@@ -2,13 +2,14 @@ import React from 'react'
 import axios from 'axios'
 import ApiEndpoints from '../utility/ApiEndpoints'
 import logError from '../utility/logError'
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 import Pagination from '../utility/Pagination';
 import CoursesTable from '../partials/CoursesTable';
 import routes from '../utility/routesEndpoints';
 import RenderDocuments from '../components/RenderDocuments'
 import AllowedLink from '../components/AllowedLink';
 import Comments from '../components/Comments';
+import CustomModal from '../components/CustomModal';
 export default function ProgramShow(props) {
 
     const { id } = useParams();
@@ -38,12 +39,32 @@ export default function ProgramShow(props) {
         fetchCourses();
     }, [])
 
+    async function deleteProgram() {
+        try {
+            const response = await axios.delete(ApiEndpoints.deleteProgram.replace(':id', program.id))
+            console.log('programShow delete', response.data)
+            setredirect(true)
+        } catch (error) { logError(error) }
+    }
+    const [redirect, setredirect] = React.useState(false)
+    if (redirect) {
+        return <Redirect to={routes.dashboard} />;
+    }
+
     return (
         <div className="col-md-12">
 
             <div className="card">
                 <div className="card-header">
                     البرنامج رقم {program?.id}
+                    <CustomModal buttonClass="btn btn-info" label={'حدف البرنامج من السجلات'} >
+                        <div>
+                            هل تود فعلا حدف البرنامج من السجل بشكل دائما؟
+                        </div>
+                        <button className="btn btn-secondary" onClick={deleteProgram} data-dismiss="modal">نعم</button>
+                        <button className='btn btn-success' data-dismiss="modal">لا</button>
+
+                    </CustomModal>
                 </div>
 
                 <div className="card-body">

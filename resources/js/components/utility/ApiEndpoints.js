@@ -15,12 +15,15 @@ export default {
     submitForm: '/api/submitForm/',
 
     createCourse: '/api/course',
-
+    deleteCourse: '/api/course/:id',
+    
     createFormStructure: '/api/structure/create',
     createCoach: '/api/coach',
     createCoachForm: '/api/coach',
     createProgramForm: '',
     createProgram: '/api/program',
+    deleteProgram: '/api/program/:id',
+
     createDocument: '/api/document/create',
     createComment: '/api/comment/create',
 
@@ -84,7 +87,6 @@ export default {
     getCourseEnrolledIndividuals: '/api/course/:id/individuals',
     getCoach: '/api/coach/:id',
 
-    seedDatabase: '/api/seedDatabase',
 
 
 }
