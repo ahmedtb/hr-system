@@ -73,6 +73,29 @@ class CoursesController extends Controller
         return response()->json(['success' => 'training coures ' . $id . ' deleted'], 202 );
     }
 
+    
+    public function edit(Request $request, $id)
+    {
+        // return $id;
+        // return $request->all();
+        $validated = $request->validate([
+            'title' => 'required|string',
+            'training_program_id' => 'required|exists:training_programs,id',
+            'status' => ['required', new CourseStatusRule()],
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after:start_date',
+            'week_schedule' => ['required', new WeekScheduleRule()] // need fourther validation of structure
+        ]);
+
+        $course = TrainingCourse::where('id', $id)->first();
+        if ($course) {
+            $course->update($validated);
+
+            return response()->json(['success' => 'course ' . $request->id . ' edited']);
+        } else
+            return response()->json(['failure' => 'course ' . $request->id . ' does not exists']);
+    }
+
     public function getSchedule(int $id)
     {
         Validator::make(['id' => $id], [

@@ -10,6 +10,7 @@ import RenderDocuments from '../components/RenderDocuments'
 import AllowedLink from '../components/AllowedLink';
 import Comments from '../components/Comments';
 import CustomModal from '../components/CustomModal';
+import EditProgram from './components/EditProgramModal';
 export default function ProgramShow(props) {
 
     const { id } = useParams();
@@ -56,15 +57,21 @@ export default function ProgramShow(props) {
 
             <div className="card">
                 <div className="card-header">
-                    البرنامج رقم {program?.id}
-                    <CustomModal buttonClass="btn btn-info" label={'حدف البرنامج من السجلات'} >
-                        <div>
-                            هل تود فعلا حدف البرنامج من السجل بشكل دائما؟
-                        </div>
-                        <button className="btn btn-secondary" onClick={deleteProgram} data-dismiss="modal">نعم</button>
-                        <button className='btn btn-success' data-dismiss="modal">لا</button>
+                    <div className="d-flex flex-row justify-content-between">
 
-                    </CustomModal>
+                        البرنامج رقم {program?.id}
+                        <div>
+                            <CustomModal buttonClass="btn btn-info mr-2" label={'حدف البرنامج من السجلات'} >
+                                <div>
+                                    هل تود فعلا حدف البرنامج من السجل بشكل دائما؟
+                                </div>
+                                <button className="btn btn-secondary" onClick={deleteProgram} data-dismiss="modal">نعم</button>
+                                <button className='btn btn-success' data-dismiss="modal">لا</button>
+
+                            </CustomModal>
+                            <EditProgram program={program} />
+                        </div>
+                    </div>
                 </div>
 
                 <div className="card-body">

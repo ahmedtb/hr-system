@@ -104,12 +104,15 @@ Route::get('coach/{id}', [CoachController::class, 'show'])->middleware(['auth:ad
 
 Route::post('program', [ProgramsController::class, 'create'])->middleware(['auth:admin,coach']);
 Route::delete('program/{id}', [ProgramsController::class, 'delete'])->middleware(['auth:admin,coach']);
+Route::put('program/{id}', [ProgramsController::class, 'edit'])->middleware(['auth:admin,coach']);
+
 Route::get('program/index', [ProgramsController::class, 'index'])->middleware(['auth:admin,coach,employee,individual']);
 Route::get('program/{id}', [ProgramsController::class, 'show'])->middleware(['auth:admin,coach,employee,individual']);
 Route::get('getPrograms', [ProgramsController::class, 'getPrograms'])->middleware(['auth:admin,coach,employee,individual']);
 
 Route::post('course', [CoursesController::class, 'create'])->middleware(['auth:admin,coach']);
 Route::delete('course/{id}', [CoursesController::class, 'delete'])->middleware(['auth:admin,coach']);
+Route::put('course/{id}', [CoursesController::class, 'edit'])->middleware(['auth:admin,coach']);
 Route::get('course/index', [CoursesController::class, 'index'])->middleware('auth:admin,employee,individual,coach');
 Route::get('course/{id}', [CoursesController::class, 'show'])->middleware('auth:admin,employee,coach,individual');
 Route::get('course/{id}/schedule', [CoursesController::class, 'getSchedule'])->middleware('auth:admin,employee,coach,individual');

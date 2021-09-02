@@ -26,7 +26,7 @@ import {
 import Comments from '../components/Comments'
 import RenderDocuments from '../components/RenderDocuments'
 import CustomModal from '../components/CustomModal'
-
+import EditCourseModal from './components/EditCourseModal'
 export default function CourseShow(props) {
 
     const { id } = useParams();
@@ -171,7 +171,7 @@ export default function CourseShow(props) {
                                         <button className='btn btn-success' data-dismiss="modal">لا</button>
 
                                     </CustomModal>
-
+                                    <EditCourseModal course={course} />
                                 </div>
                             </div>
                         </div>

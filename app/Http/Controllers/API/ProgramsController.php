@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Models\Document;
 use Illuminate\Http\Request;
 use App\Models\TrainingProgram;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Filters\TrainingProgramFilters;
@@ -70,11 +71,34 @@ class ProgramsController extends Controller
         return TrainingProgram::select(['id', 'title', 'category'])->get();
     }
 
-    
+
     public function delete($id)
     {
         TrainingProgram::where('id', $id)->first()->delete();
 
-        return response()->json(['success' => 'training program ' . $id . ' deleted'], 202 );
+        return response()->json(['success' => 'training program ' . $id . ' deleted'], 202);
+    }
+
+
+    public function edit(Request $request, $id)
+    {
+        // return $id;
+        // return $request->all();
+        $validated = $request->validate([
+            // 'id' => 'required|exists:training_programs,id',
+            'title' => ['sometimes', 'string', Rule::unique('training_programs')->ignore($id)],
+            'goals' => 'sometimes|string',
+            'category' => 'sometimes|string',
+            'period' => 'sometimes|integer',
+            'details' => 'sometimes|string',
+        ]);
+
+        $program = TrainingProgram::where('id', $id)->first();
+        if ($program) {
+            $program->update($validated);
+
+            return response()->json(['success' => 'program ' . $request->id . ' edited']);
+        } else
+            return response()->json(['failure' => 'program ' . $request->id . ' does not exists']);
     }
 }

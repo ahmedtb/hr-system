@@ -7,6 +7,7 @@ import { useParams, Link } from 'react-router-dom';
 import EmployeesTable from '../partials/EmployeesTable'
 import JobsTable from '../partials/JobsTable'
 import Pagination from '../utility/Pagination'
+import AllowedLink from '../components/AllowedLink'
 export default function UnitShow(props) {
 
     const { id } = useParams();
@@ -49,7 +50,7 @@ export default function UnitShow(props) {
         getunit()
         getUnitEmployees()
         getUnitJobs()
-    }, [])
+    }, [id])
 
     return (
         <div className="col-12">
@@ -69,9 +70,9 @@ export default function UnitShow(props) {
                         </div>
                         <div className="col-5 border border-dark rounded m-2 text-center">
                             الوحدة الاعلى التي تتبعها
-                            <Link to={routes.showUnit.replace(':id', unit?.parent_id)}>
+                            <AllowedLink to={routes.showUnit.replace(':id', unit?.parent_id)}>
                                 {unit?.parent?.name}
-                            </Link>
+                            </AllowedLink>
                         </div>
                     </div>
 

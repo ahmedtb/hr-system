@@ -16,6 +16,7 @@ export default {
 
     createCourse: '/api/course',
     deleteCourse: '/api/course/:id',
+    editCourse: '/api/course/:id',
     
     createFormStructure: '/api/structure/create',
     createCoach: '/api/coach',
@@ -23,6 +24,7 @@ export default {
     createProgramForm: '',
     createProgram: '/api/program',
     deleteProgram: '/api/program/:id',
+    editProgram: '/api/program/:id',
 
     createDocument: '/api/document/create',
     createComment: '/api/comment/create',
