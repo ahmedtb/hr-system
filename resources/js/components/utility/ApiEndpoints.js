@@ -33,6 +33,7 @@ export default {
     createEmployeeForm: '/api/createEmployeeForm',
     createEmployee: '/api/createEmployee',
     getEmployee: '/api/employee/:id',
+    deleteEmployee: '/api/employee/:id',
     getEmployeeResumedCourses: '/api/employee/:id/courses/resumed',
 
     getEmployees: '/api/getEmployees',

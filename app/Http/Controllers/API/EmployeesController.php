@@ -105,6 +105,13 @@ class EmployeesController extends Controller
         }
     }
 
+    public function delete($id)
+    {
+        Employee::where('id', $id)->first()->delete();
+
+        return response()->json(['success' => 'employee ' . $id . ' deleted'], 202);
+    }
+
     public function createForm()
     {
         $jobs = Job::with('unit')->get();
