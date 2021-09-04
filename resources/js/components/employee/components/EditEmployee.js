@@ -3,90 +3,120 @@ import axios from 'axios'
 import ApiEndpoints from '../../utility/ApiEndpoints'
 import logError from '../../utility/logError'
 import CustomModal from '../../components/CustomModal'
+import { Redirect } from 'react-router'
 
 export default function EditEmployeeModal(props) {
-    const Employee = props.Employee
-    const [title, setTitle] = React.useState('')
-    const [goals, setGoals] = React.useState('')
-    const [period, setPeriod] = React.useState('')
-    const [category, setcategory] = React.useState('')
-    const [details, setdetails] = React.useState('')
+    const employee = props.employee
+    const change = props.change
+
+    const [jobs, setJobs] = React.useState([])
+    React.useEffect(() => {
+        axios.get(ApiEndpoints.createEmployeeForm).then((response) => {
+            setJobs(response.data.jobs)
+        }).catch((error) => { logError(error) })
+    }, [])
+
+    const [name, setname] = React.useState('')
+    const [address, setaddress] = React.useState('')
+    const [employment_date, setemployment_date] = React.useState('')
+    const [basic_salary, setbasic_salary] = React.useState('')
+    const [phone_number, setphone_number] = React.useState('')
+    const [job_id, setjob_id] = React.useState('')
+    const [email, setemail] = React.useState('')
 
     React.useEffect(() => {
-        // console.log('Employee edit', Employee)
-        if(Employee){
-            setTitle(Employee?.title)
-            setGoals(Employee?.goals);
-            setPeriod(Employee?.period);
-            setcategory(Employee?.category);
-            setdetails(Employee?.details);
+        if (employee) {
+            setname(employee?.name)
+            setaddress(employee?.address);
+            setemployment_date(employee?.employment_date);
+            setbasic_salary(employee?.basic_salary);
+            setphone_number(employee?.phone_number);
+            setjob_id(employee?.job_id);
+            setemail(employee?.email);
         }
-    }, [Employee])
+    }, [employee])
 
     async function submit() {
         try {
-            // const data = new FormData()
-            // data.append('id', Employee.id)
-            // if (title) data.append('title', title)
-            // if (goals) data.append('goals', goals)
-            // if (period) data.append('period', period)
-            // if (category) data.append('category', category)
-            // if (details) data.append('details', details)
-
-            const res = await axios.put(ApiEndpoints.editEmployee.replace(':id',Employee.id), {
-                id: Employee.id,
-                title: title,
-                goals: goals,
-                period: period,
-                category: category,
-                details: details,
+            const res = await axios.put(ApiEndpoints.editEmployee.replace(':id', employee.id), {
+                id: employee.id,
+                name: name,
+                address: address,
+                employment_date: employment_date,
+                basic_salary: basic_salary,
+                phone_number: phone_number,
+                job_id: job_id,
+                email: email
             })
             console.log(res.data)
+            change()
         } catch (error) {
             logError(error)
         }
     }
 
-
     return (
         <>
             <CustomModal buttonClass="btn btn-secondary" label={'تعديل ملف الموظف'}>
 
-                {/* <div className="card">
-                    <div className="card-header">تعديل حقيبة تدريبية رقم {Employee?.id}</div>
+                <div className="row">
+                    <div className="col-2 p-2 border rounded m-2 text-center">
+                        <label className="">صورة الموظف</label>
+                        <img height='100' onClick={() => { }} src={'/css/profile.png'} />
+                    </div>
 
-                    <div className="card-body row justify-content-center">
+                    <div className="col-10 row">
 
-                        <div className="col-6">
-                            <label htmlFor="title">عنوان البرنامج</label>
-                            <input className="form-control" value={title} onChange={(e) => setTitle(e.target.value)} name="title" type="text" id="title" />
+                        <div className="col-5 p-2 border rounded m-2 row ">
+                            <label className="col-4">اسم الموظف</label>
+                            <input className="col-8 form-control" value={name} onChange={(e) => setname(e.target.value)} type="text" />
                         </div>
-                        <div className="col-6">
-                            <label htmlFor="goals">اهداف البرنامج</label>
-                            <input className="form-control" value={goals} onChange={(e) => setGoals(e.target.value)} name="goals" type="text" id="goals" />
+                        <div className="col-5 p-2 border rounded m-2 row">
+                            <label className="col-4">عنوان الموظف</label>
+                            <input className="col-8 form-control" value={address} onChange={(e) => setaddress(e.target.value)} type="text" />
                         </div>
-                        <div className="col-6">
-                            <label htmlFor="period">مدة البرنامج بالدقائق</label>
-                            <input className="form-control" value={period} onChange={(e) => setPeriod(e.target.value)} name="period" type="number" id="period" />
+                        <div className="col-5 p-2 border rounded m-2 row">
+                            <label className="col-4">تاريخ التوظيف</label>
+                            <input className="col-8 form-control" value={employment_date} onChange={(e) => setemployment_date(e.target.value)} type="date" />
                         </div>
-                        <div className="col-6">
-                            <label htmlFor="category">تصنيف</label>
-                            <input className="form-control" value={category} onChange={(e) => setcategory(e.target.value)} name="category" type="text" id="category" />
+                        <div className="col-5 p-2 border rounded m-2 row">
+                            <label className="col-4">مرتب الموظف</label>
+                            <input className="col-8 form-control" value={basic_salary} onChange={(e) => setbasic_salary(e.target.value)} type="number" />
                         </div>
-                        <div className="col-6">
-                            <label htmlFor="details">تفاصيل حول البرنامج</label>
-                            <textarea rows="5" className="form-control" value={details} onChange={(e) => setdetails(e.target.value)} name="details" type="text" id="details" />
+                    </div>
+                    <div className="col-12 row">
+
+                        <div className="col-5 p-2 border rounded m-2 row">
+                            <label className="col-4">رقم هاتف الموظف</label>
+                            <input className="col-8 form-control" value={phone_number} onChange={(e) => setphone_number(e.target.value)} type="text" />
                         </div>
 
 
-                        <div className="col-2">
-                            <button type="button" className="btn btn-success"  data-dismiss="modal" onClick={submit} type="button" value="تسجيل">
-                                تعديل
-                            </button>
+
+                        <div className="col-5 p-2 border rounded m-2 row">
+
+                            <label className="col-4">الوظيفة</label>
+                            <select className="col-8 form-control" value={job_id} onChange={(e) => setjob_id(e.target.value)} >
+                                <option >نرجو اختيار نوع الوظيفة</option>
+
+                                {
+                                    jobs.map((job, index) => (
+                                        <option key={index} value={job.id}>{job.name + '--' + job.unit.name}</option>
+                                    ))
+                                }
+                            </select>
+                        </div>
+                        <div className="col-5 p-2 border rounded m-2 row">
+                            <label className="col-4">بريد الكتروني</label>
+                            <input className="col-8 form-control" value={email} onChange={(e) => setemail(e.target.value)} type="email" name="email" />
                         </div>
 
                     </div>
-                </div> */}
+                    <div className="col-12 p-2 m-2 d-flex justify-content-center">
+                        <input onClick={submit} type="button" value="تعديل" />
+                    </div>
+                </div>
+
             </CustomModal>
         </>
     )

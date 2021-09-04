@@ -34,7 +34,7 @@ export default function EmployeeShow(props) {
     async function getEmployeeInfo() {
         try {
             const response = await axios.get(ApiEndpoints.getEmployee.replace(':id', id))
-            console.log('employee show', response.data.employee)
+            // console.log('employee show', response.data.employee)
             setemployee(response.data.employee)
             setcoach(response.data.coach)
             setresumedCourses(response.data.resumedCourses)
@@ -61,8 +61,7 @@ export default function EmployeeShow(props) {
 
 
     React.useEffect(() => {
-        getEmployeeInfo()
-        // getEmployeeResumedCourses()
+            getEmployeeInfo()
     }, [])
 
     if (redirect) {
@@ -84,7 +83,7 @@ export default function EmployeeShow(props) {
                             <button className='btn btn-success' data-dismiss="modal">لا</button>
 
                         </CustomModal>
-                        <EditEmployeeModal employee={employee} />
+                        <EditEmployeeModal employee={employee} change={getEmployeeInfo} />
                     </div>
                 </div>
 
@@ -150,7 +149,7 @@ export default function EmployeeShow(props) {
                                 <h5 className="mx-1">
                                     وظيفته
                                 </h5>
-                                <Link to={routes.showJob.replace(':id', employee?.job.id)}>{employee?.job.name}</Link >
+                                <Link to={routes.showJob.replace(':id', employee?.job_id)}>{employee?.job.name}</Link >
                             </div>
 
 
@@ -158,7 +157,7 @@ export default function EmployeeShow(props) {
                                 coach ? (
                                     <div className="m-2 text-center row">
                                         الموظف كمدرب
-                                        <Link to={''} >{coach.id}</Link>
+                                        <Link to={routes.showCoach.replace(':id', coach.id)} >{coach.id}</Link>
                                     </div>
                                 ) : null
                             }
@@ -212,35 +211,37 @@ export default function EmployeeShow(props) {
                                 <CoursesTable courses={resumedCourses} />
                             </div>
                         </div>
-                        <div className="row">
-                            <div className="col-4 d-flex flex-row">
-                                <FaChalkboardTeacher className="mr-2" size={30} />
-                                <Link to={routes.coursesBrowser + '?resumed=true&employee_id=' + id}>
-                                    الدورات الجارية المسجل بها {resumedCourses.length}
-                                </Link>
-                            </div>
-                            <div className="col-4 d-flex flex-row">
-                                <FaChalkboardTeacher className="mr-2" size={30} />
-                                <Link to={routes.coursesBrowser + '?done=true&employee_id=' + id}>
-                                    الدورات المنتهية المسجل بها {doneCourses.length}
-                                </Link>
-                            </div>
-                            <div className="col-4 d-flex flex-row">
-                                <FaChalkboardTeacher className="mr-2" size={30} />
-                                <Link to={routes.coursesBrowser + '?canceled=true&employee_id=' + id}>
-                                    الدورات الملغية المسجل بها {canceledCourses.length}
-                                </Link>
-                            </div>
-                            <div className="col-4 d-flex flex-row">
-                                <FaChalkboardTeacher className="mr-2" size={30} />
-                                <Link to={routes.coursesBrowser + '?planned=true&employee_id=' + id}>
-                                    الدورات المخطط له المسجل بها {plannedCourses.length}
-                                </Link>
-                            </div>
-                        </div>
-
                     </div>
-
+                ) : null
+            }
+            {
+                toggleUI == 'courses' ? (
+                    <div className="row">
+                        <div className="col-4 d-flex flex-row">
+                            <FaChalkboardTeacher className="mr-2" size={30} />
+                            <Link to={routes.coursesBrowser + '?resumed=true&employee_id=' + id}>
+                                الدورات الجارية المسجل بها {resumedCourses.length}
+                            </Link>
+                        </div>
+                        <div className="col-4 d-flex flex-row">
+                            <FaChalkboardTeacher className="mr-2" size={30} />
+                            <Link to={routes.coursesBrowser + '?done=true&employee_id=' + id}>
+                                الدورات المنتهية المسجل بها {doneCourses.length}
+                            </Link>
+                        </div>
+                        <div className="col-4 d-flex flex-row">
+                            <FaChalkboardTeacher className="mr-2" size={30} />
+                            <Link to={routes.coursesBrowser + '?canceled=true&employee_id=' + id}>
+                                الدورات الملغية المسجل بها {canceledCourses.length}
+                            </Link>
+                        </div>
+                        <div className="col-4 d-flex flex-row">
+                            <FaChalkboardTeacher className="mr-2" size={30} />
+                            <Link to={routes.coursesBrowser + '?planned=true&employee_id=' + id}>
+                                الدورات المخطط له المسجل بها {plannedCourses.length}
+                            </Link>
+                        </div>
+                    </div>
                 ) : null
             }
 
@@ -295,6 +296,6 @@ export default function EmployeeShow(props) {
                         </div>
                     </div> : null
             }
-        </div>
+        </div >
     )
 }

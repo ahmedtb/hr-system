@@ -34,6 +34,8 @@ export default {
     createEmployee: '/api/createEmployee',
     getEmployee: '/api/employee/:id',
     deleteEmployee: '/api/employee/:id',
+    editEmployee: '/api/employee/:id',
+    
     getEmployeeResumedCourses: '/api/employee/:id/courses/resumed',
 
     getEmployees: '/api/getEmployees',

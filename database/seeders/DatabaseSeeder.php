@@ -26,6 +26,7 @@ use App\Models\Assessments\TrainingPeriodAssessment;
 use App\Models\Comment;
 use App\Models\Supervisor;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -69,6 +70,8 @@ class DatabaseSeeder extends Seeder
         Employee::factory(20)->create();
         TargetedIndividual::factory(20)->create();
         Admin::factory(5)->create();
+        Admin::factory()->create(['username'=>'ahmed','password'=>Hash::make('password')]);
+
         Supervisor::factory(5)->create();
 
         TrainingProgram::factory(20)->create();

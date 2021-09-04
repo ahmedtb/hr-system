@@ -7,6 +7,7 @@ use App\Models\Document;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Models\TrainingCourse;
+use Illuminate\Validation\Rule;
 use App\Filters\EmployeeFilters;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -110,6 +111,21 @@ class EmployeesController extends Controller
         Employee::where('id', $id)->first()->delete();
 
         return response()->json(['success' => 'employee ' . $id . ' deleted'], 202);
+    }
+
+    public function edit(Request $request){
+        // return $request->all();
+        $validateddata = $request->validate([
+            'name' => ['sometimes','string', Rule::unique('employees','name')->ignore($request->id)],
+            'address' => 'sometimes|string',
+            'employment_date' => 'sometimes|date',
+            'basic_salary' => 'sometimes|regex:/^[0-9]+(\.[0-9][0-9]?)?$/',
+            'phone_number' => ['sometimes','string', Rule::unique('employees','phone_number')->ignore($request->id)],
+            'job_id' => 'sometimes|exists:jobs,id',
+            'email' => ['sometimes','string', Rule::unique('employees','email')->ignore($request->id)],
+        ]);
+        Employee::where('id', $request->id)->first()->update($validateddata);
+        return ['success'=> 'employee: ' . $request->id . ' is edited'];
     }
 
     public function createForm()

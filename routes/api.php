@@ -73,6 +73,7 @@ Route::get('getEmployees', [EmployeesController::class, 'getEmployees'])->middle
 Route::get('employee/index', [EmployeesController::class, 'index'])->middleware(['auth:admin']);
 Route::get('employee/{id}', [EmployeesController::class, 'show'])->middleware(['auth:admin']);
 Route::delete('employee/{id}', [EmployeesController::class, 'delete'])->middleware(['auth:admin']);
+Route::put('employee/{id}', [EmployeesController::class, 'edit'])->middleware(['auth:admin']);
 
 Route::post('targeted/create', [TargetedIndividualsController::class, 'create'])->middleware(['auth:admin']);
 Route::get('targeted/{id}', [TargetedIndividualsController::class, 'show'])->middleware(['auth:admin']);
