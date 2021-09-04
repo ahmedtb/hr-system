@@ -57,7 +57,7 @@ export default function CourseShow(props) {
 
     async function deleteCourse() {
         try {
-            const response = await  axios.delete(ApiEndpoints.deleteCourse.replace(':id',course.id))
+            const response = await axios.delete(ApiEndpoints.deleteCourse.replace(':id', course.id))
             console.log('courseShow delete', response.data)
             setredirect(true)
         } catch (error) { logError(error) }
@@ -66,9 +66,10 @@ export default function CourseShow(props) {
     if (redirect) {
         return <Redirect to={routes.dashboard} />;
     }
+    const [toggleUI, settoggleUI] = React.useState('documents')
 
     return (
-        <div className="col-md-12">
+        <div className="col-md-12 pb-5">
 
 
             <div className="row wrap">
@@ -198,14 +199,7 @@ export default function CourseShow(props) {
                                 <ScheduleTable scheduleTable={course?.scheduleTable} attendances={attendances} />
                             </div>
 
-                            <div className="col-4 border border-primary bg-light">
-                                <h4>ملاحظات حول الدورة</h4>
 
-
-                                <div style={{ maxHeight: 500, overflow: 'auto', display: 'inline-block' }}>
-                                    <Comments commentable_id={id} type={'course'} />
-                                </div>
-                            </div>
                         </div>
                     </div>
 
@@ -239,37 +233,48 @@ export default function CourseShow(props) {
                         </div> : null
                     }
                 </div>
-                <div className="col-12">
 
-                    <div className="card">
-
-                        <div className="card-body">
-                            <div className="row justify-content-between">
-                                <h4>المستندات الملحق بالدورة</h4>
-                                <AllowedLink to={{
-                                    pathname: routes.attachDocument, state: { documentable: course, type: 'App\\Models\\TrainingCourse' }
-                                }}>الحاق مستند جديد</AllowedLink>
-                            </div>
-                            <div className="row bg-light">
-
-                                <RenderDocuments
-                                    documentable_id={id}
-                                    documentable_type='App\Models\TrainingCourse'
-                                />
-
-                            </div>
-
-                        </div >
-                    </div >
-
+                <div className="row justify-content-around">
+                    <div onClick={() => settoggleUI('documents')} className={"p-2 " + (toggleUI == 'documents' ? 'bg-primary' : 'bg-light') }>المستندات</div>
+                    <div onClick={() => settoggleUI('notes')} className={"p-2 " + (toggleUI == 'notes' ? 'bg-primary' : 'bg-light') }>ملاحظات</div>
                 </div>
+                {
+                    toggleUI == 'documents' ?
+                        <div className="col-12">
+
+                            <div className="card">
+
+                                <div className="card-body">
+                                    <div className="row justify-content-between">
+                                        <h4>المستندات الملحق بالدورة</h4>
+                                        <AllowedLink to={{
+                                            pathname: routes.attachDocument, state: { documentable: course, type: 'App\\Models\\TrainingCourse' }
+                                        }}>الحاق مستند جديد</AllowedLink>
+                                    </div>
+                                    <div className="row bg-light">
+
+                                        <RenderDocuments
+                                            documentable_id={id}
+                                            documentable_type='App\Models\TrainingCourse'
+                                        />
+
+                                    </div>
+
+                                </div >
+                            </div >
+
+                        </div> : null
+                }
+                {
+                    toggleUI == 'notes' ?
+                        <div className="col-12">
+                            <h4>ملاحظات حول الدورة</h4>
+                            <div className="col-12" style={{ maxHeight: 500, overflow: 'auto', display: 'inline-block' }}>
+                                <Comments commentable_id={id} type={'course'} />
+                            </div>
+                        </div> : null
+                }
             </div>
-
-
-
-
-
-
 
         </div >
     )

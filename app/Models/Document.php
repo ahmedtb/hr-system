@@ -12,6 +12,10 @@ class Document extends Model
 
     protected $guarded = [];
 
+    // protected $hidden = [
+    //     'content'
+    // ];
+    
     public function documentable()
     {
         return $this->morphTo();

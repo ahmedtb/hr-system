@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\DocumentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('document/{id}', [DocumentsController::class, 'download'])->middleware(['auth:admin']);
+
 Route::view('{path}', 'reactFrontEnd')->where('path', '([A-z\d\-\/_.]+)?');
 
 Auth::routes();

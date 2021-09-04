@@ -28,7 +28,7 @@ function Comments(props) {
     const commentable_id = props.commentable_id
     const type = props.type
 
-    const [create, setcreate] = React.useState(null)
+    const [create, setcreate] = React.useState('')
 
     const [comments, setcomments] = React.useState([])
     async function fetchComments() {
@@ -60,6 +60,7 @@ function Comments(props) {
                 commenter_type: props.user.role
             })
             console.log(response.data)
+            setcreate('')
             fetchComments()
         } catch (error) { logError(error) }
     }
@@ -69,17 +70,19 @@ function Comments(props) {
             {
                 comments.map((comment, index) => (
                     <div key={index} className="border rounded">
-                        <h5>
+                        <h3>
                             <Commenter commenter={comment.commenter} commenter_type={comment.commenter_type} />
-                        </h5>
+                        </h3>
                         <div>
                             {comment.content}
                         </div>
                     </div>
                 ))
             }
-            <input className='form-control' type='text' onChange={(e) => { setcreate(e.target.value) }} />
-            <button className="btn btn-success" onClick={() => submit()}>تعليق</button>
+            <div className="row">
+                <textarea className='form-control' value={create} type='text' onChange={(e) => { setcreate(e.target.value) }} />
+                <button className="btn btn-success" onClick={() => submit()}>تعليق</button>
+            </div>
         </>
     )
 }

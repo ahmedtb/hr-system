@@ -82,7 +82,7 @@ Route::get('individual/index', [TargetedIndividualsController::class, 'index'])-
 
 Route::get('document/index', [DocumentsController::class, 'index'])->middleware(['auth:admin,coach,individual,employee']);
 Route::post('document/create', [DocumentsController::class, 'create'])->middleware(['auth:admin']);
-
+// Route::get('document/{id}', [DocumentsController::class, 'download'])->middleware(['auth:admin']);
 
 Route::get('form/index', [FormsController::class, 'index'])->middleware(['auth:admin']);
 Route::get('form/{id}', [FormsController::class, 'show'])->middleware(['auth:admin']);

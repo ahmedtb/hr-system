@@ -22,7 +22,6 @@ export default function EditCourseModal(props) {
             setstart_date(course?.start_date);
             setend_date(course?.end_date);
             setweek_schedule(course?.week_schedule);
-            console.log('edit course', course)
         }
     }, [course])
 
@@ -176,7 +175,7 @@ export default function EditCourseModal(props) {
 
                         </div>
                         <div className="col-5 p-2 border rounded m-2 row ">
-                            <input onClick={submit} type="button" value="تسجيل" />
+                            <input onClick={submit} type="button" className="btn btn-success" value="تعديل" />
                         </div>
 
 

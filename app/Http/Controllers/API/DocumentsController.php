@@ -33,7 +33,7 @@ class DocumentsController extends Controller
         // return ($request->all());
         $request->validate([
             'name' => 'required|string',
-            'content' => 'required|file|mimes:docx,pdf,jpg,jpeg,png,bmp,tiff |max:1024',
+            'content' => 'required|file|mimes:docx,pdf,jpg,jpeg,png,bmp,tiff |max:10000',
             'documentable_type' => 'required|in:App\\Models\\TrainingProgram,App\\Models\\TrainingCourse,App\\Models\\Employee,App\\Models\\TargetedIndividual',
             'documentable_id' => ['required', Rule::exists($this->getDocumentableTable($request->documentable_type), 'id')],
             'type' => 'required|in:docx,jpg,jpeg,png,bmp,tiff,pdf'
@@ -49,5 +49,20 @@ class DocumentsController extends Controller
             'documentable_type' => $request->documentable_type
         ]);
         return ['success' => 'document successfully attached'];
+    }
+
+    public function download($id)
+    {
+        $document = Document::where('id', $id)->first();
+        if ($document) {
+            $filename = $document->name . '.' . $document->type;
+            $raw_image_string = base64_decode($document->content);
+            if ($document->type == 'png')
+                return response($raw_image_string)->header('Content-Type', 'image/png');
+            if ($document->type == 'docx')
+                return response($raw_image_string)->header('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+            if ($document->type == 'pdf')
+                return response($raw_image_string)->header('Content-Type', 'application/pdf');
+        }
     }
 }
