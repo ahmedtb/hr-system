@@ -14,7 +14,7 @@ function RatingField(props) {
     }
     React.useEffect(() => {
         setConfig()
-    }, [])
+    }, [label])
 
     let stars = []
     for (let i = 0; i < 5; i++) {

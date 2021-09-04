@@ -235,8 +235,8 @@ export default function CourseShow(props) {
                 </div>
 
                 <div className="row justify-content-around">
-                    <div onClick={() => settoggleUI('documents')} className={"p-2 " + (toggleUI == 'documents' ? 'bg-primary' : 'bg-light') }>المستندات</div>
-                    <div onClick={() => settoggleUI('notes')} className={"p-2 " + (toggleUI == 'notes' ? 'bg-primary' : 'bg-light') }>ملاحظات</div>
+                    <div onClick={() => settoggleUI('documents')} className={"p-2 rounded " + (toggleUI == 'documents' ? 'bg-primary' : 'bg-light') }>المستندات</div>
+                    <div onClick={() => settoggleUI('notes')} className={"p-2 rounded " + (toggleUI == 'notes' ? 'bg-primary' : 'bg-light') }>ملاحظات</div>
                 </div>
                 {
                     toggleUI == 'documents' ?

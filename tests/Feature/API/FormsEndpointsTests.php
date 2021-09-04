@@ -4,11 +4,12 @@ namespace Tests\Feature\API;
 
 use Tests\TestCase;
 use App\Models\Form;
+use App\Models\Admin;
 use App\Models\FormStructure;
 use App\FieldsTypes\GenderField;
 use App\FieldsTypes\StringField;
-use App\FieldsTypes\ArrayOfFields;
 use App\FieldsTypes\TableField2;
+use App\FieldsTypes\ArrayOfFields;
 use App\Models\Utilities\FormAccessToken;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Testing\Fluent\AssertableJson;
@@ -18,8 +19,17 @@ class FormsEndpointsTests extends TestCase
 {
     use RefreshDatabase;
 
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $admin = Admin::factory()->create();
+        $this->actingAs($admin, 'admin');
+    }
+
     public function test_job_application_forms_could_be_generated_as_a_links_with_tokens()
     {
+
         $formStructure = FormStructure::factory()->create();
         $response = $this->postJson('api/generateForm', [
             'form_structure_id' => $formStructure->id,
@@ -40,7 +50,7 @@ class FormsEndpointsTests extends TestCase
         );
     }
 
-    public function test_form_submited_with_token_is_validated()
+    public function test_form_can_be_submited_with_valid_token()
     {
         $this->withoutExceptionHandling();
         // generate form and return it is url....admin rule

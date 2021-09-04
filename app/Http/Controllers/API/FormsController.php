@@ -41,7 +41,7 @@ class FormsController extends Controller
     public function getGeneratedForm(Request $request, $access_token)
     {
         $formAccessToken = FormAccessToken::where('access_token', $access_token)->first();
-        if ($formAccessToken) {
+        if ($formAccessToken->stillValid()) {
             $form_structure = FormStructure::where('id', $formAccessToken->form_structure_id)->first();
             return ($form_structure);
         } else {
@@ -65,7 +65,7 @@ class FormsController extends Controller
             'filled_fields' => $ArrayInstance
         ]);
 
-        $formAccessToken->delete();
+        $formAccessToken->deleteCopy();
 
         return response(['success' => 'form successfully disposed']);
     }

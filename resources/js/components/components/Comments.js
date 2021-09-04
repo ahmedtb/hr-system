@@ -73,9 +73,9 @@ function Comments(props) {
                         <h3>
                             <Commenter commenter={comment.commenter} commenter_type={comment.commenter_type} />
                         </h3>
-                        <div>
-                            {comment.content}
-                        </div>
+                        <p>
+                            {comment.content.split('\n').map(str => <p>{str}</p>)}
+                        </p>
                     </div>
                 ))
             }

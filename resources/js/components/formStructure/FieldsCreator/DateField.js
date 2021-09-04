@@ -16,7 +16,7 @@ function DateField(props) {
 
     React.useEffect(() => {
         setConfig()
-    }, [])
+    }, [label])
     return (
 
         <div className="text-center">
@@ -27,7 +27,7 @@ function DateField(props) {
                 <div className="mr-2">
                     عنوان الحقل
                 </div>
-                <input className="rounded" onChange={(e) => { setlabel(e.target.value); setConfig(); }} />
+                <input className="rounded" onChange={(e) => { setlabel(e.target.value) }} />
             </div>
             <strong className="row justify-content-center m-2">{label}</strong>
             <input size="40" placeholder="حقل تاريخ" disabled />

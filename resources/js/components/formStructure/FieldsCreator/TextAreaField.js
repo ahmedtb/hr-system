@@ -17,7 +17,7 @@ function TextAreaField(props) {
 
     React.useEffect(() => {
         setConfig()
-    }, [])
+    }, [label])
 
     return (
         <div className="text-center">

@@ -15,7 +15,7 @@ function LabelField(props) {
 
     React.useEffect(() => {
         setConfig()
-    }, [])
+    }, [label])
 
     return (
         <div className="text-center">
@@ -26,7 +26,7 @@ function LabelField(props) {
                 <div className="mr-2">
                     النص
                 </div>
-                <input className="rounded" onChange={(e) => { setvalue(e.target.value); setConfig(); }} />
+                <input className="rounded" onChange={(e) => { setvalue(e.target.value) }} />
 
             </div>
             <div className="col-12 m-1">
