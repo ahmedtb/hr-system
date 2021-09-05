@@ -94,6 +94,6 @@ export default {
     getCourseEnrolledIndividuals: '/api/course/:id/individuals',
     getCoach: '/api/coach/:id',
 
-
+    deleteIndividual: '/api/individual/:id',
 
 }

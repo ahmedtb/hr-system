@@ -16,9 +16,39 @@ use Illuminate\Validation\Rules\Password;
 class TargetedIndividualsController extends Controller
 {
 
+    // public function show($id)
+    // {
+    //     return TargetedIndividual::where('id', $id)->first();
+    // }
+
     public function show($id)
     {
-        return TargetedIndividual::where('id', $id)->first();
+        $individual = TargetedIndividual::where('id', $id)->first();
+        $coach = $individual->coach;
+
+        $resumedCourses = $individual->TrainingCourses(false)->resumed()->with(['trainingProgram'])->get();
+        foreach ($resumedCourses as $resumedCourse) {
+            $resumedCourse['individualAttendaces'] = $resumedCourse->individualAttendaces($individual);
+        }
+        $plannedCourses = $individual->TrainingCourses(false)->planned()->with(['trainingProgram'])->get();
+        $doneCourses = $individual->TrainingCourses(false)->done()->with(['trainingProgram'])->get();
+        $canceledCourses = $individual->TrainingCourses(false)->canceled()->with(['trainingProgram'])->get();
+
+        // $trialPeriodAssessments = $individual->TrialPeriodAssessments;
+        // $trainingPeriodAssessments = $individual->TrainingPeriodAssessments;
+        $traineeCourseAssessments = $individual->TraineeCourseAssessments;
+        return [
+            'individual' => $individual,
+            'coach' => $coach,
+            'resumedCourses' => $resumedCourses,
+            'plannedCourses' => $plannedCourses,
+            'doneCourses' => $doneCourses,
+            'canceledCourses' => $canceledCourses,
+
+            // 'trialPeriodAssessments' => $trialPeriodAssessments,
+            // 'trainingPeriodAssessments' => $trainingPeriodAssessments,
+            'traineeCourseAssessments' => $traineeCourseAssessments
+        ];
     }
 
     public function getIndividuals()
@@ -75,6 +105,13 @@ class TargetedIndividualsController extends Controller
         } else {
             return response(['success' => 'targeted individual created']);
         }
+    }
+
+    public function delete($id)
+    {
+        TargetedIndividual::where('id', $id)->first()->delete();
+
+        return response()->json(['success' => 'individual ' . $id . ' deleted'], 202);
     }
 
     public function index(IndividualFilters $filters, Request $request)

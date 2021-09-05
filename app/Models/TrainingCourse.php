@@ -344,6 +344,11 @@ class TrainingCourse extends Model
         return $this->attendances()->where('profile_id', $employee->id)->where('profile_type', Employee::class)->get();
     }
 
+    public function individualAttendaces(TargetedIndividual $individual)
+    {
+        return $this->attendances()->where('profile_id', $individual->id)->where('profile_type', TargetedIndividual::class)->get();
+    }
+
     public function dayAttendaces($date)
     {
         return $this->attendances()->where('date', $date)->get();

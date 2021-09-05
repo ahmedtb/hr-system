@@ -77,6 +77,7 @@ Route::put('employee/{id}', [EmployeesController::class, 'edit'])->middleware(['
 
 Route::post('targeted/create', [TargetedIndividualsController::class, 'create'])->middleware(['auth:admin']);
 Route::get('targeted/{id}', [TargetedIndividualsController::class, 'show'])->middleware(['auth:admin']);
+Route::delete('individual/{id}', [TargetedIndividualsController::class, 'delete'])->middleware(['auth:admin']);
 Route::get('getIndividuals', [TargetedIndividualsController::class, 'getIndividuals'])->middleware(['auth:admin,coach']);
 Route::get('individual/index', [TargetedIndividualsController::class, 'index'])->middleware(['auth:admin']);
 

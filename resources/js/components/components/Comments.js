@@ -39,6 +39,7 @@ function Comments(props) {
                     course_id: type == 'course' ? commentable_id : undefined,
                     program_id: type == 'program' ? commentable_id : undefined,
                     employee_id: type == 'employee' ? commentable_id : undefined,
+                    individual_id: type == 'individual' ? commentable_id : undefined,
                 }
             })
             // console.log('fetchComments', response.data)
@@ -74,7 +75,7 @@ function Comments(props) {
                             <Commenter commenter={comment.commenter} commenter_type={comment.commenter_type} />
                         </h3>
                         <p>
-                            {comment.content.split('\n').map(str => <p>{str}</p>)}
+                            {comment.content.split('\n').map(str => <p key={Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5)}>{str}</p>)}
                         </p>
                     </div>
                 ))
