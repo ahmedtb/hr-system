@@ -22,6 +22,7 @@ class CommentFilters extends Filters
         'course_id',
         'program_id',
         'employee_id',
+        // 'individual_id',
 
     ];
 

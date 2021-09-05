@@ -16,6 +16,7 @@ class CreateCoachCourseAssessmentsTable extends Migration
         Schema::create('coach_course_assessments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('training_course_id');
+            $table->foreignId('coach_id');
             $table->string('trainees_discipline');
             $table->string('trainees_interaction');
             $table->string('congruence_with_content');

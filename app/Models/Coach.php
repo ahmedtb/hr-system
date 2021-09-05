@@ -15,7 +15,6 @@ class Coach extends Authenticatable
 
     protected $appends = [
         'profile', 'role'
-
     ];
 
     public function getRoleAttribute()

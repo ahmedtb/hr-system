@@ -104,6 +104,7 @@ Route::post('structure/create', [FormStructuresController::class, 'create'])->mi
 Route::post('coach', [CoachController::class, 'create'])->middleware(['auth:admin']);
 Route::get('coach', [CoachController::class, 'createForm'])->middleware(['auth:admin']);
 Route::get('/coach/index', [CoachController::class, 'index'])->middleware(['auth:admin']);
+Route::get('/getCoaches', [CoachController::class, 'getCoaches'])->middleware(['auth:admin']);
 Route::get('coach/{coach_id}/programs', [CoachController::class, 'getPrograms'])->middleware(['auth:admin,coach']);
 Route::get('coach/{id}', [CoachController::class, 'show'])->middleware(['auth:admin,coach']);
 

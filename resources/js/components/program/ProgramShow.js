@@ -51,6 +51,7 @@ export default function ProgramShow(props) {
     if (redirect) {
         return <Redirect to={routes.dashboard} />;
     }
+    const [toggleUI, settoggleUI] = React.useState('documents')
 
     return (
         <div className="col-md-12">
@@ -98,54 +99,70 @@ export default function ProgramShow(props) {
 
             </div>
 
-            <div className="card">
-                <div className="card-header row">
-                    <div>المستندات الملحق بالبرنامج</div>
-                    <AllowedLink to={{
-                        pathname: routes.attachDocument, state: { documentable: program, type: 'App\\Models\\TrainingProgram' }
-                    }}>الحاق مستند جديد</AllowedLink>
-                </div>
 
-                <div className="card-body">
-                    <div className="row">
+            <div className="row justify-content-around">
+                <div onClick={() => settoggleUI('documents')} className={"p-2 rounded " + (toggleUI == 'documents' ? 'bg-primary' : 'bg-light')}>المستندات</div>
+                <div onClick={() => settoggleUI('courses')} className={"p-2 rounded " + (toggleUI == 'courses' ? 'bg-primary' : 'bg-light')}>دورات</div>
+                <div onClick={() => settoggleUI('notes')} className={"p-2 rounded " + (toggleUI == 'notes' ? 'bg-primary' : 'bg-light')}>ملاحظات</div>
+            </div>
 
-                        <RenderDocuments
-                            documentable_id={id}
-                            documentable_type='App\Models\TrainingProgram'
+            {
+                toggleUI == 'documents' ? <div className="card">
+                    <div className="card-header row">
+                        <div>المستندات الملحق بالبرنامج</div>
+                        <AllowedLink to={{
+                            pathname: routes.attachDocument, state: { documentable: program, type: 'App\\Models\\TrainingProgram' }
+                        }}>الحاق مستند جديد</AllowedLink>
+                    </div>
+
+                    <div className="card-body">
+                        <div className="row">
+
+                            <RenderDocuments
+                                documentable_id={id}
+                                documentable_type='App\Models\TrainingProgram'
+                            />
+
+                        </div>
+
+                    </div>
+                </div > : null
+            }
+
+            {
+                toggleUI == 'courses' ? <div className="card">
+                    <div className="card-header">
+                        الدورات التي تتبع البرنامج
+                    </div>
+
+                    <div className="card-body">
+                        <Pagination
+                            fetchPage={fetchCourses}
+                            links={links}
                         />
-
+                        <CoursesTable courses={courses} />
                     </div>
+                </div> : null
+            }
 
-                </div>
-            </div >
 
-            <div className="card">
-                <div className="card-header">
-                    الدورات التي تتبع البرنامج
-                </div>
+            {
+                toggleUI == 'notes' ?
+                    <div className="card">
+                        <div className="card-header ">
+                            <div className="row justify-content-between">
+                                <strong>تعليقات حول البرنامج</strong>
+                            </div>
+                        </div>
 
-                <div className="card-body">
-                    <Pagination
-                        fetchPage={fetchCourses}
-                        links={links}
-                    />
-                    <CoursesTable courses={courses} />
-                </div>
-            </div>
+                        <div className="card-body">
+                            <div className="col-12" style={{ maxHeight: 500, overflow: 'auto', display: 'inline-block' }}>
+                                <Comments commentable_id={id} type={'program'} />
+                            </div>
+                        </div>
+                    </div> : null
+            }
 
-            <div className="card">
-                <div className="card-header ">
-                    <div className="row justify-content-between">
-                        <strong>تعليقات حول البرنامج</strong>
-                    </div>
-                </div>
-
-                <div className="card-body">
-                    <div style={{ maxHeight: 500, overflow: 'auto', display: 'inline-block' }}>
-                        <Comments commentable_id={id} type={'program'} />
-                    </div>
-                </div>
-            </div>
 
         </div >
     )

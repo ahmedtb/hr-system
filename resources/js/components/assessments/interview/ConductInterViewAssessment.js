@@ -85,33 +85,33 @@ export default function ConductInterViewAssessment(props) {
                     <div className="col-5 p-2 border rounded m-2 row ">
                         <label className="col-4">المظهر</label>
                         <select className="col-8 form-control" onChange={(e) => setlook(e.target.value)} >
-                            <option >احتر</option>
-                            <option value="excellent">ممتاز</option>
-                            <option value="good">جيد</option>
-                            <option value="medium">متوسط</option>
-                            <option value="weak">ضعيف</option>
+                            <option >اختر</option>
+                            <option value="1">ممتاز</option>
+                            <option value="2">جيد</option>
+                            <option value="3">متوسط</option>
+                            <option value="4">ضعيف</option>
                         </select>
                     </div>
 
                     <div className="col-5 p-2 border rounded m-2 row ">
                         <label className="col-4">تعريفه لنفسه</label>
                         <select className="col-8 form-control" onChange={(e) => setself_introduction(e.target.value)} >
-                            <option >احتر</option>
-                            <option value="excellent">ممتاز</option>
-                            <option value="good">جيد</option>
-                            <option value="medium">متوسط</option>
-                            <option value="weak">ضعيف</option>
+                            <option >اختر</option>
+                            <option value="1">ممتاز</option>
+                            <option value="2">جيد</option>
+                            <option value="3">متوسط</option>
+                            <option value="4">ضعيف</option>
                         </select>
                     </div>
 
                     <div className="col-5 p-2 border rounded m-2 row ">
                         <label className="col-4">الشخصية</label>
                         <select className="col-8 form-control" onChange={(e) => setpersonality(e.target.value)} >
-                            <option >احتر</option>
-                            <option value="excellent">ممتاز</option>
-                            <option value="good">جيد</option>
-                            <option value="medium">متوسط</option>
-                            <option value="weak">ضعيف</option>
+                            <option >اختر</option>
+                            <option value="1">ممتاز</option>
+                            <option value="2">جيد</option>
+                            <option value="3">متوسط</option>
+                            <option value="4">ضعيف</option>
                         </select>
                     </div>
 
@@ -119,143 +119,143 @@ export default function ConductInterViewAssessment(props) {
                     <div className="col-5 p-2 border rounded m-2 row ">
                         <label className="col-4">اللغة الانجليزية</label>
                         <select className="col-8 form-control" onChange={(e) => setenglish(e.target.value)} >
-                            <option >احتر</option>
-                            <option value="excellent">ممتاز</option>
-                            <option value="good">جيد</option>
-                            <option value="medium">متوسط</option>
-                            <option value="weak">ضعيف</option>
+                            <option >اختر</option>
+                            <option value="1">ممتاز</option>
+                            <option value="2">جيد</option>
+                            <option value="3">متوسط</option>
+                            <option value="4">ضعيف</option>
                         </select>
                     </div>
 
                     <div className="col-5 p-2 border rounded m-2 row ">
                         <label className="col-4">الثقافة</label>
                         <select className="col-8 form-control" onChange={(e) => setculture(e.target.value)} >
-                            <option >احتر</option>
-                            <option value="excellent">ممتاز</option>
-                            <option value="good">جيد</option>
-                            <option value="medium">متوسط</option>
-                            <option value="weak">ضعيف</option>
+                            <option >اختر</option>
+                            <option value="1">ممتاز</option>
+                            <option value="2">جيد</option>
+                            <option value="3">متوسط</option>
+                            <option value="4">ضعيف</option>
                         </select>
                     </div>
 
                     <div className="col-5 p-2 border rounded m-2 row ">
                         <label className="col-4">اللغة العربية</label>
                         <select className="col-8 form-control" onChange={(e) => setarabic(e.target.value)} >
-                            <option >احتر</option>
-                            <option value="excellent">ممتاز</option>
-                            <option value="good">جيد</option>
-                            <option value="medium">متوسط</option>
-                            <option value="weak">ضعيف</option>
+                            <option >اختر</option>
+                            <option value="1">ممتاز</option>
+                            <option value="2">جيد</option>
+                            <option value="3">متوسط</option>
+                            <option value="4">ضعيف</option>
                         </select>
                     </div>
 
                     <div className="col-5 p-2 border rounded m-2 row ">
                         <label className="col-4">المبادرة</label>
                         <select className="col-8 form-control" onChange={(e) => setinitiative(e.target.value)} >
-                            <option >احتر</option>
-                            <option value="excellent">ممتاز</option>
-                            <option value="good">جيد</option>
-                            <option value="medium">متوسط</option>
-                            <option value="weak">ضعيف</option>
+                            <option >اختر</option>
+                            <option value="1">ممتاز</option>
+                            <option value="2">جيد</option>
+                            <option value="3">متوسط</option>
+                            <option value="4">ضعيف</option>
                         </select>
                     </div>
 
                     <div className="col-5 p-2 border rounded m-2 row ">
                         <label className="col-4">مهارات المشاركة</label>
                         <select className="col-8 form-control" onChange={(e) => setsharing_skills(e.target.value)} >
-                            <option >احتر</option>
-                            <option value="excellent">ممتاز</option>
-                            <option value="good">جيد</option>
-                            <option value="medium">متوسط</option>
-                            <option value="weak">ضعيف</option>
+                            <option >اختر</option>
+                            <option value="1">ممتاز</option>
+                            <option value="2">جيد</option>
+                            <option value="3">متوسط</option>
+                            <option value="4">ضعيف</option>
                         </select>
                     </div>
 
                     <div className="col-5 p-2 border rounded m-2 row ">
                         <label className="col-4">الاستيعاب</label>
                         <select className="col-8 form-control" onChange={(e) => setcomprehension(e.target.value)} >
-                            <option >احتر</option>
-                            <option value="excellent">ممتاز</option>
-                            <option value="good">جيد</option>
-                            <option value="medium">متوسط</option>
-                            <option value="weak">ضعيف</option>
+                            <option >اختر</option>
+                            <option value="1">ممتاز</option>
+                            <option value="2">جيد</option>
+                            <option value="3">متوسط</option>
+                            <option value="4">ضعيف</option>
                         </select>
                     </div>
 
                     <div className="col-5 p-2 border rounded m-2 row ">
                         <label className="col-4">اتخاد القرار</label>
                         <select className="col-8 form-control" onChange={(e) => setdecision_making(e.target.value)} >
-                            <option >احتر</option>
-                            <option value="excellent">ممتاز</option>
-                            <option value="good">جيد</option>
-                            <option value="medium">متوسط</option>
-                            <option value="weak">ضعيف</option>
+                            <option >اختر</option>
+                            <option value="1">ممتاز</option>
+                            <option value="2">جيد</option>
+                            <option value="3">متوسط</option>
+                            <option value="4">ضعيف</option>
                         </select>
                     </div>
 
                     <div className="col-5 p-2 border rounded m-2 row ">
                         <label className="col-4">ملائمة المؤهل العلمي لمتطلبات الوظيفة</label>
                         <select className="col-8 form-control" onChange={(e) => setcompatibility_of_education(e.target.value)} >
-                            <option >احتر</option>
-                            <option value="excellent">ممتاز</option>
-                            <option value="good">جيد</option>
-                            <option value="medium">متوسط</option>
-                            <option value="weak">ضعيف</option>
+                            <option >اختر</option>
+                            <option value="1">ممتاز</option>
+                            <option value="2">جيد</option>
+                            <option value="3">متوسط</option>
+                            <option value="4">ضعيف</option>
                         </select>
                     </div>
 
                     <div className="col-5 p-2 border rounded m-2 row ">
                         <label className="col-4">ملائمة الخبرات العلمية لمتطلبات الوظيفة</label>
                         <select className="col-8 form-control" onChange={(e) => setcompatibility_of_experiance(e.target.value)} >
-                            <option >احتر</option>
-                            <option value="excellent">ممتاز</option>
-                            <option value="good">جيد</option>
-                            <option value="medium">متوسط</option>
-                            <option value="weak">ضعيف</option>
+                            <option >اختر</option>
+                            <option value="1">ممتاز</option>
+                            <option value="2">جيد</option>
+                            <option value="3">متوسط</option>
+                            <option value="4">ضعيف</option>
                         </select>
                     </div>
 
                     <div className="col-5 p-2 border rounded m-2 row ">
                         <label className="col-4">ملائمة المهارات المكتسبة لمتطلبات الوظيفة</label>
                         <select className="col-8 form-control" onChange={(e) => setcompatibility_of_skills(e.target.value)} >
-                            <option >احتر</option>
-                            <option value="excellent">ممتاز</option>
-                            <option value="good">جيد</option>
-                            <option value="medium">متوسط</option>
-                            <option value="weak">ضعيف</option>
+                            <option >اختر</option>
+                            <option value="1">ممتاز</option>
+                            <option value="2">جيد</option>
+                            <option value="3">متوسط</option>
+                            <option value="4">ضعيف</option>
                         </select>
                     </div>
 
                     <div className="col-5 p-2 border rounded m-2 row ">
                         <label className="col-4">مدى استطاعته لحل المشاكل</label>
                         <select className="col-8 form-control" onChange={(e) => setproblem_solving_skills(e.target.value)} >
-                            <option >احتر</option>
-                            <option value="excellent">ممتاز</option>
-                            <option value="good">جيد</option>
-                            <option value="medium">متوسط</option>
-                            <option value="weak">ضعيف</option>
+                            <option >اختر</option>
+                            <option value="1">ممتاز</option>
+                            <option value="2">جيد</option>
+                            <option value="3">متوسط</option>
+                            <option value="4">ضعيف</option>
                         </select>
                     </div>
 
                     <div className="col-5 p-2 border rounded m-2 row ">
                         <label className="col-4">مدى تعامله مع الضغط والتوتر الوظيفي</label>
                         <select className="col-8 form-control" onChange={(e) => setstress_handling(e.target.value)} >
-                            <option >احتر</option>
-                            <option value="excellent">ممتاز</option>
-                            <option value="good">جيد</option>
-                            <option value="medium">متوسط</option>
-                            <option value="weak">ضعيف</option>
+                            <option >اختر</option>
+                            <option value="1">ممتاز</option>
+                            <option value="2">جيد</option>
+                            <option value="3">متوسط</option>
+                            <option value="4">ضعيف</option>
                         </select>
                     </div>
 
                     <div className="col-5 p-2 border rounded m-2 row ">
                         <label className="col-4">الشجاعة الأدبية والثقة بالنفس</label>
                         <select className="col-8 form-control" onChange={(e) => setmoral_courage_self_confidence(e.target.value)} >
-                            <option >احتر</option>
-                            <option value="excellent">ممتاز</option>
-                            <option value="good">جيد</option>
-                            <option value="medium">متوسط</option>
-                            <option value="weak">ضعيف</option>
+                            <option >اختر</option>
+                            <option value="1">ممتاز</option>
+                            <option value="2">جيد</option>
+                            <option value="3">متوسط</option>
+                            <option value="4">ضعيف</option>
                         </select>
                     </div>
 

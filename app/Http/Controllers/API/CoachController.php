@@ -28,6 +28,9 @@ class CoachController extends Controller
             ->paginate($request->input('page_size') ?? 10)
             ->appends(request()->except('page'));
     }
+    public function getCoaches(){
+        return Coach::all();
+    }
     public function create(Request $request)
     {
         $validated = $request->validate([

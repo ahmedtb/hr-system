@@ -41,6 +41,7 @@ export default {
     getEmployeeResumedCourses: '/api/employee/:id/courses/resumed',
 
     getEmployees: '/api/getEmployees',
+    getCoaches: '/api/getCoaches',
     getTrainingCourses: '/api/getTrainingCourses',
     getIndividuals: '/api/getIndividuals',
     getUnits: '/api/getUnits',
@@ -71,7 +72,7 @@ export default {
     getTrainingPeriod: '/api/trainingPeriodAssessment/:id',
     getInterview: '/api/interview/:id',
 
-    getCoaches: '/api/coach/index',
+    coachesIndex: '/api/coach/index',
     programIndex: '/api/program/index',
     showForms: '/api/form/index',
     showFormsStructure: '/api/structure/index',

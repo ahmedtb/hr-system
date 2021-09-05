@@ -14,7 +14,7 @@ export default function CoachIndex(props) {
     const [links, setlinks] = React.useState([])
     const [params, setparams] = React.useState([])
 
-    async function fetchPage(link = ApiEndpoints.getCoaches, params = null) {
+    async function fetchPage(link = ApiEndpoints.coachesIndex, params = null) {
         axios.get(link, { params: { ...params } }).then((response) => {
             setcoaches(response.data.data)
             setparams({ ...params })
@@ -26,7 +26,7 @@ export default function CoachIndex(props) {
         }).catch((error) => logError(error))
     }
     async function clearFilters() {
-        fetchPage(ApiEndpoints.getCoaches, null)
+        fetchPage(ApiEndpoints.coachesIndex, null)
     }
 
     React.useEffect(() => {
@@ -49,19 +49,19 @@ export default function CoachIndex(props) {
                     <FiltersContainer label="ترشيح المدربيين" clearFilters={clearFilters}>
                         <TextFilter
                             params={params}
-                            fetchPage={(newparams) => fetchPage(ApiEndpoints.getCoaches, newparams)}
+                            fetchPage={(newparams) => fetchPage(ApiEndpoints.coachesIndex, newparams)}
                             property={'speciality'}
                             label={'تخصص المدرب'}
                         />
                         <TextFilter
                             params={params}
-                            fetchPage={(newparams) => fetchPage(ApiEndpoints.getCoaches, newparams)}
+                            fetchPage={(newparams) => fetchPage(ApiEndpoints.coachesIndex, newparams)}
                             property={'CV'}
                             label={'السيرة الذاتية'}
                         />
                         <TextFilter
                             params={params}
-                            fetchPage={(newparams) => fetchPage(ApiEndpoints.getCoaches, newparams)}
+                            fetchPage={(newparams) => fetchPage(ApiEndpoints.coachesIndex, newparams)}
                             property={'name'}
                             label={'اسم المدرب'}
                         />

@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\API\Assessments;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use App\Filters\TraineeCourseAssessmentFilters;
 use App\Models\Assessments\TraineeCourseAssessment;
+use App\Models\Employee;
+use App\Models\TargetedIndividual;
 
 class TraineeCourseAssessmentsController extends Controller
 {
@@ -14,6 +17,11 @@ class TraineeCourseAssessmentsController extends Controller
         $data = $request->validate([
             'training_course_id' => 'required|exists:training_courses,id',
 
+            'trainee_type' => ['required', Rule::in([Employee::class, TargetedIndividual::class])],
+            'trainee_id' => ['required', Rule::exists($request->trainee_type,'id')],
+            'person_name' => 'required|string',
+
+        
             'coach_understanding' => 'required|array',
             'coach_understanding.rating' => 'required|min:0|max:5',
             'coach_understanding.comment' => 'required|string',

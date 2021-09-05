@@ -2,8 +2,9 @@
 
 namespace Database\Factories\Assessments;
 
-use App\Models\Assessments\CoachCourseAssessment;
+use App\Models\Coach;
 use App\Models\TrainingCourse;
+use App\Models\Assessments\CoachCourseAssessment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CoachCourseAssessmentFactory extends Factory
@@ -32,6 +33,8 @@ class CoachCourseAssessmentFactory extends Factory
     {
         return [
             'training_course_id' => (TrainingCourse::inRandomOrder()->first()->id) ?? TrainingCourse::factory()->create()->id,
+            'coach_id' => (Coach::inRandomOrder()->first()->id) ?? Coach::factory()->create()->id,
+
             'trainees_discipline' => $this->ratingWithComment(),
             'trainees_interaction' => $this->ratingWithComment(),
             'congruence_with_content' => $this->ratingWithComment(),

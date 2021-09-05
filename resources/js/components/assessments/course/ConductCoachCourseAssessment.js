@@ -5,7 +5,7 @@ import logError from '../../utility/logError'
 import { Redirect } from 'react-router'
 import routes from '../../utility/routesEndpoints'
 
-export default function ConductAssessment(props) {
+export default function ConductCoachCourseAssessment(props) {
 
     const [training_course_id, settraining_course_id] = React.useState(null)
     const [trainees_discipline, settrainees_discipline] = React.useState(null)
@@ -19,17 +19,33 @@ export default function ConductAssessment(props) {
     const [training_department_cooperation, settraining_department_cooperation] = React.useState(null)
 
     const [trainingcourses, settrainingcourses] = React.useState([])
-    React.useEffect(() => {
+    function getCourses(){
         axios.get(ApiEndpoints.getTrainingCourses)
             .then((res) => { settrainingcourses(res.data) })
             .catch(err => logError(err))
-    }, [trainees_interaction])
+    }
+    const [coaches, setcoaches] = React.useState([])
+    const [coach_id, setcoach_id] = React.useState(null)
+
+    function getCoaches(){
+        axios.get(ApiEndpoints.getCoaches)
+            .then((res) => { 
+                // console.log('ConductCoachCourseAssessment',res.data)
+                setcoaches(res.data) 
+            })
+            .catch(err => logError(err))
+    }
+    React.useEffect(() => {
+        getCourses()
+        getCoaches()
+    }, [])
 
     async function submit() {
 
         try {
             const data = {
                 training_course_id: training_course_id,
+                coach_id: coach_id,
                 trainees_discipline: trainees_discipline,
                 trainees_interaction: trainees_interaction,
                 congruence_with_content: congruence_with_content,
@@ -72,7 +88,17 @@ export default function ConductAssessment(props) {
                             }
                         </select>
                     </div>
-
+                    <div className="col-8 p-2 border rounded m-2 row align-items-start">
+                        <label className="col-4" >المدرب</label>
+                        <select className="col-6 form-control" onChange={(e) => setcoach_id(e.target.value)} >
+                            <option >قائمة المدربيين</option>
+                            {
+                                coaches?.map((coach, index) => (
+                                    <option key={index} value={coach.id}>{coach.profile.name}</option>
+                                ))
+                            }
+                        </select>
+                    </div>
                     <div className="col-8 p-2 border rounded m-2 row align-items-start">
                         <label className="col-4" >انضباط المتدربين في الحضور والانصراف</label>
                         <select className="col-2 form-control" onChange={(e) => settrainees_discipline({ ...trainees_discipline, rating: e.target.value })} >

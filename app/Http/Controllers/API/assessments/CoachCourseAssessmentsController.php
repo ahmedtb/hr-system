@@ -13,6 +13,7 @@ class CoachCourseAssessmentsController extends Controller
     {
         $data = $request->validate([
             'training_course_id' => 'required|exists:training_courses,id',
+            'coach_id' => 'required|exists:coaches,id',
 
             'trainees_discipline' => 'required|array',
             'trainees_discipline.rating' => 'required|min:0|max:5',

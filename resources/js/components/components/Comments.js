@@ -74,9 +74,9 @@ function Comments(props) {
                         <h3>
                             <Commenter commenter={comment.commenter} commenter_type={comment.commenter_type} />
                         </h3>
-                        <p>
+                        <div>
                             {comment.content.split('\n').map(str => <p key={Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5)}>{str}</p>)}
-                        </p>
+                        </div>
                     </div>
                 ))
             }
