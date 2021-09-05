@@ -21,11 +21,10 @@ export default function Fields(props) {
     function changeField(index, value) {
         let newArr = [...fields];
         newArr[index] = value
+        // console.log('input fields', newArr)
         setFields(newArr)
     }
-
     const type = props.type
-
 
     return (
         <>

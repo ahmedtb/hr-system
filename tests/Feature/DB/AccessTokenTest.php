@@ -70,10 +70,30 @@ class AccessTokenTest extends TestCase
     public function test_form_structure_could_has_many_tokens()
     {
         $structure = FormStructure::factory()->create();
-        $accessToken = FormAccessToken::factory(5)->create([
+        $accessToken = FormAccessToken::factory(5)->copies(2)->create([
             'form_structure_id' => $structure->id,
         ]);
 
-        $this->assertEquals($structure->accessTokens()->count(),5);
+        $this->assertEquals($structure->accessTokens()->count(), 5);
+        $this->assertEquals($structure->copiesCount(), 10);
+
+    }
+
+    public function test_form_structure_can_delete_his_invalid_tokens()
+    {
+        $this->withoutExceptionHandling();
+        $structure = FormStructure::factory()->create();
+        FormAccessToken::factory(3)->expired()->create([
+            'form_structure_id' => $structure->id,
+        ]);
+        FormAccessToken::factory(2)->copies(0)->create([
+            'form_structure_id' => $structure->id,
+        ]);
+
+        $this->assertEquals($structure->accessTokens()->count(), 5);
+        // dd( 
+        $structure->deleteInvalidAccessTokens();
+        //  ); 
+        $this->assertEquals($structure->accessTokens()->count(), 0);
     }
 }

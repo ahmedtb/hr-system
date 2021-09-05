@@ -4,19 +4,25 @@ namespace App\Rules;
 
 use Exception;
 use App\FieldsTypes\ArrayOfFields;
+use App\Models\FormStructure;
 use Illuminate\Contracts\Validation\Rule;
 
 class ArrayOfFieldsRule implements Rule
 {
+
+    protected FormStructure $structure;
     /**
      * Create a new rule instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(FormStructure $structure)
     {
-        //
+        $this->structure = $structure;
     }
+
+    protected $errorMessage;
+
 
     /**
      * Determine if the validation rule passes.
@@ -31,7 +37,17 @@ class ArrayOfFieldsRule implements Rule
             if ($value['class'] != ArrayOfFields::class)
                 return false;
             $instance = ArrayOfFields::fromArray($value);
+
+            foreach ($instance->getFields() as $index => $field) {
+                if (
+                    !$this->structure->array_of_fields->getFields()[$index]->label == $field->label || !get_class($this->structure->array_of_fields->getFields()[$index]) == get_class($field)
+                ) {
+                    $this->errorMessage = 'array_of_field structures is not compatibale';
+                    return false;
+                }
+            }
         } catch (Exception $e) {
+            $this->errorMessage = $e->getMessage();
             return false;
         }
         return true;
@@ -44,6 +60,6 @@ class ArrayOfFieldsRule implements Rule
      */
     public function message()
     {
-        return 'InValid ArrayOfFields Array';
+        return 'InValid ArrayOfFields Array: ' . $this->errorMessage;
     }
 }

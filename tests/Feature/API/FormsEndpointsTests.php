@@ -52,10 +52,11 @@ class FormsEndpointsTests extends TestCase
 
     public function test_form_can_be_submited_with_valid_token()
     {
-        $this->withoutExceptionHandling();
+        // $this->withoutExceptionHandling();
         // generate form and return it is url....admin rule
         $response = $this->postJson('api/generateForm', [
             'form_structure_id' => FormStructure::factory()->create()->id,
+            'copies' => 1
         ]);
 
         $access_token = $response->content();
@@ -70,7 +71,7 @@ class FormsEndpointsTests extends TestCase
             'access_token' => $access_token,
             'fields' => $array_of_fieldsInstance,
         ])->assertOk()->assertJson(['success' => 'form successfully disposed']);
-
+        // dd($response->json());
         // make sure form is disposed in the managment... and the access toke is deleted so no more submitions allowed
         $this->assertNotNull(Form::first());
         $filled_fieldsIsnstance = (Form::first()->filled_fields);

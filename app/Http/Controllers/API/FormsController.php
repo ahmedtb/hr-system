@@ -56,24 +56,25 @@ class FormsController extends Controller
     public function avaliableTokens($id)
     {
         $form_structure = FormStructure::where('id', $id)->first();
+        $form_structure->deleteInvalidAccessTokens();
         return $form_structure->accessTokens()->get();
     }
 
     public function deleteToken($id)
     {
-        FormAccessToken::where('id', $id)->first()->delete();
+        FormAccessToken::where('id', $id)->delete();
     }
 
     public function submitForm(Request $request)
     {
         $request->validate([
             'access_token' => 'required|exists:form_access_tokens,access_token',
-            'fields' => [new ArrayOfFieldsRule()]
         ]);
         $formAccessToken = FormAccessToken::where('access_token', $request->access_token)->first();
+        $request->validate([
+            'fields' => [new ArrayOfFieldsRule($formAccessToken->structure)]
+        ]);
         $ArrayInstance = ArrayOfFields::fromArray($request->fields);
-
-        // dd($ArrayInstance);
 
         $form = Form::create([
             'form_structure_id' => $formAccessToken->form_structure_id,
@@ -97,7 +98,7 @@ class FormsController extends Controller
             'fields' => $request->fields
         ], [
             'form_structure_id' => 'required|exists:form_structures,id',
-            'fields' => [new ArrayOfFieldsRule()]
+            'fields' => [new ArrayOfFieldsRule(FormStructure::where('id', $form_structure_id)->first())]
         ])->validated();
         $arrayOfFields = ArrayOfFields::fromArray($request->fields);
         // dd($arrayOfFields->getFields());

@@ -24,6 +24,7 @@ export default function FormCreate(props) {
     async function submit() {
         try {
             structure.array_of_fields.fields = fields
+            // console.log('array_of_fields', structure.array_of_fields)
             const response = await axios.post(ApiEndpoints.submitForm, {
                 fields: structure.array_of_fields,
                 access_token: access_token
@@ -48,7 +49,6 @@ export default function FormCreate(props) {
     return (
         <div className="col-md-12">
 
-
             <div className="card">
                 <div className="card-header">
                     نسخة نموذج للنوع {structure?.id}
@@ -61,8 +61,6 @@ export default function FormCreate(props) {
                         submit
                     </button>
                 </div>
-
-
 
             </div>
         </div>

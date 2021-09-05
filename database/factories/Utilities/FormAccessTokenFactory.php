@@ -32,4 +32,21 @@ class FormAccessTokenFactory extends Factory
             'copies' => random_int(1,5)
         ];
     }
+    
+    public function expired()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'expiration_date' => Carbon::today(),
+            ];
+        });
+    }    
+    public function copies($count)
+    {
+        return $this->state(function (array $attributes) use ($count) {
+            return [
+                'copies' => $count,
+            ];
+        });
+    }
 }

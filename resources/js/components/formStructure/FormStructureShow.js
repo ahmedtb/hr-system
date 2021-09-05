@@ -53,12 +53,6 @@ export default function FormStructureShow(props) {
     return (
         <div className="col-md-12">
 
-            <div className='card'>
-                <div className="card-body">
-
-                </div>
-            </div>
-
             <div className="card">
                 <div className="card-header">
                     <div className="d-flex flex-row justify-content-between">
@@ -77,7 +71,10 @@ export default function FormStructureShow(props) {
                                 {
                                     tokens.map((token, index) => (
                                         <div key={index} className="col-12">
-                                            {routes.generatedForm.replace(':access_token', token.access_token)} {token.copies} {token.expiration_date}
+                                            <AllowedLink target="_blank" to={routes.generatedForm.replace(':access_token', token.access_token)}>
+                                                {routes.generatedForm.replace(':access_token', token.access_token)}
+                                            </AllowedLink>
+                                            {token.copies} {token.expiration_date}
                                             <FaTrash size={20} onClick={() => deleteToken(token.id)} />
                                         </div>
                                     ))

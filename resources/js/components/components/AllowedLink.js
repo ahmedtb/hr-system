@@ -5,6 +5,8 @@ function AllowedLink(props) {
     const to = props.to
     const children = props.children
     const className = props.className
+    const target = props.target
+
     const hide = props.hide
 
     const allowedRoutes = props.allowedRoutes
@@ -31,7 +33,7 @@ function AllowedLink(props) {
 
     return (
         isPathAllowed(to) ?
-            <Link className={className} to={to}>{children}</Link>
+            <Link target={target} className={className} to={to}>{children}</Link>
             : (hide ? null : <div className={className}>{children}</div>)
     )
 

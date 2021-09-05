@@ -2,15 +2,15 @@ import React from 'react'
 import axios from 'axios';
 import ApiEndpoints from '../utility/ApiEndpoints'
 import routes from '../utility/routesEndpoints';
+import logError from '../utility/logError'
 import AllowedLink from '../components/AllowedLink'
 export default function FormStructuresIndex(props) {
     const [structures, setStructures] = React.useState([])
     React.useEffect(() => {
         axios.get(ApiEndpoints.showFormsStructure).then((response) => {
             setStructures(response.data)
-        }).catch((error) => {
-
-        })
+            console.log('showFormsStructure',response.data)
+        }).catch((error) => { logError(error) })
     }, [])
     return (
         <div className="col-md-12">
@@ -23,6 +23,7 @@ export default function FormStructuresIndex(props) {
                                 <th >رقم قيد النموذج</th>
                                 <th>اسم النموذج</th>
                                 <th>عدد الحقول </th>
+                                <th>النسخ المتاحة</th>
                                 <th>مخصص للاستعمال مع</th>
                             </tr>
                         </thead>
@@ -30,7 +31,7 @@ export default function FormStructuresIndex(props) {
                             {structures.map((structure, index) => (
                                 <tr key={index}>
                                     <td>
-                                        <AllowedLink to={routes.showFormStructure.replace(':id',structure.id) }>
+                                        <AllowedLink to={routes.showFormStructure.replace(':id', structure.id)}>
                                             {structure.id}
                                         </AllowedLink>
                                     </td>
@@ -40,6 +41,7 @@ export default function FormStructuresIndex(props) {
                                             structure.array_of_fields.fields.length
                                         }
                                     </td>
+                                    <td>{structure.copies_count}</td>
                                     <td>{structure.formable_type}</td>
                                 </tr>
                             ))}

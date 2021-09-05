@@ -33,7 +33,8 @@ class FormAccessToken extends Model
     }
 
     public function deleteCopy(){
-        $this->copies = $this->copies - 1;
+        // $this->copies = $this->copies - 1;
+        $this->update(['copies' => $this->copies - 1 ]);
         if(!$this->stillValid()){
             $this->delete();
         }
