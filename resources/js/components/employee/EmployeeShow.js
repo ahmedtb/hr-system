@@ -290,7 +290,7 @@ export default function EmployeeShow(props) {
                         </div>
 
                         <div className="card-body">
-                            <div style={{ maxHeight: 500, overflow: 'auto', display: 'inline-block' }}>
+                            <div className="col-12" >
                                 <Comments commentable_id={id} type={'employee'} />
                             </div>
                         </div>

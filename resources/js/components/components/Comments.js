@@ -68,18 +68,20 @@ function Comments(props) {
 
     return (
         <>
-            {
-                comments.map((comment, index) => (
-                    <div key={index} className="border rounded">
-                        <h3>
-                            <Commenter commenter={comment.commenter} commenter_type={comment.commenter_type} />
-                        </h3>
-                        <div>
-                            {comment.content.split('\n').map(str => <p key={Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5)}>{str}</p>)}
+            <div className="col-12" style={{ maxHeight: 500, overflow: 'auto', display: 'inline-block' }}>
+                {
+                    comments.map((comment, index) => (
+                        <div key={index} className="border rounded">
+                            <h3>
+                                <Commenter commenter={comment.commenter} commenter_type={comment.commenter_type} />
+                            </h3>
+                            <div>
+                                {comment.content.split('\n').map(str => <p key={Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5)}>{str}</p>)}
+                            </div>
                         </div>
-                    </div>
-                ))
-            }
+                    ))
+                }
+            </div>
             <div className="row">
                 <textarea className='form-control' value={create} type='text' onChange={(e) => { setcreate(e.target.value) }} />
                 <button className="btn btn-success" onClick={() => submit()}>تعليق</button>

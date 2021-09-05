@@ -14,6 +14,7 @@ import { IoMdAnalytics } from 'react-icons/io'
 import AllowedLink from '../components/AllowedLink'
 import moment from 'moment'
 import CoursesTable from '../partials/CoursesTable'
+import EditIndividualModal from './components/EditIndividualModal'
 export default function TargetedShow(props) {
 
     const { id } = useParams();
@@ -24,8 +25,6 @@ export default function TargetedShow(props) {
     const [plannedCourses, setplannedCourses] = React.useState([])
     const [canceledCourses, setcanceledCourses] = React.useState([])
 
-    const [trialPeriodAssessments, settrialPeriodAssessments] = React.useState([])
-    const [trainingPeriodAssessments, settrainingPeriodAssessments] = React.useState([])
     const [traineeCourseAssessments, settraineeCourseAssessments] = React.useState([])
     const [toggleUI, settoggleUI] = React.useState('documents')
 
@@ -38,8 +37,6 @@ export default function TargetedShow(props) {
             setplannedCourses(response.data.plannedCourses)
             setcanceledCourses(response.data.canceledCourses)
 
-            settrialPeriodAssessments(response.data.trialPeriodAssessments)
-            settrainingPeriodAssessments(response.data.trainingPeriodAssessments)
             settraineeCourseAssessments(response.data.traineeCourseAssessments)
             console.log('TargetedShow', response.data)
         }).catch((err) => { logError(err) })
@@ -76,7 +73,7 @@ export default function TargetedShow(props) {
                             <button className='btn btn-success' data-dismiss="modal">لا</button>
 
                         </CustomModal>
-                        {/* <EditindividualModal individual={individual} change={getindividualInfo} /> */}
+                        <EditIndividualModal individual={individual} change={getindividualInfo} />
                     </div>
                 </div>
 
@@ -257,7 +254,7 @@ export default function TargetedShow(props) {
                         </div>
 
                         <div className="col-12">
-                            <div className="col-12" style={{ maxHeight: 500, overflow: 'auto', display: 'inline-block' }}>
+                            <div className="col-12" >
                                 <Comments commentable_id={id} type={'individual'} />
                             </div>
                         </div>

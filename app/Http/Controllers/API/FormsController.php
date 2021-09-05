@@ -25,7 +25,7 @@ class FormsController extends Controller
 
     public function show($id)
     {
-        return Form::where('id', $id)->first();
+        return Form::where('id', $id)->with(['structure'])->first();
     }
 
     public function generateForm(Request $request)

@@ -17,6 +17,7 @@ class Form extends Model
     protected $casts = [
         'filled_fields' => CastsArrayOfFields::class
     ];
+
     
     public function structure(){
         return $this->belongsTo(FormStructure::class,'form_structure_id','id');

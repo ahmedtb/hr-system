@@ -6,6 +6,7 @@ use App\Models\Document;
 use App\Models\Employee;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Filters\IndividualFilters;
 use App\Models\TargetedIndividual;
 use Illuminate\Support\Facades\DB;
@@ -53,7 +54,7 @@ class TargetedIndividualsController extends Controller
 
     public function getIndividuals()
     {
-        return TargetedIndividual::select(['id','name'])->get();
+        return TargetedIndividual::select(['id', 'name'])->get();
     }
 
     public function create(Request $request)
@@ -112,6 +113,22 @@ class TargetedIndividualsController extends Controller
         TargetedIndividual::where('id', $id)->first()->delete();
 
         return response()->json(['success' => 'individual ' . $id . ' deleted'], 202);
+    }
+
+    public function edit(Request $request)
+    {
+        $validateddata = $request->validate([
+            'id' => ['sometimes', 'integer', Rule::exists('targeted_individuals', 'id')],
+            'name' => ['sometimes', 'string', Rule::unique('targeted_individuals', 'name')->ignore($request->id)],
+            'address' => 'sometimes|string',
+            'phone_number' => ['sometimes', 'string', Rule::unique('targeted_individuals', 'phone_number')->ignore($request->id)],
+            'email' => ['sometimes', 'email', Rule::unique('targeted_individuals', 'email')->ignore($request->id)],
+            'description' => 'sometimes|string',
+            // 'profile_image' => 'sometimes|image|mimes:jpg,jpeg,png,bmp,tiff |max:1024',
+        ]);
+
+        TargetedIndividual::where('id', $request->id)->first()->update($validateddata);
+        return ['success' => 'individual: ' . $request->id . ' is edited'];
     }
 
     public function index(IndividualFilters $filters, Request $request)

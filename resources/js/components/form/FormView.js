@@ -10,6 +10,7 @@ export default function FormView() {
     React.useEffect(() => {
         axios.get(ApiEndpoints.showForm.replace(':id', id)).then((response) => {
             setForm(response.data)
+            console.log('formview',response.data)
         }).catch((err) => logError(err))
     }, [])
     return (
@@ -18,6 +19,8 @@ export default function FormView() {
                 <div className="card-header">نموذج {form?.id}</div>
 
                 <div className="card-body">
+                    <h1 className='align-self-center'>{form?.structure?.type}</h1>
+
                     <div className="row">
                         <Fields fields={form?.filled_fields.fields} type='render' />
                     </div>

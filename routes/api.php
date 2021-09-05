@@ -78,6 +78,7 @@ Route::put('employee/{id}', [EmployeesController::class, 'edit'])->middleware(['
 Route::post('targeted/create', [TargetedIndividualsController::class, 'create'])->middleware(['auth:admin']);
 Route::get('targeted/{id}', [TargetedIndividualsController::class, 'show'])->middleware(['auth:admin']);
 Route::delete('individual/{id}', [TargetedIndividualsController::class, 'delete'])->middleware(['auth:admin']);
+Route::put('individual/{id}', [TargetedIndividualsController::class, 'edit'])->middleware(['auth:admin']);
 Route::get('getIndividuals', [TargetedIndividualsController::class, 'getIndividuals'])->middleware(['auth:admin,coach']);
 Route::get('individual/index', [TargetedIndividualsController::class, 'index'])->middleware(['auth:admin']);
 
@@ -90,7 +91,7 @@ Route::get('form/{id}', [FormsController::class, 'show'])->middleware(['auth:adm
 Route::post('generateForm', [FormsController::class, 'generateForm'])->middleware(['auth:admin']);
 Route::get('getGeneratedForm/{access_token}', [FormsController::class, 'getGeneratedForm']);
 Route::get('avaliableTokens/{id}', [FormsController::class, 'avaliableTokens']);
-Route::delete('deleteToken/{id}', [FormsController::class,'deleteToken']);
+Route::delete('deleteToken/{id}', [FormsController::class, 'deleteToken']);
 Route::post('submitForm', [FormsController::class, 'submitForm']);
 Route::get('getForms/{form_structure_id}', [FormsController::class, 'getForms'])->middleware(['auth:admin']);
 Route::post('form/search/{form_structure_id}', [FormsController::class, 'search'])->middleware(['auth:admin']);
@@ -173,7 +174,7 @@ Route::post('/seedDatabase1', function (Request $request) {
         'password' => Hash::make('password')
     ]);
 
-    
+
     foreach ($users as $user) {
 
         Employee::create([
@@ -213,7 +214,7 @@ Route::post('/seedDatabase1', function (Request $request) {
             'job_id' => $user->department_id ? Job::where('unit_id', $user->department_id)->first()->id : 1
         ]);
     }
-    
+
     return 'done';
 });
 
@@ -233,6 +234,6 @@ Route::post('/seedDatabase2', function (Request $request) {
             'password' => Hash::make('password'),
         ]);
     }
-    
+
     return 'done';
 });

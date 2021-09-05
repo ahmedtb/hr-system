@@ -3,6 +3,7 @@ export default {
     createEmployeeForm: '',
     createTargetedForm: '',
     createTargeted: '/api/targeted/create',
+    editIndividual: '/api/individual/:id',
     getTargeted: '/api/targeted/:id',
 
     showFormStructure: '/api/structure/:id',

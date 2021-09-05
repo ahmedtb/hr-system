@@ -10,13 +10,13 @@ use Illuminate\Contracts\Validation\Rule;
 class ArrayOfFieldsRule implements Rule
 {
 
-    protected FormStructure $structure;
+    protected ?FormStructure $structure;
     /**
      * Create a new rule instance.
      *
      * @return void
      */
-    public function __construct(FormStructure $structure)
+    public function __construct(?FormStructure $structure = null)
     {
         $this->structure = $structure;
     }
@@ -37,15 +37,15 @@ class ArrayOfFieldsRule implements Rule
             if ($value['class'] != ArrayOfFields::class)
                 return false;
             $instance = ArrayOfFields::fromArray($value);
-
-            foreach ($instance->getFields() as $index => $field) {
-                if (
-                    !$this->structure->array_of_fields->getFields()[$index]->label == $field->label || !get_class($this->structure->array_of_fields->getFields()[$index]) == get_class($field)
-                ) {
-                    $this->errorMessage = 'array_of_field structures is not compatibale';
-                    return false;
+            if ($this->structure)
+                foreach ($instance->getFields() as $index => $field) {
+                    if (
+                        !$this->structure->array_of_fields->getFields()[$index]->label == $field->label || !get_class($this->structure->array_of_fields->getFields()[$index]) == get_class($field)
+                    ) {
+                        $this->errorMessage = 'array_of_field structures is not compatibale';
+                        return false;
+                    }
                 }
-            }
         } catch (Exception $e) {
             $this->errorMessage = $e->getMessage();
             return false;
