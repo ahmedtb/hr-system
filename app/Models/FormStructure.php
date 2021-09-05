@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Casts\ArrayOfFields as CastsArrayOfFields;
+use App\Models\Utilities\FormAccessToken;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -22,6 +23,10 @@ class FormStructure extends Model
 
     public function forms(){
         return $this->hasMany(Form::class);
+    }
+
+    public function accessTokens(){
+        return $this->hasMany(FormAccessToken::class);
     }
 
 }

@@ -29,7 +29,8 @@ class AccessTokenTest extends TestCase
         $this->assertEquals($accessToken->structure->id, $structure->id);
     }
 
-    public function test_access_token_should_have_expiration_date(){
+    public function test_access_token_should_have_expiration_date()
+    {
         $accessToken = FormAccessToken::factory()->create([
             'expiration_date' => Carbon::today()
         ]);
@@ -41,18 +42,17 @@ class AccessTokenTest extends TestCase
         ]);
         $this->assertFalse($accessToken->isExpired());
         $this->assertTrue($accessToken->stillValid());
-
-
     }
 
-    public function test_access_token_have_max_number_of_submits(){
+    public function test_access_token_have_max_number_of_submits()
+    {
         $accessToken = FormAccessToken::factory()->create([
             'copies' => 5
         ]);
         // dd($accessToken->hasCopies());
         $this->assertTrue($accessToken->hasCopies());
         $this->assertTrue($accessToken->stillValid());
-        
+
         $accessToken = FormAccessToken::factory()->create([
             'copies' => 0
         ]);
@@ -64,6 +64,16 @@ class AccessTokenTest extends TestCase
         ]);
         $accessToken->deleteCopy();
         $accessToken->deleteCopy();
-        $this->assertEquals(FormAccessToken::all()->count(),2);
+        $this->assertEquals(FormAccessToken::all()->count(), 2);
+    }
+
+    public function test_form_structure_could_has_many_tokens()
+    {
+        $structure = FormStructure::factory()->create();
+        $accessToken = FormAccessToken::factory(5)->create([
+            'form_structure_id' => $structure->id,
+        ]);
+
+        $this->assertEquals($structure->accessTokens()->count(),5);
     }
 }

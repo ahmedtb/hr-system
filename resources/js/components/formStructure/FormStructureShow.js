@@ -3,11 +3,12 @@ import axios from 'axios'
 import ApiEndpoints from '../utility/ApiEndpoints'
 import routes from '../utility/routesEndpoints'
 import logError from '../utility/logError'
-
 import Fields from '../fields/Fields'
 import { useParams, Link } from 'react-router-dom';
 import AllowedLink from '../components/AllowedLink'
-import { FaSearch } from 'react-icons/fa'
+import { FaSearch, FaTrash } from 'react-icons/fa'
+import CustomModal from '../components/CustomModal'
+
 export default function FormStructureShow(props) {
 
     const { id } = useParams();
@@ -15,22 +16,38 @@ export default function FormStructureShow(props) {
     React.useEffect(() => {
         axios.get(ApiEndpoints.showFormStructure.replace(':id', id)).then((response) => {
             setStructure(response.data)
-        }).catch(() => {
-
-        })
+        }).catch((error) => { logError(error) })
+        avaliableTokens()
     }, [])
 
-    const [link, setlink] = React.useState(null)
+    const [copies, setcopies] = React.useState(1)
+
     async function generateForm() {
         try {
             const res = await axios.post(ApiEndpoints.generateForm, {
-                'form_structure_id': structure.id
+                'form_structure_id': structure.id,
+                'copies': copies
             })
-            setlink(routes.generatedForm.replace(':access_token', res.data))
-            console.log(res.data)
-        } catch (err) {
-            logError(err)
-        }
+            console.log('generateForm', res.data)
+            avaliableTokens()
+        } catch (err) { logError(err) }
+    }
+
+    const [tokens, settokens] = React.useState([])
+    async function avaliableTokens() {
+        try {
+            const res = await axios.get(ApiEndpoints.avaliableTokens.replace(':id', id))
+            settokens(res.data)
+            console.log('avaliableTokens', res.data)
+        } catch (err) { logError(err) }
+    }
+
+    async function deleteToken(token_id) {
+        try {
+            const res = await axios.delete(ApiEndpoints.deleteToken.replace(':id', token_id))
+            avaliableTokens()
+            console.log('deleteToken', res.data)
+        } catch (err) { logError(err) }
     }
 
     return (
@@ -38,8 +55,6 @@ export default function FormStructureShow(props) {
 
             <div className='card'>
                 <div className="card-body">
-
-                    <Link to={link ?? ''}>{link ?? ''}</Link>
 
                 </div>
             </div>
@@ -53,9 +68,21 @@ export default function FormStructureShow(props) {
                                 <FaSearch />
                                 بحث في النماذج المعبئة
                             </AllowedLink>
-                            <button type='button' className='btn btn-primary' onClick={generateForm}>
-                                انشاء نسخة من نموذج
-                            </button>
+
+                            <CustomModal label={'copies'}>
+                                <input type="number" min="1" value={copies} onChange={(e) => setcopies(e.target.value)} />
+                                <button type='button' className='btn btn-primary' onClick={generateForm}>
+                                    انشاء نسخة من نموذج
+                                </button>
+                                {
+                                    tokens.map((token, index) => (
+                                        <div key={index} className="col-12">
+                                            {routes.generatedForm.replace(':access_token', token.access_token)} {token.copies} {token.expiration_date}
+                                            <FaTrash size={20} onClick={() => deleteToken(token.id)} />
+                                        </div>
+                                    ))
+                                }
+                            </CustomModal>
                         </div>
                     </div>
                 </div>

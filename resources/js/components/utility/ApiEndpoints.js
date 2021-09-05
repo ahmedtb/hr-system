@@ -11,6 +11,8 @@ export default {
 
     showForm: '/api/form/:id',
     generateForm: '/api/generateForm',
+    avaliableTokens: '/api/avaliableTokens/:id',
+    deleteToken: '/api/deleteToken/:id',
     getGeneratedForm: '/api/getGeneratedForm/:access_token',
     submitForm: '/api/submitForm/',
 

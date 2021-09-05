@@ -18,22 +18,26 @@ use Symfony\Component\HttpKernel\Event\RequestEvent;
 class FormsController extends Controller
 {
 
-    public function index(){
+    public function index()
+    {
         return Form::with('structure')->get();
     }
 
-    public function show($id){
-        return Form::where('id',$id)->first();
+    public function show($id)
+    {
+        return Form::where('id', $id)->first();
     }
 
     public function generateForm(Request $request)
     {
         $request->validate([
-            'form_structure_id' => 'required|exists:form_structures,id'
+            'form_structure_id' => 'required|exists:form_structures,id',
+            'copies' => 'required|integer|min:1'
         ]);
         $formAccessToken = FormAccessToken::create([
             'form_structure_id' => $request->form_structure_id,
-            'access_token' => Str::random(10)
+            'access_token' => Str::random(10),
+            'copies' => $request->copies
         ]);
         return $formAccessToken->access_token;
     }
@@ -47,6 +51,17 @@ class FormsController extends Controller
         } else {
             throw new ValidationException('access token is not valid');
         }
+    }
+
+    public function avaliableTokens($id)
+    {
+        $form_structure = FormStructure::where('id', $id)->first();
+        return $form_structure->accessTokens()->get();
+    }
+
+    public function deleteToken($id)
+    {
+        FormAccessToken::where('id', $id)->first()->delete();
     }
 
     public function submitForm(Request $request)
@@ -70,8 +85,9 @@ class FormsController extends Controller
         return response(['success' => 'form successfully disposed']);
     }
 
-    public function getForms(int $form_structure_id){
-        return Form::where('form_structure_id',$form_structure_id)->get();
+    public function getForms(int $form_structure_id)
+    {
+        return Form::where('form_structure_id', $form_structure_id)->get();
     }
 
     public function search(Request $request, int $form_structure_id)
@@ -79,17 +95,14 @@ class FormsController extends Controller
         Validator::make([
             'form_structure_id' => $form_structure_id,
             'fields' => $request->fields
-        ],[
+        ], [
             'form_structure_id' => 'required|exists:form_structures,id',
             'fields' => [new ArrayOfFieldsRule()]
         ])->validated();
         $arrayOfFields = ArrayOfFields::fromArray($request->fields);
         // dd($arrayOfFields->getFields());
 
-        $result = Form::whereJsonContains('filled_fields->fields',$arrayOfFields->getFields())->get();
+        $result = Form::whereJsonContains('filled_fields->fields', $arrayOfFields->getFields())->get();
         return ($result);
-
     }
-
-
 }

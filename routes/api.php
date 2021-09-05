@@ -88,6 +88,8 @@ Route::get('form/index', [FormsController::class, 'index'])->middleware(['auth:a
 Route::get('form/{id}', [FormsController::class, 'show'])->middleware(['auth:admin']);
 Route::post('generateForm', [FormsController::class, 'generateForm'])->middleware(['auth:admin']);
 Route::get('getGeneratedForm/{access_token}', [FormsController::class, 'getGeneratedForm']);
+Route::get('avaliableTokens/{id}', [FormsController::class, 'avaliableTokens']);
+Route::delete('deleteToken/{id}', [FormsController::class,'deleteToken']);
 Route::post('submitForm', [FormsController::class, 'submitForm']);
 Route::get('getForms/{form_structure_id}', [FormsController::class, 'getForms'])->middleware(['auth:admin']);
 Route::post('form/search/{form_structure_id}', [FormsController::class, 'search'])->middleware(['auth:admin']);
