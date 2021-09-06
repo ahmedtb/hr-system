@@ -63,7 +63,7 @@ export default function TargetedShow(props) {
 
             <div className="card">
                 <div className="card-header row justify-content-between">
-                    موظف رقم {individual?.id}
+                    <h3>مستهدف رقم {individual?.id}</h3>
                     <div>
                         <CustomModal buttonClass="btn btn-info mr-2" label={'حدف المستهدف من السجلات'} >
                             <div>
@@ -150,7 +150,7 @@ export default function TargetedShow(props) {
                                 coach ? (
                                     <div className="m-2 text-center row">
                                         المستهدف كمدرب
-                                        <Link to={routes.showCoach.replace(':id', coach.id)} >{coach.id}</Link>
+                                        <Link to={routes.showCoach.replace(':id', coach.id)} >{coach?.profile?.name}</Link>
                                     </div>
                                 ) : null
                             }
@@ -171,7 +171,7 @@ export default function TargetedShow(props) {
                 toggleUI == 'documents' ?
                     <div className="card">
                         <div className="card-header row justify-content-between">
-                            <div>المستندات الملحق بالمستهدف</div>
+                            <h4>المستندات الملحق بالمستهدف</h4>
                             <AllowedLink to={{
                                 pathname: routes.attachDocument, state: { documentable: individual, type: 'App\\Models\\TargetedIndividual' }
                             }}>الحاق مستند جديد</AllowedLink>
@@ -195,7 +195,7 @@ export default function TargetedShow(props) {
                     <div className="card">
 
                         <div className="card-header">
-                            الدورات
+                            <h4>الدورات المستانفة</h4>
                         </div>
 
                         <div className="card-body">
@@ -249,7 +249,7 @@ export default function TargetedShow(props) {
                     <div className="col-12">
                         <div className="card-header ">
                             <div className="row justify-content-between">
-                                <strong>ملاحظات حول ملف المستهدف</strong>
+                                <h4>ملاحظات حول ملف المستهدف</h4>
                             </div>
                         </div>
 

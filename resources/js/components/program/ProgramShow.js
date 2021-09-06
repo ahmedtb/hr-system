@@ -60,7 +60,7 @@ export default function ProgramShow(props) {
                 <div className="card-header">
                     <div className="d-flex flex-row justify-content-between">
 
-                        البرنامج رقم {program?.id}
+                        <h4>البرنامج رقم {program?.id}</h4>
                         <div>
                             <CustomModal buttonClass="btn btn-info mr-2" label={'حدف البرنامج من السجلات'} >
                                 <div>
@@ -108,8 +108,8 @@ export default function ProgramShow(props) {
 
             {
                 toggleUI == 'documents' ? <div className="card">
-                    <div className="card-header row">
-                        <div>المستندات الملحق بالبرنامج</div>
+                    <div className="card-header d-flex flex-row justify-content-between">
+                        <h4>المستندات الملحق بالبرنامج</h4>
                         <AllowedLink to={{
                             pathname: routes.attachDocument, state: { documentable: program, type: 'App\\Models\\TrainingProgram' }
                         }}>الحاق مستند جديد</AllowedLink>
@@ -131,9 +131,9 @@ export default function ProgramShow(props) {
 
             {
                 toggleUI == 'courses' ? <div className="card">
-                    <div className="card-header">
+                    <h4 className="card-header">
                         الدورات التي تتبع البرنامج
-                    </div>
+                    </h4>
 
                     <div className="card-body">
                         <Pagination
@@ -151,7 +151,7 @@ export default function ProgramShow(props) {
                     <div className="card">
                         <div className="card-header ">
                             <div className="row justify-content-between">
-                                <strong>تعليقات حول البرنامج</strong>
+                                <h4>تعليقات حول البرنامج</h4>
                             </div>
                         </div>
 

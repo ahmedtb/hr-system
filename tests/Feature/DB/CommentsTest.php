@@ -95,7 +95,6 @@ class CommentsTest extends TestCase
         $this->assertCount(5,$program->comments);
 
         $this->assertCount(7,$coach->myComments);
-
     }
 
 }

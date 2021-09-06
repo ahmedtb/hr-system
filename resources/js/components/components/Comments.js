@@ -13,11 +13,11 @@ function Commenter(props) {
         <>
             {(() => {
                 if (commenter_type == 'App\\Models\\Admin') {
-                    return <AllowedLink to={routes.showAdmin.replace(':id', commenter.id)}>{commenter.name}</AllowedLink>
+                    return <AllowedLink to={routes.showAdmin.replace(':id', commenter?.id)}>{commenter?.name}</AllowedLink>
                 } else if (commenter_type == 'App\\Models\\Supervisor') {
-                    return <AllowedLink to={routes.showSupervisor.replace(':id', commenter.id)}>{commenter.name}</AllowedLink>
+                    return <AllowedLink to={routes.showSupervisor.replace(':id', commenter?.id)}>{commenter?.name}</AllowedLink>
                 } else if (commenter_type == 'App\\Models\\Coach') {
-                    return <AllowedLink to={routes.showCoach.replace(':id', commenter.id)}>{commenter.profile.name}</AllowedLink>
+                    return <AllowedLink to={routes.showCoach.replace(':id', commenter?.id)}>{commenter?.profile.name}</AllowedLink>
                 } else return <div>no header</div>
             })()}
         </>
@@ -60,7 +60,7 @@ function Comments(props) {
                 commenter_id: props.user.id,
                 commenter_type: props.user.role
             })
-            console.log(response.data)
+            console.log('submit comment', response.data)
             setcreate('')
             fetchComments()
         } catch (error) { logError(error) }
@@ -70,7 +70,7 @@ function Comments(props) {
         <>
             <div className="col-12" style={{ maxHeight: 500, overflow: 'auto', display: 'inline-block' }}>
                 {
-                    comments.map((comment, index) => (
+                    comments?.map((comment, index) => (
                         <div key={index} className="border rounded">
                             <h3>
                                 <Commenter commenter={comment.commenter} commenter_type={comment.commenter_type} />

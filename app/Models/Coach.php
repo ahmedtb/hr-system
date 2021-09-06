@@ -41,6 +41,7 @@ class Coach extends Authenticatable
         });
     }
 
+
     public function profile()
     {
         return $this->morphTo();

@@ -36,6 +36,7 @@ class Admin extends Authenticatable
         return TrainingProgram::with([]);
     }
 
+
     public function myComments()
     {
         return $this->morphMany(Comment::class, 'commenter');

@@ -3,22 +3,39 @@
 namespace App\Http\Controllers\API;
 
 use App\Models\Admin;
+use App\Models\Coach;
 use App\Models\Comment;
+use App\Models\Supervisor;
 use Illuminate\Http\Request;
 use App\Models\TrainingCourse;
 use App\Filters\CommentFilters;
-use App\Http\Controllers\Controller;
-use App\Models\Coach;
-use App\Models\Supervisor;
 use App\Models\TrainingProgram;
+use App\Http\Controllers\Controller;
+use App\Models\Employee;
+use App\Models\TargetedIndividual;
+use Illuminate\Support\Facades\Gate;
 
 class CommentsController extends Controller
 {
     public function index(Request $request, CommentFilters $filters)
     {
-        return Comment::filter($filters)
-            ->paginate($request->get('page_size') ?? 10)
-            ->appends(request()->except('page'));
+        $commentable = null;
+        if ($request->course_id) {
+            $commentable = TrainingCourse::where('id', $request->course_id)->first();
+        } else if ($request->program_id) {
+            $commentable = TrainingProgram::where('id', $request->program_id)->first();
+        } else if ($request->employee_id) {
+            $commentable = Employee::where('id', $request->employee_id)->first();
+        } else if ($request->individual_id) {
+            $commentable = TargetedIndividual::where('id', $request->individual_id)->first();
+        }
+        if (Gate::allows('AccessCommentableComments', [Comment::class, $commentable]))
+            return Comment::filter($filters)
+                ->paginate($request->get('page_size') ?? 10)
+                ->appends(request()->except('page'));
+        else {
+            return [];
+        }
     }
 
     public function create(Request $request)

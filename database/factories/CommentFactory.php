@@ -38,7 +38,7 @@ class CommentFactory extends Factory
     private function randomCommentable(Model $commenter)
     {
         if (!($commenter instanceof Coach))
-            switch (random_int(1, 2)) {
+            switch (random_int(1, 4)) {
                 case 1:
                     return TrainingCourse::inRandomOrder()->first() ?? TrainingCourse::factory()->create();
                 case 2:

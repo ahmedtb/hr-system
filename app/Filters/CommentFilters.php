@@ -5,6 +5,7 @@ namespace App\Filters;
 use App\Models\Admin;
 use App\Models\Employee;
 use App\Models\Supervisor;
+use App\Models\TargetedIndividual;
 use App\Models\TrainingCourse;
 use App\Models\TrainingProgram;
 
@@ -22,7 +23,7 @@ class CommentFilters extends Filters
         'course_id',
         'program_id',
         'employee_id',
-        // 'individual_id',
+        'individual_id',
 
     ];
 
@@ -66,5 +67,10 @@ class CommentFilters extends Filters
     protected function employee_id($id)
     {
         return $this->builder->where('commentable_id', $id)->where('commentable_type', Employee::class);
+    }
+
+    protected function individual_id($id)
+    {
+        return $this->builder->where('commentable_id', $id)->where('commentable_type', TargetedIndividual::class);
     }
 }

@@ -61,7 +61,7 @@ export default function EmployeeShow(props) {
 
 
     React.useEffect(() => {
-            getEmployeeInfo()
+        getEmployeeInfo()
     }, [])
 
     if (redirect) {
@@ -144,13 +144,13 @@ export default function EmployeeShow(props) {
                                 </div>
                             </div>
 
-                            <div className="m-2 text-center row">
+                            {employee?.job_id ? <div className="m-2 text-center row">
                                 <FiFile size={25} className="mx-1" />
                                 <h5 className="mx-1">
                                     وظيفته
                                 </h5>
-                                <Link to={routes.showJob.replace(':id', employee?.job_id)}>{employee?.job.name}</Link >
-                            </div>
+                                <Link to={routes.showJob.replace(':id', employee?.job_id)}>{employee?.job?.name}</Link >
+                            </div> : null}
 
 
                             {
