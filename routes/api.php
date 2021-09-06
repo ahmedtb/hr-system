@@ -9,8 +9,10 @@ use App\Models\Employee;
 use Illuminate\Http\Request;
 
 
+use App\Models\TargetedIndividual;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\API\JobsController;
 use App\Http\Controllers\API\CoachController;
 use App\Http\Controllers\API\FormsController;
@@ -33,7 +35,6 @@ use App\Http\Controllers\API\Assessments\CoachCourseAssessmentsController;
 use App\Http\Controllers\API\Assessments\TrialPeriodAssessmentsController;
 use App\Http\Controllers\API\Assessments\TraineeCourseAssessmentsController;
 use App\Http\Controllers\API\Assessments\TrainingPeriodAssessmentsController;
-use App\Models\TargetedIndividual;
 
 /*
 |--------------------------------------------------------------------------
@@ -176,76 +177,9 @@ Route::get('comment/{id}', [CommentsController::class, 'show'])->middleware(['au
 Route::get('/user', [LoginController::class, 'user']);
 
 Route::post('/seedDatabase1', function (Request $request) {
-    $users =  json_decode(file_get_contents($request->file('users')->path()));
-    $departments =  json_decode(file_get_contents($request->file('departments')->path()));
+    Storage::disk('local')->put('users.json', file_get_contents($request->file('users')->path()));
+    Storage::disk('local')->put('departments.json', file_get_contents($request->file('departments')->path()));
+    Storage::disk('local')->put('individuals.json', file_get_contents($request->file('individuals')->path()));
 
-    Admin::create([
-        'name' => 'ahmed',
-        'username' => 'ahmed',
-        'email' => 'testing@test.com',
-        'password' => Hash::make('password')
-    ]);
-
-
-    foreach ($users as $user) {
-
-        Employee::create([
-            'id' => $user->id,
-            'name' => $user->name,
-            'username' => $user->username,
-            'address' => 'لا توجد بيانات',
-            'employment_date' => $user->starting_date ?? Carbon::today()->format('Y-m-d'),
-            'basic_salary' => $user->basic_salary,
-            'phone_number' => 'لا توجد بيانات',
-            'job_id' => 1,
-            'email' => $user->email ?? 'testing@test.com',
-            'medal_rating' => 1,
-            'profile_image' => getBase64DefaultImage(),
-            'password' => Hash::make('password'),
-        ]);
-    }
-    foreach ($departments as $department) {
-
-        $unit = Unit::create([
-            'id' => $department->id,
-            'parent_id' => $department->parent_id,
-            'name' => $department->name,
-            'head_id' => $department->department_manager,
-            'purpose' => 'لا توجد بيانات',
-        ]);
-        Job::create([
-            'unit_id' => $unit->id,
-            'name' => 'وظيفة في الوحدة ' . $unit->id,
-            'purpose' => 'لا توجد بيانات',
-            'description' => 'لا توجد بيانات',
-        ]);
-    }
-    foreach ($users as $user) {
-
-        Employee::where('id', $user->id)->first()->update([
-            'job_id' => $user->department_id ? Job::where('unit_id', $user->department_id)->first()->id : 1
-        ]);
-    }
-
-    return 'done';
 });
 
-Route::post('/seedDatabase2', function (Request $request) {
-    $individuals =  json_decode(file_get_contents($request->file('individuals')->path()));
-
-    foreach ($individuals as $individual) {
-        TargetedIndividual::create([
-            'id' => $individual->id,
-            'name' => $individual->name,
-            'username' => $individual->username,
-            'phone_number' => $individual->phone_number,
-            'email' => $individual->email,
-            'address' => $individual->address,
-            'description' => $individual->description,
-            'profile_image' => null,
-            'password' => Hash::make('password'),
-        ]);
-    }
-
-    return 'done';
-});

@@ -3,14 +3,18 @@
 namespace Database\Seeders;
 
 use Exception;
+use Carbon\Carbon;
 use App\Models\Job;
 use App\Models\Form;
 use App\Models\Unit;
+use App\Models\User;
 use App\Models\Admin;
 use App\Models\Coach;
+use App\Models\Comment;
 use App\Models\Trainee;
 use App\Models\Document;
 use App\Models\Employee;
+use App\Models\Supervisor;
 use App\Models\FormStructure;
 use App\Models\TrainingCourse;
 use App\Models\TrainingProgram;
@@ -18,15 +22,14 @@ use Illuminate\Database\Seeder;
 use App\Models\CourseAttendance;
 use App\Models\TargetedIndividual;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Assessments\InterviewAssessment;
 use App\Models\Assessments\CoachCourseAssessment;
 use App\Models\Assessments\TrialPeriodAssessment;
 use App\Models\Assessments\TraineeCourseAssessment;
 use App\Models\Assessments\TrainingPeriodAssessment;
-use App\Models\Comment;
-use App\Models\Supervisor;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -64,45 +67,115 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(10)->create();
+        if (App::environment() == 'production') {
+            $users = json_decode( Storage::disk('local')->get('users.json') );
+            $departments = json_decode( Storage::disk('local')->get('departments.json') );
+            $individuals = json_decode( Storage::disk('local')->get('individuals.json') );
 
-        Unit::factory(10)->create();
-        Employee::factory(20)->create();
-        TargetedIndividual::factory(20)->create();
-        Admin::factory(5)->create();
-        Admin::factory()->create(['username'=>'ahmed','password'=>Hash::make('password')]);
+            Admin::create([
+                'name' => 'ahmed',
+                'username' => 'ahmed',
+                'email' => 'testing@test.com',
+                'password' => Hash::make('password')
+            ]);
 
-        Supervisor::factory(5)->create();
 
-        TrainingProgram::factory(20)->create();
+            foreach ($users as $user) {
 
-        $courses = TrainingCourse::factory(5)->resumed()->create();
-        foreach ($courses as $course)
-            CourseAttendance::factory(15)->forCourse($course)->create();
+                Employee::create([
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'username' => $user->username,
+                    'address' => 'لا توجد بيانات',
+                    'employment_date' => $user->starting_date ?? Carbon::today()->format('Y-m-d'),
+                    'basic_salary' => $user->basic_salary,
+                    'phone_number' => 'لا توجد بيانات',
+                    'job_id' => 1,
+                    'email' => $user->email ?? 'testing@test.com',
+                    'medal_rating' => 1,
+                    'profile_image' => getBase64DefaultImage(),
+                    'password' => Hash::make('password'),
+                ]);
+            }
+            foreach ($departments as $department) {
 
-        $courses = TrainingCourse::factory(5)->done()->create();
-        foreach ($courses as $course)
-            CourseAttendance::factory(15)->forCourse($course)->create();
+                $unit = Unit::create([
+                    'id' => $department->id,
+                    'parent_id' => $department->parent_id,
+                    'name' => $department->name,
+                    'head_id' => $department->department_manager,
+                    'purpose' => 'لا توجد بيانات',
+                ]);
+                Job::create([
+                    'unit_id' => $unit->id,
+                    'name' => 'وظيفة في الوحدة ' . $unit->id,
+                    'purpose' => 'لا توجد بيانات',
+                    'description' => 'لا توجد بيانات',
+                ]);
+            }
+            foreach ($users as $user) {
 
-        TrainingCourse::factory(5)->planned()->create();
-        TrainingCourse::factory(5)->canceled()->create();
+                Employee::where('id', $user->id)->first()->update([
+                    'job_id' => $user->department_id ? Job::where('unit_id', $user->department_id)->first()->id : 1
+                ]);
+            }
 
-        FormStructure::factory(5)->create();
-        Form::factory(5)->create();
 
-        Trainee::factory(5)->create();
-        Coach::factory(5)->create();
+            foreach ($individuals as $individual) {
+                TargetedIndividual::create([
+                    'id' => $individual->id,
+                    'name' => $individual->name,
+                    'username' => $individual->username,
+                    'phone_number' => $individual->phone_number,
+                    'email' => $individual->email,
+                    'address' => $individual->address,
+                    'description' => $individual->description,
+                    'profile_image' => null,
+                    'password' => Hash::make('password'),
+                ]);
+            }
+        } else {
 
-        Document::factory(15)->create();
+            User::factory(10)->create();
 
-        TrialPeriodAssessment::factory(5)->create();
-        TrainingPeriodAssessment::factory(5)->create();
-        InterviewAssessment::factory(5)->create();
-        TraineeCourseAssessment::factory(5)->create();
-        CoachCourseAssessment::factory(5)->create();
+            Unit::factory(10)->create();
+            Employee::factory(20)->create();
+            TargetedIndividual::factory(20)->create();
+            Admin::factory(5)->create();
+            Admin::factory()->create(['username' => 'ahmed', 'password' => Hash::make('password')]);
 
-        $this->seedPivotTables();
+            Supervisor::factory(5)->create();
 
-        Comment::factory(30)->create();
+            TrainingProgram::factory(20)->create();
+
+            $courses = TrainingCourse::factory(5)->resumed()->create();
+            foreach ($courses as $course)
+                CourseAttendance::factory(15)->forCourse($course)->create();
+
+            $courses = TrainingCourse::factory(5)->done()->create();
+            foreach ($courses as $course)
+                CourseAttendance::factory(15)->forCourse($course)->create();
+
+            TrainingCourse::factory(5)->planned()->create();
+            TrainingCourse::factory(5)->canceled()->create();
+
+            FormStructure::factory(5)->create();
+            Form::factory(5)->create();
+
+            Trainee::factory(5)->create();
+            Coach::factory(5)->create();
+
+            Document::factory(15)->create();
+
+            TrialPeriodAssessment::factory(5)->create();
+            TrainingPeriodAssessment::factory(5)->create();
+            InterviewAssessment::factory(5)->create();
+            TraineeCourseAssessment::factory(5)->create();
+            CoachCourseAssessment::factory(5)->create();
+
+            $this->seedPivotTables();
+
+            Comment::factory(30)->create();
+        }
     }
 }
