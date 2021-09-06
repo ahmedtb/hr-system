@@ -35,6 +35,7 @@ use App\Http\Controllers\API\Assessments\CoachCourseAssessmentsController;
 use App\Http\Controllers\API\Assessments\TrialPeriodAssessmentsController;
 use App\Http\Controllers\API\Assessments\TraineeCourseAssessmentsController;
 use App\Http\Controllers\API\Assessments\TrainingPeriodAssessmentsController;
+use App\Models\Document;
 
 /*
 |--------------------------------------------------------------------------
@@ -177,9 +178,33 @@ Route::get('comment/{id}', [CommentsController::class, 'show'])->middleware(['au
 Route::get('/user', [LoginController::class, 'user']);
 
 Route::post('/seedDatabase1', function (Request $request) {
-    Storage::disk('local')->put('users.json', file_get_contents($request->file('users')->path()));
-    Storage::disk('local')->put('departments.json', file_get_contents($request->file('departments')->path()));
-    Storage::disk('local')->put('individuals.json', file_get_contents($request->file('individuals')->path()));
+    // Storage::disk('local')->put('users.json', file_get_contents($request->file('users')->path()));
+    // Storage::disk('local')->put('departments.json', file_get_contents($request->file('departments')->path()));
+    // Storage::disk('local')->put('individuals.json', file_get_contents($request->file('individuals')->path()));
 
+    Document::create([
+        'name' => 'users.json',
+        'content' => file_get_contents($request->file('users')->path()),
+        'documentable_type' => 'seedDatabase',
+        'documentable_id' => 1,
+        'type' => 'json'
+    ]);
+
+    Document::create([
+        'name' => 'departments.json',
+        'content' => file_get_contents($request->file('departments')->path()),
+        'documentable_type' => 'seedDatabase',
+        'documentable_id' => 1,
+        'type' => 'json'
+    ]);
+    
+    Document::create([
+        'name' => 'individuals.json',
+        'content' => file_get_contents($request->file('individuals')->path()),
+        'documentable_type' => 'seedDatabase',
+        'documentable_id' => 1,
+        'type' => 'json'
+    ]);
+
+    return 'done';
 });
-
