@@ -1,10 +1,10 @@
 import React from 'react'
 import axios from 'axios'
-import { Link, useParams } from 'react-router-dom'
+import { Redirect, useParams } from 'react-router-dom'
 import ApiEndpoints from '../../utility/ApiEndpoints'
 import routes from '../../utility/routesEndpoints'
 import logError from '../../utility/logError'
-import Pagination from '../../utility/Pagination'
+import CustomModal from '../../components/CustomModal'
 
 export default function CoachCourseAssessmentsShow() {
     const { id } = useParams();
@@ -23,14 +23,34 @@ export default function CoachCourseAssessmentsShow() {
     }, [])
 
 
-
+    async function deleteAssessment() {
+        try {
+            const response = await axios.delete(ApiEndpoints.deleteCoachCourseAssessment.replace(':id', assessment.id))
+            console.log('CoachCourseAssessmentsShow delete', response.data)
+            setredirect(true)
+        } catch (error) { logError(error) }
+    }
+    const [redirect, setredirect] = React.useState(false)
+    if (redirect) {
+        return <Redirect to={routes.CoachCourseAssessmentIndex} />;
+    }
 
     return (
         <div className="col-12">
 
 
             <div className="card">
-                <div className="card-header">تقييم مدرب لدورة {assessment?.id}</div>
+                <div className="card-header">
+                    تقييم مدرب لدورة {assessment?.id}
+                    <CustomModal buttonClass="btn btn-info mr-2" label={'حدف التقييم من السجلات'} >
+                        <div>
+                            هل تود فعلا حدف التقييم من السجل بشكل دائما؟
+                        </div>
+                        <button className="btn btn-secondary" onClick={deleteAssessment} data-dismiss="modal">نعم</button>
+                        <button className='btn btn-success' data-dismiss="modal">لا</button>
+
+                    </CustomModal>
+                </div>
                 <div className="card-body">
 
                     <h3 className="text-center">
@@ -117,7 +137,7 @@ export default function CoachCourseAssessmentsShow() {
                                     <td >{assessment?.trainees_cooperation?.rating == 0 ? 'true' : null}</td>
                                     <td >{assessment?.trainees_cooperation?.comment}</td>
                                 </tr>
-                                
+
                                 <tr >
                                     <td >6</td>
                                     <td >تجهيزات القاعة (الإضاءة؛ التهوية؛ وسائل الإيضاح .. إلخ)</td>

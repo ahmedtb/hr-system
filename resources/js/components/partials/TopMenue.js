@@ -167,7 +167,7 @@ function TopMenue(props) {
                                 }
                                 links={[
                                     { label: 'قائمة قوالب النماذج', to: routes.showFormsStructures },
-                                    { label: 'انشاء نوع نماذج جديد', to: routes.createFormStructureForm },
+                                    // { label: 'انشاء نوع نماذج جديد', to: routes.createFormStructureForm },
                                     { label: 'عرض النماذج المعبئة', to: routes.showForms },
                                 ]}
                             />

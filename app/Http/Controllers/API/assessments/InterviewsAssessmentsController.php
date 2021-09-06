@@ -47,4 +47,10 @@ class InterviewsAssessmentsController extends Controller
     {
         return InterviewAssessment::where('id', $id)->first();
     }
+
+    public function delete($id)
+    {
+        InterviewAssessment::where('id', $id)->delete();
+        return ['success' => 'Interview Assessment deleted'];
+    }
 }

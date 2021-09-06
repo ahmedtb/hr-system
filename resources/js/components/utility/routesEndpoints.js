@@ -37,7 +37,7 @@ const routes = {
     showTrialPeriodAssessment: '/react/assessment/trialPeriod/:id',
     showCoachCourseAssessment: '/react/assessment/course/coachCourseAssessment/:id',
     showTraineeCourseAssessment: '/react/assessment/course/traineeCourseAssessment/:id',
-    showTrainingCourseAssessment: '/react/assessment/course/trainingCourseAssessment/:id',
+    showTrainingPeriodAssessment: '/react/assessment/trainingPeriodAssessment/:id',
     showInterviewAssessment: '/react/assessment/course/interviewAssessment/:id',
     showSupervisor: '/react/supervisor/:id',
     showAdmin: '/react/admin/:id',

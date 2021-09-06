@@ -9,7 +9,7 @@ function DataPresentation(row, property) {
     else if (property == 'created_at')
         return moment(row.created_at).format('yyyy-MM-DD')
     else if (property == 'id')
-        return <Link to={routes.showTrainingCourseAssessment.replace(':id', row.id)}>{row.id}</Link>
+        return <Link to={routes.showTrainingPeriodAssessment.replace(':id', row.id)}>{row.id}</Link>
     return row[property]
 }
 

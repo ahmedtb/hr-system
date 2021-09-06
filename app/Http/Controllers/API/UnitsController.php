@@ -22,6 +22,12 @@ class UnitsController extends Controller
         return Unit::where('id', $id)->with('parent')->first();
     }
 
+    public function delete($id)
+    {
+        Unit::where('id', $id)->delete();
+        return ['success' => 'unit deleted'];
+    }
+
     public function create(Request $request)
     {
         $data = $request->validate([

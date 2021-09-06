@@ -29,6 +29,12 @@ class JobsController extends Controller
         return Job::where('id', $id)->with('unit')->first();
     }
 
+    public function delete($id)
+    {
+        Job::where('id', $id)->delete();
+        return ['success' => 'job is deleted'];
+    }
+
     public function index(JobFilters $filters, Request $request)
     {
         return Job::filter($filters)

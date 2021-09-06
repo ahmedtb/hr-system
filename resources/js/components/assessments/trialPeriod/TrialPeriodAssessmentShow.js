@@ -1,10 +1,10 @@
 import React from 'react'
 import axios from 'axios'
-import { Link, useParams } from 'react-router-dom'
+import { Redirect, useParams } from 'react-router-dom'
 import ApiEndpoints from '../../utility/ApiEndpoints'
 import routes from '../../utility/routesEndpoints'
 import logError from '../../utility/logError'
-import Pagination from '../../utility/Pagination'
+import CustomModal from '../../components/CustomModal'
 
 export default function TrialPeriodAssessmentShow() {
     const { id } = useParams();
@@ -25,12 +25,36 @@ export default function TrialPeriodAssessmentShow() {
 
 
 
+    async function deleteAssessment() {
+        try {
+            const response = await axios.delete(ApiEndpoints.deleteTrialPeriodAssessment.replace(':id', assessment.id))
+            console.log('TrialPeriodAssessmentsShow delete', response.data)
+            setredirect(true)
+        } catch (error) { logError(error) }
+    }
+    const [redirect, setredirect] = React.useState(false)
+    if (redirect) {
+        return <Redirect to={routes.TrialPeriodAssessmentIndex} />;
+    }
+
+
+
     return (
         <div className="col-12">
 
 
             <div className="card">
-                <div className="card-header">تقييم فترة التجريب {assessment?.id}</div>
+                <div className="card-header">
+                    تقييم فترة التجريب {assessment?.id}
+                    <CustomModal buttonClass="btn btn-info mr-2" label={'حدف التقييم من السجلات'} >
+                        <div>
+                            هل تود فعلا حدف التقييم من السجل بشكل دائما؟
+                        </div>
+                        <button className="btn btn-secondary" onClick={deleteAssessment} data-dismiss="modal">نعم</button>
+                        <button className='btn btn-success' data-dismiss="modal">لا</button>
+
+                    </CustomModal>
+                </div>
                 <div className="card-body">
 
                     <h3 className="text-center">

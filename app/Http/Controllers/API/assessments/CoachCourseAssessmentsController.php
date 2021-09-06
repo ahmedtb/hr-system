@@ -68,4 +68,10 @@ class CoachCourseAssessmentsController extends Controller
     {
         return CoachCourseAssessment::where('id', $id)->first();
     }
+    
+    public function delete($id)
+    {
+        CoachCourseAssessment::where('id', $id)->delete();
+        return ['success'=>'delete Coach Course Assessment'];
+    }
 }

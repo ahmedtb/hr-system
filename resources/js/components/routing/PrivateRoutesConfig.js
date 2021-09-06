@@ -548,7 +548,7 @@ export default [
     },
     {
         component: TrainingPeriodAssessmentShow,
-        path: routes.showTrainingCourseAssessment,
+        path: routes.showTrainingPeriodAssessment,
         title: 'TrainingPeriodAssessmentShow',
         permission: [
             Roles.ADMIN,

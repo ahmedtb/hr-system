@@ -4,10 +4,12 @@ import { useParams } from 'react-router';
 import ApiEndpoints from '../utility/ApiEndpoints'
 import routes from '../utility/routesEndpoints';
 import logError from '../utility/logError';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Pagination from '../utility/Pagination'
 import CoursesTable from '../partials/CoursesTable'
 import AllowedLink from '../components/AllowedLink';
+import CustomModal from '../components/CustomModal';
+import EditCoachModal from './components/EditCoachModal';
 export default function CoachShow(props) {
     const { id } = useParams();
     const [coach, setcoach] = React.useState(null)
@@ -19,7 +21,7 @@ export default function CoachShow(props) {
             const response = await axios.get(link, { params: { ...params, coach_id: id, page_size: 5 } })
             setcourses(response.data.data)
             setcourseslinks(response.data.links)
-            console.log(response.data)
+            // console.log(response.data)
         } catch (error) { logError(error) }
 
     }
@@ -28,7 +30,7 @@ export default function CoachShow(props) {
         try {
             const response = await axios.get(ApiEndpoints.getCoach.replace(':id', id))
             setcoach(response.data)
-            console.log(response.data)
+            // console.log(response.data)
         } catch (error) { logError(error) }
 
     }
@@ -37,10 +39,37 @@ export default function CoachShow(props) {
         getCoach()
         getCoachCourses()
     }, [])
+
+    async function deleteCoach() {
+        try {
+            const response = await axios.delete(ApiEndpoints.deleteCoach.replace(':id', id))
+            // console.log('deleteCoach',response.data)
+            setredirect(true)
+        } catch (error) { logError(error) }
+    }
+    const [redirect, setredirect] = React.useState(false)
+    if(redirect){
+        return <Redirect to={routes.CoachesList} />
+    }
+    
+
     return (
         <div className="col-md-12">
             <div className="card">
-                <h4 className="card-header">مدرب {id}</h4>
+                <div className="card-header d-flex flex-row justify-content-between">
+                    <h3>مدرب {id}</h3>
+                    <div>
+                        <CustomModal buttonClass="btn btn-info mr-2" label={'حدف'} >
+                            <div>
+                                هل تود فعلا حدف المدرب من السجل بشكل دائما؟
+                            </div>
+                            <button className="btn btn-secondary" onClick={deleteCoach} data-dismiss="modal">نعم</button>
+                            <button className='btn btn-success' data-dismiss="modal">لا</button>
+
+                        </CustomModal>
+                        <EditCoachModal coach={coach} />
+                    </div>
+                </div>
                 <div className="card-body">
 
                     <div className="row justify-content-center warp">

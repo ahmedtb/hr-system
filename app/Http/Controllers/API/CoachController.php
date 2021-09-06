@@ -28,7 +28,8 @@ class CoachController extends Controller
             ->paginate($request->input('page_size') ?? 10)
             ->appends(request()->except('page'));
     }
-    public function getCoaches(){
+    public function getCoaches()
+    {
         return Coach::all();
     }
     public function create(Request $request)
@@ -59,6 +60,32 @@ class CoachController extends Controller
         }
 
         return response(['success' => 'coach created']);
+    }
+
+    public function edit(Request $request, $id)
+    {
+        Validator::make(['id' => $id], [
+            'id' => 'required|exists:coaches,id'
+        ])->validate();
+
+        $data = $request->validate([
+            'CV' => 'required|string|max:10000',
+            'speciality' => 'required|string',
+        ]);
+
+        $coach = Coach::where('id', $request->id)->first();
+        $coach->update($data);
+
+        return ['success' => 'coach edited'];
+    }
+
+    public function delete($id){
+        Validator::make(['id' => $id], [
+            'id' => 'required|exists:coaches,id'
+        ])->validate();
+        Coach::where('id', $id)->delete();
+
+        return ['success' => 'coach deleted'];
     }
 
     public function createForm()

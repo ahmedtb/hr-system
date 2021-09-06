@@ -4,7 +4,7 @@ import ApiEndpoints from '../utility/ApiEndpoints'
 import routes from '../utility/routesEndpoints'
 import logError from '../utility/logError'
 import Fields from '../fields/Fields'
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 import AllowedLink from '../components/AllowedLink'
 import { FaSearch, FaTrash } from 'react-icons/fa'
 import CustomModal from '../components/CustomModal'
@@ -50,18 +50,40 @@ export default function FormStructureShow(props) {
         } catch (err) { logError(err) }
     }
 
+    async function deleteFormStructure() {
+        try {
+            const res = await axios.delete(ApiEndpoints.deleteFormStructure.replace(':id', structure.id))
+            console.log('deleteFormStructure', res.data)
+            setredirect(true)
+        } catch (err) { logError(err) }
+    }
+    const [redirect, setredirect] = React.useState(false)
+    if(redirect)
+        return <Redirect to={routes.showFormsStructures} />
+
     return (
         <div className="col-md-12">
 
             <div className="card">
                 <div className="card-header">
                     <div className="d-flex flex-row justify-content-between">
-                        <div>نموذج {structure?.id}</div>
+                        <div>
+                            نموذج {structure?.id}
+                        </div>
                         <div className="">
                             <AllowedLink to={routes.searchForms.replace(':form_structure_id', structure?.id)}>
                                 <FaSearch />
                                 بحث في النماذج المعبئة
                             </AllowedLink>
+
+                            <CustomModal buttonClass="btn btn-info" label={'حدف نوع النماذج'} >
+                                <div>
+                                    هل تود فعلا حدف نوع النماذج هذا بشكل دائما؟
+                                </div>
+                                <button className="btn btn-secondary" onClick={deleteFormStructure} data-dismiss="modal">نعم</button>
+                                <button className='btn btn-success' data-dismiss="modal">لا</button>
+
+                            </CustomModal>
 
                             <CustomModal label={'copies'}>
                                 <input type="number" min="1" value={copies} onChange={(e) => setcopies(e.target.value)} />

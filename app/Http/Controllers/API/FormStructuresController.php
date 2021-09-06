@@ -34,4 +34,11 @@ class FormStructuresController extends Controller
     {
         return FormStructure::where('id',$id)->first();
     }
+
+    public function delete($id){
+        FormStructure::where('id',$id)->delete();
+
+        return ['success'=>'form structure is deleted'];
+
+    }
 }

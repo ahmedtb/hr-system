@@ -56,4 +56,9 @@ class TrainingPeriodAssessmentsController extends Controller
     {
         return TrainingPeriodAssessment::where('id', $id)->first();
     }
+    public function delete($id)
+    {
+        TrainingPeriodAssessment::where('id', $id)->delete();
+        return ['success'=>'delete Training Period Assessment'];
+    }
 }

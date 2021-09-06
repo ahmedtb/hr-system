@@ -53,11 +53,15 @@ Route::get('/unitsTree', [ManagmentController::class, 'UnitsTree']);
 Route::post('/job/create', [JobsController::class, 'create'])->middleware(['auth:admin']);
 Route::get('/job/index', [JobsController::class, 'index'])->middleware(['auth:admin']);
 Route::get('job/{id}', [JobsController::class, 'show'])->middleware(['auth:admin']);
+Route::delete('job/{id}', [JobsController::class, 'delete'])->middleware(['auth:admin']);
+
 Route::get('getJobs', [JobsController::class, 'getJobs'])->middleware(['auth:admin']);
 
 Route::post('/unit/create', [UnitsController::class, 'create'])->middleware(['auth:admin']);
 Route::get('/unit/index', [UnitsController::class, 'index'])->middleware(['auth:admin']);
 Route::get('/unit/{id}', [UnitsController::class, 'show'])->middleware(['auth:admin']);
+Route::delete('/unit/{id}', [UnitsController::class, 'delete'])->middleware(['auth:admin']);
+
 Route::get('getUnits', [UnitsController::class, 'getUnits'])->middleware(['auth:admin']);
 
 
@@ -98,6 +102,7 @@ Route::post('form/search/{form_structure_id}', [FormsController::class, 'search'
 
 Route::get('structure/index', [FormStructuresController::class, 'index'])->middleware(['auth:admin']);
 Route::get('structure/{id}', [FormStructuresController::class, 'show'])->middleware(['auth:admin']);
+Route::delete('structure/{id}', [FormStructuresController::class, 'delete'])->middleware(['auth:admin']);
 
 Route::get('structure/get', [FormStructuresController::class, 'createForm'])->middleware(['auth:admin']);
 Route::post('structure/create', [FormStructuresController::class, 'create'])->middleware(['auth:admin']);
@@ -108,6 +113,8 @@ Route::get('/coach/index', [CoachController::class, 'index'])->middleware(['auth
 Route::get('/getCoaches', [CoachController::class, 'getCoaches'])->middleware(['auth:admin']);
 Route::get('coach/{coach_id}/programs', [CoachController::class, 'getPrograms'])->middleware(['auth:admin,coach']);
 Route::get('coach/{id}', [CoachController::class, 'show'])->middleware(['auth:admin,coach']);
+Route::put('coach/{id}', [CoachController::class, 'edit'])->middleware(['auth:admin,coach']);
+Route::delete('coach/{id}', [CoachController::class, 'delete'])->middleware(['auth:admin,coach']);
 
 Route::post('program', [ProgramsController::class, 'create'])->middleware(['auth:admin,coach']);
 Route::delete('program/{id}', [ProgramsController::class, 'delete'])->middleware(['auth:admin,coach']);
@@ -138,23 +145,28 @@ Route::delete('attendance/{id}', [CourseAttendancesController::class, 'delete'])
 Route::post('interview/create', [InterviewsAssessmentsController::class, 'createInterview'])->middleware('auth:admin');
 Route::get('interview/index', [InterviewsAssessmentsController::class, 'indexInterviews'])->middleware('auth:admin');
 Route::get('interview/{id}', [InterviewsAssessmentsController::class, 'show'])->middleware('auth:admin');
+Route::delete('interview/{id}', [InterviewsAssessmentsController::class, 'delete'])->middleware('auth:admin');
 
 Route::post('trialPeriodAssessment/create', [TrialPeriodAssessmentsController::class, 'create'])->middleware('auth:admin');
 Route::get('trialPeriodAssessment/index', [TrialPeriodAssessmentsController::class, 'index'])->middleware('auth:admin');
 Route::get('trialPeriodAssessment/{id}', [TrialPeriodAssessmentsController::class, 'show'])->middleware('auth:admin');
+Route::delete('trialPeriodAssessment/{id}', [TrialPeriodAssessmentsController::class, 'delete'])->middleware('auth:admin');
 
 Route::post('trainingPeriodAssessment/create', [TrainingPeriodAssessmentsController::class, 'create'])->middleware('auth:admin');
 Route::get('trainingPeriodAssessment/index', [TrainingPeriodAssessmentsController::class, 'index'])->middleware('auth:admin');
 Route::get('trainingPeriodAssessment/{id}', [TrainingPeriodAssessmentsController::class, 'show'])->middleware(['auth:admin']);
+Route::delete('trainingPeriodAssessment/{id}', [TrainingPeriodAssessmentsController::class, 'delete'])->middleware(['auth:admin']);
 
 Route::post('traineeCourseAssessment/create', [TraineeCourseAssessmentsController::class, 'create'])->middleware('auth:admin,employee,individual');
 Route::get('traineeCourseAssessment/index', [TraineeCourseAssessmentsController::class, 'index'])->middleware(['auth:admin,employee,individual']);
 Route::get('traineeCourseAssessment/{id}', [TraineeCourseAssessmentsController::class, 'show'])->middleware(['auth:admin,employee,individual']);
+Route::delete('traineeCourseAssessment/{id}', [TraineeCourseAssessmentsController::class, 'delete'])->middleware(['auth:admin,employee,individual']);
 
 
 Route::post('coachCourseAssessment/create', [CoachCourseAssessmentsController::class, 'create'])->middleware(['auth:admin,coach']);
 Route::get('coachCourseAssessment/index', [CoachCourseAssessmentsController::class, 'index'])->middleware(['auth:admin,coach']);
 Route::get('coachCourseAssessment/{id}', [CoachCourseAssessmentsController::class, 'show'])->middleware(['auth:admin,coach']);
+Route::delete('coachCourseAssessment/{id}', [CoachCourseAssessmentsController::class, 'delete'])->middleware(['auth:admin,employee,individual']);
 
 Route::post('comment/create', [CommentsController::class, 'create'])->middleware(['auth:admin,coach']);
 Route::get('comment/index', [CommentsController::class, 'index'])->middleware(['auth:admin,coach']);

@@ -79,4 +79,10 @@ class TraineeCourseAssessmentsController extends Controller
     {
         return TraineeCourseAssessment::where('id', $id)->first();
     }
+    
+    public function delete($id)
+    {
+        TraineeCourseAssessment::where('id', $id)->delete();
+        return ['success'=>'delete Trainee Course Assessment'];
+    }
 }

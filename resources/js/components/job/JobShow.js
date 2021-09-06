@@ -3,11 +3,13 @@ import axios from 'axios'
 import ApiEndpoints from '../utility/ApiEndpoints'
 import logError from '../utility/logError'
 
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link,Redirect } from 'react-router-dom';
 import routes from '../utility/routesEndpoints';
 import EmployeesTable from '../partials/EmployeesTable'
 import Pagination from '../utility/Pagination'
 
+import CustomModal from '../components/CustomModal'
+import AllowedLink from '../components/AllowedLink';
 export default function JobShow(props) {
 
     const { id } = useParams();
@@ -37,12 +39,33 @@ export default function JobShow(props) {
         getEmployees()
     }, [])
 
+async function deleteJob() {
+        try {
+            const response = await axios.delete(ApiEndpoints.deleteJob.replace(':id', job.id))
+            console.log('JobsShow delete', response.data)
+            setredirect(true)
+        } catch (error) { logError(error) }
+    }
+    const [redirect, setredirect] = React.useState(false)
+    if (redirect) {
+        return <Redirect to={routes.jobIndex} />;
+    }
+
+
     return (
         <div className="col-md-12">
 
             <div className="card">
                 <div className="card-header">
                     وظيفة رقم {job?.id}
+                    <CustomModal buttonClass="btn btn-info mr-2" label={'حدف الوظيفة'} >
+                        <div>
+                            هل تود فعلا حدف الوظيفة بشكل دائما؟
+                        </div>
+                        <button className="btn btn-secondary" onClick={deleteJob} data-dismiss="modal">نعم</button>
+                        <button className='btn btn-success' data-dismiss="modal">لا</button>
+
+                    </CustomModal>
                 </div>
 
                 <div className="card-body">
@@ -58,9 +81,9 @@ export default function JobShow(props) {
                         </div>
                         <div className="col-5 border border-dark rounded m-2 text-center">
                             الوحدة التي تتبعها
-                            <Link to={routes.showUnit.replace(':id', job?.unit_id)}>
+                            <AllowedLink to={routes.showUnit.replace(':id', job?.unit_id)}>
                                 {job?.unit?.name}
-                            </Link>
+                            </AllowedLink>
                         </div>
                     </div>
                 </div>

@@ -62,4 +62,9 @@ class TrialPeriodAssessmentsController extends Controller
     {
         return TrialPeriodAssessment::where('id', $id)->first();
     }
+    public function delete($id)
+    {
+        TrialPeriodAssessment::where('id', $id)->delete();
+        return ['success'=>'delete Trial Period Assessment'];
+    }
 }

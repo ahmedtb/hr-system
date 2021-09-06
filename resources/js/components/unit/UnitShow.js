@@ -3,11 +3,14 @@ import axios from 'axios'
 import ApiEndpoints from '../utility/ApiEndpoints'
 import logError from '../utility/logError'
 import routes from '../utility/routesEndpoints'
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 import EmployeesTable from '../partials/EmployeesTable'
 import JobsTable from '../partials/JobsTable'
 import Pagination from '../utility/Pagination'
 import AllowedLink from '../components/AllowedLink'
+import CustomModal from '../components/CustomModal'
+
+
 export default function UnitShow(props) {
 
     const { id } = useParams();
@@ -52,12 +55,35 @@ export default function UnitShow(props) {
         getUnitJobs()
     }, [id])
 
+
+
+    async function deleteUnit() {
+        try {
+            const response = await axios.delete(ApiEndpoints.deleteUnit.replace(':id', unit.id))
+            console.log('UnitsShow delete', response.data)
+            setredirect(true)
+        } catch (error) { logError(error) }
+    }
+    const [redirect, setredirect] = React.useState(false)
+    if (redirect) {
+        return <Redirect to={routes.unitIndex} />;
+    }
+
+
     return (
         <div className="col-12">
 
             <div className="card">
                 <div className="card-header">
                     الوحدة الادارية رقم {unit?.id}
+                    <CustomModal buttonClass="btn btn-info mr-2" label={'حدف الوحدة'} >
+                        <div>
+                            هل تود فعلا حدف الوحدة بشكل دائما؟
+                        </div>
+                        <button className="btn btn-secondary" onClick={deleteUnit} data-dismiss="modal">نعم</button>
+                        <button className='btn btn-success' data-dismiss="modal">لا</button>
+
+                    </CustomModal>
                 </div>
 
                 <div className="card-body">

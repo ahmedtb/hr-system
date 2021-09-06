@@ -7,6 +7,7 @@ export default {
     getTargeted: '/api/targeted/:id',
 
     showFormStructure: '/api/structure/:id',
+    deleteFormStructure: '/api/structure/:id', 
 
     formSearch: '/api/form/search/:form_structure_id',
 
@@ -24,6 +25,8 @@ export default {
     createFormStructure: '/api/structure/create',
     createCoach: '/api/coach',
     createCoachForm: '/api/coach',
+    editCoach: '/api/coach/:id',
+    deleteCoach: '/api/coach/:id',
     createProgramForm: '',
     createProgram: '/api/program',
     deleteProgram: '/api/program/:id',
@@ -68,10 +71,16 @@ export default {
     getTrialPeriods: '/api/trialPeriodAssessment/index',
 
     getTrialPeriod: '/api/trialPeriodAssessment/:id',
+    deleteTrialPeriodAssessment: '/api/trialPeriodAssessment/:id',
     getCoachCourse: '/api/coachCourseAssessment/:id',
+    deleteCoachCourseAssessment: '/api/coachCourseAssessment/:id',
+
     getTraineeCourse: '/api/traineeCourseAssessment/:id',
+    deleteTraineeCourseAssessment: '/api/traineeCourseAssessment/:id',
     getTrainingPeriod: '/api/trainingPeriodAssessment/:id',
+    deleteTrainingPeriodAssessment: '/api/trainingPeriodAssessment/:id',
     getInterview: '/api/interview/:id',
+    deleteInterviewAssessment: '/api/interview/:id',
 
     coachesIndex: '/api/coach/index',
     programIndex: '/api/program/index',
@@ -88,7 +97,10 @@ export default {
     getCourse: '/api/course/:id',
     getProgram: '/api/program/:id',
     getJob: '/api/job/:id',
+    deleteJob: '/api/job/:id',
+    
     unitShow: '/api/unit/:id',
+    deleteUnit: '/api/unit/:id',
     getAllAttendances: '/api/course/:id/attendances',
     getAttendancesByDay: '/api/course/:id/attendances/:date',
 

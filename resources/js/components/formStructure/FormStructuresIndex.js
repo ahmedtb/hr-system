@@ -15,7 +15,10 @@ export default function FormStructuresIndex(props) {
     return (
         <div className="col-md-12">
             <div className="card">
-                <div className="card-header">النماذج الخاصة المتوفرة</div>
+                <div className="card-header d-flex flex-row justify-content-between">
+                    النماذج الخاصة المتوفرة
+                    <AllowedLink to={routes.createFormStructureForm}>انشاء نوع نماذج جديد</AllowedLink>
+                </div>
                 <div className="card-body">
                     <table className="table table-bordered table-condensed" style={{ marginBottom: 0 }}>
                         <thead>
