@@ -72,7 +72,7 @@ export default function ConductInterViewAssessment(props) {
 
     return (
         <div className="card">
-            <div className="card-header">اجراء تقييم مقابلة</div>
+            <h3 className="card-header">اجراء تقييم مقابلة</h3>
 
             <div className="card-body">
                 <div className="row justify-content-center">

@@ -38,7 +38,7 @@ export default function FormStructureShow(props) {
         try {
             const res = await axios.get(ApiEndpoints.avaliableTokens.replace(':id', id))
             settokens(res.data)
-            console.log('avaliableTokens', res.data)
+            // console.log('avaliableTokens', res.data)
         } catch (err) { logError(err) }
     }
 
@@ -58,7 +58,7 @@ export default function FormStructureShow(props) {
         } catch (err) { logError(err) }
     }
     const [redirect, setredirect] = React.useState(false)
-    if(redirect)
+    if (redirect)
         return <Redirect to={routes.showFormsStructures} />
 
     return (
@@ -67,40 +67,49 @@ export default function FormStructureShow(props) {
             <div className="card">
                 <div className="card-header">
                     <div className="d-flex flex-row justify-content-between">
-                        <div>
+                        <h3>
                             نموذج {structure?.id}
-                        </div>
+                        </h3>
                         <div className="">
                             <AllowedLink to={routes.searchForms.replace(':form_structure_id', structure?.id)}>
                                 <FaSearch />
                                 بحث في النماذج المعبئة
                             </AllowedLink>
 
-                            <CustomModal buttonClass="btn btn-info" label={'حدف نوع النماذج'} >
-                                <div>
-                                    هل تود فعلا حدف نوع النماذج هذا بشكل دائما؟
-                                </div>
-                                <button className="btn btn-secondary" onClick={deleteFormStructure} data-dismiss="modal">نعم</button>
-                                <button className='btn btn-success' data-dismiss="modal">لا</button>
 
-                            </CustomModal>
-
-                            <CustomModal label={'copies'}>
+                            <CustomModal buttonClass="btn btn-outline-primary ml-2" label={'نسخ النوع'}>
                                 <input type="number" min="1" value={copies} onChange={(e) => setcopies(e.target.value)} />
                                 <button type='button' className='btn btn-primary' onClick={generateForm}>
                                     انشاء نسخة من نموذج
                                 </button>
-                                {
-                                    tokens.map((token, index) => (
-                                        <div key={index} className="col-12">
-                                            <AllowedLink target="_blank" to={routes.generatedForm.replace(':access_token', token.access_token)}>
-                                                {routes.generatedForm.replace(':access_token', token.access_token)}
-                                            </AllowedLink>
-                                            {token.copies} {token.expiration_date}
-                                            <FaTrash size={20} onClick={() => deleteToken(token.id)} />
-                                        </div>
-                                    ))
-                                }
+
+                                <table className="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">رابط النسخ</th>
+                                            <th scope="col">عدد نسخ</th>
+                                            <th scope="col">تاريخ انتهاء الصلاحية</th>
+                                            <th scope="col">#</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {
+                                            tokens.map((token, index) => (
+                                                <tr key={index}>
+                                                    <th scope="row">
+                                                        <AllowedLink target="_blank" to={routes.generatedForm.replace(':access_token', token.access_token)}>
+                                                            {routes.generatedForm.replace(':access_token', token.access_token)}
+                                                        </AllowedLink>
+                                                    </th>
+                                                    <td>{token.copies}</td>
+                                                    <td>{token.expiration_date}</td>
+                                                    <td><FaTrash size={20} onClick={() => deleteToken(token.id)} /></td>
+                                                </tr>
+                                            ))
+                                        }
+                                    </tbody>
+                                </table>
+
                             </CustomModal>
                         </div>
                     </div>
@@ -117,6 +126,15 @@ export default function FormStructureShow(props) {
                 </div>
 
             </div>
+            <CustomModal buttonClass="btn btn-danger" label={'حدف نوع النماذج'} >
+                <div>
+                    هل تود فعلا حدف نوع النماذج هذا بشكل دائما؟
+                </div>
+                <button className="btn btn-danger" onClick={deleteFormStructure} data-dismiss="modal">نعم</button>
+                <button className='btn btn-success' data-dismiss="modal">لا</button>
+
+            </CustomModal>
+
         </div>
     )
 }

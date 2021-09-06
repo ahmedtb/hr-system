@@ -71,7 +71,7 @@ export default function ConductCoachCourseAssessment(props) {
     }
     return (
         <div className="card">
-            <div className="card-header">تقييم دورة تدريبية من قبل مدرب</div>
+            <h3 className="card-header">تقييم دورة تدريبية من قبل مدرب</h3>
 
             <div className="card-body">
                 <div className="row justify-content-center">

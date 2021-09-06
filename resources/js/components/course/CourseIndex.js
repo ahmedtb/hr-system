@@ -38,14 +38,14 @@ function CoursesViewerAndFilter(props) {
         <>
             <div className="card">
                 <div className="card-header">
-                    <div className="row justify-content-between">
+                    <h3 className="row justify-content-between">
                         <div>
                             قائمة الدورات
                         </div>
                         <div>
                             <AllowedLink to={routes.createCourse}>تسجيل دورة</AllowedLink>
                         </div>
-                    </div>
+                    </h3>
                 </div>
                 <div className="card-body ">
                     <FiltersContainer label="ترشيح الدورات" clearFilters={clearFilters}>
@@ -149,7 +149,7 @@ export default function CourseIndex(props) {
             {
                 twentyDaysRangeCourses.length ?
                     <div className="card">
-                        <div className="card-header">مخطط الدورات خلال الايام الحالية</div>
+                        <h3 className="card-header">مخطط الدورات خلال الايام الحالية</h3>
                         <div className="card-body">
                             <ScheduleDiagram
                                 courses={twentyDaysRangeCourses}

@@ -41,7 +41,7 @@ export default function CoachCourseAssessmentsShow() {
 
             <div className="card">
                 <div className="card-header">
-                    تقييم مدرب لدورة {assessment?.id}
+                    <h3>تقييم مدرب لدورة {assessment?.id}</h3>
                     <CustomModal buttonClass="btn btn-info mr-2" label={'حدف التقييم من السجلات'} >
                         <div>
                             هل تود فعلا حدف التقييم من السجل بشكل دائما؟

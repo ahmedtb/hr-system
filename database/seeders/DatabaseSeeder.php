@@ -68,10 +68,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         if (App::environment() == 'production') {
-            // $users = json_decode( Storage::disk('local')->get('users.json') );
-            // $departments = json_decode( Storage::disk('local')->get('departments.json') );
-            // $individuals = json_decode( Storage::disk('local')->get('individuals.json') );
-
             $users = json_decode( Document::where('name','users.json')->first()->content );
             $departments = json_decode( Document::where('name','departments.json')->first()->content );
             $individuals = json_decode( Document::where('name','individuals.json')->first()->content );

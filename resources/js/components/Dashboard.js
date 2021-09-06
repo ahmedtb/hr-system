@@ -149,9 +149,9 @@ export default function Dashboard() {
 
                 </div>
                 <div className="card">
-                    <div className="card-header">
+                    <h3 className="card-header">
                         تركيبة المنظومة
-                    </div>
+                    </h3>
                     <div className="card-body">
                         <div className="row">
                             <div className="col-9">

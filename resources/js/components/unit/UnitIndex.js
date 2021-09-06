@@ -32,9 +32,9 @@ export default function UnitIndex(props) {
             <div className="card">
                 <div className="card-header">
                     <div className="row justify-content-between">
-                        <div>
+                        <h3>
                             قائمة الوحدات الادارية
-                        </div>
+                        </h3>
                         <div>
                             <AllowedLink to={routes.unitCreate}>انشاء وحدة ادارية</AllowedLink>
                         </div>

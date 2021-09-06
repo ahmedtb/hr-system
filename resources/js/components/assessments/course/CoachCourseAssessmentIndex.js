@@ -44,9 +44,9 @@ export default function CoachCourseAssessmentIndex() {
 
                 <div className="card-header">
                     <div className="row justify-content-between">
-                        <div>
+                        <h3>
                             تقييمات المدربين للدورات
-                        </div>
+                        </h3>
                         <div>
                             <Link to={routes.conductCoachCourseAssessment}>اجراء تقييم مدرب لدورة</Link>
                         </div>

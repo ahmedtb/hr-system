@@ -43,7 +43,7 @@ export default function CreateProgram() {
 
     return (
         <div className="card">
-            <div className="card-header">تسجيل حقيبة تدريبية</div>
+            <h3 className="card-header">تسجيل حقيبة تدريبية</h3>
 
             <div className="card-body row justify-content-center">
 

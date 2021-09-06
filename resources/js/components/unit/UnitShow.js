@@ -75,7 +75,7 @@ export default function UnitShow(props) {
 
             <div className="card">
                 <div className="card-header">
-                    الوحدة الادارية رقم {unit?.id}
+                    <h3>الوحدة الادارية رقم {unit?.id}</h3>
                     <CustomModal buttonClass="btn btn-info mr-2" label={'حدف الوحدة'} >
                         <div>
                             هل تود فعلا حدف الوحدة بشكل دائما؟
@@ -109,9 +109,9 @@ export default function UnitShow(props) {
                 </div>
 
                 <div className="card">
-                    <div className="card-header">
+                    <h3 className="card-header">
                         موظفي الوحدة الادارية
-                    </div>
+                    </h3>
 
                     <div className="card-body">
                         <Pagination fetchPage={getUnitEmployees} links={employeeslinks} />
@@ -120,9 +120,9 @@ export default function UnitShow(props) {
                 </div>
 
                 <div className="card">
-                    <div className="card-header">
+                    <h3 className="card-header">
                         الوظايف التي تنتمي لهذه الوحدة
-                    </div>
+                    </h3>
 
                     <div className="card-body">
                         <Pagination fetchPage={getUnitJobs} links={jobslinks} />

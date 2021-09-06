@@ -135,9 +135,9 @@ export default function TraineeCourseAssessmentIndex() {
 
                 <div className="card-header">
                     <div className="row justify-content-between">
-                        <div>
+                        <h3>
                             تقييمات المتدربيين للدورات
-                        </div>
+                        </h3>
                         <div>
                             <Link to={routes.conductTraineeCourseAssessment}>اجراء تقييم متدرب لدورة</Link>
                         </div>

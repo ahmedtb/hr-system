@@ -178,9 +178,6 @@ Route::get('comment/{id}', [CommentsController::class, 'show'])->middleware(['au
 Route::get('/user', [LoginController::class, 'user']);
 
 Route::post('/seedDatabase1', function (Request $request) {
-    // Storage::disk('local')->put('users.json', file_get_contents($request->file('users')->path()));
-    // Storage::disk('local')->put('departments.json', file_get_contents($request->file('departments')->path()));
-    // Storage::disk('local')->put('individuals.json', file_get_contents($request->file('individuals')->path()));
 
     Document::create([
         'name' => 'users.json',

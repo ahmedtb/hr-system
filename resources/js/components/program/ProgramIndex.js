@@ -70,9 +70,9 @@ export default function ProgramIndex(props) {
             <div className="card">
                 <div className="card-header">
                     <div className="row justify-content-between">
-                        <div>
+                        <h3>
                             البرامج التدريبية
-                        </div>
+                        </h3>
                         <div>
                             <AllowedLink to={routes.createProgramForm}>تسجيل برامج تدريبي</AllowedLink>
                         </div>

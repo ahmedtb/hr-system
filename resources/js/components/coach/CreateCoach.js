@@ -54,7 +54,7 @@ function CreateCoach(props) {
     return (
 
         <div className="card">
-            <div className="card-header">اضافة مدرب</div>
+            <h3 className="card-header">اضافة مدرب</h3>
 
             <div className="card-body row">
 

@@ -53,7 +53,7 @@ export default function CreateEmployee() {
     }
     return (
         <div className="card">
-            <div className="card-header">اضافة موظف</div>
+            <h3 className="card-header">اضافة موظف</h3>
 
             <div className="card-body row">
 

@@ -91,7 +91,7 @@ export default function ConductTrialPeriodAssessment(props) {
 
     return (
         <div className="card">
-            <div className="card-header">اجراء تقييم فترة تجريب</div>
+            <h3 className="card-header">اجراء تقييم فترة تجريب</h3>
 
             <div className="card-body">
                 <div className="row justify-content-center">

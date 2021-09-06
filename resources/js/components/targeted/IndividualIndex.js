@@ -40,7 +40,7 @@ export default function IndividualIndex(props) {
     return (
         <div className="col-md-12">
             <div className="card">
-                <div className="card-header bg-light">
+                <h3 className="card-header bg-light">
                     <div className="row justify-content-between">
                         <div>
                             قائمة المستهدفيين
@@ -49,7 +49,7 @@ export default function IndividualIndex(props) {
                             <AllowedLink to={routes.createTargetedForm}>تسجيل مستهدف</AllowedLink>
                         </div>
                     </div>
-                </div>
+                </h3>
                 <div className="card-body">
                     <div className="row">
                         <FiltersContainer label="مرشحات المستهدفيين" clearFilters={clearFilters}>

@@ -3,6 +3,7 @@ import moment from 'moment'
 import logError from '../../utility/logError'
 import ApiEndpoints from '../../utility/ApiEndpoints'
 import axios from 'axios'
+import SelectSearch from '../../components/SelectSearch'
 
 export default function EnrollmentModal(props) {
     const course = props.course
@@ -15,6 +16,7 @@ export default function EnrollmentModal(props) {
     const [profile_id, setprofile_id] = React.useState(null)
 
     function profileChoiceChange(e) {
+        setprofile_id(null)
         setProfileChoice(e.target.value)
     }
 
@@ -95,17 +97,24 @@ export default function EnrollmentModal(props) {
                                         <>
 
                                             <label htmlFor="employee">اختر الموظف</label>
-                                            <select
+                                            {/* <select
                                                 className="form-control"
                                                 onChange={(e) => setprofile_id(e.target.value)} id="employee">
-                                                <option value=''>قائمة الموظفين المسجلين في الدورة</option>
+                                                <option value=''>قائمة الموظفين</option>
                                                 {
                                                     employees?.map((employee, index) => (
                                                         <option key={index} value={employee.id}>{employee.name}</option>
                                                     ))
                                                 }
-                                            </select>
-
+                                            </select> */}
+                                            <SelectSearch
+                                                options={employees}
+                                                setSelectedValue={(value) => setprofile_id(value)}
+                                                label={'اختر الموظف'}
+                                                defaultValue={'1'}
+                                                valueKeyWord='id'
+                                                nameKeyWord='name'
+                                            />
                                         </>
                                     )
                                 } else if (profileChoice == 'targeted') {
@@ -113,7 +122,7 @@ export default function EnrollmentModal(props) {
                                         <>
 
                                             <label htmlFor="targeted">اختر المستهدف</label>
-                                            <select
+                                            {/* <select
                                                 className="form-control"
                                                 onChange={(e) => setprofile_id(e.target.value)} name="targeted_id">
                                                 <option value=''>اسماء المستهدفين المسجلين في الدورة</option>
@@ -122,8 +131,15 @@ export default function EnrollmentModal(props) {
                                                         <option key={index} value={targeted.id}>{targeted.name}</option>
                                                     ))
                                                 }
-                                            </select>
-
+                                            </select> */}
+                                            <SelectSearch
+                                                options={individuals}
+                                                setSelectedValue={(value) => setprofile_id(value) }
+                                                label={'اختر المستهدف'}
+                                                defaultValue={'1'}
+                                                valueKeyWord='id'
+                                                nameKeyWord='name'
+                                            />
                                         </>
                                     )
                                 }
