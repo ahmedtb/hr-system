@@ -15,8 +15,10 @@ use App\Http\Controllers\API\DocumentsController;
 |
 */
 Route::get('document/{id}', [DocumentsController::class, 'download'])->middleware(['auth:admin']);
+Route::view('managment/{path}', 'managment')->where('path', '([A-z\d\-\/_.]+)?');
+Route::view('managment', 'managment');
 
-Route::view('{path}', 'reactFrontEnd')->where('path', '([A-z\d\-\/_.]+)?');
+Route::view('{path}', 'website')->where('path', '([A-z\d\-\/_.]+)?');
 
-Auth::routes();
+// Auth::routes();
 
