@@ -4,8 +4,8 @@ import ApiEndpoints from '../utility/ApiEndpoints'
 import logError from '../utility/logError'
 import Fields from '../components/fields/Fields';
 import { useParams } from 'react-router';
-import { Redirect } from 'react-router'
-import routes from '../utility/routesEndpoints'
+import { Helmet } from 'react-helmet'
+
 export default function FormCreate(props) {
     const { access_token } = useParams()
 
@@ -31,7 +31,7 @@ export default function FormCreate(props) {
             })
             console.log(response.data)
 
-            setredirect(true)
+            // setredirect(true)
 
         } catch (err) {
             logError(err)
@@ -42,23 +42,27 @@ export default function FormCreate(props) {
         getGeneratedForm()
     }, [])
 
-    const [redirect, setredirect] = React.useState(false)
-    if (redirect) {
-        return <Redirect to={routes.dashboard} />;
-    }
+    // const [redirect, setredirect] = React.useState(false)
+    // if (redirect) {
+    //     return <Redirect to={routes.dashboard} />;
+    // }
     return (
-        <div className="col-md-12">
-
+        <div className="col-md-12 pb-5">
+            <Helmet>
+                <title>{structure?.type}</title>
+            </Helmet>
             <div className="card">
-                <h3 className="card-header">
-                    نسخة نموذج للنوع {structure?.id}
-                </h3>
-
                 <div className="card-body">
-                    <Fields fields={fields} setFields={setfields} type='input' />
+                    <h2 className="text-center">
+                        {structure?.type}
+                    </h2>
 
-                    <button onClick={submit}>
-                        submit
+                    <div className="row">
+                        <Fields fields={fields} setFields={setfields} type='input' />
+                    </div>
+
+                    <button className="btn btn-success" onClick={submit}>
+                        ارسال
                     </button>
                 </div>
 

@@ -15,7 +15,7 @@ function LabelField(props) {
 
     React.useEffect(() => {
         setConfig()
-    }, [label])
+    }, [value])
 
     return (
         <div className="text-center">

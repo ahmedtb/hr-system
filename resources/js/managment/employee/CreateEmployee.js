@@ -66,26 +66,26 @@ export default function CreateEmployee() {
 
                     <div className="col-5 p-2 border rounded m-2 row ">
                         <label className="col-4">اسم الموظف</label>
-                        <input className="col-8" value={name} onChange={(e) => setname(e.target.value)} type="text" />
+                        <input className="col-8 form-control" value={name} onChange={(e) => setname(e.target.value)} type="text" />
                     </div>
                     <div className="col-5 p-2 border rounded m-2 row">
                         <label className="col-4">عنوان الموظف</label>
-                        <input className="col-8" value={address} onChange={(e) => setaddress(e.target.value)} type="text" />
+                        <input className="col-8 form-control" value={address} onChange={(e) => setaddress(e.target.value)} type="text" />
                     </div>
                     <div className="col-5 p-2 border rounded m-2 row">
                         <label className="col-4">تاريخ التوظيف</label>
-                        <input className="col-8" value={employment_date} onChange={(e) => setemployment_date(e.target.value)} type="date" />
+                        <input className="col-8 form-control" value={employment_date} onChange={(e) => setemployment_date(e.target.value)} type="date" />
                     </div>
                     <div className="col-5 p-2 border rounded m-2 row">
                         <label className="col-4">مرتب الموظف</label>
-                        <input className="col-8" value={basic_salary} onChange={(e) => setbasic_salary(e.target.value)} type="number" />
+                        <input className="col-8 form-control" value={basic_salary} onChange={(e) => setbasic_salary(e.target.value)} type="number" />
                     </div>
                 </div>
                 <div className="col-12 row">
 
                     <div className="col-5 p-2 border rounded m-2 row">
                         <label className="col-4">رقم هاتف الموظف</label>
-                        <input className="col-8" value={phone_number} onChange={(e) => setphone_number(e.target.value)} name="phone_number" type="number" />
+                        <input className="col-8 form-control" value={phone_number} onChange={(e) => setphone_number(e.target.value)} name="phone_number" type="number" />
                     </div>
 
                     
@@ -93,7 +93,7 @@ export default function CreateEmployee() {
                     <div className="col-5 p-2 border rounded m-2 row">
 
                         <label className="col-4">الوظيفة</label>
-                        <select className="col-8" onChange={(e) => setjob_id(e.target.value)} >
+                        <select className="col-8 form-control" onChange={(e) => setjob_id(e.target.value)} >
                             <option >نرجو اختيار نوع الوظيفة</option>
 
                             {
@@ -105,12 +105,12 @@ export default function CreateEmployee() {
                     </div>
                     <div className="col-5 p-2 border rounded m-2 row">
                         <label className="col-4">بريد الكتروني</label>
-                        <input className="col-8" value={email} onChange={(e) => setemail(e.target.value)} type="email" name="email" />
+                        <input className="col-8 form-control" value={email} onChange={(e) => setemail(e.target.value)} type="email" name="email" />
                     </div>
 
                     <div className="col-5 p-2 border rounded m-2 row">
                         <label className="col-4">ارفاق مستندات الموظف</label>
-                        <input className="col-8" onChange={(e) => {
+                        <input className="col-8 form-control" onChange={(e) => {
                             let array = []
                             for (var i = 0; i < e.target.files.length; i++) {
                                 let file = e.target.files[i];

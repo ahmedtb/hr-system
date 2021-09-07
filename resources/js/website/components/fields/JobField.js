@@ -10,14 +10,14 @@ export default function GenderField(props) {
         return (
             <div className="col m-1">
                 <div className="row d-flex flex-nowrap">
-                    <strong>
+                    <h5>
                         {field['label']}
-                    </strong>
+                    </h5>
                     {
                         (field['value']) ?
-                            <div className='p-1 border border-1 rounded  ml-2'>اسم الوظيفة المحدد افتراضيا {field['value']}</div>
+                            <div className='p-1 border border-dark rounded  ml-2'>اسم الوظيفة المحدد افتراضيا {field['value']}</div>
                             :
-                            <input className='border border-1 rounded  ml-2' size="25" value="حقل تحديد وظيفة" disabled />
+                            <input className='border border-dark rounded  ml-2' size="25" value="حقل تحديد وظيفة" disabled />
                     }
                 </div>
             </div>

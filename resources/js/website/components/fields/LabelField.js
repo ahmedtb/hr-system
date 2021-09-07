@@ -18,10 +18,14 @@ export default function LabelField(props) {
                 </div>
             </div>
         );
-        else if (type == 'input')
+    else if (type == 'input')
         return (
-            <div className='row'>
-                {field['class']}
+            <div className="col-12 m-1">
+                <div className="row justify-content-center">
+                    <h5>
+                        {field['value']}
+                    </h5>
+                </div>
             </div>
         )
 }

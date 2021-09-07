@@ -10,9 +10,9 @@ export default function DateField(props) {
         return (
             <div className="col m-1">
                 <div className="row flex-nowrap">
-                    <strong>
+                    <h5>
                         {field['label']}
-                    </strong>
+                    </h5>
                     <input type="date" value={field['value'] ?? 'حقل تاريخ'} disabled />
                 </div>
             </div>
@@ -24,9 +24,11 @@ export default function DateField(props) {
             onChange(field)
         }
         return (
-            <div className='row'>
-                {field['label']}
-                <input type="date" onChange={changeValue} value={field['value'] ?? ''} />
+            <div className='col m-1'>
+                <strong>
+                    {field['label']}
+                </strong>
+                <input className='border border-dark rounded ml-2' type="date" onChange={changeValue} value={field['value'] ?? ''} />
             </div>
         )
     }

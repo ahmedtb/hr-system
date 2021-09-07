@@ -122,7 +122,18 @@ export default function CourseShow(props) {
                                     <div className="d-flex flex-row justify-content-center mb-2">
                                         <FaTrafficLight className="mr-2" />
                                         <strong className="mr-2">حالة الدورة</strong>
-                                        <p>{course?.state}</p>
+                                        {(() => {
+                                            let color = ''
+                                            if (course?.state == 'مستأنفة')
+                                                color = "text-success"
+                                            else if (course?.state == 'مخطط لها')
+                                                color = "text-primary"
+                                            else if (course?.state == 'منتهية')
+                                                color = "text-white bg-dark"
+                                            else if (course?.state == 'ملغية')
+                                                color = "text-info bg-dark"
+                                            return <p className={color}>{course?.state}</p>
+                                        })()}
                                     </div>
 
                                     <div className="d-flex flex-row justify-content-center mb-2">
@@ -235,8 +246,8 @@ export default function CourseShow(props) {
                 </div>
 
                 <div className="row justify-content-around">
-                    <div onClick={() => settoggleUI('documents')} className={"p-2 rounded " + (toggleUI == 'documents' ? 'bg-primary' : 'bg-light') }>المستندات</div>
-                    <div onClick={() => settoggleUI('notes')} className={"p-2 rounded " + (toggleUI == 'notes' ? 'bg-primary' : 'bg-light') }>ملاحظات</div>
+                    <div onClick={() => settoggleUI('documents')} className={"p-2 rounded " + (toggleUI == 'documents' ? 'bg-primary' : 'bg-light')}>المستندات</div>
+                    <div onClick={() => settoggleUI('notes')} className={"p-2 rounded " + (toggleUI == 'notes' ? 'bg-primary' : 'bg-light')}>ملاحظات</div>
                 </div>
                 {
                     toggleUI == 'documents' ?

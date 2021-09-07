@@ -35,25 +35,24 @@ export default function GenderField(props) {
         }
         return (
             <div className="col m-1">
-                <div className="row flex-nowrap">
-                    <strong>
+                <div className="d-flex flex-row flex-nowrap">
+                    <h5>
                         {field['label']}
-                    </strong>
+                    </h5>
                     <div className="col ml-3">
                         <div className="form-check">
                             <input className="form-check-input" type="radio" onChange={() => changeValue('male')} checked={field['value'] == 'male'} />
                             <label className="form-check-label">
-                                male
+                                ذكر
                             </label>
                         </div>
                         <div className="form-check">
                             <input className="form-check-input" type="radio" onChange={() => changeValue('female')} checked={field['value'] == 'female'} />
                             <label className="form-check-label">
-                                female
+                                انثى
                             </label>
                         </div>
                     </div>
-
                 </div>
             </div>
         )

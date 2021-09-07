@@ -13,18 +13,18 @@ function App() {
         <BrowserRouter>
 
             <Provider store={store}>
-                <Switch>
+                <main className="container-fluid">
+                    <Switch>
+                        <Route
+                            exact={true}
+                            title={'generatedForm'}
+                            path={routes.generatedForm}
+                            component={FormCreate}
+                        />
 
-                    <Route
-                        exact={true}
-                        title={'generatedForm'}
-                        path={routes.generatedForm}
-                        component={FormCreate}
-                    />
-
-                    <Route component={NotFound} />
-
-                </Switch>
+                        <Route component={NotFound} />
+                    </Switch>
+                </main>
             </Provider>
 
         </BrowserRouter>

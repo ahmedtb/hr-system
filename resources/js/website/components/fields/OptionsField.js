@@ -11,9 +11,9 @@ export default function OptionsField(props) {
         return (
             <div className="col m-2">
                 <div className="row flex-nowrap">
-                    <strong>
+                    <h5>
                         {field['label']}
-                    </strong>
+                    </h5>
 
                     <div className="ml-2">
                         {
@@ -39,26 +39,27 @@ export default function OptionsField(props) {
             onChange(field)
         }
         return (
-            <div className="row p-3">
-                <div className="col-6">
-                    حقل اختياري بعنوان: {field['label']}
+            <div className="col m-2">
+                <div className="row flex-nowrap">
+                    <h5>
+                        {field['label']}
+                    </h5>
+                    <div className="col ml-3">
+                        {
+                            field['options'].map((option, index) => (
+                                <div key={index} className="form-check">
+                                    <input className="form-check-input" type="radio"
+                                        checked={field['value'] == option}
+                                        onChange={() => changeValue(option)}
+                                    />
+                                    <label className="form-check-label">
+                                        {option}
+                                    </label>
+                                </div>
+                            ))
+                        }
+                    </div>
                 </div>
-                <div className="col-6">
-                    {
-                        field['options'].map((option, index) => (
-                            <div key={index} className="form-check">
-                                <input className="form-check-input" type="radio"
-                                    checked={field['value'] == option}
-                                    onChange={() => changeValue(option)}
-                                />
-                                <label className="form-check-label">
-                                    {option}
-                                </label>
-                            </div>
-                        ))
-                    }
-                </div>
-
             </div>
         )
     }

@@ -13,7 +13,7 @@ export default function PhoneNumberField(props) {
                     <strong >
                         {field['label']}
                     </strong>
-                    <input className='border border-1 rounded ml-2' value={field['value'] ?? ''} disabled />
+                    <input className='border border-dark rounded ml-2' value={field['value'] ?? ''} disabled />
                 </div>
             </div>
         );
@@ -28,7 +28,7 @@ export default function PhoneNumberField(props) {
                     {field['label']}
                 </div>
                 <div className="col-6">
-                    <input className='border border-1 rounded' size="25" onChange={changeValue} type="number" value={field['value'] ?? ''} />
+                    <input className='border border-dark rounded' size="25" onChange={changeValue} type="number" value={field['value'] ?? ''} />
                 </div>
             </div>
         )

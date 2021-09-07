@@ -13,7 +13,7 @@ export default function EmailField(props) {
             <div className="col m-1">
                 <div className="row flex-nowrap">
                     <strong className=''>{field['label']}</strong>
-                    <input className='border border-1 rounded ml-2' value={field['value'] ?? 'حقل عنوان بريدي'} disabled />
+                    <input className='border border-dark rounded ml-2' value={field['value'] ?? 'حقل عنوان بريدي'} disabled />
                 </div>
             </div>
         );
@@ -31,7 +31,7 @@ export default function EmailField(props) {
                     {field['label']}
                 </div>
                 <div className="col-6">
-                    <input className='border border-1 rounded' type='email' size="25" onChange={changeValue} value={fieldValue ?? ''} />
+                    <input className='border border-dark rounded' type='email' size="25" onChange={changeValue} value={fieldValue ?? ''} />
                 </div>
             </div>
         )

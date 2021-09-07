@@ -1,10 +1,10 @@
 import React from 'react'
 
-export default function NotFound(props){
+export default function NotFound(props) {
 
     return (
-        <h2>
+        <h1 className="text-center">
             404 Not Found
-        </h2>
+        </h1>
     )
 }

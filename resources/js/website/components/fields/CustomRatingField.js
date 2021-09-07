@@ -23,9 +23,9 @@ export default function CustomRatingField(props) {
         return (
             <div className="col m-1">
                 <div className="row flex-nowrap">
-                    <strong>
+                    <h5>
                         {field['label']}
-                    </strong>
+                    </h5>
                     <div className="ml-2">
                         {stars}
                     </div>
@@ -53,9 +53,9 @@ export default function CustomRatingField(props) {
         return (
             <div className="col m-1">
                 <div className="row flex-nowrap">
-                    <strong>
+                    <h5>
                         {field['label']}
-                    </strong>
+                    </h5>
                     <div className="ml-2">
                         {stars}
                     </div>

@@ -10,8 +10,8 @@ export default function DoubleField(props) {
         return (
             <div className="col m-1">
                 <div className="row flex-nowrap">
-                    <strong>{field['label']}</strong>
-                    <input className='border border-1 rounded lm-2' value={field['value'] ?? 'حقل عدد مركب'} disabled />
+                    <h5>{field['label']}</h5>
+                    <input className='border border-dark rounded lm-2' value={field['value'] ?? 'حقل عدد مركب'} disabled />
                 </div>
             </div>
 

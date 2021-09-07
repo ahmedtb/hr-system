@@ -11,8 +11,8 @@ export default function StringField(props) {
         return (
             <div className="col m-1">
                 <div className="row ">
-                    <strong>{field['label']}</strong>
-                    <input className='border border-1 rounded ml-2' size="25" value={fieldValue ?? 'حقل نصي'} disabled />
+                    <h5>{field['label']}</h5>
+                    <input className='border border-dark rounded ml-2' size="25" value={fieldValue ?? 'حقل نصي'} disabled />
                 </div>
             </div>
 
@@ -24,13 +24,9 @@ export default function StringField(props) {
             onChange(field)
         }
         return (
-            <div className="row p-3">
-                <div className="col-6">
-                    {field['label']}
-                </div>
-                <div className="col-6">
-                    <input className='border border-1 rounded' size="25" onChange={changeValue} value={fieldValue ?? ''} />
-                </div>
+            <div className="col m-1 d-flex flex-row align-items-start">
+                <h5>{field['label']}</h5>
+                <input className='border border-dark rounded ml-2' size="25" onChange={changeValue} value={fieldValue ?? ''} />
             </div>
         )
     }

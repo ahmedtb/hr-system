@@ -58,15 +58,11 @@ export default function TableField(props) {
                 </tr>
         }
         return (
-            <>
-                <div className="row p-3">
-                    <div className="col-6">
-                        حقل جدول بعنوان: {field['label']}
-                    </div>
-                    <div className="col-6">
-                        عدد الصفوف في الجدول: {field['numberOfRows']}
-                    </div>
-                </div>
+            <div className="col-12 my-1">
+
+                <h5 className="mr-3">
+                    {field['label']}
+                </h5>
                 <table className="table table-striped table-condensed table-bordered">
                     <thead>
                         <tr>
@@ -81,7 +77,7 @@ export default function TableField(props) {
                         {Rows}
                     </tbody>
                 </table>
-            </>
+            </div>
         )
     }
 

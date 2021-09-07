@@ -17,7 +17,7 @@ function SocialStatusField(props) {
     React.useEffect(() => {
         setConfig()
 
-    }, [])
+    }, [label])
     return (
         <div className="text-center">
             <h6 className="row justify-content-center m-2">

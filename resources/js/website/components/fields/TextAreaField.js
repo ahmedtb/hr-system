@@ -12,8 +12,8 @@ export default function TextAreaField(props) {
     if (type == 'render')
         return (
             <div className="col-12 m-1">
-                <strong>{field['label']}</strong>
-                <textarea className='col-12 border border-1 rounded' rows='4' value={fieldValue ?? 'منطقة النص'} disabled />
+                <h5>{field['label']}</h5>
+                <textarea className='col-12 border border-dark rounded' rows='4' value={fieldValue ?? 'منطقة النص'} disabled />
             </div>
         );
     else if (type == 'input') {
@@ -23,10 +23,10 @@ export default function TextAreaField(props) {
             onChange(field)
         }
         return (
-            <>
-                tabel area input: {field['label']}
-                <textarea onChange={changeValue} value={fieldValue ?? ''} rows="5"></textarea>
-            </>
+            <div className="col-12 m-1">
+                <h5>{field['label']}</h5>
+                <textarea className='col-12 border border-dark rounded' rows='4' onChange={changeValue} value={fieldValue ?? ''}></textarea>
+            </div>
         )
     }
 }
