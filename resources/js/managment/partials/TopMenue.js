@@ -7,7 +7,7 @@ function AuthComponent(props) {
 
     async function isLoggedIn() {
         try {
-            const response = await axios.get('/api/user')
+            const response = await axios.get(ApiEndpoints.getUser)
             props.refreshUser(response.data)
             // console.log('/api/user',response.data)
         } catch (error) {
@@ -18,7 +18,7 @@ function AuthComponent(props) {
     async function logout() {
         try {
             axios.defaults.headers.common['Accept'] = 'application/json';
-            const response = await axios.post('/logout')
+            const response = await axios.post(ApiEndpoints.logout)
             // console.log('logout', (response.data));
             props.refreshUser(null)
         } catch (error) {

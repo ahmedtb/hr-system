@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 import logError from './utility/logError'
-
+import ApiEndpoints from './utility/ApiEndpoints';
 
 
 function LoginPage(props) {
@@ -13,7 +13,7 @@ function LoginPage(props) {
     async function handleLogin(username, password) {
         try {
             await axios.get('/sanctum/csrf-cookie')
-            const response = await axios.post('/login', { username: username, password: password, type: type })
+            const response = await axios.post(ApiEndpoints.login, { username: username, password: password, type: type })
             console.log('User signed in!', (response.data));
             props.refreshUser(response.data)
 

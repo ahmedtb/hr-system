@@ -20,5 +20,5 @@ Route::view('managment', 'managment');
 
 Route::view('{path}', 'website')->where('path', '([A-z\d\-\/_.]+)?');
 
-// Auth::routes();
+Auth::routes();
 

@@ -1,5 +1,9 @@
 export default {
     dashboard: '/api/dashboard',
+    login: '/login',
+    logout: '/logout',
+    getUser: '/api/user',
+
     createEmployeeForm: '',
     createTargetedForm: '',
     createTargeted: '/api/targeted/create',

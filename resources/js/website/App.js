@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { Provider } from 'react-redux';
 import store from './redux/store';
-import FormCreate from './form/FormCreate';
 import routes from './utility/routesEndpoints';
 import NotFound from './NotFound';
-
+import FormCreate from './form/FormCreate';
+import Home from './home/Home';
 function App() {
 
     return (
@@ -21,7 +21,12 @@ function App() {
                             path={routes.generatedForm}
                             component={FormCreate}
                         />
-
+                        <Route
+                            exact={true}
+                            title={'home'}
+                            path={routes.home}
+                            component={Home}
+                        />
                         <Route component={NotFound} />
                     </Switch>
                 </main>
