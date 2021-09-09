@@ -15,8 +15,8 @@ use App\Http\Controllers\API\DocumentsController;
 |
 */
 Route::get('document/{id}', [DocumentsController::class, 'download'])->middleware(['auth:admin']);
-Route::view('managment/{path}', 'managment')->where('path', '([A-z\d\-\/_.]+)?');
-Route::view('managment', 'managment');
+Route::view('management/{path}', 'management')->where('path', '([A-z\d\-\/_.]+)?');
+Route::view('management', 'management');
 
 Route::view('{path}', 'website')->where('path', '([A-z\d\-\/_.]+)?');
 

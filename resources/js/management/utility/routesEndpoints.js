@@ -1,0 +1,62 @@
+const routes = {
+    dashboard: '/management/',
+    createEmployeeForm: '/management/createEmployeeForm',
+    createTargetedForm: '/management/createTargetedForm',
+    showFormStructure: '/management/structure/:id',
+    showForm: '/management/form/:id',
+    generatedForm: '/form/token/:access_token',
+    searchForms: '/management/form/search/:form_structure_id',
+    
+    createFormStructureForm: '/management/structureCreate',
+    createCoachForm: '/management/coachCreate',
+    createProgramForm: '/management/programCreate',
+    createCourse: '/management/course/create',
+    jobCreate: '/management/job/create',
+    unitCreate: '/management/unit/create',
+    attachDocument:'/management/document/create',
+
+    conductInterviewAssessment: '/management/assessment/interview',
+    conductTrialPeriodAssessment: '/management/assessment/trialPeriod',
+    conductTrainingPeriodAssessment: '/management/assessment/trainingPeriod',
+    conductTraineeCourseAssessment: '/management/assessment/traineeCourseAssessment',
+    conductCoachCourseAssessment: '/management/assessment/coachCourseAssessment',
+    
+    TrialPeriodAssessmentIndex: '/management/assessment/trialPeriod/index',
+    CoachCourseAssessmentIndex: '/management/assessment/coachCourseAssessment/index',
+    TraineeCourseAssessmentIndex: '/management/assessment/traineeCourseAssessment/index',
+    TrainingPeriodAssessmentIndex: '/management/assessment/trainingPeriodAssessment/index',
+
+    showTargeted: '/management/targeted/:id',
+    showEmployee: '/management/employee/:id',
+    showCourse: '/management/course/:id',
+    showProgram: '/management/showProgram/:id',
+    showUnit: '/management/unit/:id',
+    showJob: '/management/job/:id',
+    showAttendances: '/management/attendances/:id',
+    showCoach: '/management/coach/:id',
+    showTrialPeriodAssessment: '/management/assessment/trialPeriod/:id',
+    showCoachCourseAssessment: '/management/assessment/course/coachCourseAssessment/:id',
+    showTraineeCourseAssessment: '/management/assessment/course/traineeCourseAssessment/:id',
+    showTrainingPeriodAssessment: '/management/assessment/trainingPeriodAssessment/:id',
+    showInterviewAssessment: '/management/assessment/course/interviewAssessment/:id',
+    showSupervisor: '/management/supervisor/:id',
+    showAdmin: '/management/admin/:id',
+    programIndex: '/management/program/index',
+    CoachesList: '/management/coach/index',
+    AssessmentsIndex: '/management/assessment/index',
+    showForms: '/management/formIndex',
+    showFormsStructures: '/management/structureIndex',
+    courseIndex: '/management/course/index',
+    coursesBrowser: '/management/course/filters',
+    employeeIndex: '/management/employee/index',
+    individualIndex: '/management/individual/index',
+    jobIndex: '/management/job/index',
+    unitIndex: '/management/unit/index',
+    interviewAssessmentIndex: '/management/assessment/interview/index',
+
+    loginPage: '/management/login',
+    seedDatabase: '/management/seedDatabase'
+
+}
+
+export default routes;

@@ -72,7 +72,7 @@ class FormsEndpointsTests extends TestCase
             'fields' => $array_of_fieldsInstance,
         ])->assertOk()->assertJson(['success' => 'form successfully disposed']);
         // dd($response->json());
-        // make sure form is disposed in the managment... and the access toke is deleted so no more submitions allowed
+        // make sure form is disposed in the management... and the access toke is deleted so no more submitions allowed
         $this->assertNotNull(Form::first());
         $filled_fieldsIsnstance = (Form::first()->filled_fields);
         $this->assertEquals(count($filled_fieldsIsnstance), count($array_of_fieldsInstance));

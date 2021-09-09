@@ -12,7 +12,7 @@ class UnitesTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_managment_unites_could_have_parent_unit()
+    public function test_management_unites_could_have_parent_unit()
     {
         // random units
         Unit::factory()->create();
@@ -24,7 +24,7 @@ class UnitesTest extends TestCase
         $this->assertEquals($child->parent->id, $parent->id);
     }
 
-    public function test_managment_unit_has_jobs_and_employees_belongs_to_these_jobs()
+    public function test_management_unit_has_jobs_and_employees_belongs_to_these_jobs()
     {
         $unit = Unit::factory()->create();
         $job = Job::factory()->create(['unit_id'=> $unit->id]);

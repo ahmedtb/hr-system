@@ -122,7 +122,7 @@ class TargetedIndividualsController extends Controller
             'name' => ['sometimes', 'string', Rule::unique('targeted_individuals', 'name')->ignore($request->id)],
             'address' => 'sometimes|string',
             'phone_number' => ['sometimes', 'string', Rule::unique('targeted_individuals', 'phone_number')->ignore($request->id)],
-            'email' => ['sometimes', 'email', Rule::unique('targeted_individuals', 'email')->ignore($request->id)],
+            'email' => ['sometimes', 'string', Rule::unique('targeted_individuals', 'email')->ignore($request->id)],
             'description' => 'sometimes|string',
             // 'profile_image' => 'sometimes|image|mimes:jpg,jpeg,png,bmp,tiff |max:1024',
         ]);
