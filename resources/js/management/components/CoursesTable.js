@@ -7,7 +7,7 @@ export default function CoursesTable(props) {
     const courses = props.courses
     return (
 
-        <table className="table table-bordered table-condensed">
+        <table className="table table-bordered table-condensed table-responsive">
             <thead>
                 <tr>
                     <th >ID</th>

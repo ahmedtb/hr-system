@@ -72,30 +72,34 @@ export default function EmployeeShow(props) {
         <div className="col-12">
 
             <div className="card">
-                <div className="card-header row justify-content-between">
-                    موظف رقم {employee?.id}
-                    <div>
-                        <CustomModal buttonClass="btn btn-info mr-2" label={'حدف الموظف من السجلات'} >
-                            <div>
-                                هل تود فعلا حدف الموظف من السجل بشكل دائما؟
-                            </div>
-                            <button className="btn btn-secondary" onClick={deleteEmployee} data-dismiss="modal">نعم</button>
-                            <button className='btn btn-success' data-dismiss="modal">لا</button>
+                <div className="card-header">
+                    <div className="row justify-content-between">
 
-                        </CustomModal>
-                        <EditEmployeeModal employee={employee} change={getEmployeeInfo} />
+                        موظف رقم {employee?.id}
+                        <div>
+                            <CustomModal buttonClass="btn btn-info mr-2" label={'حدف الموظف من السجلات'} >
+                                <div>
+                                    هل تود فعلا حدف الموظف من السجل بشكل دائما؟
+                                </div>
+                                <button className="btn btn-secondary" onClick={deleteEmployee} data-dismiss="modal">نعم</button>
+                                <button className='btn btn-success' data-dismiss="modal">لا</button>
+
+                            </CustomModal>
+                            <EditEmployeeModal employee={employee} change={getEmployeeInfo} />
+                        </div>
                     </div>
+
                 </div>
 
                 <div className="card-body">
                     <div className="row">
 
-                        <div className="border rounded p-2">
+                        <div className="border rounded text-white p-2">
                             <img height='150' src={'/css/profile.png'} />
                         </div>
                         <div className="col-10 row warp">
 
-                            <div className="col">
+                            <div className="col-lg">
                                 <div className="m-2 text-center row">
                                     <FiFlag size={25} className="mx-1" />
                                     <h5 className="mx-1">
@@ -119,7 +123,7 @@ export default function EmployeeShow(props) {
                                     {employee?.phone_number}
                                 </div>
                             </div>
-                            <div className="col">
+                            <div className="col-lg">
 
                                 <div className="m-2 text-center row">
                                     <FaDiscourse size={25} className="mx-1" />
@@ -144,20 +148,25 @@ export default function EmployeeShow(props) {
                                 </div>
                             </div>
 
-                            {employee?.job_id ? <div className="m-2 text-center row">
-                                <FiFile size={25} className="mx-1" />
-                                <h5 className="mx-1">
-                                    وظيفته
-                                </h5>
-                                <Link to={routes.showJob.replace(':id', employee?.job_id)}>{employee?.job?.name}</Link >
-                            </div> : null}
+                            {employee?.job_id ?
+                                <div className="col-lg">
+                                    <div className="m-2 text-center row">
+                                        <FiFile size={25} className="mx-1" />
+                                        <h5 className="mx-1">
+                                            وظيفته
+                                        </h5>
+                                        <Link to={routes.showJob.replace(':id', employee?.job_id)}>{employee?.job?.name}</Link >
+                                    </div>
+                                </div> : null}
 
 
                             {
                                 coach ? (
-                                    <div className="m-2 text-center row">
-                                        الموظف كمدرب
-                                        <Link to={routes.showCoach.replace(':id', coach.id)} >{coach.id}</Link>
+                                    <div className="col-lg">
+                                        <div className="m-2 text-center row">
+                                            الموظف كمدرب
+                                            <Link to={routes.showCoach.replace(':id', coach.id)} >{coach.id}</Link>
+                                        </div>
                                     </div>
                                 ) : null
                             }
@@ -168,21 +177,24 @@ export default function EmployeeShow(props) {
 
             </div>
 
-            <div className="row justify-content-around">
-                <div onClick={() => settoggleUI('documents')} className={"bg-light p-2"}>المستندات</div>
-                <div onClick={() => settoggleUI('courses')} className={"bg-light p-2"}> الدورات</div>
-                <div onClick={() => settoggleUI('assessments')} className={"bg-light p-2"}>التقييمات</div>
-                <div onClick={() => settoggleUI('notes')} className={"bg-light p-2"}>ملاحظات</div>
+            <div className="d-flex flex-row justify-content-around my-2 bg-white ">
+                <div onClick={() => settoggleUI('documents')} className={toggleUI == 'documents' ? "bg-info border rounded text-white p-2" :  "bg-secondary border rounded text-white p-2"}>المستندات</div>
+                <div onClick={() => settoggleUI('courses')} className={toggleUI == 'courses' ? "bg-info border rounded text-white p-2" :  "bg-secondary border rounded text-white p-2"}> الدورات</div>
+                <div onClick={() => settoggleUI('assessments')} className={toggleUI == 'assessments' ? "bg-info border rounded text-white p-2" :  "bg-secondary border rounded text-white p-2"}>التقييمات</div>
+                <div onClick={() => settoggleUI('notes')} className={toggleUI == 'notes' ? "bg-info border rounded text-white p-2" :  "bg-secondary border rounded text-white p-2"}>ملاحظات</div>
             </div>
             {
 
                 toggleUI == 'documents' ?
                     <div className="card">
-                        <div className="card-header row justify-content-between">
-                            <div>المستندات الملحق بالموظف</div>
-                            <AllowedLink to={{
-                                pathname: routes.attachDocument, state: { documentable: employee, documentable_type: 'App\\Models\\Employee' }
-                            }}>الحاق مستند جديد</AllowedLink>
+                        <div className="card-header ">
+                            <div className="row justify-content-between">
+
+                                <div>المستندات الملحق بالموظف</div>
+                                <AllowedLink to={{
+                                    pathname: routes.attachDocument, state: { documentable: employee, documentable_type: 'App\\Models\\Employee' }
+                                }}>الحاق مستند جديد</AllowedLink>
+                            </div>
                         </div>
 
                         <div className="card-body">
@@ -207,39 +219,41 @@ export default function EmployeeShow(props) {
                         </div>
 
                         <div className="card-body">
-                            <div className="row justify-content-center warp">
-                                <CoursesTable courses={resumedCourses} />
-                            </div>
+                            <CoursesTable courses={resumedCourses} />
                         </div>
                     </div>
                 ) : null
             }
             {
                 toggleUI == 'courses' ? (
-                    <div className="row">
-                        <div className="col-4 d-flex flex-row">
-                            <FaChalkboardTeacher className="mr-2" size={30} />
-                            <Link to={routes.coursesBrowser + '?resumed=true&employee_id=' + id}>
-                                الدورات الجارية المسجل بها {resumedCourses.length}
-                            </Link>
-                        </div>
-                        <div className="col-4 d-flex flex-row">
-                            <FaChalkboardTeacher className="mr-2" size={30} />
-                            <Link to={routes.coursesBrowser + '?done=true&employee_id=' + id}>
-                                الدورات المنتهية المسجل بها {doneCourses.length}
-                            </Link>
-                        </div>
-                        <div className="col-4 d-flex flex-row">
-                            <FaChalkboardTeacher className="mr-2" size={30} />
-                            <Link to={routes.coursesBrowser + '?canceled=true&employee_id=' + id}>
-                                الدورات الملغية المسجل بها {canceledCourses.length}
-                            </Link>
-                        </div>
-                        <div className="col-4 d-flex flex-row">
-                            <FaChalkboardTeacher className="mr-2" size={30} />
-                            <Link to={routes.coursesBrowser + '?planned=true&employee_id=' + id}>
-                                الدورات المخطط له المسجل بها {plannedCourses.length}
-                            </Link>
+                    <div className="card">
+                        <div className="card-body">
+                            <div className="row">
+                                <div className="col-4 d-flex flex-row">
+                                    <FaChalkboardTeacher className="mr-2" size={30} />
+                                    <Link to={routes.coursesBrowser + '?resumed=true&employee_id=' + id}>
+                                        الدورات الجارية المسجل بها {resumedCourses.length}
+                                    </Link>
+                                </div>
+                                <div className="col-4 d-flex flex-row">
+                                    <FaChalkboardTeacher className="mr-2" size={30} />
+                                    <Link to={routes.coursesBrowser + '?done=true&employee_id=' + id}>
+                                        الدورات المنتهية المسجل بها {doneCourses.length}
+                                    </Link>
+                                </div>
+                                <div className="col-4 d-flex flex-row">
+                                    <FaChalkboardTeacher className="mr-2" size={30} />
+                                    <Link to={routes.coursesBrowser + '?canceled=true&employee_id=' + id}>
+                                        الدورات الملغية المسجل بها {canceledCourses.length}
+                                    </Link>
+                                </div>
+                                <div className="col-4 d-flex flex-row">
+                                    <FaChalkboardTeacher className="mr-2" size={30} />
+                                    <Link to={routes.coursesBrowser + '?planned=true&employee_id=' + id}>
+                                        الدورات المخطط له المسجل بها {plannedCourses.length}
+                                    </Link>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 ) : null
@@ -247,33 +261,35 @@ export default function EmployeeShow(props) {
 
             {
                 toggleUI == 'assessments' ? <>
+                    <div className="card">
 
-                    <div className="card-body">
-                        <div className="row">
+                        <div className="card-body">
+                            <div className="row">
 
-                            <div className="col-4 d-flex flex-row">
-                                <GrAnalytics className="mr-2" size={30} />
-                                <Link to={routes.TrialPeriodAssessmentIndex + '?employee_id=' + id}>
-                                    تقييمات فترة التجريب للموظف {employee?.trial_period_assessments.length}
-                                </Link>
-                            </div>
-                            <div className="col-4 d-flex flex-row">
-                                <IoMdAnalytics className="mr-2" size={30} />
-                                <Link to={routes.TrainingPeriodAssessmentIndex + '?employee_id=' + id}>
-                                    تقييمات فترة التدريب للموظف {employee?.training_period_assessments.length}
-                                </Link>
-                            </div>
-                            <div className="col-4 d-flex flex-row">
-                                <GrAnalytics className="mr-2" size={30} />
-                                <Link to={routes.interviewAssessmentIndex + '?name=' + employee?.name}>
-                                    تقييمات المقابلة التي تخص الموظف
-                                </Link>
-                            </div>
-                            <div className="col-4 d-flex flex-row">
-                                <GrAnalytics className="mr-2" size={30} />
-                                <Link to={routes.TraineeCourseAssessmentIndex + '?employee_id=' + id}>
-                                    تقييمات الموظف للدورات التي مر بها {traineeCourseAssessments.length}
-                                </Link>
+                                <div className="col-4 d-flex flex-row">
+                                    <GrAnalytics className="mr-2" size={30} />
+                                    <Link to={routes.TrialPeriodAssessmentIndex + '?employee_id=' + id}>
+                                        تقييمات فترة التجريب للموظف {employee?.trial_period_assessments.length}
+                                    </Link>
+                                </div>
+                                <div className="col-4 d-flex flex-row">
+                                    <IoMdAnalytics className="mr-2" size={30} />
+                                    <Link to={routes.TrainingPeriodAssessmentIndex + '?employee_id=' + id}>
+                                        تقييمات فترة التدريب للموظف {employee?.training_period_assessments.length}
+                                    </Link>
+                                </div>
+                                <div className="col-4 d-flex flex-row">
+                                    <GrAnalytics className="mr-2" size={30} />
+                                    <Link to={routes.interviewAssessmentIndex + '?name=' + employee?.name}>
+                                        تقييمات المقابلة التي تخص الموظف
+                                    </Link>
+                                </div>
+                                <div className="col-4 d-flex flex-row">
+                                    <GrAnalytics className="mr-2" size={30} />
+                                    <Link to={routes.TraineeCourseAssessmentIndex + '?employee_id=' + id}>
+                                        تقييمات الموظف للدورات التي مر بها {traineeCourseAssessments.length}
+                                    </Link>
+                                </div>
                             </div>
                         </div>
 
