@@ -3,8 +3,8 @@ import axios from 'axios';
 import ApiEndpoints from '../utility/ApiEndpoints'
 import routes from '../utility/routesEndpoints';
 import logError from '../utility/logError';
-import JobsTable from '../partials/JobsTable';
-import Pagination from '../utility/Pagination'
+import JobsTable from '../components/JobsTable';
+import Pagination from '../components/Pagination'
 import { TextFilter } from '../components/Filters'
 import AllowedLink from '../components/AllowedLink';
 

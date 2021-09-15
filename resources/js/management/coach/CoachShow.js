@@ -5,8 +5,8 @@ import ApiEndpoints from '../utility/ApiEndpoints'
 import routes from '../utility/routesEndpoints';
 import logError from '../utility/logError';
 import { Redirect } from 'react-router-dom';
-import Pagination from '../utility/Pagination'
-import CoursesTable from '../partials/CoursesTable'
+import Pagination from '../components/Pagination'
+import CoursesTable from '../components/CoursesTable'
 import AllowedLink from '../components/AllowedLink';
 import CustomModal from '../components/CustomModal';
 import EditCoachModal from './components/EditCoachModal';

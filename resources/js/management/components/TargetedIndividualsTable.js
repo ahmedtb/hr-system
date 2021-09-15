@@ -9,7 +9,7 @@ import AllowedLink from '../components/AllowedLink'
 import { FaPlus, FaMinus } from 'react-icons/fa'
 export default function TargetedIndividualsTable(props) {
     const individuals = props.individuals
-    const [fontSize, setfontSize] = React.useState(15)
+    const [fontSize, setfontSize] = React.useState(17)
     return (
         <>
             <FaPlus className="border rounded mx-1" size={20} onClick={() => setfontSize(pre => pre + 1)} />

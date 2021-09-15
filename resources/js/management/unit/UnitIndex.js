@@ -3,8 +3,8 @@ import axios from 'axios';
 import ApiEndpoints from '../utility/ApiEndpoints'
 import routes from '../utility/routesEndpoints';
 import logError from '../utility/logError';
-import UnitsTable from '../partials/UnitsTable';
-import Pagination from '../utility/Pagination'
+import UnitsTable from '../components/UnitsTable';
+import Pagination from '../components/Pagination'
 import { TextFilter } from '../components/Filters'
 import AllowedLink from '../components/AllowedLink';
 export default function UnitIndex(props) {

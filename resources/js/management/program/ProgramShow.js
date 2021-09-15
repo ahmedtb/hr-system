@@ -3,8 +3,8 @@ import axios from 'axios'
 import ApiEndpoints from '../utility/ApiEndpoints'
 import logError from '../utility/logError'
 import { useParams, Redirect } from 'react-router-dom';
-import Pagination from '../utility/Pagination';
-import CoursesTable from '../partials/CoursesTable';
+import Pagination from '../components/Pagination';
+import CoursesTable from '../components/CoursesTable';
 import routes from '../utility/routesEndpoints';
 import RenderDocuments from '../components/RenderDocuments'
 import AllowedLink from '../components/AllowedLink';

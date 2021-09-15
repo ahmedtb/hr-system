@@ -5,7 +5,7 @@ import routes from '../../utility/routesEndpoints'
 import logError from '../../utility/logError'
 import InterviewAssessmentsTable from './components/InterviewAssessmentsTable'
 import { Link } from 'react-router-dom'
-import Pagination from '../../utility/Pagination'
+import Pagination from '../../components/Pagination'
 import { DateFilter, OrderByDescFilter, TextFilter } from '../../components/Filters'
 
 export default function InterviewAssessmentIndex() {

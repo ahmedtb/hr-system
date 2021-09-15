@@ -3,7 +3,7 @@ import axios from 'axios';
 import ApiEndpoints from '../utility/ApiEndpoints'
 import routes from '../utility/routesEndpoints';
 import logError from '../utility/logError';
-import Pagination from '../utility/Pagination'
+import Pagination from '../components/Pagination'
 import { NumberFilter, TextFilter } from '../components/Filters'
 import FiltersContainer from '../components/FiltersContainer';
 import AllowedLink from '../components/AllowedLink';

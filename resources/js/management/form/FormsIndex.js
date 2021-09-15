@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import ApiEndpoints from '../utility/ApiEndpoints'
 import logError from '../utility/logError'
-import FormsTable from '../partials/FormsTable'
+import FormsTable from '../components/FormsTable'
 export default function FormsIndex() {
     const [forms, setForms] = React.useState([])
     React.useEffect(() => {

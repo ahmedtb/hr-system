@@ -4,7 +4,7 @@ import { Link, useParams, useLocation } from 'react-router-dom'
 import ApiEndpoints from '../../utility/ApiEndpoints'
 import routes from '../../utility/routesEndpoints'
 import logError from '../../utility/logError'
-import Pagination from '../../utility/Pagination'
+import Pagination from '../../components/Pagination'
 import TrialPeriodAssessmentTable from './components/TrialPeriodAssessmentsTable'
 
 function Filters(props) {

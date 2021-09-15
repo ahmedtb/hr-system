@@ -2,9 +2,9 @@ import React from 'react'
 import axios from 'axios';
 import ApiEndpoints from '../utility/ApiEndpoints'
 import logError from '../utility/logError';
-import Pagination from '../utility/Pagination';
+import Pagination from '../components/Pagination';
 
-import EmployeesTable from '../partials/EmployeesTable';
+import EmployeesTable from '../components/EmployeesTable';
 import { TextFilter, JobFilter, OrderByDescFilter, DateFilter } from '../components/Filters';
 import FiltersContainer from '../components/FiltersContainer';
 import routes from '../utility/routesEndpoints';

@@ -48,9 +48,9 @@ use App\Models\Document;
 |
 */
 
-Route::get('/dashboard', [DashboardController::class, 'show']);
+Route::get('/dashboard', [DashboardController::class, 'show'])->middleware(['auth:admin']);
 
-Route::get('/unitsTree', [ManagmentController::class, 'UnitsTree']);
+Route::get('/unitsTree', [ManagmentController::class, 'UnitsTree'])->middleware(['auth:admin']);
 
 Route::post('/job/create', [JobsController::class, 'create'])->middleware(['auth:admin']);
 Route::get('/job/index', [JobsController::class, 'index'])->middleware(['auth:admin']);

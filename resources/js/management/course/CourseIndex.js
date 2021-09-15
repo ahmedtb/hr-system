@@ -3,10 +3,10 @@ import axios from 'axios';
 import ApiEndpoints from '../utility/ApiEndpoints'
 import routes from '../utility/routesEndpoints';
 import logError from '../utility/logError';
-import CoursesTable from '../partials/CoursesTable';
+import CoursesTable from '../components/CoursesTable';
 import ScheduleDiagram from './components/ScheduleDiagram'
 import moment from 'moment'
-import Pagination from '../utility/Pagination';
+import Pagination from '../components/Pagination';
 import { TextFilter, TrainingProgramFilter, ScopeFilter, DateFilter } from '../components/Filters'
 import FiltersContainer from '../components/FiltersContainer';
 import CustomModal from '../components/CustomModal';

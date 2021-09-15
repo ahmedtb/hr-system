@@ -13,7 +13,7 @@ import { GrAnalytics } from 'react-icons/gr'
 import { IoMdAnalytics } from 'react-icons/io'
 import AllowedLink from '../components/AllowedLink'
 import moment from 'moment'
-import CoursesTable from '../partials/CoursesTable'
+import CoursesTable from '../components/CoursesTable'
 import EditIndividualModal from './components/EditIndividualModal'
 export default function TargetedShow(props) {
 

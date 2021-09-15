@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import TopMenue from './partials/TopMenue'
+import TopMenue from './components/TopMenue'
 import { Provider } from 'react-redux';
 import store from './redux/store';
 

@@ -1,9 +1,9 @@
 import React from 'react'
 import axios from 'axios';
-import logError from './utility/logError'
-import ApiEndpoints from './utility/ApiEndpoints';
-
-
+import logError from '../utility/logError'
+import ApiEndpoints from '../utility/ApiEndpoints';
+import {Redirect} from 'react-router-dom'
+import routes from '../utility/routesEndpoints';
 function LoginPage(props) {
     const [username, setusername] = React.useState('')
     const [password, setpassword] = React.useState('')
@@ -16,31 +16,44 @@ function LoginPage(props) {
             const response = await axios.post(ApiEndpoints.login, { username: username, password: password, type: type })
             console.log('User signed in!', (response.data));
             props.refreshUser(response.data)
+            setredirect(routes.dashboard)
 
         } catch (error) {
             logError(error)
         }
     }
+    
+    React.useEffect(() => {
+        if(props.user){
+            setredirect(routes.dashboard)  
+        }
+    }, [props.user])
+
+    const [redirect, setredirect] = React.useState(null);
+
+    if(redirect){
+        return <Redirect to={redirect}/>
+    }
 
     return (
-        <div className='col-12'>
+        <div className='col-5 mx-auto'>
             <div className='card'>
-                <div className='card-header'>
+                <h3 className='card-header text-center'>
                     تسجيل الدخول
-                </div>
+                </h3>
                 <div className='card-body'>
-                    <label>username</label>
+                    <label>اسم المستخدم</label>
                     <input type='username' className='form-control' onChange={e => setusername(e.target.value)} />
-                    <label>password</label>
+                    <label>كلمة المرور</label>
                     <input type='password' className='form-control' onChange={e => setpassword(e.target.value)} />
                     <label>نوع المستخدم</label>
                     <select onChange={e => settype(e.target.value)} className='form-control'>
                         <option value='admin'>admin</option>
-                        <option value='employee'>employee</option>
-                        <option value='individual'>individual</option>     
+                        <option value='employee'>موظف</option>
+                        <option value='individual'>مستهدف</option>     
                         {/* <option value='coach'>coach</option> */}
                     </select>
-                    <button type="button" className="btn btn-success" onClick={() => handleLogin(username, password)}>login</button>
+                    <button type="button" className="btn btn-success" onClick={() => handleLogin(username, password)}>دخول</button>
 
                 </div>
             </div>
@@ -49,7 +62,7 @@ function LoginPage(props) {
     )
 }
 
-import { refreshUser } from './redux/stateActions'
+import { refreshUser } from '../redux/stateActions'
 import { connect } from "react-redux"
 
 const mapStateToProps = state => {
@@ -61,8 +74,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         refreshUser: (user) => dispatch(refreshUser(user)),
-        // loginUser: (name,password) => dispatch(loginUser(name,password)),
-
     }
 }
 

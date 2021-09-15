@@ -5,8 +5,8 @@ import logError from '../utility/logError'
 
 import { useParams, Link,Redirect } from 'react-router-dom';
 import routes from '../utility/routesEndpoints';
-import EmployeesTable from '../partials/EmployeesTable'
-import Pagination from '../utility/Pagination'
+import EmployeesTable from '../components/EmployeesTable'
+import Pagination from '../components/Pagination'
 
 import CustomModal from '../components/CustomModal'
 import AllowedLink from '../components/AllowedLink';

@@ -3,10 +3,10 @@ import axios from 'axios';
 import ApiEndpoints from '../utility/ApiEndpoints'
 import routes from '../utility/routesEndpoints';
 import logError from '../utility/logError';
-import CoursesTable from '../partials/CoursesTable';
+import CoursesTable from '../components/CoursesTable';
 import ScheduleDiagram from './components/ScheduleDiagram'
 import moment from 'moment'
-import Pagination from '../utility/Pagination';
+import Pagination from '../components/Pagination';
 
 export default function CoursesBrowser(props) {
     const [courses, setcourses] = React.useState([])

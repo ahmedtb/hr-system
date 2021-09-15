@@ -4,9 +4,9 @@ import ApiEndpoints from '../utility/ApiEndpoints'
 import logError from '../utility/logError'
 import routes from '../utility/routesEndpoints'
 import { useParams, Redirect } from 'react-router-dom';
-import EmployeesTable from '../partials/EmployeesTable'
-import JobsTable from '../partials/JobsTable'
-import Pagination from '../utility/Pagination'
+import EmployeesTable from '../components/EmployeesTable'
+import JobsTable from '../components/JobsTable'
+import Pagination from '../components/Pagination'
 import AllowedLink from '../components/AllowedLink'
 import CustomModal from '../components/CustomModal'
 

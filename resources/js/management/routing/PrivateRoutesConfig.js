@@ -2,7 +2,7 @@ import routes from '../utility/routesEndpoints'
 import Roles from './Roles'
 
 // Components
-import Dashboard from '../Dashboard'
+import Dashboard from '../routing/Dashboard'
 import CreateEmployee from '../employee/CreateEmployee'
 import EmployeeShow from '../employee/EmployeeShow'
 
@@ -62,7 +62,7 @@ import InterviewAssessmentShow from '../assessments/interview/InterviewAssessmen
 import AttendanceManager from '../course/AttendancesManager'
 
 import CoursesBrowser from '../course/CoursesBrowser'
-import LoginPage from '../LoginPage'
+import LoginPage from '../routing/LoginPage'
 import SeedDatabase from '../SeedDatabase'
 // TODO:
 /*

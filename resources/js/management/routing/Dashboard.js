@@ -1,15 +1,15 @@
 import React from 'react'
 import axios from 'axios'
-import ApiEndpoints from './utility/ApiEndpoints'
-import logError from './utility/logError'
-import FormsTable from './partials/FormsTable'
-import UnitsList from './partials/UnitsList'
-import CoursesTable from './partials/CoursesTable'
-import TopMenue from './partials/TopMenue'
-import Pagination from './utility/Pagination'
-import AllowedLink from './components/AllowedLink'
+import ApiEndpoints from '../utility/ApiEndpoints'
+import logError from '../utility/logError'
+import FormsTable from '../components/FormsTable'
+import UnitsList from '../components/UnitsList'
+import CoursesTable from '../components/CoursesTable'
+import TopMenue from '../components/TopMenue'
+import Pagination from '../components/Pagination'
+import AllowedLink from '../components/AllowedLink'
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
-import routes from './utility/routesEndpoints'
+import routes from '../utility/routesEndpoints'
 import { FaUserTie, FaUserCheck, FaChalkboardTeacher, FaSuitcase, FaGraduationCap } from 'react-icons/fa'
 import moment from 'moment'
 function DateSchedule(props) {
@@ -48,7 +48,7 @@ function DateSchedule(props) {
     )
 }
 
-export default function Dashboard() {
+function Dashboard(props) {
 
     const [employeesCount, setemployeesCount] = React.useState(null)
     const [targetedCount, settargetedCount] = React.useState(null)
@@ -96,9 +96,19 @@ export default function Dashboard() {
     }
 
     React.useEffect(() => {
-        getDashboard()
-        getCourses()
-    }, [])
+        if(props.user){
+            getDashboard()
+            getCourses()
+        }else{
+            setredirect(routes.loginPage)
+        }
+    }, [props.user])
+    
+    const [redirect, setredirect] = React.useState(null);
+    if(redirect){
+        return <Redirect to={redirect}/>
+    }
+
 
     return (
         <div className="row justify-content-center">
@@ -208,3 +218,23 @@ export default function Dashboard() {
         </div >
     )
 }
+
+import { refreshUser } from '../redux/stateActions'
+import { connect } from "react-redux"
+import { Redirect } from 'react-router'
+
+const mapStateToProps = state => {
+    return {
+        user: state.state.user,
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        refreshUser: (user) => dispatch(refreshUser(user)),
+        // loginUser: (name,password) => dispatch(loginUser(name,password)),
+
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

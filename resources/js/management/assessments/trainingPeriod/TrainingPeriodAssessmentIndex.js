@@ -5,7 +5,7 @@ import routes from '../../utility/routesEndpoints'
 import logError from '../../utility/logError'
 import { Link } from 'react-router-dom'
 import TrainingPeriodAssessmentsTable from './components/TrainingPeriodAssessmentsTable'
-import Pagination from '../../utility/Pagination'
+import Pagination from '../../components/Pagination'
 
 function Filters(props) {
     const fetchPage = props.fetchPage

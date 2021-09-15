@@ -5,7 +5,7 @@ import routes from '../../utility/routesEndpoints'
 import logError from '../../utility/logError'
 import TraineeCourseAssessmentsTable from './components/TraineeCourseAssessmentsTable'
 import { Link } from 'react-router-dom'
-import Pagination from '../../utility/Pagination'
+import Pagination from '../../components/Pagination'
 import { EmployeeFilter, OrderByDescFilter, TextFilter } from '../../components/Filters'
 import FiltersContainer from '../../components/FiltersContainer';
 import CustomModal from '../../components/CustomModal';
