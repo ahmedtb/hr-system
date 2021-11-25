@@ -1,5 +1,5 @@
 <table class="table table-striped table-condensed" style="margin-bottom: 0px">
-    <thead>
+    <thead className="thead-light">
         <tr>
             <th class="col-md-8">اسم الموظف</th>
             <th>تاريخ توظيفه</th>

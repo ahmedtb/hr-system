@@ -47,7 +47,7 @@ export default function JobCreate() {
     }
     return (
         <div className="card">
-            <h3 className="card-header">انشاء وحدة ادارية جديدة</h3>
+            <h4 className="card-header">انشاء وحدة ادارية جديدة</h4>
 
             <div className="card-body">
                 <div className="row align-items-start justify-content-center">

@@ -6,10 +6,10 @@ export default function UnitsList(props) {
 
 
     return (
-        <table className="table table-bordered table-condensed">
-            <thead>
+        <table className="table table-light table-bordered table-condensed">
+            <thead className="thead-light">
                 <tr>
-                    <th >ID</th>
+                    <th >#</th>
                     <th>الاسم</th>
                     <th>وصفة الوحدة</th>
                     <th>الوحدة التي تتبعها</th>

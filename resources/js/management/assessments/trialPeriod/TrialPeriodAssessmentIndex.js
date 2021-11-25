@@ -32,7 +32,7 @@ function Filters(props) {
         <>
             <div className="col-3">
                 <div className="card">
-                    <h3 className="card-header">ترشيح البيانات</h3>
+                    <h4 className="card-header">ترشيح البيانات</h4>
                     <div className="card-body">
 
                         <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -175,7 +175,7 @@ export default function TrialPeriodAssessmentIndex() {
                     <div className="card">
 
                         <div className="card-header d-flex justify-content-between">
-                            <h3>تقييمات فترة التجريب</h3>
+                            <h4>تقييمات فترة التجريب</h4>
                             <Link to={routes.conductTrialPeriodAssessment}>اجراء تقييم الموظف في الفترة التجريبية</Link>
                         </div>
                         <div className="card-body">

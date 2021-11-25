@@ -53,7 +53,7 @@ export default function EditProgram(props) {
             <CustomModal buttonClass="btn btn-secondary" label={'تعديل البرنامج'}>
 
                 <div className="card">
-                    <h3 className="card-header">تعديل حقيبة تدريبية رقم {program?.id}</h3>
+                    <h4 className="card-header">تعديل حقيبة تدريبية رقم {program?.id}</h4>
 
                     <div className="card-body row justify-content-center">
 

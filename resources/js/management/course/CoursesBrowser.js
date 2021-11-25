@@ -33,7 +33,7 @@ export default function CoursesBrowser(props) {
 
             <>
                 <div className="card">
-                    <h3 className="card-header">قائمة الدورات</h3>
+                    <h4 className="card-header">قائمة الدورات</h4>
                     <div className="card-body ">
                         <div className="row align-items-start">
                             <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">

@@ -6,10 +6,10 @@ export default function FormsTable(props) {
     const forms = props.forms
     return (
         <table className="table table-light">
-            <thead className="thead-light">
+            <thead className="thead-light"  >
                 <tr>
-                    <th>ID</th>
-                    <th>type of form</th>
+                    <th>#</th>
+                    <th>نوع النموذج</th>
                     <th>تاريخ التسليم</th>
                     <th>عدد الحقول</th>
                 </tr>

@@ -57,7 +57,7 @@ async function deleteJob() {
 
             <div className="card">
                 <div className="card-header d-flex flex-row justify-content-between">
-                    <h3>وظيفة رقم {job?.id}</h3>
+                    <h4>وظيفة رقم {job?.id}</h4>
                     <CustomModal buttonClass="btn btn-info mr-2" label={'حدف الوظيفة'} >
                         <div>
                             هل تود فعلا حدف الوظيفة بشكل دائما؟
@@ -90,9 +90,9 @@ async function deleteJob() {
             </div>
 
             <div className="card">
-                <h3 className="card-header">
+                <h4 className="card-header">
                     موظفيين الذين ينتمون لهذا المسمى الوظيفي
-                </h3>
+                </h4>
 
                 <div className="card-body">
                     <Pagination fetchPage={getEmployees} links={employeeslinks} />

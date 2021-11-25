@@ -113,7 +113,7 @@ export default function CourseCreate() {
 
                         <strong className="my-2 mx-auto">جدول الدورة الاسبوعي</strong>
                         <table className="table">
-                            <thead>
+                            <thead className="thead-light">
                                 <tr>
                                     <th></th>
                                     <th>اليوم</th>

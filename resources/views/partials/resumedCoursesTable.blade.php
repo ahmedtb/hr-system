@@ -1,7 +1,7 @@
 <table class="table table-light">
-    <thead class="thead-light">
+    <thead className="thead-light" class="thead-dark">
         <tr>
-            <th>ID</th>
+            <th>#</th>
             <th>البرنامج التدريبي</th>
             <th>الجدول الاسبوع</th>
             <th>تاريخ البداية</th>

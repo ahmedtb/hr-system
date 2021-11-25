@@ -64,10 +64,10 @@ export default function TraineeCourseAssessmentsTable(props) {
                     </div>
                 ))
             }
-            <table className="table table-bordered table-condensed">
-                <thead>
+            <table className="table table-light table-bordered table-condensed">
+                <thead className="thead-light">
                     <tr>
-                        <th >ID</th>
+                        <th >#</th>
                         {
                             Object.entries(dataShow).map((data, index) => (
                                 (data[1].visiblity) ? <td key={index}>{data[1].label}</td> : null

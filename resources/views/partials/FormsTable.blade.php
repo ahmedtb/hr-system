@@ -1,7 +1,7 @@
 <table class="table table-light">
-    <thead class="thead-light">
+    <thead className="thead-light" class="thead-light">
         <tr>
-            <th>ID</th>
+            <th>#</th>
             <th>type of form</th>
             <th>تاريخ التسليم</th>
             <th>عدد الحقول</th>

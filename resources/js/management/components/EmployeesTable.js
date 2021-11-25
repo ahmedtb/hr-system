@@ -9,10 +9,10 @@ export default function EmployeesTable(props) {
         <>
             <FaPlus className="border rounded mx-1" size={20} onClick={() => setfontSize(pre => pre + 1)} />
             <FaMinus className="border rounded mx-1" size={20} onClick={() => setfontSize(pre => pre - 1)} />
-            <table style={{ overflowX: 'auto' }} className="table table-bordered table-condensed table-responsive">
-                <thead>
+            <table style={{ overflowX: 'auto' }} className="table table-light table-bordered table-condensed table-responsive">
+                <thead className="thead-light">
                     <tr>
-                        <th style={{ fontSize: fontSize }} >ID</th>
+                        <th style={{ fontSize: fontSize }} >#</th>
                         <th style={{ fontSize: fontSize }} >الاسم</th>
                         <th style={{ fontSize: fontSize }} >الوظيفة</th>
                         <th style={{ fontSize: fontSize }} >العنوان</th>

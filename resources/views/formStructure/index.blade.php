@@ -22,8 +22,8 @@
 
                         <div class="card-body">
                             
-                            <table class="table table-bordered table-condensed" style="margin-bottom: 0px">
-                                <thead>
+                            <table class="table table-light table-bordered table-condensed" style="margin-bottom: 0px">
+                                <thead className="thead-light">
                                     <tr>
                                         <th >رقم قيد النموذج</th>
                                         <th>اسم النموذج</th>

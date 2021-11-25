@@ -15,10 +15,10 @@ export default function TargetedIndividualsTable(props) {
             <FaPlus className="border rounded mx-1" size={20} onClick={() => setfontSize(pre => pre + 1)} />
             <FaMinus className="border rounded mx-1" size={20} onClick={() => setfontSize(pre => pre - 1)} />
 
-            <table className="table table-bordered table-condensed table-responsive">
-                <thead>
+            <table className="table table-light table-bordered table-condensed table-responsive">
+                <thead className="thead-light">
                     <tr>
-                        <th style={{ fontSize: fontSize }}  >ID</th>
+                        <th style={{ fontSize: fontSize }}  >#</th>
                         <th style={{ fontSize: fontSize }} >name</th>
                         <th style={{ fontSize: fontSize }} >address</th>
                         <th style={{ fontSize: fontSize }} >phone_number</th>

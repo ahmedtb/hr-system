@@ -83,7 +83,7 @@ export default function TraineeCourseAssessmentShow() {
 
             <div className="card">
                 <div className="card-header">
-                   <h3> تقييم مدرب لدورة {assessment?.id}</h3>
+                   <h4> تقييم مدرب لدورة {assessment?.id}</h4>
                     <CustomModal buttonClass="btn btn-info mr-2" label={'حدف التقييم من السجلات'} >
                         <div>
                             هل تود فعلا حدف التقييم من السجل بشكل دائما؟
@@ -96,15 +96,15 @@ export default function TraineeCourseAssessmentShow() {
                 </div>
                 <div className="card-body">
 
-                    <h3 className="text-center">
+                    <h4 className="text-center">
                         مؤسسة التناصح للدعوة والثقافة والإعلام
-                    </h3>
-                    <h3 className="text-center">
+                    </h4>
+                    <h4 className="text-center">
                         إدارة الموارد البشرية
-                    </h3>
-                    <h3 className="text-center">
+                    </h4>
+                    <h4 className="text-center">
                         استمارة تقييم دورة تدريبية
-                    </h3>
+                    </h4>
                     <div className="p-3">
                         <div className="row">
                             <div className="col-6 ">
@@ -115,8 +115,8 @@ export default function TraineeCourseAssessmentShow() {
                         <div className="row p-5 fs-5">
                             <h5 > عزيزي المدرب الرجاء تقييم هذه الدورة التدريبية بوضع علامة (    ) في المكان الذي يعبر عن رأيك؛ وإضافة تعليقك على أي عنصر من عناصر التقييم كما يلي (5 = ممتاز؛ 4 = جيد جدا؛ 3 = جيد؛ 2 = مقبول؛ 1 = ضعيف)</h5>
                         </div>
-                        <table className="table table-bordered table-condensed">
-                            <thead>
+                        <table className="table table-light table-bordered table-condensed">
+                            <thead className="thead-light">
                                 <tr>
                                     <td>م</td>
                                     <td>البيان</td>

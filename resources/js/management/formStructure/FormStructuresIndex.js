@@ -15,13 +15,13 @@ export default function FormStructuresIndex(props) {
     return (
         <div className="col-md-12">
             <div className="card">
-                <h3 className="card-header d-flex flex-row justify-content-between">
+                <h4 className="card-header d-flex flex-row justify-content-between">
                     النماذج الخاصة المتوفرة
                     <AllowedLink to={routes.createFormStructureForm}>انشاء نوع نماذج جديد</AllowedLink>
-                </h3>
+                </h4>
                 <div className="card-body">
-                    <table className="table table-bordered table-condensed" style={{ marginBottom: 0 }}>
-                        <thead>
+                    <table className="table table-light table-bordered table-condensed" style={{ marginBottom: 0 }}>
+                        <thead className="thead-light">
                             <tr>
                                 <th >رقم قيد النموذج</th>
                                 <th>اسم النموذج</th>

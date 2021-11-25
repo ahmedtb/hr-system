@@ -76,8 +76,8 @@ export default function TrainingPeriodAssessmentsTable(props) {
                     </div>
                 </div>
             </div>
-            <table className="table table-bordered table-condensed">
-                <thead>
+            <table className="table table-light table-bordered table-condensed">
+                <thead className="thead-light">
                     <tr>
                         {
                             Object.entries(dataShow).map((data, index) => (

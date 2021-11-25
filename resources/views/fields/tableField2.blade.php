@@ -8,7 +8,7 @@
         </div>
     </div>
     <table class="table table-striped table-condensed table-bordered">
-        <thead>
+        <thead className="thead-light">
             <tr>
                 @foreach($field->columnsTitles as $title)
                     <th scope="col">{{ $title }}</th>
@@ -38,7 +38,7 @@
     </div>
    
     <table class="table table-striped table-condensed table-bordered">
-        <thead>
+        <thead className="thead-light">
             <tr>
                 @foreach($field->columnsTitles as $title)
                     <th scope="col">{{ $title }}</th>

@@ -113,7 +113,7 @@ export default function InterviewAssessmentShow() {
 
             <div className="card">
                 <div className="card-header">
-                    <h3>تقييم مدرب لدورة {assessment?.id}</h3>
+                    <h4>تقييم مدرب لدورة {assessment?.id}</h4>
                     <CustomModal buttonClass="btn btn-info mr-2" label={'حدف التقييم من السجلات'} >
                         <div>
                             هل تود فعلا حدف التقييم من السجل بشكل دائما؟
@@ -125,20 +125,20 @@ export default function InterviewAssessmentShow() {
                 </div>
                 <div className="card-body">
 
-                    <h3 className="text-center">
+                    <h4 className="text-center">
                         مؤسسة التناصح للدعوة والثقافة والإعلام
-                    </h3>
-                    <h3 className="text-center">
+                    </h4>
+                    <h4 className="text-center">
                         إدارة الموارد البشرية
-                    </h3>
-                    <h3 className="text-center">
+                    </h4>
+                    <h4 className="text-center">
                         استمارة تقييم دورة تدريبية
-                    </h3>
+                    </h4>
                     <div className="p-3">
 
 
-                        <table className="table table-bordered table-condensed">
-                            <thead>
+                        <table className="table table-light table-bordered table-condensed">
+                            <thead className="thead-light">
                                 <tr>
                                     <td>تقييم</td>
                                     <td>ممتاز</td>

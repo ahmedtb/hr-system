@@ -72,9 +72,9 @@ function Comments(props) {
                 {
                     comments?.map((comment, index) => (
                         <div key={index} className="border rounded">
-                            <h3>
+                            <h4>
                                 <Commenter commenter={comment.commenter} commenter_type={comment.commenter_type} />
-                            </h3>
+                            </h4>
                             <div>
                                 {comment.content.split('\n').map(str => <p key={Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5)}>{str}</p>)}
                             </div>

@@ -10,10 +10,10 @@ export default function CoachesTable(props) {
     }
 
     return (
-        <table className="table table-bordered table-condensed table-striped table-sm">
-            <thead>
+        <table className="table table-light table-bordered table-condensed table-striped table-sm">
+            <thead className="thead-light">
                 <tr>
-                    <th >ID</th>
+                    <th >#</th>
                     <th>الاسم</th>
                     <th>التخصص</th>
                     <th>السيرة الذاتية</th>

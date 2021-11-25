@@ -38,13 +38,13 @@ function AuthComponent(props) {
                 props.user ? (
                     <>
                         <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                            <a className="nav-link dropdown-toggle text-danger" id="navbarDropdown" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {props.user.name}
                             </a>
 
                             <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a className="dropdown-item" onClick={logout}>
+                                <a className="dropdown-item text-danger" onClick={logout}>
                                     {'تسجيل الخروج'}
                                 </a>
                             </div>
@@ -53,7 +53,7 @@ function AuthComponent(props) {
                 ) : (
                     <>
                         <li className="nav-item">
-                            <AllowedLink hide={true} className="nav-link mx-2" to={routes.loginPage}>{'تسجيل الدخول'}</AllowedLink>
+                            <AllowedLink hide={true} className="nav-link mx-2 text-danger" to={routes.loginPage}>{'تسجيل الدخول'}</AllowedLink>
                         </li >
 
                         {/* <li className="nav-item">
@@ -118,7 +118,7 @@ function TopMenue(props) {
 
             FilteredLinks.length ?
                 <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle d-flex flex-row align-items-center" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                    <a className="nav-link dropdown-toggle d-flex flex-row align-items-center text-warning" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                         {label}
                     </a>
                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -146,15 +146,20 @@ function TopMenue(props) {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav">
 
-                        <AllowedLink hide={true} className="nav-link mx-2" to={routes.employeeIndex}>
-                            <FaUserTie />
-                            الموظفيين
-                        </AllowedLink>
+                        <AllowedMenue
+                            label={
+                                <div>
+                                    <FaWpforms />
+                                    الافراد
+                                </div>
+                            }
+                            links={[
+                                { label: 'الموظفيين', to: routes.employeeIndex },
+                                { label: 'المستهدفين', to: routes.individualIndex },
+                                { label: 'المدربين', to: routes.CoachesList },
 
-                        <AllowedLink hide={true} className="nav-link mx-2" to={routes.individualIndex}>
-                            <FaUserCheck />
-                            المستهدفين
-                        </AllowedLink>
+                            ]}
+                        />
 
 
                         <AllowedMenue
@@ -171,21 +176,19 @@ function TopMenue(props) {
                             ]}
                         />
 
-                        <AllowedLink hide={true} className="nav-link mx-2" to={routes.CoachesList}>
-                            <FaChalkboardTeacher />
-                            المدربين
-                        </AllowedLink>
-
-                        <AllowedLink hide={true} className="nav-link mx-2" to={routes.programIndex}>
-                            <FaSuitcase />
-                            البرامج التدريبية
-                        </AllowedLink>
-
-                        <AllowedLink hide={true} className="nav-link mx-2" to={routes.courseIndex}>
-                            <FaGraduationCap />
-                            الدورات
-                        </AllowedLink>
-
+                        <AllowedMenue
+                            label={
+                                <div>
+                                    <FaWpforms />
+                                    الخطط
+                                </div>
+                            }
+                            links={[
+                                { label: 'البرامج التدريبية', to: routes.programIndex },
+                                { label: 'الدورات', to: routes.courseIndex },
+                            ]}
+                        />
+    
                         <AllowedMenue
                             label={
                                 <div>
@@ -202,18 +205,18 @@ function TopMenue(props) {
 
                             ]}
                         />
-                        <AllowedLink hide={true} className="nav-link mx-2" to={routes.unitIndex}>
-                            <div>
-                                <FaNetworkWired />
-                                الوحدات الادارية
-                            </div>
-                        </AllowedLink>
-                        <AllowedLink hide={true} className="nav-link mx-2" to={routes.jobIndex}>
-                            <div>
-                                <FaLaptop />
-                                انواع الوظائف
-                            </div>
-                        </AllowedLink>
+                        <AllowedMenue
+                            label={
+                                <div>
+                                    <FaWpforms />
+                                    الادارة
+                                </div>
+                            }
+                            links={[
+                                { label: 'الوحدات الادارية', to: routes.unitIndex },
+                                { label: 'انواع الوظائف', to: routes.jobIndex },
+                            ]}
+                        />
 
 
                     </ul>

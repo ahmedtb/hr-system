@@ -57,7 +57,7 @@ export default function CoachShow(props) {
         <div className="col-md-12">
             <div className="card">
                 <div className="card-header d-flex flex-row justify-content-between">
-                    <h3>مدرب {id}</h3>
+                    <h4>مدرب {id}</h4>
                     <div>
                         <CustomModal buttonClass="btn btn-info mr-2" label={'حدف'} >
                             <div>

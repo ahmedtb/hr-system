@@ -151,7 +151,7 @@ function FieldsCreator() {
 
         <div>
             <div className="text-center m-4">
-                <h3 className="row justify-content-center">عنوان النموذج</h3>
+                <h4 className="row justify-content-center">عنوان النموذج</h4>
                 <input size="50" className="align-self-center" type="string" onChange={(e) => setType(e.target.value)} />
             </div>
 

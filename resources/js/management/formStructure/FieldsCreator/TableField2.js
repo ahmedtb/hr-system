@@ -56,7 +56,7 @@ function TableField2(props) {
                 <input onChange={(e) => { setlabel(e.target.value); }} />
             </div>
             <table className="table table-striped mx-auto w-auto">
-                <thead>
+                <thead className="thead-light">
                     <tr>
                         {
                             columnsTitles.map((title, index) => (

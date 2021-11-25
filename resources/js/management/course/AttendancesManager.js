@@ -75,9 +75,9 @@ export default function AttendanceManager(props) {
         <div className="col-md-12">
 
             <div className="card">
-                <h3 className="card-header">
+                <h4 className="card-header">
                     سجلات الحضور للدورة {id}
-                </h3>
+                </h4>
 
                 <div className="card-body">
                     <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#recordAttendanceModal">
@@ -85,8 +85,8 @@ export default function AttendanceManager(props) {
                     </button>
                     <RecordAttendanceModal course_id={id} onChange={getAllAttendances} />
 
-                    <table className="table table-bordered table-condensed">
-                        <thead>
+                    <table className="table table-light table-bordered table-condensed">
+                        <thead className="thead-light">
                             <tr>
                                 <th >اليوم</th>
                                 <th >الاسم</th>

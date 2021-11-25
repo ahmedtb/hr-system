@@ -82,7 +82,7 @@ export default function EditCourseModal(props) {
             <CustomModal buttonClass="btn btn-secondary" label={'تعديل البرنامج'}>
 
                 <div className="card">
-                    <h3 className="card-header">تسجيل دورة</h3>
+                    <h4 className="card-header">تسجيل دورة</h4>
 
                     <div className="card-body">
                         <div className="row justify-content-center">
@@ -118,7 +118,7 @@ export default function EditCourseModal(props) {
 
                                 <strong className="my-2 mx-auto">جدول الدورة الاسبوعي</strong>
                                 <table className="table">
-                                    <thead>
+                                    <thead className="thead-light">
                                         <tr>
                                             <th></th>
                                             <th>اليوم</th>

@@ -43,14 +43,14 @@ export default function employeeIndex(props) {
             <div className="card">
                 <div className="card-header bg-light">
 
-                    <h3 className="row justify-content-between">
+                    <h4 className="row justify-content-between">
                         <div>
                             قائمة الموظفيين
                         </div>
                         <div>
                             <AllowedLink to={routes.createEmployeeForm}>تسجيل موظف</AllowedLink>
                         </div>
-                    </h3>
+                    </h4>
                 </div>
                 <div className="card-body">
                     <FiltersContainer label="ترشيح الموظفيين" clearFilters={clearFilters}>

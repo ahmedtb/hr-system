@@ -16,8 +16,8 @@ function DateSchedule(props) {
     const resumedCourses = props.resumedCourses
 
     return (
-        <table className="table table-bordered table-condensed table-responsive">
-            <thead>
+        <table className="table table-light table-bordered table-light table-responsive">
+            <thead className="thead-light"  >
                 <tr>
                     <th >عنوان الدورة</th>
                     <th>زمن بدء المحاضرة</th>
@@ -75,7 +75,7 @@ function Dashboard(props) {
             setunits(response.data.units)
             setforms(response.data.forms)
             setattendancesCount(response.data.attendancesCount)
-            console.log('dashboard units', response.data.units)
+            console.log('dashboard attendancesCount', response.data.attendancesCount)
         }).catch((error) => logError(error))
     }
 
@@ -96,17 +96,17 @@ function Dashboard(props) {
     }
 
     React.useEffect(() => {
-        if(props.user){
+        if (props.user) {
             getDashboard()
             getCourses()
-        }else{
+        } else {
             setredirect(routes.loginPage)
         }
     }, [props.user])
-    
+
     const [redirect, setredirect] = React.useState(null);
-    if(redirect){
-        return <Redirect to={redirect}/>
+    if (redirect) {
+        return <Redirect to={redirect} />
     }
 
 
@@ -121,35 +121,38 @@ function Dashboard(props) {
                 <div className="">
 
 
-                    <div className="row">
+                    <div className="row justify-content-center">
+                        {
+                            (attendancesCount.length) ? (
+                                <div className="col-4">
+                                    <h4 className="text-center">الحضور اليومي للدورات</h4>
+                                    <LineChart width={500} height={300} data={attendancesCount}>
+                                        <Line type="monotone" dataKey="attendances_count" stroke="#8884d8" />
+                                        <CartesianGrid stroke="#ccc" />
+                                        <XAxis dataKey="date" />
+                                        <YAxis />
+                                        <Tooltip />
+                                    </LineChart>
+                                </div>
+                            ) : null
+                        }
+                        <div className="col-5">
+
+                            <h4 className='text-center'>جدول محاضرات اليوم</h4>
+                            <DateSchedule resumedCourses={resumedCourses} />
+                        </div>
                         {
                             (forms.length) ? (
-                                <div className="col-3">
-                                    <h3 className="text-center">نماذج تم تعبئتها مؤخرا</h3>
+                                <div className="col-7">
+                                    <h4 className="text-center">نماذج تم تعبئتها مؤخرا</h4>
                                     <FormsTable forms={forms} />
 
                                 </div>
                             ) : null
                         }
-                        <div className="col-4">
-                            <h3 className="text-center">الحضور اليومي للدورات</h3>
-                            <LineChart width={500} height={300} data={attendancesCount}>
-                                <Line type="monotone" dataKey="attendances_count" stroke="#8884d8" />
-                                <CartesianGrid stroke="#ccc" />
-                                <XAxis dataKey="date" />
-                                <YAxis />
-                                <Tooltip />
-                            </LineChart>
-                        </div>
-                        <div className="col-5">
-
-                            <h3 className='text-center'>جدول المحاضرات اليوم</h3>
-                            <DateSchedule resumedCourses={resumedCourses} />
-                        </div>
-
                     </div>
 
-                    <h3 className='text-center'>الدورات الجارية: {resumedCoursesTotal}</h3>
+                    <h4 className='text-center'>الدورات الجارية: {resumedCoursesTotal}</h4>
                     <Pagination
                         fetchPage={getCourses}
                         links={links}
@@ -159,9 +162,9 @@ function Dashboard(props) {
 
                 </div>
                 <div className="card">
-                    <h3 className="card-header">
+                    <h4 className="card-header">
                         تركيبة المنظومة
-                    </h3>
+                    </h4>
                     <div className="card-body">
                         <div className="row">
                             <div className="col-9">

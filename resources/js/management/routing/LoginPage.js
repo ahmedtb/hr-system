@@ -38,9 +38,9 @@ function LoginPage(props) {
     return (
         <div className='col-5 mx-auto'>
             <div className='card'>
-                <h3 className='card-header text-center'>
+                <h4 className='card-header text-center'>
                     تسجيل الدخول
-                </h3>
+                </h4>
                 <div className='card-body'>
                     <label>اسم المستخدم</label>
                     <input type='username' className='form-control' onChange={e => setusername(e.target.value)} />

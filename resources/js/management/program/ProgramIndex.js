@@ -70,9 +70,9 @@ export default function ProgramIndex(props) {
             <div className="card">
                 <div className="card-header">
                     <div className="row justify-content-between">
-                        <h3>
+                        <h4>
                             البرامج التدريبية
-                        </h3>
+                        </h4>
                         <div>
                             <AllowedLink to={routes.createProgramForm}>تسجيل برامج تدريبي</AllowedLink>
                         </div>
@@ -84,10 +84,10 @@ export default function ProgramIndex(props) {
                         <Filters params={params} fetchPage={(params) => fetchPage(ApiEndpoints.programIndex, params)} />
                     </div>
 
-                    <table className="table table-bordered table-condensed" style={{ marginBottom: 0 }}>
-                        <thead>
+                    <table className="table table-light table-bordered table-condensed" style={{ marginBottom: 0 }}>
+                        <thead className="thead-light">
                             <tr>
-                                <th >id</th>
+                                <th >#</th>
                                 <th>عنوان البرنامج</th>
                                 <th>تصنيف البرنامج</th>
                                 <th>تفاصيل البرنامج</th>

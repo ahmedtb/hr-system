@@ -63,7 +63,7 @@ export default function TargetedShow(props) {
 
             <div className="card">
                 <div className="card-header row justify-content-between">
-                    <h3>مستهدف رقم {individual?.id}</h3>
+                    <h4>مستهدف رقم {individual?.id}</h4>
                     <div>
                         <CustomModal buttonClass="btn btn-info mr-2" label={'حدف المستهدف من السجلات'} >
                             <div>

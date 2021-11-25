@@ -50,9 +50,9 @@ export default function FormCreate(props) {
         <div className="col-md-12">
 
             <div className="card">
-                <h3 className="card-header">
+                <h4 className="card-header">
                     نسخة نموذج للنوع {structure?.id}
-                </h3>
+                </h4>
 
                 <div className="card-body">
                     <Fields fields={fields} setFields={setfields} type='input' />

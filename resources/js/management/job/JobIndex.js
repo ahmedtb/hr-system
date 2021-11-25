@@ -29,7 +29,7 @@ export default function JobIndex(props) {
     return (
         <div className="col-md-12">
             <div className="card">
-                <h3 className="card-header">
+                <h4 className="card-header">
                     <div className="row justify-content-between">
                         <div>
                             قائمة الوظائف
@@ -38,7 +38,7 @@ export default function JobIndex(props) {
                             <AllowedLink to={routes.jobCreate}>تسجيل نوع وظائف جديد</AllowedLink>
                         </div>
                     </div>
-                </h3>
+                </h4>
                 <div className="card-body">
                     <div className="row align-items-start">
                         <TextFilter

@@ -87,7 +87,7 @@ export default function ConductTrainingPeriodAssessment(props) {
 
     return (
         <div className="card">
-            <h3 className="card-header">اجراء تقييم موظف في فترته التدريبية</h3>
+            <h4 className="card-header">اجراء تقييم موظف في فترته التدريبية</h4>
 
             <div className="card-body">
                 <div className="row justify-content-center">

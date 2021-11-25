@@ -67,9 +67,9 @@ export default function FormStructureShow(props) {
             <div className="card">
                 <div className="card-header">
                     <div className="d-flex flex-row justify-content-between">
-                        <h3>
+                        <h4>
                             نموذج {structure?.id}
-                        </h3>
+                        </h4>
                         <div className="">
                             <AllowedLink to={routes.searchForms.replace(':form_structure_id', structure?.id)}>
                                 <FaSearch />
@@ -77,14 +77,14 @@ export default function FormStructureShow(props) {
                             </AllowedLink>
 
 
-                            <CustomModal buttonClass="btn btn-outline-primary ml-2" label={'نسخ النوع'}>
+                            <CustomModal buttonClass="btn btn-outline-primary ml-2" label={'نسخ النموذج'}>
                                 <input type="number" min="1" value={copies} onChange={(e) => setcopies(e.target.value)} />
                                 <button type='button' className='btn btn-primary' onClick={generateForm}>
                                     انشاء نسخة من نموذج
                                 </button>
 
                                 <table className="table">
-                                    <thead>
+                                    <thead className="thead-light">
                                         <tr>
                                             <th scope="col">رابط النسخ</th>
                                             <th scope="col">عدد نسخ</th>

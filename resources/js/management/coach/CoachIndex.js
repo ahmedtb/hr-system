@@ -36,14 +36,14 @@ export default function CoachIndex(props) {
         <div className="col-md-12">
             <div className="card">
                 <div className="card-header">
-                    <h3 className="row justify-content-between">
+                    <h4 className="row justify-content-between">
                         <div>
                             المدربيين
                         </div>
                         <div>
                             <AllowedLink to={routes.createCoachForm}>تسجيل مدرب</AllowedLink>
                         </div>
-                    </h3>
+                    </h4>
                 </div>
                 <div className="card-body">
                     <FiltersContainer label="ترشيح المدربيين" clearFilters={clearFilters}>

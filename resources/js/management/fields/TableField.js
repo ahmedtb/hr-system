@@ -25,7 +25,7 @@ export default function TableField(props) {
                 <strong className="mr-3">عدد الصفوف في الجدول: {field['numberOfRows']}</strong>
 
                 <table className="table table-striped table-condensed table-bordered">
-                    <thead>
+                    <thead className="thead-light">
                         <tr>
                             {field['columnsTitles'].map((title, k) => (
                                 <th key={k} scope="col">{title}</th>
@@ -68,7 +68,7 @@ export default function TableField(props) {
                     </div>
                 </div>
                 <table className="table table-striped table-condensed table-bordered">
-                    <thead>
+                    <thead className="thead-light">
                         <tr>
                             {
                                 field.columnsTitles.map((title, index) => (

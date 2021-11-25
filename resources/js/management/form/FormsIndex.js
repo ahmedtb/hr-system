@@ -13,7 +13,7 @@ export default function FormsIndex() {
     return (
         <div className="col-md-12">
             <div className="card">
-                <h3 className="card-header">النماذج المعبئة</h3>
+                <h4 className="card-header">النماذج المعبئة</h4>
 
                 <div className="card-body">
                     <FormsTable forms={forms}/>

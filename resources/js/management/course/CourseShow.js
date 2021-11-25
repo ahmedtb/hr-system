@@ -193,7 +193,7 @@ export default function CourseShow(props) {
                 <div className="col-9">
 
                     <div className="card">
-                        <h3 className="card-header ">
+                        <h4 className="card-header ">
                             <div className="row justify-content-between">
                                 <strong>جدول الدورة</strong>
 
@@ -203,7 +203,7 @@ export default function CourseShow(props) {
                                 ><FaBook /> سجلات الحضور</AllowedLink>
 
                             </div>
-                        </h3>
+                        </h4>
 
                         <div className="card-body row">
                             <div style={{ maxHeight: 500, overflow: 'auto', display: 'inline-block' }}>
@@ -216,7 +216,7 @@ export default function CourseShow(props) {
 
                     {employees && individuals ?
                         < div className="card">
-                            <h3 className="card-header">
+                            <h4 className="card-header">
                                 <div className="row justify-content-between">
                                     <div>المسجلين بالدورة</div>
                                     <a className="text-primary" data-toggle="modal" data-target="#EnrollmentModal">
@@ -224,7 +224,7 @@ export default function CourseShow(props) {
                                     </a>
                                     <EnrollmentModal onChange={getCourseAndAttendances} course={course} />
                                 </div>
-                            </h3>
+                            </h4>
 
                             <div className="card-body">
 

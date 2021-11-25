@@ -16,7 +16,7 @@ export default function FormView() {
     return (
         <div className="col-md-12">
             <div className="card">
-                <h3 className="card-header">نموذج {form?.id}</h3>
+                <h4 className="card-header">نموذج {form?.id}</h4>
 
                 <div className="card-body">
                     <h1 className='align-self-center'>{form?.structure?.type}</h1>

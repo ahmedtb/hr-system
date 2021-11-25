@@ -9,8 +9,8 @@ export default function ScheduleTable(props) {
     return (
         <div className={className}>
 
-            <table className="table table-bordered table-condensed">
-                <thead>
+            <table className="table table-light table-bordered table-condensed">
+                <thead className="thead-light">
                     <tr>
                         <th >اليوم</th>
                         <th >التاريخ</th>

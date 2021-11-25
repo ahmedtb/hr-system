@@ -8,10 +8,10 @@ export default function CoachCourseAssessmentsTable(props) {
 
     return (
 
-        <table className="table table-bordered table-condensed">
-            <thead>
+        <table className="table table-light table-bordered table-condensed">
+            <thead className="thead-light">
                 <tr>
-                    <th >ID</th>
+                    <th >#</th>
                     <th>training_course</th>
                     <th>congruence_with_content </th>
                     <th>hall_preparation</th>

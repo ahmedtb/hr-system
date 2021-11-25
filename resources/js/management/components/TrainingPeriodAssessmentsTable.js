@@ -8,10 +8,10 @@ export default function TrainingPeriodAssessmentsTable(props) {
 
     return (
 
-        <table className="table table-bordered table-condensed">
-            <thead>
+        <table className="table table-light table-bordered table-condensed">
+            <thead className="thead-light">
                 <tr>
-                    <th >ID</th>
+                    <th >#</th>
                     <th>الموظف</th>
                     <th>behavior </th>
                     <th>ability_to_improve</th>

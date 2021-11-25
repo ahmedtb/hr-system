@@ -73,9 +73,9 @@ export default function TrainingPeriodAssessmentIndex() {
 
                 <div className="card-header">
                     <div className="row justify-content-between">
-                        <h3>
+                        <h4>
                             تقييمات فترة التدريب
-                        </h3>
+                        </h4>
                         <div>
                             <Link to={routes.conductTrainingPeriodAssessment}>اجراء تقييم مدرب لدورة</Link>
                         </div>

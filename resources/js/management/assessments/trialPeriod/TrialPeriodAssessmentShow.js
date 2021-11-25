@@ -45,7 +45,7 @@ export default function TrialPeriodAssessmentShow() {
 
             <div className="card">
                 <div className="card-header">
-                    <h3>تقييم فترة التجريب {assessment?.id}</h3>
+                    <h4>تقييم فترة التجريب {assessment?.id}</h4>
                     <CustomModal buttonClass="btn btn-info mr-2" label={'حدف التقييم من السجلات'} >
                         <div>
                             هل تود فعلا حدف التقييم من السجل بشكل دائما؟
@@ -57,12 +57,12 @@ export default function TrialPeriodAssessmentShow() {
                 </div>
                 <div className="card-body">
 
-                    <h3 className="text-center">
+                    <h4 className="text-center">
                         مؤسسة التناصح
-                    </h3>
-                    <h3 className="text-center">
+                    </h4>
+                    <h4 className="text-center">
                         استمارة تقييم موظف في الفترة التجريبية
-                    </h3>
+                    </h4>
                     <div className="p-3">
                         <div className="row">
                             <div className="col-6 ">
