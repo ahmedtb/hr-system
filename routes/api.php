@@ -63,6 +63,7 @@ Route::post('/unit/create', [UnitsController::class, 'create'])->middleware(['au
 Route::get('/unit/index', [UnitsController::class, 'index'])->middleware(['auth:admin']);
 Route::get('/unit/{id}', [UnitsController::class, 'show'])->middleware(['auth:admin']);
 Route::delete('/unit/{id}', [UnitsController::class, 'delete'])->middleware(['auth:admin']);
+Route::put('/unit/{id}', [UnitsController::class, 'update'])->middleware(['auth:admin']);
 
 Route::get('getUnits', [UnitsController::class, 'getUnits'])->middleware(['auth:admin']);
 

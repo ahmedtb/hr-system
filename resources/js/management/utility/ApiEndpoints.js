@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export default {
     dashboard: '/api/dashboard',
     login: '/login',
@@ -11,7 +13,7 @@ export default {
     getTargeted: '/api/targeted/:id',
 
     showFormStructure: '/api/structure/:id',
-    deleteFormStructure: '/api/structure/:id', 
+    deleteFormStructure: '/api/structure/:id',
 
     formSearch: '/api/form/search/:form_structure_id',
 
@@ -25,7 +27,7 @@ export default {
     createCourse: '/api/course',
     deleteCourse: '/api/course/:id',
     editCourse: '/api/course/:id',
-    
+
     createFormStructure: '/api/structure/create',
     createCoach: '/api/coach',
     createCoachForm: '/api/coach',
@@ -45,7 +47,7 @@ export default {
     getEmployee: '/api/employee/:id',
     deleteEmployee: '/api/employee/:id',
     editEmployee: '/api/employee/:id',
-    
+
     getEmployeeResumedCourses: '/api/employee/:id/courses/resumed',
 
     getEmployees: '/api/getEmployees',
@@ -102,9 +104,11 @@ export default {
     getProgram: '/api/program/:id',
     getJob: '/api/job/:id',
     deleteJob: '/api/job/:id',
-    
+
     unitShow: '/api/unit/:id',
     deleteUnit: '/api/unit/:id',
+    editUnit: async (id, parent_id, name, head_id, purpose) => axios.put(`/api/unit/${id}`, { parent_id: parent_id, name: name, head_id: head_id, purpose: purpose }),
+
     getAllAttendances: '/api/course/:id/attendances',
     getAttendancesByDay: '/api/course/:id/attendances/:date',
 

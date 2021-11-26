@@ -9,6 +9,7 @@ import JobsTable from '../components/JobsTable'
 import Pagination from '../components/Pagination'
 import AllowedLink from '../components/AllowedLink'
 import CustomModal from '../components/CustomModal'
+import EditUnitModal from './components/EditUnitModal'
 
 
 export default function UnitShow(props) {
@@ -25,6 +26,8 @@ export default function UnitShow(props) {
         try {
             const response = await axios.get(ApiEndpoints.unitShow.replace(':id', id))
             setunit(response.data)
+            console.log('UnitsShow getunit', response.data)
+
         } catch (error) { logError(error) }
     }
 
@@ -33,7 +36,7 @@ export default function UnitShow(props) {
             const response = await axios.get(link, { params: { ...params, unit_id: id, page_size: 5 } })
             setjobs(response.data.data)
             setjobslinks(response.data.links)
-            console.log(response.data)
+            // console.log('UnitShow getUnitJobs',response.data)
         } catch (error) { logError(error) }
     }
 
@@ -42,7 +45,7 @@ export default function UnitShow(props) {
             const response = await axios.get(link, { params: { ...params, unit_id: id, page_size: 5 } })
             setemployees(response.data.data)
             setemployeeslinks(response.data.links)
-            console.log(response.data)
+            // console.log('UnitShow getUnitEmployees',response.data)
 
         } catch (error) {
             logError(error)
@@ -77,15 +80,21 @@ export default function UnitShow(props) {
                 <div className="card-header">
                     <div className='d-flex flex-row justify-content-between'>
 
-                    <h4>الوحدة الادارية رقم {unit?.id}</h4>
-                    <CustomModal buttonClass="btn btn-info mr-2" label={'حدف الوحدة'} >
+                        <h4>الوحدة الادارية رقم {unit?.id}</h4>
                         <div>
-                            هل تود فعلا حدف الوحدة بشكل دائما؟
-                        </div>
-                        <button className="btn btn-secondary" onClick={deleteUnit} data-dismiss="modal">نعم</button>
-                        <button className='btn btn-success' data-dismiss="modal">لا</button>
 
-                    </CustomModal>
+                            <CustomModal buttonClass="btn btn-info mr-2" label={'حدف الوحدة'} >
+                                <div>
+                                    هل تود فعلا حدف الوحدة بشكل دائما؟
+                                </div>
+                                <button className="btn btn-secondary" onClick={deleteUnit} data-dismiss="modal">نعم</button>
+                                <button className='btn btn-success' data-dismiss="modal">لا</button>
+
+                            </CustomModal>
+
+                            <EditUnitModal unit={unit} change={getunit} />
+                        </div>
+
                     </div>
                 </div>
 
@@ -97,12 +106,28 @@ export default function UnitShow(props) {
                         <div className="col-5 border border-dark rounded m-2 text-center">
                             الغرض من الوحدة: {unit?.purpose}
                         </div>
-                        <div className="col-5 border border-dark rounded m-2 text-center">
-                            الوحدة الاعلى التي تتبعها
-                            <AllowedLink to={routes.showUnit.replace(':id', unit?.parent_id)}>
-                                {unit?.parent?.name}
-                            </AllowedLink>
-                        </div>
+                        {
+                            unit?.parent ? (
+                                <div className="col-5 border border-dark rounded m-2 text-center">
+                                    الوحدة الاعلى التي تتبعها
+                                    <AllowedLink to={routes.showUnit.replace(':id', unit?.parent_id)}>
+                                        {unit?.parent?.name}
+                                    </AllowedLink>
+                                </div>
+                            ) : null
+                        }
+
+                        {
+                            unit?.head ? (
+                                <div className="col-5 border border-dark rounded m-2 text-center">
+                                    رئيس الوحدة
+                                    <AllowedLink to={routes.showUnit.replace(':id', unit?.head.id)}>
+                                        {unit?.head?.name}
+                                    </AllowedLink>
+                                </div>
+                            ) : null
+                        }
+
                     </div>
 
 
